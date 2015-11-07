@@ -3,8 +3,8 @@ AppName=Keppy's MIDI Converter
 AppVersion=8.6.0
 AppCopyright=Copyright(C) Keppy Studios 2013-2015
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
-LicenseFile=userdocs:Visual Studio 2013\Projects\KeppySpartanMIDIConverter\KeppySpartanMIDIConverter\license.rtf
-SetupIconFile=userdocs:Visual Studio 2013\Projects\KeppySpartanMIDIConverter\KeppySpartanMIDIConverter\favicon.ico
+LicenseFile=license.rtf
+SetupIconFile=favicon.ico
 DefaultDirName={pf}\Keppy's MIDI Converter
 EnableDirDoesntExistWarning=True
 DirExistsWarning=no
@@ -18,7 +18,7 @@ AppSupportURL=http://kaleidonkep99.altervista.org/contacts.html
 AppComments=MIDI to WAV converter
 AppContact=Mail: kaleidonkep99@outlook.com
 AppSupportPhone=+393511888475
-OutputDir=userdocs:Visual Studio 2013\Projects\KeppySpartanMIDIConverter\KeppySpartanMIDIConverter\bin
+OutputDir=bin
 OutputBaseFilename=KMCSetup
 Compression=lzma2/ultra64
 VersionInfoVersion=8.6.0
@@ -65,8 +65,9 @@ Type: files; Name: "{app}\KeppyMIDIConverter.exe"
 Type: files; Name: "{app}\license.rtf"
 
 [Run]
-Filename: "{app}\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser; Description: "Run the converter"
+Filename: "{app}\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser unchecked; Description: "Run the converter"
 Filename: "{app}\license.rtf"; Flags: nowait shellexec postinstall; Description: "Read the license"
+Filename: "https://github.com/KaleidonKep99/Keppys-MIDI-Converter"; Flags: nowait postinstall shellexec unchecked; Description: "Look at the source code on GitHub"
 
 [UninstallRun]
 Filename: "http://keppystudios.com"; Flags: nowait shellexec
