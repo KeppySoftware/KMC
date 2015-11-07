@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeppySpartanMIDIConverter", "KeppySpartanMIDIConverter\KeppySpartanMIDIConverter.csproj", "{77C1BF6D-BC6D-48B2-9FCB-7A896AFFE179}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Final|x64 = Final|x64
+		Final|x86 = Final|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77C1BF6D-BC6D-48B2-9FCB-7A896AFFE179}.Final|x64.ActiveCfg = Release|x64
+		{77C1BF6D-BC6D-48B2-9FCB-7A896AFFE179}.Final|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
