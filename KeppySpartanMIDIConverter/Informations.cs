@@ -47,5 +47,10 @@ namespace KeppySpartanMIDIConverter
         {
             System.Diagnostics.Process.Start("http://keppystudios.com/");
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter");
+        }
     }
 }
