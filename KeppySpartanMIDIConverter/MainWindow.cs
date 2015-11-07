@@ -733,7 +733,7 @@ namespace KeppySpartanMIDIConverter
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
+            BassNet.Registration("yourbassnetemailhere", "yourbassnetcodehere");
             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
             Globals._plm.CalcRMS = true;
         }
