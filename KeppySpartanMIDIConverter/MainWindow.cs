@@ -545,6 +545,8 @@ namespace KeppySpartanMIDIConverter
                         Globals.CancellationPendingValue = 0;
                         Globals.ActiveVoicesInt = 0;
                         Globals.NewWindowName = "Keppy's MIDI Converter";
+                        System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                        simpleSound.Play();
                     }
                     else
                     {
@@ -552,6 +554,7 @@ namespace KeppySpartanMIDIConverter
                         Bass.BASS_StreamFree(Globals._recHandle);
                         BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
                         Bass.BASS_Free();
+                        Globals.CancellationPendingValue = 0;
                         Globals.ActiveVoicesInt = 0;
                         Globals.NewWindowName = "Keppy's MIDI Converter";
                         System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
@@ -757,6 +760,10 @@ namespace KeppySpartanMIDIConverter
                     this.UsedVoices.Text = "Voices:\n0\\" + Globals.LimitVoicesInt.ToString();
                     this.CurrentStatus.Value = 0;
                     this.CurrentStatus.Maximum = 0;
+                    this.startRenderingToolStripMenuItem.Enabled = true;
+                    this.abortRenderingToolStripMenuItem.Enabled = false;
+                    this.startBenchmarkToolStripMenuItem.Enabled = true;
+                    this.abortBenchmarkToolStripMenuItem.Enabled = false;
                     this.loadSoundfontToolStripMenuItem.Enabled = true;
                     this.unloadSoundfontToolStripMenuItem.Enabled = true;
                     this.labelRMS.Text = Globals.CurrentPeak;
@@ -770,7 +777,10 @@ namespace KeppySpartanMIDIConverter
                         this.CurrentStatusText.Text = "Preparing for export/benchmark.\nPlease wait...";
                         this.UsedVoices.Text = "Voices:\n" + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
+                        this.startRenderingToolStripMenuItem.Enabled = true;
                         this.abortRenderingToolStripMenuItem.Enabled = false;
+                        this.startBenchmarkToolStripMenuItem.Enabled = true;
+                        this.abortBenchmarkToolStripMenuItem.Enabled = false;
                         this.loadSoundfontToolStripMenuItem.Enabled = false;
                         this.unloadSoundfontToolStripMenuItem.Enabled = false;
                         this.labelRMS.Text = Globals.CurrentPeak;
@@ -784,7 +794,10 @@ namespace KeppySpartanMIDIConverter
                         this.CurrentStatus.Style = ProgressBarStyle.Blocks;
                         this.CurrentStatus.Value = Globals.CurrentStatusValueInt;
                         this.CurrentStatus.Maximum = Globals.CurrentStatusMaximumInt;
+                        this.startRenderingToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
+                        this.startBenchmarkToolStripMenuItem.Enabled = false;
+                        this.abortBenchmarkToolStripMenuItem.Enabled = true;
                         this.loadSoundfontToolStripMenuItem.Enabled = false;
                         this.unloadSoundfontToolStripMenuItem.Enabled = false;
                         this.labelRMS.Text = Globals.CurrentPeak;
