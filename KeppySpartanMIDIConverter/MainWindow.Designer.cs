@@ -378,6 +378,10 @@
             this.CurrentStatus.Size = new System.Drawing.Size(652, 23);
             this.CurrentStatus.TabIndex = 14;
             // 
+            // SoundfontImportDialog
+            // 
+            this.SoundfontImportDialog.Filter = "Soundfont files|*.sf2;*.sfz;";
+            // 
             // LeftBut
             // 
             this.LeftBut.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
