@@ -52,7 +52,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SettingsBox = new System.Windows.Forms.GroupBox();
             this.AdvSettingsButton = new System.Windows.Forms.Button();
             this.VoiceLimit = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.labelRMS = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.DefMenu.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             this.LeftBut.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -306,17 +306,17 @@
             this.moveDownToolStripMenuItem.Text = "Move down (One item)";
             this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
             // 
-            // groupBox1
+            // SettingsBox
             // 
-            this.groupBox1.Controls.Add(this.AdvSettingsButton);
-            this.groupBox1.Controls.Add(this.VoiceLimit);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(510, 297);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(130, 70);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Settings";
+            this.SettingsBox.Controls.Add(this.AdvSettingsButton);
+            this.SettingsBox.Controls.Add(this.VoiceLimit);
+            this.SettingsBox.Controls.Add(this.label1);
+            this.SettingsBox.Location = new System.Drawing.Point(510, 297);
+            this.SettingsBox.Name = "SettingsBox";
+            this.SettingsBox.Size = new System.Drawing.Size(130, 70);
+            this.SettingsBox.TabIndex = 12;
+            this.SettingsBox.TabStop = false;
+            this.SettingsBox.Text = "Settings";
             // 
             // AdvSettingsButton
             // 
@@ -491,7 +491,7 @@
             this.Controls.Add(this.labelRMS);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.MIDIList);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.SettingsBox);
             this.Controls.Add(this.CurrentStatus);
             this.Controls.Add(this.LeftBut);
             this.Controls.Add(this.panel1);
@@ -505,8 +505,8 @@
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.panel2.ResumeLayout(false);
             this.DefMenu.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.SettingsBox.ResumeLayout(false);
+            this.SettingsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).EndInit();
             this.LeftBut.ResumeLayout(false);
             this.LeftBut.PerformLayout();
@@ -549,7 +549,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem moveUpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveDownToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox SettingsBox;
         private System.Windows.Forms.Button AdvSettingsButton;
         private System.Windows.Forms.NumericUpDown VoiceLimit;
         private System.Windows.Forms.Label label1;

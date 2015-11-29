@@ -760,6 +760,9 @@ namespace KeppySpartanMIDIConverter
                     this.UsedVoices.Text = "Voices:\n0\\" + Globals.LimitVoicesInt.ToString();
                     this.CurrentStatus.Value = 0;
                     this.CurrentStatus.Maximum = 0;
+                    this.loadingpic.Visible = false;
+                    this.SettingsBox.Enabled = true;
+                    this.modesToolStripMenuItem.Enabled = true;
                     this.startRenderingToolStripMenuItem.Enabled = true;
                     this.abortRenderingToolStripMenuItem.Enabled = false;
                     this.startBenchmarkToolStripMenuItem.Enabled = true;
@@ -777,6 +780,9 @@ namespace KeppySpartanMIDIConverter
                         this.CurrentStatusText.Text = "Preparing for export/benchmark.\nPlease wait...";
                         this.UsedVoices.Text = "Voices:\n" + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
+                        this.loadingpic.Visible = true;
+                        this.SettingsBox.Enabled = false;
+                        this.modesToolStripMenuItem.Enabled = false;
                         this.startRenderingToolStripMenuItem.Enabled = true;
                         this.abortRenderingToolStripMenuItem.Enabled = false;
                         this.startBenchmarkToolStripMenuItem.Enabled = true;
@@ -792,6 +798,9 @@ namespace KeppySpartanMIDIConverter
                         this.CurrentStatusText.Text = Globals.CurrentStatusTextString;
                         this.UsedVoices.Text = "Voices:\n" + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.Style = ProgressBarStyle.Blocks;
+                        this.loadingpic.Visible = true;
+                        this.SettingsBox.Enabled = false;
+                        this.modesToolStripMenuItem.Enabled = false;
                         this.CurrentStatus.Value = Globals.CurrentStatusValueInt;
                         this.CurrentStatus.Maximum = Globals.CurrentStatusMaximumInt;
                         this.startRenderingToolStripMenuItem.Enabled = false;
