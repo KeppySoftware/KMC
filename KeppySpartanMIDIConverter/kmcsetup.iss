@@ -1,6 +1,6 @@
 [Setup]
 AppName=Keppy's MIDI Converter
-AppVersion=8.7
+AppVersion=8.7.2
 AppCopyright=Copyright(C) Keppy Studios 2013-2015
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 LicenseFile=license.rtf
@@ -21,12 +21,12 @@ AppSupportPhone=+393511888475
 OutputDir=bin
 OutputBaseFilename=KMCSetup
 Compression=lzma2/ultra64
-VersionInfoVersion=8.7
+VersionInfoVersion=8.7.2
 VersionInfoCompany=Keppy Studios
 VersionInfoDescription=MIDI to WAV converter, for everyone!
 VersionInfoCopyright=Copyright(C) 2013-2015 Keppy Studios
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=8.7
+VersionInfoProductVersion=8.7.2
 MinVersion=0,5.0
 
 [Files]
@@ -65,8 +65,8 @@ Type: files; Name: "{app}\KeppyMIDIConverter.exe"
 Type: files; Name: "{app}\license.rtf"
 
 [Run]
-Filename: "{app}\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser unchecked; Description: "Run the converter"
-Filename: "{app}\license.rtf"; Flags: nowait shellexec postinstall; Description: "Read the license"
+Filename: "{app}\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser; Description: "Run the converter"
+Filename: "{app}\license.rtf"; Flags: nowait shellexec postinstall unchecked; Description: "Read the license"
 Filename: "https://github.com/KaleidonKep99/Keppys-MIDI-Converter"; Flags: nowait postinstall shellexec unchecked; Description: "Look at the source code on GitHub"
 
 [UninstallRun]

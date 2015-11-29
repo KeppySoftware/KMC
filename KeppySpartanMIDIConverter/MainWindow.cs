@@ -615,13 +615,43 @@ namespace KeppySpartanMIDIConverter
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Globals.CancellationPendingValue = 2;
-            base.Close();
+            if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
+            {
+                DialogResult dialogResult = MessageBox.Show("The converter is still exporting MIDIs!\n\nAre you sure you want to exit?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Process.GetCurrentProcess().Kill();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
+            }       
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) Process.GetCurrentProcess().Kill();
+
+            // Confirm user wants to close
+            if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
+            {
+                DialogResult dialogResult = MessageBox.Show("The converter is still exporting MIDIs!\n\nAre you sure you want to exit?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Process.GetCurrentProcess().Kill();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                Process.GetCurrentProcess().Kill();
+            }
         }
 
         private void importMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -782,6 +812,7 @@ namespace KeppySpartanMIDIConverter
                     this.UsedVoices.Text = "Voices:\n0\\" + Globals.LimitVoicesInt.ToString();
                     this.CurrentStatus.Value = 0;
                     this.CurrentStatus.Maximum = 0;
+                    this.DefMenu.Enabled = true;
                     this.loadingpic.Visible = false;
                     this.SettingsBox.Enabled = true;
                     this.modesToolStripMenuItem.Enabled = true;
@@ -802,6 +833,7 @@ namespace KeppySpartanMIDIConverter
                         this.CurrentStatusText.Text = "Preparing for export/benchmark.\nPlease wait...";
                         this.UsedVoices.Text = "Voices:\n" + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
+                        this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = true;
                         this.SettingsBox.Enabled = false;
                         this.modesToolStripMenuItem.Enabled = false;
