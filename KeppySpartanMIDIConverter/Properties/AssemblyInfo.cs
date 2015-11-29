@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // occorre quindi modificare i valori di questi attributi.
 [assembly: AssemblyTitle("Keppy's MIDI Converter")]
 [assembly: AssemblyDescription("Convert your favorite MIDIs to WAV files!")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyConfiguration("Final")]
 [assembly: AssemblyCompany("Keppy Studios")]
 [assembly: AssemblyProduct("KeppySpartanMIDIConverter")]
 [assembly: AssemblyCopyright("Copyright © Keppy Studios  2015")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come descritto di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("8.6.5")]
-[assembly: AssemblyFileVersion("8.6.5")]
+[assembly: AssemblyVersion("8.7")]
+[assembly: AssemblyFileVersion("8.7")]

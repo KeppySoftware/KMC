@@ -1,6 +1,6 @@
 [Setup]
 AppName=Keppy's MIDI Converter
-AppVersion=8.6.0
+AppVersion=8.7
 AppCopyright=Copyright(C) Keppy Studios 2013-2015
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 LicenseFile=license.rtf
@@ -21,15 +21,18 @@ AppSupportPhone=+393511888475
 OutputDir=bin
 OutputBaseFilename=KMCSetup
 Compression=lzma2/ultra64
-VersionInfoVersion=8.6.0
+VersionInfoVersion=8.7
 VersionInfoCompany=Keppy Studios
 VersionInfoDescription=MIDI to WAV converter, for everyone!
 VersionInfoCopyright=Copyright(C) 2013-2015 Keppy Studios
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=8.6.0
+VersionInfoProductVersion=8.7
 MinVersion=0,5.0
 
 [Files]
+;Generic
+Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
+Source: "convfin.wav"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 ;64-bit files
 Source: "bin\x64\bass.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\Bass.Net.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
@@ -52,9 +55,6 @@ Source: "bin\x86\Microsoft.WindowsAPICodePack.Sensors.dll"; DestDir: "{app}"; Fl
 Source: "bin\x86\Microsoft.WindowsAPICodePack.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
 Source: "bin\x86\Microsoft.WindowsAPICodePack.ShellExtensions.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
 Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-;Generic
-Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
-
 
 [UninstallDelete]
 Type: files; Name: "{app}\bass.dll"
