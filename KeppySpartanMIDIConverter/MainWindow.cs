@@ -412,154 +412,176 @@ namespace KeppySpartanMIDIConverter
                     int newvalue = Convert.ToInt32(this.VoiceLimit.Value.ToString());
                     int font = BassMidi.BASS_MIDI_FontInit(Globals.SFName);
                     Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, newvalue);
-                    foreach (string str in this.MIDIList.Items)
+                    bool KeepLooping = true;
+                    while (KeepLooping) 
                     {
-                        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
-                        string path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (1).wav";
-                        Un4seen.Bass.Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER | BASSInit.BASS_DEVICE_LATENCY, IntPtr.Zero);
-                        Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 10);
-                        Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 8);
-                        Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
-                        Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MUSIC_DECODE | BASSFlag.BASS_AAC_FRAME960 | BASSFlag.BASS_MUSIC_FLOAT | BASSFlag.BASS_MUSIC_FX, Globals.Frequency);
-                        Globals.NewWindowName = "Keppy's MIDI Converter | Exporting " + Path.GetFileNameWithoutExtension(str) + "...";
-                        Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
-                        Globals._plm.CalcRMS = true;
-                        BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[] { new BASS_MIDI_FONT(font, -1, 0) };
-                        BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 1);
-                        BassMidi.BASS_MIDI_StreamLoadSamples(Globals._recHandle);
-                        int num3 = 0;
-                        if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".wav"))
+                        foreach (string str in this.MIDIList.Items)
                         {
-                            do
+                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
+                            string path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (1).wav";
+                            Un4seen.Bass.Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER | BASSInit.BASS_DEVICE_LATENCY, IntPtr.Zero);
+                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 10);
+                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 8);
+                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
+                            Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MUSIC_DECODE | BASSFlag.BASS_AAC_FRAME960 | BASSFlag.BASS_MUSIC_FLOAT | BASSFlag.BASS_MUSIC_FX, Globals.Frequency);
+                            Globals.NewWindowName = "Keppy's MIDI Converter | Exporting " + Path.GetFileNameWithoutExtension(str) + "...";
+                            Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
+                            Globals._plm.CalcRMS = true;
+                            BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[] { new BASS_MIDI_FONT(font, -1, 0) };
+                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 1);
+                            BassMidi.BASS_MIDI_StreamLoadSamples(Globals._recHandle);
+                            int num3 = 0;
+                            if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".wav"))
                             {
-                                num3++;
-                                path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (" + num3.ToString() + ").wav";
+                                do
+                                {
+                                    num3++;
+                                    path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (" + num3.ToString() + ").wav";
+                                }
+                                while (File.Exists(path));
+                                Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, path, BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
                             }
-                            while (File.Exists(path));
-                            Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, path, BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
-                        }
-                        else
-                        {
-                            Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + ".wav", BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
-                        }
-                        if (Globals.FXDisabled)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_MIDI_NOFX, BASSFlag.BASS_MIDI_NOFX);
-                        }
-                        else
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_DEFAULT, BASSFlag.BASS_MIDI_NOFX);
-                        }
-                        if (Globals.NoteOff1Event)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_FX_FREESOURCE, BASSFlag.BASS_FX_FREESOURCE);
-                        }
-                        else
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_DEFAULT, BASSFlag.BASS_FX_FREESOURCE);
-                        }
-                        if (Globals.ReverbAFX)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_REVERB, Globals.ReverbAFXValue);
-                        }
-                        if (Globals.ChorusAFX)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_CHORUS, Globals.ChorusAFXValue);
-                        }
-                        if (Globals.CompressorAFX)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_COMPRESSOR, Globals.CompressorAFXValue);
-                        }
-                        if (Globals.DistortionAFX)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_DISTORTION, Globals.DistortionAFXValue);
-                        }
-                        if (Globals.FlangerAFX)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_FLANGER, Globals.FlangerAFXValue);
-                        }
-                        if (Globals.EchoAFX)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_ECHO, Globals.EchoAFXValue);
-                        }
-                        if (Globals.SittingAFX)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_I3DL2REVERB, Globals.SittingAFXValue);
-                        }
-                        if (Globals.GargleAFX)
-                        {
-                            Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_GARGLE, Globals.GargleAFXValue);
-                        }
-                        while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
-                        {
-                            int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
-                            long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
-                            long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
-                            float num7 = ((float)pos) / 1048576f;
-                            float num8 = ((float)num6) / 1048576f;
-                            double num9 = Un4seen.Bass.Bass.BASS_ChannelBytes2Seconds(Globals._recHandle, pos);
-                            double num10 = Un4seen.Bass.Bass.BASS_ChannelBytes2Seconds(Globals._recHandle, num6);
-                            TimeSpan span = TimeSpan.FromSeconds(num9);
-                            TimeSpan span2 = TimeSpan.FromSeconds(num10);
-                            string str4 = span.Hours.ToString().PadLeft(2, '0') + ":" + span.Minutes.ToString().PadLeft(2, '0') + ":" + span.Seconds.ToString().PadLeft(2, '0');
-                            string str5 = span2.Hours.ToString().PadLeft(2, '0') + ":" + span2.Minutes.ToString().PadLeft(2, '0') + ":" + span2.Seconds.ToString().PadLeft(2, '0');
-                            float num11 = 0f;
-                            float num12 = 0f;
-                            Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
-                            Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref num12);
-                            int[] buffer = new int[length / 4];
-                            Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
-                            if (num12 < 100f)
+                            else
                             {
-                                Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
+                                Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + ".wav", BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
                             }
-                            else if (num12 > 100f)
+                            if (Globals.FXDisabled)
                             {
-                                Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + Convert.ToInt32((float)(num12 / 100f)).ToString() + "x~ more slower)";
+                                Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_MIDI_NOFX, BASSFlag.BASS_MIDI_NOFX);
                             }
-                            Globals.ActiveVoicesInt = Convert.ToInt32(num11);
-                            Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
-                            Globals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
-                            Globals.CurrentPeak = String.Format("RMS: {0:#00.0} dB | AVG: {1:#00.0} dB | Peak: {2:#00.0} dB", Globals._plm.RMS_dBV, Globals._plm.AVG_dBV, Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
+                            else
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_DEFAULT, BASSFlag.BASS_MIDI_NOFX);
+                            }
+                            if (Globals.NoteOff1Event)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_FX_FREESOURCE, BASSFlag.BASS_FX_FREESOURCE);
+                            }
+                            else
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_DEFAULT, BASSFlag.BASS_FX_FREESOURCE);
+                            }
+                            if (Globals.ReverbAFX)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_REVERB, Globals.ReverbAFXValue);
+                            }
+                            if (Globals.ChorusAFX)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_CHORUS, Globals.ChorusAFXValue);
+                            }
+                            if (Globals.CompressorAFX)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_COMPRESSOR, Globals.CompressorAFXValue);
+                            }
+                            if (Globals.DistortionAFX)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_DISTORTION, Globals.DistortionAFXValue);
+                            }
+                            if (Globals.FlangerAFX)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_FLANGER, Globals.FlangerAFXValue);
+                            }
+                            if (Globals.EchoAFX)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_ECHO, Globals.EchoAFXValue);
+                            }
+                            if (Globals.SittingAFX)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_I3DL2REVERB, Globals.SittingAFXValue);
+                            }
+                            if (Globals.GargleAFX)
+                            {
+                                Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_GARGLE, Globals.GargleAFXValue);
+                            }
+                            while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
+                            {
+                                if (Globals.CancellationPendingValue != 1)
+                                {
+                                    int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
+                                    long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
+                                    long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
+                                    float num7 = ((float)pos) / 1048576f;
+                                    float num8 = ((float)num6) / 1048576f;
+                                    double num9 = Un4seen.Bass.Bass.BASS_ChannelBytes2Seconds(Globals._recHandle, pos);
+                                    double num10 = Un4seen.Bass.Bass.BASS_ChannelBytes2Seconds(Globals._recHandle, num6);
+                                    TimeSpan span = TimeSpan.FromSeconds(num9);
+                                    TimeSpan span2 = TimeSpan.FromSeconds(num10);
+                                    string str4 = span.Hours.ToString().PadLeft(2, '0') + ":" + span.Minutes.ToString().PadLeft(2, '0') + ":" + span.Seconds.ToString().PadLeft(2, '0');
+                                    string str5 = span2.Hours.ToString().PadLeft(2, '0') + ":" + span2.Minutes.ToString().PadLeft(2, '0') + ":" + span2.Seconds.ToString().PadLeft(2, '0');
+                                    float num11 = 0f;
+                                    float num12 = 0f;
+                                    Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
+                                    Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref num12);
+                                    int[] buffer = new int[length / 4];
+                                    Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
+                                    if (num12 < 100f)
+                                    {
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
+                                    }
+                                    else if (num12 > 100f)
+                                    {
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + Convert.ToInt32((float)(num12 / 100f)).ToString() + "x~ more slower)";
+                                    }
+                                    Globals.ActiveVoicesInt = Convert.ToInt32(num11);
+                                    Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
+                                    Globals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
+                                    Globals.CurrentPeak = String.Format("RMS: {0:#00.0} dB | AVG: {1:#00.0} dB | Peak: {2:#00.0} dB", Globals._plm.RMS_dBV, Globals._plm.AVG_dBV, Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
+                                }
+                                else if (Globals.CancellationPendingValue == 1)
+                                {
+                                    BassEnc.BASS_Encode_Stop(Globals._Encoder);
+                                    Bass.BASS_StreamFree(Globals._recHandle);
+                                    BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
+                                    Bass.BASS_Free();
+                                    Globals.CurrentStatusTextString = "Conversion aborted.";
+                                    Globals.ActiveVoicesInt = 0;
+                                    Globals.NewWindowName = "Keppy's MIDI Converter";
+                                    MessageBox.Show("Conversion aborted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    Globals.CurrentStatusTextString = null;
+                                    KeepLooping = false;
+                                    break;
+                                } 
+                            }
                             if (Globals.CancellationPendingValue == 1)
                             {
-                                BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                                Bass.BASS_StreamFree(Globals._recHandle);
-                                BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
-                                Bass.BASS_Free();
-                                Globals.CurrentStatusTextString = "Conversion aborted.";
-                                Globals.ActiveVoicesInt = 0;
-                                Globals.NewWindowName = "Keppy's MIDI Converter";
-                                MessageBox.Show("Conversion aborted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                Globals.CurrentStatusTextString = null;
-                                break;
+                                KeepLooping = false;
+                                if (KeepLooping == false)
+                                {
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                continue;
                             }
                         }
-                    }
-                    if (Globals.CancellationPendingValue == 1)
-                    {
-                        BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                        Bass.BASS_StreamFree(Globals._recHandle);
-                        BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
-                        Bass.BASS_Free();
-                        Globals.CancellationPendingValue = 0;
-                        Globals.ActiveVoicesInt = 0;
-                        Globals.NewWindowName = "Keppy's MIDI Converter";
-                        System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
-                        simpleSound.Play();
-                    }
-                    else
-                    {
-                        BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                        Bass.BASS_StreamFree(Globals._recHandle);
-                        BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
-                        Bass.BASS_Free();
-                        Globals.CancellationPendingValue = 0;
-                        Globals.ActiveVoicesInt = 0;
-                        Globals.NewWindowName = "Keppy's MIDI Converter";
-                        System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
-                        simpleSound.Play();
-                    }
+                        if (Globals.CancellationPendingValue == 1)
+                        {
+                            BassEnc.BASS_Encode_Stop(Globals._Encoder);
+                            Bass.BASS_StreamFree(Globals._recHandle);
+                            BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
+                            Bass.BASS_Free();
+                            Globals.CancellationPendingValue = 0;
+                            Globals.ActiveVoicesInt = 0;
+                            Globals.NewWindowName = "Keppy's MIDI Converter";
+                            KeepLooping = false;
+                            System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                            simpleSound.Play();
+                        }
+                        else
+                        {
+                            BassEnc.BASS_Encode_Stop(Globals._Encoder);
+                            Bass.BASS_StreamFree(Globals._recHandle);
+                            BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
+                            Bass.BASS_Free();
+                            Globals.CancellationPendingValue = 0;
+                            Globals.ActiveVoicesInt = 0;
+                            Globals.NewWindowName = "Keppy's MIDI Converter";
+                            KeepLooping = false;
+                            System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                            simpleSound.Play();
+                        }
+                    }     
                 }
                 catch (Exception exception)
                 {

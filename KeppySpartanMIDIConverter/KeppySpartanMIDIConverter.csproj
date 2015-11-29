@@ -167,8 +167,8 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="ksmcico.ico" />
+    <None Include="Resources\loading3.gif" />
     <None Include="Resources\Senza titolo-1.png" />
-    <None Include="Resources\loading-gallery.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

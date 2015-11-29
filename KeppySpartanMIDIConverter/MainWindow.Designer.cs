@@ -214,7 +214,7 @@
             // UsedVoices
             // 
             this.UsedVoices.Dock = System.Windows.Forms.DockStyle.Right;
-            this.UsedVoices.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsedVoices.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsedVoices.Location = new System.Drawing.Point(510, 0);
             this.UsedVoices.Name = "UsedVoices";
             this.UsedVoices.Size = new System.Drawing.Size(142, 55);
@@ -225,6 +225,7 @@
             // 
             // CurrentStatusText
             // 
+            this.CurrentStatusText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
             this.CurrentStatusText.Size = new System.Drawing.Size(509, 55);
@@ -251,15 +252,17 @@
             // 
             // MIDIList
             // 
+            this.MIDIList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MIDIList.ContextMenuStrip = this.DefMenu;
-            this.MIDIList.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MIDIList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MIDIList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MIDIList.FormattingEnabled = true;
             this.MIDIList.HorizontalScrollbar = true;
-            this.MIDIList.ItemHeight = 18;
+            this.MIDIList.ItemHeight = 16;
             this.MIDIList.Location = new System.Drawing.Point(12, 40);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.MIDIList.Size = new System.Drawing.Size(628, 238);
+            this.MIDIList.Size = new System.Drawing.Size(628, 242);
             this.MIDIList.TabIndex = 11;
             // 
             // DefMenu
@@ -320,6 +323,7 @@
             // 
             // AdvSettingsButton
             // 
+            this.AdvSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdvSettingsButton.Location = new System.Drawing.Point(6, 40);
             this.AdvSettingsButton.Name = "AdvSettingsButton";
             this.AdvSettingsButton.Size = new System.Drawing.Size(118, 23);
@@ -330,6 +334,7 @@
             // 
             // VoiceLimit
             // 
+            this.VoiceLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VoiceLimit.Location = new System.Drawing.Point(63, 14);
             this.VoiceLimit.Maximum = new decimal(new int[] {
             100000,
@@ -344,6 +349,7 @@
             this.VoiceLimit.Name = "VoiceLimit";
             this.VoiceLimit.Size = new System.Drawing.Size(58, 21);
             this.VoiceLimit.TabIndex = 1;
+            this.VoiceLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.VoiceLimit.Value = new decimal(new int[] {
             100000,
             0,
@@ -384,6 +390,7 @@
             // 
             // LeftBut
             // 
+            this.LeftBut.AllowMerge = false;
             this.LeftBut.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LeftBut.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actionsToolStripMenuItem,
@@ -391,6 +398,7 @@
             this.toolStripMenuItem1});
             this.LeftBut.Location = new System.Drawing.Point(0, 0);
             this.LeftBut.Name = "LeftBut";
+            this.LeftBut.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.LeftBut.Size = new System.Drawing.Size(652, 24);
             this.LeftBut.TabIndex = 15;
             this.LeftBut.Text = "menuStrip1";
@@ -454,9 +462,7 @@
             // loadingpic
             // 
             this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
-            this.loadingpic.ErrorImage = global::KeppyMIDIConverter.Properties.Resources.loading_gallery;
-            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.loading_gallery;
-            this.loadingpic.InitialImage = global::KeppyMIDIConverter.Properties.Resources.loading_gallery;
+            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.loading3;
             this.loadingpic.Location = new System.Drawing.Point(426, 0);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(62, 60);

@@ -60,6 +60,7 @@
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(295, 311);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -379,6 +380,7 @@
             // 
             this.FrequencyBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FrequencyBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FrequencyBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FrequencyBox.FormattingEnabled = true;
             this.FrequencyBox.Items.AddRange(new object[] {
             "192000",
@@ -416,9 +418,10 @@
             // FXDisable
             // 
             this.FXDisable.AutoSize = true;
+            this.FXDisable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FXDisable.Location = new System.Drawing.Point(7, 78);
             this.FXDisable.Name = "FXDisable";
-            this.FXDisable.Size = new System.Drawing.Size(129, 17);
+            this.FXDisable.Size = new System.Drawing.Size(126, 17);
             this.FXDisable.TabIndex = 7;
             this.FXDisable.Text = "Disable sound effects";
             this.FXDisable.UseVisualStyleBackColor = true;
@@ -427,9 +430,10 @@
             // Noteoff1
             // 
             this.Noteoff1.AutoSize = true;
+            this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Noteoff1.Location = new System.Drawing.Point(7, 42);
             this.Noteoff1.Name = "Noteoff1";
-            this.Noteoff1.Size = new System.Drawing.Size(347, 30);
+            this.Noteoff1.Size = new System.Drawing.Size(344, 30);
             this.Noteoff1.TabIndex = 6;
             this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlappin" +
     "g instances of the note.";
