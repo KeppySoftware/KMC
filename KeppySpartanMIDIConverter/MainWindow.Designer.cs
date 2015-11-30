@@ -25,13 +25,8 @@
             this.unloadSoundfontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abortRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startBenchmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abortBenchmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.conversionModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.benchmarkModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.informationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -43,7 +38,6 @@
             this.UsedVoices = new System.Windows.Forms.Label();
             this.CurrentStatusText = new System.Windows.Forms.Label();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.Benchmarker = new System.ComponentModel.BackgroundWorker();
             this.loadSoundfontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MIDIList = new System.Windows.Forms.ListBox();
             this.DefMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -59,7 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.CurrentStatus = new System.Windows.Forms.ProgressBar();
             this.SoundfontImportDialog = new System.Windows.Forms.OpenFileDialog();
-            this.LeftBut = new System.Windows.Forms.MenuStrip();
+            this.Menu = new System.Windows.Forms.MenuStrip();
             this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importMIDIsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSelectedMIDIsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +67,7 @@
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
-            this.LeftBut.SuspendLayout();
+            this.Menu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             this.SuspendLayout();
@@ -81,14 +75,14 @@
             // unloadSoundfontToolStripMenuItem
             // 
             this.unloadSoundfontToolStripMenuItem.Name = "unloadSoundfontToolStripMenuItem";
-            this.unloadSoundfontToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.unloadSoundfontToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.unloadSoundfontToolStripMenuItem.Text = "Unload soundfont";
             this.unloadSoundfontToolStripMenuItem.Click += new System.EventHandler(this.unloadSoundfontToolStripMenuItem_Click);
             // 
             // startRenderingToolStripMenuItem
             // 
             this.startRenderingToolStripMenuItem.Name = "startRenderingToolStripMenuItem";
-            this.startRenderingToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.startRenderingToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.startRenderingToolStripMenuItem.Text = "Start rendering";
             this.startRenderingToolStripMenuItem.Click += new System.EventHandler(this.startRenderingToolStripMenuItem_Click);
             // 
@@ -96,62 +90,21 @@
             // 
             this.abortRenderingToolStripMenuItem.Enabled = false;
             this.abortRenderingToolStripMenuItem.Name = "abortRenderingToolStripMenuItem";
-            this.abortRenderingToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.abortRenderingToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.abortRenderingToolStripMenuItem.Text = "Abort rendering";
             this.abortRenderingToolStripMenuItem.Click += new System.EventHandler(this.abortRenderingToolStripMenuItem_Click);
-            // 
-            // startBenchmarkToolStripMenuItem
-            // 
-            this.startBenchmarkToolStripMenuItem.Name = "startBenchmarkToolStripMenuItem";
-            this.startBenchmarkToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.startBenchmarkToolStripMenuItem.Text = "Start benchmark";
-            this.startBenchmarkToolStripMenuItem.Visible = false;
-            this.startBenchmarkToolStripMenuItem.Click += new System.EventHandler(this.startBenchmarkToolStripMenuItem_Click);
-            // 
-            // abortBenchmarkToolStripMenuItem
-            // 
-            this.abortBenchmarkToolStripMenuItem.Enabled = false;
-            this.abortBenchmarkToolStripMenuItem.Name = "abortBenchmarkToolStripMenuItem";
-            this.abortBenchmarkToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.abortBenchmarkToolStripMenuItem.Text = "Abort benchmark";
-            this.abortBenchmarkToolStripMenuItem.Visible = false;
-            this.abortBenchmarkToolStripMenuItem.Click += new System.EventHandler(this.abortBenchmarkToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(193, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // modesToolStripMenuItem
-            // 
-            this.modesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.conversionModeToolStripMenuItem,
-            this.benchmarkModeToolStripMenuItem});
-            this.modesToolStripMenuItem.Name = "modesToolStripMenuItem";
-            this.modesToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.modesToolStripMenuItem.Text = "Modes";
-            // 
-            // conversionModeToolStripMenuItem
-            // 
-            this.conversionModeToolStripMenuItem.Enabled = false;
-            this.conversionModeToolStripMenuItem.Name = "conversionModeToolStripMenuItem";
-            this.conversionModeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.conversionModeToolStripMenuItem.Text = "Conversion mode";
-            this.conversionModeToolStripMenuItem.Click += new System.EventHandler(this.conversionModeToolStripMenuItem_Click);
-            // 
-            // benchmarkModeToolStripMenuItem
-            // 
-            this.benchmarkModeToolStripMenuItem.Name = "benchmarkModeToolStripMenuItem";
-            this.benchmarkModeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.benchmarkModeToolStripMenuItem.Text = "Benchmark mode";
-            this.benchmarkModeToolStripMenuItem.Click += new System.EventHandler(this.benchmarkModeToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -166,19 +119,19 @@
             // informationsToolStripMenuItem
             // 
             this.informationsToolStripMenuItem.Name = "informationsToolStripMenuItem";
-            this.informationsToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.informationsToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.informationsToolStripMenuItem.Text = "Informations";
             this.informationsToolStripMenuItem.Click += new System.EventHandler(this.informationsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(200, 6);
             // 
             // officialBlackMIDIWikiaToolStripMenuItem
             // 
             this.officialBlackMIDIWikiaToolStripMenuItem.Name = "officialBlackMIDIWikiaToolStripMenuItem";
-            this.officialBlackMIDIWikiaToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.officialBlackMIDIWikiaToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.officialBlackMIDIWikiaToolStripMenuItem.Text = "Official Black MIDI Wikia";
             this.officialBlackMIDIWikiaToolStripMenuItem.Click += new System.EventHandler(this.officialBlackMIDIWikiaToolStripMenuItem_Click);
             // 
@@ -206,47 +159,41 @@
             this.panel2.Controls.Add(this.UsedVoices);
             this.panel2.Controls.Add(this.CurrentStatusText);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 373);
+            this.panel2.Location = new System.Drawing.Point(0, 430);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(652, 55);
+            this.panel2.Size = new System.Drawing.Size(761, 63);
             this.panel2.TabIndex = 16;
             // 
             // UsedVoices
             // 
             this.UsedVoices.Dock = System.Windows.Forms.DockStyle.Right;
-            this.UsedVoices.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsedVoices.Location = new System.Drawing.Point(510, 0);
+            this.UsedVoices.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsedVoices.Location = new System.Drawing.Point(595, 0);
             this.UsedVoices.Name = "UsedVoices";
-            this.UsedVoices.Size = new System.Drawing.Size(142, 55);
+            this.UsedVoices.Size = new System.Drawing.Size(166, 63);
             this.UsedVoices.TabIndex = 8;
             this.UsedVoices.Text = "Loading...";
             this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.UsedVoices.UseCompatibleTextRendering = true;
             // 
             // CurrentStatusText
             // 
-            this.CurrentStatusText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentStatusText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(509, 55);
+            this.CurrentStatusText.Size = new System.Drawing.Size(594, 63);
             this.CurrentStatusText.TabIndex = 7;
-            this.CurrentStatusText.Text = "Loading...\r\nPlease wait...";
+            this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CurrentStatusText.UseCompatibleTextRendering = true;
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
-            // 
-            // Benchmarker
-            // 
-            this.Benchmarker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Benchmarker_DoWork);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(193, 6);
             // 
             // loadSoundfontToolStripMenuItem
             // 
             this.loadSoundfontToolStripMenuItem.Name = "loadSoundfontToolStripMenuItem";
-            this.loadSoundfontToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.loadSoundfontToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.loadSoundfontToolStripMenuItem.Text = "Load soundfont";
             this.loadSoundfontToolStripMenuItem.Click += new System.EventHandler(this.loadSoundfontToolStripMenuItem_Click);
             // 
@@ -259,10 +206,10 @@
             this.MIDIList.FormattingEnabled = true;
             this.MIDIList.HorizontalScrollbar = true;
             this.MIDIList.ItemHeight = 16;
-            this.MIDIList.Location = new System.Drawing.Point(12, 40);
+            this.MIDIList.Location = new System.Drawing.Point(14, 41);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.MIDIList.Size = new System.Drawing.Size(628, 242);
+            this.MIDIList.Size = new System.Drawing.Size(732, 274);
             this.MIDIList.TabIndex = 11;
             // 
             // DefMenu
@@ -314,19 +261,19 @@
             this.SettingsBox.Controls.Add(this.AdvSettingsButton);
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.label1);
-            this.SettingsBox.Location = new System.Drawing.Point(510, 297);
+            this.SettingsBox.Location = new System.Drawing.Point(595, 343);
             this.SettingsBox.Name = "SettingsBox";
-            this.SettingsBox.Size = new System.Drawing.Size(130, 70);
+            this.SettingsBox.Size = new System.Drawing.Size(152, 81);
             this.SettingsBox.TabIndex = 12;
             this.SettingsBox.TabStop = false;
             this.SettingsBox.Text = "Settings";
             // 
             // AdvSettingsButton
             // 
-            this.AdvSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AdvSettingsButton.Location = new System.Drawing.Point(6, 40);
+            this.AdvSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.AdvSettingsButton.Location = new System.Drawing.Point(7, 46);
             this.AdvSettingsButton.Name = "AdvSettingsButton";
-            this.AdvSettingsButton.Size = new System.Drawing.Size(118, 23);
+            this.AdvSettingsButton.Size = new System.Drawing.Size(138, 27);
             this.AdvSettingsButton.TabIndex = 2;
             this.AdvSettingsButton.Text = "Advanced settings";
             this.AdvSettingsButton.UseVisualStyleBackColor = true;
@@ -335,7 +282,7 @@
             // VoiceLimit
             // 
             this.VoiceLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VoiceLimit.Location = new System.Drawing.Point(63, 14);
+            this.VoiceLimit.Location = new System.Drawing.Point(73, 18);
             this.VoiceLimit.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -347,7 +294,7 @@
             0,
             0});
             this.VoiceLimit.Name = "VoiceLimit";
-            this.VoiceLimit.Size = new System.Drawing.Size(58, 21);
+            this.VoiceLimit.Size = new System.Drawing.Size(68, 23);
             this.VoiceLimit.TabIndex = 1;
             this.VoiceLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.VoiceLimit.Value = new decimal(new int[] {
@@ -360,9 +307,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 17);
+            this.label1.Location = new System.Drawing.Point(7, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Voice limit:";
             // 
@@ -371,7 +318,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(420, 60);
+            this.label2.Size = new System.Drawing.Size(490, 69);
             this.label2.TabIndex = 7;
             this.label2.Text = "Load a soundfont first\r\nto see its informations here.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -379,29 +326,29 @@
             // CurrentStatus
             // 
             this.CurrentStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CurrentStatus.Location = new System.Drawing.Point(0, 428);
+            this.CurrentStatus.Location = new System.Drawing.Point(0, 493);
             this.CurrentStatus.Name = "CurrentStatus";
-            this.CurrentStatus.Size = new System.Drawing.Size(652, 23);
+            this.CurrentStatus.Size = new System.Drawing.Size(761, 27);
             this.CurrentStatus.TabIndex = 14;
             // 
             // SoundfontImportDialog
             // 
             this.SoundfontImportDialog.Filter = "Soundfont files|*.sf2;*.sfz;";
             // 
-            // LeftBut
+            // Menu
             // 
-            this.LeftBut.AllowMerge = false;
-            this.LeftBut.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LeftBut.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu.AllowMerge = false;
+            this.Menu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actionsToolStripMenuItem,
-            this.modesToolStripMenuItem,
             this.toolStripMenuItem1});
-            this.LeftBut.Location = new System.Drawing.Point(0, 0);
-            this.LeftBut.Name = "LeftBut";
-            this.LeftBut.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.LeftBut.Size = new System.Drawing.Size(652, 24);
-            this.LeftBut.TabIndex = 15;
-            this.LeftBut.Text = "menuStrip1";
+            this.Menu.Location = new System.Drawing.Point(0, 0);
+            this.Menu.Name = "Menu";
+            this.Menu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.Menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.Menu.Size = new System.Drawing.Size(761, 24);
+            this.Menu.TabIndex = 15;
+            this.Menu.Text = "menuStrip1";
             // 
             // actionsToolStripMenuItem
             // 
@@ -415,57 +362,55 @@
             this.toolStripSeparator1,
             this.startRenderingToolStripMenuItem,
             this.abortRenderingToolStripMenuItem,
-            this.startBenchmarkToolStripMenuItem,
-            this.abortBenchmarkToolStripMenuItem,
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
-            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.actionsToolStripMenuItem.Text = "Actions";
             // 
             // importMIDIsToolStripMenuItem
             // 
             this.importMIDIsToolStripMenuItem.Name = "importMIDIsToolStripMenuItem";
-            this.importMIDIsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.importMIDIsToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.importMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.importMIDIsToolStripMenuItem.Click += new System.EventHandler(this.importMIDIsToolStripMenuItem_Click);
             // 
             // removeSelectedMIDIsToolStripMenuItem
             // 
             this.removeSelectedMIDIsToolStripMenuItem.Name = "removeSelectedMIDIsToolStripMenuItem";
-            this.removeSelectedMIDIsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.removeSelectedMIDIsToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.removeSelectedMIDIsToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeSelectedMIDIsToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedMIDIsToolStripMenuItem_Click);
             // 
             // clearMIDIsListToolStripMenuItem
             // 
             this.clearMIDIsListToolStripMenuItem.Name = "clearMIDIsListToolStripMenuItem";
-            this.clearMIDIsListToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.clearMIDIsListToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.clearMIDIsListToolStripMenuItem.Text = "Clear MIDIs list";
             this.clearMIDIsListToolStripMenuItem.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(193, 6);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.loadingpic);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 302);
+            this.panel1.Location = new System.Drawing.Point(14, 348);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(492, 64);
+            this.panel1.Size = new System.Drawing.Size(573, 73);
             this.panel1.TabIndex = 13;
             // 
             // loadingpic
             // 
             this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
             this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.loading3;
-            this.loadingpic.Location = new System.Drawing.Point(426, 0);
+            this.loadingpic.Location = new System.Drawing.Point(497, 0);
             this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(62, 60);
+            this.loadingpic.Size = new System.Drawing.Size(72, 69);
             this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loadingpic.TabIndex = 9;
             this.loadingpic.TabStop = false;
@@ -482,26 +427,25 @@
             // 
             // labelRMS
             // 
-            this.labelRMS.AutoSize = true;
-            this.labelRMS.Location = new System.Drawing.Point(13, 284);
+            this.labelRMS.Location = new System.Drawing.Point(14, 324);
             this.labelRMS.Name = "labelRMS";
-            this.labelRMS.Size = new System.Drawing.Size(87, 13);
+            this.labelRMS.Size = new System.Drawing.Size(726, 15);
             this.labelRMS.TabIndex = 17;
             this.labelRMS.Text = "Peak level: None";
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 451);
+            this.ClientSize = new System.Drawing.Size(761, 520);
             this.Controls.Add(this.labelRMS);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.MIDIList);
             this.Controls.Add(this.SettingsBox);
             this.Controls.Add(this.CurrentStatus);
-            this.Controls.Add(this.LeftBut);
+            this.Controls.Add(this.Menu);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -514,8 +458,8 @@
             this.SettingsBox.ResumeLayout(false);
             this.SettingsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).EndInit();
-            this.LeftBut.ResumeLayout(false);
-            this.LeftBut.PerformLayout();
+            this.Menu.ResumeLayout(false);
+            this.Menu.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.ResumeLayout(false);
@@ -528,13 +472,8 @@
         private System.Windows.Forms.ToolStripMenuItem unloadSoundfontToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startRenderingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abortRenderingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startBenchmarkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abortBenchmarkToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem conversionModeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem benchmarkModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem informationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -546,7 +485,6 @@
         private System.Windows.Forms.Label UsedVoices;
         private System.Windows.Forms.Label CurrentStatusText;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.ComponentModel.BackgroundWorker Benchmarker;
         private System.Windows.Forms.ToolStripMenuItem loadSoundfontToolStripMenuItem;
         private System.Windows.Forms.ListBox MIDIList;
         private System.Windows.Forms.ContextMenuStrip DefMenu;
@@ -562,7 +500,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar CurrentStatus;
         private System.Windows.Forms.OpenFileDialog SoundfontImportDialog;
-        private System.Windows.Forms.MenuStrip LeftBut;
+        private System.Windows.Forms.MenuStrip Menu;
         private System.Windows.Forms.ToolStripMenuItem actionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importMIDIsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSelectedMIDIsToolStripMenuItem;
