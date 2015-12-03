@@ -23,7 +23,7 @@ namespace KeppySpartanMIDIConverter
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            BassNet.Registration("yourbassnetemailhere", "yourbassnetcodehere");
+            BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
             if (Environment.OSVersion.Version.Major == 5)
             {
                 MessageBox.Show("The converter requires Windows Vista or newer to run.\nWindows 2000, Windows XP and Windows Server 2003 are NOT supported.\n\nPress OK to quit.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -274,9 +274,7 @@ namespace KeppySpartanMIDIConverter
                 }
                 try
                 {
-                    int newvalue = Convert.ToInt32(this.VoiceLimit.Value.ToString());
                     int font = BassMidi.BASS_MIDI_FontInit(Globals.SFName);
-                    Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, newvalue);
                     bool KeepLooping = true;
                     while (KeepLooping) 
                     {
@@ -284,11 +282,11 @@ namespace KeppySpartanMIDIConverter
                         {
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy 1).wav";
-                            Un4seen.Bass.Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER | BASSInit.BASS_DEVICE_LATENCY, IntPtr.Zero);
-                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 10);
-                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 8);
+                            Un4seen.Bass.Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
+                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 0);
+                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 32);
                             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
-                            Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MUSIC_DECODE | BASSFlag.BASS_AAC_FRAME960 | BASSFlag.BASS_MUSIC_FLOAT | BASSFlag.BASS_MUSIC_FX, Globals.Frequency);
+                            Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MUSIC_DECODE | BASSFlag.BASS_MUSIC_FLOAT | BASSFlag.BASS_MUSIC_FX, Globals.Frequency);
                             Globals.NewWindowName = "Keppy's MIDI Converter | Exporting \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
                             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
                             Globals._plm.CalcRMS = true;
@@ -301,7 +299,7 @@ namespace KeppySpartanMIDIConverter
                                 do
                                 {
                                     num3++;
-                                    path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (" + num3.ToString() + ").wav";
+                                    path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy " + num3.ToString() + ").wav";
                                 }
                                 while (File.Exists(path));
                                 Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, path, BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
@@ -385,7 +383,7 @@ namespace KeppySpartanMIDIConverter
                                     }
                                     else if (num12 > 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + Convert.ToInt32((float)(num12 / 100f)).ToString() + "x~ more slower)";
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
                                     }
                                     Globals.ActiveVoicesInt = Convert.ToInt32(num11);
                                     Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
@@ -428,6 +426,7 @@ namespace KeppySpartanMIDIConverter
                             Bass.BASS_Free();
                             Globals.CancellationPendingValue = 0;
                             Globals.ActiveVoicesInt = 0;
+                            Globals.CurrentStatusTextString = "Conversion aborted.";
                             Globals.NewWindowName = "Keppy's MIDI Converter";
                             KeepLooping = false;
                             System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
@@ -441,6 +440,7 @@ namespace KeppySpartanMIDIConverter
                             Bass.BASS_Free();
                             Globals.CancellationPendingValue = 0;
                             Globals.ActiveVoicesInt = 0;
+                            Globals.CurrentStatusTextString = null;
                             Globals.NewWindowName = "Keppy's MIDI Converter";
                             KeepLooping = false;
                             System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
@@ -640,10 +640,29 @@ namespace KeppySpartanMIDIConverter
             }
         }
 
+        // Links
+
         private void officialBlackMIDIWikiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("http://officialblackmidi.wikia.com/wiki/Official_Black_MIDI_Wikia");
         }
+
+        private void wikipediasPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://en.wikipedia.org/wiki/Black_MIDI");
+        }
+
+        private void kaleidonKep99sYouTubeChannelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.youtube.com/channel/UCJeqODojIv4TdeHcBfHJRnA");
+        }
+
+        private void keppyStudiosWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://kaleidonkep99.altervista.org/");
+        }
+
+        // No more links
 
         private void removeMIDIToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -674,12 +693,15 @@ namespace KeppySpartanMIDIConverter
                     this.loadingpic.Visible = false;
                     TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                     this.CurrentStatusText.Text = "Idle.\nAdd some MIDIs to start the conversion or the benchmark!";
-                    this.UsedVoices.Text = "Voices:\n0\\" + Globals.LimitVoicesInt.ToString();
+                    this.UsedVoices.Text = @"Voices: 0\" + Globals.LimitVoicesInt.ToString();
                     this.CurrentStatus.Value = 0;
                     this.CurrentStatus.Maximum = 0;
                     this.DefMenu.Enabled = true;
                     this.loadingpic.Visible = false;
                     this.SettingsBox.Enabled = true;
+                    this.importMIDIsToolStripMenuItem.Enabled = true;
+                    this.removeSelectedMIDIsToolStripMenuItem.Enabled = true;
+                    this.clearMIDIsListToolStripMenuItem.Enabled = true;
                     this.startRenderingToolStripMenuItem.Enabled = true;
                     this.abortRenderingToolStripMenuItem.Enabled = false;
                     this.loadSoundfontToolStripMenuItem.Enabled = true;
@@ -693,11 +715,14 @@ namespace KeppySpartanMIDIConverter
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
                         this.CurrentStatus.Style = ProgressBarStyle.Marquee;
                         this.CurrentStatusText.Text = "Preparing for export/benchmark.\nPlease wait...";
-                        this.UsedVoices.Text = "Voices:\n" + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
+                        this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = true;
                         this.SettingsBox.Enabled = false;
+                        this.importMIDIsToolStripMenuItem.Enabled = false;
+                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
+                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
                         this.startRenderingToolStripMenuItem.Enabled = true;
                         this.abortRenderingToolStripMenuItem.Enabled = false;
                         this.loadSoundfontToolStripMenuItem.Enabled = false;
@@ -709,14 +734,18 @@ namespace KeppySpartanMIDIConverter
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
                         TaskbarManager.Instance.SetProgressValue(Globals.CurrentStatusValueInt, Globals.CurrentStatusMaximumInt);
                         this.CurrentStatusText.Text = Globals.CurrentStatusTextString;
-                        this.UsedVoices.Text = "Voices:\n" + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
+                        this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.Style = ProgressBarStyle.Blocks;
+                        this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = true;
                         this.SettingsBox.Enabled = false;
                         this.CurrentStatus.Value = Globals.CurrentStatusValueInt;
                         this.CurrentStatus.Maximum = Globals.CurrentStatusMaximumInt;
-                        this.startRenderingToolStripMenuItem.Enabled = false;
-                        this.abortRenderingToolStripMenuItem.Enabled = true;
+                        this.importMIDIsToolStripMenuItem.Enabled = false;
+                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
+                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
+                        this.startRenderingToolStripMenuItem.Enabled = true;
+                        this.abortRenderingToolStripMenuItem.Enabled = false;
                         this.loadSoundfontToolStripMenuItem.Enabled = false;
                         this.unloadSoundfontToolStripMenuItem.Enabled = false;
                         this.labelRMS.Text = Globals.CurrentPeak;

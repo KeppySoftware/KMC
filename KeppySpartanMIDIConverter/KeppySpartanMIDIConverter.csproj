@@ -167,6 +167,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="ksmcico.ico" />
+    <None Include="Resources\landing-spinner.gif" />
     <None Include="Resources\loading3.gif" />
     <None Include="Resources\Senza titolo-1.png" />
   </ItemGroup>

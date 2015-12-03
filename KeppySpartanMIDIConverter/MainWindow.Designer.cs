@@ -30,13 +30,14 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.informationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.blackMIDIStuffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.officialBlackMIDIWikiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Converter = new System.ComponentModel.BackgroundWorker();
             this.MIDIImport = new System.Windows.Forms.OpenFileDialog();
             this.RenderingTimer = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
-            this.UsedVoices = new System.Windows.Forms.Label();
             this.CurrentStatusText = new System.Windows.Forms.Label();
+            this.UsedVoices = new System.Windows.Forms.Label();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.loadSoundfontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MIDIList = new System.Windows.Forms.ListBox();
@@ -63,6 +64,10 @@
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
             this.labelRMS = new System.Windows.Forms.Label();
+            this.kaleidonKep99sYouTubeChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.wikipediasPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.keppyStudiosWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
@@ -111,7 +116,8 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.informationsToolStripMenuItem,
             this.toolStripSeparator3,
-            this.officialBlackMIDIWikiaToolStripMenuItem});
+            this.blackMIDIStuffToolStripMenuItem,
+            this.keppyStudiosWebsiteToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(24, 20);
             this.toolStripMenuItem1.Text = "?";
@@ -119,19 +125,30 @@
             // informationsToolStripMenuItem
             // 
             this.informationsToolStripMenuItem.Name = "informationsToolStripMenuItem";
-            this.informationsToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.informationsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.informationsToolStripMenuItem.Text = "Informations";
             this.informationsToolStripMenuItem.Click += new System.EventHandler(this.informationsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(200, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(191, 6);
+            // 
+            // blackMIDIStuffToolStripMenuItem
+            // 
+            this.blackMIDIStuffToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kaleidonKep99sYouTubeChannelToolStripMenuItem,
+            this.toolStripSeparator6,
+            this.officialBlackMIDIWikiaToolStripMenuItem,
+            this.wikipediasPageToolStripMenuItem});
+            this.blackMIDIStuffToolStripMenuItem.Name = "blackMIDIStuffToolStripMenuItem";
+            this.blackMIDIStuffToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.blackMIDIStuffToolStripMenuItem.Text = "Black MIDI stuff";
             // 
             // officialBlackMIDIWikiaToolStripMenuItem
             // 
             this.officialBlackMIDIWikiaToolStripMenuItem.Name = "officialBlackMIDIWikiaToolStripMenuItem";
-            this.officialBlackMIDIWikiaToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.officialBlackMIDIWikiaToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.officialBlackMIDIWikiaToolStripMenuItem.Text = "Official Black MIDI Wikia";
             this.officialBlackMIDIWikiaToolStripMenuItem.Click += new System.EventHandler(this.officialBlackMIDIWikiaToolStripMenuItem_Click);
             // 
@@ -156,7 +173,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.UsedVoices);
             this.panel2.Controls.Add(this.CurrentStatusText);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 430);
@@ -164,26 +180,26 @@
             this.panel2.Size = new System.Drawing.Size(761, 63);
             this.panel2.TabIndex = 16;
             // 
-            // UsedVoices
-            // 
-            this.UsedVoices.Dock = System.Windows.Forms.DockStyle.Right;
-            this.UsedVoices.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsedVoices.Location = new System.Drawing.Point(595, 0);
-            this.UsedVoices.Name = "UsedVoices";
-            this.UsedVoices.Size = new System.Drawing.Size(166, 63);
-            this.UsedVoices.TabIndex = 8;
-            this.UsedVoices.Text = "Loading...";
-            this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // CurrentStatusText
             // 
+            this.CurrentStatusText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CurrentStatusText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(594, 63);
+            this.CurrentStatusText.Size = new System.Drawing.Size(761, 63);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // UsedVoices
+            // 
+            this.UsedVoices.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsedVoices.Location = new System.Drawing.Point(568, 324);
+            this.UsedVoices.Name = "UsedVoices";
+            this.UsedVoices.Size = new System.Drawing.Size(178, 15);
+            this.UsedVoices.TabIndex = 8;
+            this.UsedVoices.Text = "Loading...";
+            this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStripSeparator1
             // 
@@ -407,10 +423,10 @@
             // loadingpic
             // 
             this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
-            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.loading3;
-            this.loadingpic.Location = new System.Drawing.Point(497, 0);
+            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.landing_spinner;
+            this.loadingpic.Location = new System.Drawing.Point(496, 0);
             this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(72, 69);
+            this.loadingpic.Size = new System.Drawing.Size(73, 69);
             this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loadingpic.TabIndex = 9;
             this.loadingpic.TabStop = false;
@@ -429,15 +445,42 @@
             // 
             this.labelRMS.Location = new System.Drawing.Point(14, 324);
             this.labelRMS.Name = "labelRMS";
-            this.labelRMS.Size = new System.Drawing.Size(726, 15);
+            this.labelRMS.Size = new System.Drawing.Size(548, 15);
             this.labelRMS.TabIndex = 17;
             this.labelRMS.Text = "Peak level: None";
+            // 
+            // kaleidonKep99sYouTubeChannelToolStripMenuItem
+            // 
+            this.kaleidonKep99sYouTubeChannelToolStripMenuItem.Name = "kaleidonKep99sYouTubeChannelToolStripMenuItem";
+            this.kaleidonKep99sYouTubeChannelToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.kaleidonKep99sYouTubeChannelToolStripMenuItem.Text = "KaleidonKep99\'s YouTube Channel";
+            this.kaleidonKep99sYouTubeChannelToolStripMenuItem.Click += new System.EventHandler(this.kaleidonKep99sYouTubeChannelToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(255, 6);
+            // 
+            // wikipediasPageToolStripMenuItem
+            // 
+            this.wikipediasPageToolStripMenuItem.Name = "wikipediasPageToolStripMenuItem";
+            this.wikipediasPageToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.wikipediasPageToolStripMenuItem.Text = "Wikipedia\'s page";
+            this.wikipediasPageToolStripMenuItem.Click += new System.EventHandler(this.wikipediasPageToolStripMenuItem_Click);
+            // 
+            // keppyStudiosWebsiteToolStripMenuItem
+            // 
+            this.keppyStudiosWebsiteToolStripMenuItem.Name = "keppyStudiosWebsiteToolStripMenuItem";
+            this.keppyStudiosWebsiteToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.keppyStudiosWebsiteToolStripMenuItem.Text = "Keppy Studios Website";
+            this.keppyStudiosWebsiteToolStripMenuItem.Click += new System.EventHandler(this.keppyStudiosWebsiteToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(761, 520);
+            this.Controls.Add(this.UsedVoices);
             this.Controls.Add(this.labelRMS);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.MIDIList);
@@ -477,7 +520,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem informationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem officialBlackMIDIWikiaToolStripMenuItem;
         public System.ComponentModel.BackgroundWorker Converter;
         private System.Windows.Forms.OpenFileDialog MIDIImport;
         private System.Windows.Forms.Timer RenderingTimer;
@@ -510,6 +552,12 @@
         private System.Windows.Forms.SaveFileDialog ExportWhere;
         private System.Windows.Forms.PictureBox loadingpic;
         private System.Windows.Forms.Label labelRMS;
+        private System.Windows.Forms.ToolStripMenuItem blackMIDIStuffToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem officialBlackMIDIWikiaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kaleidonKep99sYouTubeChannelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem wikipediasPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem keppyStudiosWebsiteToolStripMenuItem;
     }
 }
 
