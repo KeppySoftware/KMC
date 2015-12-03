@@ -12,3 +12,7 @@ A fully functional MIDI to WAV converter, suitable for normal AND heavy MIDIs! (
 - 1GB of RAM or more
 - Microsoft Visual Studio 2013 (or newer, your choice)
 - [BASS.NET] (http://www.bass.radio42.com/) by Radio42
+
+## Credits
+- Thanks Ian Luck for his wonderful BASS libraries! Take a look to them here: [Un4seen website] (http://www.un4seen.com/)
+- Thanks to Radio42 for his BASS.NET wrapper, that allows me to develop VB.NET/C# apps based off BASS libraries! Link: [BASS.NET] (http://www.bass.radio42.com/)
