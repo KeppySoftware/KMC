@@ -1,6 +1,6 @@
 [Setup]
 AppName=Keppy's MIDI Converter
-AppVersion=8.7.4
+AppVersion=8.7.5
 AppCopyright=Copyright(C) Keppy Studios 2013-2015
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 LicenseFile=license.rtf
@@ -21,13 +21,18 @@ AppSupportPhone=+393511888475
 OutputDir=bin
 OutputBaseFilename=KMCSetup
 Compression=lzma2/ultra64
-VersionInfoVersion=8.7.4
+VersionInfoVersion=8.7.5
 VersionInfoCompany=Keppy Studios
 VersionInfoDescription=MIDI to WAV converter, for everyone!
 VersionInfoCopyright=Copyright(C) 2013-2015 Keppy Studios
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=8.7.4
-MinVersion=0,5.0
+VersionInfoProductVersion=8.7.5
+MinVersion=0,6.0.6000
+WindowVisible=True
+AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
+UninstallDisplayName=Keppy's MIDI Converter (Remove only)
+UninstallDisplaySize=2799697
+UninstallDisplayIcon={app}\KeppyMIDIConverter.exe
 
 [Files]
 ;Generic
@@ -75,4 +80,12 @@ Filename: "http://keppystudios.com"; Flags: nowait shellexec
 [Icons]
 Name: "{group}\Keppy's MIDI Converter"; Filename: "{app}\KeppyMIDIConverter.exe"; IconFilename: "{app}\KeppyMIDIConverter.exe"
 
-Name: "{group}\Uninstall the converter"; Filename: "{uninstallexe}"; IconFilename: "{app}\KeppyMIDIConverter.exe" 
+[Messages]
+ExitSetupMessage=You didn't finished installing the converter yet.%nAre you sure you want to quit?%n%nYou can run the installer later, if you want.
+ApplicationsFound=It seems that you didn't closed the converter. It is recommended that you allow the setup to automatically close it.
+CannotContinue=The setup encountered an unknown error. Click Cancel to exit.
+FinishedLabel=Hooray!%nThe converter has been succesfully installed on your computer!%n%nIt may be launched by selecting the installed icons.
+WelcomeLabel1=Keppy's MIDI Converter Setup
+WelcomeLabel2=This will install the [name] on your computer.%n%nIt is recommended to check if an older version of the converter is running, before installing the new one.%n%nAlso, be sure to check my other project, the Keppy's Driver. You can find it on my GitHub page.
+ConfirmUninstall=This will uninstall the converter.%n%nAre you sure mate?
+WindowsVersionNotSupported=This program requires Windows Vista or newer.%n%nYour current version is NOT supported.

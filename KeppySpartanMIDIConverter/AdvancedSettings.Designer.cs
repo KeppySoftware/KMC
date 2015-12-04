@@ -41,6 +41,8 @@
             this.GargleFX = new System.Windows.Forms.CheckBox();
             this.ReverbFX2 = new System.Windows.Forms.CheckBox();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.CPUUsageComb = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
             this.FrequencyBox = new System.Windows.Forms.ComboBox();
             this.Label5 = new System.Windows.Forms.Label();
@@ -61,9 +63,9 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(344, 359);
+            this.button1.Location = new System.Drawing.Point(365, 361);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 27);
+            this.button1.Size = new System.Drawing.Size(63, 26);
             this.button1.TabIndex = 31;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
@@ -185,9 +187,9 @@
             this.groupBox3.Controls.Add(this.ChorusFX2);
             this.groupBox3.Controls.Add(this.GargleFX);
             this.groupBox3.Controls.Add(this.ReverbFX2);
-            this.groupBox3.Location = new System.Drawing.Point(14, 136);
+            this.groupBox3.Location = new System.Drawing.Point(6, 118);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(418, 215);
+            this.groupBox3.Size = new System.Drawing.Size(434, 233);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Audio effects";
@@ -354,23 +356,70 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.CPUUsageComb);
+            this.GroupBox1.Controls.Add(this.label2);
             this.GroupBox1.Controls.Add(this.Label6);
             this.GroupBox1.Controls.Add(this.FrequencyBox);
             this.GroupBox1.Controls.Add(this.Label5);
             this.GroupBox1.Controls.Add(this.FXDisable);
             this.GroupBox1.Controls.Add(this.Noteoff1);
-            this.GroupBox1.Location = new System.Drawing.Point(14, 14);
+            this.GroupBox1.Location = new System.Drawing.Point(6, 2);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(418, 115);
+            this.GroupBox1.Size = new System.Drawing.Size(434, 115);
             this.GroupBox1.TabIndex = 29;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
+            // 
+            // CPUUsageComb
+            // 
+            this.CPUUsageComb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CPUUsageComb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CPUUsageComb.Enabled = false;
+            this.CPUUsageComb.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.CPUUsageComb.FormattingEnabled = true;
+            this.CPUUsageComb.Items.AddRange(new object[] {
+            "Disabled",
+            "100",
+            "95",
+            "90",
+            "85",
+            "80",
+            "75",
+            "70",
+            "65",
+            "60",
+            "55",
+            "50",
+            "45",
+            "40",
+            "35",
+            "30",
+            "25",
+            "20",
+            "15",
+            "10",
+            "5"});
+            this.CPUUsageComb.Location = new System.Drawing.Point(355, 17);
+            this.CPUUsageComb.Name = "CPUUsageComb";
+            this.CPUUsageComb.Size = new System.Drawing.Size(72, 23);
+            this.CPUUsageComb.TabIndex = 12;
+            this.CPUUsageComb.SelectedIndexChanged += new System.EventHandler(this.CPUUsageComb_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Enabled = false;
+            this.label2.Location = new System.Drawing.Point(257, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 15);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Max CPU usage:";
             // 
             // Label6
             // 
             this.Label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(381, 20);
+            this.Label6.Location = new System.Drawing.Point(186, 21);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(21, 15);
             this.Label6.TabIndex = 10;
@@ -400,7 +449,7 @@
             "11025",
             "8000",
             "4000"});
-            this.FrequencyBox.Location = new System.Drawing.Point(297, 16);
+            this.FrequencyBox.Location = new System.Drawing.Point(110, 17);
             this.FrequencyBox.Name = "FrequencyBox";
             this.FrequencyBox.Size = new System.Drawing.Size(76, 23);
             this.FrequencyBox.TabIndex = 9;
@@ -502,5 +551,7 @@
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.CheckBox FXDisable;
         internal System.Windows.Forms.CheckBox Noteoff1;
+        internal System.Windows.Forms.ComboBox CPUUsageComb;
+        private System.Windows.Forms.Label label2;
     }
 }

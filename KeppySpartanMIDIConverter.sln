@@ -7,12 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeppySpartanMIDIConverter",
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Final|x64 = Final|x64
-		Final|x86 = Final|x86
+		Final|32-bit = Final|32-bit
+		Final|64-bit = Final|64-bit
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{77C1BF6D-BC6D-48B2-9FCB-7A896AFFE179}.Final|x64.ActiveCfg = Release|x64
-		{77C1BF6D-BC6D-48B2-9FCB-7A896AFFE179}.Final|x86.ActiveCfg = Release|x86
+		{77C1BF6D-BC6D-48B2-9FCB-7A896AFFE179}.Final|32-bit.ActiveCfg = Release|x86
+		{77C1BF6D-BC6D-48B2-9FCB-7A896AFFE179}.Final|64-bit.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

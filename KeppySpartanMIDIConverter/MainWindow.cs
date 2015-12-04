@@ -23,7 +23,7 @@ namespace KeppySpartanMIDIConverter
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
+            BassNet.Registration("yourbassnetemailhere", "yourbassnetcodehere");
             if (Environment.OSVersion.Version.Major == 5)
             {
                 MessageBox.Show("The converter requires Windows Vista or newer to run.\nWindows 2000, Windows XP and Windows Server 2003 are NOT supported.\n\nPress OK to quit.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -39,8 +39,8 @@ namespace KeppySpartanMIDIConverter
                     using (RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter"))
                         if (Key != null)
                         {
-                            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-                            RegistryKey Effects = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects");
+                            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                            RegistryKey Effects = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
                             VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices"));
                             Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq"));
                             // BOOLEANSSSSSSSSS
@@ -135,6 +135,11 @@ namespace KeppySpartanMIDIConverter
                             Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder").ToString();
                             Globals.SFLastDirectory = Settings.GetValue("lastsffolder").ToString();
                             Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder").ToString();
+                            Globals.MaxCPU = Convert.ToInt32(Settings.GetValue("maxcpu").ToString());
+                            // TEMPORARY
+                            Globals.MaxCPU = 0;
+                            Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
+                            // TEMPORARY
                             Settings.Close();
                             Effects.Close();
                         }
@@ -152,6 +157,7 @@ namespace KeppySpartanMIDIConverter
                             Settings.SetValue("lastexportfolder", "", RegistryValueKind.String);
                             Settings.SetValue("noteoff1", "0", RegistryValueKind.DWord);
                             Settings.SetValue("disablefx", "0", RegistryValueKind.DWord);
+                            Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
                             Effects.SetValue("reverb", "0", RegistryValueKind.DWord);
                             Effects.SetValue("chorus", "0", RegistryValueKind.DWord);
                             Effects.SetValue("flanger", "0", RegistryValueKind.DWord);
@@ -163,7 +169,6 @@ namespace KeppySpartanMIDIConverter
                             Settings.Close();
                             Effects.Close();
                         }
-
                 }
                 catch (Exception exception)
                 {
@@ -208,6 +213,7 @@ namespace KeppySpartanMIDIConverter
             public static int DefaultSoundfont;
             public static int GargleAFXValue = 1;
             public static int LimitVoicesInt = 0x186a0;
+            public static int MaxCPU;
             public static int ReverbAFXValue = 1;
             public static int ReverbDelay = 0;
             public static int ReverbHiCut = 20;
@@ -287,6 +293,7 @@ namespace KeppySpartanMIDIConverter
                             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 32);
                             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
                             Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MUSIC_DECODE | BASSFlag.BASS_MUSIC_FLOAT | BASSFlag.BASS_MUSIC_FX, Globals.Frequency);
+                            Un4seen.Bass.Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, Globals.MaxCPU);
                             Globals.NewWindowName = "Keppy's MIDI Converter | Exporting \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
                             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
                             Globals._plm.CalcRMS = true;
