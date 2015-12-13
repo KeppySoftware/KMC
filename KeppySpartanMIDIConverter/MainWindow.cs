@@ -57,7 +57,6 @@ namespace KeppySpartanMIDIConverter
             public static int DefaultSoundfont;
             public static int GargleAFXValue = 1;
             public static int LimitVoicesInt = 0x186a0;
-            public static int MaxCPU;
             public static int ReverbAFXValue = 1;
             public static int ReverbDelay = 0;
             public static int ReverbHiCut = 20;
@@ -89,8 +88,6 @@ namespace KeppySpartanMIDIConverter
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            try
-            {
                 BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
                 if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 0)
                 {
@@ -203,11 +200,6 @@ namespace KeppySpartanMIDIConverter
                                 Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder").ToString();
                                 Globals.SFLastDirectory = Settings.GetValue("lastsffolder").ToString();
                                 Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder").ToString();
-                                Globals.MaxCPU = Convert.ToInt32(Settings.GetValue("maxcpu").ToString());
-                                // TEMPORARY
-                                Globals.MaxCPU = 0;
-                                Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
-                                // TEMPORARY
                                 Settings.Close();
                                 Effects.Close();
                             }
@@ -237,16 +229,12 @@ namespace KeppySpartanMIDIConverter
                                 Settings.Close();
                                 Effects.Close();
                             }
+                        Console.WriteLine("Settings loaded.");
                     }
                     catch (Exception exception2)
                     {
                         MessageBox.Show("Error!", exception2.InnerException.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show("Error!", exception.InnerException.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -300,7 +288,7 @@ namespace KeppySpartanMIDIConverter
                             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 32);
                             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
                             Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MUSIC_DECODE | BASSFlag.BASS_MUSIC_FLOAT | BASSFlag.BASS_MUSIC_FX, Globals.Frequency);
-                            Un4seen.Bass.Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, Globals.MaxCPU);
+                            Un4seen.Bass.Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
                             Globals.NewWindowName = "Keppy's MIDI Converter | Exporting \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
                             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
                             Globals._plm.CalcRMS = true;

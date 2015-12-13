@@ -12,16 +12,10 @@ namespace KeppySpartanMIDIConverter
         [STAThread]
         static void Main()
         {
-            try
-            {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainWindow());
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message.ToString(), "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }   
+
         }
     }
 }
