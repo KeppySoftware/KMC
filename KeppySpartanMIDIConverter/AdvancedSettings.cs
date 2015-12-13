@@ -21,14 +21,6 @@ namespace KeppySpartanMIDIConverter
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             //
             FrequencyBox.Text = Convert.ToString(Settings.GetValue("audiofreq"));
-            if (Convert.ToString(Settings.GetValue("maxcpu")) == "0")
-            {
-                CPUUsageComb.Text = "Disabled";
-            }
-            else
-            {
-                CPUUsageComb.Text = Convert.ToString(Settings.GetValue("maxcpu"));
-            }
             //
             if (Convert.ToInt32(Effects.GetValue("reverb")) == 1)
             {
@@ -367,22 +359,5 @@ namespace KeppySpartanMIDIConverter
         {
             MainWindow.Globals.SittingAFXValue = Convert.ToInt32(this.SittingFXNum.Value);
         }
-
-        private void CPUUsageComb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CPUUsageComb.Text == "Disabled")
-            {
-                Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Settings.SetValue("maxcpu", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                MainWindow.Globals.MaxCPU = 0;
-            }
-            else
-            {
-                Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Settings.SetValue("maxcpu", Convert.ToInt32(CPUUsageComb.Text.ToString()), Microsoft.Win32.RegistryValueKind.DWord);
-                MainWindow.Globals.MaxCPU = Convert.ToInt32(CPUUsageComb.Text.ToString());
-            }
-        }
-
     }
 }

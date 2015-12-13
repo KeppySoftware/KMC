@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("Final")]
 [assembly: AssemblyCompany("Keppy Studios")]
 [assembly: AssemblyProduct("KeppySpartanMIDIConverter")]
-[assembly: AssemblyCopyright("Copyright © Keppy Studios  2015")]
+[assembly: AssemblyCopyright("Copyright © Keppy Studios 2016")]
 [assembly: AssemblyTrademark("KSMCBYKS")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Resources;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come descritto di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("8.7.5")]
-[assembly: AssemblyFileVersion("8.7.5")]
+[assembly: AssemblyVersion("8.7.6")]
+[assembly: AssemblyFileVersion("8.7.6")]
 [assembly: NeutralResourcesLanguageAttribute("en-GB")]

@@ -1,6 +1,6 @@
 [Setup]
 AppName=Keppy's MIDI Converter
-AppVersion=8.7.5
+AppVersion=8.7.6
 AppCopyright=Copyright(C) Keppy Studios 2013-2015
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 LicenseFile=license.rtf
@@ -21,13 +21,13 @@ AppSupportPhone=+393511888475
 OutputDir=bin
 OutputBaseFilename=KMCSetup
 Compression=lzma2/ultra64
-VersionInfoVersion=8.7.5
+VersionInfoVersion=8.7.6
 VersionInfoCompany=Keppy Studios
 VersionInfoDescription=MIDI to WAV converter, for everyone!
 VersionInfoCopyright=Copyright(C) 2013-2015 Keppy Studios
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=8.7.5
-MinVersion=0,6.0.6000
+VersionInfoProductVersion=8.7.6
+MinVersion=0,5.01.2600sp3
 WindowVisible=True
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
 UninstallDisplayName=Keppy's MIDI Converter (Remove only)
@@ -69,13 +69,30 @@ Type: files; Name: "{app}\Bass.Net.dll"
 Type: files; Name: "{app}\KeppyMIDIConverter.exe"
 Type: files; Name: "{app}\license.rtf"
 
+[Registry]
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "audiofreq"; ValueData: "44100"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "voices"; ValueData: "100000"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "noteoff1"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "disablefx"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: string; ValueName: "lastsffolder"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: string; ValueName: "lastmidifolder"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: string; ValueName: "lastexportfolder"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "chorus"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "compressor"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "distortion"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "echo"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "flanger"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "gargle"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "reverb"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "sittingroom"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+
 [Run]
 Filename: "{app}\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser; Description: "Run the converter"
 Filename: "{app}\license.rtf"; Flags: nowait shellexec postinstall unchecked; Description: "Read the license"
 Filename: "https://github.com/KaleidonKep99/Keppys-MIDI-Converter"; Flags: nowait postinstall shellexec unchecked; Description: "Look at the source code on GitHub"
 
 [UninstallRun]
-Filename: "http://keppystudios.com"; Flags: nowait shellexec
+Filename: "http://keppystudios.com"; Flags: shellexec
 
 [Icons]
 Name: "{group}\Keppy's MIDI Converter"; Filename: "{app}\KeppyMIDIConverter.exe"; IconFilename: "{app}\KeppyMIDIConverter.exe"
