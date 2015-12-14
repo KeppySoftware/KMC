@@ -1,6 +1,9 @@
 # Keppy's MIDI Converter
 A fully functional MIDI to WAV converter, suitable for normal AND heavy MIDIs! (Up to 500 million notes for 32-bit version, unlimited [sorta?] for 64-bit version)
 
+## HEY HOW CAN I DOWNLOAD I...
+Click on "Releases".
+
 ## Requirements (Compiled program)
 - Windows Vista RTM or newer (Both x32 and x64 supported, no 64-bit Itanium support)
 - 256MB of RAM (For .NET 4.0)
