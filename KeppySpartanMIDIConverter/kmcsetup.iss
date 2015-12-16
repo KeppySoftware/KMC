@@ -1,7 +1,7 @@
 [Setup]
 AppName=Keppy's MIDI Converter
-AppVersion=8.7.8
-AppCopyright=Copyright(C) Keppy Studios 2013-2015
+AppVersion=8.7.7.5
+AppCopyright=Copyright(C) Keppy Studios 2013-2016
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 LicenseFile=license.rtf
 SetupIconFile=favicon.ico
@@ -21,12 +21,12 @@ AppSupportPhone=+393511888475
 OutputDir=bin
 OutputBaseFilename=KMCSetup
 Compression=lzma2/ultra64
-VersionInfoVersion=8.7.8
+VersionInfoVersion=8.7.7.5
 VersionInfoCompany=Keppy Studios
 VersionInfoDescription=MIDI to WAV converter, for everyone!
-VersionInfoCopyright=Copyright(C) 2013-2015 Keppy Studios
+VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=8.7.8
+VersionInfoProductVersion=8.7.7.5
 MinVersion=0,5.01.2600sp3
 WindowVisible=True
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
