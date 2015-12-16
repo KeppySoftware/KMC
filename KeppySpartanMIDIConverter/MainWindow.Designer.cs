@@ -23,7 +23,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.unloadSoundfontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startRenderingWAVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abortRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,7 +36,7 @@
             this.officialBlackMIDIWikiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wikipediasPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keppyStudiosWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Converter = new System.ComponentModel.BackgroundWorker();
+            this.ConverterWAV = new System.ComponentModel.BackgroundWorker();
             this.MIDIImport = new System.Windows.Forms.OpenFileDialog();
             this.RenderingTimer = new System.Windows.Forms.Timer(this.components);
             this.UsedVoices = new System.Windows.Forms.Label();
@@ -68,6 +68,8 @@
             this.labelRMS = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.CurrentStatusText = new System.Windows.Forms.Label();
+            this.ConverterOGG = new System.ComponentModel.BackgroundWorker();
+            this.startRenderingOGGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -84,12 +86,12 @@
             this.unloadSoundfontToolStripMenuItem.Text = "Unload soundfont";
             this.unloadSoundfontToolStripMenuItem.Click += new System.EventHandler(this.unloadSoundfontToolStripMenuItem_Click);
             // 
-            // startRenderingToolStripMenuItem
+            // startRenderingWAVToolStripMenuItem
             // 
-            this.startRenderingToolStripMenuItem.Name = "startRenderingToolStripMenuItem";
-            this.startRenderingToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.startRenderingToolStripMenuItem.Text = "Start rendering";
-            this.startRenderingToolStripMenuItem.Click += new System.EventHandler(this.startRenderingToolStripMenuItem_Click);
+            this.startRenderingWAVToolStripMenuItem.Name = "startRenderingWAVToolStripMenuItem";
+            this.startRenderingWAVToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.startRenderingWAVToolStripMenuItem.Text = "Render files to WAV";
+            this.startRenderingWAVToolStripMenuItem.Click += new System.EventHandler(this.startRenderingWAVToolStripMenuItem_Click);
             // 
             // abortRenderingToolStripMenuItem
             // 
@@ -178,11 +180,11 @@
             this.keppyStudiosWebsiteToolStripMenuItem.Text = "Keppy Studios Website";
             this.keppyStudiosWebsiteToolStripMenuItem.Click += new System.EventHandler(this.keppyStudiosWebsiteToolStripMenuItem_Click);
             // 
-            // Converter
+            // ConverterWAV
             // 
-            this.Converter.WorkerReportsProgress = true;
-            this.Converter.WorkerSupportsCancellation = true;
-            this.Converter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Converter_DoWork);
+            this.ConverterWAV.WorkerReportsProgress = true;
+            this.ConverterWAV.WorkerSupportsCancellation = true;
+            this.ConverterWAV.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConverterWAV_DoWork);
             // 
             // MIDIImport
             // 
@@ -243,38 +245,38 @@
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.Size = new System.Drawing.Size(198, 98);
+            this.DefMenu.Size = new System.Drawing.Size(188, 98);
             // 
             // addMIDIsToolStripMenuItem
             // 
             this.addMIDIsToolStripMenuItem.Name = "addMIDIsToolStripMenuItem";
-            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.addMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.addMIDIsToolStripMenuItem.Click += new System.EventHandler(this.addMIDIsToolStripMenuItem_Click);
             // 
             // removeMIDIToolStripMenuItem
             // 
             this.removeMIDIToolStripMenuItem.Name = "removeMIDIToolStripMenuItem";
-            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.removeMIDIToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeMIDIToolStripMenuItem.Click += new System.EventHandler(this.removeMIDIToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(194, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
             // 
             // moveUpToolStripMenuItem
             // 
             this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.moveUpToolStripMenuItem.Text = "Move up (One item)";
             this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // moveDownToolStripMenuItem
             // 
             this.moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.moveDownToolStripMenuItem.Text = "Move down (One item)";
             this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
             // 
@@ -381,7 +383,8 @@
             this.loadSoundfontToolStripMenuItem,
             this.unloadSoundfontToolStripMenuItem,
             this.toolStripSeparator1,
-            this.startRenderingToolStripMenuItem,
+            this.startRenderingWAVToolStripMenuItem,
+            this.startRenderingOGGToolStripMenuItem,
             this.abortRenderingToolStripMenuItem,
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
@@ -477,6 +480,19 @@
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ConverterOGG
+            // 
+            this.ConverterOGG.WorkerReportsProgress = true;
+            this.ConverterOGG.WorkerSupportsCancellation = true;
+            this.ConverterOGG.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConverterOGG_DoWork);
+            // 
+            // startRenderingOGGToolStripMenuItem
+            // 
+            this.startRenderingOGGToolStripMenuItem.Name = "startRenderingOGGToolStripMenuItem";
+            this.startRenderingOGGToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.startRenderingOGGToolStripMenuItem.Text = "Render files to OGG";
+            this.startRenderingOGGToolStripMenuItem.Click += new System.EventHandler(this.startRenderingOGGToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -515,14 +531,14 @@
         #endregion
 
         private System.Windows.Forms.ToolStripMenuItem unloadSoundfontToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startRenderingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startRenderingWAVToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abortRenderingToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem informationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        public System.ComponentModel.BackgroundWorker Converter;
+        public System.ComponentModel.BackgroundWorker ConverterWAV;
         private System.Windows.Forms.OpenFileDialog MIDIImport;
         private System.Windows.Forms.Timer RenderingTimer;
         private System.Windows.Forms.Panel panel2;
@@ -560,6 +576,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem wikipediasPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keppyStudiosWebsiteToolStripMenuItem;
+        public System.ComponentModel.BackgroundWorker ConverterOGG;
+        private System.Windows.Forms.ToolStripMenuItem startRenderingOGGToolStripMenuItem;
     }
 }
 
