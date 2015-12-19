@@ -944,7 +944,7 @@ namespace KeppySpartanMIDIConverter
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                     }
                     this.CurrentStatusText.Text = "Idle.\nAdd some MIDIs to start the conversion or the benchmark!";
-                    this.UsedVoices.Text = @"Voices: 0\" + Globals.LimitVoicesInt.ToString();
+                    this.UsedVoices.Text = @"Voices: 0/" + Globals.LimitVoicesInt.ToString();
                     this.CurrentStatus.Value = 0;
                     this.CurrentStatus.Maximum = 0;
                     this.DefMenu.Enabled = true;
@@ -974,7 +974,7 @@ namespace KeppySpartanMIDIConverter
                         }
                         this.CurrentStatus.Style = ProgressBarStyle.Marquee;
                         this.CurrentStatusText.Text = "Preparing for export/benchmark.\nPlease wait...";
-                        this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
+                        this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = true;
@@ -1001,7 +1001,7 @@ namespace KeppySpartanMIDIConverter
                            TaskbarManager.Instance.SetProgressValue(Globals.CurrentStatusValueInt, Globals.CurrentStatusMaximumInt);
                         }
                         this.CurrentStatusText.Text = Globals.CurrentStatusTextString;
-                        this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"\" + Globals.LimitVoicesInt.ToString();
+                        this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.Style = ProgressBarStyle.Blocks;
                         this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = true;
