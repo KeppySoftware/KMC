@@ -387,7 +387,8 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         // NULL
                                     }
-                                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Convert.ToInt32(Globals.Volume));
+                                    float FloatVolume = ((float)Globals.Volume) / 10000;
+                                    BassMidi.BASS_MIDI_FontSetVolume(font, FloatVolume);
                                     int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
@@ -621,7 +622,8 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         // NULL
                                     }
-                                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Convert.ToInt32(Globals.Volume));
+                                    float FloatVolume = ((float)Globals.Volume) / 10000;
+                                    BassMidi.BASS_MIDI_FontSetVolume(font, FloatVolume);
                                     int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
