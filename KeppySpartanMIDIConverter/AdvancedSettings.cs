@@ -359,5 +359,26 @@ namespace KeppySpartanMIDIConverter
         {
             MainWindow.Globals.SittingAFXValue = Convert.ToInt32(this.SittingFXNum.Value);
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                MainWindow.Globals.TempoOverride = true;
+                label2.Enabled = true;
+                numericUpDown1.Enabled = true;
+            }
+            else
+            {
+                MainWindow.Globals.TempoOverride = false;
+                label2.Enabled = false;
+                numericUpDown1.Enabled = false;
+            }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            MainWindow.Globals.FinalTempo = Convert.ToInt32(numericUpDown1.Value);
+        }
     }
 }

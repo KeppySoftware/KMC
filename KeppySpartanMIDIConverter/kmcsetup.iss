@@ -1,6 +1,6 @@
 [Setup]
 AppName=Keppy's MIDI Converter
-AppVersion=8.8.0
+AppVersion=8.8.1
 AppCopyright=Copyright(C) Keppy Studios 2013-2016
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 LicenseFile=license.rtf
@@ -21,12 +21,12 @@ AppSupportPhone=+393511888475
 OutputDir=bin
 OutputBaseFilename=KMCSetup
 Compression=lzma2/ultra64
-VersionInfoVersion=8.8.0
+VersionInfoVersion=8.8.1
 VersionInfoCompany=Keppy Studios
 VersionInfoDescription=MIDI to WAV converter, for everyone!
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=8.8.0
+VersionInfoProductVersion=8.8.1
 MinVersion=0,5.01.2600sp3
 WindowVisible=True
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
@@ -74,6 +74,7 @@ Type: files; Name: "{app}\license.rtf"
 [Registry]
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "audiofreq"; ValueData: "44100"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "voices"; ValueData: "100000"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "volume"; ValueData: "10000"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "noteoff1"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "disablefx"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: string; ValueName: "lastsffolder"; Flags: createvalueifdoesntexist uninsdeletekey

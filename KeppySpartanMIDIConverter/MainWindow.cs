@@ -33,8 +33,10 @@ namespace KeppySpartanMIDIConverter
             public static bool FlangerAFX = false;
             public static bool GargleAFX = false;
             public static bool NoteOff1Event = false;
+            public static bool PlaybackMode = false;
             public static bool ReverbAFX = false;
             public static bool SittingAFX = false;
+            public static bool TempoOverride = false;
             public static int ActiveVoicesInt = 0;
             public static int AverageCPU;
             public static int CancellationPendingValue = 0;
@@ -53,6 +55,7 @@ namespace KeppySpartanMIDIConverter
             public static int DistortionAFXValue = 1;
             public static int EchoAFXValue = 1;
             public static int FlangerAFXValue = 1;
+            public static int FinalTempo;
             public static int Frequency = 0xbb80;
             public static int DefaultSoundfont;
             public static int GargleAFXValue = 1;
@@ -67,6 +70,7 @@ namespace KeppySpartanMIDIConverter
             public static int SittingAFXValue = 1;
             public static int SoundFont;
             public static int Time = 0;
+            public static int Volume;
             public static int _Encoder;
             public static int _recHandle;
             public static string BenchmarkTime;
@@ -77,7 +81,6 @@ namespace KeppySpartanMIDIConverter
             public static string MIDILastDirectory;
             public static string SFLastDirectory;
             public static string ExportLastDirectory;
-            public static string FinalTempo;
             public static string MIDIName;
             public static string NewWindowName = null;
             public static string PreviousItemCodec = "WAV 32-bit (float)";
@@ -106,102 +109,113 @@ namespace KeppySpartanMIDIConverter
                             {
                                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                                 RegistryKey Effects = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                                VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices"));
-                                Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq"));
-                                // BOOLEANSSSSSSSSS
-                                if (Effects.GetValue("reverb") == "1")
-                                {
-                                    Globals.ReverbAFX = true;
+                                try
+                                {      
+                                    VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices"));
+                                    trackBar1.Value = Convert.ToInt32(Settings.GetValue("volume"));
+                                    Globals.Volume = Convert.ToInt32(Settings.GetValue("volume"));
+                                    Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq"));
+                                    // BOOLEANSSSSSSSSS
+                                    if (Effects.GetValue("reverb") == "1")
+                                    {
+                                        Globals.ReverbAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.ReverbAFX = false;
+                                    }
+                                    if (Effects.GetValue("chorus") == "1")
+                                    {
+                                        Globals.ChorusAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.ChorusAFX = false;
+                                    }
+                                    if (Effects.GetValue("flanger") == "1")
+                                    {
+                                        Globals.FlangerAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.FlangerAFX = false;
+                                    }
+                                    if (Effects.GetValue("compressor") == "1")
+                                    {
+                                        Globals.CompressorAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.CompressorAFX = false;
+                                    }
+                                    if (Effects.GetValue("gargle") == "1")
+                                    {
+                                        Globals.GargleAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.GargleAFX = false;
+                                    }
+                                    if (Effects.GetValue("distortion") == "1")
+                                    {
+                                        Globals.DistortionAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.DistortionAFX = false;
+                                    }
+                                    if (Effects.GetValue("echo") == "1")
+                                    {
+                                        Globals.EchoAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.EchoAFX = false;
+                                    }
+                                    if (Effects.GetValue("sittingroom") == "1")
+                                    {
+                                        Globals.SittingAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.SittingAFX = false;
+                                    }
+                                    if (Effects.GetValue("sittingroom") == "1")
+                                    {
+                                        Globals.SittingAFX = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.SittingAFX = false;
+                                    }
+                                    if (Settings.GetValue("noteoff1") == "1")
+                                    {
+                                        Globals.NoteOff1Event = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.NoteOff1Event = false;
+                                    }
+                                    if (Settings.GetValue("disablefx") == "1")
+                                    {
+                                        Globals.FXDisabled = true;
+                                    }
+                                    else
+                                    {
+                                        Globals.FXDisabled = false;
+                                    }
+                                    Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder").ToString();
+                                    Globals.SFLastDirectory = Settings.GetValue("lastsffolder").ToString();
+                                    Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder").ToString();
+                                    Settings.Close();
+                                    Effects.Close();
                                 }
-                                else
+                                catch (Exception exception)
                                 {
-                                    Globals.ReverbAFX = false;
+                                    MessageBox.Show(exception.ToString(), "Fatal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Settings.Close();
+                                    Effects.Close();
                                 }
-                                if (Effects.GetValue("chorus") == "1")
-                                {
-                                    Globals.ChorusAFX = true;
-                                }
-                                else
-                                {
-                                    Globals.ChorusAFX = false;
-                                }
-                                if (Effects.GetValue("flanger") == "1")
-                                {
-                                    Globals.FlangerAFX = true;
-                                }
-                                else
-                                {
-                                    Globals.FlangerAFX = false;
-                                }
-                                if (Effects.GetValue("compressor") == "1")
-                                {
-                                    Globals.CompressorAFX = true;
-                                }
-                                else
-                                {
-                                    Globals.CompressorAFX = false;
-                                }
-                                if (Effects.GetValue("gargle") == "1")
-                                {
-                                    Globals.GargleAFX = true;
-                                }
-                                else
-                                {
-                                    Globals.GargleAFX = false;
-                                }
-                                if (Effects.GetValue("distortion") == "1")
-                                {
-                                    Globals.DistortionAFX = true;
-                                }
-                                else
-                                {
-                                    Globals.DistortionAFX = false;
-                                }
-                                if (Effects.GetValue("echo") == "1")
-                                {
-                                    Globals.EchoAFX = true;
-                                }
-                                else
-                                {
-                                    Globals.EchoAFX = false;
-                                }
-                                if (Effects.GetValue("sittingroom") == "1")
-                                {
-                                    Globals.SittingAFX = true;
-                                }
-                                else
-                                {
-                                    Globals.SittingAFX = false;
-                                }
-                                if (Effects.GetValue("sittingroom") == "1")
-                                {
-                                    Globals.SittingAFX = true;
-                                }
-                                else
-                                {
-                                    Globals.SittingAFX = false;
-                                }
-                                if (Settings.GetValue("noteoff1") == "1")
-                                {
-                                    Globals.NoteOff1Event = true;
-                                }
-                                else
-                                {
-                                    Globals.NoteOff1Event = false;
-                                }
-                                if (Settings.GetValue("disablefx") == "1")
-                                {
-                                    Globals.FXDisabled = true;
-                                }
-                                else
-                                {
-                                    Globals.FXDisabled = false;
-                                }
-                                Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder").ToString();
-                                Globals.SFLastDirectory = Settings.GetValue("lastsffolder").ToString();
-                                Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder").ToString();
-                                Settings.Close();
-                                Effects.Close();
                             }
                             else if (Key == null)
                             {
@@ -218,6 +232,7 @@ namespace KeppySpartanMIDIConverter
                                 Settings.SetValue("disablefx", "0", RegistryValueKind.DWord);
                                 Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
                                 Settings.SetValue("audiofreq", "44100", RegistryValueKind.DWord);
+                                Settings.SetValue("volume", "10000", RegistryValueKind.DWord);
                                 Effects.SetValue("reverb", "0", RegistryValueKind.DWord);
                                 Effects.SetValue("chorus", "0", RegistryValueKind.DWord);
                                 Effects.SetValue("flanger", "0", RegistryValueKind.DWord);
@@ -364,6 +379,15 @@ namespace KeppySpartanMIDIConverter
                             {
                                 if (Globals.CancellationPendingValue != 1)
                                 {
+                                    if (MainWindow.Globals.TempoOverride == true)
+                                    {
+                                        BassMidi.BASS_MIDI_StreamEvent(Globals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTE, Globals.FinalTempo);
+                                    }
+                                    else
+                                    {
+                                        // NULL
+                                    }
+                                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Convert.ToInt32(Globals.Volume));
                                     int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
@@ -510,10 +534,9 @@ namespace KeppySpartanMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
                             string path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy 1).wav";
-                            Un4seen.Bass.Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
-                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 0);
-                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 32);
-                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
+                            Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
+                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 0);
+                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 32);
                             Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MUSIC_DECODE | BASSFlag.BASS_MUSIC_FLOAT | BASSFlag.BASS_MUSIC_FX | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
                             Un4seen.Bass.Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
                             Globals.NewWindowName = "Keppy's MIDI Converter | Exporting \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
@@ -590,6 +613,15 @@ namespace KeppySpartanMIDIConverter
                             {
                                 if (Globals.CancellationPendingValue != 1)
                                 {
+                                    if (MainWindow.Globals.TempoOverride == true)
+                                    {
+                                        BassMidi.BASS_MIDI_StreamEvent(Globals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTE, Globals.FinalTempo);
+                                    }
+                                    else
+                                    {
+                                        // NULL
+                                    }
+                                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Convert.ToInt32(Globals.Volume));
                                     int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
@@ -715,6 +747,7 @@ namespace KeppySpartanMIDIConverter
 
         private void RealTimePlayBackBeta_DoWork(object sender, DoWorkEventArgs e)
         {
+            Globals.PlaybackMode = true;
             try
             {
                 if (Globals.SFName == null)
@@ -736,9 +769,9 @@ namespace KeppySpartanMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
                             string path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy 1).wav";
-                            Un4seen.Bass.Bass.BASS_Init(-1, Globals.Frequency, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
-                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 5);
-                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 8);
+                            Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 0);
+                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, 200);
+                            Un4seen.Bass.Bass.BASS_Init(-1, Globals.Frequency, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);                   
                             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
                             Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MUSIC_FLOAT | BASSFlag.BASS_MUSIC_FX | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
                             Un4seen.Bass.Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 85);
@@ -796,12 +829,22 @@ namespace KeppySpartanMIDIConverter
                             {
                                 Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_GARGLE, Globals.GargleAFXValue);
                             }
+                            Bass.BASS_ChannelUpdate(Globals._recHandle, 200);
                             Bass.BASS_ChannelPlay(Globals._recHandle, false);
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
                                 if (Globals.CancellationPendingValue != 1)
                                 {
-                                    Bass.BASS_Update(1);
+                                    if (MainWindow.Globals.TempoOverride == true)
+                                    {
+                                        BassMidi.BASS_MIDI_StreamEvent(Globals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTE, Globals.FinalTempo);
+                                    }
+                                    else
+                                    {
+                                        // NULL
+                                    }
+                                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Convert.ToInt32(Globals.Volume));
+                                    Bass.BASS_ChannelUpdate(Globals._recHandle, 200);
                                     int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
@@ -1159,7 +1202,7 @@ namespace KeppySpartanMIDIConverter
                     {
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                     }
-                    this.CurrentStatusText.Text = "Idle.\nAdd some MIDIs to start the conversion or the benchmark!";
+                    this.CurrentStatusText.Text = "Idle.\nAdd some MIDIs to start the conversion or the preview!";
                     this.UsedVoices.Text = @"Voices: 0/" + Globals.LimitVoicesInt.ToString();
                     this.CurrentStatus.Value = 0;
                     this.CurrentStatus.Maximum = 0;
@@ -1173,6 +1216,7 @@ namespace KeppySpartanMIDIConverter
                     this.startRenderingOGGToolStripMenuItem.Enabled = true;
                     this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
                     this.abortRenderingToolStripMenuItem.Enabled = false;
+                    this.trackBar1.Enabled = true;
                     this.loadSoundfontToolStripMenuItem.Enabled = true;
                     this.unloadSoundfontToolStripMenuItem.Enabled = true;
                     this.labelRMS.Text = Globals.CurrentPeak;
@@ -1202,6 +1246,14 @@ namespace KeppySpartanMIDIConverter
                         this.startRenderingWAVToolStripMenuItem.Enabled = false;
                         this.startRenderingOGGToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
+                        if (Globals.PlaybackMode == true)
+                        {
+
+                        }
+                        else
+                        {
+                            this.trackBar1.Enabled = false;
+                        }
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.loadSoundfontToolStripMenuItem.Enabled = false;
                         this.unloadSoundfontToolStripMenuItem.Enabled = false;
@@ -1232,6 +1284,14 @@ namespace KeppySpartanMIDIConverter
                         this.startRenderingWAVToolStripMenuItem.Enabled = false;
                         this.startRenderingOGGToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
+                        if (Globals.PlaybackMode == true)
+                        {
+
+                        }
+                        else
+                        {
+                            this.trackBar1.Enabled = false;
+                        }
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.loadSoundfontToolStripMenuItem.Enabled = false;
                         this.unloadSoundfontToolStripMenuItem.Enabled = false;
@@ -1289,7 +1349,7 @@ namespace KeppySpartanMIDIConverter
         private void playInRealtimeBetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.loadingpic.Visible = true;
-            this.RealTimePlayBackBeta.RunWorkerAsync();
+            this.RealTimePlayBack.RunWorkerAsync();
         }
 
         private void unloadSoundfontToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1300,31 +1360,36 @@ namespace KeppySpartanMIDIConverter
             this.label2.Text = "Font unloaded.\nLoad a soundfont first\nto see its informations here.";
         }
 
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            try
+            {
+                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                Settings.SetValue("volume", trackBar1.Value.ToString(), Microsoft.Win32.RegistryValueKind.DWord);
+                Globals.Volume = Convert.ToInt32(this.trackBar1.Value);
+                Settings.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void VoiceLimit_ValueChanged(object sender, EventArgs e)
         {
             try
             {
+                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Settings.SetValue("voices", VoiceLimit.Value.ToString(), Microsoft.Win32.RegistryValueKind.DWord);
                 Globals.LimitVoicesInt = Convert.ToInt32(this.VoiceLimit.Value);
                 Settings.Close();
             }
-            catch
+            catch (Exception exception)
             {
-                try
-                {
-                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                    RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                    Settings.SetValue("voices", VoiceLimit.Value.ToString(), Microsoft.Win32.RegistryValueKind.DWord);
-                    Globals.LimitVoicesInt = Convert.ToInt32(this.VoiceLimit.Value);
-                    Settings.Close();
-                }
-                catch
-                {
-                    MessageBox.Show("Error!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show(exception.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
         }
 
         private void AdvSettingsButton_Click(object sender, EventArgs e)

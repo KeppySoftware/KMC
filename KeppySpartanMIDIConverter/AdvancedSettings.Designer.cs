@@ -46,6 +46,9 @@
             this.Label5 = new System.Windows.Forms.Label();
             this.FXDisable = new System.Windows.Forms.CheckBox();
             this.Noteoff1 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.EchoFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SittingFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DistortionFXNum)).BeginInit();
@@ -56,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ChorusFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReverbFXNum)).BeginInit();
             this.GroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -72,7 +76,7 @@
             // EchoFXNum
             // 
             this.EchoFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EchoFXNum.Location = new System.Drawing.Point(320, 57);
+            this.EchoFXNum.Location = new System.Drawing.Point(334, 55);
             this.EchoFXNum.Maximum = new decimal(new int[] {
             8,
             0,
@@ -92,7 +96,7 @@
             // 
             this.EchoFX.AutoSize = true;
             this.EchoFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.EchoFX.Location = new System.Drawing.Point(171, 57);
+            this.EchoFX.Location = new System.Drawing.Point(185, 55);
             this.EchoFX.Name = "EchoFX";
             this.EchoFX.Size = new System.Drawing.Size(90, 18);
             this.EchoFX.TabIndex = 49;
@@ -102,9 +106,9 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(6, 105);
+            this.label1.Location = new System.Drawing.Point(6, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(346, 69);
+            this.label1.Size = new System.Drawing.Size(360, 69);
             this.label1.TabIndex = 48;
             this.label1.Text = resources.GetString("label1.Text");
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -112,7 +116,7 @@
             // SittingFXNum
             // 
             this.SittingFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SittingFXNum.Location = new System.Drawing.Point(320, 76);
+            this.SittingFXNum.Location = new System.Drawing.Point(334, 74);
             this.SittingFXNum.Maximum = new decimal(new int[] {
             8,
             0,
@@ -131,7 +135,7 @@
             // DistortionFXNum
             // 
             this.DistortionFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DistortionFXNum.Location = new System.Drawing.Point(320, 38);
+            this.DistortionFXNum.Location = new System.Drawing.Point(334, 36);
             this.DistortionFXNum.Maximum = new decimal(new int[] {
             8,
             0,
@@ -150,7 +154,7 @@
             // GargleFXNum
             // 
             this.GargleFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.GargleFXNum.Location = new System.Drawing.Point(320, 19);
+            this.GargleFXNum.Location = new System.Drawing.Point(334, 17);
             this.GargleFXNum.Maximum = new decimal(new int[] {
             8,
             0,
@@ -185,9 +189,9 @@
             this.groupBox3.Controls.Add(this.ChorusFX2);
             this.groupBox3.Controls.Add(this.GargleFX);
             this.groupBox3.Controls.Add(this.ReverbFX2);
-            this.groupBox3.Location = new System.Drawing.Point(5, 102);
+            this.groupBox3.Location = new System.Drawing.Point(5, 127);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(372, 202);
+            this.groupBox3.Size = new System.Drawing.Size(372, 177);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Audio effects";
@@ -196,7 +200,7 @@
             // 
             this.SittingFX.AutoSize = true;
             this.SittingFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SittingFX.Location = new System.Drawing.Point(171, 76);
+            this.SittingFX.Location = new System.Drawing.Point(185, 74);
             this.SittingFX.Name = "SittingFX";
             this.SittingFX.Size = new System.Drawing.Size(158, 18);
             this.SittingFX.TabIndex = 44;
@@ -208,7 +212,7 @@
             // 
             this.DistortionFX.AutoSize = true;
             this.DistortionFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.DistortionFX.Location = new System.Drawing.Point(171, 38);
+            this.DistortionFX.Location = new System.Drawing.Point(185, 36);
             this.DistortionFX.Name = "DistortionFX";
             this.DistortionFX.Size = new System.Drawing.Size(112, 18);
             this.DistortionFX.TabIndex = 43;
@@ -219,7 +223,7 @@
             // CompressorFXNum
             // 
             this.CompressorFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CompressorFXNum.Location = new System.Drawing.Point(124, 76);
+            this.CompressorFXNum.Location = new System.Drawing.Point(124, 74);
             this.CompressorFXNum.Maximum = new decimal(new int[] {
             8,
             0,
@@ -238,7 +242,7 @@
             // FlangerFXNum
             // 
             this.FlangerFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlangerFXNum.Location = new System.Drawing.Point(124, 57);
+            this.FlangerFXNum.Location = new System.Drawing.Point(124, 55);
             this.FlangerFXNum.Maximum = new decimal(new int[] {
             8,
             0,
@@ -257,7 +261,7 @@
             // ChorusFXNum
             // 
             this.ChorusFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChorusFXNum.Location = new System.Drawing.Point(124, 38);
+            this.ChorusFXNum.Location = new System.Drawing.Point(124, 36);
             this.ChorusFXNum.Maximum = new decimal(new int[] {
             8,
             0,
@@ -276,7 +280,7 @@
             // ReverbFXNum
             // 
             this.ReverbFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ReverbFXNum.Location = new System.Drawing.Point(124, 19);
+            this.ReverbFXNum.Location = new System.Drawing.Point(124, 17);
             this.ReverbFXNum.Maximum = new decimal(new int[] {
             8,
             0,
@@ -296,7 +300,7 @@
             // 
             this.CompressorFX.AutoSize = true;
             this.CompressorFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.CompressorFX.Location = new System.Drawing.Point(7, 76);
+            this.CompressorFX.Location = new System.Drawing.Point(7, 74);
             this.CompressorFX.Name = "CompressorFX";
             this.CompressorFX.Size = new System.Drawing.Size(122, 18);
             this.CompressorFX.TabIndex = 38;
@@ -308,7 +312,7 @@
             // 
             this.FlangerFX.AutoSize = true;
             this.FlangerFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.FlangerFX.Location = new System.Drawing.Point(7, 57);
+            this.FlangerFX.Location = new System.Drawing.Point(7, 55);
             this.FlangerFX.Name = "FlangerFX";
             this.FlangerFX.Size = new System.Drawing.Size(101, 18);
             this.FlangerFX.TabIndex = 37;
@@ -320,7 +324,7 @@
             // 
             this.ChorusFX2.AutoSize = true;
             this.ChorusFX2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ChorusFX2.Location = new System.Drawing.Point(7, 38);
+            this.ChorusFX2.Location = new System.Drawing.Point(7, 36);
             this.ChorusFX2.Name = "ChorusFX2";
             this.ChorusFX2.Size = new System.Drawing.Size(99, 18);
             this.ChorusFX2.TabIndex = 36;
@@ -332,7 +336,7 @@
             // 
             this.GargleFX.AutoSize = true;
             this.GargleFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.GargleFX.Location = new System.Drawing.Point(171, 19);
+            this.GargleFX.Location = new System.Drawing.Point(185, 17);
             this.GargleFX.Name = "GargleFX";
             this.GargleFX.Size = new System.Drawing.Size(97, 18);
             this.GargleFX.TabIndex = 35;
@@ -344,7 +348,7 @@
             // 
             this.ReverbFX2.AutoSize = true;
             this.ReverbFX2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ReverbFX2.Location = new System.Drawing.Point(7, 19);
+            this.ReverbFX2.Location = new System.Drawing.Point(7, 17);
             this.ReverbFX2.Name = "ReverbFX2";
             this.ReverbFX2.Size = new System.Drawing.Size(99, 18);
             this.ReverbFX2.TabIndex = 34;
@@ -354,6 +358,9 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.numericUpDown1);
+            this.GroupBox1.Controls.Add(this.label2);
+            this.GroupBox1.Controls.Add(this.checkBox1);
             this.GroupBox1.Controls.Add(this.Label6);
             this.GroupBox1.Controls.Add(this.FrequencyBox);
             this.GroupBox1.Controls.Add(this.Label5);
@@ -361,7 +368,7 @@
             this.GroupBox1.Controls.Add(this.Noteoff1);
             this.GroupBox1.Location = new System.Drawing.Point(5, 2);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(372, 100);
+            this.GroupBox1.Size = new System.Drawing.Size(372, 119);
             this.GroupBox1.TabIndex = 29;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
@@ -385,8 +392,11 @@
             this.FrequencyBox.Items.AddRange(new object[] {
             "192000",
             "176400",
+            "142180",
             "96000",
             "88200",
+            "74750",
+            "66150",
             "50400",
             "50000",
             "48000",
@@ -419,7 +429,7 @@
             // 
             this.FXDisable.AutoSize = true;
             this.FXDisable.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.FXDisable.Location = new System.Drawing.Point(7, 78);
+            this.FXDisable.Location = new System.Drawing.Point(7, 72);
             this.FXDisable.Name = "FXDisable";
             this.FXDisable.Size = new System.Drawing.Size(135, 18);
             this.FXDisable.TabIndex = 7;
@@ -439,6 +449,51 @@
     "g instances of the note.";
             this.Noteoff1.UseVisualStyleBackColor = true;
             this.Noteoff1.CheckedChanged += new System.EventHandler(this.Noteoff1_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkBox1.Location = new System.Drawing.Point(7, 95);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(156, 18);
+            this.checkBox1.TabIndex = 11;
+            this.checkBox1.Text = "Override MIDI tempo (no)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(205, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "New tempo value:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(298, 95);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(72, 21);
+            this.numericUpDown1.TabIndex = 13;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // AdvancedSettings
             // 
@@ -471,6 +526,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReverbFXNum)).EndInit();
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -502,5 +558,8 @@
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.CheckBox FXDisable;
         internal System.Windows.Forms.CheckBox Noteoff1;
+        internal System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label2;
     }
 }
