@@ -5,16 +5,16 @@ A fully functional MIDI to WAV converter, suitable for normal AND heavy MIDIs! (
 Click on "Releases".
 
 ## Requirements (Compiled program)
-- Windows Vista RTM or newer (Both x32 and x64 supported, no 64-bit Itanium support)
-- 256MB of RAM (For .NET 4.0)
-- DirectX 9 compliant sound card (It DOES support old sound cards, but 32-bit float audio support is required for WAV playback)
-- [Microsoft .NET Framework 4.0] (https://www.microsoft.com/en-us/download/details.aspx?id=17851)
+- Windows XP SP2+ or newer.
+- 256MB of RAM. (For .NET 4.0)
+- DirectX 9 compliant sound card. (It DOES support old sound cards, but 32-bit float audio support is required for WAV playback)
+- [Microsoft .NET Framework 4.0.] (https://www.microsoft.com/en-us/download/details.aspx?id=17851)
 
 ## Requirements (For compiling the program)
-- Windows 7 SP1 or newer
-- 1GB of RAM or more
-- Microsoft Visual Studio 2013 (or newer, your choice)
-- [BASS.NET] (http://www.bass.radio42.com/) by Radio42
+- Windows 7 SP1 or newer-
+- 1GB of RAM or more.
+- Microsoft Visual Studio 2013. (or newer, your choice)
+- [BASS.NET] (http://www.bass.radio42.com/) by Radio42.
 
 ## Credits
 - Thanks Ian Luck for his wonderful BASS libraries! Take a look to them here: [Un4seen website] (http://www.un4seen.com/)
