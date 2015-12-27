@@ -64,6 +64,10 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.startRenderingOGGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playInRealtimeBetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoShutdownAfterRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
@@ -370,6 +374,7 @@
             this.Menu.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actionsToolStripMenuItem,
+            this.optionsToolStripMenuItem,
             this.toolStripMenuItem1});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
@@ -437,6 +442,37 @@
             this.playInRealtimeBetaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.playInRealtimeBetaToolStripMenuItem.Text = "Preview files (Real-time playback)";
             this.playInRealtimeBetaToolStripMenuItem.Click += new System.EventHandler(this.playInRealtimeBetaToolStripMenuItem_Click);
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.autoShutdownAfterRenderingToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // autoShutdownAfterRenderingToolStripMenuItem
+            // 
+            this.autoShutdownAfterRenderingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enabledToolStripMenuItem,
+            this.disabledToolStripMenuItem});
+            this.autoShutdownAfterRenderingToolStripMenuItem.Name = "autoShutdownAfterRenderingToolStripMenuItem";
+            this.autoShutdownAfterRenderingToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.autoShutdownAfterRenderingToolStripMenuItem.Text = "Automatic shutdown after rendering";
+            // 
+            // enabledToolStripMenuItem
+            // 
+            this.enabledToolStripMenuItem.Name = "enabledToolStripMenuItem";
+            this.enabledToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.enabledToolStripMenuItem.Text = "Enabled";
+            this.enabledToolStripMenuItem.Click += new System.EventHandler(this.enabledToolStripMenuItem_Click);
+            // 
+            // disabledToolStripMenuItem
+            // 
+            this.disabledToolStripMenuItem.Name = "disabledToolStripMenuItem";
+            this.disabledToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.disabledToolStripMenuItem.Text = "Disabled";
+            this.disabledToolStripMenuItem.Click += new System.EventHandler(this.disabledToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -624,6 +660,10 @@
         public System.ComponentModel.BackgroundWorker RealTimePlayBack;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoShutdownAfterRenderingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem;
     }
 }
 

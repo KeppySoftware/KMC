@@ -25,6 +25,7 @@ namespace KeppySpartanMIDIConverter
         {
             public static AdvancedSettings frm = new AdvancedSettings();
             public static Un4seen.Bass.Misc.DSP_PeakLevelMeter _plm;
+            public static bool AutoShutDownEnabled = false;
             public static bool ChorusAFX = false;
             public static bool CompressorAFX = false;
             public static bool DistortionAFX = false;
@@ -250,13 +251,17 @@ namespace KeppySpartanMIDIConverter
                     {
                         MessageBox.Show("Error!", exception2.InnerException.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    Globals.AutoShutDownEnabled = false;
             }
         }
 
         private void abortRenderingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Globals.CancellationPendingValue = 1;
+            Globals.AutoShutDownEnabled = false;
             this.startRenderingWAVToolStripMenuItem.Enabled = true;
+            this.startRenderingOGGToolStripMenuItem.Enabled = true;
+            this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
             this.abortRenderingToolStripMenuItem.Enabled = false;
         }
 
@@ -479,14 +484,24 @@ namespace KeppySpartanMIDIConverter
                             Globals.CurrentStatusTextString = null;
                             Globals.NewWindowName = "Keppy's MIDI Converter";
                             KeepLooping = false;
-                            if (Environment.OSVersion.Version.Major == 5)
+                            if (Globals.AutoShutDownEnabled == true)
                             {
-                                MessageBox.Show("Conversion finished!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                var psi = new ProcessStartInfo("shutdown", "/s /t 0");
+                                psi.CreateNoWindow = true;
+                                psi.UseShellExecute = false;
+                                Process.Start(psi);
                             }
                             else
                             {
-                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
-                                simpleSound.Play();
+                                if (Environment.OSVersion.Version.Major == 5)
+                                {
+                                    MessageBox.Show("Conversion finished!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                                    simpleSound.Play();
+                                }
                             }
                         }
                     }
@@ -714,15 +729,25 @@ namespace KeppySpartanMIDIConverter
                             Globals.CurrentStatusTextString = null;
                             Globals.NewWindowName = "Keppy's MIDI Converter";
                             KeepLooping = false;
-                            if (Environment.OSVersion.Version.Major == 5)
+                            if (Globals.AutoShutDownEnabled == true)
                             {
-                                MessageBox.Show("Conversion finished!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                var psi = new ProcessStartInfo("shutdown", "/s /t 0");
+                                psi.CreateNoWindow = true;
+                                psi.UseShellExecute = false;
+                                Process.Start(psi);
                             }
                             else
                             {
-                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
-                                simpleSound.Play();
-                            } 
+                                if (Environment.OSVersion.Version.Major == 5)
+                                {
+                                    MessageBox.Show("Conversion finished!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                                    simpleSound.Play();
+                                }
+                            }
                         }
                     }     
                 }
@@ -1190,6 +1215,11 @@ namespace KeppySpartanMIDIConverter
             MIDIImport.InitialDirectory = Globals.MIDILastDirectory;
             SoundfontImportDialog.InitialDirectory = Globals.SFLastDirectory;
             ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
+            if (Globals.AutoShutDownEnabled == null)
+            {
+                Globals.AutoShutDownEnabled = false;
+                disabledToolStripMenuItem.Checked = true;
+            }
             try
             {
                 if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_STOPPED)
@@ -1397,6 +1427,20 @@ namespace KeppySpartanMIDIConverter
         private void AdvSettingsButton_Click(object sender, EventArgs e)
         {
             Globals.frm.ShowDialog();
+        }
+
+        private void enabledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            enabledToolStripMenuItem.Checked = true;
+            disabledToolStripMenuItem.Checked = false;
+            Globals.AutoShutDownEnabled = true;
+        }
+
+        private void disabledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            enabledToolStripMenuItem.Checked = false;
+            disabledToolStripMenuItem.Checked = true;
+            Globals.AutoShutDownEnabled = false;
         }
     }
 }
