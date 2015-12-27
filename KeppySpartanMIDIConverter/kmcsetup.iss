@@ -1,6 +1,6 @@
 [Setup]
 AppName=Keppy's MIDI Converter
-AppVersion=8.8.2
+AppVersion=8.8.3
 AppCopyright=Copyright(C) Keppy Studios 2013-2016
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 LicenseFile=license.rtf
@@ -21,12 +21,12 @@ AppSupportPhone=+393511888475
 OutputDir=bin
 OutputBaseFilename=KMCSetup
 Compression=lzma2/ultra64
-VersionInfoVersion=8.8.2
+VersionInfoVersion=8.8.3
 VersionInfoCompany=Keppy Studios
 VersionInfoDescription=MIDI to WAV converter, for everyone!
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=8.8.2
+VersionInfoProductVersion=8.8.3
 MinVersion=0,5.01.2600sp3
 WindowVisible=True
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
@@ -39,29 +39,29 @@ UninstallDisplayIcon={app}\KeppyMIDIConverter.exe
 Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 Source: "convfin.wav"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 ;64-bit files
-Source: "bin\x64\bass.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\Bass.Net.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bassenc.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bassmidi.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\Microsoft.WindowsAPICodePack.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\Microsoft.WindowsAPICodePack.Sensors.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\Microsoft.WindowsAPICodePack.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\Microsoft.WindowsAPICodePack.ShellExtensions.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\oggenc2.exe"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\bass.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\Bass.Net.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\bassenc.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\bassmidi.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\Microsoft.WindowsAPICodePack.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\Microsoft.WindowsAPICodePack.Sensors.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\Microsoft.WindowsAPICodePack.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\Microsoft.WindowsAPICodePack.ShellExtensions.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\oggenc2.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 ;32-bit files
-Source: "bin\x86\bass.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\Bass.Net.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\bassenc.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\bassmidi.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\Microsoft.WindowsAPICodePack.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\Microsoft.WindowsAPICodePack.Sensors.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\Microsoft.WindowsAPICodePack.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\Microsoft.WindowsAPICodePack.ShellExtensions.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
-Source: "bin\x86\oggenc2.exe"; DestDir: "{app}"; Flags: ignoreversion replacesameversion; Check: not Is64BitInstallMode
+Source: "bin\x86\bass.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\Bass.Net.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\bassenc.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\bassmidi.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\Microsoft.WindowsAPICodePack.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\Microsoft.WindowsAPICodePack.Sensors.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\Microsoft.WindowsAPICodePack.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\Microsoft.WindowsAPICodePack.ShellExtensions.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\oggenc2.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
 
 [UninstallDelete]
 Type: files; Name: "{app}\bass.dll"
