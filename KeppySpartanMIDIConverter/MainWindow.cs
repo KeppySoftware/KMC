@@ -778,7 +778,6 @@ namespace KeppySpartanMIDIConverter
 
         private void RealTimePlayBackBeta_DoWork(object sender, DoWorkEventArgs e)
         {
-            Globals.PlaybackMode = true;
             try
             {
                 if (Globals.SFName == null)
@@ -938,6 +937,7 @@ namespace KeppySpartanMIDIConverter
                                     Globals.CurrentStatusTextString = null;
                                     KeepLooping = false;
                                     break;
+                                    Globals.PlaybackMode = false;
                                 }
                             }
                             if (Globals.CancellationPendingValue == 1)
@@ -973,6 +973,7 @@ namespace KeppySpartanMIDIConverter
                                 System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
                                 simpleSound.Play();
                             }
+                            Globals.PlaybackMode = false;
                         }
                         else
                         {
@@ -994,6 +995,7 @@ namespace KeppySpartanMIDIConverter
                                 System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
                                 simpleSound.Play();
                             }
+                            Globals.PlaybackMode = false;
                         }
                     }
                 }
@@ -1257,13 +1259,22 @@ namespace KeppySpartanMIDIConverter
                     {
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                     }
+                    if (Globals.PlaybackMode == true)
+                    {
+                        this.SettingsBox.Enabled = true;
+                        this.trackBar1.Enabled = true;
+                    }
+                    else
+                    {
+                        this.SettingsBox.Enabled = true;
+                        this.trackBar1.Enabled = true;
+                    }
                     this.CurrentStatusText.Text = "Idle.\nAdd some MIDIs to start the conversion or the preview!";
                     this.UsedVoices.Text = @"Voices: 0/" + Globals.LimitVoicesInt.ToString();
                     this.CurrentStatus.Value = 0;
                     this.CurrentStatus.Maximum = 0;
                     this.DefMenu.Enabled = true;
                     this.loadingpic.Visible = false;
-                    this.SettingsBox.Enabled = true;
                     this.importMIDIsToolStripMenuItem.Enabled = true;
                     this.removeSelectedMIDIsToolStripMenuItem.Enabled = true;
                     this.clearMIDIsListToolStripMenuItem.Enabled = true;
@@ -1271,7 +1282,6 @@ namespace KeppySpartanMIDIConverter
                     this.startRenderingOGGToolStripMenuItem.Enabled = true;
                     this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
                     this.abortRenderingToolStripMenuItem.Enabled = false;
-                    this.trackBar1.Enabled = true;
                     this.loadSoundfontToolStripMenuItem.Enabled = true;
                     this.unloadSoundfontToolStripMenuItem.Enabled = true;
                     this.labelRMS.Text = Globals.CurrentPeak;
@@ -1290,7 +1300,8 @@ namespace KeppySpartanMIDIConverter
                         }
                         if (Globals.PlaybackMode == true)
                         {
-
+                            this.SettingsBox.Enabled = true;
+                            this.trackBar1.Enabled = true;
                         }
                         else
                         {
@@ -1327,7 +1338,8 @@ namespace KeppySpartanMIDIConverter
                         }
                         if (Globals.PlaybackMode == true)
                         {
-
+                            this.SettingsBox.Enabled = true;
+                            this.trackBar1.Enabled = true;
                         }
                         else
                         {
@@ -1404,6 +1416,7 @@ namespace KeppySpartanMIDIConverter
         private void playInRealtimeBetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.loadingpic.Visible = true;
+            Globals.PlaybackMode = true;
             this.RealTimePlayBack.RunWorkerAsync();
         }
 
