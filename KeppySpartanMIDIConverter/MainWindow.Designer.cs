@@ -76,8 +76,9 @@
             this.CurrentStatusText = new System.Windows.Forms.Label();
             this.ConverterOGG = new System.ComponentModel.BackgroundWorker();
             this.RealTimePlayBack = new System.ComponentModel.BackgroundWorker();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.VolumeBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
+            this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -85,7 +86,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.SuspendLayout();
             // 
             // unloadSoundfontToolStripMenuItem
@@ -547,26 +548,30 @@
             this.RealTimePlayBack.WorkerSupportsCancellation = true;
             this.RealTimePlayBack.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RealTimePlayBackBeta_DoWork);
             // 
-            // trackBar1
+            // VolumeBar
             // 
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(510, 276);
-            this.trackBar1.Maximum = 10000;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(130, 20);
-            this.trackBar1.TabIndex = 18;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.VolumeBar.AutoSize = false;
+            this.VolumeBar.LargeChange = 1;
+            this.VolumeBar.Location = new System.Drawing.Point(510, 276);
+            this.VolumeBar.Maximum = 10000;
+            this.VolumeBar.Name = "VolumeBar";
+            this.VolumeBar.Size = new System.Drawing.Size(130, 20);
+            this.VolumeBar.TabIndex = 18;
+            this.VolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.VolumeBar.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(556, 265);
+            this.label3.Location = new System.Drawing.Point(510, 265);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 19;
-            this.label3.Text = "Volume";
+            this.label3.Text = "Volume:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // VolumeTip
+            // 
+            this.VolumeTip.AutomaticDelay = 0;
             // 
             // MainWindow
             // 
@@ -574,7 +579,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 448);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.VolumeBar);
             this.Controls.Add(this.UsedVoices);
             this.Controls.Add(this.labelRMS);
             this.Controls.Add(this.panel2);
@@ -600,7 +605,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -658,12 +663,13 @@
         private System.Windows.Forms.ToolStripMenuItem startRenderingOGGToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playInRealtimeBetaToolStripMenuItem;
         public System.ComponentModel.BackgroundWorker RealTimePlayBack;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar VolumeBar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoShutdownAfterRenderingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem;
+        private System.Windows.Forms.ToolTip VolumeTip;
     }
 }
 

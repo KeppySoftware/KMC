@@ -17,6 +17,22 @@ namespace KeppySpartanMIDIConverter
 
         private void AdvancedSettings_Load(object sender, EventArgs e)
         {
+            // W8
+            if (MainWindow.Globals.PlaybackMode == true)
+            {
+                Label5.Enabled = false;
+                FrequencyBox.Enabled = false;
+                Label6.Enabled = false;
+                groupBox3.Enabled = false;
+            }
+            else
+            {
+                Label5.Enabled = true;
+                FrequencyBox.Enabled = true;
+                Label6.Enabled = true;
+                groupBox3.Enabled = true;
+            }
+            // K DONE
             Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects");
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             //
