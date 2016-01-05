@@ -119,6 +119,12 @@
     <Compile Include="Informations.Designer.cs">
       <DependentUpon>Informations.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItsKillOrBeKilled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItsKillOrBeKilled.Designer.cs">
+      <DependentUpon>ItsKillOrBeKilled.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     <EmbeddedResource Include="Informations.resx">
       <DependentUpon>Informations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ItsKillOrBeKilled.resx">
+      <DependentUpon>ItsKillOrBeKilled.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +155,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resources\Undertale.ttf" />
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -159,6 +169,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\giphy %281%29.gif" />
+    <None Include="Resources\itskillorbekilled.png" />
+    <None Include="Resources\KepperinoChristmas.png" />
+    <None Include="Resources\landing-spinner.gif" />
+    <None Include="Resources\loading3.gif" />
+    <None Include="Resources\Senza titolo-1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -166,11 +182,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="ksmcico.ico" />
-    <None Include="Resources\KepperinoChristmas.png" />
-    <None Include="Resources\giphy %281%29.gif" />
-    <None Include="Resources\landing-spinner.gif" />
-    <None Include="Resources\loading3.gif" />
-    <None Include="Resources\Senza titolo-1.png" />
+    <None Include="Resources\Nojk.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -69,7 +69,6 @@
             this.enabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
             this.labelRMS = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -79,14 +78,16 @@
             this.VolumeBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.loadingpic = new System.Windows.Forms.PictureBox();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             this.Menu.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             this.SuspendLayout();
             // 
             // unloadSoundfontToolStripMenuItem
@@ -485,18 +486,6 @@
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
             // 
-            // loadingpic
-            // 
-            this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
-            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.landing_spinner;
-            this.loadingpic.Location = new System.Drawing.Point(425, 0);
-            this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(63, 60);
-            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.loadingpic.TabIndex = 9;
-            this.loadingpic.TabStop = false;
-            this.loadingpic.Visible = false;
-            // 
             // ExportWhere
             // 
             this.ExportWhere.AddExtension = false;
@@ -517,6 +506,7 @@
             // panel2
             // 
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.CurrentStatusText);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 370);
@@ -573,6 +563,26 @@
             // 
             this.VolumeTip.AutomaticDelay = 0;
             // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(634, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 18);
+            this.label4.TabIndex = 20;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // loadingpic
+            // 
+            this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
+            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.landing_spinner;
+            this.loadingpic.Location = new System.Drawing.Point(425, 0);
+            this.loadingpic.Name = "loadingpic";
+            this.loadingpic.Size = new System.Drawing.Size(63, 60);
+            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loadingpic.TabIndex = 9;
+            this.loadingpic.TabStop = false;
+            this.loadingpic.Visible = false;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,9 +613,9 @@
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -670,6 +680,7 @@
         private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem;
         private System.Windows.Forms.ToolTip VolumeTip;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -1506,5 +1506,10 @@ namespace KeppySpartanMIDIConverter
             disabledToolStripMenuItem.Checked = true;
             Globals.AutoShutDownEnabled = false;
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            new ItsKillOrBeKilled().ShowDialog();
+        }
     }
 }
