@@ -11,7 +11,7 @@ Click on "Releases".
 - [Microsoft .NET Framework 4.0.] (https://www.microsoft.com/en-us/download/details.aspx?id=17851)
 
 ## Requirements (For compiling the program)
-- Windows 7 SP1 or newer-
+- Windows 7 SP1 or newer.
 - 1GB of RAM or more.
 - Microsoft Visual Studio 2013. (or newer, your choice)
 - [BASS.NET] (http://www.bass.radio42.com/) by Radio42.
