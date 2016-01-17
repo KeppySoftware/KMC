@@ -24,6 +24,7 @@ namespace KeppySpartanMIDIConverter
                 FrequencyBox.Enabled = false;
                 Label6.Enabled = false;
                 groupBox3.Enabled = false;
+                checkBox1.Text = "Override tempo (Original: " + MainWindow.Globals.OriginalTempo.ToString() + "bpm)";
             }
             else
             {
@@ -31,12 +32,14 @@ namespace KeppySpartanMIDIConverter
                 FrequencyBox.Enabled = true;
                 Label6.Enabled = true;
                 groupBox3.Enabled = true;
+                checkBox1.Text = "Override tempo (Playback mode only)";
             }
             // K DONE
             Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects");
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             //
             FrequencyBox.Text = Convert.ToString(Settings.GetValue("audiofreq"));
+            BitrateBox.Text = Convert.ToString(Settings.GetValue("oggbitrate"));
             //
             if (Convert.ToInt32(Effects.GetValue("reverb")) == 1)
             {
@@ -137,6 +140,14 @@ namespace KeppySpartanMIDIConverter
             {
                 MainWindow.Globals.FXDisabled = false;
                 FXDisable.Checked = false;
+            }
+            if (Convert.ToInt32(Settings.GetValue("overrideogg")) == 1)
+            {
+                checkBox3.Checked = true;
+            }
+            else
+            {
+                checkBox3.Checked = false;
             }
             //
             Effects.Close();
@@ -271,6 +282,14 @@ namespace KeppySpartanMIDIConverter
             Settings.Close();
         }
 
+        private void BitrateBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MainWindow.Globals.Bitrate = Convert.ToInt32(this.BitrateBox.Text);
+            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            Settings.SetValue("oggbitrate", MainWindow.Globals.Bitrate, Microsoft.Win32.RegistryValueKind.DWord);
+            Settings.Close();
+        }
+
         private void FXDisable_CheckedChanged(object sender, EventArgs e)
         {
             if (this.FXDisable.Checked)
@@ -395,6 +414,36 @@ namespace KeppySpartanMIDIConverter
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             MainWindow.Globals.FinalTempo = Convert.ToInt32(numericUpDown1.Value);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                Guide.Active = true;
+            }
+            else
+            {
+                Guide.Active = false;
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            
+            if (checkBox3.Checked == true)
+            {
+                Settings.SetValue("overrideogg", "1", Microsoft.Win32.RegistryValueKind.DWord);
+                label3.Enabled = true;
+                BitrateBox.Enabled = true;
+            }
+            else
+            {
+                Settings.SetValue("overrideogg", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                label3.Enabled = false;
+                BitrateBox.Enabled = false;
+            }
         }
     }
 }
