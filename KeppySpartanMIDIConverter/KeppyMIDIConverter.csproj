@@ -119,12 +119,6 @@
     <Compile Include="Informations.Designer.cs">
       <DependentUpon>Informations.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItsKillOrBeKilled.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ItsKillOrBeKilled.Designer.cs">
-      <DependentUpon>ItsKillOrBeKilled.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,29 +127,34 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SoundfontDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoundfontDialog.Designer.cs">
+      <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdvancedSettings.resx">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Informations.resx">
       <DependentUpon>Informations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItsKillOrBeKilled.resx">
-      <DependentUpon>ItsKillOrBeKilled.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Resources\Undertale.ttf" />
+    <EmbeddedResource Include="SoundfontDialog.resx">
+      <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -170,7 +169,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\giphy %281%29.gif" />
-    <None Include="Resources\itskillorbekilled.png" />
     <None Include="Resources\KepperinoChristmas.png" />
     <None Include="Resources\landing-spinner.gif" />
     <None Include="Resources\loading3.gif" />
@@ -182,7 +180,6 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="ksmcico.ico" />
-    <None Include="Resources\Nojk.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

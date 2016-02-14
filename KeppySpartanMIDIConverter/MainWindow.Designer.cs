@@ -22,7 +22,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.unloadSoundfontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startRenderingWAVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abortRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -41,7 +40,6 @@
             this.RenderingTimer = new System.Windows.Forms.Timer(this.components);
             this.UsedVoices = new System.Windows.Forms.Label();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.loadSoundfontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MIDIList = new System.Windows.Forms.ListBox();
             this.DefMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addMIDIsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,49 +51,38 @@
             this.AdvSettingsButton = new System.Windows.Forms.Button();
             this.VoiceLimit = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.CurrentStatus = new System.Windows.Forms.ProgressBar();
-            this.SoundfontImportDialog = new System.Windows.Forms.OpenFileDialog();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importMIDIsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSelectedMIDIsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearMIDIsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.openTheSoundfontsManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startRenderingOGGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playInRealtimeBetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoShutdownAfterRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
             this.labelRMS = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.CurrentStatusText = new System.Windows.Forms.Label();
             this.ConverterOGG = new System.ComponentModel.BackgroundWorker();
             this.RealTimePlayBack = new System.ComponentModel.BackgroundWorker();
             this.VolumeBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             this.Menu.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // unloadSoundfontToolStripMenuItem
-            // 
-            this.unloadSoundfontToolStripMenuItem.Name = "unloadSoundfontToolStripMenuItem";
-            this.unloadSoundfontToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.unloadSoundfontToolStripMenuItem.Text = "Unload soundfont";
-            this.unloadSoundfontToolStripMenuItem.Click += new System.EventHandler(this.unloadSoundfontToolStripMenuItem_Click);
             // 
             // startRenderingWAVToolStripMenuItem
             // 
@@ -213,9 +200,9 @@
             // UsedVoices
             // 
             this.UsedVoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsedVoices.Location = new System.Drawing.Point(381, 275);
+            this.UsedVoices.Location = new System.Drawing.Point(359, 307);
             this.UsedVoices.Name = "UsedVoices";
-            this.UsedVoices.Size = new System.Drawing.Size(121, 13);
+            this.UsedVoices.Size = new System.Drawing.Size(143, 13);
             this.UsedVoices.TabIndex = 8;
             this.UsedVoices.Text = "Voices: 100000/100000";
             this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,13 +211,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(229, 6);
-            // 
-            // loadSoundfontToolStripMenuItem
-            // 
-            this.loadSoundfontToolStripMenuItem.Name = "loadSoundfontToolStripMenuItem";
-            this.loadSoundfontToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.loadSoundfontToolStripMenuItem.Text = "Load soundfont";
-            this.loadSoundfontToolStripMenuItem.Click += new System.EventHandler(this.loadSoundfontToolStripMenuItem_Click);
             // 
             // MIDIList
             // 
@@ -244,7 +224,7 @@
             this.MIDIList.Location = new System.Drawing.Point(12, 36);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.MIDIList.Size = new System.Drawing.Size(628, 226);
+            this.MIDIList.Size = new System.Drawing.Size(628, 258);
             this.MIDIList.TabIndex = 11;
             // 
             // DefMenu
@@ -256,38 +236,38 @@
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.Size = new System.Drawing.Size(188, 98);
+            this.DefMenu.Size = new System.Drawing.Size(198, 98);
             // 
             // addMIDIsToolStripMenuItem
             // 
             this.addMIDIsToolStripMenuItem.Name = "addMIDIsToolStripMenuItem";
-            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.addMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.addMIDIsToolStripMenuItem.Click += new System.EventHandler(this.addMIDIsToolStripMenuItem_Click);
             // 
             // removeMIDIToolStripMenuItem
             // 
             this.removeMIDIToolStripMenuItem.Name = "removeMIDIToolStripMenuItem";
-            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.removeMIDIToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeMIDIToolStripMenuItem.Click += new System.EventHandler(this.removeMIDIToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(194, 6);
             // 
             // moveUpToolStripMenuItem
             // 
             this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.moveUpToolStripMenuItem.Text = "Move up (One item)";
             this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // moveDownToolStripMenuItem
             // 
             this.moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.moveDownToolStripMenuItem.Text = "Move down (One item)";
             this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
             // 
@@ -296,7 +276,7 @@
             this.SettingsBox.Controls.Add(this.AdvSettingsButton);
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.label1);
-            this.SettingsBox.Location = new System.Drawing.Point(510, 297);
+            this.SettingsBox.Location = new System.Drawing.Point(510, 329);
             this.SettingsBox.Name = "SettingsBox";
             this.SettingsBox.Size = new System.Drawing.Size(130, 70);
             this.SettingsBox.TabIndex = 12;
@@ -348,27 +328,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Voice limit:";
             // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(420, 60);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Load a soundfont first\r\nto see its informations here.";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // CurrentStatus
             // 
             this.CurrentStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CurrentStatus.Location = new System.Drawing.Point(0, 425);
+            this.CurrentStatus.Location = new System.Drawing.Point(0, 411);
             this.CurrentStatus.Name = "CurrentStatus";
             this.CurrentStatus.Size = new System.Drawing.Size(652, 23);
             this.CurrentStatus.TabIndex = 14;
-            // 
-            // SoundfontImportDialog
-            // 
-            this.SoundfontImportDialog.Filter = "Soundfont files|*.sf2;*.sfz;";
             // 
             // Menu
             // 
@@ -392,8 +358,7 @@
             this.removeSelectedMIDIsToolStripMenuItem,
             this.clearMIDIsListToolStripMenuItem,
             this.toolStripSeparator4,
-            this.loadSoundfontToolStripMenuItem,
-            this.unloadSoundfontToolStripMenuItem,
+            this.openTheSoundfontsManagerToolStripMenuItem,
             this.toolStripSeparator1,
             this.startRenderingWAVToolStripMenuItem,
             this.startRenderingOGGToolStripMenuItem,
@@ -430,6 +395,13 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(229, 6);
+            // 
+            // openTheSoundfontsManagerToolStripMenuItem
+            // 
+            this.openTheSoundfontsManagerToolStripMenuItem.Name = "openTheSoundfontsManagerToolStripMenuItem";
+            this.openTheSoundfontsManagerToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.openTheSoundfontsManagerToolStripMenuItem.Text = "Open the soundfonts manager";
+            this.openTheSoundfontsManagerToolStripMenuItem.Click += new System.EventHandler(this.openTheSoundfontsManagerToolStripMenuItem_Click);
             // 
             // startRenderingOGGToolStripMenuItem
             // 
@@ -476,20 +448,8 @@
             this.disabledToolStripMenuItem.Text = "Disabled";
             this.disabledToolStripMenuItem.Click += new System.EventHandler(this.disabledToolStripMenuItem_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.loadingpic);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 302);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(492, 64);
-            this.panel1.TabIndex = 13;
-            // 
             // loadingpic
             // 
-            this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
-            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.landing_spinner;
             this.loadingpic.Location = new System.Drawing.Point(425, 0);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(63, 60);
@@ -509,39 +469,20 @@
             // 
             // labelRMS
             // 
-            this.labelRMS.Location = new System.Drawing.Point(12, 275);
+            this.labelRMS.Location = new System.Drawing.Point(12, 307);
             this.labelRMS.Name = "labelRMS";
             this.labelRMS.Size = new System.Drawing.Size(341, 13);
             this.labelRMS.TabIndex = 17;
             this.labelRMS.Text = "Root mean square: -Infinito dB | Average: -Infinito dB | Peak: -0.0 dB";
             // 
-            // panel2
-            // 
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.CurrentStatusText);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 370);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(652, 55);
-            this.panel2.TabIndex = 16;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(642, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(10, 10);
-            this.label4.TabIndex = 20;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
             // CurrentStatusText
             // 
             this.CurrentStatusText.BackColor = System.Drawing.Color.Transparent;
-            this.CurrentStatusText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CurrentStatusText.Dock = System.Windows.Forms.DockStyle.Left;
             this.CurrentStatusText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(652, 55);
+            this.CurrentStatusText.Size = new System.Drawing.Size(425, 60);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -562,7 +503,7 @@
             // 
             this.VolumeBar.AutoSize = false;
             this.VolumeBar.LargeChange = 1;
-            this.VolumeBar.Location = new System.Drawing.Point(510, 276);
+            this.VolumeBar.Location = new System.Drawing.Point(510, 308);
             this.VolumeBar.Maximum = 10000;
             this.VolumeBar.Name = "VolumeBar";
             this.VolumeBar.Size = new System.Drawing.Size(130, 20);
@@ -572,7 +513,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(510, 265);
+            this.label3.Location = new System.Drawing.Point(510, 297);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 19;
@@ -583,16 +524,25 @@
             // 
             this.VolumeTip.AutomaticDelay = 0;
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.CurrentStatusText);
+            this.panel1.Controls.Add(this.loadingpic);
+            this.panel1.Location = new System.Drawing.Point(12, 334);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(492, 64);
+            this.panel1.TabIndex = 13;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 448);
+            this.ClientSize = new System.Drawing.Size(652, 434);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.VolumeBar);
             this.Controls.Add(this.UsedVoices);
             this.Controls.Add(this.labelRMS);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.MIDIList);
             this.Controls.Add(this.SettingsBox);
             this.Controls.Add(this.CurrentStatus);
@@ -612,10 +562,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).EndInit();
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -623,7 +572,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStripMenuItem unloadSoundfontToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startRenderingWAVToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abortRenderingToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -634,11 +582,9 @@
         public System.ComponentModel.BackgroundWorker ConverterWAV;
         private System.Windows.Forms.OpenFileDialog MIDIImport;
         private System.Windows.Forms.Timer RenderingTimer;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label UsedVoices;
         private System.Windows.Forms.Label CurrentStatusText;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem loadSoundfontToolStripMenuItem;
         private System.Windows.Forms.ListBox MIDIList;
         private System.Windows.Forms.ContextMenuStrip DefMenu;
         private System.Windows.Forms.ToolStripMenuItem addMIDIsToolStripMenuItem;
@@ -650,18 +596,12 @@
         private System.Windows.Forms.Button AdvSettingsButton;
         private System.Windows.Forms.NumericUpDown VoiceLimit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar CurrentStatus;
-        private System.Windows.Forms.OpenFileDialog SoundfontImportDialog;
         private System.Windows.Forms.MenuStrip Menu;
         private System.Windows.Forms.ToolStripMenuItem actionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importMIDIsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSelectedMIDIsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearMIDIsListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SaveFileDialog ExportWhere;
-        private System.Windows.Forms.PictureBox loadingpic;
         private System.Windows.Forms.Label labelRMS;
         private System.Windows.Forms.ToolStripMenuItem blackMIDIStuffToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem officialBlackMIDIWikiaToolStripMenuItem;
@@ -680,7 +620,11 @@
         private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem;
         private System.Windows.Forms.ToolTip VolumeTip;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem importMIDIsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem openTheSoundfontsManagerToolStripMenuItem;
+        private System.Windows.Forms.PictureBox loadingpic;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
