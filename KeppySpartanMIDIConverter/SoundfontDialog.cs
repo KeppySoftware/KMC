@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace KeppyMIDIConverter
 {
@@ -27,12 +28,67 @@ namespace KeppyMIDIConverter
             public static int preset3val = 0;
         }
 
+        private void SoundfontDialog_Load(object sender, EventArgs e)
+        {
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            try
+            {
+                if (Settings.GetValue("lastsf1folder").ToString() == null)
+                {
+                    SoundfontImportDialog1.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                }
+                else
+                {
+                    SoundfontImportDialog1.InitialDirectory = Settings.GetValue("lastsf1folder").ToString();
+                }
+                if (Settings.GetValue("lastsf2folder").ToString() == null)
+                {
+                    SoundfontImportDialog2.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                }
+                else
+                {
+                    SoundfontImportDialog1.InitialDirectory = Settings.GetValue("lastsf2folder").ToString();
+                }
+                if (Settings.GetValue("lastsf3folder").ToString() == null)
+                {
+                    SoundfontImportDialog3.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                }
+                else
+                {
+                    SoundfontImportDialog1.InitialDirectory = Settings.GetValue("lastsf3folder").ToString();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
         private void ImportBtn1_Click(object sender, EventArgs e)
         {
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            try
+            {
+                if (Settings.GetValue("lastsf1folder").ToString() == null)
+                {
+                    SoundfontImportDialog1.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                }
+                else
+                {
+                    SoundfontImportDialog1.InitialDirectory = Settings.GetValue("lastsf1folder").ToString();
+                }
+            }
+            catch
+            {
+
+            }
             if (this.SoundfontImportDialog1.ShowDialog() == DialogResult.OK)
             {
                 if (Path.GetExtension(SoundfontImportDialog1.FileName) == ".sf2" | Path.GetExtension(SoundfontImportDialog1.FileName) == ".SF2")
                 {
+                    Settings.SetValue("lastsf1folder", Path.GetDirectoryName(SoundfontImportDialog1.FileName).ToString(), RegistryValueKind.String);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName1 = SoundfontImportDialog1.FileName;
                     SFPathText1.Text = SoundfontImportDialog1.FileName;
                     LoadBP1.Enabled = true;
@@ -49,6 +105,7 @@ namespace KeppyMIDIConverter
                 }
                 else if (Path.GetExtension(SoundfontImportDialog1.FileName) == ".sfz" | Path.GetExtension(SoundfontImportDialog1.FileName) == ".SFZ")
                 {
+                    Settings.SetValue("lastsf1folder", Path.GetDirectoryName(SoundfontImportDialog1.FileName).ToString(), RegistryValueKind.String);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName1 = SoundfontImportDialog1.FileName;
                     SFPathText1.Text = SoundfontImportDialog1.FileName;
                     LoadBP1.Enabled = false;
@@ -65,6 +122,7 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
+                    Settings.SetValue("lastsf1folder", Path.GetDirectoryName(SoundfontImportDialog1.FileName).ToString(), RegistryValueKind.String);
                     MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName1 = null;
                     SFPathText1.Text = null;
@@ -77,10 +135,28 @@ namespace KeppyMIDIConverter
 
         private void ImportBtn2_Click(object sender, EventArgs e)
         {
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            try
+            {
+                if (Settings.GetValue("lastsf2folder").ToString() == null)
+                {
+                    SoundfontImportDialog2.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                }
+                else
+                {
+                    SoundfontImportDialog2.InitialDirectory = Settings.GetValue("lastsf2folder").ToString();
+                }
+            }
+            catch
+            {
+
+            }
             if (this.SoundfontImportDialog2.ShowDialog() == DialogResult.OK)
             {
                 if (Path.GetExtension(SoundfontImportDialog2.FileName) == ".sf2" | Path.GetExtension(SoundfontImportDialog2.FileName) == ".SF2")
                 {
+                    Settings.SetValue("lastsf2folder", Path.GetDirectoryName(SoundfontImportDialog2.FileName).ToString(), RegistryValueKind.String);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName2 = SoundfontImportDialog2.FileName;
                     SFPathText2.Text = SoundfontImportDialog2.FileName;
                     LoadBP2.Enabled = true;
@@ -97,6 +173,7 @@ namespace KeppyMIDIConverter
                 }
                 else if (Path.GetExtension(SoundfontImportDialog2.FileName) == ".sfz" | Path.GetExtension(SoundfontImportDialog2.FileName) == ".SFZ")
                 {
+                    Settings.SetValue("lastsf2folder", Path.GetDirectoryName(SoundfontImportDialog2.FileName).ToString(), RegistryValueKind.String);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName2 = SoundfontImportDialog2.FileName;
                     SFPathText2.Text = SoundfontImportDialog1.FileName;
                     LoadBP2.Enabled = false;
@@ -113,6 +190,7 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
+                    Settings.SetValue("lastsf2folder", Path.GetDirectoryName(SoundfontImportDialog2.FileName).ToString(), RegistryValueKind.String);
                     MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName2 = null;
                     SFPathText2.Text = null;
@@ -125,10 +203,28 @@ namespace KeppyMIDIConverter
 
         private void ImportBtn3_Click(object sender, EventArgs e)
         {
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            try
+            {
+                if (Settings.GetValue("lastsf3folder").ToString() == null)
+                {
+                    SoundfontImportDialog3.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                }
+                else
+                {
+                    SoundfontImportDialog3.InitialDirectory = Settings.GetValue("lastsf3folder").ToString();
+                }
+            }
+            catch
+            {
+
+            }
             if (this.SoundfontImportDialog3.ShowDialog() == DialogResult.OK)
             {
                 if (Path.GetExtension(SoundfontImportDialog3.FileName) == ".sf2" | Path.GetExtension(SoundfontImportDialog3.FileName) == ".SF2")
                 {
+                    Settings.SetValue("lastsf3folder", Path.GetDirectoryName(SoundfontImportDialog3.FileName).ToString(), RegistryValueKind.String);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName3 = SoundfontImportDialog3.FileName;
                     SFPathText3.Text = SoundfontImportDialog3.FileName;
                     LoadBP3.Enabled = true;
@@ -146,6 +242,7 @@ namespace KeppyMIDIConverter
                 }
                 else if (Path.GetExtension(SoundfontImportDialog3.FileName) == ".sfz" | Path.GetExtension(SoundfontImportDialog3.FileName) == ".SFZ")
                 {
+                    Settings.SetValue("lastsf3folder", Path.GetDirectoryName(SoundfontImportDialog3.FileName).ToString(), RegistryValueKind.String);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName3 = SoundfontImportDialog3.FileName;
                     SFPathText3.Text = SoundfontImportDialog3.FileName;
                     LoadBP3.Enabled = false;
@@ -162,6 +259,7 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
+                    Settings.SetValue("lastsf3folder", Path.GetDirectoryName(SoundfontImportDialog3.FileName).ToString(), RegistryValueKind.String);
                     MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     KeppySpartanMIDIConverter.MainWindow.Globals.SFName3 = null;
                     SFPathText3.Text = null;

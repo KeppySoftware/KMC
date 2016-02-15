@@ -90,7 +90,7 @@
             0,
             0});
             this.EchoFXNum.Name = "EchoFXNum";
-            this.EchoFXNum.Size = new System.Drawing.Size(32, 20);
+            this.EchoFXNum.Size = new System.Drawing.Size(32, 21);
             this.EchoFXNum.TabIndex = 50;
             this.EchoFXNum.Value = new decimal(new int[] {
             1,
@@ -105,7 +105,7 @@
             this.EchoFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.EchoFX.Location = new System.Drawing.Point(206, 55);
             this.EchoFX.Name = "EchoFX";
-            this.EchoFX.Size = new System.Drawing.Size(92, 18);
+            this.EchoFX.Size = new System.Drawing.Size(90, 18);
             this.EchoFX.TabIndex = 49;
             this.EchoFX.Text = "Enable echo";
             this.EchoFX.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             0,
             0});
             this.SittingFXNum.Name = "SittingFXNum";
-            this.SittingFXNum.Size = new System.Drawing.Size(32, 20);
+            this.SittingFXNum.Size = new System.Drawing.Size(32, 21);
             this.SittingFXNum.TabIndex = 47;
             this.SittingFXNum.Value = new decimal(new int[] {
             1,
@@ -149,7 +149,7 @@
             0,
             0});
             this.DistortionFXNum.Name = "DistortionFXNum";
-            this.DistortionFXNum.Size = new System.Drawing.Size(32, 20);
+            this.DistortionFXNum.Size = new System.Drawing.Size(32, 21);
             this.DistortionFXNum.TabIndex = 46;
             this.DistortionFXNum.Value = new decimal(new int[] {
             1,
@@ -168,7 +168,7 @@
             0,
             0});
             this.GargleFXNum.Name = "GargleFXNum";
-            this.GargleFXNum.Size = new System.Drawing.Size(32, 20);
+            this.GargleFXNum.Size = new System.Drawing.Size(32, 21);
             this.GargleFXNum.TabIndex = 45;
             this.GargleFXNum.Value = new decimal(new int[] {
             1,
@@ -220,7 +220,7 @@
             this.SittingFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.SittingFX.Location = new System.Drawing.Point(206, 74);
             this.SittingFX.Name = "SittingFX";
-            this.SittingFX.Size = new System.Drawing.Size(154, 18);
+            this.SittingFX.Size = new System.Drawing.Size(158, 18);
             this.SittingFX.TabIndex = 44;
             this.SittingFX.Text = "Enable sitting room reverb";
             this.SittingFX.UseVisualStyleBackColor = true;
@@ -232,7 +232,7 @@
             this.DistortionFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.DistortionFX.Location = new System.Drawing.Point(206, 36);
             this.DistortionFX.Name = "DistortionFX";
-            this.DistortionFX.Size = new System.Drawing.Size(110, 18);
+            this.DistortionFX.Size = new System.Drawing.Size(112, 18);
             this.DistortionFX.TabIndex = 43;
             this.DistortionFX.Text = "Enable distortion";
             this.DistortionFX.UseVisualStyleBackColor = true;
@@ -248,7 +248,7 @@
             0,
             0});
             this.CompressorFXNum.Name = "CompressorFXNum";
-            this.CompressorFXNum.Size = new System.Drawing.Size(32, 20);
+            this.CompressorFXNum.Size = new System.Drawing.Size(32, 21);
             this.CompressorFXNum.TabIndex = 42;
             this.CompressorFXNum.Value = new decimal(new int[] {
             1,
@@ -267,7 +267,7 @@
             0,
             0});
             this.FlangerFXNum.Name = "FlangerFXNum";
-            this.FlangerFXNum.Size = new System.Drawing.Size(32, 20);
+            this.FlangerFXNum.Size = new System.Drawing.Size(32, 21);
             this.FlangerFXNum.TabIndex = 41;
             this.FlangerFXNum.Value = new decimal(new int[] {
             1,
@@ -286,7 +286,7 @@
             0,
             0});
             this.ChorusFXNum.Name = "ChorusFXNum";
-            this.ChorusFXNum.Size = new System.Drawing.Size(32, 20);
+            this.ChorusFXNum.Size = new System.Drawing.Size(32, 21);
             this.ChorusFXNum.TabIndex = 40;
             this.ChorusFXNum.Value = new decimal(new int[] {
             1,
@@ -305,7 +305,7 @@
             0,
             0});
             this.ReverbFXNum.Name = "ReverbFXNum";
-            this.ReverbFXNum.Size = new System.Drawing.Size(32, 20);
+            this.ReverbFXNum.Size = new System.Drawing.Size(32, 21);
             this.ReverbFXNum.TabIndex = 39;
             this.ReverbFXNum.Value = new decimal(new int[] {
             1,
@@ -332,7 +332,7 @@
             this.FlangerFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.FlangerFX.Location = new System.Drawing.Point(7, 55);
             this.FlangerFX.Name = "FlangerFX";
-            this.FlangerFX.Size = new System.Drawing.Size(100, 18);
+            this.FlangerFX.Size = new System.Drawing.Size(101, 18);
             this.FlangerFX.TabIndex = 37;
             this.FlangerFX.Text = "Enable flanger";
             this.FlangerFX.UseVisualStyleBackColor = true;
@@ -344,7 +344,7 @@
             this.ChorusFX2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ChorusFX2.Location = new System.Drawing.Point(7, 36);
             this.ChorusFX2.Name = "ChorusFX2";
-            this.ChorusFX2.Size = new System.Drawing.Size(100, 18);
+            this.ChorusFX2.Size = new System.Drawing.Size(99, 18);
             this.ChorusFX2.TabIndex = 36;
             this.ChorusFX2.Text = "Enable chorus";
             this.ChorusFX2.UseVisualStyleBackColor = true;
@@ -368,7 +368,7 @@
             this.ReverbFX2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ReverbFX2.Location = new System.Drawing.Point(7, 17);
             this.ReverbFX2.Name = "ReverbFX2";
-            this.ReverbFX2.Size = new System.Drawing.Size(98, 18);
+            this.ReverbFX2.Size = new System.Drawing.Size(99, 18);
             this.ReverbFX2.TabIndex = 34;
             this.ReverbFX2.Text = "Enable reverb";
             this.ReverbFX2.UseVisualStyleBackColor = true;
@@ -400,7 +400,7 @@
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox3.Location = new System.Drawing.Point(7, 117);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(136, 18);
+            this.checkBox3.Size = new System.Drawing.Size(141, 18);
             this.checkBox3.TabIndex = 16;
             this.checkBox3.Text = "Override vorbis quality";
             this.Guide.SetToolTip(this.checkBox3, "Override the self-guided bitrate system used by Vorbis, and force it to use a fix" +
@@ -439,7 +439,7 @@
             this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(249, 118);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 14;
             this.label3.Text = "Vorbis quality:";
             // 
@@ -458,7 +458,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(72, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(72, 21);
             this.numericUpDown1.TabIndex = 13;
             this.Guide.SetToolTip(this.numericUpDown1, "Set the tempo with a value from 1bpm to 2097120bpm.");
             this.numericUpDown1.Value = new decimal(new int[] {
@@ -474,7 +474,7 @@
             this.label2.Enabled = false;
             this.label2.Location = new System.Drawing.Point(227, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.Size = new System.Drawing.Size(94, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "New tempo value:";
             // 
@@ -484,7 +484,7 @@
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox1.Location = new System.Drawing.Point(7, 95);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(130, 18);
+            this.checkBox1.Size = new System.Drawing.Size(133, 18);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "Override MIDI tempo";
             this.Guide.SetToolTip(this.checkBox1, "Override the MIDI tempo events. (WARNING, it\'ll override ALL the events, nothing " +
@@ -498,7 +498,7 @@
             this.Label6.AutoSize = true;
             this.Label6.Location = new System.Drawing.Point(165, 19);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(20, 13);
+            this.Label6.Size = new System.Drawing.Size(19, 13);
             this.Label6.TabIndex = 10;
             this.Label6.Text = "Hz";
             // 
@@ -542,7 +542,7 @@
             this.Label5.AutoSize = true;
             this.Label5.Location = new System.Drawing.Point(6, 17);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(87, 13);
+            this.Label5.Size = new System.Drawing.Size(90, 13);
             this.Label5.TabIndex = 8;
             this.Label5.Text = "Audio frequency:";
             // 
@@ -552,7 +552,7 @@
             this.FXDisable.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.FXDisable.Location = new System.Drawing.Point(7, 72);
             this.FXDisable.Name = "FXDisable";
-            this.FXDisable.Size = new System.Drawing.Size(134, 18);
+            this.FXDisable.Size = new System.Drawing.Size(135, 18);
             this.FXDisable.TabIndex = 7;
             this.FXDisable.Text = "Disable sound effects";
             this.Guide.SetToolTip(this.FXDisable, "Forces BASSMIDI to disable all the MIDI effects/external FXs (DX7 effects and MID" +
@@ -566,7 +566,7 @@
             this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Noteoff1.Location = new System.Drawing.Point(7, 42);
             this.Noteoff1.Name = "Noteoff1";
-            this.Noteoff1.Size = new System.Drawing.Size(343, 31);
+            this.Noteoff1.Size = new System.Drawing.Size(353, 31);
             this.Noteoff1.TabIndex = 6;
             this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlappin" +
     "g instances of the note.";
@@ -587,7 +587,7 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(14, 338);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(119, 17);
+            this.checkBox2.Size = new System.Drawing.Size(120, 17);
             this.checkBox2.TabIndex = 32;
             this.checkBox2.Text = "Enable tooltip guide";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -603,7 +603,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.GroupBox1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

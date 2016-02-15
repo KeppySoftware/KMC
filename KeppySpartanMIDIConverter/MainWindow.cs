@@ -1362,6 +1362,7 @@ namespace KeppySpartanMIDIConverter
                         this.SettingsBox.Enabled = true;
                         this.VolumeBar.Enabled = true;
                         this.VoiceLimit.Maximum = 2000;
+                        this.CurrentStatusText.Size = new Size(425, 60);
                     }
                     else
                     {
@@ -1384,6 +1385,7 @@ namespace KeppySpartanMIDIConverter
                     this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
                     this.abortRenderingToolStripMenuItem.Enabled = false;
                     this.labelRMS.Text = Globals.CurrentPeak;
+                    this.CurrentStatusText.Size = new Size(488, 60);
                 }
                 else if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                 {
@@ -1424,6 +1426,7 @@ namespace KeppySpartanMIDIConverter
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = Globals.CurrentPeak;
+                        this.CurrentStatusText.Size = new Size(425, 60);
                     }
                     else
                     {
@@ -1464,6 +1467,7 @@ namespace KeppySpartanMIDIConverter
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = Globals.CurrentPeak;
+                        this.CurrentStatusText.Size = new Size(425, 60);
                     }
                     if (Globals.NewWindowName == null)
                     {
@@ -1579,6 +1583,23 @@ namespace KeppySpartanMIDIConverter
             enabledToolStripMenuItem.Checked = false;
             disabledToolStripMenuItem.Checked = true;
             Globals.AutoShutDownEnabled = false;
+        }
+
+        private void makeADonationToSupportTheDeveloperToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q2V5AUKED5R8S");
+        }
+
+        private void officialBlackMIDICommunityGoogleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://plus.google.com/communities/105907289212970966669");
+        }
+
+        private void forceCloseTheApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            MessageBox.Show("Fatal error on the execution of the converter!\n\nPress OK to close the program.", "Keppy's MIDI Converter - Fatal error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Application.Exit();
         }
 
     }

@@ -122,7 +122,7 @@
 
 If you want to use a specific piano preset of another soundfont, check "Load specific bank and preset", and assign "0" to both.
 
-Be sure to check it, or you'll completely override the previous soundfont!!!</value>
+The correct order is SF1 &gt; SF2 &gt; SF3, you can't load soundfonts on SF2 and SF3 without loading one in SF1.</value>
   </data>
   <metadata name="SoundfontImportDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
