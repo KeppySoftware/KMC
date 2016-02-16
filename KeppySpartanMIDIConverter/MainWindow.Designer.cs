@@ -28,13 +28,16 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.informationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeADonationToSupportTheDeveloperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.keppyStudiosWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blackMIDIStuffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kaleidonKep99sYouTubeChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.officialBlackMIDIWikiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.officialBlackMIDICommunityGoogleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.wikipediasPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.keppyStudiosWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConverterWAV = new System.ComponentModel.BackgroundWorker();
             this.MIDIImport = new System.Windows.Forms.OpenFileDialog();
             this.RenderingTimer = new System.Windows.Forms.Timer(this.components);
@@ -65,6 +68,7 @@
             this.autoShutdownAfterRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
             this.labelRMS = new System.Windows.Forms.Label();
@@ -75,10 +79,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.officialBlackMIDICommunityGoogleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.makeADonationToSupportTheDeveloperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -134,10 +134,24 @@
             this.informationsToolStripMenuItem.Text = "Informations about the program";
             this.informationsToolStripMenuItem.Click += new System.EventHandler(this.informationsToolStripMenuItem_Click);
             // 
+            // makeADonationToSupportTheDeveloperToolStripMenuItem
+            // 
+            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Name = "makeADonationToSupportTheDeveloperToolStripMenuItem";
+            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
+            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Text = "Make a donation to support the developer";
+            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Click += new System.EventHandler(this.makeADonationToSupportTheDeveloperToolStripMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(273, 6);
+            // 
+            // keppyStudiosWebsiteToolStripMenuItem
+            // 
+            this.keppyStudiosWebsiteToolStripMenuItem.Name = "keppyStudiosWebsiteToolStripMenuItem";
+            this.keppyStudiosWebsiteToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
+            this.keppyStudiosWebsiteToolStripMenuItem.Text = "Keppy Studios Website";
+            this.keppyStudiosWebsiteToolStripMenuItem.Click += new System.EventHandler(this.keppyStudiosWebsiteToolStripMenuItem_Click);
             // 
             // blackMIDIStuffToolStripMenuItem
             // 
@@ -171,19 +185,24 @@
             this.officialBlackMIDIWikiaToolStripMenuItem.Text = "Official Black MIDI Wikia";
             this.officialBlackMIDIWikiaToolStripMenuItem.Click += new System.EventHandler(this.officialBlackMIDIWikiaToolStripMenuItem_Click);
             // 
+            // officialBlackMIDICommunityGoogleToolStripMenuItem
+            // 
+            this.officialBlackMIDICommunityGoogleToolStripMenuItem.Name = "officialBlackMIDICommunityGoogleToolStripMenuItem";
+            this.officialBlackMIDICommunityGoogleToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.officialBlackMIDICommunityGoogleToolStripMenuItem.Text = "Official Black MIDI Community (Google+)";
+            this.officialBlackMIDICommunityGoogleToolStripMenuItem.Click += new System.EventHandler(this.officialBlackMIDICommunityGoogleToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(265, 6);
+            // 
             // wikipediasPageToolStripMenuItem
             // 
             this.wikipediasPageToolStripMenuItem.Name = "wikipediasPageToolStripMenuItem";
             this.wikipediasPageToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.wikipediasPageToolStripMenuItem.Text = "Wikipedia\'s page";
             this.wikipediasPageToolStripMenuItem.Click += new System.EventHandler(this.wikipediasPageToolStripMenuItem_Click);
-            // 
-            // keppyStudiosWebsiteToolStripMenuItem
-            // 
-            this.keppyStudiosWebsiteToolStripMenuItem.Name = "keppyStudiosWebsiteToolStripMenuItem";
-            this.keppyStudiosWebsiteToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
-            this.keppyStudiosWebsiteToolStripMenuItem.Text = "Keppy Studios Website";
-            this.keppyStudiosWebsiteToolStripMenuItem.Click += new System.EventHandler(this.keppyStudiosWebsiteToolStripMenuItem_Click);
             // 
             // ConverterWAV
             // 
@@ -456,9 +475,16 @@
             this.disabledToolStripMenuItem.Text = "Disabled";
             this.disabledToolStripMenuItem.Click += new System.EventHandler(this.disabledToolStripMenuItem_Click);
             // 
+            // forceCloseTheApplicationToolStripMenuItem
+            // 
+            this.forceCloseTheApplicationToolStripMenuItem.Name = "forceCloseTheApplicationToolStripMenuItem";
+            this.forceCloseTheApplicationToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.forceCloseTheApplicationToolStripMenuItem.Text = "Force close the application";
+            this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
+            // 
             // loadingpic
             // 
-            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.landing_spinner;
+            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convbusy;
             this.loadingpic.Location = new System.Drawing.Point(425, 0);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(63, 60);
@@ -542,32 +568,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
-            // 
-            // officialBlackMIDICommunityGoogleToolStripMenuItem
-            // 
-            this.officialBlackMIDICommunityGoogleToolStripMenuItem.Name = "officialBlackMIDICommunityGoogleToolStripMenuItem";
-            this.officialBlackMIDICommunityGoogleToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
-            this.officialBlackMIDICommunityGoogleToolStripMenuItem.Text = "Official Black MIDI Community (Google+)";
-            this.officialBlackMIDICommunityGoogleToolStripMenuItem.Click += new System.EventHandler(this.officialBlackMIDICommunityGoogleToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(265, 6);
-            // 
-            // makeADonationToSupportTheDeveloperToolStripMenuItem
-            // 
-            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Name = "makeADonationToSupportTheDeveloperToolStripMenuItem";
-            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
-            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Text = "Make a donation to support the developer";
-            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Click += new System.EventHandler(this.makeADonationToSupportTheDeveloperToolStripMenuItem_Click);
-            // 
-            // forceCloseTheApplicationToolStripMenuItem
-            // 
-            this.forceCloseTheApplicationToolStripMenuItem.Name = "forceCloseTheApplicationToolStripMenuItem";
-            this.forceCloseTheApplicationToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.forceCloseTheApplicationToolStripMenuItem.Text = "Force close the application";
-            this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
             // 
             // MainWindow
             // 

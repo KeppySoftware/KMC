@@ -168,18 +168,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\giphy %281%29.gif" />
-    <None Include="Resources\KepperinoChristmas.png" />
-    <None Include="Resources\landing-spinner.gif" />
-    <None Include="Resources\loading3.gif" />
-    <None Include="Resources\Senza titolo-1.png" />
+    <None Include="Resources\convbusy.gif" />
+    <None Include="Resources\mainlogo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
-    <Content Include="ksmcico.ico" />
+    <None Include="Resources\updatebk.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

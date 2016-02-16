@@ -63,9 +63,9 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap landing_spinner {
+        internal static System.Drawing.Bitmap convbusy {
             get {
-                object obj = ResourceManager.GetObject("landing-spinner", resourceCulture);
+                object obj = ResourceManager.GetObject("convbusy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap loading3 {
+        internal static System.Drawing.Bitmap mainlogo {
             get {
-                object obj = ResourceManager.GetObject("loading3", resourceCulture);
+                object obj = ResourceManager.GetObject("mainlogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Senza_titolo_1 {
+        internal static System.Drawing.Bitmap updatebk {
             get {
-                object obj = ResourceManager.GetObject("Senza titolo-1", resourceCulture);
+                object obj = ResourceManager.GetObject("updatebk", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
