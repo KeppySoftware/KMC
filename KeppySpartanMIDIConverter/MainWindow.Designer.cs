@@ -79,6 +79,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.clearMIDIsListToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -240,6 +241,7 @@
             // 
             // MIDIList
             // 
+            this.MIDIList.AllowDrop = true;
             this.MIDIList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MIDIList.ContextMenuStrip = this.DefMenu;
             this.MIDIList.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -252,17 +254,21 @@
             this.MIDIList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.MIDIList.Size = new System.Drawing.Size(628, 258);
             this.MIDIList.TabIndex = 11;
+            this.MIDIList.DragDrop += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragDrop);
+            this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
+            this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
             // 
             // DefMenu
             // 
             this.DefMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addMIDIsToolStripMenuItem,
             this.removeMIDIToolStripMenuItem,
+            this.clearMIDIsListToolStripMenuItem1,
             this.toolStripSeparator5,
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.Size = new System.Drawing.Size(198, 98);
+            this.DefMenu.Size = new System.Drawing.Size(198, 142);
             // 
             // addMIDIsToolStripMenuItem
             // 
@@ -569,6 +575,13 @@
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
             // 
+            // clearMIDIsListToolStripMenuItem1
+            // 
+            this.clearMIDIsListToolStripMenuItem1.Name = "clearMIDIsListToolStripMenuItem1";
+            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
+            this.clearMIDIsListToolStripMenuItem1.Text = "Clear MIDIs list";
+            this.clearMIDIsListToolStripMenuItem1.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem1_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -664,6 +677,7 @@
         private System.Windows.Forms.ToolStripMenuItem officialBlackMIDICommunityGoogleToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem forceCloseTheApplicationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearMIDIsListToolStripMenuItem1;
     }
 }
 

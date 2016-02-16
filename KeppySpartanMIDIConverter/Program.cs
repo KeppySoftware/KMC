@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace KeppySpartanMIDIConverter
 {
@@ -12,10 +13,17 @@ namespace KeppySpartanMIDIConverter
         [STAThread]
         static void Main()
         {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainWindow());
-
+            bool ok;
+            Mutex m = new Mutex(true, "KepMIDIConv", out ok);
+            if (!ok)
+            {
+                MessageBox.Show("One instance is enough.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainWindow());
+            GC.KeepAlive(m);
         }
     }
 }

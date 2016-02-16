@@ -297,6 +297,11 @@ namespace KeppySpartanMIDIConverter
             this.MIDIList.Items.Clear();
         }
 
+        private void clearMIDIsListToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.MIDIList.Items.Clear();
+        }
+
         private void ConverterOGG_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -1319,6 +1324,47 @@ namespace KeppySpartanMIDIConverter
             }
         }
 
+        private void MIDIList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            int i;
+            for (i = 0; i < s.Length; i++)
+                if (Path.GetExtension(s[i]) == ".mid" | Path.GetExtension(s[i]) == ".midi" | Path.GetExtension(s[i]) == ".kar" | Path.GetExtension(s[i]) == ".rmi" | Path.GetExtension(s[i]) == ".MID" | Path.GetExtension(s[i]) == ".MIDI" | Path.GetExtension(s[i]) == ".KAR" | Path.GetExtension(s[i]) == ".RMI")
+                {
+                    MIDIList.Items.Add(s[i]);
+                }
+                else
+                {
+                    MessageBox.Show(Path.GetFileName(s[i]) + " is not a valid MIDI file!\n\nPlease drop a valid MIDI file inside the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
+        }
+
+        private void MIDIList_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void MIDIList_KeyPress(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyValue == (char)Keys.Delete)
+                {
+                    for (int i = this.MIDIList.SelectedIndices.Count - 1; i >= 0; i--)
+                    {
+                        this.MIDIList.Items.RemoveAt(this.MIDIList.SelectedIndices[i]);
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
         private void RenderingTimer_Tick(object sender, EventArgs e)
         {
             MIDIImport.InitialDirectory = Globals.MIDILastDirectory;
@@ -1601,6 +1647,5 @@ namespace KeppySpartanMIDIConverter
             MessageBox.Show("Fatal error on the execution of the converter!\n\nPress OK to close the program.", "Keppy's MIDI Converter - Fatal error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Application.Exit();
         }
-
     }
 }
