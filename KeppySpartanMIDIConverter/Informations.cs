@@ -76,32 +76,49 @@ namespace KeppySpartanMIDIConverter
         {
             try
             {
+                tabControl1.Enabled = false;
+                button5.Enabled = false;
                 WebClient client = new WebClient();
-                Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppy-s-MIDI-Driver/master/output/keppydriverupdate.txt");
+                Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppySpartanMIDIConverter/kmcupdate.txt");
                 StreamReader reader = new StreamReader(stream);
                 String newestversion = reader.ReadToEnd();
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo("KeppyMIDIConverter.exe");
+                LatestVersion.Text = "Checking for updates, please wait...";
                 ThisVersion.Text = "The current version of the converter, installed on your system, is: " + Converter.FileVersion.ToString();
-                LatestVersion.Text = "The latest version online, in the GitHub repository, is: " + newestversion.ToString();
-                int x = 0;
-                Int32.TryParse(newestversion.ToString(), out x);
-                int y = 0;
-                Int32.TryParse(Converter.FileVersion.ToString(), out y);
+                Version x = null;
+                Version.TryParse(newestversion.ToString(), out x);
+                Version y = null;
+                Version.TryParse(Converter.FileVersion.ToString(), out y);
                 if (x > y)
                 {
+                    tabControl1.Enabled = true;
+                    button5.Enabled = true;
+                    LatestVersion.Text = "New updates found! Version " + newestversion.ToString() + " is online!";
                     MessageBox.Show("New update found, press OK to open the release page.", "New update found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Process.Start("http://goo.gl/BHgazb");
+                    Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
+                }
+                else if (x < y)
+                {
+                    tabControl1.Enabled = true;
+                    button5.Enabled = true;
+                    LatestVersion.Text = "Seems that the version on GitHub (" + newestversion.ToString() + ") is older than the version you're currently using.\nReally strange huh?";
+                    MessageBox.Show("Is this a joke? You have a newer version than the one currently released on GitHub...\n\nYou dirty hacker.", "Wowie.", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
                 else
                 {
+                    tabControl1.Enabled = true;
+                    button5.Enabled = true;
+                    LatestVersion.Text = "There are no updates available right now. Try checking later.";
                     MessageBox.Show("This release is already updated.", "No updates found.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
+                tabControl1.Enabled = true;
+                button5.Enabled = true;
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo("KeppyMIDIConverter.exe");
                 ThisVersion.Text = "The current version of the converter, installed on your system, is: " + Converter.FileVersion.ToString();
-                LatestVersion.Text = "Can not check for updates. You're offline, or maybe the website is temporarily down.";
+                LatestVersion.Text = "Can not check for updates! You're offline, or maybe the website is temporarily down.";
                 MessageBox.Show("Can not check for updates!\n\nSpecific .NET error:\n" + ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

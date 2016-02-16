@@ -1463,7 +1463,7 @@ namespace KeppySpartanMIDIConverter
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
                         this.startRenderingWAVToolStripMenuItem.Enabled = false;
                         this.startRenderingOGGToolStripMenuItem.Enabled = false;
-                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = true;
+                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = Globals.CurrentPeak;
