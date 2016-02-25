@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -16,16 +17,6 @@ namespace KeppyMIDIConverter
         public SoundfontDialog()
         {
             InitializeComponent();
-        }
-
-        public static class BankPresetValue
-        {
-            public static int bank1val = 0;
-            public static int bank2val = 0;
-            public static int bank3val = 0;
-            public static int preset1val = 0;
-            public static int preset2val = 0;
-            public static int preset3val = 0;
         }
 
         private void SoundfontDialog_Load(object sender, EventArgs e)
@@ -72,7 +63,19 @@ namespace KeppyMIDIConverter
             {
                 foreach (String file in SoundfontImportDialog.FileNames)
                 {
-                    if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    if (Path.GetFileNameWithoutExtension(file).Contains("Z-Doc") == true & Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Z-Doc's soundfonts are currently unstable on BASSMIDI.\n\nAre you sure you want to add this one?\n" + Path.GetFileName(file), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            SFList.Items.Add(file);
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
+
+                        }
+                    }
+                    else if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         SFList.Items.Add(file);
@@ -99,6 +102,7 @@ namespace KeppyMIDIConverter
                 if (SFList.Items.Count == 0)
                 {
                     Array.Clear(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0, KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts.Length);
+                    KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[] { null };
                 }
                 else
                 {
@@ -156,6 +160,19 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private void SFZCompliant_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("This program is compliant to the \"SFZ 1.0 format\", and partially with the \"SFZ 2.0 format\".\n\nDo you want to visit the \"Unofficial SFZ format information\" website?", "About the SFZ format", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Process.Start("http://drealm.info/sfz/plj-sfz.xhtml");
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
+
         private void SFList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
@@ -163,7 +180,7 @@ namespace KeppyMIDIConverter
             int pootis = 0;
             for (i = 0; i < s.Length; i++) 
             {
-                if (Path.GetFileNameWithoutExtension(s[i]).Contains("Z-Doc"))
+                if (Path.GetFileNameWithoutExtension(s[i]).Contains("Z-Doc") & Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
                 {
                     DialogResult dialogResult = MessageBox.Show("Z-Doc's soundfonts are currently unstable on BASSMIDI.\n\nAre you sure you want to add this one?\n" + Path.GetFileName(s[i]), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
@@ -172,7 +189,7 @@ namespace KeppyMIDIConverter
                     }
                     else if (dialogResult == DialogResult.No)
                     {
-                        //do something else
+                        
                     }
                 }
                 else if (Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
@@ -209,6 +226,7 @@ namespace KeppyMIDIConverter
                     if (SFList.Items.Count == 0)
                     {
                         Array.Clear(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0, KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts.Length);
+                        KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[] { null } ;
                     }
                     else
                     {
@@ -226,6 +244,20 @@ namespace KeppyMIDIConverter
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SFListCheck_Tick(object sender, EventArgs e)
+        {
+            if (SFList.Items.Count <= 1)
+            {
+                MvUp.Enabled = false;
+                MvDwn.Enabled = false;
+            }
+            else
+            {
+                MvUp.Enabled = true;
+                MvDwn.Enabled = true;
+            }
         }
     }
 }

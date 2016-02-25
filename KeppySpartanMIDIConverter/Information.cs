@@ -21,7 +21,8 @@ namespace KeppySpartanMIDIConverter
         private void Informations_Load(object sender, EventArgs e)
         {
             // Auto-update stuff
-            FileVersionInfo Converter = FileVersionInfo.GetVersionInfo("KeppyMIDIConverter.exe");
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            FileVersionInfo Converter = FileVersionInfo.GetVersionInfo(assembly.Location);
             ThisVersion.Text = "The current version of the converter, installed on your system, is: " + Converter.FileVersion.ToString();
             // STUFF
             if (IntPtr.Size == 8)

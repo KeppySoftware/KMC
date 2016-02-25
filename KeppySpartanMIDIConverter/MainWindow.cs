@@ -839,7 +839,7 @@ namespace KeppySpartanMIDIConverter
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
                     Globals.RenderingMode = false;
-                    MessageBox.Show(exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }
             catch (Exception exception2)
@@ -849,7 +849,7 @@ namespace KeppySpartanMIDIConverter
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
                 Globals.RenderingMode = false;
-                MessageBox.Show(exception2.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(exception2.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
         }
 
@@ -1323,29 +1323,52 @@ namespace KeppySpartanMIDIConverter
                         this.VoiceLimit.Maximum = 2000;
                         this.CurrentStatusText.Size = new Size(425, 60);
                     }
-                    else
+                    else if (Globals.RenderingMode == true)
                     {
+                        this.CurrentStatus.Style = ProgressBarStyle.Marquee;
+                        this.CurrentStatusText.Text = "Preparing for export.\nPlease wait...";
+                        this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
+                        this.CurrentStatus.MarqueeAnimationSpeed = 100;
+                        this.DefMenu.Enabled = false;
+                        this.loadingpic.Visible = true;
+                        this.importMIDIsToolStripMenuItem.Enabled = false;
+                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
+                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
+                        this.startRenderingWAVToolStripMenuItem.Enabled = false;
+                        this.startRenderingOGGToolStripMenuItem.Enabled = false;
+                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
+                        this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
+                        this.abortRenderingToolStripMenuItem.Enabled = true;
+                        this.labelRMS.Text = Globals.CurrentPeak;
+                        this.SettingsBox.Enabled = false;
+                        this.label3.Enabled = false;
+                        this.VolumeBar.Enabled = false;
+                        this.VoiceLimit.Maximum = 100000;
+                        this.CurrentStatusText.Size = new Size(425, 60);
+                    }
+                    else if (Globals.RenderingMode == false & Globals.PlaybackMode == false)
+                    {
+                        this.CurrentStatus.Style = ProgressBarStyle.Continuous;
+                        this.CurrentStatusText.Text = "Idle.\nSelect a MIDI, and load your soundfonts to start the conversion/playback!";
+                        this.UsedVoices.Text = "Voices: 0/" + Globals.LimitVoicesInt.ToString();
+                        this.DefMenu.Enabled = true;
+                        this.loadingpic.Visible = false;
+                        this.importMIDIsToolStripMenuItem.Enabled = true;
+                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = true;
+                        this.clearMIDIsListToolStripMenuItem.Enabled = true;
+                        this.startRenderingWAVToolStripMenuItem.Enabled = true;
+                        this.startRenderingOGGToolStripMenuItem.Enabled = true;
+                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = true;
+                        this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
+                        this.abortRenderingToolStripMenuItem.Enabled = false;
+                        this.labelRMS.Text = Globals.CurrentPeak;
                         this.SettingsBox.Enabled = true;
                         this.label3.Enabled = false;
                         this.VolumeBar.Enabled = false;
                         this.VoiceLimit.Maximum = 100000;
+                        this.CurrentStatusText.Size = new Size(488, 60);
                     }
-                    this.CurrentStatusText.Text = "Idle.\nAdd some MIDIs to start the conversion or the preview!";
-                    this.UsedVoices.Text = @"Voices: 0/" + Globals.LimitVoicesInt.ToString();
-                    this.CurrentStatus.Value = 0;
-                    this.CurrentStatus.Maximum = 0;
-                    this.DefMenu.Enabled = true;
-                    this.loadingpic.Visible = false;
-                    this.importMIDIsToolStripMenuItem.Enabled = true;
-                    this.removeSelectedMIDIsToolStripMenuItem.Enabled = true;
-                    this.clearMIDIsListToolStripMenuItem.Enabled = true;
-                    this.startRenderingWAVToolStripMenuItem.Enabled = true;
-                    this.startRenderingOGGToolStripMenuItem.Enabled = true;
-                    this.openTheSoundfontsManagerToolStripMenuItem.Enabled = true;
-                    this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
-                    this.abortRenderingToolStripMenuItem.Enabled = false;
-                    this.labelRMS.Text = Globals.CurrentPeak;
-                    this.CurrentStatusText.Size = new Size(488, 60);
+
                 }
                 else if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                 {
@@ -1374,7 +1397,7 @@ namespace KeppySpartanMIDIConverter
                             this.VoiceLimit.Maximum = 100000;
                         }
                         this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        this.CurrentStatusText.Text = "Preparing for export/preview.\nPlease wait...";
+                        this.CurrentStatusText.Text = "Starting BASS engine.\nPlease wait...";
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.DefMenu.Enabled = false;

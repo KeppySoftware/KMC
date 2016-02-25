@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoundfontDialog));
             this.button1 = new System.Windows.Forms.Button();
             this.SoundfontImportDialog = new System.Windows.Forms.OpenFileDialog();
@@ -38,6 +39,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.MvUp = new System.Windows.Forms.Button();
             this.MvDwn = new System.Windows.Forms.Button();
+            this.SFListCheck = new System.Windows.Forms.Timer(this.components);
+            this.SFZCompliant = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -129,11 +133,30 @@
             this.MvDwn.UseVisualStyleBackColor = true;
             this.MvDwn.Click += new System.EventHandler(this.MvDwn_Click);
             // 
+            // SFListCheck
+            // 
+            this.SFListCheck.Enabled = true;
+            this.SFListCheck.Interval = 1;
+            this.SFListCheck.Tick += new System.EventHandler(this.SFListCheck_Tick);
+            // 
+            // SFZCompliant
+            // 
+            this.SFZCompliant.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SFZCompliant.Image = global::KeppyMIDIConverter.Properties.Resources.sfzcomp;
+            this.SFZCompliant.Location = new System.Drawing.Point(523, 57);
+            this.SFZCompliant.Name = "SFZCompliant";
+            this.SFZCompliant.Size = new System.Drawing.Size(46, 37);
+            this.SFZCompliant.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SFZCompliant.TabIndex = 15;
+            this.SFZCompliant.TabStop = false;
+            this.SFZCompliant.Click += new System.EventHandler(this.SFZCompliant_Click);
+            // 
             // SoundfontDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 429);
+            this.Controls.Add(this.SFZCompliant);
             this.Controls.Add(this.MvDwn);
             this.Controls.Add(this.MvUp);
             this.Controls.Add(this.label2);
@@ -152,6 +175,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Soundfonts manager";
             this.Load += new System.EventHandler(this.SoundfontDialog_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +192,7 @@
         public System.Windows.Forms.ListBox SFList;
         private System.Windows.Forms.Button MvUp;
         private System.Windows.Forms.Button MvDwn;
+        private System.Windows.Forms.Timer SFListCheck;
+        private System.Windows.Forms.PictureBox SFZCompliant;
     }
 }

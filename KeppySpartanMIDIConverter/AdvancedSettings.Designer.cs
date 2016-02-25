@@ -84,6 +84,7 @@
             // EchoFXNum
             // 
             this.EchoFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EchoFXNum.Enabled = false;
             this.EchoFXNum.Location = new System.Drawing.Point(355, 55);
             this.EchoFXNum.Maximum = new decimal(new int[] {
             8,
@@ -103,6 +104,7 @@
             // EchoFX
             // 
             this.EchoFX.AutoSize = true;
+            this.EchoFX.Enabled = false;
             this.EchoFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.EchoFX.Location = new System.Drawing.Point(206, 55);
             this.EchoFX.Name = "EchoFX";
@@ -114,6 +116,7 @@
             // 
             // label1
             // 
+            this.label1.Enabled = false;
             this.label1.Location = new System.Drawing.Point(7, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(255, 69);
@@ -124,6 +127,7 @@
             // SittingFXNum
             // 
             this.SittingFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SittingFXNum.Enabled = false;
             this.SittingFXNum.Location = new System.Drawing.Point(355, 74);
             this.SittingFXNum.Maximum = new decimal(new int[] {
             8,
@@ -143,6 +147,7 @@
             // DistortionFXNum
             // 
             this.DistortionFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DistortionFXNum.Enabled = false;
             this.DistortionFXNum.Location = new System.Drawing.Point(355, 36);
             this.DistortionFXNum.Maximum = new decimal(new int[] {
             8,
@@ -162,6 +167,7 @@
             // GargleFXNum
             // 
             this.GargleFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.GargleFXNum.Enabled = false;
             this.GargleFXNum.Location = new System.Drawing.Point(355, 17);
             this.GargleFXNum.Maximum = new decimal(new int[] {
             8,
@@ -231,6 +237,7 @@
             // SittingFX
             // 
             this.SittingFX.AutoSize = true;
+            this.SittingFX.Enabled = false;
             this.SittingFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.SittingFX.Location = new System.Drawing.Point(206, 74);
             this.SittingFX.Name = "SittingFX";
@@ -243,6 +250,7 @@
             // DistortionFX
             // 
             this.DistortionFX.AutoSize = true;
+            this.DistortionFX.Enabled = false;
             this.DistortionFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.DistortionFX.Location = new System.Drawing.Point(206, 36);
             this.DistortionFX.Name = "DistortionFX";
@@ -255,6 +263,7 @@
             // CompressorFXNum
             // 
             this.CompressorFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CompressorFXNum.Enabled = false;
             this.CompressorFXNum.Location = new System.Drawing.Point(124, 74);
             this.CompressorFXNum.Maximum = new decimal(new int[] {
             8,
@@ -274,6 +283,7 @@
             // FlangerFXNum
             // 
             this.FlangerFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlangerFXNum.Enabled = false;
             this.FlangerFXNum.Location = new System.Drawing.Point(124, 55);
             this.FlangerFXNum.Maximum = new decimal(new int[] {
             8,
@@ -293,6 +303,7 @@
             // ChorusFXNum
             // 
             this.ChorusFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChorusFXNum.Enabled = false;
             this.ChorusFXNum.Location = new System.Drawing.Point(124, 36);
             this.ChorusFXNum.Maximum = new decimal(new int[] {
             8,
@@ -312,6 +323,7 @@
             // ReverbFXNum
             // 
             this.ReverbFXNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ReverbFXNum.Enabled = false;
             this.ReverbFXNum.Location = new System.Drawing.Point(124, 17);
             this.ReverbFXNum.Maximum = new decimal(new int[] {
             8,
@@ -331,6 +343,7 @@
             // CompressorFX
             // 
             this.CompressorFX.AutoSize = true;
+            this.CompressorFX.Enabled = false;
             this.CompressorFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CompressorFX.Location = new System.Drawing.Point(7, 74);
             this.CompressorFX.Name = "CompressorFX";
@@ -343,6 +356,7 @@
             // FlangerFX
             // 
             this.FlangerFX.AutoSize = true;
+            this.FlangerFX.Enabled = false;
             this.FlangerFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.FlangerFX.Location = new System.Drawing.Point(7, 55);
             this.FlangerFX.Name = "FlangerFX";
@@ -355,6 +369,7 @@
             // ChorusFX2
             // 
             this.ChorusFX2.AutoSize = true;
+            this.ChorusFX2.Enabled = false;
             this.ChorusFX2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ChorusFX2.Location = new System.Drawing.Point(7, 36);
             this.ChorusFX2.Name = "ChorusFX2";
@@ -367,6 +382,7 @@
             // GargleFX
             // 
             this.GargleFX.AutoSize = true;
+            this.GargleFX.Enabled = false;
             this.GargleFX.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.GargleFX.Location = new System.Drawing.Point(206, 17);
             this.GargleFX.Name = "GargleFX";
@@ -379,6 +395,7 @@
             // ReverbFX2
             // 
             this.ReverbFX2.AutoSize = true;
+            this.ReverbFX2.Enabled = false;
             this.ReverbFX2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ReverbFX2.Location = new System.Drawing.Point(7, 17);
             this.ReverbFX2.Name = "ReverbFX2";
