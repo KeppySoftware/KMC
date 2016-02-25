@@ -117,23 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Load up to 3 soundfonts at once. The first soundfont will override the second, which will override the third.
-
-If you want to use a specific piano preset of another soundfont, check "Load specific bank and preset", and assign "0" to both.
-
-The correct order is SF1 &gt; SF2 &gt; SF3, you can't load soundfonts on SF2 and SF3 without loading one in SF1.</value>
-  </data>
-  <metadata name="SoundfontImportDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="SoundfontImportDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="SoundfontImportDialog2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>205, 17</value>
-  </metadata>
-  <metadata name="SoundfontImportDialog3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>393, 17</value>
-  </metadata>
-  <metadata name="SFLoadCheck.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>581, 17</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Use up to 2.147.483.648 soundfonts at once, to convert your MIDIs.
+The last soundfont in the list will always override the previous ones.
+Check if the soundfonts are not corrupted, before adding them to the list, to avoid random crashes/glitches.
+
+
+The following formats are supported:</value>
+  </data>
 </root>

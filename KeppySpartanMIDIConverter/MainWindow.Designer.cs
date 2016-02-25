@@ -47,6 +47,7 @@
             this.DefMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addMIDIsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMIDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearMIDIsListToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +80,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.clearMIDIsListToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -268,7 +268,7 @@
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.Size = new System.Drawing.Size(198, 142);
+            this.DefMenu.Size = new System.Drawing.Size(198, 120);
             // 
             // addMIDIsToolStripMenuItem
             // 
@@ -283,6 +283,13 @@
             this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.removeMIDIToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeMIDIToolStripMenuItem.Click += new System.EventHandler(this.removeMIDIToolStripMenuItem_Click);
+            // 
+            // clearMIDIsListToolStripMenuItem1
+            // 
+            this.clearMIDIsListToolStripMenuItem1.Name = "clearMIDIsListToolStripMenuItem1";
+            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
+            this.clearMIDIsListToolStripMenuItem1.Text = "Clear MIDIs list";
+            this.clearMIDIsListToolStripMenuItem1.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
@@ -574,13 +581,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
-            // 
-            // clearMIDIsListToolStripMenuItem1
-            // 
-            this.clearMIDIsListToolStripMenuItem1.Name = "clearMIDIsListToolStripMenuItem1";
-            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
-            this.clearMIDIsListToolStripMenuItem1.Text = "Clear MIDIs list";
-            this.clearMIDIsListToolStripMenuItem1.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem1_Click);
             // 
             // MainWindow
             // 

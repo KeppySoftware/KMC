@@ -86,7 +86,7 @@ namespace KeppySpartanMIDIConverter
             public static string DisabledOr;
             public static string ExportWhereYay;
             public static string MIDILastDirectory;
-            public static string SFLastDirectory;
+            public static string[] Soundfonts = { null };
             public static string ExportLastDirectory;
             public static string MIDIName;
             public static string NewWindowName = null;
@@ -223,7 +223,6 @@ namespace KeppySpartanMIDIConverter
                                         Globals.QualityOverride = false;
                                     }
                                     Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder").ToString();
-                                    Globals.SFLastDirectory = Settings.GetValue("lastsffolder").ToString();
                                     Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder").ToString();
                                     Settings.Close();
                                     Effects.Close();
@@ -307,9 +306,9 @@ namespace KeppySpartanMIDIConverter
         {
             try
             {
-                if (Globals.SFName1 == null)
+                if (Globals.Soundfonts[0] == null)
                 {
-                    throw new Exception("No soundfont selected!");
+                    throw new Exception("Please select at least one soundfont.");
                 }
                 if (this.MIDIList.Items.Count == 0)
                 {
@@ -338,54 +337,16 @@ namespace KeppySpartanMIDIConverter
 							Globals.NewWindowName = "Keppy's MIDI Converter | Exporting \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
                             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
                             Globals._plm.CalcRMS = true;
-                            BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[3];
-                            // Test
-                            int preset1val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset1val;
-                            int preset2val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset2val;
-                            int preset3val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset3val;
-                            int bank1val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank1val;
-                            int bank2val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank2val;
-                            int bank3val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank3val;
-                            // Font 1
-                            fonts[0].font = font1;
-                            if (bank1val == -1 & preset1val == -1)
+                            BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[Globals.Soundfonts.Length];
+                            int sfnum = 0;
+                            foreach (string s in Globals.Soundfonts)
                             {
-                                fonts[0].preset = -1;
-                                fonts[0].bank = 0;
+                                fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
+                                fonts[sfnum].preset = -1;
+                                fonts[sfnum].bank = 0;
+                                BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, sfnum + 1);
+                                sfnum += 1;
                             }
-                            else
-                            {
-                                fonts[0].preset = preset1val;
-                                fonts[0].bank = bank1val;
-                            }
-                            // Font 2
-                            fonts[1].font = font2;
-                            if (bank2val == -1 & preset2val == -1)
-                            {
-                                fonts[1].preset = -1;
-                                fonts[1].bank = 0;
-                            }
-                            else
-                            {
-                                fonts[1].preset = preset2val;
-                                fonts[1].bank = bank2val;
-                            }
-                            // Font 3
-                            fonts[2].font = font3;
-                            if (bank3val == -1 & preset3val == -1)
-                            {
-                                fonts[2].preset = -1;
-                                fonts[2].bank = 0;
-                            }
-                            else
-                            {
-                                fonts[2].preset = preset3val;
-                                fonts[2].bank = bank3val;
-                            }
-                            // Load soundfonts
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 1);
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 2);
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 3);
                             BassMidi.BASS_MIDI_StreamLoadSamples(Globals._recHandle);
                             int num3 = 0;
                             if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg"))
@@ -477,10 +438,6 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         // NULL
                                     }
-                                    float FloatVolume = ((float)Globals.Volume) / 10000;
-                                    BassMidi.BASS_MIDI_FontSetVolume(font1, FloatVolume);
-                                    BassMidi.BASS_MIDI_FontSetVolume(font2, FloatVolume);
-                                    BassMidi.BASS_MIDI_FontSetVolume(font3, FloatVolume);
                                     int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
@@ -625,9 +582,10 @@ namespace KeppySpartanMIDIConverter
         {
             try
             {
-                if (Globals.SFName1 == null)
+                MessageBox.Show("1 passed");
+                if (Globals.Soundfonts[0] == null)
                 {
-                    throw new Exception("You need to assign a soundfont to ''Soundfont 1'' at least!");
+                    throw new Exception("Please select at least one soundfont.");
                 }
                 if (this.MIDIList.Items.Count == 0)
                 {
@@ -635,9 +593,6 @@ namespace KeppySpartanMIDIConverter
                 }
                 try
                 {
-                    int font1 = BassMidi.BASS_MIDI_FontInit(Globals.SFName1);
-                    int font2 = BassMidi.BASS_MIDI_FontInit(Globals.SFName2);
-                    int font3 = BassMidi.BASS_MIDI_FontInit(Globals.SFName3);
                     bool KeepLooping = true;
                     while (KeepLooping) 
                     {
@@ -656,54 +611,18 @@ namespace KeppySpartanMIDIConverter
                             Globals.NewWindowName = "Keppy's MIDI Converter | Exporting \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
                             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
                             Globals._plm.CalcRMS = true;
-                            BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[3];
-                            // Test
-                            int preset1val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset1val;
-                            int preset2val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset2val;
-                            int preset3val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset3val;
-                            int bank1val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank1val;
-                            int bank2val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank2val;
-                            int bank3val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank3val;
-                            // Font 1
-                            fonts[0].font = font1;
-                            if (bank1val == -1 & preset1val == -1)
+                            MessageBox.Show("2 passed");
+                            BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[Globals.Soundfonts.Length];
+                            int sfnum = 0;
+                            foreach (string s in Globals.Soundfonts)
                             {
-                                fonts[0].preset = -1;
-                                fonts[0].bank = 0;
+                                fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
+                                fonts[sfnum].preset = -1;
+                                fonts[sfnum].bank = 0;
+                                BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, sfnum + 1);
+                                sfnum += 1;
                             }
-                            else
-                            {
-                                fonts[0].preset = preset1val;
-                                fonts[0].bank = bank1val;
-                            }
-                            // Font 2
-                            fonts[1].font = font2;
-                            if (bank2val == -1 & preset2val == -1)
-                            {
-                                fonts[1].preset = -1;
-                                fonts[1].bank = 0;
-                            }
-                            else
-                            {
-                                fonts[1].preset = preset2val;
-                                fonts[1].bank = bank2val;
-                            }
-                            // Font 3
-                            fonts[2].font = font3;
-                            if (bank3val == -1 & preset3val == -1)
-                            {
-                                fonts[2].preset = -1;
-                                fonts[2].bank = 0;
-                            }
-                            else
-                            {
-                                fonts[2].preset = preset3val;
-                                fonts[2].bank = bank3val;
-                            }
-                            // Load soundfonts
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 1);
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 2);
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 3);
+                            MessageBox.Show("3 passed");
                             BassMidi.BASS_MIDI_StreamLoadSamples(Globals._recHandle);
                             int num3 = 0;
                             if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".wav"))
@@ -769,6 +688,7 @@ namespace KeppySpartanMIDIConverter
                             {
                                 Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_GARGLE, Globals.GargleAFXValue);
                             }
+                            MessageBox.Show("4 passed");
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
                                 if (Globals.CancellationPendingValue != 1)
@@ -781,10 +701,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         // NULL
                                     }
-                                    float FloatVolume = ((float)Globals.Volume) / 10000;
-                                    BassMidi.BASS_MIDI_FontSetVolume(font1, FloatVolume);
-                                    BassMidi.BASS_MIDI_FontSetVolume(font2, FloatVolume);
-                                    BassMidi.BASS_MIDI_FontSetVolume(font3, FloatVolume);
+                                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Globals.Volume);
                                     int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
@@ -848,7 +765,6 @@ namespace KeppySpartanMIDIConverter
                         {
                             BassEnc.BASS_Encode_Stop(Globals._Encoder);
                             Bass.BASS_StreamFree(Globals._recHandle);
-                            BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
                             Bass.BASS_Free();
                             Globals.CancellationPendingValue = 0;
                             Globals.ActiveVoicesInt = 0;
@@ -908,7 +824,7 @@ namespace KeppySpartanMIDIConverter
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
                     Globals.RenderingMode = false;
-                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }
             catch (Exception exception2)
@@ -919,7 +835,7 @@ namespace KeppySpartanMIDIConverter
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
                 Globals.RenderingMode = false;
-                MessageBox.Show(exception2.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(exception2.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
         }
 
@@ -927,9 +843,9 @@ namespace KeppySpartanMIDIConverter
         {
             try
             {
-                if (Globals.SFName1 == null)
+                if (Globals.Soundfonts[0] == null)
                 {
-                    throw new Exception("No soundfont selected.");
+                    throw new Exception("Please select at least one soundfont.");
                 }
                 if (this.MIDIList.Items.Count == 0)
                 {
@@ -960,54 +876,16 @@ namespace KeppySpartanMIDIConverter
                             Globals.NewWindowName = "Keppy's MIDI Converter | Playing \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
                             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
                             Globals._plm.CalcRMS = true;
-                            BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[3];
-                            // Test
-                            int preset1val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset1val;
-                            int preset2val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset2val;
-                            int preset3val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.preset3val;
-                            int bank1val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank1val;
-                            int bank2val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank2val;
-                            int bank3val = KeppyMIDIConverter.SoundfontDialog.BankPresetValue.bank3val;
-                            // Font 1
-                            fonts[0].font = font1;
-                            if (bank1val == -1 & preset1val == -1)
+                            BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[Globals.Soundfonts.Length];
+                            int sfnum = 0;
+                            foreach (string s in Globals.Soundfonts)
                             {
-                                fonts[0].preset = -1;
-                                fonts[0].bank = 0;
+                                fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
+                                fonts[sfnum].preset = -1;
+                                fonts[sfnum].bank = 0;
+                                BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, sfnum + 1);
+                                sfnum += 1;
                             }
-                            else
-                            {
-                                fonts[0].preset = preset1val;
-                                fonts[0].bank = bank1val;
-                            }
-                            // Font 2
-                            fonts[1].font = font2;
-                            if (bank2val == -1 & preset2val == -1)
-                            {
-                                fonts[1].preset = -1;
-                                fonts[1].bank = 0;
-                            }
-                            else
-                            {
-                                fonts[1].preset = preset2val;
-                                fonts[1].bank = bank2val;
-                            }
-                            // Font 3
-                            fonts[2].font = font3;
-                            if (bank3val == -1 & preset3val == -1)
-                            {
-                                fonts[2].preset = -1;
-                                fonts[2].bank = 0;
-                            }
-                            else
-                            {
-                                fonts[2].preset = preset3val;
-                                fonts[2].bank = bank3val;
-                            }
-                            // Load soundfonts
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 1);
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 2);
-                            BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, 3);
                             BassMidi.BASS_MIDI_StreamLoadSamples(Globals._recHandle);
                             if (Globals.FXDisabled)
                             {
@@ -1166,10 +1044,9 @@ namespace KeppySpartanMIDIConverter
                 {
                     BassEnc.BASS_Encode_Stop(Globals._Encoder);
                     Bass.BASS_StreamFree(Globals._recHandle);
-                    BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
-                    MessageBox.Show(exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Globals.PlaybackMode = false;
                 }
             }
@@ -1180,7 +1057,7 @@ namespace KeppySpartanMIDIConverter
                 BassMidi.BASS_MIDI_FontFree(Globals.SoundFont);
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
-                MessageBox.Show(exception2.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(exception2.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 Globals.PlaybackMode = false;
             }
         }
