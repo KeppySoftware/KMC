@@ -112,6 +112,50 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private void MvUp_Click(object sender, EventArgs e)
+        {
+            if (SFList.SelectedItems.Count > 0)
+            {
+                object selected = SFList.SelectedItem;
+                int indx = SFList.Items.IndexOf(selected);
+                int totl = SFList.Items.Count;
+                if (indx == 0)
+                {
+                    SFList.Items.Remove(selected);
+                    SFList.Items.Insert(totl - 1, selected);
+                    SFList.SetSelected(totl - 1, true);
+                }
+                else
+                {
+                    SFList.Items.Remove(selected);
+                    SFList.Items.Insert(indx - 1, selected);
+                    SFList.SetSelected(indx - 1, true);
+                }
+            }
+        }
+
+        private void MvDwn_Click(object sender, EventArgs e)
+        {
+            if (SFList.SelectedItems.Count > 0)
+            {
+                object selected = SFList.SelectedItem;
+                int indx = SFList.Items.IndexOf(selected);
+                int totl = SFList.Items.Count;
+                if (indx == totl - 1)
+                {
+                    SFList.Items.Remove(selected);
+                    SFList.Items.Insert(0, selected);
+                    SFList.SetSelected(0, true);
+                }
+                else
+                {
+                    SFList.Items.Remove(selected);
+                    SFList.Items.Insert(indx + 1, selected);
+                    SFList.SetSelected(indx + 1, true);
+                }
+            }
+        }
+
         private void SFList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);

@@ -191,7 +191,7 @@
             this.InfoPg.Padding = new System.Windows.Forms.Padding(3);
             this.InfoPg.Size = new System.Drawing.Size(537, 278);
             this.InfoPg.TabIndex = 0;
-            this.InfoPg.Text = "Informations";
+            this.InfoPg.Text = "Information";
             this.InfoPg.UseVisualStyleBackColor = true;
             // 
             // UpdtPg
@@ -272,7 +272,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Informations";
+            this.Text = "Information";
             this.Load += new System.EventHandler(this.Informations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);

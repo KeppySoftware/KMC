@@ -132,7 +132,7 @@
             // 
             this.informationsToolStripMenuItem.Name = "informationsToolStripMenuItem";
             this.informationsToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
-            this.informationsToolStripMenuItem.Text = "Informations about the program";
+            this.informationsToolStripMenuItem.Text = "Information about the program";
             this.informationsToolStripMenuItem.Click += new System.EventHandler(this.informationsToolStripMenuItem_Click);
             // 
             // makeADonationToSupportTheDeveloperToolStripMenuItem
@@ -268,45 +268,45 @@
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.Size = new System.Drawing.Size(198, 120);
+            this.DefMenu.Size = new System.Drawing.Size(188, 120);
             // 
             // addMIDIsToolStripMenuItem
             // 
             this.addMIDIsToolStripMenuItem.Name = "addMIDIsToolStripMenuItem";
-            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.addMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.addMIDIsToolStripMenuItem.Click += new System.EventHandler(this.addMIDIsToolStripMenuItem_Click);
             // 
             // removeMIDIToolStripMenuItem
             // 
             this.removeMIDIToolStripMenuItem.Name = "removeMIDIToolStripMenuItem";
-            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.removeMIDIToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeMIDIToolStripMenuItem.Click += new System.EventHandler(this.removeMIDIToolStripMenuItem_Click);
             // 
             // clearMIDIsListToolStripMenuItem1
             // 
             this.clearMIDIsListToolStripMenuItem1.Name = "clearMIDIsListToolStripMenuItem1";
-            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
+            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(187, 22);
             this.clearMIDIsListToolStripMenuItem1.Text = "Clear MIDIs list";
             this.clearMIDIsListToolStripMenuItem1.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(194, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
             // 
             // moveUpToolStripMenuItem
             // 
             this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.moveUpToolStripMenuItem.Text = "Move up (One item)";
             this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // moveDownToolStripMenuItem
             // 
             this.moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.moveDownToolStripMenuItem.Text = "Move down (One item)";
             this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
             // 
@@ -446,7 +446,7 @@
             // 
             this.startRenderingOGGToolStripMenuItem.Name = "startRenderingOGGToolStripMenuItem";
             this.startRenderingOGGToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.startRenderingOGGToolStripMenuItem.Text = "Render files to Opus (.OGG)";
+            this.startRenderingOGGToolStripMenuItem.Text = "Render files to Vorbis (.OGG)";
             this.startRenderingOGGToolStripMenuItem.Click += new System.EventHandler(this.startRenderingOGGToolStripMenuItem_Click);
             // 
             // playInRealtimeBetaToolStripMenuItem

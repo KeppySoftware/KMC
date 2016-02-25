@@ -36,6 +36,8 @@
             this.RemoveBtn = new System.Windows.Forms.Button();
             this.SFList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.MvUp = new System.Windows.Forms.Button();
+            this.MvDwn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -50,7 +52,7 @@
             // 
             // SoundfontImportDialog
             // 
-            this.SoundfontImportDialog.Filter = "Soundfont files|*.sf2;*.sfz;";
+            this.SoundfontImportDialog.Filter = "Soundfont files|*.sf2;*.sfz;*.sf3;*.sfpack;";
             this.SoundfontImportDialog.Multiselect = true;
             this.SoundfontImportDialog.ShowReadOnly = true;
             // 
@@ -107,11 +109,33 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "SF2, SF3 (No full support), SFZ, SFPACK";
             // 
+            // MvUp
+            // 
+            this.MvUp.Location = new System.Drawing.Point(283, 395);
+            this.MvUp.Name = "MvUp";
+            this.MvUp.Size = new System.Drawing.Size(88, 23);
+            this.MvUp.TabIndex = 13;
+            this.MvUp.Text = "Move Up ▲";
+            this.MvUp.UseVisualStyleBackColor = true;
+            this.MvUp.Click += new System.EventHandler(this.MvUp_Click);
+            // 
+            // MvDwn
+            // 
+            this.MvDwn.Location = new System.Drawing.Point(377, 395);
+            this.MvDwn.Name = "MvDwn";
+            this.MvDwn.Size = new System.Drawing.Size(88, 23);
+            this.MvDwn.TabIndex = 14;
+            this.MvDwn.Text = "Move Down ▼";
+            this.MvDwn.UseVisualStyleBackColor = true;
+            this.MvDwn.Click += new System.EventHandler(this.MvDwn_Click);
+            // 
             // SoundfontDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 429);
+            this.Controls.Add(this.MvDwn);
+            this.Controls.Add(this.MvUp);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.SFList);
             this.Controls.Add(this.RemoveBtn);
@@ -142,5 +166,7 @@
         private System.Windows.Forms.Button RemoveBtn;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.ListBox SFList;
+        private System.Windows.Forms.Button MvUp;
+        private System.Windows.Forms.Button MvDwn;
     }
 }

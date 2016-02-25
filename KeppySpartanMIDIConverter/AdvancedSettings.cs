@@ -445,5 +445,23 @@ namespace KeppySpartanMIDIConverter
                 BitrateBox.Enabled = false;
             }
         }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+
+            if (checkBox3.Checked == true)
+            {
+                Settings.SetValue("disabledx8", "1", Microsoft.Win32.RegistryValueKind.DWord);
+                label3.Enabled = true;
+                BitrateBox.Enabled = true;
+            }
+            else
+            {
+                Settings.SetValue("disabledx8", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                label3.Enabled = false;
+                BitrateBox.Enabled = false;
+            }
+        }
     }
 }

@@ -113,11 +113,11 @@
     <Compile Include="AdvancedSettings.Designer.cs">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Informations.cs">
+    <Compile Include="Information.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Informations.Designer.cs">
-      <DependentUpon>Informations.cs</DependentUpon>
+    <Compile Include="Information.Designer.cs">
+      <DependentUpon>Information.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -141,8 +141,8 @@
     <EmbeddedResource Include="AdvancedSettings.resx">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Informations.resx">
-      <DependentUpon>Informations.cs</DependentUpon>
+    <EmbeddedResource Include="Information.resx">
+      <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
