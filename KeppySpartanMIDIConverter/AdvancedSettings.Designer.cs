@@ -30,6 +30,7 @@
             this.DistortionFXNum = new System.Windows.Forms.NumericUpDown();
             this.GargleFXNum = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SittingFX = new System.Windows.Forms.CheckBox();
             this.DistortionFX = new System.Windows.Forms.CheckBox();
@@ -56,7 +57,6 @@
             this.Noteoff1 = new System.Windows.Forms.CheckBox();
             this.Guide = new System.Windows.Forms.ToolTip(this.components);
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.EchoFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SittingFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DistortionFXNum)).BeginInit();
@@ -205,6 +205,18 @@
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Audio effects";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.CheckAlign = System.Drawing.ContentAlignment.TopRight;
+            this.checkBox4.Location = new System.Drawing.Point(244, 153);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(143, 17);
+            this.checkBox4.TabIndex = 52;
+            this.checkBox4.Text = "Enable the audio effects";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // label7
             // 
@@ -594,18 +606,6 @@
             this.checkBox2.Text = "Enable tooltip guide";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.CheckAlign = System.Drawing.ContentAlignment.TopRight;
-            this.checkBox4.Location = new System.Drawing.Point(245, 154);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(143, 17);
-            this.checkBox4.TabIndex = 52;
-            this.checkBox4.Text = "Enable the audio effects";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // AdvancedSettings
             // 

@@ -149,6 +149,14 @@ namespace KeppySpartanMIDIConverter
             {
                 checkBox3.Checked = false;
             }
+            if (Convert.ToInt32(Settings.GetValue("disabledx8")) == 1)
+            {
+                checkBox4.Checked = false;
+            }
+            else
+            {
+                checkBox4.Checked = true;
+            }
             //
             Effects.Close();
             Settings.Close();
@@ -449,18 +457,49 @@ namespace KeppySpartanMIDIConverter
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-
-            if (checkBox3.Checked == true)
+            if (checkBox4.Checked == true)
             {
-                Settings.SetValue("disabledx8", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                label3.Enabled = true;
-                BitrateBox.Enabled = true;
+                Settings.SetValue("disabledx8", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                label1.Enabled = true;
+                label7.Enabled = true;
+                ReverbFX2.Enabled = true;
+                ChorusFX2.Enabled = true;
+                FlangerFX.Enabled = true;
+                CompressorFX.Enabled = true;
+                GargleFX.Enabled = true;
+                DistortionFX.Enabled = true;
+                EchoFX.Enabled = true;
+                SittingFX.Enabled = true;
+                ReverbFXNum.Enabled = true;
+                ChorusFXNum.Enabled = true;
+                FlangerFXNum.Enabled = true;
+                CompressorFXNum.Enabled = true;
+                GargleFXNum.Enabled = true;
+                DistortionFXNum.Enabled = true;
+                EchoFXNum.Enabled = true;
+                SittingFXNum.Enabled = true;
             }
             else
             {
-                Settings.SetValue("disabledx8", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                label3.Enabled = false;
-                BitrateBox.Enabled = false;
+                Settings.SetValue("disabledx8", "1", Microsoft.Win32.RegistryValueKind.DWord);
+                label1.Enabled = false;
+                label7.Enabled = false;
+                ReverbFX2.Enabled = false;
+                ChorusFX2.Enabled = false;
+                FlangerFX.Enabled = false;
+                CompressorFX.Enabled = false;
+                GargleFX.Enabled = false;
+                DistortionFX.Enabled = false;
+                EchoFX.Enabled = false;
+                SittingFX.Enabled = false;
+                ReverbFXNum.Enabled = false;
+                ChorusFXNum.Enabled = false;
+                FlangerFXNum.Enabled = false;
+                CompressorFXNum.Enabled = false;
+                GargleFXNum.Enabled = false;
+                DistortionFXNum.Enabled = false;
+                EchoFXNum.Enabled = false;
+                SittingFXNum.Enabled = false;
             }
         }
     }
