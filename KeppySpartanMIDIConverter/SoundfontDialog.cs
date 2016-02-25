@@ -80,10 +80,20 @@ namespace KeppyMIDIConverter
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         SFList.Items.Add(file);
                     }
+                    else if (Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
+                    {
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (Path.GetExtension(file) == ".exe" | Path.GetExtension(file) == ".EXE" | Path.GetExtension(file) == ".dll" | Path.GetExtension(file) == ".DLL")
+                    {
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     else
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
@@ -195,6 +205,14 @@ namespace KeppyMIDIConverter
                 else if (Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
                 {
                     SFList.Items.Add(s[i]);
+                }
+                else if (Path.GetExtension(s[i]) == ".dls" | Path.GetExtension(s[i]) == ".DLS")
+                {
+                    MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (Path.GetExtension(s[i]) == ".exe" | Path.GetExtension(s[i]) == ".EXE" | Path.GetExtension(s[i]) == ".dll" | Path.GetExtension(s[i]) == ".DLL")
+                {
+                    MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

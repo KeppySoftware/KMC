@@ -92,10 +92,8 @@ namespace KeppySpartanMIDIConverter
             public static string NewWindowName = null;
             public static string WAVName;
 
-            // Soundfont system
-            public static string SFName1;
-            public static string SFName2;
-            public static string SFName3;
+            // Other
+            public static string ExecutablePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -522,7 +520,7 @@ namespace KeppySpartanMIDIConverter
                             }
                             else
                             {
-                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer(Globals.ExecutablePath + @"\convfin.wav");
                                 simpleSound.Play();
                             }
                         }
@@ -552,7 +550,7 @@ namespace KeppySpartanMIDIConverter
                                 }
                                 else
                                 {
-                                    System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                                    System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer(Globals.ExecutablePath + @"\convfin.wav");
                                     simpleSound.Play();
                                 }
                             }
@@ -795,7 +793,7 @@ namespace KeppySpartanMIDIConverter
                             }
                             else
                             {
-                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer(Globals.ExecutablePath + @"\convfin.wav");
                                 simpleSound.Play();
                             } 
                         }
@@ -825,7 +823,7 @@ namespace KeppySpartanMIDIConverter
                                 }
                                 else
                                 {
-                                    System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                                    System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer(Globals.ExecutablePath + @"\convfin.wav");
                                     simpleSound.Play();
                                 }
                             }
@@ -1021,7 +1019,7 @@ namespace KeppySpartanMIDIConverter
                             }
                             else
                             {
-                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer(Globals.ExecutablePath + @"\convfin.wav");
                                 simpleSound.Play();
                             }     
                         }
@@ -1042,7 +1040,7 @@ namespace KeppySpartanMIDIConverter
                             }
                             else
                             {
-                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer("convfin.wav");
+                                System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer(Globals.ExecutablePath + @"\convfin.wav");
                                 simpleSound.Play();
                             }
                         }
