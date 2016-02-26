@@ -19,6 +19,21 @@ namespace KeppyMIDIConverter
             InitializeComponent();
         }
 
+        public static string getBetween(string strSource, string strStart, string strEnd)
+        {
+            int Start, End;
+            if (strSource.Contains(strStart) && strSource.Contains(strEnd))
+            {
+                Start = strSource.IndexOf(strStart, 0) + strStart.Length;
+                End = strSource.IndexOf(strEnd, Start);
+                return strSource.Substring(Start, End - Start);
+            }
+            else
+            {
+                return "";
+            }
+        }
+
         private void SoundfontDialog_Load(object sender, EventArgs e)
         {
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
@@ -63,9 +78,19 @@ namespace KeppyMIDIConverter
             {
                 foreach (String file in SoundfontImportDialog.FileNames)
                 {
-                    if (Path.GetFileNameWithoutExtension(file).Contains("Z-Doc") == true & Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    // Z-Doc's check
+                    var input = file;
+                    var searchTerm = "Z-Doc";
+                    var pattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(searchTerm) + @"\b";
+                    var result = System.Text.RegularExpressions.Regex.IsMatch(input, pattern);
+                    // sDetrimental's check
+                    var input2 = file;
+                    var searchTerm2 = "sDetrimental";
+                    var pattern2 = @"\b" + System.Text.RegularExpressions.Regex.Escape(searchTerm2) + @"\b";
+                    var result2 = System.Text.RegularExpressions.Regex.IsMatch(input2, pattern2);
+                    if (result == true && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {
-                        DialogResult dialogResult = MessageBox.Show("Z-Doc's soundfonts are currently unstable on BASSMIDI.\n\nAre you sure you want to add this one?\n" + Path.GetFileName(file), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult dialogResult = MessageBox.Show("Most Z-Doc's soundfonts are not designed to be used on BASSMIDI.\nAre you sure you want to add it?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(file), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes)
                         {
                             SFList.Items.Add(file);
@@ -75,17 +100,21 @@ namespace KeppyMIDIConverter
 
                         }
                     }
-                    else if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    else if (result2 == true && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    {
+                        DialogResult dialogResult = MessageBox.Show("You are not allowed to use sDetrimental with the converter.\n\nH8R8TU9L8U0W17VXS5C62YTTTOFL9Z0RTTV6P9KE", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (result == false && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         SFList.Items.Add(file);
                     }
-                    else if (Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
+                    else if (result == false && Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (Path.GetExtension(file) == ".exe" | Path.GetExtension(file) == ".EXE" | Path.GetExtension(file) == ".dll" | Path.GetExtension(file) == ".DLL")
+                    else if (result == false && Path.GetExtension(file) == ".exe" | Path.GetExtension(file) == ".EXE" | Path.GetExtension(file) == ".dll" | Path.GetExtension(file) == ".DLL")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -190,34 +219,48 @@ namespace KeppyMIDIConverter
             int pootis = 0;
             for (i = 0; i < s.Length; i++) 
             {
-                if (Path.GetFileNameWithoutExtension(s[i]).Contains("Z-Doc") & Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
-                {
-                    DialogResult dialogResult = MessageBox.Show("Z-Doc's soundfonts are currently unstable on BASSMIDI.\n\nAre you sure you want to add this one?\n" + Path.GetFileName(s[i]), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dialogResult == DialogResult.Yes)
+                    // Z-Doc's check
+                    var input = s[i];
+                    var searchTerm = "Z-Doc";
+                    var pattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(searchTerm) + @"\b";
+                    var result = System.Text.RegularExpressions.Regex.IsMatch(input, pattern);
+                    // sDetrimental's check
+                    var input2 = s[i];
+                    var searchTerm2 = "sDetrimental";
+                    var pattern2 = @"\b" + System.Text.RegularExpressions.Regex.Escape(searchTerm2) + @"\b";
+                    var result2 = System.Text.RegularExpressions.Regex.IsMatch(input2, pattern2);
+                    if (result == true && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Most Z-Doc's soundfonts are not designed to be used on BASSMIDI.\nAre you sure you want to add it?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(s[i]), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            SFList.Items.Add(s[i]);
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
+
+                        }
+                    }
+                    else if (result2 == true && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
+                    {
+                        DialogResult dialogResult = MessageBox.Show("You are not allowed to use sDetrimental with the converter.\n\nH8R8TU9L8U0W17VXS5C62YTTTOFL9Z0RTTV6P9KE", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (result == false && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
                     {
                         SFList.Items.Add(s[i]);
                     }
-                    else if (dialogResult == DialogResult.No)
+                    else if (result == false && Path.GetExtension(s[i]) == ".dls" | Path.GetExtension(s[i]) == ".DLS")
                     {
-                        
+                        MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                else if (Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
-                {
-                    SFList.Items.Add(s[i]);
-                }
-                else if (Path.GetExtension(s[i]) == ".dls" | Path.GetExtension(s[i]) == ".DLS")
-                {
-                    MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (Path.GetExtension(s[i]) == ".exe" | Path.GetExtension(s[i]) == ".EXE" | Path.GetExtension(s[i]) == ".dll" | Path.GetExtension(s[i]) == ".DLL")
-                {
-                    MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show(Path.GetFileName(s[i]) + " is not a valid soundfont file!\n\nPlease drop a valid soundfont file inside the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    else if (result == false && Path.GetExtension(s[i]) == ".exe" | Path.GetExtension(s[i]) == ".EXE" | Path.GetExtension(s[i]) == ".dll" | Path.GetExtension(s[i]) == ".DLL")
+                    {
+                        MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
             KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
             SFList.Items.CopyTo(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0);
