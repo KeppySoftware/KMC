@@ -117,23 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="donatebtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\donatebtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mainlogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mainlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="convbusy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\convbusy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="updatebk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\updatebk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sfzcomp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sfzcomp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="heart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\heart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Gingeas: For testing ALL my programs during their development.
+AudioTestsNReviews: For giving me bug reports and ideas for my projects.
+Geoseff Ritona (Geodude): For supporting me by using my stuff on his PC.
+The entire Black MIDI Team: For supporting me and reporting bugs about my programs.
+Thien Vu (Lighteater12): For supporting me and for using my projects like everyday.
+Ian Luck (Un4seen founder): For allowing me to use his awesome BASS library. It's a great piece of software.
+radio42 (BASS.NET founder): For giving me the ability of using BASS on C# projects.</value>
   </data>
 </root>

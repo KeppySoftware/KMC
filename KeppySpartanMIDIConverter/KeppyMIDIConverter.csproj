@@ -138,6 +138,12 @@
     <Compile Include="SoundfontDialog.Designer.cs">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThanksTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThanksTo.Designer.cs">
+      <DependentUpon>ThanksTo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdvancedSettings.resx">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SoundfontDialog.resx">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThanksTo.resx">
+      <DependentUpon>ThanksTo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
@@ -176,6 +185,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\heart.png" />
+    <None Include="Resources\donatebtn.png" />
     <None Include="Resources\sfzcomp.png" />
     <None Include="Resources\updatebk.png" />
   </ItemGroup>

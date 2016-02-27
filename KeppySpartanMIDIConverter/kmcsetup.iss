@@ -1,7 +1,7 @@
 [Setup]
 AllowCancelDuringInstall=False
 AlwaysShowDirOnReadyPage=True
-AppComments=MIDI to WAV converter
+AppComments=MIDI to WAV/OGG converter
 AppContact=Mail: kaleidonkep99@outlook.com
 AppCopyright=Copyright(C) Keppy Studios 2013-2016
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
@@ -11,7 +11,7 @@ AppPublisherURL=http://kaleidonkep99.altervista.org
 AppSupportPhone=+393511888475
 AppSupportURL=http://kaleidonkep99.altervista.org/contacts.html
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=10.0.9  
+AppVersion=10.0.10  
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -32,10 +32,10 @@ UninstallDisplayName=Keppy's MIDI Converter (Remove only)
 UninstallDisplaySize=2799697
 VersionInfoCompany=Keppy Studios
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
-VersionInfoDescription=MIDI to WAV converter, for everyone!
+VersionInfoDescription=MIDI to WAV/OGG converter, for everyone!
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=10.0.9
-VersionInfoVersion=10.0.9
+VersionInfoProductVersion=10.0.10
+VersionInfoVersion=10.0.10
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 

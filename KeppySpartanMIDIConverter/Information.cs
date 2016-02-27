@@ -24,6 +24,11 @@ namespace KeppySpartanMIDIConverter
             public static string ExecutablePath = KeppySpartanMIDIConverter.MainWindow.Globals.ExecutablePath;
         }
 
+        public partial class OtherStuff
+        {
+            public static KeppyMIDIConverter.ThanksTo frm = new KeppyMIDIConverter.ThanksTo();
+        }
+
         private void Informations_Load(object sender, EventArgs e)
         {
             try
@@ -135,6 +140,16 @@ namespace KeppySpartanMIDIConverter
                 LatestVersion.Text = "Can not check for updates! You're offline, or maybe the website is temporarily down.";
                 MessageBox.Show("Can not check for updates!\n\nSpecific .NET error:\n" + ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q2V5AUKED5R8S");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OtherStuff.frm.ShowDialog();
         }
     }
 }

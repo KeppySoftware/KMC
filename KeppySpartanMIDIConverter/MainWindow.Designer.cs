@@ -131,26 +131,26 @@
             // informationsToolStripMenuItem
             // 
             this.informationsToolStripMenuItem.Name = "informationsToolStripMenuItem";
-            this.informationsToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
+            this.informationsToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.informationsToolStripMenuItem.Text = "Information about the program";
             this.informationsToolStripMenuItem.Click += new System.EventHandler(this.informationsToolStripMenuItem_Click);
             // 
             // makeADonationToSupportTheDeveloperToolStripMenuItem
             // 
             this.makeADonationToSupportTheDeveloperToolStripMenuItem.Name = "makeADonationToSupportTheDeveloperToolStripMenuItem";
-            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
-            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Text = "Make a donation to support the developer";
+            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.makeADonationToSupportTheDeveloperToolStripMenuItem.Text = "Support the developer with a donation";
             this.makeADonationToSupportTheDeveloperToolStripMenuItem.Click += new System.EventHandler(this.makeADonationToSupportTheDeveloperToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(273, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(256, 6);
             // 
             // keppyStudiosWebsiteToolStripMenuItem
             // 
             this.keppyStudiosWebsiteToolStripMenuItem.Name = "keppyStudiosWebsiteToolStripMenuItem";
-            this.keppyStudiosWebsiteToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
+            this.keppyStudiosWebsiteToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.keppyStudiosWebsiteToolStripMenuItem.Text = "Keppy Studios Website";
             this.keppyStudiosWebsiteToolStripMenuItem.Click += new System.EventHandler(this.keppyStudiosWebsiteToolStripMenuItem_Click);
             // 
@@ -164,7 +164,7 @@
             this.toolStripSeparator7,
             this.wikipediasPageToolStripMenuItem});
             this.blackMIDIStuffToolStripMenuItem.Name = "blackMIDIStuffToolStripMenuItem";
-            this.blackMIDIStuffToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
+            this.blackMIDIStuffToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.blackMIDIStuffToolStripMenuItem.Text = "Black MIDI stuff";
             // 
             // kaleidonKep99sYouTubeChannelToolStripMenuItem
@@ -268,45 +268,45 @@
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.Size = new System.Drawing.Size(188, 120);
+            this.DefMenu.Size = new System.Drawing.Size(198, 120);
             // 
             // addMIDIsToolStripMenuItem
             // 
             this.addMIDIsToolStripMenuItem.Name = "addMIDIsToolStripMenuItem";
-            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.addMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.addMIDIsToolStripMenuItem.Click += new System.EventHandler(this.addMIDIsToolStripMenuItem_Click);
             // 
             // removeMIDIToolStripMenuItem
             // 
             this.removeMIDIToolStripMenuItem.Name = "removeMIDIToolStripMenuItem";
-            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.removeMIDIToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeMIDIToolStripMenuItem.Click += new System.EventHandler(this.removeMIDIToolStripMenuItem_Click);
             // 
             // clearMIDIsListToolStripMenuItem1
             // 
             this.clearMIDIsListToolStripMenuItem1.Name = "clearMIDIsListToolStripMenuItem1";
-            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(187, 22);
+            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
             this.clearMIDIsListToolStripMenuItem1.Text = "Clear MIDIs list";
             this.clearMIDIsListToolStripMenuItem1.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(194, 6);
             // 
             // moveUpToolStripMenuItem
             // 
             this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.moveUpToolStripMenuItem.Text = "Move up (One item)";
             this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // moveDownToolStripMenuItem
             // 
             this.moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.moveDownToolStripMenuItem.Text = "Move down (One item)";
             this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
             // 
