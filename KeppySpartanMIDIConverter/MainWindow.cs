@@ -1485,6 +1485,11 @@ namespace KeppySpartanMIDIConverter
                 ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
                 this.ConverterWAV.RunWorkerAsync();
             }
+            else
+            {
+                Globals.RenderingMode = false;
+                this.loadingpic.Visible = false;
+            }
         }
 
         private void startRenderingOGGToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1503,6 +1508,11 @@ namespace KeppySpartanMIDIConverter
                 Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
                 ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
                 this.ConverterOGG.RunWorkerAsync();
+            }
+            else
+            {
+                Globals.RenderingMode = false;
+                this.loadingpic.Visible = false;
             }
         }
 
