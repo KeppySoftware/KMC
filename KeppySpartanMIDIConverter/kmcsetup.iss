@@ -34,8 +34,8 @@ VersionInfoCompany=Keppy Studios
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoDescription=MIDI to WAV/OGG converter, for everyone!
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=10.0.11
-VersionInfoVersion=10.0.11
+VersionInfoProductVersion=10.0.12
+VersionInfoVersion=10.0.12
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 

@@ -124,7 +124,7 @@ namespace KeppySpartanMIDIConverter
                                     Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq"));
                                     Globals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate"));
                                     // BOOLEANSSSSSSSSS
-                                    if (Effects.GetValue("reverb") == "1")
+                                    if (Convert.ToInt32(Effects.GetValue("reverb")) == 1)
                                     {
                                         Globals.ReverbAFX = true;
                                     }
@@ -132,7 +132,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.ReverbAFX = false;
                                     }
-                                    if (Effects.GetValue("chorus") == "1")
+                                    if (Convert.ToInt32(Effects.GetValue("chorus")) == 1)
                                     {
                                         Globals.ChorusAFX = true;
                                     }
@@ -140,7 +140,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.ChorusAFX = false;
                                     }
-                                    if (Effects.GetValue("flanger") == "1")
+                                    if (Convert.ToInt32(Effects.GetValue("flanger")) == 1)
                                     {
                                         Globals.FlangerAFX = true;
                                     }
@@ -148,7 +148,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.FlangerAFX = false;
                                     }
-                                    if (Effects.GetValue("compressor") == "1")
+                                    if (Convert.ToInt32(Effects.GetValue("compressor")) == 1)
                                     {
                                         Globals.CompressorAFX = true;
                                     }
@@ -156,7 +156,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.CompressorAFX = false;
                                     }
-                                    if (Effects.GetValue("gargle") == "1")
+                                    if (Convert.ToInt32(Effects.GetValue("gargle")) == 1)
                                     {
                                         Globals.GargleAFX = true;
                                     }
@@ -164,7 +164,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.GargleAFX = false;
                                     }
-                                    if (Effects.GetValue("distortion") == "1")
+                                    if (Convert.ToInt32(Effects.GetValue("distortion")) == 1)
                                     {
                                         Globals.DistortionAFX = true;
                                     }
@@ -172,7 +172,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.DistortionAFX = false;
                                     }
-                                    if (Effects.GetValue("echo") == "1")
+                                    if (Convert.ToInt32(Effects.GetValue("echo")) == 1)
                                     {
                                         Globals.EchoAFX = true;
                                     }
@@ -180,7 +180,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.EchoAFX = false;
                                     }
-                                    if (Effects.GetValue("sittingroom") == "1")
+                                    if (Convert.ToInt32(Effects.GetValue("sittingroom")) == 1)
                                     {
                                         Globals.SittingAFX = true;
                                     }
@@ -188,15 +188,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.SittingAFX = false;
                                     }
-                                    if (Effects.GetValue("sittingroom") == "1")
-                                    {
-                                        Globals.SittingAFX = true;
-                                    }
-                                    else
-                                    {
-                                        Globals.SittingAFX = false;
-                                    }
-                                    if (Settings.GetValue("noteoff1") == "1")
+                                    if (Convert.ToInt32(Settings.GetValue("noteoff1")) == 1)
                                     {
                                         Globals.NoteOff1Event = true;
                                     }
@@ -204,7 +196,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.NoteOff1Event = false;
                                     }
-                                    if (Settings.GetValue("disablefx") == "1")
+                                    if (Convert.ToInt32(Settings.GetValue("disablefx")) == 1)
                                     {
                                         Globals.FXDisabled = true;
                                     }
@@ -212,7 +204,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.FXDisabled = false;
                                     }
-                                    if (Settings.GetValue("overrideogg") == "1")
+                                    if (Convert.ToInt32(Settings.GetValue("overrideogg")) == 1)
                                     {
                                         Globals.QualityOverride = true;
                                     }
