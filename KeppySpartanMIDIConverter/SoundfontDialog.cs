@@ -17,6 +17,7 @@ namespace KeppyMIDIConverter
         public SoundfontDialog()
         {
             InitializeComponent();
+            Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
         }
 
         public static string getBetween(string strSource, string strStart, string strEnd)

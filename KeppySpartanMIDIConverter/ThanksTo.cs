@@ -14,6 +14,7 @@ namespace KeppyMIDIConverter
         public ThanksTo()
         {
             InitializeComponent();
+            Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
         }
 
         private void button1_Click(object sender, EventArgs e)
