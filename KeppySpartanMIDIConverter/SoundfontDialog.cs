@@ -254,7 +254,15 @@ namespace KeppyMIDIConverter
                     }
                     else if (result2 == true && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
                     {
-                        DialogResult dialogResult = MessageBox.Show("You are not allowed to use sDetrimental with the converter.\n\nH8R8TU9L8U0W17VXS5C62YTTTOFL9Z0RTTV6P9KE", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult dialogResult = MessageBox.Show("How did you get that soundfont? Wasn't it private?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(s[i]), "Keppy's MIDI Converter - sDetrimental?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            SFList.Items.Add(s[i]);
+                        }
+                        else if (dialogResult == DialogResult.Cancel)
+                        {
+
+                        }
                     }
                     else if (result == false && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
                     {
