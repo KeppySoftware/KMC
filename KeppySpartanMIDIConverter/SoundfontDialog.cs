@@ -94,6 +94,7 @@ namespace KeppyMIDIConverter
                         DialogResult dialogResult = MessageBox.Show("Most Z-Doc's soundfonts are not designed to be used on BASSMIDI.\nAre you sure you want to add it?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(file), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes)
                         {
+                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                             SFList.Items.Add(file);
                         }
                         else if (dialogResult == DialogResult.No)
@@ -103,7 +104,16 @@ namespace KeppyMIDIConverter
                     }
                     else if (result2 == true && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {
-                        DialogResult dialogResult = MessageBox.Show("You are not allowed to use sDetrimental with the converter.\n\nH8R8TU9L8U0W17VXS5C62YTTTOFL9Z0RTTV6P9KE", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult dialogResult = MessageBox.Show("How did you get that soundfont? Wasn't it private?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(file), "Keppy's MIDI Converter - sDetrimental?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                            SFList.Items.Add(file);
+                        }
+                        else if (dialogResult == DialogResult.Cancel)
+                        {
+
+                        }
                     }
                     else if (result == false && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {

@@ -1339,7 +1339,9 @@ namespace KeppySpartanMIDIConverter
                     }
                     else if (Globals.RenderingMode == false & Globals.PlaybackMode == false)
                     {
-                        this.CurrentStatus.Style = ProgressBarStyle.Continuous;
+                        this.CurrentStatus.Style = ProgressBarStyle.Blocks;
+                        this.CurrentStatus.Maximum = 999;
+                        this.CurrentStatus.Value = 0;
                         this.CurrentStatusText.Text = "Idle.\nSelect a MIDI, and load your soundfonts to start the conversion/playback!";
                         this.UsedVoices.Text = "Voices: 0/" + Globals.LimitVoicesInt.ToString();
                         this.DefMenu.Enabled = true;
