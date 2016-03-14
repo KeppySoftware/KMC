@@ -79,53 +79,39 @@ namespace KeppyMIDIConverter
             {
                 foreach (String file in SoundfontImportDialog.FileNames)
                 {
-                    // Z-Doc's check
-                    var input = file;
-                    var searchTerm = "Z-Doc";
-                    var pattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(searchTerm) + @"\b";
-                    var result = System.Text.RegularExpressions.Regex.IsMatch(input, pattern);
-                    // sDetrimental's check
-                    var input2 = file;
-                    var searchTerm2 = "sDetrimental";
-                    var pattern2 = @"\b" + System.Text.RegularExpressions.Regex.Escape(searchTerm2) + @"\b";
-                    var result2 = System.Text.RegularExpressions.Regex.IsMatch(input2, pattern2);
-                    if (result == true && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    // Frozen's soundfont ban
+                    var FrozenInput = file;
+                    var FrozenTerm = "frozen";
+                    var FrozenPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(FrozenTerm) + @"\b";
+                    var FrozenResult = System.Text.RegularExpressions.Regex.IsMatch(FrozenInput, FrozenPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                    // sDetrimental's soundfont ban
+                    var sDetrimentalInput = file;
+                    var sDetrimentalTerm = "sdetrimental";
+                    var sDetrimentalPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(sDetrimentalTerm) + @"\b";
+                    var sDetrimentalResult = System.Text.RegularExpressions.Regex.IsMatch(sDetrimentalInput, sDetrimentalPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                    if (FrozenResult == true && sDetrimentalResult == false)
                     {
-                        DialogResult dialogResult = MessageBox.Show("Most Z-Doc's soundfonts are not designed to be used on BASSMIDI.\nAre you sure you want to add it?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(file), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                            SFList.Items.Add(file);
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-
-                        }
+                        MessageBox.Show(Path.GetFileName(file) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (result2 == true && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    else if (FrozenResult == false && sDetrimentalResult == true)
                     {
-                        DialogResult dialogResult = MessageBox.Show("How did you get that soundfont? Wasn't it private?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(file), "Keppy's MIDI Converter - sDetrimental?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.OK)
-                        {
-                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                            SFList.Items.Add(file);
-                        }
-                        else if (dialogResult == DialogResult.Cancel)
-                        {
-
-                        }
+                        MessageBox.Show(Path.GetFileName(file) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (result == false && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    else if (FrozenResult == true && sDetrimentalResult == true)
+                    {
+                        MessageBox.Show(Path.GetFileName(file) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (FrozenResult == false && sDetrimentalResult == false && Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         SFList.Items.Add(file);
                     }
-                    else if (result == false && Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
+                    else if (FrozenResult == false && sDetrimentalResult == false && Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (result == false && Path.GetExtension(file) == ".exe" | Path.GetExtension(file) == ".EXE" | Path.GetExtension(file) == ".dll" | Path.GetExtension(file) == ".DLL")
+                    else if (FrozenResult == false && sDetrimentalResult == false && Path.GetExtension(file) == ".exe" | Path.GetExtension(file) == ".EXE" | Path.GetExtension(file) == ".dll" | Path.GetExtension(file) == ".DLL")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -230,56 +216,44 @@ namespace KeppyMIDIConverter
             int pootis = 0;
             for (i = 0; i < s.Length; i++) 
             {
-                    // Z-Doc's check
-                    var input = s[i];
-                    var searchTerm = "Z-Doc";
-                    var pattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(searchTerm) + @"\b";
-                    var result = System.Text.RegularExpressions.Regex.IsMatch(input, pattern);
-                    // sDetrimental's check
-                    var input2 = s[i];
-                    var searchTerm2 = "sDetrimental";
-                    var pattern2 = @"\b" + System.Text.RegularExpressions.Regex.Escape(searchTerm2) + @"\b";
-                    var result2 = System.Text.RegularExpressions.Regex.IsMatch(input2, pattern2);
-                    if (result == true && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
-                    {
-                        DialogResult dialogResult = MessageBox.Show("Most Z-Doc's soundfonts are not designed to be used on BASSMIDI.\nAre you sure you want to add it?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(s[i]), "Keppy's MIDI Converter - Z-Doc's soundfonts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            SFList.Items.Add(s[i]);
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-
-                        }
-                    }
-                    else if (result2 == true && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
-                    {
-                        DialogResult dialogResult = MessageBox.Show("How did you get that soundfont? Wasn't it private?\n\nSoundfont name: " + Path.GetFileNameWithoutExtension(s[i]), "Keppy's MIDI Converter - sDetrimental?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.OK)
-                        {
-                            SFList.Items.Add(s[i]);
-                        }
-                        else if (dialogResult == DialogResult.Cancel)
-                        {
-
-                        }
-                    }
-                    else if (result == false && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
-                    {
-                        SFList.Items.Add(s[i]);
-                    }
-                    else if (result == false && Path.GetExtension(s[i]) == ".dls" | Path.GetExtension(s[i]) == ".DLS")
-                    {
-                        MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (result == false && Path.GetExtension(s[i]) == ".exe" | Path.GetExtension(s[i]) == ".EXE" | Path.GetExtension(s[i]) == ".dll" | Path.GetExtension(s[i]) == ".DLL")
-                    {
-                        MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                // Frozen's soundfont ban
+                var FrozenInput = s[i];
+                var FrozenTerm = "frozen";
+                var FrozenPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(FrozenTerm) + @"\b";
+                var FrozenResult = System.Text.RegularExpressions.Regex.IsMatch(FrozenInput, FrozenPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                // sDetrimental's soundfont ban
+                var sDetrimentalInput = s[i];
+                var sDetrimentalTerm = "sdetrimental";
+                var sDetrimentalPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(sDetrimentalTerm) + @"\b";
+                var sDetrimentalResult = System.Text.RegularExpressions.Regex.IsMatch(sDetrimentalInput, sDetrimentalPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                if (FrozenResult == true && sDetrimentalResult == false)
+                {
+                    MessageBox.Show(Path.GetFileName(s[i]) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (FrozenResult == false && sDetrimentalResult == true)
+                {
+                    MessageBox.Show(Path.GetFileName(s[i]) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (FrozenResult == true && sDetrimentalResult == true)
+                {
+                    MessageBox.Show(Path.GetFileName(s[i]) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (FrozenResult == false && sDetrimentalResult == false && Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
+                {
+                    SFList.Items.Add(s[i]);
+                }
+                else if (FrozenResult == false && sDetrimentalResult == false && Path.GetExtension(s[i]) == ".dls" | Path.GetExtension(s[i]) == ".DLS")
+                {
+                    MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (FrozenResult == false && sDetrimentalResult == false && Path.GetExtension(s[i]) == ".exe" | Path.GetExtension(s[i]) == ".EXE" | Path.GetExtension(s[i]) == ".dll" | Path.GetExtension(s[i]) == ".DLL")
+                {
+                    MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
             SFList.Items.CopyTo(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0);
