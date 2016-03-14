@@ -30,21 +30,46 @@ namespace KeppySpartanMIDIConverter
                 //Find out is the current argument is a file path/name
                 if (File.Exists(s))
                 {
+                    // Frozen's soundfont ban
+                    var FrozenInput = s;
+                    var FrozenTerm = "frozen";
+                    var FrozenPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(FrozenTerm) + @"\b";
+                    var FrozenResult = System.Text.RegularExpressions.Regex.IsMatch(FrozenInput, FrozenPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                    // sDetrimental's soundfont ban
+                    var sDetrimentalInput = s;
+                    var sDetrimentalTerm = "sdetrimental";
+                    var sDetrimentalPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(sDetrimentalTerm) + @"\b";
+                    var sDetrimentalResult = System.Text.RegularExpressions.Regex.IsMatch(sDetrimentalInput, sDetrimentalPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                     //Find out it the current file is a MIDI
-                    if (s.EndsWith(".mid") || s.EndsWith(".midi") || s.EndsWith(".rmi"))
+                    if (s.EndsWith(".mid") | s.EndsWith(".midi") | s.EndsWith(".kar") | s.EndsWith(".rmi") | s.EndsWith(".MID") | s.EndsWith(".MIDI") | s.EndsWith(".KAR") | s.EndsWith(".RMI"))
                     {
                         //Add MIDI to midi list
                         this.MIDIList.Items.Add(s);
                     }
                     //If the file isnt a MIDI, check if its a soundfont
-                    if(s.EndsWith(".sf2") || s.EndsWith(".sf3") || s.EndsWith(".sfpack") || s.EndsWith(".sfz"))
+                    if (s.EndsWith(".sf2") | s.EndsWith(".sf3") | s.EndsWith(".sfpack") | s.EndsWith(".sfz") | s.EndsWith(".SF2") | s.EndsWith(".SF3") | s.EndsWith(".SFPACK") | s.EndsWith(".SFZ"))
                     {
-                        //There are soundfonts beeing added to the application so create the list
-                        if(soundfonts == null)
+                        if (FrozenResult == true && sDetrimentalResult == false)
                         {
-                            soundfonts = new List<String>();
+                            // Do nothing
                         }
-                        soundfonts.Add(s);
+                        else if (FrozenResult == false && sDetrimentalResult == true)
+                        {
+                            // Do nothing
+                        }
+                        else if (FrozenResult == true && sDetrimentalResult == true)
+                        {
+                            // Do nothing
+                        }
+                        else if (FrozenResult == false && sDetrimentalResult == false)
+                        {
+                            //There are soundfonts beeing added to the application so create the list
+                            if (soundfonts == null)
+                            {
+                                soundfonts = new List<String>();
+                            }
+                            soundfonts.Add(s);
+                        }
                     }
                 }
             }
