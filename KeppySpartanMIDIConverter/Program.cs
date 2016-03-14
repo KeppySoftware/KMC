@@ -11,7 +11,8 @@ namespace KeppySpartanMIDIConverter
         /// Punto di ingresso principale dell'applicazione.
         /// </summary>
         [STAThread]
-        static void Main()
+        //Take in arguments
+        static void Main(String[] args)
         {
             bool ok;
             Mutex m = new Mutex(true, "KepMIDIConv", out ok);
@@ -22,7 +23,8 @@ namespace KeppySpartanMIDIConverter
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            //Pass arguments to Main Windows
+            Application.Run(new MainWindow(args));
             GC.KeepAlive(m);
         }
     }

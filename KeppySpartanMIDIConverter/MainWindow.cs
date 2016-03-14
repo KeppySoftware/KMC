@@ -12,15 +12,53 @@ using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Enc;
 using Un4seen.BassWasapi;
 using Un4seen.Bass.AddOn.Midi;
+using System.Collections.Generic;
 
 namespace KeppySpartanMIDIConverter
 {
     public partial class MainWindow : Form
     {
-        public MainWindow()
+        public MainWindow(String[] args)
         {          
             InitializeComponent();
             Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
+            //To store all the soundfonts that where opened with the application
+            List<String> soundfonts = null;
+            //Parse through arguments
+            foreach (String s in args)
+            {
+                //Find out is the current argument is a file path/name
+                if (File.Exists(s))
+                {
+                    //Find out it the current file is a MIDI
+                    if (s.EndsWith(".mid") || s.EndsWith(".midi") || s.EndsWith(".rmi"))
+                    {
+                        //Add MIDI to midi list
+                        this.MIDIList.Items.Add(s);
+                    }
+                    //If the file isnt a MIDI, check if its a soundfont
+                    if(s.EndsWith(".sf2") || s.EndsWith(".sf3") || s.EndsWith(".sfpack") || s.EndsWith(".sfz"))
+                    {
+                        //There are soundfonts beeing added to the application so create the list
+                        if(soundfonts == null)
+                        {
+                            soundfonts = new List<String>();
+                        }
+                        soundfonts.Add(s);
+                    }
+                }
+            }
+            //Check if there are soundfonts
+            if(soundfonts != null)
+            {
+                //
+                Globals.Soundfonts = new string[soundfonts.Count];
+                soundfonts.CopyTo(Globals.Soundfonts, 0);
+                foreach(String s in soundfonts)
+                {
+                    Globals.frm2.SFList.Items.Add(s);
+                }
+            }
         }
 
         public static class Globals
@@ -1591,5 +1629,6 @@ namespace KeppySpartanMIDIConverter
             MessageBox.Show("Fatal error on the execution of the converter!\n\nPress OK to close the program.", "Keppy's MIDI Converter - Fatal error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Application.Exit();
         }
+
     }
 }
