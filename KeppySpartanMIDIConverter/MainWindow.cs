@@ -30,11 +30,6 @@ namespace KeppySpartanMIDIConverter
                 //Find out is the current argument is a file path/name
                 if (File.Exists(s))
                 {
-                    // Frozen's soundfont ban
-                    var FrozenInput = s;
-                    var FrozenTerm = "frozen";
-                    var FrozenPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(FrozenTerm) + @"\b";
-                    var FrozenResult = System.Text.RegularExpressions.Regex.IsMatch(FrozenInput, FrozenPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                     // sDetrimental's soundfont ban
                     var sDetrimentalInput = s;
                     var sDetrimentalTerm = "sdetrimental";
@@ -49,19 +44,11 @@ namespace KeppySpartanMIDIConverter
                     //If the file isnt a MIDI, check if its a soundfont
                     if (s.EndsWith(".sf2") | s.EndsWith(".sf3") | s.EndsWith(".sfpack") | s.EndsWith(".sfz") | s.EndsWith(".SF2") | s.EndsWith(".SF3") | s.EndsWith(".SFPACK") | s.EndsWith(".SFZ"))
                     {
-                        if (FrozenResult == true && sDetrimentalResult == false)
+                        if (sDetrimentalResult == true)
                         {
                             // Do nothing
                         }
-                        else if (FrozenResult == false && sDetrimentalResult == true)
-                        {
-                            // Do nothing
-                        }
-                        else if (FrozenResult == true && sDetrimentalResult == true)
-                        {
-                            // Do nothing
-                        }
-                        else if (FrozenResult == false && sDetrimentalResult == false)
+                        else if (sDetrimentalResult == false)
                         {
                             //There are soundfonts beeing added to the application so create the list
                             if (soundfonts == null)

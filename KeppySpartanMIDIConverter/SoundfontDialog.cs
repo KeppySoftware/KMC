@@ -219,11 +219,6 @@ namespace KeppyMIDIConverter
             int pootis = 0;
             for (i = 0; i < s.Length; i++) 
             {
-                // Frozen's soundfont ban
-                var FrozenInput = s[i];
-                var FrozenTerm = "frozen";
-                var FrozenPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(FrozenTerm) + @"\b";
-                var FrozenResult = System.Text.RegularExpressions.Regex.IsMatch(FrozenInput, FrozenPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                 // sDetrimental's soundfont ban
                 var sDetrimentalInput = s[i];
                 var sDetrimentalTerm = "sdetrimental";
@@ -231,19 +226,11 @@ namespace KeppyMIDIConverter
                 var sDetrimentalResult = System.Text.RegularExpressions.Regex.IsMatch(sDetrimentalInput, sDetrimentalPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                 if (Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
                 {
-                    if (FrozenResult == true && sDetrimentalResult == false)
+                    if (sDetrimentalResult == true)
                     {
                         MessageBox.Show(Path.GetFileName(s[i]) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (FrozenResult == false && sDetrimentalResult == true)
-                    {
-                        MessageBox.Show(Path.GetFileName(s[i]) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (FrozenResult == true && sDetrimentalResult == true)
-                    {
-                        MessageBox.Show(Path.GetFileName(s[i]) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (FrozenResult == false && sDetrimentalResult == false)
+                    else if (sDetrimentalResult == false)
                     {
                         SFList.Items.Add(s[i]);
                     }
