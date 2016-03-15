@@ -79,11 +79,6 @@ namespace KeppyMIDIConverter
             {
                 foreach (String file in SoundfontImportDialog.FileNames)
                 {
-                    // Frozen's soundfont ban
-                    var FrozenInput = file;
-                    var FrozenTerm = "frozen";
-                    var FrozenPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(FrozenTerm) + @"\b";
-                    var FrozenResult = System.Text.RegularExpressions.Regex.IsMatch(FrozenInput, FrozenPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                     // sDetrimental's soundfont ban
                     var sDetrimentalInput = file;
                     var sDetrimentalTerm = "sdetrimental";
@@ -91,19 +86,11 @@ namespace KeppyMIDIConverter
                     var sDetrimentalResult = System.Text.RegularExpressions.Regex.IsMatch(sDetrimentalInput, sDetrimentalPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                     if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {
-                        if (FrozenResult == true && sDetrimentalResult == false)
+                        if (sDetrimentalResult == true)
                         {
                             MessageBox.Show(Path.GetFileName(file) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else if (FrozenResult == false && sDetrimentalResult == true)
-                        {
-                            MessageBox.Show(Path.GetFileName(file) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else if (FrozenResult == true && sDetrimentalResult == true)
-                        {
-                            MessageBox.Show(Path.GetFileName(file) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else if (FrozenResult == false && sDetrimentalResult == false)
+                        else if (sDetrimentalResult == false)
                         {
                             Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                             SFList.Items.Add(file);
