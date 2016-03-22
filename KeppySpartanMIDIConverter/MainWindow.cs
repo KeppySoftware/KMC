@@ -152,7 +152,8 @@ namespace KeppySpartanMIDIConverter
                 BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
                 if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 0)
                 {
-                    MessageBox.Show("The converter requires Windows XP or newer to run.\nWindows 2000 and older are NOT supported.\n\nPress OK to quit.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows 2000 is not supported", "The converter requires Windows XP or newer to run.\nWindows 2000 and older are NOT supported.\n\nPress OK to quit.", 1);
+                    errordialog.ShowDialog();
                     this.Hide();
                     Application.ExitThread();
                 }
@@ -271,6 +272,8 @@ namespace KeppySpartanMIDIConverter
                                 catch (Exception exception)
                                 {
                                     MessageBox.Show(exception.ToString(), "Fatal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error", exception.ToString(), 1);
+                                    errordialog.ShowDialog();
                                     Settings.Close();
                                     Effects.Close();
                                 }
@@ -306,7 +309,8 @@ namespace KeppySpartanMIDIConverter
                     }
                     catch (Exception exception2)
                     {
-                        MessageBox.Show("Error!", exception2.InnerException.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0);
+                        errordialog.ShowDialog();
                     }
                     Globals.AutoShutDownEnabled = false;
             }
@@ -607,7 +611,8 @@ namespace KeppySpartanMIDIConverter
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
                     Globals.RenderingMode = false;
-                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                    errordialog.ShowDialog();
                 }
             }
             catch (Exception exception2)
@@ -617,7 +622,8 @@ namespace KeppySpartanMIDIConverter
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
                 Globals.RenderingMode = false;
-                MessageBox.Show(exception2.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0);
+                errordialog.ShowDialog();
             }
             
         }
@@ -880,7 +886,8 @@ namespace KeppySpartanMIDIConverter
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
                     Globals.RenderingMode = false;
-                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                    errordialog.ShowDialog();
                 }
             }
             catch (Exception exception2)
@@ -890,7 +897,8 @@ namespace KeppySpartanMIDIConverter
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
                 Globals.RenderingMode = false;
-                MessageBox.Show(exception2.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0);
+                errordialog.ShowDialog();
             }
         }
 
@@ -1095,7 +1103,8 @@ namespace KeppySpartanMIDIConverter
                     Bass.BASS_StreamFree(Globals._recHandle);
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
-                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                    errordialog.ShowDialog();
                     Globals.PlaybackMode = false;
                 }
             }
@@ -1105,7 +1114,8 @@ namespace KeppySpartanMIDIConverter
                 Bass.BASS_StreamFree(Globals._recHandle);
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
-                MessageBox.Show(exception2.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0);
+                errordialog.ShowDialog();
                 Globals.PlaybackMode = false;
             }
         }
@@ -1123,7 +1133,7 @@ namespace KeppySpartanMIDIConverter
         {
             if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
             {
-                DialogResult dialogResult = MessageBox.Show("The converter is still exporting MIDIs!\n\nAre you sure you want to exit?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult dialogResult = MessageBox.Show("The converter is still exporting/playing MIDIs!\n\nAre you sure you want to exit?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Process.GetCurrentProcess().Kill();
@@ -1581,7 +1591,8 @@ namespace KeppySpartanMIDIConverter
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                errordialog.ShowDialog();
             }
         }
 
@@ -1597,7 +1608,8 @@ namespace KeppySpartanMIDIConverter
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                errordialog.ShowDialog();
             }
         }
 
@@ -1638,7 +1650,8 @@ namespace KeppySpartanMIDIConverter
         private void forceCloseTheApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            MessageBox.Show("Fatal error on the execution of the converter!\n\nPress OK to close the program.", "Keppy's MIDI Converter - Fatal error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error!", "Fatal error on the execution of the converter!\n\nPress OK to close the program.", 1);
+            errordialog.ShowDialog();
             Application.Exit();
         }
 
