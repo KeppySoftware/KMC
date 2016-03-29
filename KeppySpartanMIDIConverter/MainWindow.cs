@@ -79,6 +79,7 @@ namespace KeppySpartanMIDIConverter
             public static KeppyMIDIConverter.SoundfontDialog frm2 = new KeppyMIDIConverter.SoundfontDialog();
             public static Un4seen.Bass.Misc.DSP_PeakLevelMeter _plm;
             public static bool AutoShutDownEnabled = false;
+            public static bool AutoClearMIDIListEnabled = false;
             public static bool ChorusAFX = false;
             public static bool CompressorAFX = false;
             public static bool DistortionAFX = false;
@@ -313,6 +314,7 @@ namespace KeppySpartanMIDIConverter
                         errordialog.ShowDialog();
                     }
                     Globals.AutoShutDownEnabled = false;
+                    Globals.AutoClearMIDIListEnabled = false;
             }
         }
 
@@ -589,6 +591,13 @@ namespace KeppySpartanMIDIConverter
                                 psi.UseShellExecute = false;
                                 Process.Start(psi);
                             }
+                            if(Globals.AutoClearMIDIListEnabled == true)
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    MIDIList.Items.Clear();
+                                });
+                            }
                             else
                             {
                                 if (Environment.OSVersion.Version.Major == 5)
@@ -863,6 +872,13 @@ namespace KeppySpartanMIDIConverter
                                 psi.CreateNoWindow = true;
                                 psi.UseShellExecute = false;
                                 Process.Start(psi);
+                            }
+                            if (Globals.AutoClearMIDIListEnabled == true)
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    MIDIList.Items.Clear();
+                                });
                             }
                             else
                             {
@@ -1337,6 +1353,11 @@ namespace KeppySpartanMIDIConverter
                 Globals.AutoShutDownEnabled = false;
                 disabledToolStripMenuItem.Checked = true;
             }
+            if (!Globals.AutoClearMIDIListEnabled)
+            {
+                Globals.AutoClearMIDIListEnabled = false;
+                disabledToolStripMenuItem1.Checked = true;
+            }
             try
             {
                 if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_STOPPED)
@@ -1635,6 +1656,20 @@ namespace KeppySpartanMIDIConverter
             enabledToolStripMenuItem.Checked = false;
             disabledToolStripMenuItem.Checked = true;
             Globals.AutoShutDownEnabled = false;
+        }
+
+        private void enabledToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            enabledToolStripMenuItem1.Checked = true;
+            disabledToolStripMenuItem1.Checked = false;
+            Globals.AutoClearMIDIListEnabled = true;
+        }
+
+        private void disabledToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            enabledToolStripMenuItem1.Checked = false;
+            disabledToolStripMenuItem1.Checked = true;
+            Globals.AutoClearMIDIListEnabled = false;
         }
 
         private void makeADonationToSupportTheDeveloperToolStripMenuItem_Click(object sender, EventArgs e)
