@@ -79,22 +79,10 @@ namespace KeppyMIDIConverter
             {
                 foreach (String file in SoundfontImportDialog.FileNames)
                 {
-                    // sDetrimental's soundfont ban
-                    var sDetrimentalInput = file;
-                    var sDetrimentalTerm = "sdetrimental";
-                    var sDetrimentalPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(sDetrimentalTerm) + @"\b";
-                    var sDetrimentalResult = System.Text.RegularExpressions.Regex.IsMatch(sDetrimentalInput, sDetrimentalPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                     if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {
-                        if (sDetrimentalResult == true)
-                        {
-                            MessageBox.Show(Path.GetFileName(file) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else if (sDetrimentalResult == false)
-                        {
-                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                            SFList.Items.Add(file);
-                        }  
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        SFList.Items.Add(file);
                     }
                     else if (Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
                     {
@@ -206,21 +194,9 @@ namespace KeppyMIDIConverter
             int pootis = 0;
             for (i = 0; i < s.Length; i++) 
             {
-                // sDetrimental's soundfont ban
-                var sDetrimentalInput = s[i];
-                var sDetrimentalTerm = "sdetrimental";
-                var sDetrimentalPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(sDetrimentalTerm) + @"\b";
-                var sDetrimentalResult = System.Text.RegularExpressions.Regex.IsMatch(sDetrimentalInput, sDetrimentalPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                 if (Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
                 {
-                    if (sDetrimentalResult == true)
-                    {
-                        MessageBox.Show(Path.GetFileName(s[i]) + " is banned.", "Banned soundfont", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (sDetrimentalResult == false)
-                    {
-                        SFList.Items.Add(s[i]);
-                    }
+                    SFList.Items.Add(s[i]);
                 }
                 else if (Path.GetExtension(s[i]) == ".dls" | Path.GetExtension(s[i]) == ".DLS")
                 {

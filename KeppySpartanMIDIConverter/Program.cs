@@ -13,7 +13,7 @@ namespace KeppySpartanMIDIConverter
         [STAThread]
         //Take in arguments
         static void Main(String[] args)
-        {
+        {  
             bool ok;
             Mutex m = new Mutex(true, "KepMIDIConv", out ok);
             if (!ok)

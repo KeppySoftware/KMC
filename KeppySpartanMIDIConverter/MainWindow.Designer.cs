@@ -69,6 +69,9 @@
             this.autoShutdownAfterRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearMIDIListAfterRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enabledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.disabledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
@@ -268,45 +271,45 @@
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.Size = new System.Drawing.Size(198, 120);
+            this.DefMenu.Size = new System.Drawing.Size(188, 120);
             // 
             // addMIDIsToolStripMenuItem
             // 
             this.addMIDIsToolStripMenuItem.Name = "addMIDIsToolStripMenuItem";
-            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.addMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.addMIDIsToolStripMenuItem.Click += new System.EventHandler(this.addMIDIsToolStripMenuItem_Click);
             // 
             // removeMIDIToolStripMenuItem
             // 
             this.removeMIDIToolStripMenuItem.Name = "removeMIDIToolStripMenuItem";
-            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.removeMIDIToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeMIDIToolStripMenuItem.Click += new System.EventHandler(this.removeMIDIToolStripMenuItem_Click);
             // 
             // clearMIDIsListToolStripMenuItem1
             // 
             this.clearMIDIsListToolStripMenuItem1.Name = "clearMIDIsListToolStripMenuItem1";
-            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
+            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(187, 22);
             this.clearMIDIsListToolStripMenuItem1.Text = "Clear MIDIs list";
             this.clearMIDIsListToolStripMenuItem1.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(194, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
             // 
             // moveUpToolStripMenuItem
             // 
             this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.moveUpToolStripMenuItem.Text = "Move up (One item)";
             this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // moveDownToolStripMenuItem
             // 
             this.moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.moveDownToolStripMenuItem.Text = "Move down (One item)";
             this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
             // 
@@ -460,6 +463,7 @@
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.autoShutdownAfterRenderingToolStripMenuItem,
+            this.clearMIDIListAfterRenderingToolStripMenuItem,
             this.forceCloseTheApplicationToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
@@ -487,6 +491,29 @@
             this.disabledToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.disabledToolStripMenuItem.Text = "Disabled";
             this.disabledToolStripMenuItem.Click += new System.EventHandler(this.disabledToolStripMenuItem_Click);
+            // 
+            // clearMIDIListAfterRenderingToolStripMenuItem
+            // 
+            this.clearMIDIListAfterRenderingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enabledToolStripMenuItem1,
+            this.disabledToolStripMenuItem1});
+            this.clearMIDIListAfterRenderingToolStripMenuItem.Name = "clearMIDIListAfterRenderingToolStripMenuItem";
+            this.clearMIDIListAfterRenderingToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.clearMIDIListAfterRenderingToolStripMenuItem.Text = "Clear MIDIs list after rendering";
+            // 
+            // enabledToolStripMenuItem1
+            // 
+            this.enabledToolStripMenuItem1.Name = "enabledToolStripMenuItem1";
+            this.enabledToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.enabledToolStripMenuItem1.Text = "Enabled";
+            this.enabledToolStripMenuItem1.Click += new System.EventHandler(this.enabledToolStripMenuItem1_Click);
+            // 
+            // disabledToolStripMenuItem1
+            // 
+            this.disabledToolStripMenuItem1.Name = "disabledToolStripMenuItem1";
+            this.disabledToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.disabledToolStripMenuItem1.Text = "Disabled";
+            this.disabledToolStripMenuItem1.Click += new System.EventHandler(this.disabledToolStripMenuItem1_Click);
             // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
@@ -601,6 +628,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainWindow";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keppy\'s MIDI Converter";
             this.Load += new System.EventHandler(this.MainWindow_Load);
@@ -678,6 +706,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem forceCloseTheApplicationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearMIDIsListToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem clearMIDIListAfterRenderingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem1;
     }
 }
 

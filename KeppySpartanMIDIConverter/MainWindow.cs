@@ -13,6 +13,7 @@ using Un4seen.Bass.AddOn.Enc;
 using Un4seen.BassWasapi;
 using Un4seen.Bass.AddOn.Midi;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace KeppySpartanMIDIConverter
 {
@@ -30,11 +31,6 @@ namespace KeppySpartanMIDIConverter
                 //Find out is the current argument is a file path/name
                 if (File.Exists(s))
                 {
-                    // sDetrimental's soundfont ban
-                    var sDetrimentalInput = s;
-                    var sDetrimentalTerm = "sdetrimental";
-                    var sDetrimentalPattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(sDetrimentalTerm) + @"\b";
-                    var sDetrimentalResult = System.Text.RegularExpressions.Regex.IsMatch(sDetrimentalInput, sDetrimentalPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                     //Find out it the current file is a MIDI
                     if (s.EndsWith(".mid") | s.EndsWith(".midi") | s.EndsWith(".kar") | s.EndsWith(".rmi") | s.EndsWith(".MID") | s.EndsWith(".MIDI") | s.EndsWith(".KAR") | s.EndsWith(".RMI"))
                     {
@@ -44,19 +40,12 @@ namespace KeppySpartanMIDIConverter
                     //If the file isnt a MIDI, check if its a soundfont
                     if (s.EndsWith(".sf2") | s.EndsWith(".sf3") | s.EndsWith(".sfpack") | s.EndsWith(".sfz") | s.EndsWith(".SF2") | s.EndsWith(".SF3") | s.EndsWith(".SFPACK") | s.EndsWith(".SFZ"))
                     {
-                        if (sDetrimentalResult == true)
+                        //There are soundfonts beeing added to the application so create the list
+                        if (soundfonts == null)
                         {
-                            // Do nothing
+                            soundfonts = new List<String>();
                         }
-                        else if (sDetrimentalResult == false)
-                        {
-                            //There are soundfonts beeing added to the application so create the list
-                            if (soundfonts == null)
-                            {
-                                soundfonts = new List<String>();
-                            }
-                            soundfonts.Add(s);
-                        }
+                        soundfonts.Add(s);
                     }
                 }
             }
@@ -72,6 +61,12 @@ namespace KeppySpartanMIDIConverter
                 }
             }
         }
+
+        Timer t1 = new Timer();
+        Timer t2 = new Timer();
+
+        [DllImport("dwmapi.dll")]
+        private static extern int DwmIsCompositionEnabled(out bool enabled);
 
         public static class Globals
         {
@@ -151,6 +146,11 @@ namespace KeppySpartanMIDIConverter
         private void MainWindow_Load(object sender, EventArgs e)
         {
                 BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
+                // Fade in ;)
+                t1.Interval = 10;  //we'll increase the opacity every 10ms
+                t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
+                t1.Start(); 
+                // Fade in ;)
                 if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 0)
                 {
                     KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows 2000 is not supported", "The converter requires Windows XP or newer to run.\nWindows 2000 and older are NOT supported.\n\nPress OK to quit.", 1);
@@ -1145,24 +1145,38 @@ namespace KeppySpartanMIDIConverter
             base.Dispose(disposing);
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        public bool AeroEnabled()
         {
-            if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
-            {
-                DialogResult dialogResult = MessageBox.Show("The converter is still exporting/playing MIDIs!\n\nAre you sure you want to exit?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Process.GetCurrentProcess().Kill();
-                }
-                else if (dialogResult == DialogResult.No)
-                {
+            if (Environment.OSVersion.Version.Major < 6)
+                return false;
+            bool Enabled = false;
+            DwmIsCompositionEnabled(out Enabled);
+            return Enabled;
+        }
 
+        void fadeIn(object sender, EventArgs e)
+        {
+            if (Opacity >= 1)
+                t1.Stop();   //this stops the timer if the form is completely displayed
+            else
+                if (AeroEnabled() == true) {
+                    Opacity += 0.015;
                 }
+                else
+                {
+                    Opacity += 0.05;
+                }      
+        }
+
+        void fadeOut(object sender, EventArgs e)
+        {
+            if (Opacity == 0)     //check if opacity is 0
+            {
+                t2.Stop();    //if it is, we stop the timer
+                Process.GetCurrentProcess().Kill();  
             }
             else
-            {
-                Process.GetCurrentProcess().Kill();
-            }
+                Opacity -= 0.05;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -1186,7 +1200,32 @@ namespace KeppySpartanMIDIConverter
             }
             else
             {
-                Process.GetCurrentProcess().Kill();
+                e.Cancel = true;    //cancel the event so the form won't be closed
+                t2.Interval = 10;  //we'll increase the opacity every 10ms
+                t2.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+                t2.Start();  
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
+            {
+                DialogResult dialogResult = MessageBox.Show("The converter is still exporting/playing MIDIs!\n\nAre you sure you want to exit?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Process.GetCurrentProcess().Kill();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
+            }
+            else
+            {
+                t2.Interval = 10;  //we'll increase the opacity every 10ms
+                t2.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+                t2.Start();  
             }
         }
 
@@ -1689,6 +1728,5 @@ namespace KeppySpartanMIDIConverter
             errordialog.ShowDialog();
             Application.Exit();
         }
-
     }
 }
