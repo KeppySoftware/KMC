@@ -186,7 +186,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\convbusy.gif" />
     <None Include="Resources\mainlogo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +194,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <None Include="Resources\erroricon.png" />
+    <None Include="Resources\convbusy.gif" />
     <None Include="Resources\heart.png" />
     <None Include="Resources\donatebtn.png" />
     <None Include="Resources\sfzcomp.png" />

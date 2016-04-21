@@ -11,8 +11,11 @@ namespace KeppyMIDIConverter
 {
     public partial class ErrorHandler : Form
     {
+        public static int TOE = 0;
+
         public ErrorHandler(String errortitle, String errormessage, Int16 typeoferror)
         {
+            TOE = typeoferror;
             InitializeComponent();
             if (typeoferror == 0)
             {
@@ -33,7 +36,14 @@ namespace KeppyMIDIConverter
 
         private void Close_Click(object sender, EventArgs e)
         {
-            Close();
+            if (TOE == 0)
+            {
+                Close();
+            }
+            else
+            {
+                Application.ExitThread();
+            }   
         }
     }
 }

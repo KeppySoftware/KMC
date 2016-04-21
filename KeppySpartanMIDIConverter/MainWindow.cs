@@ -160,8 +160,17 @@ namespace KeppySpartanMIDIConverter
                 }
                 else
                 {
-                    Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
-                    Globals._plm.CalcRMS = true;
+                    try
+                    {
+                        Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
+                        Globals._plm.CalcRMS = true;
+                    }
+                    catch (Exception exception2)
+                    {
+                        Opacity = 1.00;
+                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 1);
+                        errordialog.ShowDialog();
+                    }
                     try
                     {
                         using (RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter"))
