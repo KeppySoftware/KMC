@@ -413,7 +413,7 @@ namespace KeppySpartanMIDIConverter
                                     num3++;
                                     if (Globals.QualityOverride == true)
                                     {
-                                        encpath = "oggenc2 -q " + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy " + num3.ToString() + ").ogg\"";
+                                        encpath = "oggenc2 -b " + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy " + num3.ToString() + ").ogg\"";
                                     }
                                     else
                                     {
@@ -521,16 +521,17 @@ namespace KeppySpartanMIDIConverter
                                     Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref num12);
                                     float[] buffer = new float[length / 4];
                                     Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
-                                    int secondsremaining = (int)(timespent.TotalSeconds / CurrentStatus.Value * (CurrentStatus.Maximum - CurrentStatus.Value));
+                                    int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
                                     TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
                                     string str6 = span3.Hours.ToString().PadLeft(2, '0') + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
+                                    string str7 = timespent.Hours.ToString().PadLeft(2, '0') + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
                                     if (num12 < 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Cannot estimate size for OGG files)\nApproximate time left: " + str6.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Cannot estimate size for OGG files)\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
                                     }
                                     else if (num12 > 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Cannot estimate size for OGG files)\nApproximate time left: " + str6.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Cannot estimate size for OGG files)\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
                                     }  
                                     Globals.ActiveVoicesInt = Convert.ToInt32(num11);
                                     Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
@@ -808,16 +809,17 @@ namespace KeppySpartanMIDIConverter
                                     Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref num12);
                                     float[] buffer = new float[length / 4];
                                     Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
-                                    int secondsremaining = (int)(timespent.TotalSeconds / CurrentStatus.Value * (CurrentStatus.Maximum - CurrentStatus.Value));
+                                    int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
                                     TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
                                     string str6 = span3.Hours.ToString().PadLeft(2, '0') + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
+                                    string str7 = timespent.Hours.ToString().PadLeft(2, '0') + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
                                     if (num12 < 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nApproximate time left: " + str6.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nApproximate time left: " + str6.ToString() + "Time elapsed: " + str7.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
                                     }
                                     else if (num12 > 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nApproximate time left: " + str6.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nApproximate time left: " + str6.ToString() + "Time elapsed: " + str7.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
                                     }
                                     Globals.ActiveVoicesInt = Convert.ToInt32(num11);
                                     Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
