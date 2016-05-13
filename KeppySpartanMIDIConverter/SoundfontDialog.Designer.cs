@@ -58,7 +58,6 @@
             // 
             this.SoundfontImportDialog.Filter = "Soundfont files|*.sf2;*.sfz;*.sf3;*.sfpack;";
             this.SoundfontImportDialog.Multiselect = true;
-            this.SoundfontImportDialog.ShowReadOnly = true;
             // 
             // label1
             // 

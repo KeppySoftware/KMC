@@ -490,10 +490,12 @@ namespace KeppySpartanMIDIConverter
                                     Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_GARGLE, Globals.GargleAFXValue);
                                 }
                             }
+                            DateTime starttime = DateTime.Now;
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
                                 if (Globals.CancellationPendingValue != 1)
                                 {
+                                    TimeSpan timespent = DateTime.Now - starttime;
                                     if (MainWindow.Globals.TempoOverride == true)
                                     {
                                         BassMidi.BASS_MIDI_StreamEvent(Globals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTE, Globals.FinalTempo);
@@ -519,14 +521,17 @@ namespace KeppySpartanMIDIConverter
                                     Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref num12);
                                     float[] buffer = new float[length / 4];
                                     Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
+                                    int secondsremaining = (int)(timespent.TotalSeconds / CurrentStatus.Value * (CurrentStatus.Maximum - CurrentStatus.Value));
+                                    TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
+                                    string str6 = span3.Hours.ToString().PadLeft(2, '0') + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
                                     if (num12 < 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW datas converted. (Cannot estimate size for OGG files)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Cannot estimate size for OGG files)\nApproximate time left: " + str6.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
                                     }
                                     else if (num12 > 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW datas converted. (Cannot estimate size for OGG files)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
-                                    }
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Cannot estimate size for OGG files)\nApproximate time left: " + str6.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
+                                    }  
                                     Globals.ActiveVoicesInt = Convert.ToInt32(num11);
                                     Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
                                     Globals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
@@ -772,10 +777,12 @@ namespace KeppySpartanMIDIConverter
                             {
                                 Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, 0, BASSFlag.BASS_MIDI_NOTEOFF1);
                             }
+                            DateTime starttime = DateTime.Now;
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
                                 if (Globals.CancellationPendingValue != 1)
                                 {
+                                    TimeSpan timespent = DateTime.Now - starttime;
                                     if (MainWindow.Globals.TempoOverride == true)
                                     {
                                         BassMidi.BASS_MIDI_StreamEvent(Globals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTE, Globals.FinalTempo);
@@ -784,7 +791,6 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         // NULL
                                     }
-                                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Globals.Volume);
                                     int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.02));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
@@ -802,18 +808,22 @@ namespace KeppySpartanMIDIConverter
                                     Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref num12);
                                     float[] buffer = new float[length / 4];
                                     Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
+                                    int secondsremaining = (int)(timespent.TotalSeconds / CurrentStatus.Value * (CurrentStatus.Maximum - CurrentStatus.Value));
+                                    TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
+                                    string str6 = span3.Hours.ToString().PadLeft(2, '0') + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
                                     if (num12 < 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW datas converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nApproximate time left: " + str6.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "%";
                                     }
                                     else if (num12 > 100f)
                                     {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW datas converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
+                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (Estimated final WAV size: " + num7.ToString("0.0") + "MB)\nApproximate time left: " + str6.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
                                     }
                                     Globals.ActiveVoicesInt = Convert.ToInt32(num11);
                                     Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
                                     Globals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
                                     Globals.CurrentPeak = String.Format("Root mean square: {0:#00.0} dB | Average: {1:#00.0} dB | Peak: {2:#00.0} dB", Globals._plm.RMS_dBV, Globals._plm.AVG_dBV, Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
+                                    Console.WriteLine("Current position: " + str5.ToString() + " - " + str4.ToString());
                                 }
                                 else if (Globals.CancellationPendingValue == 1)
                                 {

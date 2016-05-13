@@ -83,7 +83,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL" />
+    <Reference Include="Bass.Net">
+      <HintPath>..\..\..\Work stuff\BASS.NET\v2.0\Bass.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack">
       <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
