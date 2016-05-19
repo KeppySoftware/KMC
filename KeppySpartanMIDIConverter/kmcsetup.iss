@@ -11,7 +11,7 @@ AppPublisherURL=http://kaleidonkep99.altervista.org
 AppSupportPhone=+393511888475
 AppSupportURL=http://kaleidonkep99.altervista.org/contacts.html
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=10.0.23
+AppVersion=10.0.24
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -21,7 +21,7 @@ InternalCompressLevel=ultra64
 LanguageDetectionMethod=locale
 LicenseFile=license.rtf
 MinVersion=0,5.01.2600sp3
-OutputBaseFilename=KMCSetup
+OutputBaseFilename=KeppyMIDIConverterInstaller
 OutputDir=bin
 SetupIconFile=favicon.ico
 ShowLanguageDialog=no
@@ -33,13 +33,16 @@ VersionInfoCompany=Keppy Studios & Frozen Snow Productions
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoDescription=MIDI to WAV/OGG converter, for everyone!
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=10.0.23
-VersionInfoVersion=10.0.23
+VersionInfoProductVersion=10.0.24
+VersionInfoVersion=10.0.24
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
 LZMABlockSize=65535
 LZMANumBlockThreads=4
+EnableDirDoesntExistWarning=True
+DirExistsWarning=yes
+CompressionThreads=2
 
 [Files]
 ;Generic
@@ -56,7 +59,7 @@ Source: "bin\x64\Microsoft.WindowsAPICodePack.Sensors.dll"; DestDir: "{app}"; Fl
 Source: "bin\x64\Microsoft.WindowsAPICodePack.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 Source: "bin\x64\Microsoft.WindowsAPICodePack.ShellExtensions.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
-Source: "bin\x64\oggenc2.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\kmcogg.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 ;32-bit files
 Source: "bin\x86\bass.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
 Source: "bin\x86\Bass.Net.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
@@ -68,13 +71,35 @@ Source: "bin\x86\Microsoft.WindowsAPICodePack.Sensors.dll"; DestDir: "{app}"; Fl
 Source: "bin\x86\Microsoft.WindowsAPICodePack.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
 Source: "bin\x86\Microsoft.WindowsAPICodePack.ShellExtensions.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
 Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
-Source: "bin\x86\oggenc2.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\kmcogg.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+
+[InstallDelete]
+Type: files; Name: "{app}\bass.dll"
+Type: files; Name: "{app}\bassenc.dll"
+Type: files; Name: "{app}\bassmidi.dll"
+Type: files; Name: "{app}\Bass.Net.dll"
+Type: files; Name: "{app}\kmcogg.exe"
+Type: files; Name: "{app}\oggenc.exe"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.dll"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.Sensors.dll"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.Shell.dll"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
+Type: files; Name: "{app}\KeppyMIDIConverter.exe"
+Type: files; Name: "{app}\license.rtf"
 
 [UninstallDelete]
 Type: files; Name: "{app}\bass.dll"
 Type: files; Name: "{app}\bassenc.dll"
 Type: files; Name: "{app}\bassmidi.dll"
 Type: files; Name: "{app}\Bass.Net.dll"
+Type: files; Name: "{app}\kmcogg.exe"
+Type: files; Name: "{app}\oggenc.exe"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.dll"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.Sensors.dll"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.Shell.dll"
+Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
 Type: files; Name: "{app}\KeppyMIDIConverter.exe"
 Type: files; Name: "{app}\license.rtf"
 
