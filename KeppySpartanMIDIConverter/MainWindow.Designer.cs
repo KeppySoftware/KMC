@@ -271,45 +271,45 @@
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.Size = new System.Drawing.Size(188, 120);
+            this.DefMenu.Size = new System.Drawing.Size(198, 120);
             // 
             // addMIDIsToolStripMenuItem
             // 
             this.addMIDIsToolStripMenuItem.Name = "addMIDIsToolStripMenuItem";
-            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.addMIDIsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.addMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.addMIDIsToolStripMenuItem.Click += new System.EventHandler(this.addMIDIsToolStripMenuItem_Click);
             // 
             // removeMIDIToolStripMenuItem
             // 
             this.removeMIDIToolStripMenuItem.Name = "removeMIDIToolStripMenuItem";
-            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.removeMIDIToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.removeMIDIToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeMIDIToolStripMenuItem.Click += new System.EventHandler(this.removeMIDIToolStripMenuItem_Click);
             // 
             // clearMIDIsListToolStripMenuItem1
             // 
             this.clearMIDIsListToolStripMenuItem1.Name = "clearMIDIsListToolStripMenuItem1";
-            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(187, 22);
+            this.clearMIDIsListToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
             this.clearMIDIsListToolStripMenuItem1.Text = "Clear MIDIs list";
             this.clearMIDIsListToolStripMenuItem1.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(194, 6);
             // 
             // moveUpToolStripMenuItem
             // 
             this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.moveUpToolStripMenuItem.Text = "Move up (One item)";
             this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // moveDownToolStripMenuItem
             // 
             this.moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.moveDownToolStripMenuItem.Text = "Move down (One item)";
             this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
             // 
@@ -376,6 +376,7 @@
             this.CurrentStatus.Location = new System.Drawing.Point(0, 411);
             this.CurrentStatus.Name = "CurrentStatus";
             this.CurrentStatus.Size = new System.Drawing.Size(652, 23);
+            this.CurrentStatus.Step = 1;
             this.CurrentStatus.TabIndex = 14;
             // 
             // Menu
@@ -504,14 +505,14 @@
             // enabledToolStripMenuItem1
             // 
             this.enabledToolStripMenuItem1.Name = "enabledToolStripMenuItem1";
-            this.enabledToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.enabledToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.enabledToolStripMenuItem1.Text = "Enabled";
             this.enabledToolStripMenuItem1.Click += new System.EventHandler(this.enabledToolStripMenuItem1_Click);
             // 
             // disabledToolStripMenuItem1
             // 
             this.disabledToolStripMenuItem1.Name = "disabledToolStripMenuItem1";
-            this.disabledToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.disabledToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.disabledToolStripMenuItem1.Text = "Disabled";
             this.disabledToolStripMenuItem1.Click += new System.EventHandler(this.disabledToolStripMenuItem1_Click);
             // 

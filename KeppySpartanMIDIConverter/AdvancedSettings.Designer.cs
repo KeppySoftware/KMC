@@ -57,6 +57,7 @@
             this.Noteoff1 = new System.Windows.Forms.CheckBox();
             this.Guide = new System.Windows.Forms.ToolTip(this.components);
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EchoFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SittingFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DistortionFXNum)).BeginInit();
@@ -407,6 +408,7 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.label4);
             this.GroupBox1.Controls.Add(this.checkBox3);
             this.GroupBox1.Controls.Add(this.BitrateBox);
             this.GroupBox1.Controls.Add(this.label3);
@@ -431,9 +433,9 @@
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox3.Location = new System.Drawing.Point(7, 117);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(141, 18);
+            this.checkBox3.Size = new System.Drawing.Size(204, 18);
             this.checkBox3.TabIndex = 16;
-            this.checkBox3.Text = "Override vorbis quality";
+            this.checkBox3.Text = "Force constant bitrate (OGG Vorbis)";
             this.Guide.SetToolTip(this.checkBox3, "Override the self-guided bitrate system used by Vorbis, and force it to use a fix" +
         "ed bitrate.\r\n(1 = 64kbps~, 10 = 500/600kbps~)");
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -447,17 +449,16 @@
             this.BitrateBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.BitrateBox.FormattingEnabled = true;
             this.BitrateBox.Items.AddRange(new object[] {
-            "10",
-            "9",
-            "8",
-            "7",
-            "6",
-            "5",
-            "4",
-            "3",
-            "2",
-            "1"});
-            this.BitrateBox.Location = new System.Drawing.Point(326, 116);
+            "500",
+            "480",
+            "450",
+            "320",
+            "256",
+            "192",
+            "128",
+            "96",
+            "64"});
+            this.BitrateBox.Location = new System.Drawing.Point(298, 116);
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(66, 21);
             this.BitrateBox.TabIndex = 15;
@@ -468,11 +469,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(249, 118);
+            this.label3.Location = new System.Drawing.Point(253, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 14;
-            this.label3.Text = "Vorbis quality:";
+            this.label3.Text = "Bitrate:";
             // 
             // numericUpDown1
             // 
@@ -527,7 +528,7 @@
             // 
             this.Label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(165, 19);
+            this.Label6.Location = new System.Drawing.Point(162, 20);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(19, 13);
             this.Label6.TabIndex = 10;
@@ -560,7 +561,7 @@
             "11025",
             "8000",
             "4000"});
-            this.FrequencyBox.Location = new System.Drawing.Point(98, 15);
+            this.FrequencyBox.Location = new System.Drawing.Point(96, 16);
             this.FrequencyBox.Name = "FrequencyBox";
             this.FrequencyBox.Size = new System.Drawing.Size(66, 21);
             this.FrequencyBox.TabIndex = 9;
@@ -571,7 +572,7 @@
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(6, 17);
+            this.Label5.Location = new System.Drawing.Point(7, 20);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(90, 13);
             this.Label5.TabIndex = 8;
@@ -623,6 +624,16 @@
             this.checkBox2.Text = "Enable tooltip guide";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(364, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "kbps";
             // 
             // AdvancedSettings
             // 
@@ -699,5 +710,6 @@
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
+        internal System.Windows.Forms.Label label4;
     }
 }

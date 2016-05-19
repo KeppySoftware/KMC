@@ -13,10 +13,18 @@ namespace KeppyMIDIConverter
     {
         public static int TOE = 0;
 
-        public ErrorHandler(String errortitle, String errormessage, Int16 typeoferror)
+        public ErrorHandler(String errortitle, String errormessage, Int16 typeoferror, Int16 ConvOrNot)
         {
             TOE = typeoferror;
             InitializeComponent();
+            if (ConvOrNot == 0)
+            {
+                this.ShowInTaskbar = false;
+            }
+            if (ConvOrNot == 1)
+            {
+                this.ShowInTaskbar = true;
+            }
             if (typeoferror == 0)
             {
                 ErrorLab.Text = "Error during the execution of the converter!\n\nMore information down below:";

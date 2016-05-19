@@ -153,7 +153,7 @@ namespace KeppySpartanMIDIConverter
                 // Fade in ;)
                 if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 0)
                 {
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows 2000 is not supported", "The converter requires Windows XP or newer to run.\nWindows 2000 and older are NOT supported.\n\nPress OK to quit.", 1);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows 2000 is not supported", "The converter requires Windows XP or newer to run.\nWindows 2000 and older are NOT supported.\n\nPress OK to quit.", 1, 0);
                     errordialog.ShowDialog();
                     this.Hide();
                     Application.ExitThread();
@@ -168,7 +168,7 @@ namespace KeppySpartanMIDIConverter
                     catch (Exception exception2)
                     {
                         Opacity = 1.00;
-                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 1);
+                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 1, 0);
                         errordialog.ShowDialog();
                     }
                     try
@@ -282,7 +282,7 @@ namespace KeppySpartanMIDIConverter
                                 catch (Exception exception)
                                 {
                                     MessageBox.Show(exception.ToString(), "Fatal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error", exception.ToString(), 1);
+                                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error", exception.ToString(), 1, 0);
                                     errordialog.ShowDialog();
                                     Settings.Close();
                                     Effects.Close();
@@ -319,7 +319,7 @@ namespace KeppySpartanMIDIConverter
                     }
                     catch (Exception exception2)
                     {
-                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0);
+                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 0);
                         errordialog.ShowDialog();
                     }
                     Globals.AutoShutDownEnabled = false;
@@ -413,7 +413,7 @@ namespace KeppySpartanMIDIConverter
                                     num3++;
                                     if (Globals.QualityOverride == true)
                                     {
-                                        encpath = "oggenc2 -b " + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy " + num3.ToString() + ").ogg\"";
+                                        encpath = "oggenc2 -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy " + num3.ToString() + ").ogg\"";
                                     }
                                     else
                                     {
@@ -428,7 +428,7 @@ namespace KeppySpartanMIDIConverter
                             {
                                 if (Globals.QualityOverride == true)
                                 {
-                                    Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, "oggenc2 -q " + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + ".ogg\"", BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
+                                    Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, "oggenc2 -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + ".ogg\"", BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                                 }
                                 else
                                 {
@@ -635,7 +635,7 @@ namespace KeppySpartanMIDIConverter
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
                     Globals.RenderingMode = false;
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 1);
                     errordialog.ShowDialog();
                 }
             }
@@ -646,7 +646,7 @@ namespace KeppySpartanMIDIConverter
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
                 Globals.RenderingMode = false;
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 1);
                 errordialog.ShowDialog();
             }
             
@@ -923,7 +923,7 @@ namespace KeppySpartanMIDIConverter
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
                     Globals.RenderingMode = false;
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 1);
                     errordialog.ShowDialog();
                 }
             }
@@ -934,7 +934,7 @@ namespace KeppySpartanMIDIConverter
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
                 Globals.RenderingMode = false;
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 1);
                 errordialog.ShowDialog();
             }
         }
@@ -1140,7 +1140,7 @@ namespace KeppySpartanMIDIConverter
                     Bass.BASS_StreamFree(Globals._recHandle);
                     Bass.BASS_Free();
                     Globals.NewWindowName = "Keppy's MIDI Converter";
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 1);
                     errordialog.ShowDialog();
                     Globals.PlaybackMode = false;
                 }
@@ -1151,7 +1151,7 @@ namespace KeppySpartanMIDIConverter
                 Bass.BASS_StreamFree(Globals._recHandle);
                 Bass.BASS_Free();
                 Globals.NewWindowName = "Keppy's MIDI Converter";
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 1);
                 errordialog.ShowDialog();
                 Globals.PlaybackMode = false;
             }
@@ -1672,7 +1672,7 @@ namespace KeppySpartanMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -1689,7 +1689,7 @@ namespace KeppySpartanMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -1745,7 +1745,7 @@ namespace KeppySpartanMIDIConverter
         private void forceCloseTheApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error!", "Fatal error on the execution of the converter!\n\nPress OK to close the program.", 1);
+            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error!", "Fatal error on the execution of the converter!\n\nPress OK to close the program.", 1, 0);
             errordialog.ShowDialog();
             Application.Exit();
         }
