@@ -152,11 +152,11 @@ namespace KeppySpartanMIDIConverter
             }
             if (Convert.ToInt32(Settings.GetValue("disabledx8")) == 1)
             {
-                checkBox4.Checked = false;
+                EnableAudEff.Checked = false;
             }
             else
             {
-                checkBox4.Checked = true;
+                EnableAudEff.Checked = true;
             }
             //
             Effects.Close();
@@ -458,7 +458,7 @@ namespace KeppySpartanMIDIConverter
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            if (checkBox4.Checked == true)
+            if (EnableAudEff.Checked == true)
             {
                 Settings.SetValue("disabledx8", "0", Microsoft.Win32.RegistryValueKind.DWord);
                 label1.Enabled = true;

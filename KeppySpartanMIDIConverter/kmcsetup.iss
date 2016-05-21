@@ -11,7 +11,7 @@ AppPublisherURL=http://kaleidonkep99.altervista.org
 AppSupportPhone=+393511888475
 AppSupportURL=http://kaleidonkep99.altervista.org/contacts.html
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=10.0.24
+AppVersion=10.0.25
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -33,8 +33,8 @@ VersionInfoCompany=Keppy Studios & Frozen Snow Productions
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoDescription=MIDI to WAV/OGG converter, for everyone!
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=10.0.24
-VersionInfoVersion=10.0.24
+VersionInfoProductVersion=10.0.25
+VersionInfoVersion=10.0.25
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
@@ -43,6 +43,7 @@ LZMANumBlockThreads=4
 EnableDirDoesntExistWarning=True
 DirExistsWarning=yes
 CompressionThreads=2
+LZMAAlgorithm=1
 
 [Files]
 ;Generic
@@ -109,6 +110,7 @@ Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dwo
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "volume"; ValueData: "10000"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "noteoff1"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "disablefx"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: dword; ValueName: "disabledx8"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: string; ValueName: "lastsffolder"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: string; ValueName: "disabledx8"; ValueData: "1"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Settings"; ValueType: string; ValueName: "lastmidifolder"; Flags: createvalueifdoesntexist uninsdeletekey

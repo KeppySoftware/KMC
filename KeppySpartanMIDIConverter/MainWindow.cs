@@ -180,76 +180,85 @@ namespace KeppySpartanMIDIConverter
                                 RegistryKey Effects = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
                                 try
                                 {      
+                                    // Generic settings
                                     VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices"));
                                     VolumeBar.Value = Convert.ToInt32(Settings.GetValue("volume"));
                                     Globals.Volume = Convert.ToInt32(Settings.GetValue("volume"));
                                     Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq"));
                                     Globals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate"));
-                                    // BOOLEANSSSSSSSSS
-                                    if (Convert.ToInt32(Effects.GetValue("reverb")) == 1)
+                                    // DirectX8 sound effects (Not to be confused with default BASS effects)
+                                    if (Convert.ToInt32(Settings.GetValue("disabledx8")) == 1)
                                     {
-                                        Globals.ReverbAFX = true;
+                                        // Do absolutely nothing.
                                     }
                                     else
                                     {
-                                        Globals.ReverbAFX = false;
+                                        if (Convert.ToInt32(Effects.GetValue("reverb")) == 1)
+                                        {
+                                            Globals.ReverbAFX = true;
+                                        }
+                                        else
+                                        {
+                                            Globals.ReverbAFX = false;
+                                        }
+                                        if (Convert.ToInt32(Effects.GetValue("chorus")) == 1)
+                                        {
+                                            Globals.ChorusAFX = true;
+                                        }
+                                        else
+                                        {
+                                            Globals.ChorusAFX = false;
+                                        }
+                                        if (Convert.ToInt32(Effects.GetValue("flanger")) == 1)
+                                        {
+                                            Globals.FlangerAFX = true;
+                                        }
+                                        else
+                                        {
+                                            Globals.FlangerAFX = false;
+                                        }
+                                        if (Convert.ToInt32(Effects.GetValue("compressor")) == 1)
+                                        {
+                                            Globals.CompressorAFX = true;
+                                        }
+                                        else
+                                        {
+                                            Globals.CompressorAFX = false;
+                                        }
+                                        if (Convert.ToInt32(Effects.GetValue("gargle")) == 1)
+                                        {
+                                            Globals.GargleAFX = true;
+                                        }
+                                        else
+                                        {
+                                            Globals.GargleAFX = false;
+                                        }
+                                        if (Convert.ToInt32(Effects.GetValue("distortion")) == 1)
+                                        {
+                                            Globals.DistortionAFX = true;
+                                        }
+                                        else
+                                        {
+                                            Globals.DistortionAFX = false;
+                                        }
+                                        if (Convert.ToInt32(Effects.GetValue("echo")) == 1)
+                                        {
+                                            Globals.EchoAFX = true;
+                                        }
+                                        else
+                                        {
+                                            Globals.EchoAFX = false;
+                                        }
+                                        if (Convert.ToInt32(Effects.GetValue("sittingroom")) == 1)
+                                        {
+                                            Globals.SittingAFX = true;
+                                        }
+                                        else
+                                        {
+                                            Globals.SittingAFX = false;
+                                        }
                                     }
-                                    if (Convert.ToInt32(Effects.GetValue("chorus")) == 1)
-                                    {
-                                        Globals.ChorusAFX = true;
-                                    }
-                                    else
-                                    {
-                                        Globals.ChorusAFX = false;
-                                    }
-                                    if (Convert.ToInt32(Effects.GetValue("flanger")) == 1)
-                                    {
-                                        Globals.FlangerAFX = true;
-                                    }
-                                    else
-                                    {
-                                        Globals.FlangerAFX = false;
-                                    }
-                                    if (Convert.ToInt32(Effects.GetValue("compressor")) == 1)
-                                    {
-                                        Globals.CompressorAFX = true;
-                                    }
-                                    else
-                                    {
-                                        Globals.CompressorAFX = false;
-                                    }
-                                    if (Convert.ToInt32(Effects.GetValue("gargle")) == 1)
-                                    {
-                                        Globals.GargleAFX = true;
-                                    }
-                                    else
-                                    {
-                                        Globals.GargleAFX = false;
-                                    }
-                                    if (Convert.ToInt32(Effects.GetValue("distortion")) == 1)
-                                    {
-                                        Globals.DistortionAFX = true;
-                                    }
-                                    else
-                                    {
-                                        Globals.DistortionAFX = false;
-                                    }
-                                    if (Convert.ToInt32(Effects.GetValue("echo")) == 1)
-                                    {
-                                        Globals.EchoAFX = true;
-                                    }
-                                    else
-                                    {
-                                        Globals.EchoAFX = false;
-                                    }
-                                    if (Convert.ToInt32(Effects.GetValue("sittingroom")) == 1)
-                                    {
-                                        Globals.SittingAFX = true;
-                                    }
-                                    else
-                                    {
-                                        Globals.SittingAFX = false;
-                                    }
+                                    // Note off setting
                                     if (Convert.ToInt32(Settings.GetValue("noteoff1")) == 1)
                                     {
                                         Globals.NoteOff1Event = true;
@@ -258,6 +267,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.NoteOff1Event = false;
                                     }
+                                    // BASS default sound effects (Reverb and chorus)
                                     if (Convert.ToInt32(Settings.GetValue("disablefx")) == 1)
                                     {
                                         Globals.FXDisabled = true;
@@ -266,6 +276,7 @@ namespace KeppySpartanMIDIConverter
                                     {
                                         Globals.FXDisabled = false;
                                     }
+                                    // OGG bitrate override
                                     if (Convert.ToInt32(Settings.GetValue("overrideogg")) == 1)
                                     {
                                         Globals.QualityOverride = true;
@@ -304,6 +315,7 @@ namespace KeppySpartanMIDIConverter
                                 Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
                                 Settings.SetValue("audiofreq", "44100", RegistryValueKind.DWord);
                                 Settings.SetValue("volume", "10000", RegistryValueKind.DWord);
+                                Settings.SetValue("disabledx8", "1", RegistryValueKind.DWord);
                                 Effects.SetValue("reverb", "0", RegistryValueKind.DWord);
                                 Effects.SetValue("chorus", "0", RegistryValueKind.DWord);
                                 Effects.SetValue("flanger", "0", RegistryValueKind.DWord);

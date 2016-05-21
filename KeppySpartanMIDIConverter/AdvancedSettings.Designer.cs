@@ -30,7 +30,7 @@
             this.DistortionFXNum = new System.Windows.Forms.NumericUpDown();
             this.GargleFXNum = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.EnableAudEff = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SittingFX = new System.Windows.Forms.CheckBox();
             this.DistortionFX = new System.Windows.Forms.CheckBox();
@@ -44,6 +44,7 @@
             this.GargleFX = new System.Windows.Forms.CheckBox();
             this.ReverbFX2 = new System.Windows.Forms.CheckBox();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.BitrateBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.Noteoff1 = new System.Windows.Forms.CheckBox();
             this.Guide = new System.Windows.Forms.ToolTip(this.components);
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EchoFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SittingFXNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DistortionFXNum)).BeginInit();
@@ -187,7 +187,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox4);
+            this.groupBox3.Controls.Add(this.EnableAudEff);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.EchoFXNum);
             this.groupBox3.Controls.Add(this.EchoFX);
@@ -213,17 +213,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Audio effects";
             // 
-            // checkBox4
+            // EnableAudEff
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.CheckAlign = System.Drawing.ContentAlignment.TopRight;
-            this.checkBox4.Location = new System.Drawing.Point(244, 153);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(143, 17);
-            this.checkBox4.TabIndex = 52;
-            this.checkBox4.Text = "Enable the audio effects";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.EnableAudEff.AutoSize = true;
+            this.EnableAudEff.CheckAlign = System.Drawing.ContentAlignment.TopRight;
+            this.EnableAudEff.Location = new System.Drawing.Point(244, 153);
+            this.EnableAudEff.Name = "EnableAudEff";
+            this.EnableAudEff.Size = new System.Drawing.Size(143, 17);
+            this.EnableAudEff.TabIndex = 52;
+            this.EnableAudEff.Text = "Enable the audio effects";
+            this.EnableAudEff.UseVisualStyleBackColor = true;
+            this.EnableAudEff.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // label7
             // 
@@ -427,6 +427,16 @@
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(364, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "kbps";
+            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
@@ -625,16 +635,6 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(364, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "kbps";
-            // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -709,7 +709,7 @@
         internal System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox EnableAudEff;
         internal System.Windows.Forms.Label label4;
     }
 }
