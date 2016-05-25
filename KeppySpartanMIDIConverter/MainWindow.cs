@@ -500,47 +500,47 @@ namespace KeppySpartanMIDIConverter
             }
         }
 
-        private void BASSEncoderInit(Int32 format, String path, String str)
+        private void BASSEncoderInit(Int32 format, String str)
         {
             string encpath = "empty";
             int num3 = 0;
             if (format == 0)
             {
-                if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".wav") == true)
+                if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".wav"))
                 {
                     do
                     {
                         num3++;
-                        encpath = Globals.ExportWhereYay + "\\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").wav";
+                        encpath = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").wav";
                     }
                     while (File.Exists(encpath));
                     Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, encpath, BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
                 }
-                else if (File.Exists(str) == false)
+                else
                 {
-                    Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, Globals.ExportWhereYay + "\\" + Path.GetFileNameWithoutExtension(str) + ".wav", BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
+                    Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".wav", BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
                 }
             }
             else if (format == 1)
             {
-                if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg") == true)
+                if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg"))
                 {
                     do
                     {
                         num3++;
                         if (Globals.QualityOverride == true)
                         {
-                            encpath = "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + "\\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
+                            encpath = "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
                         }
                         else
                         {
-                            encpath = "kmcogg - -o \"" + Globals.ExportWhereYay + "\\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
+                            encpath = "kmcogg - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
                         }
                     }
                     while (File.Exists(encpath));
                     Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, encpath, BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                 }
-                else if (File.Exists(str) == false)
+                else
                 {
                     if (Globals.QualityOverride == true)
                     {
@@ -633,7 +633,7 @@ namespace KeppySpartanMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy 1).ogg";
                             BASSInitSystem(str);
-                            BASSEncoderInit(1, Globals.ExportWhereYay + "\\" + fileNameWithoutExtension + " (Copy 1).ogg", str);
+                            BASSEncoderInit(1, str);
                             BASSEffectSettings();
                             DateTime starttime = DateTime.Now;
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
@@ -829,7 +829,7 @@ namespace KeppySpartanMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
                             BASSInitSystem(str);
-                            BASSEncoderInit(0, Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy 1).wav", str);
+                            BASSEncoderInit(0, str);
                             BASSEffectSettings();
                             DateTime starttime = DateTime.Now;
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
