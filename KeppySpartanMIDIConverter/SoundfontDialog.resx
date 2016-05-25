@@ -128,6 +128,9 @@ Check if the soundfonts are not corrupted, before adding them to the list, to av
 
 The following formats are supported:</value>
   </data>
+  <metadata name="SFMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>300, 17</value>
+  </metadata>
   <metadata name="SFListCheck.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>185, 17</value>
   </metadata>

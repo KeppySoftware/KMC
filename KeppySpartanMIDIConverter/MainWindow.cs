@@ -339,6 +339,55 @@ namespace KeppySpartanMIDIConverter
             }
         }
 
+        private void startRenderingWAVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Globals.RenderingMode = true;
+            this.loadingpic.Visible = true;
+            string dummyFileName = "Save Here";
+            this.ExportWhere.FileName = dummyFileName;
+            this.ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
+            Globals.CurrentStatusTextString = null;
+            if (this.ExportWhere.ShowDialog() == DialogResult.OK)
+            {
+                Globals.CurrentStatusTextString = null;
+                Globals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
+                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                Globals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
+                Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
+                ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
+                this.ConverterWAV.RunWorkerAsync();
+            }
+            else
+            {
+                Globals.RenderingMode = false;
+                this.loadingpic.Visible = false;
+            }
+        }
+
+        private void startRenderingOGGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Globals.RenderingMode = true;
+            this.loadingpic.Visible = true;
+            string dummyFileName = "Save Here";
+            this.ExportWhere.FileName = dummyFileName;
+            this.ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
+            if (this.ExportWhere.ShowDialog() == DialogResult.OK)
+            {
+                Globals.CurrentStatusTextString = null;
+                Globals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
+                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                Globals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
+                Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
+                ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
+                this.ConverterOGG.RunWorkerAsync();
+            }
+            else
+            {
+                Globals.RenderingMode = false;
+                this.loadingpic.Visible = false;
+            }
+        }
+
         private void abortRenderingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Globals.CancellationPendingValue = 1;
@@ -457,42 +506,41 @@ namespace KeppySpartanMIDIConverter
             int num3 = 0;
             if (format == 0)
             {
-                if (File.Exists(str))
+                if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".wav") == true)
                 {
                     do
                     {
                         num3++;
-                        encpath = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").wav";
+                        encpath = Globals.ExportWhereYay + "\\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").wav";
                     }
-                    while (File.Exists(path));
+                    while (File.Exists(encpath));
                     Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, encpath, BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
                 }
-                else
+                else if (File.Exists(str) == false)
                 {
-                    Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".wav", BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
+                    Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, Globals.ExportWhereYay + "\\" + Path.GetFileNameWithoutExtension(str) + ".wav", BASSEncode.BASS_ENCODE_AUTOFREE | BASSEncode.BASS_ENCODE_PCM, null, IntPtr.Zero);
                 }
             }
             else if (format == 1)
             {
-                if (File.Exists(str))
+                if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg") == true)
                 {
                     do
                     {
                         num3++;
                         if (Globals.QualityOverride == true)
                         {
-                            encpath = "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
+                            encpath = "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + "\\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
                         }
                         else
                         {
-                            encpath = "kmcogg - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
+                            encpath = "kmcogg - -o \"" + Globals.ExportWhereYay + "\\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
                         }
-                        path = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg";
                     }
-                    while (File.Exists(path));
+                    while (File.Exists(encpath));
                     Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, encpath, BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                 }
-                else
+                else if (File.Exists(str) == false)
                 {
                     if (Globals.QualityOverride == true)
                     {
@@ -585,7 +633,7 @@ namespace KeppySpartanMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy 1).ogg";
                             BASSInitSystem(str);
-                            BASSEncoderInit(1, Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy 1).ogg", str);
+                            BASSEncoderInit(1, Globals.ExportWhereYay + "\\" + fileNameWithoutExtension + " (Copy 1).ogg", str);
                             BASSEffectSettings();
                             DateTime starttime = DateTime.Now;
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
@@ -926,9 +974,9 @@ namespace KeppySpartanMIDIConverter
                             string path = Globals.ExportWhereYay + @"\" + fileNameWithoutExtension + " (Copy 1).wav";
                             Bass.BASS_Init(-1, Globals.Frequency, BASSInit.BASS_DEVICE_LATENCY, IntPtr.Zero);
                             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 0);
-                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 0);
+                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 32);
                             BASS_INFO info = Bass.BASS_GetInfo();
-                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, 10 + info.minbuf + 1);
+                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, info.minbuf + 10);
                             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
                             Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
                             Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
@@ -996,7 +1044,6 @@ namespace KeppySpartanMIDIConverter
                                     }
                                     Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Convert.ToInt32(Globals.Volume));
                                     Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
-                                    int length = Convert.ToInt32(Un4seen.Bass.Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.01));
                                     long pos = Un4seen.Bass.Bass.BASS_ChannelGetLength(Globals._recHandle);
                                     long num6 = Un4seen.Bass.Bass.BASS_ChannelGetPosition(Globals._recHandle);
                                     float num7 = ((float)pos) / 1048576f;
@@ -1008,17 +1055,8 @@ namespace KeppySpartanMIDIConverter
                                     string str4 = span.Hours.ToString().PadLeft(2, '0') + ":" + span.Minutes.ToString().PadLeft(2, '0') + ":" + span.Seconds.ToString().PadLeft(2, '0');
                                     string str5 = span2.Hours.ToString().PadLeft(2, '0') + ":" + span2.Minutes.ToString().PadLeft(2, '0') + ":" + span2.Seconds.ToString().PadLeft(2, '0');
                                     float num11 = 0f;
-                                    float num12 = 0f;
                                     Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
-                                    Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref num12);
-                                    if (num12 < 100f)
-                                    {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW datas played.\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString("000") + "%";
-                                    }
-                                    else if (num12 > 100f)
-                                    {
-                                        Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW datas played.\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nBASS CPU usage: " + Convert.ToInt32(num12).ToString("000") + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
-                                    }
+                                    Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW datas played.\nCurrent position: " + str5.ToString() + " - " + str4.ToString();
                                     Globals.ActiveVoicesInt = Convert.ToInt32(num11);
                                     Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
                                     Globals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
@@ -1563,55 +1601,6 @@ namespace KeppySpartanMIDIConverter
             }
             catch
             {
-            }
-        }
-
-        private void startRenderingWAVToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Globals.RenderingMode = true;
-            this.loadingpic.Visible = true;
-            string dummyFileName = "Save Here";
-            this.ExportWhere.FileName = dummyFileName;
-            this.ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
-            Globals.CurrentStatusTextString = null;
-            if (this.ExportWhere.ShowDialog() == DialogResult.OK)
-            {
-                Globals.CurrentStatusTextString = null;
-                Globals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Globals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
-                Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
-                ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
-                this.ConverterWAV.RunWorkerAsync();
-            }
-            else
-            {
-                Globals.RenderingMode = false;
-                this.loadingpic.Visible = false;
-            }
-        }
-
-        private void startRenderingOGGToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Globals.RenderingMode = true;
-            this.loadingpic.Visible = true;
-            string dummyFileName = "Save Here";
-            this.ExportWhere.FileName = dummyFileName;
-            this.ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
-            if (this.ExportWhere.ShowDialog() == DialogResult.OK)
-            {
-                Globals.CurrentStatusTextString = null;
-                Globals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Globals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
-                Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
-                ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
-                this.ConverterOGG.RunWorkerAsync();
-            }
-            else
-            {
-                Globals.RenderingMode = false;
-                this.loadingpic.Visible = false;
             }
         }
 

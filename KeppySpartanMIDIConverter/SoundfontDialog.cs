@@ -20,6 +20,86 @@ namespace KeppyMIDIConverter
             Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
         }
 
+
+        private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            try
+            {
+                if (Settings.GetValue("lastsffolder").ToString() == null)
+                {
+                    SoundfontImportDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                }
+                else
+                {
+                    SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder").ToString();
+                }
+            }
+            catch
+            {
+
+            }
+            if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
+            {
+                foreach (String file in SoundfontImportDialog.FileNames)
+                {
+                    if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    {
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        SFList.Items.Add(file);
+                    }
+                    else if (Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
+                    {
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (Path.GetExtension(file) == ".exe" | Path.GetExtension(file) == ".EXE" | Path.GetExtension(file) == ".dll" | Path.GetExtension(file) == ".DLL")
+                    {
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
+                SFList.Items.CopyTo(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+            }
+        }
+
+        private void removeSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = this.SFList.SelectedIndices.Count - 1; i >= 0; i--)
+                {
+                    this.SFList.Items.RemoveAt(this.SFList.SelectedIndices[i]);
+                }
+                if (SFList.Items.Count == 0)
+                {
+                    Array.Clear(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0, KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts.Length);
+                    KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[] { null };
+                }
+                else
+                {
+                    KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
+                    SFList.Items.CopyTo(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void clearSoundfontListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SFList.Items.Clear();
+        }
+
         public static string getBetween(string strSource, string strStart, string strEnd)
         {
             int Start, End;
