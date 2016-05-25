@@ -1,8 +1,9 @@
 # Keppy's MIDI Converter
 A fully functional MIDI to WAV converter, suitable for normal AND heavy MIDIs! (Up to 500 million notes for 32-bit version, unlimited [sorta?] for 64-bit version)
 
-## HEY HOW CAN I DOWNLOAD I...
-Click on "Releases".
+## How can I get the converter without installing it?
+You could use [innounp] (http://innounp.sourceforge.net/), but the setup writes a lot of dependencies in the registry, so I can't confirm that it'll work.
+Here, take the registry key of the converter, but again, I can't confirm anything. [>>> Right Click > Save as... <<<] (https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppySpartanMIDIConverter/KeppyMIDIConverterRegFile.reg)
 
 ## Requirements (Compiled program)
 - Windows XP SP2+ or newer.
