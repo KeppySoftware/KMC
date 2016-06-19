@@ -11,7 +11,7 @@ AppPublisherURL=http://kaleidonkep99.altervista.org
 AppSupportPhone=+393511888475
 AppSupportURL=http://kaleidonkep99.altervista.org/contacts.html
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=10.0.28
+AppVersion=11.0.0
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -33,8 +33,8 @@ VersionInfoCompany=Keppy Studios & Frozen Snow Productions
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoDescription=MIDI to WAV/OGG converter, for everyone!
 VersionInfoProductName=KSMC
-VersionInfoProductVersion=10.0.28
-VersionInfoVersion=10.0.28
+VersionInfoProductVersion=11.0.0
+VersionInfoVersion=11.0.0
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
@@ -49,6 +49,8 @@ LZMAAlgorithm=1
 ;Generic
 Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 Source: "convfin.wav"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
+Source: "convstart.wav"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
+Source: "convfail.wav"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 ;64-bit files
 Source: "bin\x64\bass.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 Source: "bin\x64\Bass.Net.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode

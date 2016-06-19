@@ -117,12 +117,12 @@ namespace KeppySpartanMIDIConverter
                     MessageBox.Show("New update found, press OK to open the release page.", "New update found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
                 }
-                else if (x < y)
+                else if (x <= y)
                 {
                     tabControl1.Enabled = true;
                     button5.Enabled = true;
-                    LatestVersion.Text = "Seems that the version on GitHub (" + newestversion.ToString() + ") is older than the version you're currently using.\nReally strange huh?";
-                    MessageBox.Show("Is this a joke? You have a newer version than the one currently released on GitHub...\n\nYou dirty hacker.", "Wowie.", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    LatestVersion.Text = "There are no updates available right now. Try checking later.";
+                    MessageBox.Show("This release is already updated.", "No updates found.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

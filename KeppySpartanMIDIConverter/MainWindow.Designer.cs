@@ -273,7 +273,7 @@
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
             this.DefMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.DefMenu.Size = new System.Drawing.Size(188, 142);
+            this.DefMenu.Size = new System.Drawing.Size(188, 120);
             // 
             // addMIDIsToolStripMenuItem
             // 
