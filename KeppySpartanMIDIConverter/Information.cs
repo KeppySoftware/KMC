@@ -17,7 +17,6 @@ namespace KeppySpartanMIDIConverter
         public Informations()
         {
             InitializeComponent();
-            Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
         }
 
         public partial class ExePath
@@ -145,7 +144,22 @@ namespace KeppySpartanMIDIConverter
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q2V5AUKED5R8S");
+            string url = "";
+
+            string business = "prapapappo1999@gmail.com";
+            string description = "Donation";
+            string country = "US";
+            string currency = "USD";
+
+            url += "https://www.paypal.com/cgi-bin/webscr" +
+                "?cmd=" + "_donations" +
+                "&business=" + business +
+                "&lc=" + country +
+                "&item_name=" + description +
+                "&currency_code=" + currency +
+                "&bn=" + "PP%2dDonationsBF";
+
+            Process.Start(url);
         }
 
         private void button4_Click(object sender, EventArgs e)
