@@ -599,14 +599,14 @@ namespace KeppySpartanMIDIConverter
             string str7 = timespent.Hours.ToString().PadLeft(2, '0') + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
             if (num12 < 100f)
             {
-                if (Globals.OldTimeThingy == true)
+                if (Globals.OldTimeThingy == false)
                     Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted.\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
                 else
                     Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted.\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
             }
             else if (num12 > 100f)
             {
-                if (Globals.OldTimeThingy == true)
+                if (Globals.OldTimeThingy == false)
                     Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted.\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
                 else
                     Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted.\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";

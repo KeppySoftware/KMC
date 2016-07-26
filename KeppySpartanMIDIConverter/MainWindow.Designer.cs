@@ -72,6 +72,9 @@
             this.clearMIDIListAfterRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enabledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.disabledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enabledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.disabledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
@@ -83,9 +86,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enabledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.disabledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -512,16 +512,39 @@
             // enabledToolStripMenuItem1
             // 
             this.enabledToolStripMenuItem1.Name = "enabledToolStripMenuItem1";
-            this.enabledToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.enabledToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.enabledToolStripMenuItem1.Text = "Enabled";
             this.enabledToolStripMenuItem1.Click += new System.EventHandler(this.enabledToolStripMenuItem1_Click);
             // 
             // disabledToolStripMenuItem1
             // 
             this.disabledToolStripMenuItem1.Name = "disabledToolStripMenuItem1";
-            this.disabledToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.disabledToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.disabledToolStripMenuItem1.Text = "Disabled";
             this.disabledToolStripMenuItem1.Click += new System.EventHandler(this.disabledToolStripMenuItem1_Click);
+            // 
+            // showConversionPositionInsteadOfTimeLeftToolStripMenuItem
+            // 
+            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enabledToolStripMenuItem2,
+            this.disabledToolStripMenuItem2});
+            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Name = "showConversionPositionInsteadOfTimeLeftToolStripMenuItem";
+            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Text = "Show conversion position instead of time left";
+            // 
+            // enabledToolStripMenuItem2
+            // 
+            this.enabledToolStripMenuItem2.Name = "enabledToolStripMenuItem2";
+            this.enabledToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.enabledToolStripMenuItem2.Text = "Enabled";
+            this.enabledToolStripMenuItem2.Click += new System.EventHandler(this.enabledToolStripMenuItem2_Click);
+            // 
+            // disabledToolStripMenuItem2
+            // 
+            this.disabledToolStripMenuItem2.Name = "disabledToolStripMenuItem2";
+            this.disabledToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.disabledToolStripMenuItem2.Text = "Disabled";
+            this.disabledToolStripMenuItem2.Click += new System.EventHandler(this.disabledToolStripMenuItem2_Click);
             // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
@@ -569,6 +592,7 @@
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CurrentStatusText.UseCompatibleTextRendering = true;
             // 
             // ConverterOGG
             // 
@@ -617,29 +641,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
-            // 
-            // showConversionPositionInsteadOfTimeLeftToolStripMenuItem
-            // 
-            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.enabledToolStripMenuItem2,
-            this.disabledToolStripMenuItem2});
-            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Name = "showConversionPositionInsteadOfTimeLeftToolStripMenuItem";
-            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
-            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Text = "Show conversion position instead of time left";
-            // 
-            // enabledToolStripMenuItem2
-            // 
-            this.enabledToolStripMenuItem2.Name = "enabledToolStripMenuItem2";
-            this.enabledToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.enabledToolStripMenuItem2.Text = "Enabled";
-            this.enabledToolStripMenuItem2.Click += new System.EventHandler(this.enabledToolStripMenuItem2_Click);
-            // 
-            // disabledToolStripMenuItem2
-            // 
-            this.disabledToolStripMenuItem2.Name = "disabledToolStripMenuItem2";
-            this.disabledToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.disabledToolStripMenuItem2.Text = "Disabled";
-            this.disabledToolStripMenuItem2.Click += new System.EventHandler(this.disabledToolStripMenuItem2_Click);
             // 
             // MainWindow
             // 
