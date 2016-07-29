@@ -24,7 +24,6 @@ namespace KeppySpartanMIDIConverter
                 Label5.Enabled = false;
                 FrequencyBox.Enabled = false;
                 Label6.Enabled = false;
-                groupBox3.Enabled = false;
                 checkBox1.Text = "Override tempo (Original: " + MainWindow.Globals.OriginalTempo.ToString() + "bpm)";
             }
             else
@@ -32,96 +31,14 @@ namespace KeppySpartanMIDIConverter
                 Label5.Enabled = true;
                 FrequencyBox.Enabled = true;
                 Label6.Enabled = true;
-                groupBox3.Enabled = true;
                 checkBox1.Text = "Override tempo (Playback mode only)";
             }
             // K DONE
-            Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects");
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             //
             FrequencyBox.Text = Convert.ToString(Settings.GetValue("audiofreq"));
             BitrateBox.Text = Convert.ToString(Settings.GetValue("oggbitrate"));
             //
-            if (Convert.ToInt32(Effects.GetValue("reverb")) == 1)
-            {
-                MainWindow.Globals.ReverbAFX = true;
-                ReverbFX2.Checked = false;
-            }
-            else
-            {
-                MainWindow.Globals.ReverbAFX = false;
-                ReverbFX2.Checked = false;
-            }
-            if (Convert.ToInt32(Effects.GetValue("chorus")) == 1)
-            {
-                MainWindow.Globals.ChorusAFX = true;
-                ChorusFX2.Checked = true;
-            }
-            else
-            {
-                MainWindow.Globals.ChorusAFX = false;
-                ChorusFX2.Checked = false;
-            }
-            if (Convert.ToInt32(Effects.GetValue("flanger")) == 1)
-            {
-                MainWindow.Globals.FlangerAFX = true;
-                FlangerFX.Checked = true;
-            }
-            else
-            {
-                MainWindow.Globals.FlangerAFX = false;
-                FlangerFX.Checked = false;
-            }
-            if (Convert.ToInt32(Effects.GetValue("compressor")) == 1)
-            {
-                MainWindow.Globals.CompressorAFX = true;
-                CompressorFX.Checked = true;
-            }
-            else
-            {
-                MainWindow.Globals.CompressorAFX = false;
-                CompressorFX.Checked = false;
-            }
-            if (Convert.ToInt32(Effects.GetValue("gargle")) == 1)
-            {
-                MainWindow.Globals.GargleAFX = true;
-                GargleFX.Checked = true;
-            }
-            else
-            {
-                MainWindow.Globals.GargleAFX = false;
-                GargleFX.Checked = false;
-            }
-            if (Convert.ToInt32(Effects.GetValue("distortion")) == 1)
-            {
-                MainWindow.Globals.DistortionAFX = true;
-                DistortionFX.Checked = true;
-            }
-            else
-            {
-                MainWindow.Globals.DistortionAFX = false;
-                DistortionFX.Checked = false;
-            }
-            if (Convert.ToInt32(Effects.GetValue("echo")) == 1)
-            {
-                MainWindow.Globals.EchoAFX = true;
-                EchoFX.Checked = true;
-            }
-            else
-            {
-                MainWindow.Globals.EchoAFX = false;
-                EchoFX.Checked = false;
-            }
-            if (Convert.ToInt32(Effects.GetValue("sittingroom")) == 1)
-            {
-                MainWindow.Globals.SittingAFX = true;
-                SittingFX.Checked = true;
-            }
-            else
-            {
-                MainWindow.Globals.SittingAFX = false;
-                SittingFX.Checked = false;
-            }
             if (Convert.ToInt32(Settings.GetValue("noteoff1")) == 1)
             {
                 MainWindow.Globals.NoteOff1Event = true;
@@ -150,137 +67,13 @@ namespace KeppySpartanMIDIConverter
             {
                 checkBox3.Checked = false;
             }
-            if (Convert.ToInt32(Settings.GetValue("disabledx8")) == 1)
-            {
-                EnableAudEff.Checked = false;
-            }
-            else
-            {
-                EnableAudEff.Checked = true;
-            }
             //
-            Effects.Close();
             Settings.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             base.Close();
-        }
-
-        private void ChorusFX2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.ChorusFX2.Checked)
-            {
-                MainWindow.Globals.ChorusAFX = true;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("chorus", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-            else
-            {
-                MainWindow.Globals.ChorusAFX = false;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("chorus", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-        }
-
-        private void ChorusFXNum_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.Globals.ChorusAFXValue = Convert.ToInt32(this.ChorusFXNum.Value);
-        }
-
-        private void CompressorFX_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.CompressorFX.Checked)
-            {
-                MainWindow.Globals.CompressorAFX = true;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("compressor", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-            else
-            {
-                MainWindow.Globals.CompressorAFX = false;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("compressor", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-        }
-
-        private void CompressorFXNum_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.Globals.CompressorAFXValue = Convert.ToInt32(this.CompressorFXNum.Value);
-        }
-
-        private void DistortionFX_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.DistortionFX.Checked)
-            {
-                MainWindow.Globals.DistortionAFX = true;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("distortion", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-            else
-            {
-                MainWindow.Globals.DistortionAFX = false;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("distortion", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-        }
-
-        private void DistortionFXNum_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.Globals.DistortionAFXValue = Convert.ToInt32(this.DistortionFXNum.Value);
-        }
-
-        private void EchoFX_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.EchoFX.Checked)
-            {
-                MainWindow.Globals.EchoAFX = true;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("echo", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-            else
-            {
-                MainWindow.Globals.EchoAFX = false;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("echo", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-        }
-
-        private void EchoFXNum_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.Globals.EchoAFXValue = Convert.ToInt32(this.EchoFXNum.Value);
-        }
-
-        private void FlangerFX_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.FlangerFX.Checked)
-            {
-                MainWindow.Globals.FlangerAFX = true;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("flanger", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-            else
-            {
-                MainWindow.Globals.FlangerAFX = false;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("flanger", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-        }
-
-        private void FlangerFXNum_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.Globals.FlangerAFXValue = Convert.ToInt32(this.FlangerFXNum.Value);
         }
 
         private void FrequencyBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -317,29 +110,6 @@ namespace KeppySpartanMIDIConverter
             }
         }
 
-        private void GargleFX_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.GargleFX.Checked)
-            {
-                MainWindow.Globals.GargleAFX = true;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("gargle", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-            else
-            {
-                MainWindow.Globals.GargleAFX = false;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("gargle", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-        }
-
-        private void GargleFXNum_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.Globals.GargleAFXValue = Convert.ToInt32(this.GargleFXNum.Value);
-        }
-
         private void Noteoff1_CheckedChanged(object sender, EventArgs e)
         {
             if (this.Noteoff1.Checked)
@@ -356,52 +126,6 @@ namespace KeppySpartanMIDIConverter
                 Settings.SetValue("noteoff1", "0", Microsoft.Win32.RegistryValueKind.DWord);
                 Settings.Close();
             }
-        }
-
-        private void ReverbFX2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.ReverbFX2.Checked)
-            {
-                MainWindow.Globals.ReverbAFX = true;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("reverb", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-            else
-            {
-                MainWindow.Globals.ReverbAFX = false;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("reverb", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-        }
-
-        private void ReverbFXNum_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.Globals.ReverbAFXValue = Convert.ToInt32(this.ReverbFXNum.Value);
-        }
-
-        private void SittingFX_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.SittingFX.Checked)
-            {
-                MainWindow.Globals.SittingAFX = true;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("sittingroom", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-            else
-            {
-                MainWindow.Globals.SittingAFX = false;
-                Microsoft.Win32.RegistryKey Effects = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
-                Effects.SetValue("sittingroom", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Effects.Close();
-            }
-        }
-
-        private void SittingFXNum_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.Globals.SittingAFXValue = Convert.ToInt32(this.SittingFXNum.Value);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -452,55 +176,6 @@ namespace KeppySpartanMIDIConverter
                 Settings.SetValue("overrideogg", "0", Microsoft.Win32.RegistryValueKind.DWord);
                 label3.Enabled = false;
                 BitrateBox.Enabled = false;
-            }
-        }
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            if (EnableAudEff.Checked == true)
-            {
-                Settings.SetValue("disabledx8", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                label1.Enabled = true;
-                label7.Enabled = true;
-                ReverbFX2.Enabled = true;
-                ChorusFX2.Enabled = true;
-                FlangerFX.Enabled = true;
-                CompressorFX.Enabled = true;
-                GargleFX.Enabled = true;
-                DistortionFX.Enabled = true;
-                EchoFX.Enabled = true;
-                SittingFX.Enabled = true;
-                ReverbFXNum.Enabled = true;
-                ChorusFXNum.Enabled = true;
-                FlangerFXNum.Enabled = true;
-                CompressorFXNum.Enabled = true;
-                GargleFXNum.Enabled = true;
-                DistortionFXNum.Enabled = true;
-                EchoFXNum.Enabled = true;
-                SittingFXNum.Enabled = true;
-            }
-            else
-            {
-                Settings.SetValue("disabledx8", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                label1.Enabled = false;
-                label7.Enabled = false;
-                ReverbFX2.Enabled = false;
-                ChorusFX2.Enabled = false;
-                FlangerFX.Enabled = false;
-                CompressorFX.Enabled = false;
-                GargleFX.Enabled = false;
-                DistortionFX.Enabled = false;
-                EchoFX.Enabled = false;
-                SittingFX.Enabled = false;
-                ReverbFXNum.Enabled = false;
-                ChorusFXNum.Enabled = false;
-                FlangerFXNum.Enabled = false;
-                CompressorFXNum.Enabled = false;
-                GargleFXNum.Enabled = false;
-                DistortionFXNum.Enabled = false;
-                EchoFXNum.Enabled = false;
-                SittingFXNum.Enabled = false;
             }
         }
     }

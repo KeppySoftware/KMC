@@ -74,54 +74,32 @@ namespace KeppySpartanMIDIConverter
             public static Un4seen.Bass.Misc.DSP_PeakLevelMeter _plm;
             public static bool AutoClearMIDIListEnabled = false;
             public static bool AutoShutDownEnabled = false;
-            public static bool ChorusAFX = false;
-            public static bool CompressorAFX = false;
-            public static bool DistortionAFX = false;
-            public static bool EchoAFX = false;
-            public static bool FXDisabled = false;
-            public static bool FlangerAFX = false;
-            public static bool GargleAFX = false;
+            public static bool FXDisabled = true;
             public static bool NoteOff1Event = false;
             public static bool OldTimeThingy = false;
             public static bool PlaybackMode = false;
             public static bool QualityOverride = false;
             public static bool RenderingMode = false;
-            public static bool ReverbAFX = false;
-            public static bool SittingAFX = false;
             public static bool TempoOverride = false;
             public static int ActiveVoicesInt = 0;
             public static int AverageCPU;
             public static int Bitrate = 128;
             public static int CancellationPendingValue = 0;
-            public static int ChorusAFXValue = 1;
             public static int ChorusDelay = 0;
             public static int ChorusDepth = 0;
             public static int ChorusFeedback = 0;
             public static int ChorusLevel = 0;
             public static int ChorusOnOr = 0;
             public static int ChorusRate = 0;
-            public static int CompressorAFXValue = 1;
             public static int CurrentEncoder;
             public static int CurrentMode;
             public static int CurrentStatusMaximumInt;
             public static int CurrentStatusValueInt;
             public static int DefaultSoundfont;
-            public static int DistortionAFXValue = 1;
-            public static int EchoAFXValue = 1;
             public static int FinalTempo = 120;
-            public static int FlangerAFXValue = 1;
             public static int Frequency = 0xbb80;
-            public static int GargleAFXValue = 1;
             public static int LimitVoicesInt = 0x186a0;
             public static int OriginalTempo;
-            public static int ReverbAFXValue = 1;
-            public static int ReverbDelay = 0;
-            public static int ReverbHiCut = 20;
-            public static int ReverbLevel = 0;
-            public static int ReverbLoCut = 20;
-            public static int ReverbOnOr = 0;
-            public static int ReverbTime = 0;
-            public static int SittingAFXValue = 1;
             public static int SoundFont;
             public static int Time = 0;
             public static int Volume;
@@ -177,7 +155,6 @@ namespace KeppySpartanMIDIConverter
                             if (Key != null)
                             {
                                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                                RegistryKey Effects = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
                                 try
                                 {      
                                     // Generic settings
@@ -186,78 +163,6 @@ namespace KeppySpartanMIDIConverter
                                     Globals.Volume = Convert.ToInt32(Settings.GetValue("volume"));
                                     Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq"));
                                     Globals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate"));
-                                    // DirectX8 sound effects (Not to be confused with default BASS effects)
-                                    if (Convert.ToInt32(Settings.GetValue("disabledx8")) == 1)
-                                    {
-                                        // Do absolutely nothing.
-                                    }
-                                    else
-                                    {
-                                        if (Convert.ToInt32(Effects.GetValue("reverb")) == 1)
-                                        {
-                                            Globals.ReverbAFX = true;
-                                        }
-                                        else
-                                        {
-                                            Globals.ReverbAFX = false;
-                                        }
-                                        if (Convert.ToInt32(Effects.GetValue("chorus")) == 1)
-                                        {
-                                            Globals.ChorusAFX = true;
-                                        }
-                                        else
-                                        {
-                                            Globals.ChorusAFX = false;
-                                        }
-                                        if (Convert.ToInt32(Effects.GetValue("flanger")) == 1)
-                                        {
-                                            Globals.FlangerAFX = true;
-                                        }
-                                        else
-                                        {
-                                            Globals.FlangerAFX = false;
-                                        }
-                                        if (Convert.ToInt32(Effects.GetValue("compressor")) == 1)
-                                        {
-                                            Globals.CompressorAFX = true;
-                                        }
-                                        else
-                                        {
-                                            Globals.CompressorAFX = false;
-                                        }
-                                        if (Convert.ToInt32(Effects.GetValue("gargle")) == 1)
-                                        {
-                                            Globals.GargleAFX = true;
-                                        }
-                                        else
-                                        {
-                                            Globals.GargleAFX = false;
-                                        }
-                                        if (Convert.ToInt32(Effects.GetValue("distortion")) == 1)
-                                        {
-                                            Globals.DistortionAFX = true;
-                                        }
-                                        else
-                                        {
-                                            Globals.DistortionAFX = false;
-                                        }
-                                        if (Convert.ToInt32(Effects.GetValue("echo")) == 1)
-                                        {
-                                            Globals.EchoAFX = true;
-                                        }
-                                        else
-                                        {
-                                            Globals.EchoAFX = false;
-                                        }
-                                        if (Convert.ToInt32(Effects.GetValue("sittingroom")) == 1)
-                                        {
-                                            Globals.SittingAFX = true;
-                                        }
-                                        else
-                                        {
-                                            Globals.SittingAFX = false;
-                                        }
-                                    }
                                     // Old time thingy for TheGhastModding lel
                                     if (Convert.ToInt32(Settings.GetValue("oldtimethingy")) == 1)
                                     {
@@ -301,7 +206,6 @@ namespace KeppySpartanMIDIConverter
                                     Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder").ToString();
                                     Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder").ToString();
                                     Settings.Close();
-                                    Effects.Close();
                                 }
                                 catch (Exception exception)
                                 {
@@ -309,13 +213,11 @@ namespace KeppySpartanMIDIConverter
                                     KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error", exception.ToString(), 1, 0);
                                     errordialog.ShowDialog();
                                     Settings.Close();
-                                    Effects.Close();
                                 }
                             }
                             else if (Key == null)
                             {
                                 Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-                                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects");
                                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                                 RegistryKey Effects = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Effects", true);
                                 VoiceLimit.Value = 100000;
@@ -328,17 +230,7 @@ namespace KeppySpartanMIDIConverter
                                 Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
                                 Settings.SetValue("audiofreq", "44100", RegistryValueKind.DWord);
                                 Settings.SetValue("volume", "10000", RegistryValueKind.DWord);
-                                Settings.SetValue("disabledx8", "1", RegistryValueKind.DWord);
-                                Effects.SetValue("reverb", "0", RegistryValueKind.DWord);
-                                Effects.SetValue("chorus", "0", RegistryValueKind.DWord);
-                                Effects.SetValue("flanger", "0", RegistryValueKind.DWord);
-                                Effects.SetValue("compressor", "0", RegistryValueKind.DWord);
-                                Effects.SetValue("gargle", "0", RegistryValueKind.DWord);
-                                Effects.SetValue("distortion", "0", RegistryValueKind.DWord);
-                                Effects.SetValue("echo", "0", RegistryValueKind.DWord);
-                                Effects.SetValue("sittingroom", "0", RegistryValueKind.DWord);
                                 Settings.Close();
-                                Effects.Close();
                             }
                         Console.WriteLine("Settings loaded.");
                     }
@@ -427,14 +319,7 @@ namespace KeppySpartanMIDIConverter
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
             Un4seen.Bass.Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
-            if (Globals.FXDisabled == true)
-            {
-                Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
-            }
-            else
-            {
-                Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_FX | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
-            }
+            Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
             Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Globals.LimitVoicesInt);
             Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
             if (Path.GetFileNameWithoutExtension(str).Length >= 49)
@@ -462,7 +347,6 @@ namespace KeppySpartanMIDIConverter
 
         private void BASSEffectSettings()
         {
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
             if (Globals.FXDisabled == true)
             {
                 Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, BASSFlag.BASS_MIDI_NOFX, BASSFlag.BASS_MIDI_NOFX);
@@ -470,38 +354,6 @@ namespace KeppySpartanMIDIConverter
             else
             {
                 Un4seen.Bass.Bass.BASS_ChannelFlags(Globals._recHandle, 0, BASSFlag.BASS_MIDI_NOFX);
-                if (Globals.ReverbAFX)
-                {
-                    Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_REVERB, Globals.ReverbAFXValue);
-                }
-                if (Globals.ChorusAFX)
-                {
-                    Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_CHORUS, Globals.ChorusAFXValue);
-                }
-                if (Globals.CompressorAFX)
-                {
-                    Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_COMPRESSOR, Globals.CompressorAFXValue);
-                }
-                if (Globals.DistortionAFX)
-                {
-                    Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_DISTORTION, Globals.DistortionAFXValue);
-                }
-                if (Globals.FlangerAFX)
-                {
-                    Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_FLANGER, Globals.FlangerAFXValue);
-                }
-                if (Globals.EchoAFX)
-                {
-                    Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_ECHO, Globals.EchoAFXValue);
-                }
-                if (Globals.SittingAFX)
-                {
-                    Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_I3DL2REVERB, Globals.SittingAFXValue);
-                }
-                if (Globals.GargleAFX)
-                {
-                    Un4seen.Bass.Bass.BASS_ChannelSetFX(Globals._recHandle, BASSFXType.BASS_FX_DX8_GARGLE, Globals.GargleAFXValue);
-                }
             }
             if (Globals.NoteOff1Event == true)
             {
@@ -515,7 +367,8 @@ namespace KeppySpartanMIDIConverter
 
         private void BASSEncoderInit(Int32 format, String str)
         {
-            string path = "empty";
+            string path;
+            string audiopath = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg";
             int num3 = 1;
             if (format == 0)
             {
@@ -535,20 +388,22 @@ namespace KeppySpartanMIDIConverter
             }
             else if (format == 1)
             {
-                if (File.Exists(Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg"))
+                if (File.Exists(audiopath))
                 {
                     do
                     {
                         if (Globals.QualityOverride == true)
                         {
                             path = "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
+                            audiopath = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg";
                         }
                         else
                         {
                             path = "kmcogg - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
+                            audiopath = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg";
                         }
                         ++num3;
-                    } while (File.Exists(path));
+                    } while (File.Exists(audiopath));
                     Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, path, BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                 }
                 else

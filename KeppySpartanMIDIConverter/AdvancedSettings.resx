@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Use the numeric boxes to rearrange the effects.
-If "Reverb" has value 1, while "Chorus" is 2,
-the chorus will be applied after the reverb, while it's
-the opposite if "Reverb" is 2 and "Chorus" is 1.
-(This applies to all the effects)
-</value>
-  </data>
   <metadata name="Guide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
