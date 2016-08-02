@@ -86,6 +86,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enabledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.disabledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -469,6 +472,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem,
             this.autoShutdownAfterRenderingToolStripMenuItem,
             this.clearMIDIListAfterRenderingToolStripMenuItem,
             this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem,
@@ -483,20 +487,20 @@
             this.enabledToolStripMenuItem,
             this.disabledToolStripMenuItem});
             this.autoShutdownAfterRenderingToolStripMenuItem.Name = "autoShutdownAfterRenderingToolStripMenuItem";
-            this.autoShutdownAfterRenderingToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.autoShutdownAfterRenderingToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
             this.autoShutdownAfterRenderingToolStripMenuItem.Text = "Automatic shutdown after rendering";
             // 
             // enabledToolStripMenuItem
             // 
             this.enabledToolStripMenuItem.Name = "enabledToolStripMenuItem";
-            this.enabledToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.enabledToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.enabledToolStripMenuItem.Text = "Enabled";
             this.enabledToolStripMenuItem.Click += new System.EventHandler(this.enabledToolStripMenuItem_Click);
             // 
             // disabledToolStripMenuItem
             // 
             this.disabledToolStripMenuItem.Name = "disabledToolStripMenuItem";
-            this.disabledToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.disabledToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.disabledToolStripMenuItem.Text = "Disabled";
             this.disabledToolStripMenuItem.Click += new System.EventHandler(this.disabledToolStripMenuItem_Click);
             // 
@@ -506,7 +510,7 @@
             this.enabledToolStripMenuItem1,
             this.disabledToolStripMenuItem1});
             this.clearMIDIListAfterRenderingToolStripMenuItem.Name = "clearMIDIListAfterRenderingToolStripMenuItem";
-            this.clearMIDIListAfterRenderingToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.clearMIDIListAfterRenderingToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
             this.clearMIDIListAfterRenderingToolStripMenuItem.Text = "Clear MIDIs list after rendering";
             // 
             // enabledToolStripMenuItem1
@@ -529,27 +533,27 @@
             this.enabledToolStripMenuItem2,
             this.disabledToolStripMenuItem2});
             this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Name = "showConversionPositionInsteadOfTimeLeftToolStripMenuItem";
-            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
             this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem.Text = "Show conversion position instead of time left";
             // 
             // enabledToolStripMenuItem2
             // 
             this.enabledToolStripMenuItem2.Name = "enabledToolStripMenuItem2";
-            this.enabledToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.enabledToolStripMenuItem2.Size = new System.Drawing.Size(114, 22);
             this.enabledToolStripMenuItem2.Text = "Enabled";
             this.enabledToolStripMenuItem2.Click += new System.EventHandler(this.enabledToolStripMenuItem2_Click);
             // 
             // disabledToolStripMenuItem2
             // 
             this.disabledToolStripMenuItem2.Name = "disabledToolStripMenuItem2";
-            this.disabledToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.disabledToolStripMenuItem2.Size = new System.Drawing.Size(114, 22);
             this.disabledToolStripMenuItem2.Text = "Disabled";
             this.disabledToolStripMenuItem2.Click += new System.EventHandler(this.disabledToolStripMenuItem2_Click);
             // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
             this.forceCloseTheApplicationToolStripMenuItem.Name = "forceCloseTheApplicationToolStripMenuItem";
-            this.forceCloseTheApplicationToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.forceCloseTheApplicationToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
             this.forceCloseTheApplicationToolStripMenuItem.Text = "Force close the application";
             this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
             // 
@@ -641,6 +645,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
+            // 
+            // automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem
+            // 
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enabledToolStripMenuItem3,
+            this.disabledToolStripMenuItem3});
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Name = "automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem";
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Text = "Automatically check for updates when starting the converter";
+            // 
+            // enabledToolStripMenuItem3
+            // 
+            this.enabledToolStripMenuItem3.Name = "enabledToolStripMenuItem3";
+            this.enabledToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.enabledToolStripMenuItem3.Text = "Enabled";
+            this.enabledToolStripMenuItem3.Click += new System.EventHandler(this.enabledToolStripMenuItem3_Click);
+            // 
+            // disabledToolStripMenuItem3
+            // 
+            this.disabledToolStripMenuItem3.Name = "disabledToolStripMenuItem3";
+            this.disabledToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.disabledToolStripMenuItem3.Text = "Disabled";
+            this.disabledToolStripMenuItem3.Click += new System.EventHandler(this.disabledToolStripMenuItem3_Click);
             // 
             // MainWindow
             // 
@@ -745,6 +772,9 @@
         private System.Windows.Forms.ToolStripMenuItem showConversionPositionInsteadOfTimeLeftToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem3;
     }
 }
 
