@@ -188,7 +188,7 @@ namespace KeppySpartanMIDIConverter
                                         Globals.OldTimeThingy = false;
                                     }
                                     // Note off setting
-                                    if (Convert.ToInt32(Settings.GetValue("noteoff1")) == 1)
+                                    if (Convert.ToInt32(Settings.GetValue("noteoff1", 0)) == 1)
                                     {
                                         Globals.NoteOff1Event = true;
                                     }
@@ -328,6 +328,8 @@ namespace KeppySpartanMIDIConverter
         private void BASSInitSystem(String str)
         {
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
+            Bass.BASS_StreamFree(Globals._recHandle);
+            Bass.BASS_Free();
             Un4seen.Bass.Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
             Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
@@ -477,22 +479,31 @@ namespace KeppySpartanMIDIConverter
             float[] buffer = new float[length / 4];
             Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
             int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
+            int percentage = Convert.ToInt32((num8 / num7));
+            int percentagefinal = InputExtensions.LimitToRange(percentage, 0, 100);
             TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
             string str6 = span3.Hours.ToString().PadLeft(2, '0') + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
             string str7 = timespent.Hours.ToString().PadLeft(2, '0') + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
             if (num12 < 100f)
             {
                 if (Globals.OldTimeThingy == false)
-                    Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (" + (num8 / num7).ToString("0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ more faster)";
                 else
-                    Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (" + (num8 / num7).ToString("0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ more faster)";
+            }
+            else if (num12 == 100f)
+            {
+                if (Globals.OldTimeThingy == false)
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
+                else
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
             }
             else if (num12 > 100f)
             {
                 if (Globals.OldTimeThingy == false)
-                    Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (" + (num8 / num7).ToString("0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + (num8 / num7).ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
                 else
-                    Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW samples converted. (" + (num8 / num7).ToString("0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + (num8 / num7).ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
             }
             Globals.ActiveVoicesInt = Convert.ToInt32(num11);
             Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
@@ -1300,12 +1311,12 @@ namespace KeppySpartanMIDIConverter
                     if (Globals.PlaybackMode == true)
                     {
                         this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        this.CurrentStatusText.Text = "Preparing for preview.\nPlease wait...";
+                        this.CurrentStatusText.Text = "The converter is allocating memory for the playback.\nPlease wait...";
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
                         this.DefMenu.Enabled = false;
-                        this.loadingpic.Visible = true;
+                        this.loadingpic.Visible = false;
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
@@ -1319,17 +1330,19 @@ namespace KeppySpartanMIDIConverter
                         this.label3.Enabled = true;
                         this.VolumeBar.Enabled = true;
                         this.VoiceLimit.Maximum = 2000;
-                        this.CurrentStatusText.Size = new Size(425, 60);
+                        this.CurrentStatusText.Size = new Size(488, 60);
+                        Process thisProc = Process.GetCurrentProcess();
+                        thisProc.PriorityClass = ProcessPriorityClass.RealTime;
                     }
                     else if (Globals.RenderingMode == true)
                     {
                         this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        this.CurrentStatusText.Text = "Preparing for export.\nPlease wait...";
+                        this.CurrentStatusText.Text = "The converter is allocating memory for the conversion process.\nPlease wait...";
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
                         this.DefMenu.Enabled = false;
-                        this.loadingpic.Visible = true;
+                        this.loadingpic.Visible = false;
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
@@ -1343,7 +1356,9 @@ namespace KeppySpartanMIDIConverter
                         this.label3.Enabled = false;
                         this.VolumeBar.Enabled = false;
                         this.VoiceLimit.Maximum = 100000;
-                        this.CurrentStatusText.Size = new Size(425, 60);
+                        this.CurrentStatusText.Size = new Size(488, 60);
+                        Process thisProc = Process.GetCurrentProcess();
+                        thisProc.PriorityClass = ProcessPriorityClass.RealTime;
                     }
                     else if (Globals.RenderingMode == false & Globals.PlaybackMode == false)
                     {
@@ -1368,6 +1383,8 @@ namespace KeppySpartanMIDIConverter
                         this.VolumeBar.Enabled = false;
                         this.VoiceLimit.Maximum = 100000;
                         this.CurrentStatusText.Size = new Size(488, 60);
+                        Process thisProc = Process.GetCurrentProcess();
+                        thisProc.PriorityClass = ProcessPriorityClass.Idle;
                     }
 
                 }
@@ -1398,7 +1415,7 @@ namespace KeppySpartanMIDIConverter
                             this.VoiceLimit.Maximum = 100000;
                         }
                         this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        this.CurrentStatusText.Text = "Starting BASS engine.\nPlease wait...";
+                        this.CurrentStatusText.Text = "The BASS engine is being prepared for the process.\nPlease wait...";
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
@@ -1414,6 +1431,8 @@ namespace KeppySpartanMIDIConverter
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = Globals.CurrentPeak;
                         this.CurrentStatusText.Size = new Size(425, 60);
+                        Process thisProc = Process.GetCurrentProcess();
+                        thisProc.PriorityClass = ProcessPriorityClass.RealTime;
                     }
                     else
                     {
@@ -1456,6 +1475,8 @@ namespace KeppySpartanMIDIConverter
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = Globals.CurrentPeak;
                         this.CurrentStatusText.Size = new Size(425, 60);
+                        Process thisProc = Process.GetCurrentProcess();
+                        thisProc.PriorityClass = ProcessPriorityClass.RealTime;
                     }
                     if (Globals.NewWindowName == null)
                     {
@@ -1655,4 +1676,13 @@ namespace KeppySpartanMIDIConverter
         }
     }
 
+    public static class InputExtensions
+    {
+        public static int LimitToRange(this int value, int inclusiveMinimum, int inclusiveMaximum)
+        {
+            if (value < inclusiveMinimum) { return inclusiveMinimum; }
+            if (value > inclusiveMaximum) { return inclusiveMaximum; }
+            return value;
+        }
+    }
 }

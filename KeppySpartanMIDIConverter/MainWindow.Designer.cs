@@ -66,6 +66,9 @@
             this.startRenderingOGGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playInRealtimeBetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enabledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.disabledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.autoShutdownAfterRenderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,9 +89,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enabledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.disabledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -278,8 +278,8 @@
             this.moveUpToolStripMenuItem,
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
-            this.DefMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.DefMenu.Size = new System.Drawing.Size(188, 120);
+            this.DefMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.DefMenu.Size = new System.Drawing.Size(188, 142);
             // 
             // addMIDIsToolStripMenuItem
             // 
@@ -481,6 +481,29 @@
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
+            // automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem
+            // 
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enabledToolStripMenuItem3,
+            this.disabledToolStripMenuItem3});
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Name = "automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem";
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
+            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Text = "Automatically check for updates when starting the converter";
+            // 
+            // enabledToolStripMenuItem3
+            // 
+            this.enabledToolStripMenuItem3.Name = "enabledToolStripMenuItem3";
+            this.enabledToolStripMenuItem3.Size = new System.Drawing.Size(114, 22);
+            this.enabledToolStripMenuItem3.Text = "Enabled";
+            this.enabledToolStripMenuItem3.Click += new System.EventHandler(this.enabledToolStripMenuItem3_Click);
+            // 
+            // disabledToolStripMenuItem3
+            // 
+            this.disabledToolStripMenuItem3.Name = "disabledToolStripMenuItem3";
+            this.disabledToolStripMenuItem3.Size = new System.Drawing.Size(114, 22);
+            this.disabledToolStripMenuItem3.Text = "Disabled";
+            this.disabledToolStripMenuItem3.Click += new System.EventHandler(this.disabledToolStripMenuItem3_Click);
+            // 
             // autoShutdownAfterRenderingToolStripMenuItem
             // 
             this.autoShutdownAfterRenderingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -493,14 +516,14 @@
             // enabledToolStripMenuItem
             // 
             this.enabledToolStripMenuItem.Name = "enabledToolStripMenuItem";
-            this.enabledToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.enabledToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.enabledToolStripMenuItem.Text = "Enabled";
             this.enabledToolStripMenuItem.Click += new System.EventHandler(this.enabledToolStripMenuItem_Click);
             // 
             // disabledToolStripMenuItem
             // 
             this.disabledToolStripMenuItem.Name = "disabledToolStripMenuItem";
-            this.disabledToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.disabledToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.disabledToolStripMenuItem.Text = "Disabled";
             this.disabledToolStripMenuItem.Click += new System.EventHandler(this.disabledToolStripMenuItem_Click);
             // 
@@ -645,29 +668,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
-            // 
-            // automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem
-            // 
-            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.enabledToolStripMenuItem3,
-            this.disabledToolStripMenuItem3});
-            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Name = "automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem";
-            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
-            this.automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem.Text = "Automatically check for updates when starting the converter";
-            // 
-            // enabledToolStripMenuItem3
-            // 
-            this.enabledToolStripMenuItem3.Name = "enabledToolStripMenuItem3";
-            this.enabledToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-            this.enabledToolStripMenuItem3.Text = "Enabled";
-            this.enabledToolStripMenuItem3.Click += new System.EventHandler(this.enabledToolStripMenuItem3_Click);
-            // 
-            // disabledToolStripMenuItem3
-            // 
-            this.disabledToolStripMenuItem3.Name = "disabledToolStripMenuItem3";
-            this.disabledToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-            this.disabledToolStripMenuItem3.Text = "Disabled";
-            this.disabledToolStripMenuItem3.Click += new System.EventHandler(this.disabledToolStripMenuItem3_Click);
             // 
             // MainWindow
             // 
