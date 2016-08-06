@@ -645,9 +645,9 @@ namespace KeppySpartanMIDIConverter
             if (num12 < 100f)
             {
                 if (Globals.OldTimeThingy == false)
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ more faster)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ faster)";
                 else
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ more faster)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ faster)";
             }
             else if (num12 == 100f)
             {
@@ -659,9 +659,9 @@ namespace KeppySpartanMIDIConverter
             else if (num12 > 100f)
             {
                 if (Globals.OldTimeThingy == false)
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ slower)";
                 else
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ more slower)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ slower)";
             }
             Globals.CurrentPeak = String.Format("Root mean square: {0:#00.0} dB | Average: {1:#00.0} dB | Peak: {2:#00.0} dB", Globals._plm.RMS_dBV, Globals._plm.AVG_dBV, Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
             Console.WriteLine("Current position: " + str5.ToString() + " - " + str4.ToString());
