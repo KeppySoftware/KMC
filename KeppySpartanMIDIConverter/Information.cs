@@ -51,15 +51,14 @@ namespace KeppySpartanMIDIConverter
                 FileVersionInfo bassmidilibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bassmidi.dll");
                 FileVersionInfo bassvstlibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bass_vst.dll");
                 FileVersionInfo bassenclibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bassenc.dll");
-                FileVersionInfo bassnetlibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\Bass.Net.dll");
 
                 // Print the file name and version number.
                 BASSINFO.Text = basslibver.FileDescription + " version: " + basslibver.FileVersion + "." + basslibver.FilePrivatePart + "\n" +
                     bassmidilibver.FileDescription + " version: " + bassmidilibver.FileVersion + "." + bassmidilibver.FilePrivatePart + "\n" +
                     bassenclibver.FileDescription + " version: " + bassenclibver.FileVersion + "." + bassenclibver.FilePrivatePart + "\n" +
-                    bassnetlibver.FileDescription + " version: " + bassnetlibver.FileVersion + "." + bassnetlibver.FilePrivatePart;
+                    bassvstlibver.FileDescription + " version: " + bassvstlibver.FileVersion + "." + bassvstlibver.FilePrivatePart;
 
-                BASSINFO2.Text = bassvstlibver.FileDescription + " version: " + bassvstlibver.FileVersion + "." + bassvstlibver.FilePrivatePart + "\n\n\n" +
+                BASSINFO2.Text = "\n\n\n" +
                      "KMC " + Application.ProductVersion + " " + SAS;
             }
             catch (Exception exception)
