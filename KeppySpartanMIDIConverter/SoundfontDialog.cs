@@ -119,6 +119,38 @@ namespace KeppyMIDIConverter
         {
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            if (IntPtr.Size == 8)
+            {
+                if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL == null)
+                {
+                    VSTImport.Text = "Import a 64-bit VST DSP inside the converter...";
+                }
+                else
+                {
+                    VSTImport.Text = "Current VST DSP loaded: " + Path.GetFileNameWithoutExtension(KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL);
+                }
+            }
+            else if (IntPtr.Size == 4)
+            {
+                if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL == null)
+                {
+                    VSTImport.Text = "Import a 32-bit VST DSP inside the converter...";
+                }
+                else
+                {
+                    VSTImport.Text = "Current VST DSP loaded: " + Path.GetFileNameWithoutExtension(KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL);
+                }
+            }
+            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTMode == true)
+            {
+                VSTImport.Enabled = true;
+                VSTUse.Checked = true;
+            }
+            else
+            {
+                VSTImport.Enabled = false;
+                VSTUse.Checked = false;
+            }
             try
             {
                 if (Settings.GetValue("lastsffolder").ToString() == null)
@@ -129,10 +161,11 @@ namespace KeppyMIDIConverter
                 {
                     SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsf1folder").ToString();
                 }
+                Settings.Close();
             }
             catch
             {
-
+                Settings.Close();
             }
         }
 
@@ -182,6 +215,7 @@ namespace KeppyMIDIConverter
                 }
                 KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
                 SFList.Items.CopyTo(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+                Settings.Close();
             }
         }
 
@@ -267,6 +301,11 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private void VSTReady_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This program supports VST instruments.\n\nVirtual Studio Technology (VST) is a software interface is a technology by Steinberg Media Technologies.\nCopyright ©2006 Steinberg Media Technologies.\nAll Rights Reserved.", "About the Virtual Studio Technology interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void SFList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
@@ -347,6 +386,57 @@ namespace KeppyMIDIConverter
             {
                 MvUp.Enabled = true;
                 MvDwn.Enabled = true;
+            }
+        }
+
+        private void VSTUse_CheckedChanged(object sender, EventArgs e)
+        {
+            if (VSTUse.Checked == true)
+            {
+                VSTImport.Enabled = true;
+                KeppySpartanMIDIConverter.MainWindow.Globals.VSTMode = true;
+            }
+            else if (VSTUse.Checked == false)
+            {
+                VSTImport.Enabled = false;
+                KeppySpartanMIDIConverter.MainWindow.Globals.VSTMode = false;
+            }
+        }
+
+        private void VSTImport_Click(object sender, EventArgs e)
+        {
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            try
+            {
+                if (Settings.GetValue("lastsffolder").ToString() == null)
+                {
+                    VSTImportDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                }
+                else
+                {
+                    VSTImportDialog.InitialDirectory = Settings.GetValue("lastsffolder").ToString();
+                }
+            }
+            catch
+            {
+
+            }
+            if (IntPtr.Size == 8)
+            {
+                MessageBox.Show("Be sure to select a 64-bit VST DSP for the converter.\nIf you're planning on using a 32-bit VST DSP, please switch to the 32-bit version of Keppy's MIDI Converter.", "Keppy's MIDI Converter - VSTi warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (IntPtr.Size == 4)
+            {
+                MessageBox.Show("Be sure to select a 32-bit VST DSP for the converter.\nIf you're planning on using a 64-bit VST DSP, please switch to the 64-bit version of Keppy's MIDI Converter.", "Keppy's MIDI Converter - VSTi warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (this.VSTImportDialog.ShowDialog() == DialogResult.OK)
+            {
+                KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL = VSTImportDialog.FileName;
+                VSTImport.Text = "Current VSTi loaded: " + Path.GetFileNameWithoutExtension(VSTImportDialog.FileName);
+                Settings.SetValue("lastsffolder", Path.GetDirectoryName(VSTImportDialog.FileName), RegistryValueKind.String);
+                Settings.Close();
             }
         }
     }

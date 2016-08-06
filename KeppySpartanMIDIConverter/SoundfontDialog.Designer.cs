@@ -45,8 +45,13 @@
             this.MvUp = new System.Windows.Forms.Button();
             this.MvDwn = new System.Windows.Forms.Button();
             this.SFListCheck = new System.Windows.Forms.Timer(this.components);
+            this.VSTUse = new System.Windows.Forms.CheckBox();
+            this.VSTImport = new System.Windows.Forms.Button();
+            this.VSTImportDialog = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SFZCompliant = new System.Windows.Forms.PictureBox();
             this.SFMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,7 +107,7 @@
             this.SFList.Location = new System.Drawing.Point(12, 96);
             this.SFList.Name = "SFList";
             this.SFList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.SFList.Size = new System.Drawing.Size(557, 290);
+            this.SFList.Size = new System.Drawing.Size(557, 264);
             this.SFList.TabIndex = 11;
             this.SFList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SFList_DragDrop);
             this.SFList.DragEnter += new System.Windows.Forms.DragEventHandler(this.SFList_DragEnter);
@@ -184,6 +189,44 @@
             this.SFListCheck.Interval = 1;
             this.SFListCheck.Tick += new System.EventHandler(this.SFListCheck_Tick);
             // 
+            // VSTUse
+            // 
+            this.VSTUse.AutoSize = true;
+            this.VSTUse.Location = new System.Drawing.Point(15, 370);
+            this.VSTUse.Name = "VSTUse";
+            this.VSTUse.Size = new System.Drawing.Size(174, 17);
+            this.VSTUse.TabIndex = 16;
+            this.VSTUse.Text = "I want to apply a VST DSP too.";
+            this.VSTUse.UseVisualStyleBackColor = true;
+            this.VSTUse.CheckedChanged += new System.EventHandler(this.VSTUse_CheckedChanged);
+            // 
+            // VSTImport
+            // 
+            this.VSTImport.Enabled = false;
+            this.VSTImport.Location = new System.Drawing.Point(199, 366);
+            this.VSTImport.Name = "VSTImport";
+            this.VSTImport.Size = new System.Drawing.Size(370, 23);
+            this.VSTImport.TabIndex = 17;
+            this.VSTImport.Text = "Import a VST DSP inside the converter...";
+            this.VSTImport.UseVisualStyleBackColor = true;
+            this.VSTImport.Click += new System.EventHandler(this.VSTImport_Click);
+            // 
+            // VSTImportDialog
+            // 
+            this.VSTImportDialog.Filter = "VST instruments (*.dll)|*.dll;";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::KeppyMIDIConverter.Properties.Resources.vstlogo;
+            this.pictureBox1.Location = new System.Drawing.Point(471, 57);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.VSTReady_Click);
+            // 
             // SFZCompliant
             // 
             this.SFZCompliant.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -201,6 +244,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(581, 429);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.VSTImport);
+            this.Controls.Add(this.VSTUse);
             this.Controls.Add(this.SFZCompliant);
             this.Controls.Add(this.MvDwn);
             this.Controls.Add(this.MvUp);
@@ -218,9 +264,10 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Soundfonts manager";
+            this.Text = "Soundfonts/VST DSP manager";
             this.Load += new System.EventHandler(this.SoundfontDialog_Load);
             this.SFMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -245,5 +292,9 @@
         private System.Windows.Forms.ToolStripMenuItem removeSoundfontsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem clearSoundfontListToolStripMenuItem;
+        private System.Windows.Forms.CheckBox VSTUse;
+        private System.Windows.Forms.Button VSTImport;
+        private System.Windows.Forms.OpenFileDialog VSTImportDialog;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

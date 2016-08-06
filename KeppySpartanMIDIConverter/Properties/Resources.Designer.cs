@@ -71,6 +71,33 @@ namespace KeppyMIDIConverter.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.IO.UnmanagedMemoryStream simile a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream convfail {
+            get {
+                return ResourceManager.GetStream("convfail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.IO.UnmanagedMemoryStream simile a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream convfin {
+            get {
+                return ResourceManager.GetStream("convfin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.IO.UnmanagedMemoryStream simile a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream convstart {
+            get {
+                return ResourceManager.GetStream("convstart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap donatebtn {
@@ -126,6 +153,16 @@ namespace KeppyMIDIConverter.Properties {
         internal static System.Drawing.Bitmap updatebk {
             get {
                 object obj = ResourceManager.GetObject("updatebk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vstlogo {
+            get {
+                object obj = ResourceManager.GetObject("vstlogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

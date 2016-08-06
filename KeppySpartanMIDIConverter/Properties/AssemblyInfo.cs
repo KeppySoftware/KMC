@@ -9,9 +9,9 @@ using System.Resources;
 [assembly: AssemblyTitle("Keppy's MIDI Converter")]
 [assembly: AssemblyDescription("Convert your favorite MIDIs to WAV files!")]
 [assembly: AssemblyConfiguration("Final")]
-[assembly: AssemblyCompany("Keppy Studios & Frozen Snow Productions")]
+[assembly: AssemblyCompany("KaleidonKep99")]
 [assembly: AssemblyProduct("KeppySpartanMIDIConverter")]
-[assembly: AssemblyCopyright("Copyright © Keppy Studios 2016")]
+[assembly: AssemblyCopyright("Copyright © KaleidonKep99 2016")]
 [assembly: AssemblyTrademark("KSMCBYKS")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Resources;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come descritto di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("11.2.0")]
-[assembly: AssemblyFileVersion("11.2.0")]
+[assembly: AssemblyVersion("12.0.0")]
+[assembly: AssemblyFileVersion("12.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-GB")]

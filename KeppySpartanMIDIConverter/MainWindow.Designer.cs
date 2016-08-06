@@ -78,6 +78,9 @@
             this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enabledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.disabledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.conversionStartedfinishedfailedSoundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enabledToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.disabledToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
@@ -101,7 +104,7 @@
             // startRenderingWAVToolStripMenuItem
             // 
             this.startRenderingWAVToolStripMenuItem.Name = "startRenderingWAVToolStripMenuItem";
-            this.startRenderingWAVToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.startRenderingWAVToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.startRenderingWAVToolStripMenuItem.Text = "Render files to Wave (.WAV)";
             this.startRenderingWAVToolStripMenuItem.Click += new System.EventHandler(this.startRenderingWAVToolStripMenuItem_Click);
             // 
@@ -109,19 +112,19 @@
             // 
             this.abortRenderingToolStripMenuItem.Enabled = false;
             this.abortRenderingToolStripMenuItem.Name = "abortRenderingToolStripMenuItem";
-            this.abortRenderingToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.abortRenderingToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.abortRenderingToolStripMenuItem.Text = "Abort rendering";
             this.abortRenderingToolStripMenuItem.Click += new System.EventHandler(this.abortRenderingToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(262, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -246,7 +249,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(262, 6);
             // 
             // MIDIList
             // 
@@ -279,7 +282,7 @@
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
             this.DefMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.DefMenu.Size = new System.Drawing.Size(188, 142);
+            this.DefMenu.Size = new System.Drawing.Size(188, 120);
             // 
             // addMIDIsToolStripMenuItem
             // 
@@ -425,47 +428,47 @@
             // importMIDIsToolStripMenuItem
             // 
             this.importMIDIsToolStripMenuItem.Name = "importMIDIsToolStripMenuItem";
-            this.importMIDIsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.importMIDIsToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.importMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.importMIDIsToolStripMenuItem.Click += new System.EventHandler(this.importMIDIsToolStripMenuItem_Click);
             // 
             // removeSelectedMIDIsToolStripMenuItem
             // 
             this.removeSelectedMIDIsToolStripMenuItem.Name = "removeSelectedMIDIsToolStripMenuItem";
-            this.removeSelectedMIDIsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.removeSelectedMIDIsToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.removeSelectedMIDIsToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeSelectedMIDIsToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedMIDIsToolStripMenuItem_Click);
             // 
             // clearMIDIsListToolStripMenuItem
             // 
             this.clearMIDIsListToolStripMenuItem.Name = "clearMIDIsListToolStripMenuItem";
-            this.clearMIDIsListToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.clearMIDIsListToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.clearMIDIsListToolStripMenuItem.Text = "Clear MIDIs list";
             this.clearMIDIsListToolStripMenuItem.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(262, 6);
             // 
             // openTheSoundfontsManagerToolStripMenuItem
             // 
             this.openTheSoundfontsManagerToolStripMenuItem.Name = "openTheSoundfontsManagerToolStripMenuItem";
-            this.openTheSoundfontsManagerToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.openTheSoundfontsManagerToolStripMenuItem.Text = "Open the soundfonts manager";
+            this.openTheSoundfontsManagerToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.openTheSoundfontsManagerToolStripMenuItem.Text = "Open the soundfonts/VST DSP manager";
             this.openTheSoundfontsManagerToolStripMenuItem.Click += new System.EventHandler(this.openTheSoundfontsManagerToolStripMenuItem_Click);
             // 
             // startRenderingOGGToolStripMenuItem
             // 
             this.startRenderingOGGToolStripMenuItem.Name = "startRenderingOGGToolStripMenuItem";
-            this.startRenderingOGGToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.startRenderingOGGToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.startRenderingOGGToolStripMenuItem.Text = "Render files to Vorbis (.OGG)";
             this.startRenderingOGGToolStripMenuItem.Click += new System.EventHandler(this.startRenderingOGGToolStripMenuItem_Click);
             // 
             // playInRealtimeBetaToolStripMenuItem
             // 
             this.playInRealtimeBetaToolStripMenuItem.Name = "playInRealtimeBetaToolStripMenuItem";
-            this.playInRealtimeBetaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.playInRealtimeBetaToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.playInRealtimeBetaToolStripMenuItem.Text = "Preview files (Real-time playback)";
             this.playInRealtimeBetaToolStripMenuItem.Click += new System.EventHandler(this.playInRealtimeBetaToolStripMenuItem_Click);
             // 
@@ -476,6 +479,7 @@
             this.autoShutdownAfterRenderingToolStripMenuItem,
             this.clearMIDIListAfterRenderingToolStripMenuItem,
             this.showConversionPositionInsteadOfTimeLeftToolStripMenuItem,
+            this.conversionStartedfinishedfailedSoundsToolStripMenuItem,
             this.forceCloseTheApplicationToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
@@ -573,11 +577,34 @@
             this.disabledToolStripMenuItem2.Text = "Disabled";
             this.disabledToolStripMenuItem2.Click += new System.EventHandler(this.disabledToolStripMenuItem2_Click);
             // 
+            // conversionStartedfinishedfailedSoundsToolStripMenuItem
+            // 
+            this.conversionStartedfinishedfailedSoundsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enabledToolStripMenuItem4,
+            this.disabledToolStripMenuItem4});
+            this.conversionStartedfinishedfailedSoundsToolStripMenuItem.Name = "conversionStartedfinishedfailedSoundsToolStripMenuItem";
+            this.conversionStartedfinishedfailedSoundsToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
+            this.conversionStartedfinishedfailedSoundsToolStripMenuItem.Text = "Conversion started/finished/failed sounds";
+            // 
+            // enabledToolStripMenuItem4
+            // 
+            this.enabledToolStripMenuItem4.Name = "enabledToolStripMenuItem4";
+            this.enabledToolStripMenuItem4.Size = new System.Drawing.Size(114, 22);
+            this.enabledToolStripMenuItem4.Text = "Enabled";
+            this.enabledToolStripMenuItem4.Click += new System.EventHandler(this.enabledToolStripMenuItem4_Click);
+            // 
+            // disabledToolStripMenuItem4
+            // 
+            this.disabledToolStripMenuItem4.Name = "disabledToolStripMenuItem4";
+            this.disabledToolStripMenuItem4.Size = new System.Drawing.Size(114, 22);
+            this.disabledToolStripMenuItem4.Text = "Disabled";
+            this.disabledToolStripMenuItem4.Click += new System.EventHandler(this.disabledToolStripMenuItem4_Click);
+            // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
             this.forceCloseTheApplicationToolStripMenuItem.Name = "forceCloseTheApplicationToolStripMenuItem";
             this.forceCloseTheApplicationToolStripMenuItem.Size = new System.Drawing.Size(365, 22);
-            this.forceCloseTheApplicationToolStripMenuItem.Text = "Force close the application";
+            this.forceCloseTheApplicationToolStripMenuItem.Text = "Crash the application";
             this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
             // 
             // loadingpic
@@ -775,6 +802,9 @@
         private System.Windows.Forms.ToolStripMenuItem automaticallyCheckForUpdatesWhenStartingTheConverterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem conversionStartedfinishedfailedSoundsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem4;
     }
 }
 

@@ -49,8 +49,8 @@
             this.LatestVersion = new System.Windows.Forms.Label();
             this.ThisVersion = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.BASSINFO2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -65,7 +65,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(212, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(294, 104);
+            this.label1.Size = new System.Drawing.Size(273, 104);
             this.label1.TabIndex = 1;
             this.label1.Text = resources.GetString("label1.Text");
             // 
@@ -152,6 +152,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.BASSINFO2);
             this.panel1.Controls.Add(this.BASSINFO);
             this.panel1.Location = new System.Drawing.Point(6, 214);
             this.panel1.Name = "panel1";
@@ -160,10 +161,10 @@
             // 
             // BASSINFO
             // 
-            this.BASSINFO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BASSINFO.Dock = System.Windows.Forms.DockStyle.Left;
             this.BASSINFO.Location = new System.Drawing.Point(0, 0);
             this.BASSINFO.Name = "BASSINFO";
-            this.BASSINFO.Size = new System.Drawing.Size(521, 54);
+            this.BASSINFO.Size = new System.Drawing.Size(260, 54);
             this.BASSINFO.TabIndex = 0;
             this.BASSINFO.Text = "A\r\na\r\na\r\na";
             this.BASSINFO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -260,16 +261,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(365, 312);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(89, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Thanks to...";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // pictureBox3
             // 
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -282,12 +273,21 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
+            // BASSINFO2
+            // 
+            this.BASSINFO2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BASSINFO2.Location = new System.Drawing.Point(261, 0);
+            this.BASSINFO2.Name = "BASSINFO2";
+            this.BASSINFO2.Size = new System.Drawing.Size(260, 54);
+            this.BASSINFO2.TabIndex = 1;
+            this.BASSINFO2.Text = "A\r\na\r\na\r\na";
+            this.BASSINFO2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Informations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(545, 345);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
@@ -337,6 +337,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label BASSINFO2;
     }
 }

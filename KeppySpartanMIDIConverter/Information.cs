@@ -24,11 +24,6 @@ namespace KeppySpartanMIDIConverter
             public static string ExecutablePath = KeppySpartanMIDIConverter.MainWindow.Globals.ExecutablePath;
         }
 
-        public partial class OtherStuff
-        {
-            public static KeppyMIDIConverter.ThanksTo frm = new KeppyMIDIConverter.ThanksTo();
-        }
-
         private void Informations_Load(object sender, EventArgs e)
         {
             try
@@ -51,6 +46,7 @@ namespace KeppySpartanMIDIConverter
                 // OTHER STUFF
                 FileVersionInfo basslibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bass.dll");
                 FileVersionInfo bassmidilibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bassmidi.dll");
+                FileVersionInfo bassvstlibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bass_vst.dll");
                 FileVersionInfo bassenclibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bassenc.dll");
                 FileVersionInfo bassnetlibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\Bass.Net.dll");
 
@@ -59,6 +55,9 @@ namespace KeppySpartanMIDIConverter
                     bassmidilibver.FileDescription + " version: " + bassmidilibver.FileVersion + "." + bassmidilibver.FilePrivatePart + "\n" +
                     bassenclibver.FileDescription + " version: " + bassenclibver.FileVersion + "." + bassenclibver.FilePrivatePart + "\n" +
                     bassnetlibver.FileDescription + " version: " + bassnetlibver.FileVersion + "." + bassnetlibver.FilePrivatePart;
+
+                BASSINFO2.Text = bassvstlibver.FileDescription + " version: " + bassvstlibver.FileVersion + "." + bassvstlibver.FilePrivatePart + "\n\n\n" +
+                     "KMC " + Application.ProductVersion;
             }
             catch (Exception exception)
             {
@@ -160,11 +159,6 @@ namespace KeppySpartanMIDIConverter
                 "&bn=" + "PP%2dDonationsBF";
 
             Process.Start(url);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            OtherStuff.frm.ShowDialog();
         }
     }
 }

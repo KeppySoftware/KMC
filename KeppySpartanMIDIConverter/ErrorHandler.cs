@@ -39,8 +39,7 @@ namespace KeppyMIDIConverter
 
         private void ErrorHandler_Load(object sender, EventArgs e)
         {
-            System.Media.SoundPlayer convfail = new System.Media.SoundPlayer(Application.StartupPath + @"\convfail.wav");
-            convfail.Play();
+            PlayConversionFail();
         }
 
         private void Close_Click(object sender, EventArgs e)
@@ -53,6 +52,13 @@ namespace KeppyMIDIConverter
             {
                 Application.ExitThread();
             }   
+        }
+
+        private void PlayConversionFail()
+        {
+            System.IO.Stream str = Properties.Resources.convfail;
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
+            player.Play();
         }
     }
 }
