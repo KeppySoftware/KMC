@@ -80,7 +80,7 @@ namespace KeppyMIDIConverter
             }
             if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc8 != null)
             {
-                label8.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc;
+                label8.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc8;
                 Unload8.Enabled = true;
                 Load8.Enabled = false;
             }

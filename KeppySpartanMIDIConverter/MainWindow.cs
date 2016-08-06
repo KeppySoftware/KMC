@@ -649,15 +649,7 @@ namespace KeppySpartanMIDIConverter
                 // NULL
             }
 
-            if (Globals.VSTMode == true)
-            {
-                int r = Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
-                r = Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._VSTHandle, buffer, length);
-            }
-            else
-            {
-                Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
-            }
+            Un4seen.Bass.Bass.BASS_ChannelGetData(Globals._recHandle, buffer, length);
 
             if (num12 < 100f)
             {
