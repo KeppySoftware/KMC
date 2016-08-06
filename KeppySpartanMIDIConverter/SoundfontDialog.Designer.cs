@@ -47,7 +47,6 @@
             this.SFListCheck = new System.Windows.Forms.Timer(this.components);
             this.VSTUse = new System.Windows.Forms.CheckBox();
             this.VSTImport = new System.Windows.Forms.Button();
-            this.VSTImportDialog = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SFZCompliant = new System.Windows.Forms.PictureBox();
             this.SFMenu.SuspendLayout();
@@ -194,9 +193,9 @@
             this.VSTUse.AutoSize = true;
             this.VSTUse.Location = new System.Drawing.Point(15, 370);
             this.VSTUse.Name = "VSTUse";
-            this.VSTUse.Size = new System.Drawing.Size(174, 17);
+            this.VSTUse.Size = new System.Drawing.Size(179, 17);
             this.VSTUse.TabIndex = 16;
-            this.VSTUse.Text = "I want to apply a VST DSP too.";
+            this.VSTUse.Text = "I want to apply a VST DSPs too.";
             this.VSTUse.UseVisualStyleBackColor = true;
             this.VSTUse.CheckedChanged += new System.EventHandler(this.VSTUse_CheckedChanged);
             // 
@@ -207,13 +206,9 @@
             this.VSTImport.Name = "VSTImport";
             this.VSTImport.Size = new System.Drawing.Size(370, 23);
             this.VSTImport.TabIndex = 17;
-            this.VSTImport.Text = "Import a VST DSP inside the converter...";
+            this.VSTImport.Text = "Open the VST DSP manager...";
             this.VSTImport.UseVisualStyleBackColor = true;
             this.VSTImport.Click += new System.EventHandler(this.VSTImport_Click);
-            // 
-            // VSTImportDialog
-            // 
-            this.VSTImportDialog.Filter = "VST instruments (*.dll)|*.dll;";
             // 
             // pictureBox1
             // 
@@ -294,7 +289,6 @@
         private System.Windows.Forms.ToolStripMenuItem clearSoundfontListToolStripMenuItem;
         private System.Windows.Forms.CheckBox VSTUse;
         private System.Windows.Forms.Button VSTImport;
-        private System.Windows.Forms.OpenFileDialog VSTImportDialog;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

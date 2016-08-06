@@ -119,28 +119,6 @@ namespace KeppyMIDIConverter
         {
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            if (IntPtr.Size == 8)
-            {
-                if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL == null)
-                {
-                    VSTImport.Text = "Import a 64-bit VST DSP inside the converter...";
-                }
-                else
-                {
-                    VSTImport.Text = "Current VST DSP loaded: " + Path.GetFileNameWithoutExtension(KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL);
-                }
-            }
-            else if (IntPtr.Size == 4)
-            {
-                if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL == null)
-                {
-                    VSTImport.Text = "Import a 32-bit VST DSP inside the converter...";
-                }
-                else
-                {
-                    VSTImport.Text = "Current VST DSP loaded: " + Path.GetFileNameWithoutExtension(KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL);
-                }
-            }
             if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTMode == true)
             {
                 VSTImport.Enabled = true;
@@ -303,7 +281,7 @@ namespace KeppyMIDIConverter
 
         private void VSTReady_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This program supports VST instruments.\n\nVirtual Studio Technology (VST) is a software interface is a technology by Steinberg Media Technologies.\nCopyright ©2006 Steinberg Media Technologies.\nAll Rights Reserved.", "About the Virtual Studio Technology interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("This program supports VST DSPs.\n\nVirtual Studio Technology (VST) is a software interface is a technology by Steinberg Media Technologies.\nCopyright ©2006 Steinberg Media Technologies.\nAll Rights Reserved.", "About the Virtual Studio Technology interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SFList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
@@ -405,39 +383,8 @@ namespace KeppyMIDIConverter
 
         private void VSTImport_Click(object sender, EventArgs e)
         {
-            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            try
-            {
-                if (Settings.GetValue("lastsffolder").ToString() == null)
-                {
-                    VSTImportDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                }
-                else
-                {
-                    VSTImportDialog.InitialDirectory = Settings.GetValue("lastsffolder").ToString();
-                }
-            }
-            catch
-            {
-
-            }
-            if (IntPtr.Size == 8)
-            {
-                MessageBox.Show("Be sure to select a 64-bit VST DSP for the converter.\nIf you're planning on using a 32-bit VST DSP, please switch to the 32-bit version of Keppy's MIDI Converter.", "Keppy's MIDI Converter - VSTi warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (IntPtr.Size == 4)
-            {
-                MessageBox.Show("Be sure to select a 32-bit VST DSP for the converter.\nIf you're planning on using a 64-bit VST DSP, please switch to the 64-bit version of Keppy's MIDI Converter.", "Keppy's MIDI Converter - VSTi warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            if (this.VSTImportDialog.ShowDialog() == DialogResult.OK)
-            {
-                KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL = VSTImportDialog.FileName;
-                VSTImport.Text = "Current VSTi loaded: " + Path.GetFileNameWithoutExtension(VSTImportDialog.FileName);
-                Settings.SetValue("lastsffolder", Path.GetDirectoryName(VSTImportDialog.FileName), RegistryValueKind.String);
-                Settings.Close();
-            }
+            KeppyMIDIConverter.VSTManagerWindow frm = new KeppyMIDIConverter.VSTManagerWindow();
+            frm.ShowDialog();
         }
     }
 }

@@ -1,0 +1,546 @@
+﻿namespace KeppyMIDIConverter
+{
+    partial class VSTManagerWindow
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.Unload8 = new System.Windows.Forms.Button();
+            this.Load8 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.Unload7 = new System.Windows.Forms.Button();
+            this.Load7 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.Unload6 = new System.Windows.Forms.Button();
+            this.Load6 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.Unload5 = new System.Windows.Forms.Button();
+            this.Load5 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.Unload4 = new System.Windows.Forms.Button();
+            this.Load4 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.Unload3 = new System.Windows.Forms.Button();
+            this.Load3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.Unload2 = new System.Windows.Forms.Button();
+            this.Load2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Unload = new System.Windows.Forms.Button();
+            this.Load1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.VSTImportDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.panel9);
+            this.panel1.Controls.Add(this.panel8);
+            this.panel1.Controls.Add(this.panel7);
+            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(589, 320);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel9
+            // 
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.Unload8);
+            this.panel9.Controls.Add(this.Load8);
+            this.panel9.Controls.Add(this.label8);
+            this.panel9.Location = new System.Drawing.Point(3, 276);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(580, 37);
+            this.panel9.TabIndex = 9;
+            // 
+            // Unload8
+            // 
+            this.Unload8.Enabled = false;
+            this.Unload8.Location = new System.Drawing.Point(497, 6);
+            this.Unload8.Name = "Unload8";
+            this.Unload8.Size = new System.Drawing.Size(75, 23);
+            this.Unload8.TabIndex = 2;
+            this.Unload8.Text = "Unload";
+            this.Unload8.UseVisualStyleBackColor = true;
+            this.Unload8.Click += new System.EventHandler(this.Unload8_Click);
+            // 
+            // Load8
+            // 
+            this.Load8.Location = new System.Drawing.Point(416, 6);
+            this.Load8.Name = "Load8";
+            this.Load8.Size = new System.Drawing.Size(75, 23);
+            this.Load8.TabIndex = 1;
+            this.Load8.Text = "Load";
+            this.Load8.UseVisualStyleBackColor = true;
+            this.Load8.Click += new System.EventHandler(this.Load8_Click);
+            // 
+            // label8
+            // 
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label8.Location = new System.Drawing.Point(0, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(410, 35);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Empty slot 8";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.Unload7);
+            this.panel8.Controls.Add(this.Load7);
+            this.panel8.Controls.Add(this.label7);
+            this.panel8.Location = new System.Drawing.Point(3, 237);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(580, 37);
+            this.panel8.TabIndex = 8;
+            // 
+            // Unload7
+            // 
+            this.Unload7.Enabled = false;
+            this.Unload7.Location = new System.Drawing.Point(497, 6);
+            this.Unload7.Name = "Unload7";
+            this.Unload7.Size = new System.Drawing.Size(75, 23);
+            this.Unload7.TabIndex = 2;
+            this.Unload7.Text = "Unload";
+            this.Unload7.UseVisualStyleBackColor = true;
+            this.Unload7.Click += new System.EventHandler(this.Unload7_Click);
+            // 
+            // Load7
+            // 
+            this.Load7.Location = new System.Drawing.Point(416, 6);
+            this.Load7.Name = "Load7";
+            this.Load7.Size = new System.Drawing.Size(75, 23);
+            this.Load7.TabIndex = 1;
+            this.Load7.Text = "Load";
+            this.Load7.UseVisualStyleBackColor = true;
+            this.Load7.Click += new System.EventHandler(this.Load7_Click);
+            // 
+            // label7
+            // 
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Location = new System.Drawing.Point(0, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(410, 35);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Empty slot 7";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.Unload6);
+            this.panel7.Controls.Add(this.Load6);
+            this.panel7.Controls.Add(this.label6);
+            this.panel7.Location = new System.Drawing.Point(3, 198);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(580, 37);
+            this.panel7.TabIndex = 7;
+            // 
+            // Unload6
+            // 
+            this.Unload6.Enabled = false;
+            this.Unload6.Location = new System.Drawing.Point(497, 6);
+            this.Unload6.Name = "Unload6";
+            this.Unload6.Size = new System.Drawing.Size(75, 23);
+            this.Unload6.TabIndex = 2;
+            this.Unload6.Text = "Unload";
+            this.Unload6.UseVisualStyleBackColor = true;
+            this.Unload6.Click += new System.EventHandler(this.Unload6_Click);
+            // 
+            // Load6
+            // 
+            this.Load6.Location = new System.Drawing.Point(416, 6);
+            this.Load6.Name = "Load6";
+            this.Load6.Size = new System.Drawing.Size(75, 23);
+            this.Load6.TabIndex = 1;
+            this.Load6.Text = "Load";
+            this.Load6.UseVisualStyleBackColor = true;
+            this.Load6.Click += new System.EventHandler(this.Load6_Click);
+            // 
+            // label6
+            // 
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(410, 35);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Empty slot 6";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.Unload5);
+            this.panel6.Controls.Add(this.Load5);
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Location = new System.Drawing.Point(3, 159);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(580, 37);
+            this.panel6.TabIndex = 6;
+            // 
+            // Unload5
+            // 
+            this.Unload5.Enabled = false;
+            this.Unload5.Location = new System.Drawing.Point(497, 6);
+            this.Unload5.Name = "Unload5";
+            this.Unload5.Size = new System.Drawing.Size(75, 23);
+            this.Unload5.TabIndex = 2;
+            this.Unload5.Text = "Unload";
+            this.Unload5.UseVisualStyleBackColor = true;
+            this.Unload5.Click += new System.EventHandler(this.Unload5_Click);
+            // 
+            // Load5
+            // 
+            this.Load5.Location = new System.Drawing.Point(416, 6);
+            this.Load5.Name = "Load5";
+            this.Load5.Size = new System.Drawing.Size(75, 23);
+            this.Load5.TabIndex = 1;
+            this.Load5.Text = "Load";
+            this.Load5.UseVisualStyleBackColor = true;
+            this.Load5.Click += new System.EventHandler(this.Load5_Click);
+            // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(410, 35);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Empty slot 5";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.Unload4);
+            this.panel5.Controls.Add(this.Load4);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Location = new System.Drawing.Point(3, 120);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(580, 37);
+            this.panel5.TabIndex = 5;
+            // 
+            // Unload4
+            // 
+            this.Unload4.Enabled = false;
+            this.Unload4.Location = new System.Drawing.Point(497, 6);
+            this.Unload4.Name = "Unload4";
+            this.Unload4.Size = new System.Drawing.Size(75, 23);
+            this.Unload4.TabIndex = 2;
+            this.Unload4.Text = "Unload";
+            this.Unload4.UseVisualStyleBackColor = true;
+            this.Unload4.Click += new System.EventHandler(this.Unload4_Click);
+            // 
+            // Load4
+            // 
+            this.Load4.Location = new System.Drawing.Point(416, 6);
+            this.Load4.Name = "Load4";
+            this.Load4.Size = new System.Drawing.Size(75, 23);
+            this.Load4.TabIndex = 1;
+            this.Load4.Text = "Load";
+            this.Load4.UseVisualStyleBackColor = true;
+            this.Load4.Click += new System.EventHandler(this.Load4_Click);
+            // 
+            // label4
+            // 
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(410, 35);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Empty slot 4";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.Unload3);
+            this.panel4.Controls.Add(this.Load3);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Location = new System.Drawing.Point(3, 81);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(580, 37);
+            this.panel4.TabIndex = 4;
+            // 
+            // Unload3
+            // 
+            this.Unload3.Enabled = false;
+            this.Unload3.Location = new System.Drawing.Point(497, 6);
+            this.Unload3.Name = "Unload3";
+            this.Unload3.Size = new System.Drawing.Size(75, 23);
+            this.Unload3.TabIndex = 2;
+            this.Unload3.Text = "Unload";
+            this.Unload3.UseVisualStyleBackColor = true;
+            this.Unload3.Click += new System.EventHandler(this.Unload3_Click);
+            // 
+            // Load3
+            // 
+            this.Load3.Location = new System.Drawing.Point(416, 6);
+            this.Load3.Name = "Load3";
+            this.Load3.Size = new System.Drawing.Size(75, 23);
+            this.Load3.TabIndex = 1;
+            this.Load3.Text = "Load";
+            this.Load3.UseVisualStyleBackColor = true;
+            this.Load3.Click += new System.EventHandler(this.Load3_Click);
+            // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(410, 35);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Empty slot 3";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.Unload2);
+            this.panel3.Controls.Add(this.Load2);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Location = new System.Drawing.Point(3, 42);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(580, 37);
+            this.panel3.TabIndex = 3;
+            // 
+            // Unload2
+            // 
+            this.Unload2.Enabled = false;
+            this.Unload2.Location = new System.Drawing.Point(497, 6);
+            this.Unload2.Name = "Unload2";
+            this.Unload2.Size = new System.Drawing.Size(75, 23);
+            this.Unload2.TabIndex = 2;
+            this.Unload2.Text = "Unload";
+            this.Unload2.UseVisualStyleBackColor = true;
+            this.Unload2.Click += new System.EventHandler(this.Unload2_Click);
+            // 
+            // Load2
+            // 
+            this.Load2.Location = new System.Drawing.Point(416, 6);
+            this.Load2.Name = "Load2";
+            this.Load2.Size = new System.Drawing.Size(75, 23);
+            this.Load2.TabIndex = 1;
+            this.Load2.Text = "Load";
+            this.Load2.UseVisualStyleBackColor = true;
+            this.Load2.Click += new System.EventHandler(this.Load2_Click);
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(410, 35);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Empty slot 2";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.Unload);
+            this.panel2.Controls.Add(this.Load1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(580, 37);
+            this.panel2.TabIndex = 0;
+            // 
+            // Unload
+            // 
+            this.Unload.Enabled = false;
+            this.Unload.Location = new System.Drawing.Point(497, 6);
+            this.Unload.Name = "Unload";
+            this.Unload.Size = new System.Drawing.Size(75, 23);
+            this.Unload.TabIndex = 2;
+            this.Unload.Text = "Unload";
+            this.Unload.UseVisualStyleBackColor = true;
+            this.Unload.Click += new System.EventHandler(this.Unload_Click);
+            // 
+            // Load1
+            // 
+            this.Load1.Location = new System.Drawing.Point(416, 6);
+            this.Load1.Name = "Load1";
+            this.Load1.Size = new System.Drawing.Size(75, 23);
+            this.Load1.TabIndex = 1;
+            this.Load1.Text = "Load";
+            this.Load1.UseVisualStyleBackColor = true;
+            this.Load1.Click += new System.EventHandler(this.Load_Click);
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(410, 35);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Empty slot 1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // VSTImportDialog
+            // 
+            this.VSTImportDialog.Filter = "VST effect/DSP (*.dll)|*.dll;";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(11, 337);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(401, 78);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "How do they work?\r\n\r\nEffect 1 will apply its effect to the audio, then it\'ll pass" +
+    " the modified audio to Effect 2,\r\nthat will then do the same with Effect 3 and s" +
+    "o on.\r\n\r\nIt\'s a chain-like system.";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(526, 391);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "OK";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(418, 391);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Unload all VSTs";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // VSTManagerWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(613, 425);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "VSTManagerWindow";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "VST Manager";
+            this.Load += new System.EventHandler(this.VSTManagerWindow_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button Unload8;
+        private System.Windows.Forms.Button Load8;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button Unload7;
+        private System.Windows.Forms.Button Load7;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button Unload6;
+        private System.Windows.Forms.Button Load6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button Unload5;
+        private System.Windows.Forms.Button Load5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button Unload4;
+        private System.Windows.Forms.Button Load4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button Unload3;
+        private System.Windows.Forms.Button Load3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button Unload2;
+        private System.Windows.Forms.Button Load2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button Unload;
+        private System.Windows.Forms.Button Load1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.OpenFileDialog VSTImportDialog;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+    }
+}

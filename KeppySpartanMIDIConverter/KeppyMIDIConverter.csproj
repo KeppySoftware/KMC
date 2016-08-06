@@ -146,6 +146,12 @@
     <Compile Include="SoundfontDialog.Designer.cs">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="VSTManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VSTManager.Designer.cs">
+      <DependentUpon>VSTManager.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdvancedSettings.resx">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SoundfontDialog.resx">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VSTManager.resx">
+      <DependentUpon>VSTManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>

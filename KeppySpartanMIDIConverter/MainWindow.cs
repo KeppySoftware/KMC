@@ -88,12 +88,6 @@ namespace KeppySpartanMIDIConverter
             public static int AverageCPU;
             public static int Bitrate = 128;
             public static int CancellationPendingValue = 0;
-            public static int ChorusDelay = 0;
-            public static int ChorusDepth = 0;
-            public static int ChorusFeedback = 0;
-            public static int ChorusLevel = 0;
-            public static int ChorusOnOr = 0;
-            public static int ChorusRate = 0;
             public static int CurrentEncoder;
             public static int CurrentMode;
             public static int CurrentStatusMaximumInt;
@@ -110,6 +104,13 @@ namespace KeppySpartanMIDIConverter
             public static int _recHandle;
             public static int _Mixer;
             public static int _VSTHandle;
+            public static int _VSTHandle2;
+            public static int _VSTHandle3;
+            public static int _VSTHandle4;
+            public static int _VSTHandle5;
+            public static int _VSTHandle6;
+            public static int _VSTHandle7;
+            public static int _VSTHandle8;
             public static string BenchmarkTime;
             public static string CurrentPeak = "Root mean square: N/A dB | Average: N/A dB | Peak: N/A dB";
             public static string CurrentStatusTextString;
@@ -120,6 +121,21 @@ namespace KeppySpartanMIDIConverter
             public static string MIDIName;
             public static string NewWindowName = null;
             public static string VSTDLL = null;
+            public static string VSTDLL2 = null;
+            public static string VSTDLL3 = null;
+            public static string VSTDLL4 = null;
+            public static string VSTDLL5 = null;
+            public static string VSTDLL6 = null;
+            public static string VSTDLL7 = null;
+            public static string VSTDLL8 = null;
+            public static string VSTDLLDesc = null;
+            public static string VSTDLLDesc2 = null;
+            public static string VSTDLLDesc3 = null;
+            public static string VSTDLLDesc4 = null;
+            public static string VSTDLLDesc5 = null;
+            public static string VSTDLLDesc6 = null;
+            public static string VSTDLLDesc7 = null;
+            public static string VSTDLLDesc8 = null;
             public static string WAVName;
             public static string[] Soundfonts = { null };
 
@@ -357,13 +373,121 @@ namespace KeppySpartanMIDIConverter
             }
         }
 
-        private void BASSInitSystem(String str)
+        private void BASSInitSystem()
         {
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
             Bass.BASS_StreamFree(Globals._recHandle);
             Bass.BASS_Free();
             Un4seen.Bass.Bass.BASS_Init(0, Globals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
+        }
+
+        private void BASSVSTInit()
+        {
+            if (Globals.VSTMode == true)
+            {
+                Globals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 8);
+                Globals._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 7);
+                Globals._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 6);
+                Globals._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 5);
+                Globals._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 4);
+                Globals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 3);
+                Globals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 2);
+                Globals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 1);
+                BASS_VST_INFO vstInfo = new BASS_VST_INFO();
+                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle, vstInfo) && vstInfo.hasEditor)
+                {
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Closing += new CancelEventHandler(f_Closing);
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, f.Handle);
+                    var dialogResult2 = f.ShowDialog();
+                }
+                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle2, vstInfo) && vstInfo.hasEditor)
+                {
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Closing += new CancelEventHandler(f_Closing);
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle2, f.Handle);
+                    var dialogResult2 = f.ShowDialog();
+                }
+                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle3, vstInfo) && vstInfo.hasEditor)
+                {
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Closing += new CancelEventHandler(f_Closing);
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle3, f.Handle);
+                    var dialogResult2 = f.ShowDialog();
+                }
+                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle4, vstInfo) && vstInfo.hasEditor)
+                {
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Closing += new CancelEventHandler(f_Closing);
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle4, f.Handle);
+                    var dialogResult2 = f.ShowDialog();
+                }
+                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle5, vstInfo) && vstInfo.hasEditor)
+                {
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Closing += new CancelEventHandler(f_Closing);
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle5, f.Handle);
+                    var dialogResult2 = f.ShowDialog();
+                }
+                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle6, vstInfo) && vstInfo.hasEditor)
+                {
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Closing += new CancelEventHandler(f_Closing);
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle6, f.Handle);
+                    var dialogResult2 = f.ShowDialog();
+                }
+                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle7, vstInfo) && vstInfo.hasEditor)
+                {
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Closing += new CancelEventHandler(f_Closing);
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle7, f.Handle);
+                    var dialogResult2 = f.ShowDialog();
+                }
+                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle8, vstInfo) && vstInfo.hasEditor)
+                {
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Closing += new CancelEventHandler(f_Closing);
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle8, f.Handle);
+                    var dialogResult2 = f.ShowDialog();
+                }
+            }
+        }
+
+        private void BASSStreamSystem(String str)
+        {
+            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
             Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
             Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Globals.LimitVoicesInt);
             Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
@@ -374,40 +498,6 @@ namespace KeppySpartanMIDIConverter
             else
             {
                 Globals.NewWindowName = "Keppy's MIDI Converter | Exporting \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
-            }
-            if (Globals.VSTMode == true)
-            {
-                Globals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 1);
-                int temphandle = BassVst.BASS_VST_ChannelCreate(44100, 2, Globals.VSTDLL, BASSFlag.BASS_STREAM_DECODE);
-                BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle, vstInfo))
-                {
-                    BassVst.BASS_VST_ChannelFree(temphandle);
-                    if (vstInfo.hasEditor)
-                    {
-                        DialogResult dialogResult = MessageBox.Show("Do you want to change the VST DSP settings before converting the following MIDI?\n\nMIDI: " + Path.GetFileNameWithoutExtension(str), "Keppy's MIDI Converter - VSTi settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            Form f = new Form();
-                            f.Width = vstInfo.editorWidth + 4;
-                            f.Height = vstInfo.editorHeight + 34;
-                            f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                            f.Text = "Change VST DSP settings: " + vstInfo.effectName;
-                            f.Closing += new CancelEventHandler(f_Closing);
-                            BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, f.Handle);
-                            var dialogResult2 = f.ShowDialog();
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-
-                        }
-                    }
-                }
-                else
-                {
-                    BassVst.BASS_VST_ChannelFree(temphandle);
-                    throw new Exception("VST instruments are not supported by the converter.");
-                }
             }
             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
             Globals._plm.CalcRMS = true;
@@ -490,7 +580,7 @@ namespace KeppySpartanMIDIConverter
                         proc.Kill();
                     }
                     BassEnc.BASS_Encode_Stop(Globals._recHandle);
-                    Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, path, BASSEncode.BASS_ENCODE_LIMIT | BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
+                    Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, path, BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                 }
                 else
                 {
@@ -501,7 +591,7 @@ namespace KeppySpartanMIDIConverter
                             proc.Kill();
                         }
                         BassEnc.BASS_Encode_Stop(Globals._recHandle);
-                        Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg\"", BASSEncode.BASS_ENCODE_LIMIT | BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
+                        Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg\"", BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                     }
                     else
                     {
@@ -510,7 +600,7 @@ namespace KeppySpartanMIDIConverter
                             proc.Kill();
                         }
                         BassEnc.BASS_Encode_Stop(Globals._recHandle);
-                        Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, "kmcogg - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg\"", BASSEncode.BASS_ENCODE_LIMIT | BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
+                        Globals._Encoder = BassEnc.BASS_Encode_Start(Globals._recHandle, "kmcogg - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg\"", BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                     }
                 }
             }
@@ -609,23 +699,9 @@ namespace KeppySpartanMIDIConverter
             PlayConversionStart();
             try
             {
-                if (Globals.VSTMode == true)
+                if (Globals.Soundfonts[0] == null)
                 {
-                    if (Globals.VSTDLL == null)
-                    {
-                        throw new Exception("Please select a VST DSP.");
-                    }
-                    if (Globals.Soundfonts[0] == null)
-                    {
-                        throw new Exception("Please select at least one soundfont.");
-                    }
-                }
-                else
-                {
-                    if (Globals.Soundfonts[0] == null)
-                    {
-                        throw new Exception("Please select at least one soundfont.");
-                    }
+                    throw new Exception("Please select at least one soundfont.");
                 }
                 if (this.MIDIList.Items.Count == 0)
                 {
@@ -641,9 +717,11 @@ namespace KeppySpartanMIDIConverter
                         {
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
-                            BASSInitSystem(str);
-                            BASSEncoderInit(0, str);
+                            BASSInitSystem();
+                            BASSStreamSystem(str);
+                            BASSVSTInit();
                             BASSEffectSettings();
+                            BASSEncoderInit(1, str);
                             DateTime starttime = DateTime.Now;
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
@@ -684,7 +762,6 @@ namespace KeppySpartanMIDIConverter
                             BassEnc.BASS_Encode_Stop(Globals._Encoder);
                             Bass.BASS_StreamFree(Globals._recHandle);
                             Bass.BASS_Free();
-                            BassVst.BASS_VST_ChannelFree(Globals._VSTHandle);
                             Globals.CancellationPendingValue = 0;
                             Globals.ActiveVoicesInt = 0;
                             Globals.CurrentStatusTextString = "Conversion aborted.";
@@ -705,7 +782,6 @@ namespace KeppySpartanMIDIConverter
                             BassEnc.BASS_Encode_Stop(Globals._Encoder);
                             Bass.BASS_StreamFree(Globals._recHandle);
                             Bass.BASS_Free();
-                            BassVst.BASS_VST_ChannelFree(Globals._VSTHandle);
                             Globals.CancellationPendingValue = 0;
                             Globals.ActiveVoicesInt = 0;
                             Globals.CurrentStatusTextString = null;
@@ -745,7 +821,6 @@ namespace KeppySpartanMIDIConverter
                     BassEnc.BASS_Encode_Stop(Globals._Encoder);
                     Bass.BASS_StreamFree(Globals._recHandle);
                     Bass.BASS_Free();
-                    BassVst.BASS_VST_ChannelFree(Globals._VSTHandle);
                     Globals.NewWindowName = "Keppy's MIDI Converter";
                     Globals.RenderingMode = false;
                     KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 1);
@@ -757,7 +832,6 @@ namespace KeppySpartanMIDIConverter
                 BassEnc.BASS_Encode_Stop(Globals._Encoder);
                 Bass.BASS_StreamFree(Globals._recHandle);
                 Bass.BASS_Free();
-                BassVst.BASS_VST_ChannelFree(Globals._VSTHandle);
                 Globals.NewWindowName = "Keppy's MIDI Converter";
                 Globals.RenderingMode = false;
                 KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 1);
@@ -770,23 +844,9 @@ namespace KeppySpartanMIDIConverter
             PlayConversionStart();
             try
             {
-                if (Globals.VSTMode == true)
+                if (Globals.Soundfonts[0] == null)
                 {
-                    if (Globals.VSTDLL == null)
-                    {
-                        throw new Exception("Please select a VST DSP.");
-                    }
-                    if (Globals.Soundfonts[0] == null)
-                    {
-                        throw new Exception("Please select at least one soundfont.");
-                    }
-                }
-                else
-                {
-                    if (Globals.Soundfonts[0] == null)
-                    {
-                        throw new Exception("Please select at least one soundfont.");
-                    }
+                    throw new Exception("Please select at least one soundfont.");
                 }
                 if (this.MIDIList.Items.Count == 0)
                 {
@@ -802,8 +862,10 @@ namespace KeppySpartanMIDIConverter
                         {
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
-                            BASSInitSystem(str);
+                            BASSInitSystem();
+                            BASSStreamSystem(str);
                             BASSEncoderInit(0, str);
+                            BASSVSTInit();
                             BASSEffectSettings();
                             DateTime starttime = DateTime.Now;
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
@@ -845,7 +907,7 @@ namespace KeppySpartanMIDIConverter
                             BassEnc.BASS_Encode_Stop(Globals._Encoder);
                             Bass.BASS_StreamFree(Globals._recHandle);
                             Bass.BASS_Free();
-                            BassVst.BASS_VST_ChannelFree(Globals._VSTHandle);
+  
                             Globals.CancellationPendingValue = 0;
                             Globals.ActiveVoicesInt = 0;
                             Globals.CurrentStatusTextString = "Conversion aborted.";
@@ -866,7 +928,6 @@ namespace KeppySpartanMIDIConverter
                             BassEnc.BASS_Encode_Stop(Globals._Encoder);
                             Bass.BASS_StreamFree(Globals._recHandle);
                             Bass.BASS_Free();
-                            BassVst.BASS_VST_ChannelFree(Globals._VSTHandle);
                             Globals.CancellationPendingValue = 0;
                             Globals.ActiveVoicesInt = 0;
                             Globals.CurrentStatusTextString = null;
@@ -906,7 +967,6 @@ namespace KeppySpartanMIDIConverter
                     BassEnc.BASS_Encode_Stop(Globals._Encoder);
                     Bass.BASS_StreamFree(Globals._recHandle);
                     Bass.BASS_Free();
-                    BassVst.BASS_VST_ChannelFree(Globals._VSTHandle);
                     Globals.NewWindowName = "Keppy's MIDI Converter";
                     Globals.RenderingMode = false;
                     KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 1);
@@ -918,7 +978,6 @@ namespace KeppySpartanMIDIConverter
                 BassEnc.BASS_Encode_Stop(Globals._Encoder);
                 Bass.BASS_StreamFree(Globals._recHandle);
                 Bass.BASS_Free();
-                BassVst.BASS_VST_ChannelFree(Globals._VSTHandle);
                 Globals.NewWindowName = "Keppy's MIDI Converter";
                 Globals.RenderingMode = false;
                 KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 1);
@@ -958,40 +1017,7 @@ namespace KeppySpartanMIDIConverter
                             Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
                             Un4seen.Bass.Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 85);
                             Globals.NewWindowName = "Keppy's MIDI Converter | Playing \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
-                            if (Globals.VSTMode == true)
-                            {
-                                Globals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 1);
-                                int temphandle = BassVst.BASS_VST_ChannelCreate(44100, 2, Globals.VSTDLL, BASSFlag.BASS_STREAM_DECODE);
-                                BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                                if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle, vstInfo))
-                                {
-                                    BassVst.BASS_VST_ChannelFree(temphandle);
-                                    if (vstInfo.hasEditor)
-                                    {
-                                        DialogResult dialogResult = MessageBox.Show("Do you want to change the VST DSP settings before converting the following MIDI?\n\nMIDI: " + Path.GetFileNameWithoutExtension(str), "Keppy's MIDI Converter - VSTi settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                                        if (dialogResult == DialogResult.Yes)
-                                        {
-                                            Form f = new Form();
-                                            f.Width = vstInfo.editorWidth + 4;
-                                            f.Height = vstInfo.editorHeight + 34;
-                                            f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                                            f.Text = "Change VST DSP settings: " + vstInfo.effectName;
-                                            f.Closing += new CancelEventHandler(f_Closing);
-                                            BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, f.Handle);
-                                            var dialogResult2 = f.ShowDialog();
-                                        }
-                                        else if (dialogResult == DialogResult.No)
-                                        {
-
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    BassVst.BASS_VST_ChannelFree(temphandle);
-                                    throw new Exception("VST instruments are not supported by the converter.");
-                                }
-                            }
+                            BASSVSTInit();
                             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
                             Globals._plm.CalcRMS = true;
                                 BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[Globals.Soundfonts.Length];
