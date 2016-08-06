@@ -318,7 +318,8 @@ namespace KeppySpartanMIDIConverter
                 Globals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
                 Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
                 ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
-                this.ConverterWAV.RunWorkerAsync();
+                Globals.CurrentEncoder = 0;
+                this.ConverterProcess.RunWorkerAsync();
             }
             else
             {
@@ -343,7 +344,8 @@ namespace KeppySpartanMIDIConverter
                 Globals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
                 Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
                 ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
-                this.ConverterOGG.RunWorkerAsync();
+                Globals.CurrentEncoder = 1;
+                this.ConverterProcess.RunWorkerAsync();
             }
             else
             {
@@ -360,17 +362,6 @@ namespace KeppySpartanMIDIConverter
             this.startRenderingOGGToolStripMenuItem.Enabled = true;
             this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
             this.abortRenderingToolStripMenuItem.Enabled = false;
-        }
-
-        private void addMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.MIDIImport.ShowDialog() == DialogResult.OK)
-            {
-                foreach (string str in this.MIDIImport.FileNames)
-                {
-                    this.MIDIList.Items.Add(str);
-                }
-            }
         }
 
         private void BASSInitSystem()
@@ -686,7 +677,7 @@ namespace KeppySpartanMIDIConverter
             this.MIDIList.Items.Clear();
         }
 
-        private void ConverterOGG_DoWork(object sender, DoWorkEventArgs e)
+        private void ConverterProcess_DoWork(object sender, DoWorkEventArgs e)
         {
             PlayConversionStart();
             try
@@ -713,7 +704,7 @@ namespace KeppySpartanMIDIConverter
                             BASSStreamSystem(str);
                             BASSVSTInit();
                             BASSEffectSettings();
-                            BASSEncoderInit(1, str);
+                            BASSEncoderInit(Globals.CurrentEncoder, str);
                             DateTime starttime = DateTime.Now;
                             while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
@@ -807,152 +798,6 @@ namespace KeppySpartanMIDIConverter
                             }
                         }
                     }
-                }
-                catch (Exception exception)
-                {
-                    BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                    Bass.BASS_StreamFree(Globals._recHandle);
-                    Bass.BASS_Free();
-                    Globals.NewWindowName = "Keppy's MIDI Converter";
-                    Globals.RenderingMode = false;
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 1);
-                    errordialog.ShowDialog();
-                }
-            }
-            catch (Exception exception2)
-            {
-                BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                Bass.BASS_StreamFree(Globals._recHandle);
-                Bass.BASS_Free();
-                Globals.NewWindowName = "Keppy's MIDI Converter";
-                Globals.RenderingMode = false;
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 1);
-                errordialog.ShowDialog();
-            }
-        }
-
-        private void ConverterWAV_DoWork(object sender, DoWorkEventArgs e)
-        {
-            PlayConversionStart();
-            try
-            {
-                if (Globals.Soundfonts[0] == null)
-                {
-                    throw new Exception("Please select at least one soundfont.");
-                }
-                if (this.MIDIList.Items.Count == 0)
-                {
-                    throw new Exception("No MIDIs in the conversion list.");
-                }
-                try
-                {
-                    Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
-                    bool KeepLooping = true;
-                    while (KeepLooping) 
-                    {
-                        foreach (string str in this.MIDIList.Items)
-                        {
-                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
-                            string encpath = null;
-                            BASSInitSystem();
-                            BASSStreamSystem(str);
-                            BASSEncoderInit(0, str);
-                            BASSVSTInit();
-                            BASSEffectSettings();
-                            DateTime starttime = DateTime.Now;
-                            while (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
-                            {
-                                if (Globals.CancellationPendingValue != 1)
-                                {
-                                    BASSEncodingEngine(starttime);
-                                }
-                                else if (Globals.CancellationPendingValue == 1)
-                                {
-                                    BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                                    Bass.BASS_StreamFree(Globals._recHandle);
-                                    Bass.BASS_Free();
-                                    Globals.CurrentStatusTextString = "Conversion aborted.";
-                                    Globals.ActiveVoicesInt = 0;
-                                    Globals.NewWindowName = "Keppy's MIDI Converter";
-                                    MessageBox.Show("Conversion aborted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    Globals.CurrentStatusTextString = null;
-                                    KeepLooping = false;
-                                    break;
-                                } 
-                            }
-                            if (Globals.CancellationPendingValue == 1)
-                            {
-                                Globals.RenderingMode = false;
-                                KeepLooping = false;
-                                if (KeepLooping == false)
-                                {
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                continue;
-                            }
-                        }
-                        if (Globals.CancellationPendingValue == 1)
-                        {
-                            BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                            Bass.BASS_StreamFree(Globals._recHandle);
-                            Bass.BASS_Free();
-  
-                            Globals.CancellationPendingValue = 0;
-                            Globals.ActiveVoicesInt = 0;
-                            Globals.CurrentStatusTextString = "Conversion aborted.";
-                            Globals.NewWindowName = "Keppy's MIDI Converter";
-                            KeepLooping = false;
-                            Globals.RenderingMode = false;
-                            if (Environment.OSVersion.Version.Major == 5)
-                            {
-                                MessageBox.Show("Conversion finished!\n\nBASS message:" + Bass.BASS_ErrorGetCode().ToString(), "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                PlayConversionStop();
-                            } 
-                        }
-                        else
-                        {
-                            BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                            Bass.BASS_StreamFree(Globals._recHandle);
-                            Bass.BASS_Free();
-                            Globals.CancellationPendingValue = 0;
-                            Globals.ActiveVoicesInt = 0;
-                            Globals.CurrentStatusTextString = null;
-                            Globals.NewWindowName = "Keppy's MIDI Converter";
-                            KeepLooping = false;
-                            Globals.RenderingMode = false;
-                            if (Globals.AutoShutDownEnabled == true)
-                            {
-                                var psi = new ProcessStartInfo("shutdown", "/s /t 0");
-                                psi.CreateNoWindow = true;
-                                psi.UseShellExecute = false;
-                                Process.Start(psi);
-                            }
-                            if (Globals.AutoClearMIDIListEnabled == true)
-                            {
-                                this.Invoke((MethodInvoker)delegate
-                                {
-                                    MIDIList.Items.Clear();
-                                });
-                            }
-                            else
-                            {
-                                if (Environment.OSVersion.Version.Major == 5)
-                                {
-                                    MessageBox.Show("Conversion finished!\n\nBASS message:" + Bass.BASS_ErrorGetCode().ToString(), "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    PlayConversionStop();
-                                }
-                            }
-                        }
-                    }     
                 }
                 catch (Exception exception)
                 {
@@ -1279,6 +1124,23 @@ namespace KeppySpartanMIDIConverter
 
         private void importMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MIDIImport.InitialDirectory = Globals.MIDILastDirectory;
+            if (this.MIDIImport.ShowDialog() == DialogResult.OK)
+            {
+                foreach (string str in this.MIDIImport.FileNames)
+                {
+                    this.MIDIList.Items.Add(str);
+                }
+                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                Globals.MIDILastDirectory = Path.GetDirectoryName(MIDIImport.FileName);
+                Settings.SetValue("lastmidifolder", Globals.MIDILastDirectory);
+                MIDIImport.InitialDirectory = Globals.MIDILastDirectory;
+            }  
+        }
+
+        private void addMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MIDIImport.InitialDirectory = Globals.MIDILastDirectory;
             if (this.MIDIImport.ShowDialog() == DialogResult.OK)
             {
                 foreach (string str in this.MIDIImport.FileNames)

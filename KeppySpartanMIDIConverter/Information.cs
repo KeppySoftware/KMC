@@ -30,18 +30,21 @@ namespace KeppySpartanMIDIConverter
             {
                 // Auto-update stuff
                 System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                string SAS = null;
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo(assembly.Location);
                 ThisVersion.Text = "The current version of the converter, installed on your system, is: " + Converter.FileVersion.ToString();
                 // STUFF
                 if (IntPtr.Size == 8)
                 {
                     Versionlabel.Text = "Compiled for 64-bit systems, optimized for SSE2 ready CPUs.";
+                    SAS = "x64";
                 }
                 else if (IntPtr.Size == 4)
                 {
                     Versionlabel.Text = "Compiled for 32-bit systems, optimized for MMX ready CPUs.";
+                    SAS = "x86";
                 }
-                KeppyVer.Text = "Keppy's MIDI Converter " + Application.ProductVersion + ", by Keppy Studios";
+                KeppyVer.Text = "Keppy's MIDI Converter " + Application.ProductVersion + ", by KaleidonKep99";
 
                 // OTHER STUFF
                 FileVersionInfo basslibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bass.dll");
@@ -57,7 +60,7 @@ namespace KeppySpartanMIDIConverter
                     bassnetlibver.FileDescription + " version: " + bassnetlibver.FileVersion + "." + bassnetlibver.FilePrivatePart;
 
                 BASSINFO2.Text = bassvstlibver.FileDescription + " version: " + bassvstlibver.FileVersion + "." + bassvstlibver.FilePrivatePart + "\n\n\n" +
-                     "KMC " + Application.ProductVersion;
+                     "KMC " + Application.ProductVersion + " " + SAS;
             }
             catch (Exception exception)
             {

@@ -38,7 +38,6 @@
             this.officialBlackMIDICommunityGoogleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.wikipediasPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ConverterWAV = new System.ComponentModel.BackgroundWorker();
             this.MIDIImport = new System.Windows.Forms.OpenFileDialog();
             this.RenderingTimer = new System.Windows.Forms.Timer(this.components);
             this.UsedVoices = new System.Windows.Forms.Label();
@@ -86,12 +85,12 @@
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
             this.labelRMS = new System.Windows.Forms.Label();
             this.CurrentStatusText = new System.Windows.Forms.Label();
-            this.ConverterOGG = new System.ComponentModel.BackgroundWorker();
             this.RealTimePlayBack = new System.ComponentModel.BackgroundWorker();
             this.VolumeBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ConverterProcess = new System.ComponentModel.BackgroundWorker();
             this.DefMenu.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
@@ -217,12 +216,6 @@
             this.wikipediasPageToolStripMenuItem.Text = "Wikipedia\'s page";
             this.wikipediasPageToolStripMenuItem.Click += new System.EventHandler(this.wikipediasPageToolStripMenuItem_Click);
             // 
-            // ConverterWAV
-            // 
-            this.ConverterWAV.WorkerReportsProgress = true;
-            this.ConverterWAV.WorkerSupportsCancellation = true;
-            this.ConverterWAV.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConverterWAV_DoWork);
-            // 
             // MIDIImport
             // 
             this.MIDIImport.Filter = "MIDI files|*.mid;*.midi;*.rmi";
@@ -282,7 +275,7 @@
             this.moveDownToolStripMenuItem});
             this.DefMenu.Name = "contextMenuStrip1";
             this.DefMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.DefMenu.Size = new System.Drawing.Size(188, 120);
+            this.DefMenu.Size = new System.Drawing.Size(188, 142);
             // 
             // addMIDIsToolStripMenuItem
             // 
@@ -648,12 +641,6 @@
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CurrentStatusText.UseCompatibleTextRendering = true;
             // 
-            // ConverterOGG
-            // 
-            this.ConverterOGG.WorkerReportsProgress = true;
-            this.ConverterOGG.WorkerSupportsCancellation = true;
-            this.ConverterOGG.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConverterOGG_DoWork);
-            // 
             // RealTimePlayBack
             // 
             this.RealTimePlayBack.WorkerReportsProgress = true;
@@ -695,6 +682,12 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
+            // 
+            // ConverterProcess
+            // 
+            this.ConverterProcess.WorkerReportsProgress = true;
+            this.ConverterProcess.WorkerSupportsCancellation = true;
+            this.ConverterProcess.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConverterProcess_DoWork);
             // 
             // MainWindow
             // 
@@ -742,7 +735,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem informationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        public System.ComponentModel.BackgroundWorker ConverterWAV;
         private System.Windows.Forms.OpenFileDialog MIDIImport;
         private System.Windows.Forms.Timer RenderingTimer;
         private System.Windows.Forms.Label UsedVoices;
@@ -772,7 +764,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem wikipediasPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keppyStudiosWebsiteToolStripMenuItem;
-        public System.ComponentModel.BackgroundWorker ConverterOGG;
         private System.Windows.Forms.ToolStripMenuItem startRenderingOGGToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playInRealtimeBetaToolStripMenuItem;
         public System.ComponentModel.BackgroundWorker RealTimePlayBack;
@@ -805,6 +796,7 @@
         private System.Windows.Forms.ToolStripMenuItem conversionStartedfinishedfailedSoundsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enabledToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem disabledToolStripMenuItem4;
+        public System.ComponentModel.BackgroundWorker ConverterProcess;
     }
 }
 
