@@ -32,11 +32,11 @@
             this.ErrorLab = new System.Windows.Forms.Label();
             this.Close = new System.Windows.Forms.Button();
             this.ErrorBox = new System.Windows.Forms.RichTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RichBoxTextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyErrorMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RichBoxTextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ErrorLab
@@ -73,6 +73,20 @@
             this.ErrorBox.TabIndex = 5;
             this.ErrorBox.Text = "There was an error";
             // 
+            // RichBoxTextMenu
+            // 
+            this.RichBoxTextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyErrorMessageToolStripMenuItem});
+            this.RichBoxTextMenu.Name = "RichBoxTextMenu";
+            this.RichBoxTextMenu.Size = new System.Drawing.Size(180, 26);
+            // 
+            // copyErrorMessageToolStripMenuItem
+            // 
+            this.copyErrorMessageToolStripMenuItem.Name = "copyErrorMessageToolStripMenuItem";
+            this.copyErrorMessageToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.copyErrorMessageToolStripMenuItem.Text = "Copy error message";
+            this.copyErrorMessageToolStripMenuItem.Click += new System.EventHandler(this.copyErrorMessageToolStripMenuItem_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::KeppyMIDIConverter.Properties.Resources.erroricon;
@@ -83,24 +97,11 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // RichBoxTextMenu
-            // 
-            this.RichBoxTextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyErrorMessageToolStripMenuItem});
-            this.RichBoxTextMenu.Name = "RichBoxTextMenu";
-            this.RichBoxTextMenu.Size = new System.Drawing.Size(180, 48);
-            // 
-            // copyErrorMessageToolStripMenuItem
-            // 
-            this.copyErrorMessageToolStripMenuItem.Name = "copyErrorMessageToolStripMenuItem";
-            this.copyErrorMessageToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.copyErrorMessageToolStripMenuItem.Text = "Copy error message";
-            this.copyErrorMessageToolStripMenuItem.Click += new System.EventHandler(this.copyErrorMessageToolStripMenuItem_Click);
-            // 
             // ErrorHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(468, 171);
             this.Controls.Add(this.ErrorLab);
             this.Controls.Add(this.pictureBox1);
@@ -115,8 +116,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ErrorHandler_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.RichBoxTextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

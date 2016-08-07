@@ -256,8 +256,8 @@
             this.Noteoff1.Name = "Noteoff1";
             this.Noteoff1.Size = new System.Drawing.Size(353, 31);
             this.Noteoff1.TabIndex = 6;
-            this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlapping" +
-    " instances of the note.";
+            this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlappin" +
+    "g instances of the note.";
             this.Guide.SetToolTip(this.Noteoff1, "There\'s really nothing to explain here.");
             this.Noteoff1.UseVisualStyleBackColor = true;
             this.Noteoff1.CheckedChanged += new System.EventHandler(this.Noteoff1_CheckedChanged);
@@ -285,6 +285,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(404, 181);
             this.ControlBox = false;
             this.Controls.Add(this.checkBox2);
