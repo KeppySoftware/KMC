@@ -391,7 +391,10 @@ namespace KeppySpartanMIDIConverter
                     f.Width = vstInfo.editorWidth + 4;
                     f.Height = vstInfo.editorHeight + 34;
                     f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Text = "DSP settings: " + vstInfo.effectName;
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.MaximizeBox = false;
+                    f.MinimizeBox = false;
                     f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, f.Handle);
                     var dialogResult2 = f.ShowDialog();
@@ -402,7 +405,10 @@ namespace KeppySpartanMIDIConverter
                     f.Width = vstInfo.editorWidth + 4;
                     f.Height = vstInfo.editorHeight + 34;
                     f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Text = "DSP settings: " + vstInfo.effectName;
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.MaximizeBox = false;
+                    f.MinimizeBox = false;
                     f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle2, f.Handle);
                     var dialogResult2 = f.ShowDialog();
@@ -413,7 +419,10 @@ namespace KeppySpartanMIDIConverter
                     f.Width = vstInfo.editorWidth + 4;
                     f.Height = vstInfo.editorHeight + 34;
                     f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Text = "DSP settings: " + vstInfo.effectName;
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.MaximizeBox = false;
+                    f.MinimizeBox = false;
                     f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle3, f.Handle);
                     var dialogResult2 = f.ShowDialog();
@@ -424,7 +433,10 @@ namespace KeppySpartanMIDIConverter
                     f.Width = vstInfo.editorWidth + 4;
                     f.Height = vstInfo.editorHeight + 34;
                     f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Text = "DSP settings: " + vstInfo.effectName;
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.MaximizeBox = false;
+                    f.MinimizeBox = false;
                     f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle4, f.Handle);
                     var dialogResult2 = f.ShowDialog();
@@ -435,7 +447,10 @@ namespace KeppySpartanMIDIConverter
                     f.Width = vstInfo.editorWidth + 4;
                     f.Height = vstInfo.editorHeight + 34;
                     f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Text = "DSP settings: " + vstInfo.effectName;
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.MaximizeBox = false;
+                    f.MinimizeBox = false;
                     f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle5, f.Handle);
                     var dialogResult2 = f.ShowDialog();
@@ -446,7 +461,10 @@ namespace KeppySpartanMIDIConverter
                     f.Width = vstInfo.editorWidth + 4;
                     f.Height = vstInfo.editorHeight + 34;
                     f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Text = "DSP settings: " + vstInfo.effectName;
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.MaximizeBox = false;
+                    f.MinimizeBox = false;
                     f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle6, f.Handle);
                     var dialogResult2 = f.ShowDialog();
@@ -457,7 +475,10 @@ namespace KeppySpartanMIDIConverter
                     f.Width = vstInfo.editorWidth + 4;
                     f.Height = vstInfo.editorHeight + 34;
                     f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Text = "DSP settings: " + vstInfo.effectName;
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.MaximizeBox = false;
+                    f.MinimizeBox = false;
                     f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle7, f.Handle);
                     var dialogResult2 = f.ShowDialog();
@@ -468,7 +489,10 @@ namespace KeppySpartanMIDIConverter
                     f.Width = vstInfo.editorWidth + 4;
                     f.Height = vstInfo.editorHeight + 34;
                     f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "Change VST DSP settings: " + vstInfo.effectName;
+                    f.Text = "DSP settings: " + vstInfo.effectName;
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.MaximizeBox = false;
+                    f.MinimizeBox = false;
                     f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle8, f.Handle);
                     var dialogResult2 = f.ShowDialog();
@@ -645,26 +669,47 @@ namespace KeppySpartanMIDIConverter
             if (num12 < 100f)
             {
                 if (Globals.OldTimeThingy == false)
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ faster)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6 + " - Time elapsed: " + str7 + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ faster)";
                 else
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ faster)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5 + " - " + str4 + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(100f / num12)).ToString("0.0") + "x~ faster)";
             }
             else if (num12 == 100f)
             {
                 if (Globals.OldTimeThingy == false)
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6 + " - Time elapsed: " + str7 + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
                 else
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5 + " - " + str4 + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "%";
             }
             else if (num12 > 100f)
             {
                 if (Globals.OldTimeThingy == false)
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6.ToString() + " - Time elapsed: " + str7.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ slower)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nApproximate time left: " + str6 + " - Time elapsed: " + str7 + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ slower)";
                 else
-                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5.ToString() + " - " + str4.ToString() + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ slower)";
+                    Globals.CurrentStatusTextString = num8.ToString("0.00") + "MBs of RAW samples converted. (" + percentagefinal.ToString("0.0%") + ")\nCurrent position: " + str5 + " - " + str4 + "\nRendering time: " + Convert.ToInt32(num12).ToString() + "% (" + ((float)(num12 / 100f)).ToString("0.0") + "x~ slower)";
             }
             Globals.CurrentPeak = String.Format("Root mean square: {0:#00.0} dB | Average: {1:#00.0} dB | Peak: {2:#00.0} dB", Globals._plm.RMS_dBV, Globals._plm.AVG_dBV, Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
-            Console.WriteLine("Current position: " + str5.ToString() + " - " + str4.ToString());
+        }
+
+        private void BASSCloseStream() {
+            BassEnc.BASS_Encode_Stop(Globals._Encoder);
+            Bass.BASS_StreamFree(Globals._recHandle);
+            Bass.BASS_Free();
+            Globals.CurrentStatusTextString = "Conversion aborted.";
+            Globals.ActiveVoicesInt = 0;
+            Globals.NewWindowName = "Keppy's MIDI Converter";
+            MessageBox.Show("Conversion aborted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            Globals.CurrentStatusTextString = null;
+        }
+
+        private void BASSCloseStreamCrash(Exception ex)
+        {
+            BassEnc.BASS_Encode_Stop(Globals._Encoder);
+            Bass.BASS_StreamFree(Globals._recHandle);
+            Bass.BASS_Free();
+            Globals.NewWindowName = "Keppy's MIDI Converter";
+            Globals.RenderingMode = false;
+            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", ex.ToString(), 0, 1);
+            errordialog.ShowDialog();
         }
 
         private void clearMIDIsListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -714,14 +759,7 @@ namespace KeppySpartanMIDIConverter
                                 }
                                 else if (Globals.CancellationPendingValue == 1)
                                 {
-                                    BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                                    Bass.BASS_StreamFree(Globals._recHandle);
-                                    Bass.BASS_Free();
-                                    Globals.CurrentStatusTextString = "Conversion aborted.";
-                                    Globals.ActiveVoicesInt = 0;
-                                    Globals.NewWindowName = "Keppy's MIDI Converter";
-                                    MessageBox.Show("Conversion aborted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    Globals.CurrentStatusTextString = null;
+                                    BASSCloseStream();
                                     KeepLooping = false;
                                     break;
                                 }
@@ -742,13 +780,7 @@ namespace KeppySpartanMIDIConverter
                         }
                         if (Globals.CancellationPendingValue == 1)
                         {
-                            BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                            Bass.BASS_StreamFree(Globals._recHandle);
-                            Bass.BASS_Free();
-                            Globals.CancellationPendingValue = 0;
-                            Globals.ActiveVoicesInt = 0;
-                            Globals.CurrentStatusTextString = "Conversion aborted.";
-                            Globals.NewWindowName = "Keppy's MIDI Converter";
+                            BASSCloseStream();
                             KeepLooping = false;
                             Globals.RenderingMode = false;
                             if (Environment.OSVersion.Version.Major == 5)
@@ -762,13 +794,7 @@ namespace KeppySpartanMIDIConverter
                         }
                         else
                         {
-                            BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                            Bass.BASS_StreamFree(Globals._recHandle);
-                            Bass.BASS_Free();
-                            Globals.CancellationPendingValue = 0;
-                            Globals.ActiveVoicesInt = 0;
-                            Globals.CurrentStatusTextString = null;
-                            Globals.NewWindowName = "Keppy's MIDI Converter";
+                            BASSCloseStream();
                             KeepLooping = false;
                             Globals.RenderingMode = false;
                             if (Globals.AutoShutDownEnabled == true)
@@ -801,24 +827,12 @@ namespace KeppySpartanMIDIConverter
                 }
                 catch (Exception exception)
                 {
-                    BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                    Bass.BASS_StreamFree(Globals._recHandle);
-                    Bass.BASS_Free();
-                    Globals.NewWindowName = "Keppy's MIDI Converter";
-                    Globals.RenderingMode = false;
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 1);
-                    errordialog.ShowDialog();
+                    BASSCloseStreamCrash(exception);
                 }
             }
             catch (Exception exception2)
             {
-                BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                Bass.BASS_StreamFree(Globals._recHandle);
-                Bass.BASS_Free();
-                Globals.NewWindowName = "Keppy's MIDI Converter";
-                Globals.RenderingMode = false;
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 1);
-                errordialog.ShowDialog();
+                BASSCloseStreamCrash(exception2);
             }
         }
 
@@ -1008,23 +1022,13 @@ namespace KeppySpartanMIDIConverter
                 }
                 catch (Exception exception)
                 {
-                    BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                    Bass.BASS_StreamFree(Globals._recHandle);
-                    Bass.BASS_Free();
-                    Globals.NewWindowName = "Keppy's MIDI Converter";
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 1);
-                    errordialog.ShowDialog();
+                    BASSCloseStreamCrash(exception);
                     Globals.PlaybackMode = false;
                 }
             }
             catch (Exception exception2)
             {
-                BassEnc.BASS_Encode_Stop(Globals._Encoder);
-                Bass.BASS_StreamFree(Globals._recHandle);
-                Bass.BASS_Free();
-                Globals.NewWindowName = "Keppy's MIDI Converter";
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 1);
-                errordialog.ShowDialog();
+                BASSCloseStreamCrash(exception2);
                 Globals.PlaybackMode = false;
             }
         }
@@ -1709,7 +1713,7 @@ namespace KeppySpartanMIDIConverter
             if (dialogResult == DialogResult.Yes)
             {
                 this.Enabled = false;
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error!", "Fatal error on the execution of the converter!\n\nPress OK to close the program.", 1, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error!", "Error triggerd by the user.", 1, 0);
                 errordialog.ShowDialog();
                 Application.Exit();
             }

@@ -27,11 +27,11 @@ namespace KeppyMIDIConverter
             }
             if (typeoferror == 0)
             {
-                ErrorLab.Text = "Error during the execution of the converter!\n\nMore information down below:";
+                ErrorLab.Text = "There was an error during the execution of the converter.\n\nMore information down below:";
             }
             else if (typeoferror == 1)
             {
-                ErrorLab.Text = "Fatal error during the execution of the converter!!!\nIt's recommended to restart it, to prevent data loss!\nMore information down below:";
+                ErrorLab.Text = "A problem has been detected and the converter\nhas been halted to prevent further problems.\nMore information down below:";
             }
             Text = "Keppy's MIDI Converter - " + errortitle;
             ErrorBox.Text = errormessage;
@@ -59,6 +59,17 @@ namespace KeppyMIDIConverter
             System.IO.Stream str = Properties.Resources.convfail;
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
             player.Play();
+        }
+
+        private void copyErrorMessageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (string line in ErrorBox.Lines)
+                sb.AppendLine(line);
+
+            Clipboard.SetText(sb.ToString());
+            MessageBox.Show("Error message copied to clipboard!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

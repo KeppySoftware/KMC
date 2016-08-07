@@ -79,7 +79,7 @@ namespace KeppySpartanMIDIConverter
 
         private void button3_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("wordpad.exe", "license.rtf");
+            System.Diagnostics.Process.Start("wordpad.exe", "..\\license.rtf");
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
