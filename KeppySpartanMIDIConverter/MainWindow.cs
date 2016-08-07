@@ -690,14 +690,18 @@ namespace KeppySpartanMIDIConverter
             Globals.CurrentPeak = String.Format("Root mean square: {0:#00.0} dB | Average: {1:#00.0} dB | Peak: {2:#00.0} dB", Globals._plm.RMS_dBV, Globals._plm.AVG_dBV, Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
         }
 
-        private void BASSCloseStream() {
+        private void BASSCloseStream(string message, int type) {
             BassEnc.BASS_Encode_Stop(Globals._Encoder);
             Bass.BASS_StreamFree(Globals._recHandle);
             Bass.BASS_Free();
-            Globals.CurrentStatusTextString = "Conversion aborted.";
+            Globals.CurrentStatusTextString = message;
             Globals.ActiveVoicesInt = 0;
             Globals.NewWindowName = "Keppy's MIDI Converter";
-            MessageBox.Show("Conversion aborted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (type == 0)
+            {
+                MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                PlayConversionStop();
+            }
             Globals.CurrentStatusTextString = null;
         }
 
@@ -759,7 +763,7 @@ namespace KeppySpartanMIDIConverter
                                 }
                                 else if (Globals.CancellationPendingValue == 1)
                                 {
-                                    BASSCloseStream();
+                                    BASSCloseStream("Conversion aborted.", 0);
                                     KeepLooping = false;
                                     break;
                                 }
@@ -780,7 +784,7 @@ namespace KeppySpartanMIDIConverter
                         }
                         if (Globals.CancellationPendingValue == 1)
                         {
-                            BASSCloseStream();
+                            BASSCloseStream("Conversion finished!", 1);
                             KeepLooping = false;
                             Globals.RenderingMode = false;
                             if (Environment.OSVersion.Version.Major == 5)
@@ -794,7 +798,7 @@ namespace KeppySpartanMIDIConverter
                         }
                         else
                         {
-                            BASSCloseStream();
+                            BASSCloseStream("Conversion finished!", 1);
                             KeepLooping = false;
                             Globals.RenderingMode = false;
                             if (Globals.AutoShutDownEnabled == true)
@@ -1278,7 +1282,7 @@ namespace KeppySpartanMIDIConverter
             {
                 if (Globals.RenderingMode == true | Globals.PlaybackMode == true)
                 {
-                    MessageBox.Show("Can not edit the list while the converter is busy!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
                 else
                 {
