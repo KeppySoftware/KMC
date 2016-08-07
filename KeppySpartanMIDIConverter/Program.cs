@@ -1,15 +1,16 @@
-﻿using System.Threading;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
+﻿using System;
+using System.Windows.Forms;
+using System.Threading;
 using System.Text;
 using System.Reflection;
-using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using System.Globalization;
+using System.Drawing;
+using System.Diagnostics;
+using System.Data;
+using System.ComponentModel;
+using System.Collections.Generic;
 using Microsoft.Win32;
 
 namespace KeppySpartanMIDIConverter
@@ -51,6 +52,7 @@ namespace KeppySpartanMIDIConverter
                         if (dialogResult == DialogResult.Yes)
                         {
                             Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
+                            TriggerDate();
                             Application.ExitThread();
                         }
                         else if (dialogResult == DialogResult.No)
@@ -58,6 +60,7 @@ namespace KeppySpartanMIDIConverter
                             Settings.Close();
                             Application.EnableVisualStyles();
                             Application.SetCompatibleTextRenderingDefault(false);
+                            TriggerDate();
                             Application.Run(new MainWindow(args));
                             GC.KeepAlive(m);
                         }
@@ -67,6 +70,7 @@ namespace KeppySpartanMIDIConverter
                         Settings.Close();
                         Application.EnableVisualStyles();
                         Application.SetCompatibleTextRenderingDefault(false);
+                        TriggerDate();
                         Application.Run(new MainWindow(args));
                         GC.KeepAlive(m);
                     }
@@ -77,6 +81,7 @@ namespace KeppySpartanMIDIConverter
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new MainWindow(args));
+                    TriggerDate();
                     GC.KeepAlive(m);
                 }
             }
@@ -86,7 +91,40 @@ namespace KeppySpartanMIDIConverter
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainWindow(args));
+                TriggerDate();
                 GC.KeepAlive(m);
+            }
+        }
+
+        static void TriggerDate()
+        {
+            DateTime BirthDate = DateTime.Now;
+            int kepbirthday = 1999;
+            int kmcbirthday = 2015;
+            int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
+            if (BirthDate.ToString("dd/MM") == "23/04")
+            {
+                MessageBox.Show("Today is Frozen's birthday! He turned " + (currentyear - kepbirthday).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Frozen Snow", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (BirthDate.ToString("dd/MM") == "17/09")
+            {
+                MessageBox.Show("Today, KMC turned " + (currentyear - kmcbirthday).ToString() + " year(s) old!\n\nHappy birthday, awesome converter!", "Happy birthday to me, Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (BirthDate.ToString("dd/MM") == "31/10")
+            {
+                MessageBox.Show("Spooky conversions today, huh?", "Happy Halloween!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (BirthDate.ToString("dd/MM") == "05/12")
+            {
+                MessageBox.Show("Today is Keppy's birthday! He turned " + (currentyear - kepbirthday).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Kepperino", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (BirthDate.ToString("dd/MM") == "25/12")
+            {
+                MessageBox.Show("Oh oh oh, Merry Christmas!", "Happy holidays, and Merry Christmas!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (BirthDate.ToString("dd/MM") == "01/01")
+            {
+                MessageBox.Show("HAPPY NEW YEAR!", "Finally, " + BirthDate.ToString("yyyy") + " has begun!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

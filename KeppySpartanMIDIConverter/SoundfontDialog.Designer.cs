@@ -36,11 +36,6 @@
             this.ImportBtn = new System.Windows.Forms.Button();
             this.RemoveBtn = new System.Windows.Forms.Button();
             this.SFList = new System.Windows.Forms.ListBox();
-            this.SFMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.importSoundfontsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeSoundfontsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.clearSoundfontListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.MvUp = new System.Windows.Forms.Button();
             this.MvDwn = new System.Windows.Forms.Button();
@@ -49,7 +44,11 @@
             this.VSTImport = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SFZCompliant = new System.Windows.Forms.PictureBox();
-            this.SFMenu.SuspendLayout();
+            this.SFMenu = new System.Windows.Forms.ContextMenu();
+            this.importSoundfontsToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.removeSoundfontsToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
+            this.clearSoundfontListToolStripMenuItem = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +99,6 @@
             // SFList
             // 
             this.SFList.AllowDrop = true;
-            this.SFList.ContextMenuStrip = this.SFMenu;
             this.SFList.FormattingEnabled = true;
             this.SFList.HorizontalScrollbar = true;
             this.SFList.Location = new System.Drawing.Point(12, 96);
@@ -111,45 +109,6 @@
             this.SFList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SFList_DragDrop);
             this.SFList.DragEnter += new System.Windows.Forms.DragEventHandler(this.SFList_DragEnter);
             this.SFList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SFList_KeyPress);
-            // 
-            // SFMenu
-            // 
-            this.SFMenu.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SFMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importSoundfontsToolStripMenuItem,
-            this.removeSoundfontsToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.clearSoundfontListToolStripMenuItem});
-            this.SFMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
-            this.SFMenu.Name = "SFMenu";
-            this.SFMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.SFMenu.Size = new System.Drawing.Size(179, 76);
-            // 
-            // importSoundfontsToolStripMenuItem
-            // 
-            this.importSoundfontsToolStripMenuItem.Name = "importSoundfontsToolStripMenuItem";
-            this.importSoundfontsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.importSoundfontsToolStripMenuItem.Text = "Import soundfont(s)";
-            this.importSoundfontsToolStripMenuItem.Click += new System.EventHandler(this.importSoundfontsToolStripMenuItem_Click);
-            // 
-            // removeSoundfontsToolStripMenuItem
-            // 
-            this.removeSoundfontsToolStripMenuItem.Name = "removeSoundfontsToolStripMenuItem";
-            this.removeSoundfontsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.removeSoundfontsToolStripMenuItem.Text = "Remove soundfont(s)";
-            this.removeSoundfontsToolStripMenuItem.Click += new System.EventHandler(this.removeSoundfontsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
-            // 
-            // clearSoundfontListToolStripMenuItem
-            // 
-            this.clearSoundfontListToolStripMenuItem.Name = "clearSoundfontListToolStripMenuItem";
-            this.clearSoundfontListToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.clearSoundfontListToolStripMenuItem.Text = "Clear soundfont list";
-            this.clearSoundfontListToolStripMenuItem.Click += new System.EventHandler(this.clearSoundfontListToolStripMenuItem_Click);
             // 
             // label2
             // 
@@ -234,6 +193,37 @@
             this.SFZCompliant.TabStop = false;
             this.SFZCompliant.Click += new System.EventHandler(this.SFZCompliant_Click);
             // 
+            // SFMenu
+            // 
+            this.SFMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.importSoundfontsToolStripMenuItem,
+            this.removeSoundfontsToolStripMenuItem,
+            this.menuItem3,
+            this.clearSoundfontListToolStripMenuItem});
+            // 
+            // importSoundfontsToolStripMenuItem
+            // 
+            this.importSoundfontsToolStripMenuItem.Index = 0;
+            this.importSoundfontsToolStripMenuItem.Text = "Import soundfont(s)";
+            this.importSoundfontsToolStripMenuItem.Click += new System.EventHandler(this.importSoundfontsToolStripMenuItem_Click);
+            // 
+            // removeSoundfontsToolStripMenuItem
+            // 
+            this.removeSoundfontsToolStripMenuItem.Index = 1;
+            this.removeSoundfontsToolStripMenuItem.Text = "Remove soundfont(s)";
+            this.removeSoundfontsToolStripMenuItem.Click += new System.EventHandler(this.removeSoundfontsToolStripMenuItem_Click);
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.Index = 2;
+            this.menuItem3.Text = "-";
+            // 
+            // clearSoundfontListToolStripMenuItem
+            // 
+            this.clearSoundfontListToolStripMenuItem.Index = 3;
+            this.clearSoundfontListToolStripMenuItem.Text = "Clear soundfont lists";
+            this.clearSoundfontListToolStripMenuItem.Click += new System.EventHandler(this.clearSoundfontListToolStripMenuItem_Click);
+            // 
             // SoundfontDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -261,7 +251,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Soundfonts/VST DSP manager";
             this.Load += new System.EventHandler(this.SoundfontDialog_Load);
-            this.SFMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).EndInit();
             this.ResumeLayout(false);
@@ -282,13 +271,13 @@
         private System.Windows.Forms.Button MvDwn;
         private System.Windows.Forms.Timer SFListCheck;
         private System.Windows.Forms.PictureBox SFZCompliant;
-        private System.Windows.Forms.ContextMenuStrip SFMenu;
-        private System.Windows.Forms.ToolStripMenuItem importSoundfontsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeSoundfontsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem clearSoundfontListToolStripMenuItem;
         private System.Windows.Forms.CheckBox VSTUse;
         private System.Windows.Forms.Button VSTImport;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ContextMenu SFMenu;
+        private System.Windows.Forms.MenuItem importSoundfontsToolStripMenuItem;
+        private System.Windows.Forms.MenuItem removeSoundfontsToolStripMenuItem;
+        private System.Windows.Forms.MenuItem menuItem3;
+        private System.Windows.Forms.MenuItem clearSoundfontListToolStripMenuItem;
     }
 }

@@ -146,6 +146,8 @@ namespace KeppySpartanMIDIConverter
         private void MainWindow_Load(object sender, EventArgs e)
         {
                 BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
+                this.Menu = DefaultMenu;
+                MIDIList.ContextMenu = DefMenu;
                 // Fade in ;)
                 t1.Interval = 10;  //we'll increase the opacity every 10ms
                 t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
@@ -721,11 +723,6 @@ namespace KeppySpartanMIDIConverter
             this.MIDIList.Items.Clear();
         }
 
-        private void clearMIDIsListToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.MIDIList.Items.Clear();
-        }
-
         private void ConverterProcess_DoWork(object sender, DoWorkEventArgs e)
         {
             PlayConversionStart();
@@ -1154,25 +1151,21 @@ namespace KeppySpartanMIDIConverter
             }  
         }
 
-        private void addMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MIDIImport.InitialDirectory = Globals.MIDILastDirectory;
-            if (this.MIDIImport.ShowDialog() == DialogResult.OK)
-            {
-                foreach (string str in this.MIDIImport.FileNames)
-                {
-                    this.MIDIList.Items.Add(str);
-                }
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Globals.MIDILastDirectory = Path.GetDirectoryName(MIDIImport.FileName);
-                Settings.SetValue("lastmidifolder", Globals.MIDILastDirectory);
-                MIDIImport.InitialDirectory = Globals.MIDILastDirectory;
-            }  
-        }
-
         private void informationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Informations().ShowDialog();
+        }
+
+        private void moveUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.MIDIList.SelectedItems.Count >= 2)
+            {
+                MessageBox.Show(this, "You can only move one item!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else
+            {
+                this.MoveItem(-1);
+            }
         }
 
         private void moveDownToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1199,18 +1192,6 @@ namespace KeppySpartanMIDIConverter
                     this.MIDIList.Items.Insert(index, selectedItem);
                     this.MIDIList.SetSelected(index, true);
                 }
-            }
-        }
-
-        private void moveUpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.MIDIList.SelectedItems.Count >= 2)
-            {
-                MessageBox.Show(this, "You can only move one item!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
-            else
-            {
-                this.MoveItem(-1);
             }
         }
 
@@ -1353,7 +1334,6 @@ namespace KeppySpartanMIDIConverter
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
-                        this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = false;
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
@@ -1379,7 +1359,6 @@ namespace KeppySpartanMIDIConverter
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
-                        this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = false;
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
@@ -1406,7 +1385,6 @@ namespace KeppySpartanMIDIConverter
                         this.CurrentStatusText.Text = "Idle.\nSelect a MIDI, and load your soundfonts to start the conversion/playback!";
                         this.UsedVoices.Text = @"Voices: 0/" + Globals.LimitVoicesInt.ToString();
                         this.MIDIList.Enabled = true;
-                        this.DefMenu.Enabled = true;
                         this.loadingpic.Visible = false;
                         this.importMIDIsToolStripMenuItem.Enabled = true;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = true;
@@ -1465,7 +1443,6 @@ namespace KeppySpartanMIDIConverter
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
-                        this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = true;
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
@@ -1507,7 +1484,6 @@ namespace KeppySpartanMIDIConverter
                         this.CurrentStatusText.Text = Globals.CurrentStatusTextString;
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                        this.DefMenu.Enabled = false;
                         this.loadingpic.Visible = true;
                         this.CurrentStatus.Value = Globals.CurrentStatusValueInt;
                         this.CurrentStatus.Maximum = Globals.CurrentStatusMaximumInt;
@@ -1642,7 +1618,7 @@ namespace KeppySpartanMIDIConverter
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             Settings.SetValue("autoupdatecheck", "1", RegistryValueKind.DWord);
             enabledToolStripMenuItem3.Checked = true;
-            disabledToolStripMenuItem3.Checked = false;
+            disabledToolStripMenuItem2.Checked = false;
             Settings.Close();
         }
 
@@ -1651,7 +1627,7 @@ namespace KeppySpartanMIDIConverter
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             Settings.SetValue("autoupdatecheck", "0", RegistryValueKind.DWord);
             enabledToolStripMenuItem3.Checked = false;
-            disabledToolStripMenuItem3.Checked = true;
+            disabledToolStripMenuItem2.Checked = true;
             Settings.Close();
         }
 

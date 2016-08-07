@@ -117,6 +117,7 @@ namespace KeppyMIDIConverter
 
         private void SoundfontDialog_Load(object sender, EventArgs e)
         {
+            SFList.ContextMenu = SFMenu;
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTMode == true)
@@ -386,5 +387,6 @@ namespace KeppyMIDIConverter
             KeppyMIDIConverter.VSTManagerWindow frm = new KeppyMIDIConverter.VSTManagerWindow();
             frm.ShowDialog();
         }
+
     }
 }
