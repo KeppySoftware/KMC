@@ -633,8 +633,8 @@ namespace KeppySpartanMIDIConverter
             double num10 = Un4seen.Bass.Bass.BASS_ChannelBytes2Seconds(Globals._recHandle, num6);
             TimeSpan span = TimeSpan.FromSeconds(num9);
             TimeSpan span2 = TimeSpan.FromSeconds(num10);
-            string str4 = span.Hours.ToString().PadLeft(2, '0') + ":" + span.Minutes.ToString().PadLeft(2, '0') + ":" + span.Seconds.ToString().PadLeft(2, '0');
-            string str5 = span2.Hours.ToString().PadLeft(2, '0') + ":" + span2.Minutes.ToString().PadLeft(2, '0') + ":" + span2.Seconds.ToString().PadLeft(2, '0');
+            string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0');
+            string str5 = span2.Minutes.ToString() + ":" + span2.Seconds.ToString().PadLeft(2, '0');
             float num11 = 0f;
             float num12 = 0f;
             Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
@@ -644,8 +644,8 @@ namespace KeppySpartanMIDIConverter
             Globals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
             int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
             TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
-            string str6 = span3.Hours.ToString().PadLeft(2, '0') + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
-            string str7 = timespent.Hours.ToString().PadLeft(2, '0') + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
+            string str6 = span3.Minutes.ToString() + ":" + span3.Seconds.ToString().PadLeft(2, '0');
+            string str7 = timespent.Minutes.ToString() + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
             float percentage = num8 / num7;
             float percentagefinal;
             if (percentage * 100 < 0)
@@ -943,11 +943,19 @@ namespace KeppySpartanMIDIConverter
                                     double num10 = Un4seen.Bass.Bass.BASS_ChannelBytes2Seconds(Globals._recHandle, num6);
                                     TimeSpan span = TimeSpan.FromSeconds(num9);
                                     TimeSpan span2 = TimeSpan.FromSeconds(num10);
-                                    string str4 = span.Hours.ToString().PadLeft(2, '0') + ":" + span.Minutes.ToString().PadLeft(2, '0') + ":" + span.Seconds.ToString().PadLeft(2, '0');
-                                    string str5 = span2.Hours.ToString().PadLeft(2, '0') + ":" + span2.Minutes.ToString().PadLeft(2, '0') + ":" + span2.Seconds.ToString().PadLeft(2, '0');
+                                    string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0');
+                                    string str5 = span2.Minutes.ToString() + ":" + span2.Seconds.ToString().PadLeft(2, '0');
+                                    float percentage = num8 / num7;
+                                    float percentagefinal;
+                                    if (percentage * 100 < 0)
+                                        percentagefinal = 0.0f;
+                                    else if (percentage * 100 > 100)
+                                        percentagefinal = 1.0f;
+                                    else
+                                        percentagefinal = percentage;
                                     float num11 = 0f;
                                     Un4seen.Bass.Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
-                                    Globals.CurrentStatusTextString = num8.ToString("0.0") + "MBs of RAW datas played.\nCurrent position: " + str5.ToString() + " - " + str4.ToString();
+                                    Globals.CurrentStatusTextString = percentage.ToString("0%") + " of the MIDI played.\nCurrent position: " + str5.ToString() + " - " + str4.ToString();
                                     Globals.ActiveVoicesInt = Convert.ToInt32(num11);
                                     Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
                                     Globals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
@@ -1341,7 +1349,7 @@ namespace KeppySpartanMIDIConverter
                     if (Globals.PlaybackMode == true)
                     {
                         this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        this.CurrentStatusText.Text = "The converter is allocating memory for the playback.\nPlease wait...";
+                        this.CurrentStatusText.Text = "The converter is allocating memory for the playback.\nSet the VST DSP up when its dialog appears.\nPlease wait...";
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
@@ -1407,6 +1415,7 @@ namespace KeppySpartanMIDIConverter
                         this.startRenderingOGGToolStripMenuItem.Enabled = true;
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = true;
                         this.abortRenderingToolStripMenuItem.Enabled = false;
+                        this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = Globals.CurrentPeak;
                         this.SettingsBox.Enabled = true;
                         this.label3.Enabled = false;
