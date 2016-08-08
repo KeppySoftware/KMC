@@ -378,18 +378,18 @@ namespace KeppyMIDIConverter
             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
         }
 
-        private void BASSVSTInit()
+        private void BASSVSTInit(int towhichstream)
         {
             if (Globals.VSTMode == true)
             {
-                Globals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 8);
-                Globals._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 7);
-                Globals._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 6);
-                Globals._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 5);
-                Globals._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 4);
-                Globals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 3);
-                Globals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 2);
-                Globals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(Globals._recHandle, Globals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 1);
+                Globals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 8);
+                Globals._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 7);
+                Globals._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 6);
+                Globals._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 5);
+                Globals._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 4);
+                Globals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 3);
+                Globals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 2);
+                Globals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle, vstInfo) && vstInfo.hasEditor)
                 {
@@ -534,6 +534,8 @@ namespace KeppyMIDIConverter
                     BassMidi.BASS_MIDI_StreamSetFonts(Globals._recHandle, fonts, sfnum + 1);
                     sfnum += 1;
                 }
+                Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
+                Globals._plm.CalcRMS = true;
                 BassMidi.BASS_MIDI_StreamLoadSamples(Globals._recHandle);
             }
         }
@@ -764,7 +766,10 @@ namespace KeppyMIDIConverter
                             string encpath = null;
                             BASSInitSystem();
                             BASSStreamSystem(str);
-                            BASSVSTInit();
+                            if (Globals.VSTMode == true)
+                                BASSVSTInit(KMCVSTiSupport.VSTEngine.VSTStream);
+                            else
+                                BASSVSTInit(Globals._recHandle);
                             BASSEffectSettings();
                             if (Globals.VSTiMode == true)
                                 BASSEncoderInit(KMCVSTiSupport.VSTEngine.VSTStream, Globals.CurrentEncoder, str);
@@ -888,7 +893,7 @@ namespace KeppyMIDIConverter
                             Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
                             Un4seen.Bass.Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 85);
                             Globals.NewWindowName = "Keppy's MIDI Converter | Playing \"" + Path.GetFileNameWithoutExtension(str) + "\"...";
-                            BASSVSTInit();                    
+                            BASSVSTInit(Globals._recHandle);                    
                             Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
                             Globals._plm.CalcRMS = true;
                             BASS_MIDI_FONT[] fonts = new BASS_MIDI_FONT[Globals.Soundfonts.Length];
