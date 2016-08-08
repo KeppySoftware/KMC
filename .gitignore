@@ -46,15 +46,15 @@ Temporary Items
 # Others
 # =========================
 
-KeppySpartanMIDIConverter/bin
-KeppySpartanMIDIConverter/bin/x64
-KeppySpartanMIDIConverter/obj
+KeppyMIDIConverter/bin
+KeppyMIDIConverter/bin/x64
+KeppyMIDIConverter/obj
 *.tmp
 *.obj
 *.exe
 *.dll
 *.7z
+*.zip
 *.psd
-yourcodeforbassnetlel.txt
 *.suo
-KeppySpartanMIDIConverter.v12.suo
+KeppyMIDIConverter.v12.suo

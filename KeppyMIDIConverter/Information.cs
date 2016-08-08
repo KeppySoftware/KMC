@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 
-namespace KeppySpartanMIDIConverter
+namespace KeppyMIDIConverter
 {
     public partial class Informations : Form
     {
@@ -21,7 +21,7 @@ namespace KeppySpartanMIDIConverter
 
         public partial class ExePath
         {
-            public static string ExecutablePath = KeppySpartanMIDIConverter.MainWindow.Globals.ExecutablePath;
+            public static string ExecutablePath = KeppyMIDIConverter.MainWindow.Globals.ExecutablePath;
         }
 
         private void Informations_Load(object sender, EventArgs e)

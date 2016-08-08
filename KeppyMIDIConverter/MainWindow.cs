@@ -16,7 +16,7 @@ using Un4seen.Bass.AddOn.Midi;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace KeppySpartanMIDIConverter
+namespace KeppyMIDIConverter
 {
     public partial class MainWindow : Form
     {
@@ -148,31 +148,28 @@ namespace KeppySpartanMIDIConverter
                 BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
                 this.Menu = DefaultMenu;
                 MIDIList.ContextMenu = DefMenu;
-                // Fade in ;)
-                t1.Interval = 10;  //we'll increase the opacity every 10ms
-                t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
+                // Fade in
+                t1.Interval = 10; // Increases opacity every 10ms
+                t1.Tick += new EventHandler(fadeIn);  // This calls the function that changes opacity 
                 t1.Start(); 
-                // Fade in ;)
-                if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 0)
+                // Fade in
+                if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 1)
                 {
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows 2000 is not supported", "The converter requires Windows XP or newer to run.\nWindows 2000 and older are NOT supported.\n\nPress OK to quit.", 1, 0);
-                    errordialog.ShowDialog();
-                    this.Hide();
-                    Application.ExitThread();
+                    if (Environment.OSVersion.Version.Build == 2600)
+                    {
+                        // Continues
+                    }
+                    else
+                    {
+                        // If you're using Windows XP SP1 or older, the converter will close itself.
+                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows XP SP1 and older are not supported", "The converter requires Windows XP SP2 or newer to run.\nWindows XP SP1 and older are NOT supported.\n\nPress OK to quit.", 1, 0);
+                        errordialog.ShowDialog();
+                        this.Hide();
+                        Application.ExitThread();
+                    }
                 }
                 else
                 {
-                    try
-                    {
-                        Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(Globals._recHandle, 1);
-                        Globals._plm.CalcRMS = true;
-                    }
-                    catch (Exception exception2)
-                    {
-                        Opacity = 1.00;
-                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 1, 0);
-                        errordialog.ShowDialog();
-                    }
                     try
                     {
                         using (RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter"))
@@ -182,11 +179,11 @@ namespace KeppySpartanMIDIConverter
                                 try
                                 {      
                                     // Generic settings
-                                    VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices"));
-                                    VolumeBar.Value = Convert.ToInt32(Settings.GetValue("volume"));
-                                    Globals.Volume = Convert.ToInt32(Settings.GetValue("volume"));
-                                    Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq"));
-                                    Globals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate"));
+                                    VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices", 1000));
+                                    VolumeBar.Value = Convert.ToInt32(Settings.GetValue("volume", 10000));
+                                    Globals.Volume = Convert.ToInt32(Settings.GetValue("volume", 10000));
+                                    Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq", 44100));
+                                    Globals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate", 256));
                                     // Audio events
                                     if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
                                     {

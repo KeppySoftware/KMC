@@ -32,11 +32,13 @@
             this.ErrorLab = new System.Windows.Forms.Label();
             this.Close = new System.Windows.Forms.Button();
             this.ErrorBox = new System.Windows.Forms.RichTextBox();
-            this.RichBoxTextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyErrorMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.RichBoxTextMenu.SuspendLayout();
+            this.RBTMenu = new System.Windows.Forms.ContextMenu();
+            this.copyErrorMessageToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
             this.SuspendLayout();
             // 
             // ErrorLab
@@ -61,7 +63,6 @@
             // ErrorBox
             // 
             this.ErrorBox.BackColor = System.Drawing.Color.White;
-            this.ErrorBox.ContextMenuStrip = this.RichBoxTextMenu;
             this.ErrorBox.DetectUrls = false;
             this.ErrorBox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ErrorBox.Location = new System.Drawing.Point(12, 63);
@@ -73,20 +74,6 @@
             this.ErrorBox.TabIndex = 5;
             this.ErrorBox.Text = "There was an error";
             // 
-            // RichBoxTextMenu
-            // 
-            this.RichBoxTextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyErrorMessageToolStripMenuItem});
-            this.RichBoxTextMenu.Name = "RichBoxTextMenu";
-            this.RichBoxTextMenu.Size = new System.Drawing.Size(180, 26);
-            // 
-            // copyErrorMessageToolStripMenuItem
-            // 
-            this.copyErrorMessageToolStripMenuItem.Name = "copyErrorMessageToolStripMenuItem";
-            this.copyErrorMessageToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.copyErrorMessageToolStripMenuItem.Text = "Copy error message";
-            this.copyErrorMessageToolStripMenuItem.Click += new System.EventHandler(this.copyErrorMessageToolStripMenuItem_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::KeppyMIDIConverter.Properties.Resources.erroricon;
@@ -97,12 +84,40 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // RBTMenu
+            // 
+            this.RBTMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.copyErrorMessageToolStripMenuItem});
+            // 
+            // copyErrorMessageToolStripMenuItem
+            // 
+            this.copyErrorMessageToolStripMenuItem.DefaultItem = true;
+            this.VistaMenuSys.SetImage(this.copyErrorMessageToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.down_icon);
+            this.copyErrorMessageToolStripMenuItem.Index = 0;
+            this.copyErrorMessageToolStripMenuItem.Text = "Copy the error to clipboard";
+            this.copyErrorMessageToolStripMenuItem.Click += new System.EventHandler(this.copyErrorMessageToolStripMenuItem_Click);
+            // 
+            // VistaMenuSys
+            // 
+            this.VistaMenuSys.ContainerControl = this;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Enabled = false;
+            this.label1.Location = new System.Drawing.Point(9, 162);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(250, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Right-click everywhere to copy the error message.";
+            // 
             // ErrorHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(468, 171);
+            this.ClientSize = new System.Drawing.Size(468, 182);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ErrorLab);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Close);
@@ -116,8 +131,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ErrorHandler_Load);
-            this.RichBoxTextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,8 +144,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button Close;
         private System.Windows.Forms.RichTextBox ErrorBox;
-        private System.Windows.Forms.ContextMenuStrip RichBoxTextMenu;
-        private System.Windows.Forms.ToolStripMenuItem copyErrorMessageToolStripMenuItem;
+        private System.Windows.Forms.ContextMenu RBTMenu;
+        private System.Windows.Forms.MenuItem copyErrorMessageToolStripMenuItem;
+        private wyDay.Controls.VistaMenu VistaMenuSys;
+        private System.Windows.Forms.Label label1;
 
     }
 }

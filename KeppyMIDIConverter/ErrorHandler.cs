@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Text;
 using System.Windows.Forms;
 
@@ -39,6 +40,8 @@ namespace KeppyMIDIConverter
 
         private void ErrorHandler_Load(object sender, EventArgs e)
         {
+            this.ContextMenu = RBTMenu;
+            ErrorBox.ContextMenu = RBTMenu;
             PlayConversionFail();
         }
 
@@ -65,11 +68,15 @@ namespace KeppyMIDIConverter
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (string line in ErrorBox.Lines)
-                sb.AppendLine(line);
+            sb.AppendLine("==== Start of Keppy's MIDI Converter Error ====");
+            foreach (string line in ErrorBox.Lines) { sb.AppendLine(line); }
+            sb.AppendLine("====  End of Keppy's MIDI Converter Error  ====");
 
-            Clipboard.SetText(sb.ToString());
-            MessageBox.Show("Error message copied to clipboard!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Thread thread = new Thread(() => Clipboard.SetText(sb.ToString()));
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            thread.Join();
+            MessageBox.Show("Error message copied to clipboard!\n\nMessage:\n" + sb.ToString(), "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

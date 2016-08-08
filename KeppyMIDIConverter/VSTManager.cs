@@ -39,51 +39,51 @@ namespace KeppyMIDIConverter
                 bitnow = "32-bit";
                 bitreq = "64-bit";
             }
-            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc != null)
+            if (KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc != null)
             {
-                label1.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc;
+                label1.Text = KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc;
                 Unload.Enabled = true;
                 Load1.Enabled = false;
             }
-            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc2 != null)
+            if (KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 != null)
             {
-                label2.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc2;
+                label2.Text = KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2;
                 Unload2.Enabled = true;
                 Load2.Enabled = false;
             }
-            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc3 != null)
+            if (KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 != null)
             {
-                label3.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc3;
+                label3.Text = KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3;
                 Unload3.Enabled = true;
                 Load3.Enabled = false;
             }
-            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc4 != null)
+            if (KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 != null)
             {
-                label4.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc4;
+                label4.Text = KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4;
                 Unload4.Enabled = true;
                 Load4.Enabled = false;
             }
-            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc5 != null)
+            if (KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 != null)
             {
-                label5.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc5;
+                label5.Text = KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5;
                 Unload5.Enabled = true;
                 Load5.Enabled = false;
             }
-            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc6 != null)
+            if (KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 != null)
             {
-                label6.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc6;
+                label6.Text = KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6;
                 Unload6.Enabled = true;
                 Load6.Enabled = false;
             }
-            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc7 != null)
+            if (KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 != null)
             {
-                label1.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc7;
+                label1.Text = KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7;
                 Unload7.Enabled = true;
                 Load7.Enabled = false;
             }
-            if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc8 != null)
+            if (KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 != null)
             {
-                label8.Text = KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc8;
+                label8.Text = KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8;
                 Unload8.Enabled = true;
                 Load8.Enabled = false;
             }
@@ -130,8 +130,8 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
                 {
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL = VSTImportDialog.FileName;
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLL = VSTImportDialog.FileName;
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     label1.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     Bass.BASS_Free();
                     Unload.Enabled = true;
@@ -157,8 +157,8 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
                 {
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL2 = VSTImportDialog.FileName;
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLL2 = VSTImportDialog.FileName;
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     label2.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     Bass.BASS_Free();
                     Unload2.Enabled = true;
@@ -184,8 +184,8 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
                 {
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL3 = VSTImportDialog.FileName;
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLL3 = VSTImportDialog.FileName;
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     label3.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     Bass.BASS_Free();
                     Unload3.Enabled = true;
@@ -211,8 +211,8 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
                 {
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL4 = VSTImportDialog.FileName;
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLL4 = VSTImportDialog.FileName;
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     label4.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     Bass.BASS_Free();
                     Unload4.Enabled = true;
@@ -238,8 +238,8 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
                 {
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL5 = VSTImportDialog.FileName;
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLL5 = VSTImportDialog.FileName;
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     label5.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     Bass.BASS_Free();
                     Unload5.Enabled = true;
@@ -265,8 +265,8 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
                 {
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL6 = VSTImportDialog.FileName;
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLL6 = VSTImportDialog.FileName;
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     label6.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     Bass.BASS_Free();
                     Unload6.Enabled = true;
@@ -292,8 +292,8 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
                 {
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL7 = VSTImportDialog.FileName;
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLL7 = VSTImportDialog.FileName;
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     label7.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     Bass.BASS_Free();
                     Unload7.Enabled = true;
@@ -319,8 +319,8 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
                 {
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL8 = VSTImportDialog.FileName;
-                    KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLL8 = VSTImportDialog.FileName;
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     label8.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                     Bass.BASS_Free();
                     Unload8.Enabled = true;
@@ -337,8 +337,8 @@ namespace KeppyMIDIConverter
 
         private void Unload_Click(object sender, EventArgs e)
         {
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL = null;
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLL = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc = null;
             label1.Text = "Empty slot 1";
             Unload.Enabled = false;
             Load1.Enabled = true;
@@ -346,8 +346,8 @@ namespace KeppyMIDIConverter
 
         private void Unload2_Click(object sender, EventArgs e)
         {
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL2 = null;
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLL2 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = null;
             label2.Text = "Empty slot 2";
             Unload2.Enabled = false;
             Load2.Enabled = true;
@@ -355,8 +355,8 @@ namespace KeppyMIDIConverter
 
         private void Unload3_Click(object sender, EventArgs e)
         {
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL3 = null;
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLL3 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = null;
             label3.Text = "Empty slot 3";
             Unload3.Enabled = false;
             Load3.Enabled = true;
@@ -364,8 +364,8 @@ namespace KeppyMIDIConverter
 
         private void Unload4_Click(object sender, EventArgs e)
         {
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL4 = null;
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLL4 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = null;
             label4.Text = "Empty slot 4";
             Unload4.Enabled = false;
             Load4.Enabled = true;
@@ -373,8 +373,8 @@ namespace KeppyMIDIConverter
 
         private void Unload5_Click(object sender, EventArgs e)
         {
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL5 = null;
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLL5 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = null;
             label5.Text = "Empty slot 5";
             Unload5.Enabled = false;
             Load5.Enabled = true;
@@ -382,8 +382,8 @@ namespace KeppyMIDIConverter
 
         private void Unload6_Click(object sender, EventArgs e)
         {
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL6 = null;
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLL6 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = null;
             label6.Text = "Empty slot 6";
             Unload6.Enabled = false;
             Load6.Enabled = true;
@@ -391,8 +391,8 @@ namespace KeppyMIDIConverter
 
         private void Unload7_Click(object sender, EventArgs e)
         {
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL7 = null;
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLL7 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = null;
             label7.Text = "Empty slot 7";
             Unload7.Enabled = false;
             Load7.Enabled = true;
@@ -400,8 +400,8 @@ namespace KeppyMIDIConverter
 
         private void Unload8_Click(object sender, EventArgs e)
         {
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLL8 = null;
-            KeppySpartanMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLL8 = null;
+            KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = null;
             label8.Text = "Empty slot 8";
             Unload8.Enabled = false;
             Load8.Enabled = true;

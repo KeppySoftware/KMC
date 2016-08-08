@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace KeppySpartanMIDIConverter
+namespace KeppyMIDIConverter
 {
     public partial class AdvancedSettings : Form
     {

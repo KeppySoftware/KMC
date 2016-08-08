@@ -1,4 +1,4 @@
-﻿namespace KeppySpartanMIDIConverter
+﻿namespace KeppyMIDIConverter
 {
     partial class Informations
     {
