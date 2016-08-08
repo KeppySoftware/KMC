@@ -49,8 +49,10 @@
             this.removeSoundfontsToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.clearSoundfontListToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -203,12 +205,14 @@
             // 
             // importSoundfontsToolStripMenuItem
             // 
+            this.VistaMenuSys.SetImage(this.importSoundfontsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.add_icon);
             this.importSoundfontsToolStripMenuItem.Index = 0;
             this.importSoundfontsToolStripMenuItem.Text = "Import soundfont(s)";
             this.importSoundfontsToolStripMenuItem.Click += new System.EventHandler(this.importSoundfontsToolStripMenuItem_Click);
             // 
             // removeSoundfontsToolStripMenuItem
             // 
+            this.VistaMenuSys.SetImage(this.removeSoundfontsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.removeSoundfontsToolStripMenuItem.Index = 1;
             this.removeSoundfontsToolStripMenuItem.Text = "Remove soundfont(s)";
             this.removeSoundfontsToolStripMenuItem.Click += new System.EventHandler(this.removeSoundfontsToolStripMenuItem_Click);
@@ -223,6 +227,10 @@
             this.clearSoundfontListToolStripMenuItem.Index = 3;
             this.clearSoundfontListToolStripMenuItem.Text = "Clear soundfont lists";
             this.clearSoundfontListToolStripMenuItem.Click += new System.EventHandler(this.clearSoundfontListToolStripMenuItem_Click);
+            // 
+            // VistaMenuSys
+            // 
+            this.VistaMenuSys.ContainerControl = this;
             // 
             // SoundfontDialog
             // 
@@ -254,6 +262,7 @@
             this.Load += new System.EventHandler(this.SoundfontDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +289,6 @@
         private System.Windows.Forms.MenuItem removeSoundfontsToolStripMenuItem;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem clearSoundfontListToolStripMenuItem;
+        private wyDay.Controls.VistaMenu VistaMenuSys;
     }
 }

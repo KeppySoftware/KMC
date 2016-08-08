@@ -63,6 +63,46 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_icon {
+            get {
+                object obj = ResourceManager.GetObject("add_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap audio_icon {
+            get {
+                object obj = ResourceManager.GetObject("audio_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap back_icon {
+            get {
+                object obj = ResourceManager.GetObject("back_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap configure_icon {
+            get {
+                object obj = ResourceManager.GetObject("configure_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap convbusy {
             get {
                 object obj = ResourceManager.GetObject("convbusy", resourceCulture);
@@ -100,9 +140,39 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_icon {
+            get {
+                object obj = ResourceManager.GetObject("delete_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap donatebtn {
             get {
                 object obj = ResourceManager.GetObject("donatebtn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap down_icon {
+            get {
+                object obj = ResourceManager.GetObject("down_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_icon {
+            get {
+                object obj = ResourceManager.GetObject("edit_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -130,6 +200,29 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap information_icon {
+            get {
+                object obj = ResourceManager.GetObject("information_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1040\deflangfe1041{\fonttbl{\f0\fswiss\fprq2\fcharset0 Microsoft Sans Serif;}{\f1\fmodern\fprq1\fcharset0 Lucida Console;}}
+        ///{\colortbl ;\red0\green0\blue255;}
+        ///{\*\generator Riched20 10.0.14393}\viewkind4\uc1 
+        ///\pard\nowidctlpar\sa200\sl276\slmult1\f0\fs18\lang2057 == README ==\line This project has been made by Riccardo Loi and ported to Java by Luca Noah Horn, two indipendent programmers who are members of the Black MIDI Team.\par
+        ///If you want to use the ba [stringa troncata]&quot;;.
+        /// </summary>
+        internal static string license {
+            get {
+                return ResourceManager.GetString("license", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mainlogo {
             get {
                 object obj = ResourceManager.GetObject("mainlogo", resourceCulture);
@@ -143,6 +236,16 @@ namespace KeppyMIDIConverter.Properties {
         internal static System.Drawing.Bitmap sfzcomp {
             get {
                 object obj = ResourceManager.GetObject("sfzcomp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap up_icon {
+            get {
+                object obj = ResourceManager.GetObject("up_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

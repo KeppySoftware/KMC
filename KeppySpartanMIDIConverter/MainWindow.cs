@@ -261,13 +261,12 @@ namespace KeppySpartanMIDIConverter
                                         Globals.QualityOverride = false;
                                         Settings.SetValue("overrideogg", "0", RegistryValueKind.DWord);
                                     }
-                                    Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder", "").ToString();
-                                    Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder", "").ToString();
+                                    Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+                                    Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
                                     Settings.Close();
                                 }
                                 catch (Exception exception)
                                 {
-                                    MessageBox.Show(exception.Message.ToString(), "Fatal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error", exception.Message.ToString(), 1, 0);
                                     errordialog.ShowDialog();
                                     Settings.Close();
@@ -319,6 +318,7 @@ namespace KeppySpartanMIDIConverter
                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Globals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
                 Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
+                Settings.Close();
                 ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
                 Globals.CurrentEncoder = 0;
                 this.ConverterProcess.RunWorkerAsync();
@@ -345,6 +345,7 @@ namespace KeppySpartanMIDIConverter
                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Globals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
                 Settings.SetValue("lastexportfolder", Globals.ExportLastDirectory);
+                Settings.Close();
                 ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
                 Globals.CurrentEncoder = 1;
                 this.ConverterProcess.RunWorkerAsync();

@@ -25,21 +25,7 @@ namespace KeppyMIDIConverter
         {
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            try
-            {
-                if (Settings.GetValue("lastsffolder").ToString() == null)
-                {
-                    SoundfontImportDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                }
-                else
-                {
-                    SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder").ToString();
-                }
-            }
-            catch
-            {
-
-            }
+            SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
             if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
             {
                 foreach (String file in SoundfontImportDialog.FileNames)
@@ -68,6 +54,7 @@ namespace KeppyMIDIConverter
                 KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
                 SFList.Items.CopyTo(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0);
             }
+            Settings.Close();
         }
 
         private void removeSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,6 +107,8 @@ namespace KeppyMIDIConverter
             SFList.ContextMenu = SFMenu;
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+            Settings.Close();
             if (KeppySpartanMIDIConverter.MainWindow.Globals.VSTMode == true)
             {
                 VSTImport.Enabled = true;
@@ -130,43 +119,13 @@ namespace KeppyMIDIConverter
                 VSTImport.Enabled = false;
                 VSTUse.Checked = false;
             }
-            try
-            {
-                if (Settings.GetValue("lastsffolder").ToString() == null)
-                {
-                    SoundfontImportDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                }
-                else
-                {
-                    SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsf1folder").ToString();
-                }
-                Settings.Close();
-            }
-            catch
-            {
-                Settings.Close();
-            }
         }
 
         private void ImportBtn_Click(object sender, EventArgs e)
         {
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            try
-            {
-                if (Settings.GetValue("lastsffolder").ToString() == null)
-                {
-                    SoundfontImportDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                }
-                else
-                {
-                    SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder").ToString();
-                }
-            }
-            catch
-            {
-
-            }
+            SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
             if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
             {
                 foreach (String file in SoundfontImportDialog.FileNames)
@@ -194,8 +153,8 @@ namespace KeppyMIDIConverter
                 }
                 KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
                 SFList.Items.CopyTo(KeppySpartanMIDIConverter.MainWindow.Globals.Soundfonts, 0);
-                Settings.Close();
             }
+            Settings.Close();
         }
 
         private void RemoveBtn_Click(object sender, EventArgs e)

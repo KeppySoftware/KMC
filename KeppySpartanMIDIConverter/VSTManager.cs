@@ -1,11 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Enc;
 using Un4seen.Bass.AddOn.Mix;
@@ -86,8 +89,39 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private void InitStartDirectory()
+        {
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            try
+            {
+                VSTImportDialog.InitialDirectory = Settings.GetValue("lastvstfolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+            }
+            catch
+            {
+                Settings.Close();
+            }
+            Settings.Close();
+        }
+
+        private void SaveDirectory(string file)
+        {
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            try
+            {
+                Settings.SetValue("lastvstfolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                Settings.Close();
+            }
+            catch
+            {
+                Settings.Close();
+            }
+        }
+
         private void Load_Click(object sender, EventArgs e)
         {
+            InitStartDirectory();
             if (VSTImportDialog.ShowDialog() == DialogResult.OK)
             {
                 Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -102,6 +136,7 @@ namespace KeppyMIDIConverter
                     Bass.BASS_Free();
                     Unload.Enabled = true;
                     Load1.Enabled = false;
+                    SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
@@ -113,6 +148,7 @@ namespace KeppyMIDIConverter
 
         private void Load2_Click(object sender, EventArgs e)
         {
+            InitStartDirectory();
             if (VSTImportDialog.ShowDialog() == DialogResult.OK)
             {
                 Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -127,6 +163,7 @@ namespace KeppyMIDIConverter
                     Bass.BASS_Free();
                     Unload2.Enabled = true;
                     Load2.Enabled = false;
+                    SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
@@ -138,6 +175,7 @@ namespace KeppyMIDIConverter
 
         private void Load3_Click(object sender, EventArgs e)
         {
+            InitStartDirectory();
             if (VSTImportDialog.ShowDialog() == DialogResult.OK)
             {
                 Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -152,6 +190,7 @@ namespace KeppyMIDIConverter
                     Bass.BASS_Free();
                     Unload3.Enabled = true;
                     Load3.Enabled = false;
+                    SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
@@ -163,6 +202,7 @@ namespace KeppyMIDIConverter
 
         private void Load4_Click(object sender, EventArgs e)
         {
+            InitStartDirectory();
             if (VSTImportDialog.ShowDialog() == DialogResult.OK)
             {
                 Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -177,6 +217,7 @@ namespace KeppyMIDIConverter
                     Bass.BASS_Free();
                     Unload4.Enabled = true;
                     Load4.Enabled = false;
+                    SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
@@ -188,6 +229,7 @@ namespace KeppyMIDIConverter
 
         private void Load5_Click(object sender, EventArgs e)
         {
+            InitStartDirectory();
             if (VSTImportDialog.ShowDialog() == DialogResult.OK)
             {
                 Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -202,6 +244,7 @@ namespace KeppyMIDIConverter
                     Bass.BASS_Free();
                     Unload5.Enabled = true;
                     Load5.Enabled = false;
+                    SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
@@ -213,6 +256,7 @@ namespace KeppyMIDIConverter
 
         private void Load6_Click(object sender, EventArgs e)
         {
+            InitStartDirectory();
             if (VSTImportDialog.ShowDialog() == DialogResult.OK)
             {
                 Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -227,6 +271,7 @@ namespace KeppyMIDIConverter
                     Bass.BASS_Free();
                     Unload6.Enabled = true;
                     Load6.Enabled = false;
+                    SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
@@ -238,6 +283,7 @@ namespace KeppyMIDIConverter
 
         private void Load7_Click(object sender, EventArgs e)
         {
+            InitStartDirectory();
             if (VSTImportDialog.ShowDialog() == DialogResult.OK)
             {
                 Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -252,6 +298,7 @@ namespace KeppyMIDIConverter
                     Bass.BASS_Free();
                     Unload7.Enabled = true;
                     Load7.Enabled = false;
+                    SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
@@ -263,6 +310,7 @@ namespace KeppyMIDIConverter
 
         private void Load8_Click(object sender, EventArgs e)
         {
+            InitStartDirectory();
             if (VSTImportDialog.ShowDialog() == DialogResult.OK)
             {
                 Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -277,6 +325,7 @@ namespace KeppyMIDIConverter
                     Bass.BASS_Free();
                     Unload8.Enabled = true;
                     Load8.Enabled = false;
+                    SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {

@@ -189,6 +189,7 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Include="license.rtf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -207,6 +208,15 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="mainlogo.ico" />
+    <None Include="Resources\information-icon.png" />
+    <None Include="Resources\edit-icon.png" />
+    <None Include="Resources\up-icon.png" />
+    <None Include="Resources\down-icon.png" />
+    <None Include="Resources\delete-icon.png" />
+    <None Include="Resources\configure-icon.png" />
+    <None Include="Resources\back-icon.png" />
+    <None Include="Resources\audio-icon.png" />
+    <None Include="Resources\add-icon.png" />
     <None Include="Resources\vstlogo.png" />
     <None Include="Resources\convstart.wav" />
     <None Include="Resources\convfin.wav" />
@@ -218,9 +228,7 @@
     <None Include="Resources\sfzcomp.png" />
     <None Include="Resources\updatebk.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Icons\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

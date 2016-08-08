@@ -63,7 +63,20 @@ namespace KeppySpartanMIDIConverter
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.ToString());
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows 2000 is not supported", "The converter requires Windows XP or newer to run.\nWindows 2000 and older are NOT supported.\n\nPress OK to quit.", 1, 0);
+                errordialog.ShowDialog();
+            }
+        }
+
+        public static void CopyStream(Stream input, Stream output)
+        {
+            // Insert null checking here for production
+            byte[] buffer = new byte[8192];
+
+            int bytesRead;
+            while ((bytesRead = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                output.Write(buffer, 0, bytesRead);
             }
         }
 
@@ -79,7 +92,24 @@ namespace KeppySpartanMIDIConverter
 
         private void button3_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("wordpad.exe", "..\\license.rtf");
+            string license = "..\\license.rtf";
+            string license2 = "license.rtf";
+            if (File.Exists(license) == true && File.Exists(license2) == true)
+            {
+                System.Diagnostics.Process.Start("wordpad.exe", license);
+            }
+            else if (File.Exists(license) == true && File.Exists(license2) == false)
+            {
+                System.Diagnostics.Process.Start("wordpad.exe", license);
+            }
+            else if (File.Exists(license) == false && File.Exists(license2) == true)
+            {
+                System.Diagnostics.Process.Start("wordpad.exe", license2);
+            }
+            else if (File.Exists(license) == false && File.Exists(license2) == false)
+            {
+                MessageBox.Show("I can't seem to find the license anywhere...", "Oops, that's embarassing!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

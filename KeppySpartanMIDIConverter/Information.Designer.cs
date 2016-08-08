@@ -40,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BASSINFO2 = new System.Windows.Forms.Label();
             this.BASSINFO = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.InfoPg = new System.Windows.Forms.TabPage();
@@ -50,7 +51,6 @@
             this.ThisVersion = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.BASSINFO2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -80,7 +80,7 @@
             // 
             // button1
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(460, 312);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -158,6 +158,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(525, 58);
             this.panel1.TabIndex = 8;
+            // 
+            // BASSINFO2
+            // 
+            this.BASSINFO2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BASSINFO2.Location = new System.Drawing.Point(261, 0);
+            this.BASSINFO2.Name = "BASSINFO2";
+            this.BASSINFO2.Size = new System.Drawing.Size(260, 54);
+            this.BASSINFO2.TabIndex = 1;
+            this.BASSINFO2.Text = "A\r\na\r\na\r\na";
+            this.BASSINFO2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BASSINFO
             // 
@@ -272,16 +282,6 @@
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // BASSINFO2
-            // 
-            this.BASSINFO2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BASSINFO2.Location = new System.Drawing.Point(261, 0);
-            this.BASSINFO2.Name = "BASSINFO2";
-            this.BASSINFO2.Size = new System.Drawing.Size(260, 54);
-            this.BASSINFO2.TabIndex = 1;
-            this.BASSINFO2.Text = "A\r\na\r\na\r\na";
-            this.BASSINFO2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Informations
             // 
