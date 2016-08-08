@@ -151,158 +151,158 @@ namespace KeppyMIDIConverter
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-                BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
-                this.Menu = DefaultMenu;
-                MIDIList.ContextMenu = DefMenu;
-                // Fade in
-                t1.Interval = 10; // Increases opacity every 10ms
-                t1.Tick += new EventHandler(fadeIn);  // This calls the function that changes opacity 
-                t1.Start(); 
-                // Fade in
-                if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 1)
+            BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
+            this.Menu = DefaultMenu;
+            MIDIList.ContextMenu = DefMenu;
+            // Fade in
+            t1.Interval = 10; // Increases opacity every 10ms
+            t1.Tick += new EventHandler(fadeIn);  // This calls the function that changes opacity 
+            t1.Start();
+            // Fade in
+            if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 1)
+            {
+                if (Environment.OSVersion.Version.Build == 2600)
                 {
-                    if (Environment.OSVersion.Version.Build == 2600)
-                    {
-                        // Continues
-                    }
-                    else
-                    {
-                        // If you're using Windows XP SP1 or older, the converter will close itself.
-                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows XP SP1 and older are not supported", "The converter requires Windows XP SP2 or newer to run.\nWindows XP SP1 and older are NOT supported.\n\nPress OK to quit.", 1, 0);
-                        errordialog.ShowDialog();
-                        this.Hide();
-                        Application.ExitThread();
-                    }
+                    // Continues
                 }
                 else
                 {
-                    try
-                    {
-                        using (RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter"))
-                            if (Key != null)
+                    // If you're using Windows XP SP1 or older, the converter will close itself.
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Windows XP SP1 and older are not supported", "The converter requires Windows XP SP2 or newer to run.\nWindows XP SP1 and older are NOT supported.\n\nPress OK to quit.", 1, 0);
+                    errordialog.ShowDialog();
+                    this.Hide();
+                    Application.ExitThread();
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter"))
+                        if (Key != null)
+                        {
+                            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                            try
                             {
-                                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                                try
-                                {      
-                                    // Generic settings
-                                    VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices", 1000));
-                                    VolumeBar.Value = Convert.ToInt32(Settings.GetValue("volume", 10000));
-                                    Globals.Volume = Convert.ToInt32(Settings.GetValue("volume", 10000));
-                                    Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq", 44100));
-                                    Globals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate", 256));
-                                    // Audio events
-                                    if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
-                                    {
-                                        enabledToolStripMenuItem4.Checked = true;
-                                        disabledToolStripMenuItem4.Checked = false;
-                                        Settings.SetValue("audioevents", "1", RegistryValueKind.DWord);
-                                    }
-                                    else
-                                    {
-                                        enabledToolStripMenuItem4.Checked = false;
-                                        disabledToolStripMenuItem4.Checked = true;
-                                        Settings.SetValue("audioevents", "0", RegistryValueKind.DWord);
-                                    }
-                                    // Autoupdate lel
-                                    if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
-                                    {
-                                        enabledToolStripMenuItem3.Checked = true;
-                                        disabledToolStripMenuItem3.Checked = false;
-                                        Settings.SetValue("autoupdatecheck", "1", RegistryValueKind.DWord);
-                                    }
-                                    else
-                                    {
-                                        enabledToolStripMenuItem3.Checked = false;
-                                        disabledToolStripMenuItem3.Checked = true;
-                                        Settings.SetValue("autoupdatecheck", "0", RegistryValueKind.DWord);
-                                    }
-                                    // Old time thingy for TheGhastModding lel
-                                    if (Convert.ToInt32(Settings.GetValue("oldtimethingy", 0)) == 1)
-                                    {
-                                        enabledToolStripMenuItem2.Checked = true;
-                                        disabledToolStripMenuItem2.Checked = false;
-                                        Globals.OldTimeThingy = true;
-                                        Settings.SetValue("oldtimethingy", "1", RegistryValueKind.DWord);
-                                    }
-                                    else
-                                    {
-                                        enabledToolStripMenuItem2.Checked = false;
-                                        disabledToolStripMenuItem2.Checked = true;
-                                        Globals.OldTimeThingy = false;
-                                        Settings.SetValue("oldtimethingy", "0", RegistryValueKind.DWord);
-                                    }
-                                    // Note off setting
-                                    if (Convert.ToInt32(Settings.GetValue("noteoff1", 0)) == 1)
-                                    {
-                                        Globals.NoteOff1Event = true;
-                                        Settings.SetValue("noteoff1", "1", RegistryValueKind.DWord);
-                                    }
-                                    else
-                                    {
-                                        Globals.NoteOff1Event = false;
-                                        Settings.SetValue("noteoff1", "0", RegistryValueKind.DWord);
-                                    }
-                                    // BASS default sound effects (Reverb and chorus)
-                                    if (Convert.ToInt32(Settings.GetValue("disablefx", 0)) == 1)
-                                    {
-                                        Globals.FXDisabled = true;
-                                        Settings.SetValue("disablefx", "1", RegistryValueKind.DWord);
-                                    }
-                                    else
-                                    {
-                                        Globals.FXDisabled = false;
-                                        Settings.SetValue("disablefx", "0", RegistryValueKind.DWord);
-                                    }
-                                    // OGG bitrate override
-                                    if (Convert.ToInt32(Settings.GetValue("overrideogg", 0)) == 1)
-                                    {
-                                        Globals.QualityOverride = true;
-                                        Settings.SetValue("overrideogg", "1", RegistryValueKind.DWord);
-                                    }
-                                    else
-                                    {
-                                        Globals.QualityOverride = false;
-                                        Settings.SetValue("overrideogg", "0", RegistryValueKind.DWord);
-                                    }
-                                    Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
-                                    Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
-                                    Settings.Close();
-                                }
-                                catch (Exception exception)
+                                // Generic settings
+                                VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices", 1000));
+                                VolumeBar.Value = Convert.ToInt32(Settings.GetValue("volume", 10000));
+                                Globals.Volume = Convert.ToInt32(Settings.GetValue("volume", 10000));
+                                Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq", 44100));
+                                Globals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate", 256));
+                                // Audio events
+                                if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
                                 {
-                                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error", exception.Message.ToString(), 1, 0);
-                                    errordialog.ShowDialog();
-                                    Settings.Close();
+                                    enabledToolStripMenuItem4.Checked = true;
+                                    disabledToolStripMenuItem4.Checked = false;
+                                    Settings.SetValue("audioevents", "1", RegistryValueKind.DWord);
                                 }
-                            }
-                            else if (Key == null)
-                            {
-                                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-                                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                                VoiceLimit.Value = 100000;
-                                Settings.SetValue("voices", "100000", RegistryValueKind.DWord);
-                                Settings.SetValue("lastmidifolder", "", RegistryValueKind.String);
-                                Settings.SetValue("lastsffolder", "", RegistryValueKind.String);
-                                Settings.SetValue("lastexportfolder", "", RegistryValueKind.String);
-                                Settings.SetValue("audioevents", "1", RegistryValueKind.DWord);
-                                Settings.SetValue("autoupdatecheck", "1", RegistryValueKind.DWord);
-                                Settings.SetValue("oldtimethingy", "0", RegistryValueKind.DWord);
-                                Settings.SetValue("noteoff1", "0", RegistryValueKind.DWord);
-                                Settings.SetValue("disablefx", "0", RegistryValueKind.DWord);
-                                Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
-                                Settings.SetValue("audiofreq", "44100", RegistryValueKind.DWord);
-                                Settings.SetValue("volume", "10000", RegistryValueKind.DWord);
+                                else
+                                {
+                                    enabledToolStripMenuItem4.Checked = false;
+                                    disabledToolStripMenuItem4.Checked = true;
+                                    Settings.SetValue("audioevents", "0", RegistryValueKind.DWord);
+                                }
+                                // Autoupdate lel
+                                if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
+                                {
+                                    enabledToolStripMenuItem3.Checked = true;
+                                    disabledToolStripMenuItem3.Checked = false;
+                                    Settings.SetValue("autoupdatecheck", "1", RegistryValueKind.DWord);
+                                }
+                                else
+                                {
+                                    enabledToolStripMenuItem3.Checked = false;
+                                    disabledToolStripMenuItem3.Checked = true;
+                                    Settings.SetValue("autoupdatecheck", "0", RegistryValueKind.DWord);
+                                }
+                                // Old time thingy for TheGhastModding lel
+                                if (Convert.ToInt32(Settings.GetValue("oldtimethingy", 0)) == 1)
+                                {
+                                    enabledToolStripMenuItem2.Checked = true;
+                                    disabledToolStripMenuItem2.Checked = false;
+                                    Globals.OldTimeThingy = true;
+                                    Settings.SetValue("oldtimethingy", "1", RegistryValueKind.DWord);
+                                }
+                                else
+                                {
+                                    enabledToolStripMenuItem2.Checked = false;
+                                    disabledToolStripMenuItem2.Checked = true;
+                                    Globals.OldTimeThingy = false;
+                                    Settings.SetValue("oldtimethingy", "0", RegistryValueKind.DWord);
+                                }
+                                // Note off setting
+                                if (Convert.ToInt32(Settings.GetValue("noteoff1", 0)) == 1)
+                                {
+                                    Globals.NoteOff1Event = true;
+                                    Settings.SetValue("noteoff1", "1", RegistryValueKind.DWord);
+                                }
+                                else
+                                {
+                                    Globals.NoteOff1Event = false;
+                                    Settings.SetValue("noteoff1", "0", RegistryValueKind.DWord);
+                                }
+                                // BASS default sound effects (Reverb and chorus)
+                                if (Convert.ToInt32(Settings.GetValue("disablefx", 0)) == 1)
+                                {
+                                    Globals.FXDisabled = true;
+                                    Settings.SetValue("disablefx", "1", RegistryValueKind.DWord);
+                                }
+                                else
+                                {
+                                    Globals.FXDisabled = false;
+                                    Settings.SetValue("disablefx", "0", RegistryValueKind.DWord);
+                                }
+                                // OGG bitrate override
+                                if (Convert.ToInt32(Settings.GetValue("overrideogg", 0)) == 1)
+                                {
+                                    Globals.QualityOverride = true;
+                                    Settings.SetValue("overrideogg", "1", RegistryValueKind.DWord);
+                                }
+                                else
+                                {
+                                    Globals.QualityOverride = false;
+                                    Settings.SetValue("overrideogg", "0", RegistryValueKind.DWord);
+                                }
+                                Globals.MIDILastDirectory = Settings.GetValue("lastmidifolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+                                Globals.ExportLastDirectory = Settings.GetValue("lastexportfolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
                                 Settings.Close();
                             }
-                        Console.WriteLine("Settings loaded.");
-                    }
-                    catch (Exception exception2)
-                    {
-                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 0);
-                        errordialog.ShowDialog();
-                    }
-                    Globals.AutoShutDownEnabled = false;
-                    Globals.AutoClearMIDIListEnabled = false;
+                            catch (Exception exception)
+                            {
+                                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Fatal error", exception.Message.ToString(), 1, 0);
+                                errordialog.ShowDialog();
+                                Settings.Close();
+                            }
+                        }
+                        else if (Key == null)
+                        {
+                            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+                            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                            VoiceLimit.Value = 100000;
+                            Settings.SetValue("voices", "100000", RegistryValueKind.DWord);
+                            Settings.SetValue("lastmidifolder", "", RegistryValueKind.String);
+                            Settings.SetValue("lastsffolder", "", RegistryValueKind.String);
+                            Settings.SetValue("lastexportfolder", "", RegistryValueKind.String);
+                            Settings.SetValue("audioevents", "1", RegistryValueKind.DWord);
+                            Settings.SetValue("autoupdatecheck", "1", RegistryValueKind.DWord);
+                            Settings.SetValue("oldtimethingy", "0", RegistryValueKind.DWord);
+                            Settings.SetValue("noteoff1", "0", RegistryValueKind.DWord);
+                            Settings.SetValue("disablefx", "0", RegistryValueKind.DWord);
+                            Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
+                            Settings.SetValue("audiofreq", "44100", RegistryValueKind.DWord);
+                            Settings.SetValue("volume", "10000", RegistryValueKind.DWord);
+                            Settings.Close();
+                        }
+                    Console.WriteLine("Settings loaded.");
+                }
+                catch (Exception exception2)
+                {
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception2.ToString(), 0, 0);
+                    errordialog.ShowDialog();
+                }
+                Globals.AutoShutDownEnabled = false;
+                Globals.AutoClearMIDIListEnabled = false;
             }
         }
 

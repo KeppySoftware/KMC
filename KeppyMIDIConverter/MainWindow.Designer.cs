@@ -48,6 +48,7 @@
             this.clearMIDIsListToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.openTheSoundfontsManagerToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.startRenderingWAVToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.startRenderingOGGToolStripMenuItem = new System.Windows.Forms.MenuItem();
@@ -72,6 +73,10 @@
             this.enabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
             this.AdditionalLine = new System.Windows.Forms.MenuItem();
+            this.VSTMenuStriperino = new System.Windows.Forms.MenuItem();
+            this.enabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
+            this.disabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
+            this.menuItem13 = new System.Windows.Forms.MenuItem();
             this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem14 = new System.Windows.Forms.MenuItem();
             this.informationAboutTheProgramToolStripMenuItem = new System.Windows.Forms.MenuItem();
@@ -92,11 +97,6 @@
             this.MoveUpMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.MoveDownMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.VSTMenuStriperino = new System.Windows.Forms.MenuItem();
-            this.menuItem13 = new System.Windows.Forms.MenuItem();
-            this.enabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
-            this.disabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -361,6 +361,14 @@
             this.openTheSoundfontsManagerToolStripMenuItem.Text = "Open the soundfonts/VST DSP manager";
             this.openTheSoundfontsManagerToolStripMenuItem.Click += new System.EventHandler(this.openTheSoundfontsManagerToolStripMenuItem_Click);
             // 
+            // openTheVSTInstrumentVSTDSPManagerToolStripMenuItem
+            // 
+            this.VistaMenuSys.SetImage(this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.configure_icon);
+            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Index = 5;
+            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Text = "Open the VST instrument/VST DSP manager";
+            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Visible = false;
+            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Click += new System.EventHandler(this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem_Click);
+            // 
             // menuItem7
             // 
             this.menuItem7.Index = 6;
@@ -524,6 +532,31 @@
             this.AdditionalLine.Index = 5;
             this.AdditionalLine.Text = "-";
             // 
+            // VSTMenuStriperino
+            // 
+            this.VSTMenuStriperino.Index = 6;
+            this.VSTMenuStriperino.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.enabledToolStripMenuItem5,
+            this.disabledToolStripMenuItem5});
+            this.VSTMenuStriperino.Text = "Use VST instruments instead of soundfonts";
+            // 
+            // enabledToolStripMenuItem5
+            // 
+            this.enabledToolStripMenuItem5.Index = 0;
+            this.enabledToolStripMenuItem5.Text = "Enabled";
+            this.enabledToolStripMenuItem5.Click += new System.EventHandler(this.enabledToolStripMenuItem5_Click);
+            // 
+            // disabledToolStripMenuItem5
+            // 
+            this.disabledToolStripMenuItem5.Index = 1;
+            this.disabledToolStripMenuItem5.Text = "Disabled";
+            this.disabledToolStripMenuItem5.Click += new System.EventHandler(this.disabledToolStripMenuItem5_Click);
+            // 
+            // menuItem13
+            // 
+            this.menuItem13.Index = 7;
+            this.menuItem13.Text = "-";
+            // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
             this.forceCloseTheApplicationToolStripMenuItem.Index = 8;
@@ -657,35 +690,6 @@
             // VistaMenuSys
             // 
             this.VistaMenuSys.ContainerControl = this;
-            // 
-            // VSTMenuStriperino
-            // 
-            this.VSTMenuStriperino.Index = 6;
-            this.VSTMenuStriperino.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.enabledToolStripMenuItem5,
-            this.disabledToolStripMenuItem5});
-            this.VSTMenuStriperino.Text = "Use VST instruments instead of soundfonts";
-            // 
-            // menuItem13
-            // 
-            this.menuItem13.Index = 7;
-            this.menuItem13.Text = "-";
-            // 
-            // enabledToolStripMenuItem5
-            // 
-            this.enabledToolStripMenuItem5.Index = 0;
-            this.enabledToolStripMenuItem5.Text = "Enabled";
-            // 
-            // disabledToolStripMenuItem5
-            // 
-            this.disabledToolStripMenuItem5.Index = 1;
-            this.disabledToolStripMenuItem5.Text = "Disabled";
-            // 
-            // openTheVSTInstrumentVSTDSPManagerToolStripMenuItem
-            // 
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Index = 5;
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Text = "Open the VST instrument/VST DSP manager";
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Visible = false;
             // 
             // MainWindow
             // 
