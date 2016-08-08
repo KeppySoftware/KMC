@@ -46,6 +46,7 @@ Temporary Items
 # Others
 # =========================
 
+KMCVSTiSupport
 KeppyMIDIConverter/bin
 KeppyMIDIConverter/bin/x64
 KeppyMIDIConverter/obj
@@ -58,3 +59,4 @@ KeppyMIDIConverter/obj
 *.psd
 *.suo
 KeppyMIDIConverter.v12.suo
+KeppyMIDIConverter/KMCVSTiSupport.pdb

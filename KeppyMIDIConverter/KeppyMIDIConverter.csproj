@@ -94,6 +94,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\Bass.Net.dll</HintPath>
     </Reference>
+    <Reference Include="KMCVSTiSupport">
+      <HintPath>.\KMCVSTiSupport.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack">
       <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -157,6 +160,12 @@
     <Compile Include="SoundfontDialog.Designer.cs">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="VSTiManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VSTiManager.Designer.cs">
+      <DependentUpon>VSTiManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="VSTManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SoundfontDialog.resx">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VSTiManager.resx">
+      <DependentUpon>VSTiManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VSTManager.resx">
       <DependentUpon>VSTManager.cs</DependentUpon>
@@ -234,9 +246,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.28.3\build\Fody.targets'))" />
   </Target>
-  <Import Project="..\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('..\packages\Fody.1.28.3\build\Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
