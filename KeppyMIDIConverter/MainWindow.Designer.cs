@@ -548,6 +548,7 @@
             // 
             // disabledToolStripMenuItem5
             // 
+            this.disabledToolStripMenuItem5.Checked = true;
             this.disabledToolStripMenuItem5.Index = 1;
             this.disabledToolStripMenuItem5.Text = "Disabled";
             this.disabledToolStripMenuItem5.Click += new System.EventHandler(this.disabledToolStripMenuItem5_Click);

@@ -152,6 +152,18 @@ namespace KeppyMIDIConverter
         private void MainWindow_Load(object sender, EventArgs e)
         {
             BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
+            // Add-on
+            if (KMCVSTiSupport.VSTEngine.IsItValid() == true)
+            {
+                AdditionalLine.Visible = true;
+                VSTMenuStriperino.Visible = true;
+            }
+            else
+            {
+                AdditionalLine.Visible = false;
+                VSTMenuStriperino.Visible = false;
+            }
+            // Add-on
             this.Menu = DefaultMenu;
             MIDIList.ContextMenu = DefMenu;
             // Fade in
@@ -382,14 +394,14 @@ namespace KeppyMIDIConverter
         {
             if (Globals.VSTMode == true)
             {
-                Globals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 8);
-                Globals._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 7);
-                Globals._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 6);
-                Globals._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 5);
-                Globals._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 4);
-                Globals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 3);
-                Globals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 2);
-                Globals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 1);
+                Globals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 1);
+                Globals._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 2);
+                Globals._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 3);
+                Globals._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 4);
+                Globals._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 5);
+                Globals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 6);
+                Globals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 7);
+                Globals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, Globals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 8);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle, vstInfo) && vstInfo.hasEditor)
                 {
@@ -401,9 +413,9 @@ namespace KeppyMIDIConverter
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.MaximizeBox = false;
                     f.MinimizeBox = false;
-                    f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, f.Handle);
                     var dialogResult2 = f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, IntPtr.Zero);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle2, vstInfo) && vstInfo.hasEditor)
                 {
@@ -415,9 +427,9 @@ namespace KeppyMIDIConverter
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.MaximizeBox = false;
                     f.MinimizeBox = false;
-                    f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle2, f.Handle);
                     var dialogResult2 = f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle2, IntPtr.Zero);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle3, vstInfo) && vstInfo.hasEditor)
                 {
@@ -429,9 +441,9 @@ namespace KeppyMIDIConverter
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.MaximizeBox = false;
                     f.MinimizeBox = false;
-                    f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle3, f.Handle);
                     var dialogResult2 = f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle3, IntPtr.Zero);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle4, vstInfo) && vstInfo.hasEditor)
                 {
@@ -443,9 +455,9 @@ namespace KeppyMIDIConverter
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.MaximizeBox = false;
                     f.MinimizeBox = false;
-                    f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle4, f.Handle);
                     var dialogResult2 = f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle4, IntPtr.Zero);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle5, vstInfo) && vstInfo.hasEditor)
                 {
@@ -457,9 +469,9 @@ namespace KeppyMIDIConverter
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.MaximizeBox = false;
                     f.MinimizeBox = false;
-                    f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle5, f.Handle);
                     var dialogResult2 = f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle5, IntPtr.Zero);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle6, vstInfo) && vstInfo.hasEditor)
                 {
@@ -471,9 +483,9 @@ namespace KeppyMIDIConverter
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.MaximizeBox = false;
                     f.MinimizeBox = false;
-                    f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle6, f.Handle);
                     var dialogResult2 = f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle6, IntPtr.Zero);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle7, vstInfo) && vstInfo.hasEditor)
                 {
@@ -485,9 +497,9 @@ namespace KeppyMIDIConverter
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.MaximizeBox = false;
                     f.MinimizeBox = false;
-                    f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle7, f.Handle);
                     var dialogResult2 = f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle7, IntPtr.Zero);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle8, vstInfo) && vstInfo.hasEditor)
                 {
@@ -499,9 +511,9 @@ namespace KeppyMIDIConverter
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.MaximizeBox = false;
                     f.MinimizeBox = false;
-                    f.Closing += new CancelEventHandler(f_Closing);
                     BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle8, f.Handle);
                     var dialogResult2 = f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle8, IntPtr.Zero);
                 }
             }
         }
@@ -519,6 +531,11 @@ namespace KeppyMIDIConverter
             if (Globals.VSTiMode == true)
             {
                 KMCVSTiSupport.VSTEngine.VSTiHandle(Globals._recHandle, Globals.Frequency, Globals.VSTiDLL, 0);
+                BASS_VST_INFO vstInfo = new BASS_VST_INFO();
+                if (BassVst.BASS_VST_GetInfo(KMCVSTiSupport.VSTEngine.VSTStream, vstInfo) && vstInfo.hasEditor)
+                {
+                    KMCVSTiSupport.VSTEngine.OpenVSTSettings(KMCVSTiSupport.VSTEngine.VSTStream, vstInfo);
+                }
                 Globals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCVSTiSupport.VSTEngine.VSTStream, 1);
                 Globals._plm.CalcRMS = true;
             }
@@ -712,6 +729,7 @@ namespace KeppyMIDIConverter
                 MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 PlayConversionStop();
             }
+            Globals.CancellationPendingValue = 0;
             Globals.CurrentStatusTextString = null;
         }
 
@@ -766,7 +784,7 @@ namespace KeppyMIDIConverter
                             string encpath = null;
                             BASSInitSystem();
                             BASSStreamSystem(str);
-                            if (Globals.VSTMode == true)
+                            if (Globals.VSTiMode == true)
                                 BASSVSTInit(KMCVSTiSupport.VSTEngine.VSTStream);
                             else
                                 BASSVSTInit(Globals._recHandle);
@@ -1337,16 +1355,6 @@ namespace KeppyMIDIConverter
                 Globals.AutoClearMIDIListEnabled = false;
                 disabledToolStripMenuItem1.Checked = true;
             }
-            if (KMCVSTiSupport.VSTEngine.IsItValid() == true)
-            {
-                AdditionalLine.Visible = true;
-                VSTMenuStriperino.Visible = true;
-            }
-            else
-            {
-                AdditionalLine.Visible = false;
-                VSTMenuStriperino.Visible = false;
-            }
             try
             {
                 if (Un4seen.Bass.Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_STOPPED)
@@ -1810,12 +1818,6 @@ namespace KeppyMIDIConverter
                 player.Play();
             }
             Settings.Close();
-        }
-
-        private void f_Closing(object sender, CancelEventArgs e)
-        {
-            // unembed the VST editor
-            BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, IntPtr.Zero);
         }
     }
 

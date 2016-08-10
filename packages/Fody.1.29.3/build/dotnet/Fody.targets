@@ -37,7 +37,7 @@
   <PropertyGroup>
     <IntermediateDir>$(ProjectDir)$(IntermediateOutputPath)</IntermediateDir>
     <FodySignAssembly Condition="$(FodySignAssembly) == '' Or $(FodySignAssembly) == '*Undefined*'">$(SignAssembly)</FodySignAssembly>
-    <FodyPath Condition="$(FodyPath) == '' Or $(FodyPath) == '*Undefined*'">$(MSBuildThisFileDirectory)..\</FodyPath>
+    <FodyPath Condition="$(FodyPath) == '' Or $(FodyPath) == '*Undefined*'">$(MSBuildThisFileDirectory)..\..\</FodyPath>
   </PropertyGroup>
   <UsingTask
       TaskName="Fody.WeavingTask"
@@ -51,13 +51,19 @@
           AssemblyPath="@(IntermediateAssembly)"
           IntermediateDir="$(IntermediateDir)"
           KeyFilePath="$(FodyKeyFilePath)"
+          NuGetPackageRoot="$(NuGetPackageRoot)"
           ProjectDirectory="$(ProjectDir)"
           SolutionDir="$(FodySolutionDir)"
           References="@(ReferencePath)"
           SignAssembly="$(FodySignAssembly)"
           ReferenceCopyLocalPaths="@(ReferenceCopyLocalPaths)"
           DefineConstants="$(DefineConstants)"
-      />
+      >
+
+      <Output 
+        TaskParameter="ExecutedWeavers"
+        PropertyName="FodyExecutedWeavers" />
+    </Fody.WeavingTask>
   </Target>
 
 
