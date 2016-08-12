@@ -1325,7 +1325,7 @@ namespace KeppyMIDIConverter
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
-
+                        this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
@@ -1349,7 +1349,7 @@ namespace KeppyMIDIConverter
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
-
+                        this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
@@ -1374,7 +1374,7 @@ namespace KeppyMIDIConverter
                         this.CurrentStatusText.Text = "Idle.\nSelect a MIDI, and load your soundfonts to start the conversion/playback!";
                         this.UsedVoices.Text = @"Voices: 0/" + Globals.LimitVoicesInt.ToString();
                         this.MIDIList.Enabled = true;
-
+                        this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convpause;
                         this.importMIDIsToolStripMenuItem.Enabled = true;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = true;
                         this.clearMIDIsListToolStripMenuItem.Enabled = true;
@@ -1431,7 +1431,7 @@ namespace KeppyMIDIConverter
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
-
+                        this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
@@ -1471,7 +1471,7 @@ namespace KeppyMIDIConverter
                         this.CurrentStatusText.Text = Globals.CurrentStatusTextString;
                         this.UsedVoices.Text = "Voices: " + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.Style = ProgressBarStyle.Blocks;
-
+                        this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
                         this.CurrentStatus.Value = Globals.CurrentStatusValueInt;
                         this.CurrentStatus.Maximum = Globals.CurrentStatusMaximumInt;
                         this.importMIDIsToolStripMenuItem.Enabled = false;

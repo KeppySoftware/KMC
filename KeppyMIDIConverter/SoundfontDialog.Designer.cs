@@ -57,6 +57,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(494, 395);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -80,6 +81,7 @@
             // 
             // ImportBtn
             // 
+            this.ImportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ImportBtn.Location = new System.Drawing.Point(12, 395);
             this.ImportBtn.Name = "ImportBtn";
             this.ImportBtn.Size = new System.Drawing.Size(119, 23);
@@ -90,6 +92,7 @@
             // 
             // RemoveBtn
             // 
+            this.RemoveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RemoveBtn.Location = new System.Drawing.Point(137, 395);
             this.RemoveBtn.Name = "RemoveBtn";
             this.RemoveBtn.Size = new System.Drawing.Size(119, 23);
@@ -101,6 +104,9 @@
             // SFList
             // 
             this.SFList.AllowDrop = true;
+            this.SFList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SFList.FormattingEnabled = true;
             this.SFList.HorizontalScrollbar = true;
             this.SFList.Location = new System.Drawing.Point(12, 96);
@@ -125,6 +131,7 @@
             // 
             // MvUp
             // 
+            this.MvUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MvUp.Location = new System.Drawing.Point(283, 395);
             this.MvUp.Name = "MvUp";
             this.MvUp.Size = new System.Drawing.Size(88, 23);
@@ -135,6 +142,7 @@
             // 
             // MvDwn
             // 
+            this.MvDwn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MvDwn.Location = new System.Drawing.Point(377, 395);
             this.MvDwn.Name = "MvDwn";
             this.MvDwn.Size = new System.Drawing.Size(88, 23);
@@ -151,6 +159,7 @@
             // 
             // VSTUse
             // 
+            this.VSTUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.VSTUse.AutoSize = true;
             this.VSTUse.Location = new System.Drawing.Point(15, 370);
             this.VSTUse.Name = "VSTUse";
@@ -162,6 +171,8 @@
             // 
             // VSTImport
             // 
+            this.VSTImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.VSTImport.Enabled = false;
             this.VSTImport.Location = new System.Drawing.Point(199, 366);
             this.VSTImport.Name = "VSTImport";
@@ -173,6 +184,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::KeppyMIDIConverter.Properties.Resources.vstlogo;
             this.pictureBox1.Location = new System.Drawing.Point(471, 57);
@@ -185,6 +197,7 @@
             // 
             // SFZCompliant
             // 
+            this.SFZCompliant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SFZCompliant.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SFZCompliant.Image = global::KeppyMIDIConverter.Properties.Resources.sfzcomp;
             this.SFZCompliant.Location = new System.Drawing.Point(523, 57);
@@ -251,8 +264,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SoundfontDialog";
             this.ShowIcon = false;

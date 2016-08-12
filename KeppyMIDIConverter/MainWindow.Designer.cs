@@ -239,7 +239,7 @@
             this.CurrentStatusText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(425, 60);
+            this.CurrentStatusText.Size = new System.Drawing.Size(428, 60);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -294,10 +294,10 @@
             // loadingpic
             // 
             this.loadingpic.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convbusy;
-            this.loadingpic.Location = new System.Drawing.Point(425, 0);
+            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
+            this.loadingpic.Location = new System.Drawing.Point(428, 0);
             this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(63, 60);
+            this.loadingpic.Size = new System.Drawing.Size(60, 60);
             this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loadingpic.TabIndex = 9;
             this.loadingpic.TabStop = false;
@@ -677,6 +677,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(668, 467);
             this.Name = "MainWindow";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

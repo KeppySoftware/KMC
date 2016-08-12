@@ -209,16 +209,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\costura32\bass.dll" />
-    <Content Include="Resources\costura32\bassenc.dll" />
-    <Content Include="Resources\costura32\bassmidi.dll" />
-    <Content Include="Resources\costura32\bass_vst.dll" />
-    <Content Include="Resources\costura64\bass.dll" />
-    <Content Include="Resources\costura64\bassenc.dll" />
-    <Content Include="Resources\costura64\bassmidi.dll" />
-    <Content Include="Resources\costura64\bass_vst.dll" />
     <Content Include="favicon.ico" />
     <Content Include="mainlogo.ico" />
+    <None Include="Resources\convpause.png" />
     <None Include="Resources\information-icon.png" />
     <None Include="Resources\edit-icon.png" />
     <None Include="Resources\up-icon.png" />
