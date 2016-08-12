@@ -78,6 +78,9 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.panel8);
@@ -94,6 +97,7 @@
             // 
             // panel9
             // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.Unload8);
             this.panel9.Controls.Add(this.Load8);
@@ -105,6 +109,7 @@
             // 
             // Unload8
             // 
+            this.Unload8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Unload8.Enabled = false;
             this.Unload8.Location = new System.Drawing.Point(497, 6);
             this.Unload8.Name = "Unload8";
@@ -116,6 +121,7 @@
             // 
             // Load8
             // 
+            this.Load8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load8.Location = new System.Drawing.Point(416, 6);
             this.Load8.Name = "Load8";
             this.Load8.Size = new System.Drawing.Size(75, 23);
@@ -126,8 +132,10 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Left;
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(410, 35);
@@ -137,6 +145,7 @@
             // 
             // panel8
             // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.Unload7);
             this.panel8.Controls.Add(this.Load7);
@@ -148,6 +157,7 @@
             // 
             // Unload7
             // 
+            this.Unload7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Unload7.Enabled = false;
             this.Unload7.Location = new System.Drawing.Point(497, 6);
             this.Unload7.Name = "Unload7";
@@ -159,6 +169,7 @@
             // 
             // Load7
             // 
+            this.Load7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load7.Location = new System.Drawing.Point(416, 6);
             this.Load7.Name = "Load7";
             this.Load7.Size = new System.Drawing.Size(75, 23);
@@ -169,8 +180,10 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
             this.label7.Location = new System.Drawing.Point(0, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(410, 35);
@@ -180,6 +193,7 @@
             // 
             // panel7
             // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.Unload6);
             this.panel7.Controls.Add(this.Load6);
@@ -191,6 +205,7 @@
             // 
             // Unload6
             // 
+            this.Unload6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Unload6.Enabled = false;
             this.Unload6.Location = new System.Drawing.Point(497, 6);
             this.Unload6.Name = "Unload6";
@@ -202,6 +217,7 @@
             // 
             // Load6
             // 
+            this.Load6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load6.Location = new System.Drawing.Point(416, 6);
             this.Load6.Name = "Load6";
             this.Load6.Size = new System.Drawing.Size(75, 23);
@@ -212,8 +228,10 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
             this.label6.Location = new System.Drawing.Point(0, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(410, 35);
@@ -223,6 +241,7 @@
             // 
             // panel6
             // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.Unload5);
             this.panel6.Controls.Add(this.Load5);
@@ -234,6 +253,7 @@
             // 
             // Unload5
             // 
+            this.Unload5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Unload5.Enabled = false;
             this.Unload5.Location = new System.Drawing.Point(497, 6);
             this.Unload5.Name = "Unload5";
@@ -245,6 +265,7 @@
             // 
             // Load5
             // 
+            this.Load5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load5.Location = new System.Drawing.Point(416, 6);
             this.Load5.Name = "Load5";
             this.Load5.Size = new System.Drawing.Size(75, 23);
@@ -255,8 +276,10 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(410, 35);
@@ -266,6 +289,7 @@
             // 
             // panel5
             // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.Unload4);
             this.panel5.Controls.Add(this.Load4);
@@ -277,6 +301,7 @@
             // 
             // Unload4
             // 
+            this.Unload4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Unload4.Enabled = false;
             this.Unload4.Location = new System.Drawing.Point(497, 6);
             this.Unload4.Name = "Unload4";
@@ -288,6 +313,7 @@
             // 
             // Load4
             // 
+            this.Load4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load4.Location = new System.Drawing.Point(416, 6);
             this.Load4.Name = "Load4";
             this.Load4.Size = new System.Drawing.Size(75, 23);
@@ -298,8 +324,10 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(410, 35);
@@ -309,6 +337,7 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.Unload3);
             this.panel4.Controls.Add(this.Load3);
@@ -320,6 +349,7 @@
             // 
             // Unload3
             // 
+            this.Unload3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Unload3.Enabled = false;
             this.Unload3.Location = new System.Drawing.Point(497, 6);
             this.Unload3.Name = "Unload3";
@@ -331,6 +361,7 @@
             // 
             // Load3
             // 
+            this.Load3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load3.Location = new System.Drawing.Point(416, 6);
             this.Load3.Name = "Load3";
             this.Load3.Size = new System.Drawing.Size(75, 23);
@@ -341,8 +372,10 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(410, 35);
@@ -352,6 +385,7 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.Unload2);
             this.panel3.Controls.Add(this.Load2);
@@ -363,6 +397,7 @@
             // 
             // Unload2
             // 
+            this.Unload2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Unload2.Enabled = false;
             this.Unload2.Location = new System.Drawing.Point(497, 6);
             this.Unload2.Name = "Unload2";
@@ -374,6 +409,7 @@
             // 
             // Load2
             // 
+            this.Load2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load2.Location = new System.Drawing.Point(416, 6);
             this.Load2.Name = "Load2";
             this.Load2.Size = new System.Drawing.Size(75, 23);
@@ -384,8 +420,10 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(410, 35);
@@ -395,6 +433,7 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Unload);
             this.panel2.Controls.Add(this.Load1);
@@ -406,6 +445,7 @@
             // 
             // Unload
             // 
+            this.Unload.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Unload.Enabled = false;
             this.Unload.Location = new System.Drawing.Point(497, 6);
             this.Unload.Name = "Unload";
@@ -417,6 +457,7 @@
             // 
             // Load1
             // 
+            this.Load1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load1.Location = new System.Drawing.Point(416, 6);
             this.Load1.Name = "Load1";
             this.Load1.Size = new System.Drawing.Size(75, 23);
@@ -427,8 +468,10 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(410, 35);
@@ -442,6 +485,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(11, 337);
             this.label9.Name = "label9";
@@ -453,6 +497,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(526, 391);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -463,6 +508,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(418, 391);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 23);
@@ -481,9 +527,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(629, 464);
             this.Name = "VSTManagerWindow";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

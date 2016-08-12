@@ -48,7 +48,6 @@
             this.clearMIDIsListToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.openTheSoundfontsManagerToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.startRenderingWAVToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.startRenderingOGGToolStripMenuItem = new System.Windows.Forms.MenuItem();
@@ -72,10 +71,6 @@
             this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.enabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
-            this.AdditionalLine = new System.Windows.Forms.MenuItem();
-            this.VSTMenuStriperino = new System.Windows.Forms.MenuItem();
-            this.enabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
-            this.disabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
             this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem14 = new System.Windows.Forms.MenuItem();
@@ -120,8 +115,9 @@
             // 
             // UsedVoices
             // 
+            this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.UsedVoices.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsedVoices.Location = new System.Drawing.Point(359, 282);
+            this.UsedVoices.Location = new System.Drawing.Point(359, 301);
             this.UsedVoices.Name = "UsedVoices";
             this.UsedVoices.Size = new System.Drawing.Size(143, 13);
             this.UsedVoices.TabIndex = 8;
@@ -131,16 +127,20 @@
             // MIDIList
             // 
             this.MIDIList.AllowDrop = true;
+            this.MIDIList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MIDIList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MIDIList.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.MIDIList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MIDIList.FormattingEnabled = true;
             this.MIDIList.HorizontalScrollbar = true;
+            this.MIDIList.IntegralHeight = false;
             this.MIDIList.ItemHeight = 16;
             this.MIDIList.Location = new System.Drawing.Point(12, 11);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.MIDIList.Size = new System.Drawing.Size(628, 258);
+            this.MIDIList.Size = new System.Drawing.Size(628, 276);
             this.MIDIList.TabIndex = 11;
             this.MIDIList.DragDrop += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragDrop);
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
@@ -148,10 +148,11 @@
             // 
             // SettingsBox
             // 
+            this.SettingsBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SettingsBox.Controls.Add(this.AdvSettingsButton);
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.label1);
-            this.SettingsBox.Location = new System.Drawing.Point(510, 304);
+            this.SettingsBox.Location = new System.Drawing.Point(510, 323);
             this.SettingsBox.Name = "SettingsBox";
             this.SettingsBox.Size = new System.Drawing.Size(130, 70);
             this.SettingsBox.TabIndex = 12;
@@ -224,7 +225,8 @@
             // 
             // labelRMS
             // 
-            this.labelRMS.Location = new System.Drawing.Point(12, 282);
+            this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelRMS.Location = new System.Drawing.Point(12, 301);
             this.labelRMS.Name = "labelRMS";
             this.labelRMS.Size = new System.Drawing.Size(341, 13);
             this.labelRMS.TabIndex = 17;
@@ -232,12 +234,12 @@
             // 
             // CurrentStatusText
             // 
+            this.CurrentStatusText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentStatusText.BackColor = System.Drawing.Color.Transparent;
-            this.CurrentStatusText.Dock = System.Windows.Forms.DockStyle.Left;
             this.CurrentStatusText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(488, 60);
+            this.CurrentStatusText.Size = new System.Drawing.Size(425, 60);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -251,9 +253,10 @@
             // 
             // VolumeBar
             // 
+            this.VolumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VolumeBar.AutoSize = false;
             this.VolumeBar.LargeChange = 1;
-            this.VolumeBar.Location = new System.Drawing.Point(510, 283);
+            this.VolumeBar.Location = new System.Drawing.Point(510, 302);
             this.VolumeBar.Maximum = 10000;
             this.VolumeBar.Name = "VolumeBar";
             this.VolumeBar.Size = new System.Drawing.Size(130, 20);
@@ -263,7 +266,8 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(510, 272);
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Location = new System.Drawing.Point(510, 291);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 19;
@@ -276,17 +280,20 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.CurrentStatusText);
             this.panel1.Controls.Add(this.loadingpic);
-            this.panel1.Location = new System.Drawing.Point(12, 310);
+            this.panel1.Location = new System.Drawing.Point(12, 329);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
             // 
             // loadingpic
             // 
+            this.loadingpic.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convbusy;
             this.loadingpic.Location = new System.Drawing.Point(425, 0);
             this.loadingpic.Name = "loadingpic";
@@ -294,7 +301,6 @@
             this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loadingpic.TabIndex = 9;
             this.loadingpic.TabStop = false;
-            this.loadingpic.Visible = false;
             // 
             // ConverterProcess
             // 
@@ -318,7 +324,6 @@
             this.clearMIDIsListToolStripMenuItem,
             this.menuItem5,
             this.openTheSoundfontsManagerToolStripMenuItem,
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem,
             this.menuItem7,
             this.startRenderingWAVToolStripMenuItem,
             this.startRenderingOGGToolStripMenuItem,
@@ -361,54 +366,46 @@
             this.openTheSoundfontsManagerToolStripMenuItem.Text = "Open the soundfonts/VST DSP manager";
             this.openTheSoundfontsManagerToolStripMenuItem.Click += new System.EventHandler(this.openTheSoundfontsManagerToolStripMenuItem_Click);
             // 
-            // openTheVSTInstrumentVSTDSPManagerToolStripMenuItem
-            // 
-            this.VistaMenuSys.SetImage(this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.configure_icon);
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Index = 5;
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Text = "Open the VST instrument/VST DSP manager";
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Visible = false;
-            this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem.Click += new System.EventHandler(this.openTheVSTInstrumentVSTDSPManagerToolStripMenuItem_Click);
-            // 
             // menuItem7
             // 
-            this.menuItem7.Index = 6;
+            this.menuItem7.Index = 5;
             this.menuItem7.Text = "-";
             // 
             // startRenderingWAVToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.startRenderingWAVToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
-            this.startRenderingWAVToolStripMenuItem.Index = 7;
+            this.startRenderingWAVToolStripMenuItem.Index = 6;
             this.startRenderingWAVToolStripMenuItem.Text = "Render files to Wave (.WAV)";
             this.startRenderingWAVToolStripMenuItem.Click += new System.EventHandler(this.startRenderingWAVToolStripMenuItem_Click);
             // 
             // startRenderingOGGToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.startRenderingOGGToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
-            this.startRenderingOGGToolStripMenuItem.Index = 8;
+            this.startRenderingOGGToolStripMenuItem.Index = 7;
             this.startRenderingOGGToolStripMenuItem.Text = "Render files to Vorbis (.OGG)";
             this.startRenderingOGGToolStripMenuItem.Click += new System.EventHandler(this.startRenderingOGGToolStripMenuItem_Click);
             // 
             // playInRealtimeBetaToolStripMenuItem
             // 
-            this.playInRealtimeBetaToolStripMenuItem.Index = 9;
+            this.playInRealtimeBetaToolStripMenuItem.Index = 8;
             this.playInRealtimeBetaToolStripMenuItem.Text = "Preview files (Real-time playback)";
             this.playInRealtimeBetaToolStripMenuItem.Click += new System.EventHandler(this.playInRealtimeBetaToolStripMenuItem_Click);
             // 
             // abortRenderingToolStripMenuItem
             // 
-            this.abortRenderingToolStripMenuItem.Index = 10;
+            this.abortRenderingToolStripMenuItem.Index = 9;
             this.abortRenderingToolStripMenuItem.Text = "Abort rendering/preview";
             this.abortRenderingToolStripMenuItem.Click += new System.EventHandler(this.abortRenderingToolStripMenuItem_Click);
             // 
             // menuItem12
             // 
-            this.menuItem12.Index = 11;
+            this.menuItem12.Index = 10;
             this.menuItem12.Text = "-";
             // 
             // exitToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.exitToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.back_icon);
-            this.exitToolStripMenuItem.Index = 12;
+            this.exitToolStripMenuItem.Index = 11;
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -421,8 +418,6 @@
             this.menuItem6,
             this.menuItem8,
             this.menuItem9,
-            this.AdditionalLine,
-            this.VSTMenuStriperino,
             this.menuItem13,
             this.forceCloseTheApplicationToolStripMenuItem});
             this.menuItem2.Text = "Options";
@@ -527,40 +522,14 @@
             this.disabledToolStripMenuItem4.Text = "Disabled";
             this.disabledToolStripMenuItem4.Click += new System.EventHandler(this.disabledToolStripMenuItem4_Click);
             // 
-            // AdditionalLine
-            // 
-            this.AdditionalLine.Index = 5;
-            this.AdditionalLine.Text = "-";
-            // 
-            // VSTMenuStriperino
-            // 
-            this.VSTMenuStriperino.Index = 6;
-            this.VSTMenuStriperino.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.enabledToolStripMenuItem5,
-            this.disabledToolStripMenuItem5});
-            this.VSTMenuStriperino.Text = "Use VST instruments instead of soundfonts";
-            // 
-            // enabledToolStripMenuItem5
-            // 
-            this.enabledToolStripMenuItem5.Index = 0;
-            this.enabledToolStripMenuItem5.Text = "Enabled";
-            this.enabledToolStripMenuItem5.Click += new System.EventHandler(this.enabledToolStripMenuItem5_Click);
-            // 
-            // disabledToolStripMenuItem5
-            // 
-            this.disabledToolStripMenuItem5.Checked = true;
-            this.disabledToolStripMenuItem5.Index = 1;
-            this.disabledToolStripMenuItem5.Text = "Disabled";
-            this.disabledToolStripMenuItem5.Click += new System.EventHandler(this.disabledToolStripMenuItem5_Click);
-            // 
             // menuItem13
             // 
-            this.menuItem13.Index = 7;
+            this.menuItem13.Index = 5;
             this.menuItem13.Text = "-";
             // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
-            this.forceCloseTheApplicationToolStripMenuItem.Index = 8;
+            this.forceCloseTheApplicationToolStripMenuItem.Index = 6;
             this.forceCloseTheApplicationToolStripMenuItem.Text = "Crash the application";
             this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
             // 
@@ -707,9 +676,7 @@
             this.Controls.Add(this.CurrentStatus);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -767,7 +734,6 @@
         private System.Windows.Forms.MenuItem menuItem6;
         private System.Windows.Forms.MenuItem menuItem8;
         private System.Windows.Forms.MenuItem menuItem9;
-        private System.Windows.Forms.MenuItem AdditionalLine;
         private System.Windows.Forms.MenuItem forceCloseTheApplicationToolStripMenuItem;
         private System.Windows.Forms.MenuItem enabledToolStripMenuItem;
         private System.Windows.Forms.MenuItem disabledToolStripMenuItem;
@@ -798,11 +764,7 @@
         private System.Windows.Forms.MenuItem MoveUpMIDIRightClick;
         private System.Windows.Forms.MenuItem MoveDownMIDIRightClick;
         private wyDay.Controls.VistaMenu VistaMenuSys;
-        private System.Windows.Forms.MenuItem VSTMenuStriperino;
         private System.Windows.Forms.MenuItem menuItem13;
-        private System.Windows.Forms.MenuItem openTheVSTInstrumentVSTDSPManagerToolStripMenuItem;
-        private System.Windows.Forms.MenuItem enabledToolStripMenuItem5;
-        private System.Windows.Forms.MenuItem disabledToolStripMenuItem5;
     }
 }
 

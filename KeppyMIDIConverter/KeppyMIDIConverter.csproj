@@ -74,14 +74,14 @@
     <OutputPath>bin\x86\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>full</DebugType>
+    <DebugType>none</DebugType>
     <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
+    <ErrorReport>none</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <WarningLevel>0</WarningLevel>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
-    <FileAlignment>8192</FileAlignment>
-    <DebugSymbols>true</DebugSymbols>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <FileAlignment>512</FileAlignment>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>mainlogo.ico</ApplicationIcon>
@@ -160,12 +160,6 @@
     <Compile Include="SoundfontDialog.Designer.cs">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="VSTiManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VSTiManager.Designer.cs">
-      <DependentUpon>VSTiManager.cs</DependentUpon>
-    </Compile>
     <Compile Include="VSTManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,9 +186,6 @@
     <EmbeddedResource Include="SoundfontDialog.resx">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VSTiManager.resx">
-      <DependentUpon>VSTiManager.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="VSTManager.resx">
       <DependentUpon>VSTManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +209,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\costura32\bass.dll" />
+    <Content Include="Resources\costura32\bassenc.dll" />
+    <Content Include="Resources\costura32\bassmidi.dll" />
+    <Content Include="Resources\costura32\bass_vst.dll" />
+    <Content Include="Resources\costura64\bass.dll" />
+    <Content Include="Resources\costura64\bassenc.dll" />
+    <Content Include="Resources\costura64\bassmidi.dll" />
+    <Content Include="Resources\costura64\bass_vst.dll" />
     <Content Include="favicon.ico" />
     <Content Include="mainlogo.ico" />
     <None Include="Resources\information-icon.png" />
