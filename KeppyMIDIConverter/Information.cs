@@ -36,12 +36,12 @@ namespace KeppyMIDIConverter
                 // STUFF
                 if (IntPtr.Size == 8)
                 {
-                    Versionlabel.Text = "Compiled for 64-bit systems, optimized for SSE2 ready CPUs.";
+                    Versionlabel.Text = "64-bit version, optimized for SSE2 ready CPUs.";
                     SAS = "x64";
                 }
                 else if (IntPtr.Size == 4)
                 {
-                    Versionlabel.Text = "Compiled for 32-bit systems, optimized for MMX ready CPUs.";
+                    Versionlabel.Text = "32-bit version, optimized for MMX ready CPUs.";
                     SAS = "x86";
                 }
                 KeppyVer.Text = "Keppy's MIDI Converter " + Application.ProductVersion + ", by KaleidonKep99";
@@ -56,7 +56,7 @@ namespace KeppyMIDIConverter
                 BASSINFO.Text = basslibver.FileDescription + " version: " + basslibver.FileVersion + "." + basslibver.FilePrivatePart + "\n" +
                     bassmidilibver.FileDescription + " version: " + bassmidilibver.FileVersion + "." + bassmidilibver.FilePrivatePart + "\n" +
                     bassenclibver.FileDescription + " version: " + bassenclibver.FileVersion + "." + bassenclibver.FilePrivatePart + "\n" +
-                    bassvstlibver.FileDescription + " version: " + bassvstlibver.FileVersion + "." + bassvstlibver.FilePrivatePart;
+                    "BASSVST version: " + bassvstlibver.FileVersion + "." + bassvstlibver.FilePrivatePart;
 
                 BASSINFO2.Text = "\n\n\n" +
                      "KMC " + Application.ProductVersion + " " + SAS;

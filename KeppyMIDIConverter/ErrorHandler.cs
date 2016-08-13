@@ -66,7 +66,7 @@ namespace KeppyMIDIConverter
 
         private void copyErrorMessageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
+           StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("==== Start of Keppy's MIDI Converter Error ====");
             foreach (string line in ErrorBox.Lines) { sb.AppendLine(line); }

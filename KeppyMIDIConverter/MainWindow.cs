@@ -373,6 +373,38 @@ namespace KeppyMIDIConverter
             Un4seen.Bass.Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
         }
 
+        private void BASSVSTShowDialog(int towhichstream, int whichvst, BASS_VST_INFO vstInfo)
+        {
+            Form f = new Form();
+            f.Width = vstInfo.editorWidth + 4;
+            f.Height = vstInfo.editorHeight + 34;
+            f.FormBorderStyle = FormBorderStyle.FixedDialog;
+            f.Text = "DSP settings: " + vstInfo.effectName;
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.MaximizeBox = false;
+            f.MinimizeBox = false;
+            BassVst.BASS_VST_EmbedEditor(whichvst, f.Handle);
+            try
+            {
+                f.ShowDialog();
+                BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
+            }
+            catch (Exception ex)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine("==== Start of Keppy's MIDI Converter Error ====");
+                sb.AppendLine(ex.ToString());
+                sb.AppendLine("====  End of Keppy's MIDI Converter Error  ====");
+                System.Threading.Thread thread = new System.Threading.Thread(() => Clipboard.SetText(sb.ToString()));
+                thread.SetApartmentState(System.Threading.ApartmentState.STA);
+                thread.Start();
+                thread.Join();
+                MessageBox.Show("An error has been detected, and " + vstInfo.effectName + " needs to be unloaded.\n\nError:\n" + ex.Message.ToString() + "\n\nThe VST might be incompatible with Windows Forms.\nThe error has been copied to the clipboard.", "Keppy's MIDI Converter - Invalid VST call", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
+                BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, whichvst);
+            }
+        }
+
         private void BASSVSTInit(int towhichstream)
         {
             if (Globals.VSTMode == true)
@@ -388,115 +420,35 @@ namespace KeppyMIDIConverter
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle, vstInfo) && vstInfo.hasEditor)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "DSP settings: " + vstInfo.effectName;
-                    f.StartPosition = FormStartPosition.CenterScreen;
-                    f.MaximizeBox = false;
-                    f.MinimizeBox = false;
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, f.Handle);
-                    var dialogResult2 = f.ShowDialog();
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle, IntPtr.Zero);
+                    BASSVSTShowDialog(towhichstream, Globals._VSTHandle, vstInfo);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle2, vstInfo) && vstInfo.hasEditor)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "DSP settings: " + vstInfo.effectName;
-                    f.StartPosition = FormStartPosition.CenterScreen;
-                    f.MaximizeBox = false;
-                    f.MinimizeBox = false;
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle2, f.Handle);
-                    var dialogResult2 = f.ShowDialog();
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle2, IntPtr.Zero);
+                    BASSVSTShowDialog(towhichstream, Globals._VSTHandle2, vstInfo);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle3, vstInfo) && vstInfo.hasEditor)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "DSP settings: " + vstInfo.effectName;
-                    f.StartPosition = FormStartPosition.CenterScreen;
-                    f.MaximizeBox = false;
-                    f.MinimizeBox = false;
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle3, f.Handle);
-                    var dialogResult2 = f.ShowDialog();
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle3, IntPtr.Zero);
+                    BASSVSTShowDialog(towhichstream, Globals._VSTHandle3, vstInfo);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle4, vstInfo) && vstInfo.hasEditor)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "DSP settings: " + vstInfo.effectName;
-                    f.StartPosition = FormStartPosition.CenterScreen;
-                    f.MaximizeBox = false;
-                    f.MinimizeBox = false;
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle4, f.Handle);
-                    var dialogResult2 = f.ShowDialog();
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle4, IntPtr.Zero);
+                    BASSVSTShowDialog(towhichstream, Globals._VSTHandle4, vstInfo);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle5, vstInfo) && vstInfo.hasEditor)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "DSP settings: " + vstInfo.effectName;
-                    f.StartPosition = FormStartPosition.CenterScreen;
-                    f.MaximizeBox = false;
-                    f.MinimizeBox = false;
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle5, f.Handle);
-                    var dialogResult2 = f.ShowDialog();
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle5, IntPtr.Zero);
+                    BASSVSTShowDialog(towhichstream, Globals._VSTHandle5, vstInfo);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle6, vstInfo) && vstInfo.hasEditor)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "DSP settings: " + vstInfo.effectName;
-                    f.StartPosition = FormStartPosition.CenterScreen;
-                    f.MaximizeBox = false;
-                    f.MinimizeBox = false;
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle6, f.Handle);
-                    var dialogResult2 = f.ShowDialog();
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle6, IntPtr.Zero);
+                    BASSVSTShowDialog(towhichstream, Globals._VSTHandle6, vstInfo);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle7, vstInfo) && vstInfo.hasEditor)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "DSP settings: " + vstInfo.effectName;
-                    f.StartPosition = FormStartPosition.CenterScreen;
-                    f.MaximizeBox = false;
-                    f.MinimizeBox = false;
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle7, f.Handle);
-                    var dialogResult2 = f.ShowDialog();
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle7, IntPtr.Zero);
+                    BASSVSTShowDialog(towhichstream, Globals._VSTHandle7, vstInfo);
                 }
                 if (BassVst.BASS_VST_GetInfo(Globals._VSTHandle8, vstInfo) && vstInfo.hasEditor)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    f.Text = "DSP settings: " + vstInfo.effectName;
-                    f.StartPosition = FormStartPosition.CenterScreen;
-                    f.MaximizeBox = false;
-                    f.MinimizeBox = false;
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle8, f.Handle);
-                    var dialogResult2 = f.ShowDialog();
-                    BassVst.BASS_VST_EmbedEditor(Globals._VSTHandle8, IntPtr.Zero);
+                    BASSVSTShowDialog(towhichstream, Globals._VSTHandle8, vstInfo);
                 }
             }
         }
