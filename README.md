@@ -3,6 +3,10 @@
 <br>
 A fully functional MIDI to WAV converter, suitable for normal AND heavy MIDIs! (Up to 500 million notes for 32-bit version, unlimited [sorta?] for 64-bit version)
 
+## Windows SmartScreen tells me that this app might infect my computer. Are you trying to steal my data???
+Why would I publish KMC on GitHub, to get sued by them? I already have money issues irl, no needs to have more on the Internet.
+Anyway no, the files are completely safe. The source code is online, even. Take a look if you don't trust my words.
+
 ## How can I get the converter without installing it?
 There's a portable version of Keppy's MIDI Converter too. [Take a look here] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases).
 
