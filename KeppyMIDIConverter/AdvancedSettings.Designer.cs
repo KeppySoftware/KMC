@@ -243,8 +243,8 @@
             this.FXDisable.Size = new System.Drawing.Size(135, 18);
             this.FXDisable.TabIndex = 7;
             this.FXDisable.Text = "Disable sound effects";
-            this.Guide.SetToolTip(this.FXDisable, "Forces BASSMIDI to disable all the MIDI effects/external FXs (DX7 effects and MID" +
-        "I chorus/reverb)");
+            this.Guide.SetToolTip(this.FXDisable, "Forces BASSMIDI to disable all the MIDI effects. (Reverb and chrous, EXCLUDING VS" +
+        "Ts)");
             this.FXDisable.UseVisualStyleBackColor = true;
             this.FXDisable.CheckedChanged += new System.EventHandler(this.FXDisable_CheckedChanged);
             // 

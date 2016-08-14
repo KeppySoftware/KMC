@@ -211,6 +211,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="mainlogo.ico" />
+    <None Include="Resources\worldwideweb.png" />
     <None Include="Resources\convpause.png" />
     <None Include="Resources\information-icon.png" />
     <None Include="Resources\edit-icon.png" />

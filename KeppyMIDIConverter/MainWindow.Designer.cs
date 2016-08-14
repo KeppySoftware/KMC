@@ -77,13 +77,8 @@
             this.informationAboutTheProgramToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.supportTheDeveloperWithADonationToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem17 = new System.Windows.Forms.MenuItem();
-            this.menuItem18 = new System.Windows.Forms.MenuItem();
+            this.KaleidonKep99sGitHubPageToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem20 = new System.Windows.Forms.MenuItem();
-            this.OBMTWToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.OBMCGToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem23 = new System.Windows.Forms.MenuItem();
-            this.WikipediaPageToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.DefMenu = new System.Windows.Forms.ContextMenu();
             this.ImportMIDIsRightClick = new System.Windows.Forms.MenuItem();
             this.RemoveMIDIsRightClick = new System.Windows.Forms.MenuItem();
@@ -92,6 +87,7 @@
             this.MoveUpMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.MoveDownMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
+            this.menuItem10 = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -117,7 +113,7 @@
             // 
             this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.UsedVoices.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsedVoices.Location = new System.Drawing.Point(359, 301);
+            this.UsedVoices.Location = new System.Drawing.Point(359, 302);
             this.UsedVoices.Name = "UsedVoices";
             this.UsedVoices.Size = new System.Drawing.Size(143, 13);
             this.UsedVoices.TabIndex = 8;
@@ -137,7 +133,7 @@
             this.MIDIList.HorizontalScrollbar = true;
             this.MIDIList.IntegralHeight = false;
             this.MIDIList.ItemHeight = 16;
-            this.MIDIList.Location = new System.Drawing.Point(12, 11);
+            this.MIDIList.Location = new System.Drawing.Point(12, 12);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.MIDIList.Size = new System.Drawing.Size(628, 276);
@@ -152,7 +148,7 @@
             this.SettingsBox.Controls.Add(this.AdvSettingsButton);
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.label1);
-            this.SettingsBox.Location = new System.Drawing.Point(510, 323);
+            this.SettingsBox.Location = new System.Drawing.Point(510, 324);
             this.SettingsBox.Name = "SettingsBox";
             this.SettingsBox.Size = new System.Drawing.Size(130, 70);
             this.SettingsBox.TabIndex = 12;
@@ -226,7 +222,7 @@
             // labelRMS
             // 
             this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelRMS.Location = new System.Drawing.Point(12, 301);
+            this.labelRMS.Location = new System.Drawing.Point(12, 302);
             this.labelRMS.Name = "labelRMS";
             this.labelRMS.Size = new System.Drawing.Size(341, 13);
             this.labelRMS.TabIndex = 17;
@@ -256,7 +252,7 @@
             this.VolumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VolumeBar.AutoSize = false;
             this.VolumeBar.LargeChange = 1;
-            this.VolumeBar.Location = new System.Drawing.Point(510, 302);
+            this.VolumeBar.Location = new System.Drawing.Point(510, 303);
             this.VolumeBar.Maximum = 10000;
             this.VolumeBar.Name = "VolumeBar";
             this.VolumeBar.Size = new System.Drawing.Size(130, 20);
@@ -267,7 +263,7 @@
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(510, 291);
+            this.label3.Location = new System.Drawing.Point(510, 292);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 19;
@@ -286,7 +282,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.CurrentStatusText);
             this.panel1.Controls.Add(this.loadingpic);
-            this.panel1.Location = new System.Drawing.Point(12, 329);
+            this.panel1.Location = new System.Drawing.Point(12, 330);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 64);
             this.panel1.TabIndex = 13;
@@ -419,7 +415,8 @@
             this.menuItem8,
             this.menuItem9,
             this.menuItem13,
-            this.forceCloseTheApplicationToolStripMenuItem});
+            this.forceCloseTheApplicationToolStripMenuItem,
+            this.menuItem10});
             this.menuItem2.Text = "Options";
             // 
             // menuItem3
@@ -529,6 +526,7 @@
             // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
+            this.VistaMenuSys.SetImage(this.forceCloseTheApplicationToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.forceCloseTheApplicationToolStripMenuItem.Index = 6;
             this.forceCloseTheApplicationToolStripMenuItem.Text = "Crash the application";
             this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
@@ -540,7 +538,8 @@
             this.informationAboutTheProgramToolStripMenuItem,
             this.supportTheDeveloperWithADonationToolStripMenuItem,
             this.menuItem17,
-            this.menuItem18});
+            this.KaleidonKep99sGitHubPageToolStripMenuItem,
+            this.KaleidonKep99sYouTubeChannelToolStripMenuItem});
             this.menuItem14.Text = "Help";
             // 
             // informationAboutTheProgramToolStripMenuItem
@@ -562,51 +561,19 @@
             this.menuItem17.Index = 2;
             this.menuItem17.Text = "-";
             // 
-            // menuItem18
+            // KaleidonKep99sGitHubPageToolStripMenuItem
             // 
-            this.menuItem18.Index = 3;
-            this.menuItem18.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem,
-            this.menuItem20,
-            this.OBMTWToolStripMenuItem,
-            this.OBMCGToolStripMenuItem,
-            this.menuItem23,
-            this.WikipediaPageToolStripMenuItem});
-            this.menuItem18.Text = "Black MIDI stuff";
+            this.VistaMenuSys.SetImage(this.KaleidonKep99sGitHubPageToolStripMenuItem, ((System.Drawing.Image)(resources.GetObject("KaleidonKep99sGitHubPageToolStripMenuItem.Image"))));
+            this.KaleidonKep99sGitHubPageToolStripMenuItem.Index = 3;
+            this.KaleidonKep99sGitHubPageToolStripMenuItem.Text = "KaleidonKep99\'s GitHub Page";
+            this.KaleidonKep99sGitHubPageToolStripMenuItem.Click += new System.EventHandler(this.KaleidonKep99sGitHubPageToolStripMenuItem_Click);
             // 
             // KaleidonKep99sYouTubeChannelToolStripMenuItem
             // 
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Index = 0;
+            this.VistaMenuSys.SetImage(this.KaleidonKep99sYouTubeChannelToolStripMenuItem, ((System.Drawing.Image)(resources.GetObject("KaleidonKep99sYouTubeChannelToolStripMenuItem.Image"))));
+            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Index = 4;
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = "KaleidonKep99\'s YouTube Channel";
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Click += new System.EventHandler(this.kaleidonKep99sYouTubeChannelToolStripMenuItem_Click);
-            // 
-            // menuItem20
-            // 
-            this.menuItem20.Index = 1;
-            this.menuItem20.Text = "-";
-            // 
-            // OBMTWToolStripMenuItem
-            // 
-            this.OBMTWToolStripMenuItem.Index = 2;
-            this.OBMTWToolStripMenuItem.Text = "Official Black MIDI Wikia";
-            this.OBMTWToolStripMenuItem.Click += new System.EventHandler(this.officialBlackMIDIWikiaToolStripMenuItem_Click);
-            // 
-            // OBMCGToolStripMenuItem
-            // 
-            this.OBMCGToolStripMenuItem.Index = 3;
-            this.OBMCGToolStripMenuItem.Text = "Official Black MIDI Community (Google+)";
-            this.OBMCGToolStripMenuItem.Click += new System.EventHandler(this.officialBlackMIDICommunityGoogleToolStripMenuItem_Click);
-            // 
-            // menuItem23
-            // 
-            this.menuItem23.Index = 4;
-            this.menuItem23.Text = "-";
-            // 
-            // WikipediaPageToolStripMenuItem
-            // 
-            this.WikipediaPageToolStripMenuItem.Index = 5;
-            this.WikipediaPageToolStripMenuItem.Text = "Wikipedia\'s page";
-            this.WikipediaPageToolStripMenuItem.Click += new System.EventHandler(this.wikipediasPageToolStripMenuItem_Click);
             // 
             // DefMenu
             // 
@@ -660,6 +627,12 @@
             // VistaMenuSys
             // 
             this.VistaMenuSys.ContainerControl = this;
+            // 
+            // menuItem10
+            // 
+            this.menuItem10.Index = 7;
+            this.menuItem10.Text = "Test";
+            this.menuItem10.Click += new System.EventHandler(this.menuItem10_Click);
             // 
             // MainWindow
             // 
@@ -750,13 +723,7 @@
         private System.Windows.Forms.MenuItem informationAboutTheProgramToolStripMenuItem;
         private System.Windows.Forms.MenuItem supportTheDeveloperWithADonationToolStripMenuItem;
         private System.Windows.Forms.MenuItem menuItem17;
-        private System.Windows.Forms.MenuItem menuItem18;
         private System.Windows.Forms.MenuItem KaleidonKep99sYouTubeChannelToolStripMenuItem;
-        private System.Windows.Forms.MenuItem menuItem20;
-        private System.Windows.Forms.MenuItem OBMTWToolStripMenuItem;
-        private System.Windows.Forms.MenuItem OBMCGToolStripMenuItem;
-        private System.Windows.Forms.MenuItem menuItem23;
-        private System.Windows.Forms.MenuItem WikipediaPageToolStripMenuItem;
         private System.Windows.Forms.ContextMenu DefMenu;
         private System.Windows.Forms.MenuItem ImportMIDIsRightClick;
         private System.Windows.Forms.MenuItem RemoveMIDIsRightClick;
@@ -766,6 +733,8 @@
         private System.Windows.Forms.MenuItem MoveDownMIDIRightClick;
         private wyDay.Controls.VistaMenu VistaMenuSys;
         private System.Windows.Forms.MenuItem menuItem13;
+        private System.Windows.Forms.MenuItem KaleidonKep99sGitHubPageToolStripMenuItem;
+        private System.Windows.Forms.MenuItem menuItem10;
     }
 }
 
