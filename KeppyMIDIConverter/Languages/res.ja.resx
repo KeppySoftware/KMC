@@ -302,7 +302,7 @@ Ian Luck さんによる素晴らしいBASSライブラリに基づいていま�
     <value>DSPの設定:</value>
   </data>
   <data name="EmptySlot" xml:space="preserve">
-    <value>空き</value>
+    <value>スロット</value>
   </data>
   <data name="EnabledText" xml:space="preserve">
     <value>有効</value>
@@ -458,7 +458,7 @@ BASS status: {0}</value>
 現在位置: {1} - {2}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | {0}　を再生中...</value>
+    <value>Keppy's MIDI Converter | {0} を再生中...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
     <value>完了しました。</value>
@@ -590,5 +590,8 @@ OKをクリックして閉じてください。</value>
   </data>
   <data name="Volume" xml:space="preserve">
     <value>音量:</value>
+  </data>
+  <data name="InfoWindowTitle" xml:space="preserve">
+    <value>このアプリケーションについて</value>
   </data>
 </root>

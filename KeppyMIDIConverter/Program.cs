@@ -27,7 +27,11 @@ namespace KeppyMIDIConverter
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             bool ok;
             Mutex m = new Mutex(true, "KepMIDIConv", out ok);
-
+            if (!ok)
+            {
+                MessageBox.Show("One instance is enough.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             try
             {
                 if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
@@ -101,6 +105,8 @@ namespace KeppyMIDIConverter
                     return CultureInfo.CreateSpecificCulture("it");
                 else if (ci.Name == "et-EE")
                     return CultureInfo.CreateSpecificCulture("ee");
+                else if (ci.Name == "zh-CN")
+                    return CultureInfo.CreateSpecificCulture("zh-CN");
                 else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
                     return CultureInfo.CreateSpecificCulture("de");
              // else if (ci.Name == "nl-NL" | ci.Name == "nl-BE")

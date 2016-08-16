@@ -32,7 +32,7 @@ namespace KeppyMIDIConverter
             // Translate system
             button2.Text = res_man.GetString("Un4seenWebsite", cul);
             button3.Text = res_man.GetString("License", cul);
-            Text = res_man.GetString("InfoPageTitle", cul);
+            Text = res_man.GetString("InfoWindowTitle", cul);
             InfoPg.Text = res_man.GetString("InfoPageTitle", cul);
             UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
             label1.Text = String.Format(res_man.GetString("Credits", cul), res_man.GetString("Un4seenWebsite", cul));

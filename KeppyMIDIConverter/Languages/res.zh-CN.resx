@@ -118,478 +118,473 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AbortConvPlayback" xml:space="preserve">
-    <value>Annulla conversione/anteprima</value>
+    <value>中断转换/预览</value>
   </data>
   <data name="AboutSFZFormatText" xml:space="preserve">
-    <value>Questo programma è conforme al format SFZ 1.0, e parzialmente al formato SFZ 2.0.
+    <value>该程序支持“SFZ 1.0格式”，兼容部分“SFZ 2.0格式
 
-Vuoi visitare il sito non ufficiale riguardo il formato SFZ?</value>
+您是否想要访问“非官方SFZ格式信息”网站？</value>
   </data>
   <data name="AboutSFZFormatTitle" xml:space="preserve">
-    <value>Riguardo il formato SFZ</value>
+    <value>关于SFZ格式</value>
   </data>
   <data name="AboutVSTSupportText" xml:space="preserve">
-    <value>Questo programma supporta effetti VST esterni.
+    <value>本程序支持VST DSP插件。
 
-Virtual Studio Technology (VST) è un'interfaccia software e tecnologia di Steinberg Media Technologies.
-Copyright ©2006 Steinberg Media Technologies.
-Tutti i diritti riservati.</value>
+Virtual Studio Technology (VST) 属于 Steinberg Media Technologies GmbH.
+Copyright ©2006 Steinberg Media Technologies. All Rights Reserved.</value>
   </data>
   <data name="AboutVSTSupportTitle" xml:space="preserve">
-    <value>Riguardo al supporto VST</value>
+    <value>关于Virtual Studio Technology Interface</value>
   </data>
   <data name="ActionsStrip" xml:space="preserve">
-    <value>Azioni</value>
+    <value>功能</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Voci attive: </value>
+    <value>复音数: </value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
-    <value>Per favore aggiungere almeno un MIDI.</value>
+    <value>请导入至少一个midi文件到待转换列表。</value>
   </data>
   <data name="AdvSettingsButton" xml:space="preserve">
-    <value>Opzioni avanzate</value>
+    <value>高级设置</value>
   </data>
   <data name="AdvSettingsTitle" xml:space="preserve">
-    <value>Opzioni avanzate</value>
+    <value>高级设置</value>
   </data>
   <data name="AlreadyUpdatedText" xml:space="preserve">
-    <value>Questa versione di Keppy's MIDI Converter è la più aggiornata.</value>
+    <value>此版本的Keppy's MIDI Converter已经是最新版。</value>
   </data>
   <data name="AppBusy" xml:space="preserve">
-    <value>L'applicazione non ha ancora finito di convertire/riprodurre dei MIDI!
-Sei sicuro di voler uscire?</value>
+    <value>MIDI转换/播放工作尚未完成！
+您确定要退出吗？</value>
   </data>
   <data name="AudioEventsStrip" xml:space="preserve">
-    <value>Abilita eventi audio (Conversione completata, fallita etc.)</value>
+    <value>启用音效（转换完成、失败、etc）</value>
   </data>
   <data name="AudioFreq" xml:space="preserve">
-    <value>Frequenza audio:</value>
+    <value>采样率：</value>
   </data>
   <data name="AutomaticShutdownStrip" xml:space="preserve">
-    <value>Spegni il computer automaticamente alla fine della conversione</value>
+    <value>转换完成后关闭计算机</value>
   </data>
   <data name="AutoUpdatesCheckStrip" xml:space="preserve">
-    <value>Controlla per disponibilità di aggiornamenti all'avvio del programma</value>
+    <value>运行时检查更新</value>
   </data>
   <data name="AverageLevel" xml:space="preserve">
-    <value>Media</value>
+    <value>平均</value>
   </data>
   <data name="BASSEngineConfiguration" xml:space="preserve">
-    <value>BASS è in stato di configurazione.
-La conversione verrà avviata a breve...</value>
+    <value>BASS配置中.
+转换操作即将开始...</value>
   </data>
   <data name="BASSEngineConfigurationVST" xml:space="preserve">
-    <value>BASS è in stato di configurazione.
-Cambiare le impostazioni dei VST quando richiesto.
-La conversione verrà avviata a breve...</value>
+    <value>BASS配置中.
+请在出现提示时再修改VST/DSP设置。
+转换操作即将开始...</value>
   </data>
   <data name="CanNotCheckUpdates" xml:space="preserve">
-    <value>Impossibile verificare la presenza di nuovi aggiornamenti! Sei offline, o il sito è momentaneamente non disponibile.</value>
+    <value>检查更新错误！您的计算机可能脱机或网站暂时无法访问！</value>
   </data>
   <data name="CanNotCheckUpdatesMsg" xml:space="preserve">
-    <value>Impossibile verificare la presenza di nuovi aggiornamenti!
+    <value>检查更新错误！
 
-Errore:
+错误:
 {0}</value>
   </data>
   <data name="CheckForUpdatesBtn" xml:space="preserve">
-    <value>Cerca aggiornamenti</value>
+    <value>检查更新</value>
   </data>
   <data name="ClearListAutomaticallyStrip" xml:space="preserve">
-    <value>Pulisci la lista MIDI automaticamente dopo la conversione</value>
+    <value>转换完成之后自动清空MIDI列表</value>
   </data>
   <data name="ClearMIDIsList" xml:space="preserve">
-    <value>Ripulisci lista MIDI</value>
+    <value>清空MIDI列表</value>
   </data>
   <data name="ClearSoundfontList" xml:space="preserve">
-    <value>Ripulisci lista soundfont</value>
+    <value>清空音色库列表</value>
   </data>
   <data name="ConstantBitrateOGG" xml:space="preserve">
-    <value>Forza bitrate costante (OGG Vorbis):</value>
+    <value>强制固定音频码率 (OGG 格式):</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
-    <value>Conversione annullata.</value>
+    <value>转换过程中断。</value>
   </data>
   <data name="ConversionAbortedXPMessage" xml:space="preserve">
-    <value>Conversione annullata.
+    <value>转换过程中断。
 
-Stato BASS: {0}</value>
+BASS 状态: {0}</value>
   </data>
   <data name="ConversionCompleted" xml:space="preserve">
-    <value>Conversione completata.</value>
+    <value>转换完成。</value>
   </data>
   <data name="ConversionCompletedXPMessage" xml:space="preserve">
-    <value>Conversione completata.
+    <value>转换完成。
 
-Stato BASS: {0}</value>
+BASS 状态: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Conversione di {0} in corso...</value>
+    <value>Keppy's MIDI Converter | 转换中 {0}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
-    <value>Completato</value>
+    <value>完成</value>
   </data>
   <data name="ConvPosOrTimeLeft" xml:space="preserve">
-    <value>Visualizza la posizione della conversione invece del tempo rimanente</value>
+    <value>在剩余时间处显示转换位置</value>
   </data>
   <data name="ConvStatusFasterNew" xml:space="preserve">
-    <value>{0}MBs di dati RAW convertiti. ({1})
-Tempo rimasto (Approssimazione): {2} - Tempo trascorso: {3}
-Tempo rendering (BASS): {4}% ({5} volte più veloce)</value>
+    <value>已输出{0}MB的原始数据。（{1}）
+预计剩余时间:{2} - 已用时间:{3}
+已完成: {4}% ({5}x)</value>
   </data>
   <data name="ConvStatusFasterOld" xml:space="preserve">
-    <value>{0}MBs di dati RAW convertiti. ({1})
-Posizione corrente: {2} - {3}
-Tempo rendering (BASS): {4}% ({5} volte più veloce)</value>
+    <value>已输出{0}MB的原始数据。（{1}）
+当前位置:{2} - {3}
+已完成:{4}% ({5}x 快于播放速度)</value>
   </data>
   <data name="ConvStatusNormalNew" xml:space="preserve">
-    <value>{0}MBs di dati RAW convertiti. ({1})
-Tempo rimasto (Approssimazione): {2} - Tempo trascorso: {3}
-Tempo rendering (BASS): {4}%</value>
+    <value>已输出{0}MB的原始数据。（{1}）
+预计剩余时间:{2} - 已用时间:{3}
+已完成: {4}% </value>
   </data>
   <data name="ConvStatusNormalOld" xml:space="preserve">
-    <value>{0}MBs di dati RAW convertiti. ({1})
-Posizione corrente: {2} - {3}
-Tempo rendering (BASS): {4}%</value>
+    <value>已输出{0}MB的原始数据。（{1}）
+当前位置:{2} - {3}
+已完成: {4}% </value>
   </data>
   <data name="ConvStatusSlowerNew" xml:space="preserve">
-    <value>{0}MBs di dati RAW convertiti. ({1})
-Tempo rimasto (Approssimazione): {2} - Tempo trascorso: {3}
-Tempo rendering (BASS): {4}% ({5} volte più lento)</value>
+    <value>已输出{0}MB的原始数据。（{1}）
+预计剩余时间:{2} - 已用时间:{3}
+已完成: {4}% ({5}x 慢于播放速度)</value>
   </data>
   <data name="ConvStatusSlowerOld" xml:space="preserve">
-    <value>{0}MBs di dati RAW convertiti. ({1})
-Posizione corrente: {2} - {3}
-Tempo rendering (BASS): {4}% ({5} volte più lento)</value>
+    <value>已输出{0}MB的原始数据。（{1}）
+当前位置:{2} - {3}
+已完成:{4}% ({5}x 慢于播放速度)</value>
   </data>
   <data name="CopiedToClipboardNotice" xml:space="preserve">
-    <value>L'errore è stato copiato negli appunti.
+    <value>错误信息已经复制到剪贴板。
 
-Anteprima:
+错误:
 {0}</value>
   </data>
   <data name="CopyErrorMessage" xml:space="preserve">
-    <value>Copia errore negli appunti</value>
+    <value>复制错误信息到剪贴板</value>
   </data>
   <data name="CrashQuestion" xml:space="preserve">
-    <value>Sei sicuro di voler far crashare il programma?
+    <value>您确定要强行终止软件吗？
 
-Tutte le conversioni non completate verranno perse!</value>
+所有未保存的转换将会永远消失!</value>
   </data>
   <data name="CrashTriggeredByUser" xml:space="preserve">
-    <value>Crash causato dall'utente.</value>
+    <value>进程被用户强行终止.</value>
   </data>
   <data name="Credits" xml:space="preserve">
     <value>Copyright(C) 2013-2016 KaleidonKep99
 
-Questo programma è basato attorno alle potenti librerie
-BASS di Ian Luck, di Un4seen Developments.
-Dai uno sguardo al suo sito cliccando sul
-bottone "{0}".
+本软件基于一个大型 BASS 库
+by Ian Luck from Un4seen Developments.
+点击 "{0}"按钮查看该开发页.
 
-Codice sorgente dell'applicazione:</value>
+
+软件源码:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
-    <value>La versione attualmente installata di Keppy's MIDI Converter è: {0}</value>
+    <value>当前软件版本: {0}</value>
   </data>
   <data name="DisabledText" xml:space="preserve">
-    <value>Disabilitato</value>
+    <value>已禁用</value>
   </data>
   <data name="DisableFX" xml:space="preserve">
-    <value>Disabilita effetti audio</value>
+    <value>关闭声效</value>
   </data>
   <data name="DSPSettings" xml:space="preserve">
-    <value>Impostazioni DSP: </value>
+    <value>DSP 设置:</value>
   </data>
   <data name="EmptySlot" xml:space="preserve">
-    <value>Slot vuoto</value>
+    <value>空白效果器接口</value>
   </data>
   <data name="EnabledText" xml:space="preserve">
-    <value>Abilitato</value>
+    <value>已开启</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Errore</value>
+    <value>错误</value>
   </data>
   <data name="ExitStrip" xml:space="preserve">
-    <value>Esci</value>
+    <value>退出</value>
   </data>
   <data name="ExportWhere" xml:space="preserve">
-    <value>Dove vuoi esportare i file convertiti?</value>
+    <value>您想导出到哪里？</value>
   </data>
   <data name="FatalError" xml:space="preserve">
-    <value>Errore grave</value>
+    <value>致命错误</value>
   </data>
   <data name="FatalErrorHandler" xml:space="preserve">
-    <value>Si è verificato un grave errore durante l'esecuzione
-di Keppy's MIDI Converter, l'applicazione deve essere chiusa.
-Informazioni aggiuntive:</value>
+    <value>运行Keppy's MIDI Converter时出现致命错误!
+软件需要退出.
+更多信息:</value>
   </data>
   <data name="forceCloseTheApplicationStrip" xml:space="preserve">
-    <value>Crasha l'applicazione</value>
+    <value>强行终止软件</value>
   </data>
   <data name="HelpStrip" xml:space="preserve">
-    <value>Aiuto</value>
+    <value>帮助</value>
   </data>
   <data name="IdleMessage" xml:space="preserve">
-    <value>In attesa.
-Seleziona un file MIDI, carica le tue soundfont e inizia la conversione/riproduzione!</value>
+    <value>待命中...
+选择一个或多个MIDI，加载音色库或VST以转换或预览音频.</value>
   </data>
   <data name="ImportMIDI" xml:space="preserve">
-    <value>Importa MIDI...</value>
+    <value>导入MIDI文件...</value>
   </data>
   <data name="ImportMIDIWindow" xml:space="preserve">
-    <value>Selezionare I MIDI da importare...</value>
+    <value>选择想要导入的MIDI文件...</value>
   </data>
   <data name="ImportSoundfontBtn" xml:space="preserve">
-    <value>Importa soundfont</value>
+    <value>导入音色库</value>
   </data>
   <data name="InfoPageTitle" xml:space="preserve">
-    <value>Informazioni</value>
+    <value>关于</value>
   </data>
   <data name="informationAboutTheProgramStrip" xml:space="preserve">
-    <value>Informazioni sull'applicazione...</value>
+    <value>关于本软件...</value>
   </data>
   <data name="InvalidMIDIFile" xml:space="preserve">
-    <value>{0} non è un file MIDI valido!
+    <value>{0}不是一个有效的MIDI文件！
 
-Per favore, selezionare un file MIDI valido, e riprovare.</value>
+请选择有效的MIDI文件,并重试.</value>
   </data>
   <data name="InvalidVSTLoaded" xml:space="preserve">
-    <value>{0} non è un effetto VST valido!
-Assicurati di caricare un effetto VST e NON uno strumento VST.
-
-Se stai cercando di usare un VST a {1}, devi eseguire la versione a {1} di Keppy's MIDI Converter.
-La versione a {2} di Keppy's MIDI Converter non supporta effetti VST a {1} e viceversa.</value>
+    <value>{0}不是一个有效的VST特效！
+请确保您加载的是VST特效而不是VST乐器！
+如果你尝试使用一个{1} VST, 您需要使用版本为{1} 的Keppy's MIDI Converter.
+版本{2}的Keppy's MIDI Converter不支持 {1} 的VST ,反之亦然.</value>
   </data>
   <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
-    <value>Pagina GitHub di KaleidonKep99</value>
+    <value>KaleidonKep99的Github开发页</value>
   </data>
   <data name="KaleidonKep99sYouTubeChannel" xml:space="preserve">
-    <value>Canale YouTube di KaleidonKep99</value>
+    <value>KaleidonKep99的YouTube页面</value>
   </data>
   <data name="LatestVersionIdle" xml:space="preserve">
-    <value>Clicca "Cerca aggiornamenti" per iniziare la ricerca di aggiornamenti disponibili.</value>
+    <value>点击"检查更新"以检查是否有可用的更新。</value>
   </data>
   <data name="LibraryVersion" xml:space="preserve">
-    <value>Versione di {0}: {1}.{2}</value>
+    <value>{0} 版本: {1}.{2}</value>
   </data>
   <data name="License" xml:space="preserve">
-    <value>Licenza</value>
+    <value>许可协议</value>
   </data>
   <data name="LoadVST" xml:space="preserve">
-    <value>Carica</value>
+    <value>加载</value>
   </data>
   <data name="MemoryAllocationConversion" xml:space="preserve">
-    <value>Il programma sta allocando memoria per la conversione.
-Attendere prego...</value>
+    <value>初始化中...软件正在为转换器分配内存.
+请稍候...</value>
   </data>
   <data name="MemoryAllocationPlayback" xml:space="preserve">
-    <value>Il programma sta allocando memoria per l'anteprima audio.
-Attendere prego...</value>
+    <value>初始化中...软件正在为预览分配内存.
+请稍候...</value>
   </data>
   <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
-    <value>Il programma sta allocando memoria per l'anteprima audio.
-Cambiare le impostazioni dei VST quando richiesto.
-Attendere prego...</value>
+    <value>初始化中...软件正在为预览分配内存.
+出现提示时再修改VST/DSP设置。
+请稍候...</value>
   </data>
   <data name="MoveDOWN" xml:space="preserve">
-    <value>Muovi giù (Un elemento)</value>
+    <value>向下移动 (单文件)</value>
   </data>
   <data name="MoveDOWNSF" xml:space="preserve">
-    <value>Muovi giù ▼</value>
+    <value>向下移动 ▼</value>
   </data>
   <data name="MoveUP" xml:space="preserve">
-    <value>Muovi su (Un elemento)</value>
+    <value>向上移动 (单文件)</value>
   </data>
   <data name="MoveUPSF" xml:space="preserve">
-    <value>Muovi su ▲</value>
+    <value>向上移动 ▲</value>
   </data>
   <data name="NewValueTempo" xml:space="preserve">
-    <value>Nuovo valore:</value>
+    <value>要覆盖的BPM值:</value>
   </data>
   <data name="NonFatalErrorHandler" xml:space="preserve">
-    <value>È stato rilevato un errore durante l'esecuzione
-di Keppy's MIDI Converter.
-Informazioni aggiuntive:</value>
+    <value>运行软件时发生错误.
+
+更多信息:</value>
   </data>
   <data name="NoteOff1" xml:space="preserve">
-    <value>L'evento MIDI NoteOFF rilascia solo la nota più vecchia.</value>
+    <value>当有音符重叠时仅对最先的NoteOFF事件使用发布。</value>
   </data>
   <data name="NoUpdatesText" xml:space="preserve">
-    <value>Non è stato trovato alcun aggiornamento.
-Riprovare più tardi.</value>
+    <value>暂无更新。
+请稍后尝试。</value>
   </data>
   <data name="NoUpdatesTitle" xml:space="preserve">
-    <value>Nessun aggiornamento disponibile</value>
+    <value>暂无更新。</value>
   </data>
   <data name="OnlyOneItemMsg" xml:space="preserve">
-    <value>Puoi solo muovere un elemento alla volta!</value>
+    <value>一次只能移动一个项目！</value>
   </data>
   <data name="OptionsStrip" xml:space="preserve">
-    <value>Opzioni</value>
+    <value>设置</value>
   </data>
   <data name="OverrideTempo1" xml:space="preserve">
-    <value>Sovrascrivi tempo:</value>
+    <value>置换播放BPM:</value>
   </data>
   <data name="OverrideTempo2" xml:space="preserve">
-    <value>Sovrascrivi tempo: (Orig. {0}bpm)</value>
+    <value>置换播放BPM: (原BPM{0})</value>
   </data>
   <data name="PeakLevel" xml:space="preserve">
-    <value>Picco</value>
+    <value>峰值</value>
   </data>
   <data name="PlaybackAborted" xml:space="preserve">
-    <value>Riproduzione annullata.</value>
+    <value>实时播放已中断</value>
   </data>
   <data name="PlaybackAbortedXPMessage" xml:space="preserve">
-    <value>Riproduzione annullata.
+    <value>实时播放已中断
 
-Stato BASS: {0}</value>
+BASS 状态: {0}</value>
   </data>
   <data name="PlaybackCompleted" xml:space="preserve">
-    <value>Riproduzione completata.</value>
+    <value>实时播放结束。</value>
   </data>
   <data name="PlaybackCompletedXPMessage" xml:space="preserve">
-    <value>Riproduzione completata.
+    <value>实时播放结束。
 
-Stato BASS: {0}</value>
+BASS 状态: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
-    <value>{0} del MIDI riprodotto.
-Posizione: {1} - {2}</value>
+    <value>已播放{0}% 
+播放位置: {1} - {2}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Riproduzione di {0} in corso...</value>
+    <value>Keppy's MIDI Converter | 正在实时播放 {0}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
-    <value>Completato</value>
+    <value>完成</value>
   </data>
   <data name="RemoveMIDI" xml:space="preserve">
-    <value>Rimuovi MIDI selezionati</value>
+    <value>移除选定的MIDI文件</value>
   </data>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
-    <value>Rimuovi soundfont</value>
+    <value>移除音色库</value>
   </data>
   <data name="RenderToOGG" xml:space="preserve">
-    <value>Converti come file Vorbis (.OGG)</value>
+    <value>导出OGG格式音频(.ogg)</value>
   </data>
   <data name="RenderToSpeakers" xml:space="preserve">
-    <value>Ascolta anteprima (Playback in tempo reale)</value>
+    <value>预览音频（实时播放）</value>
   </data>
   <data name="RenderToWAV" xml:space="preserve">
-    <value>Converti come file Wave (.WAV)</value>
+    <value>导出WAV格式音频(.wav)</value>
   </data>
   <data name="RightClickCopyNotice" xml:space="preserve">
-    <value>Premi il tasto destro del mouse in una parte della finestra per copiare il messaggio.</value>
+    <value>右键点击窗口中的任何位置来复制信息。</value>
   </data>
   <data name="RMS" xml:space="preserve">
-    <value>Valore efficace</value>
+    <value>平方平均数</value>
   </data>
   <data name="SaveHere" xml:space="preserve">
-    <value>Salva qui...</value>
+    <value>保存在这里......</value>
   </data>
   <data name="SelectOneSF" xml:space="preserve">
-    <value>Per favore selezionare almeno una soundfont.</value>
+    <value>请选择至少一个音色库！</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Opzioni</value>
+    <value>设置</value>
   </data>
   <data name="SettingsBox" xml:space="preserve">
-    <value>Opzioni</value>
+    <value>设置</value>
   </data>
   <data name="SFVSTManager" xml:space="preserve">
-    <value>Apri il gestore soundfont/VST</value>
+    <value>打开音色库/VST管理</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>Usa fino a 2.147.483.648 soundfont nello stesso momento, per convertire i tuoi MIDI!
-La prima soundfont sostituirà i preset di quelle precedenti.
-Assicurati di non aggiungere soundfont corrotte, per prevenire crash o perdite di dati.
+    <value>转换MIDI时最多支持同时加载2,147,483,648个音色库。
+工欲善其事，必先利其器。选择你的音色库用来转换MIDI文件。
+列表中的第一个音色库会总是会覆盖最后的音色库。
+添加音色库之前请检查音色库是否损坏，以避免意外错误。
 
-
-Sono supportati i seguenti formati: SF2, SF3, SFZ, SFPACK</value>
+支持的音色格式:</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
-    <value>Questa non è una soundfont valida!
+    <value>这并不是一个有效的音色库！
 
-Seleziona una soundfont valida e riprova.</value>
+请重新选择一个有效的的音色库！</value>
   </data>
   <data name="SoundfontManagerTitle" xml:space="preserve">
-    <value>Gestore soundfont/VST</value>
+    <value>音色库/VST管理</value>
   </data>
   <data name="supportTheDeveloperWithADonation" xml:space="preserve">
-    <value>Aiuta lo sviluppatore con una donazione</value>
+    <value>向开发者捐赠</value>
   </data>
   <data name="Un4seenWebsite" xml:space="preserve">
-    <value>Sito web Un4seen</value>
+    <value>Un4seen 网页</value>
   </data>
   <data name="UnloadAllVSTs" xml:space="preserve">
-    <value>Rimuovi tutti</value>
+    <value>移除所有</value>
   </data>
   <data name="UnloadVST" xml:space="preserve">
-    <value>Rimuovi</value>
+    <value>移除</value>
   </data>
   <data name="UpdateFoundVer" xml:space="preserve">
-    <value>Aggiornamento disponibile, {0} online.</value>
+    <value>有更新, 最新版本:{0} </value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
-    <value>Aggiornamenti</value>
+    <value>有更新！</value>
   </data>
   <data name="UpdatesChecking" xml:space="preserve">
-    <value>Ricerca di aggiornamenti in corso, attendere prego...</value>
+    <value>正在检查可用的更新, 请稍候...</value>
   </data>
   <data name="UpdatesFoundText" xml:space="preserve">
-    <value>È stato trovato un nuovo aggiornamento.
-Premere OK per aprire la pagina di download.</value>
+    <value>有更新。
+点击OK以打开更新页面。</value>
   </data>
   <data name="UpdatesFoundTitle" xml:space="preserve">
-    <value>Aggiornamento disponibile</value>
+    <value>更新可用</value>
   </data>
   <data name="VersionLabel" xml:space="preserve">
-    <value>Versione {0}, ottimizzata per processori {1}</value>
+    <value>版本:{0},针对{1}处理器进行优化。 </value>
   </data>
   <data name="VoiceLabel" xml:space="preserve">
-    <value>Limite voci:</value>
+    <value>限制最大复音数:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
-    <value>Come funzionano?
+    <value>DSP（效果器）是如何工作的？
 
-L'effetto n°1 applicherà il proprio effetto all'audio, che poi passera all'effetto n°2,
-che farà lo stesso con l'effetto n°3 e così via.
-
-È un sistema a catena.</value>
+效果器1接收传入音频，并将处理过的音频数据传给效果器2，以此类推。（类似一个链式系统）</value>
   </data>
   <data name="VSTInvalidCallError" xml:space="preserve">
-    <value>È stato rilevato un errore, {0} non può essere caricato.
+    <value>在尝试加载{0}时遇到错误。此VST无法被加载。
 
-Errore:
-{1} 
+错误：
+{1}
 
-Il VST potrebbe non essere compatibile con il sistema finestre nativo di Windows.
-L'errore è stato copiato negli appunti.</value>
+此VST可能与Windows系统不兼容。
+错误已复制到剪贴板</value>
   </data>
   <data name="VSTInvalidCallTitle" xml:space="preserve">
-    <value>Chiamata invalida da parte del VST</value>
+    <value>无效的VST call</value>
   </data>
   <data name="VSTManager" xml:space="preserve">
-    <value>Gestore VST</value>
+    <value>VST 管理</value>
   </data>
   <data name="VSTManagerButtonText" xml:space="preserve">
-    <value>Apri il gestore effetti VST</value>
+    <value>打开VST DSP管理</value>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>Voglio applicare effetti VST...</value>
+    <value>我想要添加VST DSP...</value>
   </data>
   <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
-    <value>Il programma richiede Windows XP SP2 o successivo per funzionare correttamente!
-Premere OK per uscire.</value>
+    <value>Keppy's MIDI Converter需要Windows XP SP2及以上的操作系统才能运行！
+点击OK退出。</value>
   </data>
   <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
-    <value>Windows XP SP1 o precendente non sono supportati</value>
-  </data>
-  <data name="Volume" xml:space="preserve">
-    <value>Volume:</value>
+    <value>不支持Windows XP SP1以及更旧的操作系统</value>
   </data>
   <data name="InfoWindowTitle" xml:space="preserve">
-    <value>Informazioni</value>
+    <value>关于</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>体积:</value>
   </data>
 </root>

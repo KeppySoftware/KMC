@@ -180,6 +180,7 @@
     <EmbeddedResource Include="Languages\res.it.resx" />
     <EmbeddedResource Include="Languages\res.ja.resx" />
     <EmbeddedResource Include="Languages\res.nl.resx" />
+    <EmbeddedResource Include="Languages\res.zh-CN.resx" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

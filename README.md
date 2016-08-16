@@ -34,17 +34,28 @@ There's a portable version of Keppy's MIDI Converter too. [Take a look here] (ht
 ## Main languages available:
 Language | Available
 ------------ | -------------
-Chinese (Simplified) | No translator available
+Afrikaans | No translator available
+Arabic | No translator available
+Armenian | No translator available
+Bulgarian | No translator available
+Chinese (Simplified) | Yes (Need fixes)
 Chinese (Traditional) | No translator available
+Danish | No translator available
 Dutch | On its way
 English | Yes
 Estonian | Yes
+French | No translator available
 German | Yes
+Hebrew | No translator available
+Indonesian | On its way
 Italian | Yes
 Japanese | Yes
 Portuguese | No translator available
 Russian | No translator available
+Serbian | No translator available
 Spanish | On its way
+Turkish | No translator available
+Ukrainian | No translator available
 
 Do you want your native language to be integrated into Keppy's MIDI Converter? <br>
 Download the [following file] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/raw/master/KeppyMIDIConverter/Languages/base%20-%20ren.LANG.resx) and start editing it with [RESX Editor] (https://sourceforge.net/projects/resx/)! (Or Visual Studio, if you have it installed)<br>

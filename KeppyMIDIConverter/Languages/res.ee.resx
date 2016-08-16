@@ -592,4 +592,7 @@ Vajuta OK, et väljuda.</value>
   <data name="Volume" xml:space="preserve">
     <value>Valjus:</value>
   </data>
+  <data name="InfoWindowTitle" xml:space="preserve">
+    <value>Info</value>
+  </data>
 </root>

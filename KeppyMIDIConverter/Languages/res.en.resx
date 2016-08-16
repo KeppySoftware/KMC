@@ -142,7 +142,7 @@ All Rights Reserved.</value>
     <value>Actions</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Voices:</value>
+    <value>Voices: </value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>Please add at least one MIDI to the conversion list.</value>
@@ -589,5 +589,8 @@ Click OK to exit.</value>
   </data>
   <data name="Volume" xml:space="preserve">
     <value>Volume:</value>
+  </data>
+  <data name="InfoWindowTitle" xml:space="preserve">
+    <value>Information</value>
   </data>
 </root>

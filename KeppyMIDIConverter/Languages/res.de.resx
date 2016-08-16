@@ -590,4 +590,7 @@ OK klicken zum Beenden.</value>
   <data name="Volume" xml:space="preserve">
     <value>Lautstärke:</value>
   </data>
+  <data name="InfoWindowTitle" xml:space="preserve">
+    <value>Information</value>
+  </data>
 </root>
