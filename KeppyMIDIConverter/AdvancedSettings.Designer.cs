@@ -20,7 +20,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -35,8 +34,6 @@
             this.Label5 = new System.Windows.Forms.Label();
             this.FXDisable = new System.Windows.Forms.CheckBox();
             this.Noteoff1 = new System.Windows.Forms.CheckBox();
-            this.Guide = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -92,8 +89,6 @@
             this.checkBox3.Size = new System.Drawing.Size(204, 18);
             this.checkBox3.TabIndex = 16;
             this.checkBox3.Text = "Force constant bitrate (OGG Vorbis)";
-            this.Guide.SetToolTip(this.checkBox3, "Override the self-guided bitrate system used by Vorbis, and force it to use a fix" +
-        "ed bitrate.\r\n(1 = 64kbps~, 10 = 500/600kbps~)");
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
@@ -118,14 +113,13 @@
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(66, 21);
             this.BitrateBox.TabIndex = 15;
-            this.Guide.SetToolTip(this.BitrateBox, "10 = Very High Quality\r\n...\r\n5 = Standard Quality\r\n...\r\n1 = Very Low Quality");
             this.BitrateBox.SelectedIndexChanged += new System.EventHandler(this.BitrateBox_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(253, 120);
+            this.label3.Location = new System.Drawing.Point(249, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 14;
@@ -148,7 +142,6 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(72, 21);
             this.numericUpDown1.TabIndex = 13;
-            this.Guide.SetToolTip(this.numericUpDown1, "Set the tempo with a value from 1bpm to 2097120bpm.");
             this.numericUpDown1.Value = new decimal(new int[] {
             120,
             0,
@@ -158,13 +151,13 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Enabled = false;
             this.label2.Location = new System.Drawing.Point(227, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "New tempo value:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // checkBox1
             // 
@@ -175,8 +168,6 @@
             this.checkBox1.Size = new System.Drawing.Size(133, 18);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "Override MIDI tempo";
-            this.Guide.SetToolTip(this.checkBox1, "Override the MIDI tempo events. (WARNING, it\'ll override ALL the events, nothing " +
-        "excluded!)");
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -184,7 +175,7 @@
             // 
             this.Label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(162, 20);
+            this.Label6.Location = new System.Drawing.Point(170, 20);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(19, 13);
             this.Label6.TabIndex = 10;
@@ -217,12 +208,10 @@
             "11025",
             "8000",
             "4000"});
-            this.FrequencyBox.Location = new System.Drawing.Point(96, 16);
+            this.FrequencyBox.Location = new System.Drawing.Point(104, 16);
             this.FrequencyBox.Name = "FrequencyBox";
             this.FrequencyBox.Size = new System.Drawing.Size(66, 21);
             this.FrequencyBox.TabIndex = 9;
-            this.Guide.SetToolTip(this.FrequencyBox, "Using a frequency higher than 48kHz can increase the time required for the render" +
-        "ing to finish.");
             this.FrequencyBox.SelectedIndexChanged += new System.EventHandler(this.FrequencyBox_SelectedIndexChanged);
             // 
             // Label5
@@ -243,8 +232,6 @@
             this.FXDisable.Size = new System.Drawing.Size(135, 18);
             this.FXDisable.TabIndex = 7;
             this.FXDisable.Text = "Disable sound effects";
-            this.Guide.SetToolTip(this.FXDisable, "Forces BASSMIDI to disable all the MIDI effects. (Reverb and chrous, EXCLUDING VS" +
-        "Ts)");
             this.FXDisable.UseVisualStyleBackColor = true;
             this.FXDisable.CheckedChanged += new System.EventHandler(this.FXDisable_CheckedChanged);
             // 
@@ -258,28 +245,8 @@
             this.Noteoff1.TabIndex = 6;
             this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlappin" +
     "g instances of the note.";
-            this.Guide.SetToolTip(this.Noteoff1, "There\'s really nothing to explain here.");
             this.Noteoff1.UseVisualStyleBackColor = true;
             this.Noteoff1.CheckedChanged += new System.EventHandler(this.Noteoff1_CheckedChanged);
-            // 
-            // Guide
-            // 
-            this.Guide.Active = false;
-            this.Guide.AutomaticDelay = 0;
-            this.Guide.AutoPopDelay = 30000;
-            this.Guide.InitialDelay = 0;
-            this.Guide.ReshowDelay = 0;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(14, 152);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(120, 17);
-            this.checkBox2.TabIndex = 32;
-            this.checkBox2.Text = "Enable tooltip guide";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // AdvancedSettings
             // 
@@ -288,7 +255,6 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(404, 181);
             this.ControlBox = false;
-            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.GroupBox1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -305,7 +271,6 @@
             this.GroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -322,8 +287,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.ComboBox BitrateBox;
-        private System.Windows.Forms.ToolTip Guide;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.CheckBox checkBox3;
         internal System.Windows.Forms.Label label4;

@@ -11,7 +11,7 @@ AppPublisherURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter
 AppSupportPhone=+393511888475
 AppSupportURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/issues
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=12.3.0
+AppVersion=13.0.0
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -31,10 +31,10 @@ UninstallDisplayName=Keppy's MIDI Converter (Remove only)
 UninstallDisplaySize=2799697
 VersionInfoCompany=KaleidonKep99
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
-VersionInfoDescription=MIDI to WAV/OGG converter, for everyone!
-VersionInfoProductName=KSMC
-VersionInfoProductVersion=12.3.0
-VersionInfoVersion=12.3.0
+VersionInfoDescription=Keppy's MIDI Converter
+VersionInfoProductName=KMC
+VersionInfoProductVersion=13.0.0
+VersionInfoVersion=13.0.0
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
@@ -49,6 +49,12 @@ LZMAAlgorithm=1
 ;Generic
 Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 ;64-bit files
+Source: "bin\x64\de\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\de"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\ee\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\ee"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\en\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\en"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\it\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\it"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\ja\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\ja"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\nl\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\nl"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass_vst.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bassenc.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
@@ -56,58 +62,18 @@ Source: "bin\x64\bassmidi.dll"; DestDir: "{app}\x64"; Flags: ignoreversion repla
 Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\kmcogg.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 ;32-bit files
+Source: "bin\x86\de\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\de"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\ee\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\ee"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\en\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\en"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\it\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\it"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\ja\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\ja"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\nl\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\nl"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass_vst.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bassenc.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\bassmidi.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
-
-[InstallDelete]
-Type: files; Name: "{app}\convfin.wav"
-Type: files; Name: "{app}\convstart.wav"
-Type: files; Name: "{app}\convfail.wav"
-Type: files; Name: "{app}\bass.dll"
-Type: files; Name: "{app}\bassenc.dll"
-Type: files; Name: "{app}\bassmidi.dll"
-Type: files; Name: "{app}\Bass.Net.dll"
-Type: files; Name: "{app}\kmcogg.exe"
-Type: files; Name: "{app}\oggenc.exe"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.dll"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.Sensors.dll"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.Shell.dll"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
-Type: files; Name: "{app}\KeppyMIDIConverter.exe"
-Type: files; Name: "{app}\license.rtf"
-Type: files; Name: "{app}\x86\bass.dll"
-Type: files; Name: "{app}\x86\bass_vst.dll"
-Type: files; Name: "{app}\x86\bassenc.dll"
-Type: files; Name: "{app}\x86\bassmidi.dll"
-Type: files; Name: "{app}\x86\KMCVSTiSupport.dll"
-Type: files; Name: "{app}\x86\Bass.Net.dll"
-Type: files; Name: "{app}\x86\kmcogg.exe"
-Type: files; Name: "{app}\x86\oggenc.exe"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.Sensors.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.Shell.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
-Type: files; Name: "{app}\x86\KeppyMIDIConverter.exe"Type: files; Name: "{app}\x64\bass.dll"
-Type: files; Name: "{app}\x64\bass_vst.dll"
-Type: files; Name: "{app}\x64\bassenc.dll"
-Type: files; Name: "{app}\x64\bassmidi.dll"
-Type: files; Name: "{app}\x64\KMCVSTiSupport.dll"
-Type: files; Name: "{app}\x64\Bass.Net.dll"
-Type: files; Name: "{app}\x64\kmcogg.exe"
-Type: files; Name: "{app}\x64\oggenc.exe"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.Sensors.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.Shell.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
-Type: files; Name: "{app}\x64\KeppyMIDIConverter.exe"
-Type: files; Name: "{group}\Keppy's MIDI Converter.lnk"
 
 [UninstallDelete]
 Type: files; Name: "{app}\convfin.wav"
@@ -133,6 +99,12 @@ Type: files; Name: "{app}\x86\bassmidi.dll"
 Type: files; Name: "{app}\x86\Bass.Net.dll"
 Type: files; Name: "{app}\x86\kmcogg.exe"
 Type: files; Name: "{app}\x86\oggenc.exe"
+Type: files; Name: "{app}\x86\de\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x86\ee\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x86\en\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x86\it\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x86\ja\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x86\nl\KeppyMIDIConverter.resources.dll"
 Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.dll"
 Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
 Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.Sensors.dll"
@@ -146,6 +118,12 @@ Type: files; Name: "{app}\x64\bassmidi.dll"
 Type: files; Name: "{app}\x64\Bass.Net.dll"
 Type: files; Name: "{app}\x64\kmcogg.exe"
 Type: files; Name: "{app}\x64\oggenc.exe"
+Type: files; Name: "{app}\x64\de\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x64\ee\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x64\en\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x64\it\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x64\ja\KeppyMIDIConverter.resources.dll"
+Type: files; Name: "{app}\x64\nl\KeppyMIDIConverter.resources.dll"
 Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.dll"
 Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
 Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.Sensors.dll"
@@ -153,6 +131,13 @@ Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.Shell.dll"
 Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
 Type: files; Name: "{app}\x64\KeppyMIDIConverter.exe"
 Type: files; Name: "{group}\Keppy's MIDI Converter.lnk"
+
+[Languages]
+Name: en; MessagesFile: "compiler:Default.isl"
+Name: it; MessagesFile: "compiler:Languages\Italian.isl"
+Name: nl; MessagesFile: "compiler:Languages\Dutch.isl"
+Name: de; MessagesFile: "compiler:Languages\German.isl"
+Name: jp; MessagesFile: "compiler:Languages\Japanese.isl"
 
 [Registry]
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "chorus"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
@@ -189,13 +174,3 @@ Filename: "http://keppystudios.com"; Flags: shellexec
 Name: "{group}\Keppy's MIDI Converter"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: not Is64BitInstallMode
 Name: "{group}\Keppy's MIDI Converter (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
 Name: "{group}\Keppy's MIDI Converter (x64)"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
-
-[Messages]
-ExitSetupMessage=You didn't finished installing the converter yet.%nAre you sure you want to quit?%n%nYou can run the installer later, if you want.
-ApplicationsFound=It seems that you didn't closed the converter. It is recommended that you allow the setup to automatically close it.
-CannotContinue=The setup encountered an unknown error. Click Cancel to exit.
-FinishedLabel=Hooray!%nThe converter has been succesfully installed on your computer!%n%nIt may be launched by selecting the installed icons.
-WelcomeLabel1=Keppy's MIDI Converter Setup
-WelcomeLabel2=This will install the [name] on your computer.%n%nIt is recommended to check if an older version of the converter is running, before installing the new one.%n%nAlso, be sure to check my other project, the Keppy's Driver. You can find it on my GitHub page.
-ConfirmUninstall=This will uninstall the converter.%n%nAre you sure mate?
-WindowsVersionNotSupported=This program requires Windows Vista or newer.%n%nYour current version is NOT supported.

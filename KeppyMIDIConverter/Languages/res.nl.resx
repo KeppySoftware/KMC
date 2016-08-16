@@ -1,0 +1,593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbortConvPlayback" xml:space="preserve">
+    <value>Abort conversion/preview</value>
+  </data>
+  <data name="AboutSFZFormatText" xml:space="preserve">
+    <value>This program is compliant to the "SFZ 1.0 format", and partially with the "SFZ 2.0 format".
+
+Do you want to visit the "Unofficial SFZ format information" website?</value>
+  </data>
+  <data name="AboutSFZFormatTitle" xml:space="preserve">
+    <value>About the SFZ format</value>
+  </data>
+  <data name="AboutVSTSupportText" xml:space="preserve">
+    <value>This program supports VST DSPs.
+
+Virtual Studio Technology (VST) is a software interface and technology by Steinberg Media Technologies.
+Copyright ©2006 Steinberg Media Technologies.
+All Rights Reserved.</value>
+  </data>
+  <data name="AboutVSTSupportTitle" xml:space="preserve">
+    <value>About the Virtual Studio Technology interface</value>
+  </data>
+  <data name="ActionsStrip" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ActiveVoices" xml:space="preserve">
+    <value>Voices:</value>
+  </data>
+  <data name="AddOneMIDI" xml:space="preserve">
+    <value>Please add at least one MIDI to the conversion list.</value>
+  </data>
+  <data name="AdvSettingsButton" xml:space="preserve">
+    <value>Advanced settings</value>
+  </data>
+  <data name="AdvSettingsTitle" xml:space="preserve">
+    <value>Advanced settings</value>
+  </data>
+  <data name="AlreadyUpdatedText" xml:space="preserve">
+    <value>This version of Keppy's MIDI Converter is already up-to-date.</value>
+  </data>
+  <data name="AppBusy" xml:space="preserve">
+    <value>The app is not done converting/playing MIDIs!
+Are you sure you want to exit?</value>
+  </data>
+  <data name="AudioEventsStrip" xml:space="preserve">
+    <value>Enable audio events (Conversion finished, failed etc.)</value>
+  </data>
+  <data name="AudioFreq" xml:space="preserve">
+    <value>Audio frequency:</value>
+  </data>
+  <data name="AutomaticShutdownStrip" xml:space="preserve">
+    <value>Turn the PC off after the conversion process is completed</value>
+  </data>
+  <data name="AutoUpdatesCheckStrip" xml:space="preserve">
+    <value>Check for updates when starting the application</value>
+  </data>
+  <data name="AverageLevel" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="BASSEngineConfiguration" xml:space="preserve">
+    <value>Configuring BASS.
+The conversion process will start soon...</value>
+  </data>
+  <data name="BASSEngineConfigurationVST" xml:space="preserve">
+    <value>Configuring BASS.
+Edit the VST DSPs settings when asked.
+The conversion process will start soon...</value>
+  </data>
+  <data name="CanNotCheckUpdates" xml:space="preserve">
+    <value>Can not check for updates! You're offline, or the website is currently down.</value>
+  </data>
+  <data name="CanNotCheckUpdatesMsg" xml:space="preserve">
+    <value>Can not check for updates!
+
+Error:
+{0}</value>
+  </data>
+  <data name="CheckForUpdatesBtn" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="ClearListAutomaticallyStrip" xml:space="preserve">
+    <value>Clean MIDIs list automatically after the conversion</value>
+  </data>
+  <data name="ClearMIDIsList" xml:space="preserve">
+    <value>Clean MIDIs list</value>
+  </data>
+  <data name="ClearSoundfontList" xml:space="preserve">
+    <value>Clean soundfonts list</value>
+  </data>
+  <data name="ConstantBitrateOGG" xml:space="preserve">
+    <value>Force constant bitrate (OGG Vorbis):</value>
+  </data>
+  <data name="ConversionAborted" xml:space="preserve">
+    <value>Conversion aborted.</value>
+  </data>
+  <data name="ConversionAbortedXPMessage" xml:space="preserve">
+    <value>Conversion aborted.
+
+BASS status: {0}</value>
+  </data>
+  <data name="ConversionCompleted" xml:space="preserve">
+    <value>Conversion completed.</value>
+  </data>
+  <data name="ConversionCompletedXPMessage" xml:space="preserve">
+    <value>Conversion completed.
+
+BASS status: {0}</value>
+  </data>
+  <data name="ConversionText" xml:space="preserve">
+    <value>Keppy's MIDI Converter | Converting {0}...</value>
+  </data>
+  <data name="ConversionXPTitle" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="ConvPosOrTimeLeft" xml:space="preserve">
+    <value>Show conversion position instead of time left</value>
+  </data>
+  <data name="ConvStatusFasterNew" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}% ({5}x~ faster)</value>
+  </data>
+  <data name="ConvStatusFasterOld" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}% ({5}x~ faster)</value>
+  </data>
+  <data name="ConvStatusNormalNew" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}%</value>
+  </data>
+  <data name="ConvStatusNormalOld" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}%</value>
+  </data>
+  <data name="ConvStatusSlowerNew" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}% ({5}x~ slower)</value>
+  </data>
+  <data name="ConvStatusSlowerOld" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}% ({5}x~ slower)</value>
+  </data>
+  <data name="CopiedToClipboardNotice" xml:space="preserve">
+    <value>The error has been copied to clipboard.
+
+Error:
+{0}</value>
+  </data>
+  <data name="CopyErrorMessage" xml:space="preserve">
+    <value>Copy error to clipboard</value>
+  </data>
+  <data name="CrashQuestion" xml:space="preserve">
+    <value>Are you sure you want to crash the application?
+
+All non-saved conversions will be lost!</value>
+  </data>
+  <data name="CrashTriggeredByUser" xml:space="preserve">
+    <value>Crash caused by the user.</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Copyright(C) 2013-2016 KaleidonKep99
+
+This program is based around the great BASS libraries
+by Ian Luck from Un4seen Developments.
+Take a look at his site by clicking the "{0}"
+button.
+
+Source code available here:</value>
+  </data>
+  <data name="CurrentVersion" xml:space="preserve">
+    <value>The current version of the converter, installed on your system, is: {0}</value>
+  </data>
+  <data name="DisabledText" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="DisableFX" xml:space="preserve">
+    <value>Disable audio effects</value>
+  </data>
+  <data name="DSPSettings" xml:space="preserve">
+    <value>DSP settings:</value>
+  </data>
+  <data name="EmptySlot" xml:space="preserve">
+    <value>Empty slot</value>
+  </data>
+  <data name="EnabledText" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ExitStrip" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="ExportWhere" xml:space="preserve">
+    <value>Where do you want to export?</value>
+  </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>Fatal error</value>
+  </data>
+  <data name="FatalErrorHandler" xml:space="preserve">
+    <value>Fatal error during the execution of Keppy's MIDI Converter!
+The application needs to be closed.
+Additional informations:</value>
+  </data>
+  <data name="forceCloseTheApplicationStrip" xml:space="preserve">
+    <value>Crash the application</value>
+  </data>
+  <data name="HelpStrip" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="IdleMessage" xml:space="preserve">
+    <value>Waiting for user commands.
+Select a MIDI, load some soundfonts, and start the conversion/playback process!</value>
+  </data>
+  <data name="ImportMIDI" xml:space="preserve">
+    <value>Import MIDIs...</value>
+  </data>
+  <data name="ImportMIDIWindow" xml:space="preserve">
+    <value>Select the MIDIs to import...</value>
+  </data>
+  <data name="ImportSoundfontBtn" xml:space="preserve">
+    <value>Import soundfont(s)</value>
+  </data>
+  <data name="InfoPageTitle" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="informationAboutTheProgramStrip" xml:space="preserve">
+    <value>Information about the application...</value>
+  </data>
+  <data name="InvalidMIDIFile" xml:space="preserve">
+    <value>{0} is not a valid MIDI file!
+
+Please select a valid MIDI file, and retry.</value>
+  </data>
+  <data name="InvalidVSTLoaded" xml:space="preserve">
+    <value>{0} is not a valid VST effect!
+Be sure to load a VST effect and NOT a VST instrument.
+
+If you're trying to use a {1} VST, you need to use a {1} version of Keppy's MIDI Converter too.
+The {2} version of Keppy's MIDI Converter does NOT support {1} VSTs and viceversa.</value>
+  </data>
+  <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
+    <value>KaleidonKep99's GitHub Page</value>
+  </data>
+  <data name="KaleidonKep99sYouTubeChannel" xml:space="preserve">
+    <value>KaleidonKep99's YouTube Channel</value>
+  </data>
+  <data name="LatestVersionIdle" xml:space="preserve">
+    <value>Click on "Check for updates" to check if there are any updates available.</value>
+  </data>
+  <data name="LibraryVersion" xml:space="preserve">
+    <value>{0} version: {1}.{2}</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="LoadVST" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="MemoryAllocationConversion" xml:space="preserve">
+    <value>The application is allocating memory for the conversion process.
+Please wait...</value>
+  </data>
+  <data name="MemoryAllocationPlayback" xml:space="preserve">
+    <value>The application is allocating memory for the preview.
+Please wait...</value>
+  </data>
+  <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
+    <value>The application is allocating memory for the preview.
+Edit the VST DSPs settings when asked.
+Please wait...</value>
+  </data>
+  <data name="MoveDOWN" xml:space="preserve">
+    <value>Move down (One item)</value>
+  </data>
+  <data name="MoveDOWNSF" xml:space="preserve">
+    <value>Move down ▼</value>
+  </data>
+  <data name="MoveUP" xml:space="preserve">
+    <value>Move up (One item)</value>
+  </data>
+  <data name="MoveUPSF" xml:space="preserve">
+    <value>Move up ▲</value>
+  </data>
+  <data name="NewValueTempo" xml:space="preserve">
+    <value>New tempo value:</value>
+  </data>
+  <data name="NonFatalErrorHandler" xml:space="preserve">
+    <value>Something went wrong during the execution of the application.
+
+Additional informations:</value>
+  </data>
+  <data name="NoteOff1" xml:space="preserve">
+    <value>Only release the oldest instance upon a note off even when there are overlapping instances of the note.</value>
+  </data>
+  <data name="NoUpdatesText" xml:space="preserve">
+    <value>No updates have been found.
+Please try later.</value>
+  </data>
+  <data name="NoUpdatesTitle" xml:space="preserve">
+    <value>No updates found.</value>
+  </data>
+  <data name="OnlyOneItemMsg" xml:space="preserve">
+    <value>You can only move one item!</value>
+  </data>
+  <data name="OptionsStrip" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="OverrideTempo1" xml:space="preserve">
+    <value>Override tempo:</value>
+  </data>
+  <data name="OverrideTempo2" xml:space="preserve">
+    <value>Override tempo: (Orig. {0}bpm)</value>
+  </data>
+  <data name="PeakLevel" xml:space="preserve">
+    <value>Peak</value>
+  </data>
+  <data name="PlaybackAborted" xml:space="preserve">
+    <value>Playback aborted.</value>
+  </data>
+  <data name="PlaybackAbortedXPMessage" xml:space="preserve">
+    <value>Playback aborted.
+
+BASS status: {0}</value>
+  </data>
+  <data name="PlaybackCompleted" xml:space="preserve">
+    <value>Playback completed.</value>
+  </data>
+  <data name="PlaybackCompletedXPMessage" xml:space="preserve">
+    <value>Playback completed.
+
+BASS status: {0}</value>
+  </data>
+  <data name="PlaybackStatus" xml:space="preserve">
+    <value>{0}% of the MIDI played.
+Position: {1} - {2}</value>
+  </data>
+  <data name="PlaybackText" xml:space="preserve">
+    <value>Keppy's MIDI Converter | Playback of {0}...</value>
+  </data>
+  <data name="PlaybackXPTitle" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="RemoveMIDI" xml:space="preserve">
+    <value>Remove selected MIDIs</value>
+  </data>
+  <data name="RemoveSoundfontBtn" xml:space="preserve">
+    <value>Remove soundfont(s)</value>
+  </data>
+  <data name="RenderToOGG" xml:space="preserve">
+    <value>Render files to Vorbis (.OGG)</value>
+  </data>
+  <data name="RenderToSpeakers" xml:space="preserve">
+    <value>Preview files (Real-time playback)</value>
+  </data>
+  <data name="RenderToWAV" xml:space="preserve">
+    <value>Render files to Wave (.WAV)</value>
+  </data>
+  <data name="RightClickCopyNotice" xml:space="preserve">
+    <value>Right-click anywhere in the window to copy the message.</value>
+  </data>
+  <data name="RMS" xml:space="preserve">
+    <value>Root mean square</value>
+  </data>
+  <data name="SaveHere" xml:space="preserve">
+    <value>Save here...</value>
+  </data>
+  <data name="SelectOneSF" xml:space="preserve">
+    <value>Please select at least one soundfont.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsBox" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SFVSTManager" xml:space="preserve">
+    <value>Open the soundfonts/VST manager</value>
+  </data>
+  <data name="SoundfontDialogMessage" xml:space="preserve">
+    <value>Use up to 2.147.483.648 soundfonts at once, to convert your MIDIs.
+The first soundfont in the list will always override the latest ones.
+Check if the soundfonts are not corrupted, before adding them to the list, to avoid random crashes/glitches.
+
+
+The following formats are supported: SF2, SF3, SFZ, SFPACK</value>
+  </data>
+  <data name="SoundfontImportError" xml:space="preserve">
+    <value>This is not a valid soundfont!
+
+Select a soundfont and try again.</value>
+  </data>
+  <data name="SoundfontManagerTitle" xml:space="preserve">
+    <value>Soundfonts/VST manager</value>
+  </data>
+  <data name="supportTheDeveloperWithADonation" xml:space="preserve">
+    <value>Help the developer with a donation</value>
+  </data>
+  <data name="Un4seenWebsite" xml:space="preserve">
+    <value>Un4seen site</value>
+  </data>
+  <data name="UnloadAllVSTs" xml:space="preserve">
+    <value>Remove all</value>
+  </data>
+  <data name="UnloadVST" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="UpdateFoundVer" xml:space="preserve">
+    <value>Update found, {0} is online.</value>
+  </data>
+  <data name="UpdaterPageTitle" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="UpdatesChecking" xml:space="preserve">
+    <value>Checking for available updates, please wait...</value>
+  </data>
+  <data name="UpdatesFoundText" xml:space="preserve">
+    <value>A new update has been found!
+Click OK to open the download page.</value>
+  </data>
+  <data name="UpdatesFoundTitle" xml:space="preserve">
+    <value>Update available</value>
+  </data>
+  <data name="VersionLabel" xml:space="preserve">
+    <value>{0} version, optimized for {1} processors</value>
+  </data>
+  <data name="VoiceLabel" xml:space="preserve">
+    <value>Voice limit:</value>
+  </data>
+  <data name="VSTHowDoTheyWork" xml:space="preserve">
+    <value>How do they work?
+
+Effect 1 will apply its effect to the audio, then it'll pass the modified audio to Effect 2,
+that will then do the same with Effect 3 and so on.
+
+It's a chain-like system.</value>
+  </data>
+  <data name="VSTInvalidCallError" xml:space="preserve">
+    <value>There was an error while trying to load {0}.
+The VST can not be loaded.
+
+Errore:
+{1} 
+
+The VST is probably not compatible with the native Windows forms system.
+Error copied to clipboard.</value>
+  </data>
+  <data name="VSTInvalidCallTitle" xml:space="preserve">
+    <value>Invalid VST call</value>
+  </data>
+  <data name="VSTManager" xml:space="preserve">
+    <value>VST manager</value>
+  </data>
+  <data name="VSTManagerButtonText" xml:space="preserve">
+    <value>Open the VST DSP manager</value>
+  </data>
+  <data name="VSTUseText" xml:space="preserve">
+    <value>I want to apply a VST DSP too...</value>
+  </data>
+  <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
+    <value>Windows XP SP2 or newer is required to run Keppy's MIDI Converter.
+Click OK to exit.</value>
+  </data>
+  <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
+    <value>Windows XP SP1 and older are not supported.</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volume:</value>
+  </data>
+</root>

@@ -9,6 +9,8 @@ using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Globalization;
+using System.Resources;
 
 namespace KeppyMIDIConverter
 {
@@ -17,9 +19,29 @@ namespace KeppyMIDIConverter
         public SoundfontDialog()
         {
             InitializeComponent();
-            Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
+            InitializeLanguage();
         }
 
+        ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
+        CultureInfo cul;            // declare culture info
+
+        private void InitializeLanguage()
+        {
+            res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
+            cul = Program.ReturnCulture();
+            // Translate system
+            VSTUse.Text = res_man.GetString("VSTUseText", cul);
+            VSTImport.Text = res_man.GetString("VSTManagerButtonText", cul);
+            label1.Text = res_man.GetString("SoundfontDialogMessage", cul);
+            importSoundfontsToolStripMenuItem.Text = res_man.GetString("ImportSoundfontBtn", cul);
+            removeSoundfontsToolStripMenuItem.Text = res_man.GetString("RemoveSoundfontBtn", cul);
+            clearSoundfontListToolStripMenuItem.Text = res_man.GetString("ClearSoundfontList", cul);
+            ImportBtn.Text = res_man.GetString("ImportSoundfontBtn", cul);
+            RemoveBtn.Text = res_man.GetString("RemoveSoundfontBtn", cul);
+            MvUp.Text = res_man.GetString("MoveUPSF", cul);
+            MvDwn.Text = res_man.GetString("MoveDOWNSF", cul);
+            Text = res_man.GetString("SoundfontManagerTitle", cul);
+        }
 
         private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -35,20 +57,10 @@ namespace KeppyMIDIConverter
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         SFList.Items.Add(file);
                     }
-                    else if (Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
-                    {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (Path.GetExtension(file) == ".exe" | Path.GetExtension(file) == ".EXE" | Path.GetExtension(file) == ".dll" | Path.GetExtension(file) == ".DLL")
-                    {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                     else
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
@@ -135,20 +147,10 @@ namespace KeppyMIDIConverter
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         SFList.Items.Add(file);
                     }
-                    else if (Path.GetExtension(file) == ".dls" | Path.GetExtension(file) == ".DLS")
-                    {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (Path.GetExtension(file) == ".exe" | Path.GetExtension(file) == ".EXE" | Path.GetExtension(file) == ".dll" | Path.GetExtension(file) == ".DLL")
-                    {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                     else
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
@@ -228,7 +230,7 @@ namespace KeppyMIDIConverter
 
         private void SFZCompliant_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("This program is compliant to the \"SFZ 1.0 format\", and partially with the \"SFZ 2.0 format\".\n\nDo you want to visit the \"Unofficial SFZ format information\" website?", "About the SFZ format", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult dialogResult = MessageBox.Show(res_man.GetString("AboutSFZFormatText", cul), res_man.GetString("AboutSFZFormatTitle", cul), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dialogResult == DialogResult.Yes)
             {
                 Process.Start("http://drealm.info/sfz/plj-sfz.xhtml");
@@ -241,7 +243,7 @@ namespace KeppyMIDIConverter
 
         private void VSTReady_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This program supports VST DSPs.\n\nVirtual Studio Technology (VST) is a software interface is a technology by Steinberg Media Technologies.\nCopyright ©2006 Steinberg Media Technologies.\nAll Rights Reserved.", "About the Virtual Studio Technology interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(res_man.GetString("AboutVSTSupportText", cul), res_man.GetString("AboutVSTSupportTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SFList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
@@ -255,17 +257,9 @@ namespace KeppyMIDIConverter
                 {
                     SFList.Items.Add(s[i]);
                 }
-                else if (Path.GetExtension(s[i]) == ".dls" | Path.GetExtension(s[i]) == ".DLS")
-                {
-                    MessageBox.Show("BASSMIDI does NOT support the downloadable sounds (DLS) format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (Path.GetExtension(s[i]) == ".exe" | Path.GetExtension(s[i]) == ".EXE" | Path.GetExtension(s[i]) == ".dll" | Path.GetExtension(s[i]) == ".DLL")
-                {
-                    MessageBox.Show("Are you really trying to add executables to the soundfonts list?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
                 else
                 {
-                    MessageBox.Show("Invalid soundfont!\n\nPlease select a valid soundfont and try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];

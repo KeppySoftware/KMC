@@ -27,11 +27,7 @@ namespace KeppyMIDIConverter
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             bool ok;
             Mutex m = new Mutex(true, "KepMIDIConv", out ok);
-            if (!ok)
-            {
-                MessageBox.Show("One instance is enough.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+
             try
             {
                 if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
@@ -93,6 +89,31 @@ namespace KeppyMIDIConverter
                 Application.Run(new MainWindow(args));
                 TriggerDate();
                 GC.KeepAlive(m);
+            }
+        }
+
+        public static CultureInfo ReturnCulture()
+        {
+            try
+            {
+                CultureInfo ci = CultureInfo.InstalledUICulture;
+                if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
+                    return CultureInfo.CreateSpecificCulture("it");
+                else if (ci.Name == "et-EE")
+                    return CultureInfo.CreateSpecificCulture("ee");
+                else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
+                    return CultureInfo.CreateSpecificCulture("de");
+             // else if (ci.Name == "nl-NL" | ci.Name == "nl-BE")
+             //     return CultureInfo.CreateSpecificCulture("nl");
+                else if (ci.Name == "ja-JP")
+                    return CultureInfo.CreateSpecificCulture("ja");
+                else // The current language of the UI is not available, fallback to English.
+                    return CultureInfo.CreateSpecificCulture("en");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return CultureInfo.CreateSpecificCulture("en");
             }
         }
 

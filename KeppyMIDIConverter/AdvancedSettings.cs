@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Resources;
 
 namespace KeppyMIDIConverter
 {
@@ -13,6 +15,24 @@ namespace KeppyMIDIConverter
         public AdvancedSettings()
         {
             InitializeComponent();
+            InitializeLanguage();
+        }
+
+        ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
+        CultureInfo cul;            // declare culture info
+
+        private void InitializeLanguage()
+        {
+            res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
+            cul = Program.ReturnCulture();
+            // Translate system
+            GroupBox1.Text = res_man.GetString("Settings", cul);
+            Text = res_man.GetString("AdvSettingsTitle", cul);
+            Label5.Text = res_man.GetString("AudioFreq", cul);
+            Noteoff1.Text = res_man.GetString("NoteOff1", cul);
+            FXDisable.Text = res_man.GetString("DisableFX", cul);
+            label2.Text = res_man.GetString("NewValueTempo", cul);
+            checkBox3.Text = res_man.GetString("ConstantBitrateOGG", cul);
         }
 
         private void AdvancedSettings_Load(object sender, EventArgs e)
@@ -23,14 +43,14 @@ namespace KeppyMIDIConverter
                 Label5.Enabled = false;
                 FrequencyBox.Enabled = false;
                 Label6.Enabled = false;
-                checkBox1.Text = "Override tempo (Original: " + MainWindow.Globals.OriginalTempo.ToString() + "bpm)";
+                checkBox1.Text = String.Format(res_man.GetString("OverrideTempo2", cul), MainWindow.Globals.OriginalTempo.ToString());
             }
             else
             {
                 Label5.Enabled = true;
                 FrequencyBox.Enabled = true;
                 Label6.Enabled = true;
-                checkBox1.Text = "Override tempo (Playback mode only)";
+                checkBox1.Text = String.Format(res_man.GetString("OverrideTempo1", cul), MainWindow.Globals.OriginalTempo.ToString());
             }
             // K DONE
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
@@ -146,18 +166,6 @@ namespace KeppyMIDIConverter
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             MainWindow.Globals.FinalTempo = Convert.ToInt32(numericUpDown1.Value);
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox2.Checked == true)
-            {
-                Guide.Active = true;
-            }
-            else
-            {
-                Guide.Active = false;
-            }
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)

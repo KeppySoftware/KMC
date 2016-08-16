@@ -29,7 +29,7 @@
             this.SettingsBox = new System.Windows.Forms.GroupBox();
             this.AdvSettingsButton = new System.Windows.Forms.Button();
             this.VoiceLimit = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.VoiceLabel = new System.Windows.Forms.Label();
             this.CurrentStatus = new System.Windows.Forms.ProgressBar();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
             this.labelRMS = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.ConverterProcess = new System.ComponentModel.BackgroundWorker();
             this.DefaultMenu = new System.Windows.Forms.MainMenu(this.components);
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.ActionsStrip = new System.Windows.Forms.MenuItem();
             this.importMIDIsToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.removeSelectedMIDIsToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.clearMIDIsListToolStripMenuItem = new System.Windows.Forms.MenuItem();
@@ -55,25 +55,25 @@
             this.abortRenderingToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem12 = new System.Windows.Forms.MenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
-            this.menuItem3 = new System.Windows.Forms.MenuItem();
+            this.OptionsStrip = new System.Windows.Forms.MenuItem();
+            this.AutoUpdatesCheckStrip = new System.Windows.Forms.MenuItem();
             this.enabledToolStripMenuItem3 = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem3 = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
+            this.AutomaticShutdownStrip = new System.Windows.Forms.MenuItem();
             this.enabledToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem6 = new System.Windows.Forms.MenuItem();
+            this.ClearListAutomaticallyStrip = new System.Windows.Forms.MenuItem();
             this.enabledToolStripMenuItem1 = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem1 = new System.Windows.Forms.MenuItem();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.ConvPosOrTimeLeft = new System.Windows.Forms.MenuItem();
             this.enabledToolStripMenuItem2 = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem2 = new System.Windows.Forms.MenuItem();
-            this.menuItem9 = new System.Windows.Forms.MenuItem();
+            this.AudioEventsStrip = new System.Windows.Forms.MenuItem();
             this.enabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
             this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem14 = new System.Windows.Forms.MenuItem();
+            this.HelpStrip = new System.Windows.Forms.MenuItem();
             this.informationAboutTheProgramToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.supportTheDeveloperWithADonationToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem17 = new System.Windows.Forms.MenuItem();
@@ -87,7 +87,6 @@
             this.MoveUpMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.MoveDownMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.menuItem10 = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -147,10 +146,10 @@
             this.SettingsBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SettingsBox.Controls.Add(this.AdvSettingsButton);
             this.SettingsBox.Controls.Add(this.VoiceLimit);
-            this.SettingsBox.Controls.Add(this.label1);
-            this.SettingsBox.Location = new System.Drawing.Point(510, 324);
+            this.SettingsBox.Controls.Add(this.VoiceLabel);
+            this.SettingsBox.Location = new System.Drawing.Point(490, 324);
             this.SettingsBox.Name = "SettingsBox";
-            this.SettingsBox.Size = new System.Drawing.Size(130, 70);
+            this.SettingsBox.Size = new System.Drawing.Size(150, 70);
             this.SettingsBox.TabIndex = 12;
             this.SettingsBox.TabStop = false;
             this.SettingsBox.Text = "Settings";
@@ -160,7 +159,7 @@
             this.AdvSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.AdvSettingsButton.Location = new System.Drawing.Point(6, 40);
             this.AdvSettingsButton.Name = "AdvSettingsButton";
-            this.AdvSettingsButton.Size = new System.Drawing.Size(118, 23);
+            this.AdvSettingsButton.Size = new System.Drawing.Size(137, 23);
             this.AdvSettingsButton.TabIndex = 2;
             this.AdvSettingsButton.Text = "Advanced settings";
             this.AdvSettingsButton.UseVisualStyleBackColor = true;
@@ -169,7 +168,8 @@
             // VoiceLimit
             // 
             this.VoiceLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VoiceLimit.Location = new System.Drawing.Point(63, 16);
+            this.VoiceLimit.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VoiceLimit.Location = new System.Drawing.Point(95, 16);
             this.VoiceLimit.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -181,7 +181,7 @@
             0,
             0});
             this.VoiceLimit.Name = "VoiceLimit";
-            this.VoiceLimit.Size = new System.Drawing.Size(58, 21);
+            this.VoiceLimit.Size = new System.Drawing.Size(50, 18);
             this.VoiceLimit.TabIndex = 1;
             this.VoiceLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.VoiceLimit.Value = new decimal(new int[] {
@@ -191,14 +191,15 @@
             0});
             this.VoiceLimit.ValueChanged += new System.EventHandler(this.VoiceLimit_ValueChanged);
             // 
-            // label1
+            // VoiceLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Voice limit:";
+            this.VoiceLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VoiceLabel.Location = new System.Drawing.Point(1, 18);
+            this.VoiceLabel.Name = "VoiceLabel";
+            this.VoiceLabel.Size = new System.Drawing.Size(97, 13);
+            this.VoiceLabel.TabIndex = 0;
+            this.VoiceLabel.Text = "Voice limit:";
+            this.VoiceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CurrentStatus
             // 
@@ -235,11 +236,10 @@
             this.CurrentStatusText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(428, 60);
+            this.CurrentStatusText.Size = new System.Drawing.Size(407, 60);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CurrentStatusText.UseCompatibleTextRendering = true;
             // 
             // RealTimePlayBack
             // 
@@ -258,7 +258,7 @@
             this.VolumeBar.Size = new System.Drawing.Size(130, 20);
             this.VolumeBar.TabIndex = 18;
             this.VolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.VolumeBar.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.VolumeBar.Scroll += new System.EventHandler(this.VolumeBar_Scroll);
             // 
             // label3
             // 
@@ -284,14 +284,14 @@
             this.panel1.Controls.Add(this.loadingpic);
             this.panel1.Location = new System.Drawing.Point(12, 330);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(492, 64);
+            this.panel1.Size = new System.Drawing.Size(472, 64);
             this.panel1.TabIndex = 13;
             // 
             // loadingpic
             // 
-            this.loadingpic.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
             this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
-            this.loadingpic.Location = new System.Drawing.Point(428, 0);
+            this.loadingpic.Location = new System.Drawing.Point(408, 0);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(60, 60);
             this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -307,14 +307,14 @@
             // DefaultMenu
             // 
             this.DefaultMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem2,
-            this.menuItem14});
+            this.ActionsStrip,
+            this.OptionsStrip,
+            this.HelpStrip});
             // 
-            // menuItem1
+            // ActionsStrip
             // 
-            this.menuItem1.Index = 0;
-            this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.ActionsStrip.Index = 0;
+            this.ActionsStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.importMIDIsToolStripMenuItem,
             this.removeSelectedMIDIsToolStripMenuItem,
             this.clearMIDIsListToolStripMenuItem,
@@ -327,7 +327,7 @@
             this.abortRenderingToolStripMenuItem,
             this.menuItem12,
             this.exitToolStripMenuItem});
-            this.menuItem1.Text = "Actions";
+            this.ActionsStrip.Text = "Actions";
             // 
             // importMIDIsToolStripMenuItem
             // 
@@ -405,27 +405,26 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // menuItem2
+            // OptionsStrip
             // 
-            this.menuItem2.Index = 1;
-            this.menuItem2.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem3,
-            this.menuItem4,
-            this.menuItem6,
-            this.menuItem8,
-            this.menuItem9,
+            this.OptionsStrip.Index = 1;
+            this.OptionsStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.AutoUpdatesCheckStrip,
+            this.AutomaticShutdownStrip,
+            this.ClearListAutomaticallyStrip,
+            this.ConvPosOrTimeLeft,
+            this.AudioEventsStrip,
             this.menuItem13,
-            this.forceCloseTheApplicationToolStripMenuItem,
-            this.menuItem10});
-            this.menuItem2.Text = "Options";
+            this.forceCloseTheApplicationToolStripMenuItem});
+            this.OptionsStrip.Text = "Options";
             // 
-            // menuItem3
+            // AutoUpdatesCheckStrip
             // 
-            this.menuItem3.Index = 0;
-            this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.AutoUpdatesCheckStrip.Index = 0;
+            this.AutoUpdatesCheckStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem3,
             this.disabledToolStripMenuItem3});
-            this.menuItem3.Text = "Automatically check for updates when starting the converter";
+            this.AutoUpdatesCheckStrip.Text = "Automatically check for updates when starting the converter";
             // 
             // enabledToolStripMenuItem3
             // 
@@ -439,13 +438,13 @@
             this.disabledToolStripMenuItem3.Text = "Disabled";
             this.disabledToolStripMenuItem3.Click += new System.EventHandler(this.disabledToolStripMenuItem3_Click);
             // 
-            // menuItem4
+            // AutomaticShutdownStrip
             // 
-            this.menuItem4.Index = 1;
-            this.menuItem4.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.AutomaticShutdownStrip.Index = 1;
+            this.AutomaticShutdownStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem,
             this.disabledToolStripMenuItem});
-            this.menuItem4.Text = "Automatic shutdown after rendering";
+            this.AutomaticShutdownStrip.Text = "Automatic shutdown after rendering";
             // 
             // enabledToolStripMenuItem
             // 
@@ -459,13 +458,13 @@
             this.disabledToolStripMenuItem.Text = "Disabled";
             this.disabledToolStripMenuItem.Click += new System.EventHandler(this.disabledToolStripMenuItem_Click);
             // 
-            // menuItem6
+            // ClearListAutomaticallyStrip
             // 
-            this.menuItem6.Index = 2;
-            this.menuItem6.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.ClearListAutomaticallyStrip.Index = 2;
+            this.ClearListAutomaticallyStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem1,
             this.disabledToolStripMenuItem1});
-            this.menuItem6.Text = "Clear MIDIs list after rendering";
+            this.ClearListAutomaticallyStrip.Text = "Clear MIDIs list after rendering";
             // 
             // enabledToolStripMenuItem1
             // 
@@ -479,13 +478,13 @@
             this.disabledToolStripMenuItem1.Text = "Disabled";
             this.disabledToolStripMenuItem1.Click += new System.EventHandler(this.disabledToolStripMenuItem1_Click);
             // 
-            // menuItem8
+            // ConvPosOrTimeLeft
             // 
-            this.menuItem8.Index = 3;
-            this.menuItem8.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.ConvPosOrTimeLeft.Index = 3;
+            this.ConvPosOrTimeLeft.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem2,
             this.disabledToolStripMenuItem2});
-            this.menuItem8.Text = "Show conversion position instead of time left";
+            this.ConvPosOrTimeLeft.Text = "Show conversion position instead of time left";
             // 
             // enabledToolStripMenuItem2
             // 
@@ -499,13 +498,13 @@
             this.disabledToolStripMenuItem2.Text = "Disabled";
             this.disabledToolStripMenuItem2.Click += new System.EventHandler(this.disabledToolStripMenuItem2_Click);
             // 
-            // menuItem9
+            // AudioEventsStrip
             // 
-            this.menuItem9.Index = 4;
-            this.menuItem9.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.AudioEventsStrip.Index = 4;
+            this.AudioEventsStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem4,
             this.disabledToolStripMenuItem4});
-            this.menuItem9.Text = "Conversion started/finished/failed sounds";
+            this.AudioEventsStrip.Text = "Conversion started/finished/failed sounds";
             // 
             // enabledToolStripMenuItem4
             // 
@@ -531,16 +530,16 @@
             this.forceCloseTheApplicationToolStripMenuItem.Text = "Crash the application";
             this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
             // 
-            // menuItem14
+            // HelpStrip
             // 
-            this.menuItem14.Index = 2;
-            this.menuItem14.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.HelpStrip.Index = 2;
+            this.HelpStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.informationAboutTheProgramToolStripMenuItem,
             this.supportTheDeveloperWithADonationToolStripMenuItem,
             this.menuItem17,
             this.KaleidonKep99sGitHubPageToolStripMenuItem,
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem});
-            this.menuItem14.Text = "Help";
+            this.HelpStrip.Text = "Help";
             // 
             // informationAboutTheProgramToolStripMenuItem
             // 
@@ -628,12 +627,6 @@
             // 
             this.VistaMenuSys.ContainerControl = this;
             // 
-            // menuItem10
-            // 
-            this.menuItem10.Index = 7;
-            this.menuItem10.Text = "Test";
-            this.menuItem10.Click += new System.EventHandler(this.menuItem10_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -657,7 +650,6 @@
             this.Text = "Keppy\'s MIDI Converter";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.SettingsBox.ResumeLayout(false);
-            this.SettingsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -677,7 +669,7 @@
         private System.Windows.Forms.GroupBox SettingsBox;
         private System.Windows.Forms.Button AdvSettingsButton;
         private System.Windows.Forms.NumericUpDown VoiceLimit;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label VoiceLabel;
         private System.Windows.Forms.ProgressBar CurrentStatus;
         private System.Windows.Forms.SaveFileDialog ExportWhere;
         private System.Windows.Forms.Label labelRMS;
@@ -689,7 +681,7 @@
         private System.Windows.Forms.Panel panel1;
         public System.ComponentModel.BackgroundWorker ConverterProcess;
         private System.Windows.Forms.MainMenu DefaultMenu;
-        private System.Windows.Forms.MenuItem menuItem1;
+        private System.Windows.Forms.MenuItem ActionsStrip;
         private System.Windows.Forms.MenuItem importMIDIsToolStripMenuItem;
         private System.Windows.Forms.MenuItem removeSelectedMIDIsToolStripMenuItem;
         private System.Windows.Forms.MenuItem clearMIDIsListToolStripMenuItem;
@@ -702,12 +694,12 @@
         private System.Windows.Forms.MenuItem abortRenderingToolStripMenuItem;
         private System.Windows.Forms.MenuItem menuItem12;
         private System.Windows.Forms.MenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.MenuItem menuItem3;
-        private System.Windows.Forms.MenuItem menuItem4;
-        private System.Windows.Forms.MenuItem menuItem6;
-        private System.Windows.Forms.MenuItem menuItem8;
-        private System.Windows.Forms.MenuItem menuItem9;
+        private System.Windows.Forms.MenuItem OptionsStrip;
+        private System.Windows.Forms.MenuItem AutoUpdatesCheckStrip;
+        private System.Windows.Forms.MenuItem AutomaticShutdownStrip;
+        private System.Windows.Forms.MenuItem ClearListAutomaticallyStrip;
+        private System.Windows.Forms.MenuItem ConvPosOrTimeLeft;
+        private System.Windows.Forms.MenuItem AudioEventsStrip;
         private System.Windows.Forms.MenuItem forceCloseTheApplicationToolStripMenuItem;
         private System.Windows.Forms.MenuItem enabledToolStripMenuItem;
         private System.Windows.Forms.MenuItem disabledToolStripMenuItem;
@@ -719,7 +711,7 @@
         private System.Windows.Forms.MenuItem disabledToolStripMenuItem4;
         private System.Windows.Forms.MenuItem enabledToolStripMenuItem3;
         private System.Windows.Forms.MenuItem disabledToolStripMenuItem3;
-        private System.Windows.Forms.MenuItem menuItem14;
+        private System.Windows.Forms.MenuItem HelpStrip;
         private System.Windows.Forms.MenuItem informationAboutTheProgramToolStripMenuItem;
         private System.Windows.Forms.MenuItem supportTheDeveloperWithADonationToolStripMenuItem;
         private System.Windows.Forms.MenuItem menuItem17;
@@ -734,7 +726,6 @@
         private wyDay.Controls.VistaMenu VistaMenuSys;
         private System.Windows.Forms.MenuItem menuItem13;
         private System.Windows.Forms.MenuItem KaleidonKep99sGitHubPageToolStripMenuItem;
-        private System.Windows.Forms.MenuItem menuItem10;
     }
 }
 

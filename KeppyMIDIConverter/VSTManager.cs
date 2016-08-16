@@ -14,6 +14,8 @@ using Un4seen.Bass.AddOn.Enc;
 using Un4seen.Bass.AddOn.Mix;
 using Un4seen.Bass.AddOn.Vst;
 using Un4seen.Bass.AddOn.Midi;
+using System.Globalization;
+using System.Resources;
 
 namespace KeppyMIDIConverter
 {
@@ -22,10 +24,47 @@ namespace KeppyMIDIConverter
         public VSTManagerWindow()
         {
             InitializeComponent();
+            InitializeLanguage();
         }
 
         public static string bitnow = null;
         public static string bitreq = null;
+        ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
+        CultureInfo cul;            // declare culture info
+
+        private void InitializeLanguage()
+        {
+            res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
+            cul = Program.ReturnCulture();
+            // Translate system
+            Text = res_man.GetString("VSTManager", cul);
+            label1.Text = res_man.GetString("EmptySlot", cul) + " 1";
+            label2.Text = res_man.GetString("EmptySlot", cul) + " 2";
+            label3.Text = res_man.GetString("EmptySlot", cul) + " 3";
+            label4.Text = res_man.GetString("EmptySlot", cul) + " 4";
+            label5.Text = res_man.GetString("EmptySlot", cul) + " 5";
+            label6.Text = res_man.GetString("EmptySlot", cul) + " 6";
+            label7.Text = res_man.GetString("EmptySlot", cul) + " 7";
+            label8.Text = res_man.GetString("EmptySlot", cul) + " 8";
+            Load1.Text = res_man.GetString("LoadVST", cul);
+            Load2.Text = res_man.GetString("LoadVST", cul);
+            Load3.Text = res_man.GetString("LoadVST", cul);
+            Load4.Text = res_man.GetString("LoadVST", cul);
+            Load5.Text = res_man.GetString("LoadVST", cul);
+            Load6.Text = res_man.GetString("LoadVST", cul);
+            Load7.Text = res_man.GetString("LoadVST", cul);
+            Load8.Text = res_man.GetString("LoadVST", cul);
+            Unload.Text = res_man.GetString("UnloadVST", cul);
+            Unload2.Text = res_man.GetString("UnloadVST", cul);
+            Unload3.Text = res_man.GetString("UnloadVST", cul);
+            Unload4.Text = res_man.GetString("UnloadVST", cul);
+            Unload5.Text = res_man.GetString("UnloadVST", cul);
+            Unload6.Text = res_man.GetString("UnloadVST", cul);
+            Unload7.Text = res_man.GetString("UnloadVST", cul);
+            Unload8.Text = res_man.GetString("UnloadVST", cul);
+            UnloadAllVSTs.Text = res_man.GetString("UnloadAllVSTs", cul);
+            Desc.Text = res_man.GetString("VSTHowDoTheyWork", cul);
+        }
 
         private void VSTManagerWindow_Load(object sender, EventArgs e)
         {
@@ -141,7 +180,7 @@ namespace KeppyMIDIConverter
                 else
                 {
                     Bass.BASS_Free();
-                    MessageBox.Show("This is not a VST effect!\nPlease be sure to load a VST effect and NOT a VST instrument.\n\nAlso, if you're trying to use a " + bitreq + " VST, you need to use the " + bitreq + " version of Keppy's MIDI Converter too.\nThe " + bitnow + " version of Keppy's MIDI Converter does NOT support " + bitreq + " VSTs or viceversa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }  
         }
@@ -168,7 +207,7 @@ namespace KeppyMIDIConverter
                 else
                 {
                     Bass.BASS_Free();
-                    MessageBox.Show("This is not a VST effect!\nPlease be sure to load a VST effect and NOT a VST instrument.\n\nAlso, if you're trying to use a " + bitreq + " VST, you need to use the " + bitreq + " version of Keppy's MIDI Converter too.\nThe " + bitnow + " version of Keppy's MIDI Converter does NOT support " + bitreq + " VSTs or viceversa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }  
         }
@@ -195,7 +234,7 @@ namespace KeppyMIDIConverter
                 else
                 {
                     Bass.BASS_Free();
-                    MessageBox.Show("This is not a VST effect!\nPlease be sure to load a VST effect and NOT a VST instrument.\n\nAlso, if you're trying to use a " + bitreq + " VST, you need to use the " + bitreq + " version of Keppy's MIDI Converter too.\nThe " + bitnow + " version of Keppy's MIDI Converter does NOT support " + bitreq + " VSTs or viceversa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }  
         }
@@ -222,7 +261,7 @@ namespace KeppyMIDIConverter
                 else
                 {
                     Bass.BASS_Free();
-                    MessageBox.Show("This is not a VST effect!\nPlease be sure to load a VST effect and NOT a VST instrument.\n\nAlso, if you're trying to use a " + bitreq + " VST, you need to use the " + bitreq + " version of Keppy's MIDI Converter too.\nThe " + bitnow + " version of Keppy's MIDI Converter does NOT support " + bitreq + " VSTs or viceversa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }  
         }
@@ -249,7 +288,7 @@ namespace KeppyMIDIConverter
                 else
                 {
                     Bass.BASS_Free();
-                    MessageBox.Show("This is not a VST effect!\nPlease be sure to load a VST effect and NOT a VST instrument.\n\nAlso, if you're trying to use a " + bitreq + " VST, you need to use the " + bitreq + " version of Keppy's MIDI Converter too.\nThe " + bitnow + " version of Keppy's MIDI Converter does NOT support " + bitreq + " VSTs or viceversa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }  
         }
@@ -276,7 +315,7 @@ namespace KeppyMIDIConverter
                 else
                 {
                     Bass.BASS_Free();
-                    MessageBox.Show("This is not a VST effect!\nPlease be sure to load a VST effect and NOT a VST instrument.\n\nAlso, if you're trying to use a " + bitreq + " VST, you need to use the " + bitreq + " version of Keppy's MIDI Converter too.\nThe " + bitnow + " version of Keppy's MIDI Converter does NOT support " + bitreq + " VSTs or viceversa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }  
         }
@@ -303,7 +342,7 @@ namespace KeppyMIDIConverter
                 else
                 {
                     Bass.BASS_Free();
-                    MessageBox.Show("This is not a VST effect!\nPlease be sure to load a VST effect and NOT a VST instrument.\n\nAlso, if you're trying to use a " + bitreq + " VST, you need to use the " + bitreq + " version of Keppy's MIDI Converter too.\nThe " + bitnow + " version of Keppy's MIDI Converter does NOT support " + bitreq + " VSTs or viceversa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }  
         }
@@ -330,7 +369,7 @@ namespace KeppyMIDIConverter
                 else
                 {
                     Bass.BASS_Free();
-                    MessageBox.Show("This is not a VST effect!\nPlease be sure to load a VST effect and NOT a VST instrument.\n\nAlso, if you're trying to use a " + bitreq + " VST, you need to use the " + bitreq + " version of Keppy's MIDI Converter too.\nThe " + bitnow + " version of Keppy's MIDI Converter does NOT support " + bitreq + " VSTs or viceversa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }  
         }
@@ -339,7 +378,7 @@ namespace KeppyMIDIConverter
         {
             KeppyMIDIConverter.MainWindow.Globals.VSTDLL = null;
             KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc = null;
-            label1.Text = "Empty slot 1";
+            label1.Text = res_man.GetString("EmptySlot", cul) + " 1";
             Unload.Enabled = false;
             Load1.Enabled = true;
         }
@@ -348,7 +387,7 @@ namespace KeppyMIDIConverter
         {
             KeppyMIDIConverter.MainWindow.Globals.VSTDLL2 = null;
             KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = null;
-            label2.Text = "Empty slot 2";
+            label2.Text = res_man.GetString("EmptySlot", cul) + " 2";
             Unload2.Enabled = false;
             Load2.Enabled = true;
         }
@@ -357,7 +396,7 @@ namespace KeppyMIDIConverter
         {
             KeppyMIDIConverter.MainWindow.Globals.VSTDLL3 = null;
             KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = null;
-            label3.Text = "Empty slot 3";
+            label3.Text = res_man.GetString("EmptySlot", cul) + " 3";
             Unload3.Enabled = false;
             Load3.Enabled = true;
         }
@@ -366,7 +405,7 @@ namespace KeppyMIDIConverter
         {
             KeppyMIDIConverter.MainWindow.Globals.VSTDLL4 = null;
             KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = null;
-            label4.Text = "Empty slot 4";
+            label4.Text = res_man.GetString("EmptySlot", cul) + " 4";
             Unload4.Enabled = false;
             Load4.Enabled = true;
         }
@@ -375,7 +414,7 @@ namespace KeppyMIDIConverter
         {
             KeppyMIDIConverter.MainWindow.Globals.VSTDLL5 = null;
             KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = null;
-            label5.Text = "Empty slot 5";
+            label5.Text = res_man.GetString("EmptySlot", cul) + " 5";
             Unload5.Enabled = false;
             Load5.Enabled = true;
         }
@@ -384,7 +423,7 @@ namespace KeppyMIDIConverter
         {
             KeppyMIDIConverter.MainWindow.Globals.VSTDLL6 = null;
             KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = null;
-            label6.Text = "Empty slot 6";
+            label6.Text = res_man.GetString("EmptySlot", cul) + " 6";
             Unload6.Enabled = false;
             Load6.Enabled = true;
         }
@@ -393,7 +432,7 @@ namespace KeppyMIDIConverter
         {
             KeppyMIDIConverter.MainWindow.Globals.VSTDLL7 = null;
             KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = null;
-            label7.Text = "Empty slot 7";
+            label7.Text = res_man.GetString("EmptySlot", cul) + " 7";
             Unload7.Enabled = false;
             Load7.Enabled = true;
         }
@@ -402,7 +441,7 @@ namespace KeppyMIDIConverter
         {
             KeppyMIDIConverter.MainWindow.Globals.VSTDLL8 = null;
             KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = null;
-            label8.Text = "Empty slot 8";
+            label8.Text = res_man.GetString("EmptySlot", cul) + " 8";
             Unload8.Enabled = false;
             Load8.Enabled = true;
         }

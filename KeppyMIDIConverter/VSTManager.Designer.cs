@@ -62,9 +62,9 @@
             this.Load1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.VSTImportDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label9 = new System.Windows.Forms.Label();
+            this.Desc = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.UnloadAllVSTs = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -483,17 +483,17 @@
             // 
             this.VSTImportDialog.Filter = "VST effect/DSP (*.dll)|*.dll;";
             // 
-            // label9
+            // Desc
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 328);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(401, 78);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "How do they work?\r\n\r\nEffect 1 will apply its effect to the audio, then it\'ll pass" +
+            this.Desc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Desc.Location = new System.Drawing.Point(9, 313);
+            this.Desc.Name = "Desc";
+            this.Desc.Size = new System.Drawing.Size(600, 108);
+            this.Desc.TabIndex = 1;
+            this.Desc.Text = "How do they work?\r\n\r\nEffect 1 will apply its effect to the audio, then it\'ll pass" +
     " the modified audio to Effect 2,\r\nthat will then do the same with Effect 3 and s" +
     "o on.\r\n\r\nIt\'s a chain-like system.";
+            this.Desc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button1
             // 
@@ -506,16 +506,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // UnloadAllVSTs
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(418, 390);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Unload all VSTs";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.UnloadAllVSTs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnloadAllVSTs.Location = new System.Drawing.Point(418, 390);
+            this.UnloadAllVSTs.Name = "UnloadAllVSTs";
+            this.UnloadAllVSTs.Size = new System.Drawing.Size(102, 23);
+            this.UnloadAllVSTs.TabIndex = 3;
+            this.UnloadAllVSTs.Text = "Unload all VSTs";
+            this.UnloadAllVSTs.UseVisualStyleBackColor = true;
+            this.UnloadAllVSTs.Click += new System.EventHandler(this.button2_Click);
             // 
             // VSTManagerWindow
             // 
@@ -523,9 +523,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(613, 425);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.UnloadAllVSTs);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.Desc);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -547,7 +547,6 @@
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -587,8 +586,8 @@
         private System.Windows.Forms.Button Load1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog VSTImportDialog;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Desc;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button UnloadAllVSTs;
     }
 }

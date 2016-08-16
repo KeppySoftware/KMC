@@ -36,7 +36,6 @@
             this.ImportBtn = new System.Windows.Forms.Button();
             this.RemoveBtn = new System.Windows.Forms.Button();
             this.SFList = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.MvUp = new System.Windows.Forms.Button();
             this.MvDwn = new System.Windows.Forms.Button();
             this.SFListCheck = new System.Windows.Forms.Timer(this.components);
@@ -84,7 +83,7 @@
             this.ImportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ImportBtn.Location = new System.Drawing.Point(12, 395);
             this.ImportBtn.Name = "ImportBtn";
-            this.ImportBtn.Size = new System.Drawing.Size(119, 23);
+            this.ImportBtn.Size = new System.Drawing.Size(145, 23);
             this.ImportBtn.TabIndex = 9;
             this.ImportBtn.Text = "Import soundfont(s)";
             this.ImportBtn.UseVisualStyleBackColor = true;
@@ -93,9 +92,9 @@
             // RemoveBtn
             // 
             this.RemoveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveBtn.Location = new System.Drawing.Point(137, 395);
+            this.RemoveBtn.Location = new System.Drawing.Point(156, 395);
             this.RemoveBtn.Name = "RemoveBtn";
-            this.RemoveBtn.Size = new System.Drawing.Size(119, 23);
+            this.RemoveBtn.Size = new System.Drawing.Size(145, 23);
             this.RemoveBtn.TabIndex = 10;
             this.RemoveBtn.Text = "Remove soundfont(s)";
             this.RemoveBtn.UseVisualStyleBackColor = true;
@@ -118,21 +117,10 @@
             this.SFList.DragEnter += new System.Windows.Forms.DragEventHandler(this.SFList_DragEnter);
             this.SFList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SFList_KeyPress);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(196, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(221, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "SF2, SF3 (No full support), SFZ, SFPACK";
-            // 
             // MvUp
             // 
             this.MvUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MvUp.Location = new System.Drawing.Point(283, 395);
+            this.MvUp.Location = new System.Drawing.Point(313, 395);
             this.MvUp.Name = "MvUp";
             this.MvUp.Size = new System.Drawing.Size(88, 23);
             this.MvUp.TabIndex = 13;
@@ -143,7 +131,7 @@
             // MvDwn
             // 
             this.MvDwn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MvDwn.Location = new System.Drawing.Point(377, 395);
+            this.MvDwn.Location = new System.Drawing.Point(400, 395);
             this.MvDwn.Name = "MvDwn";
             this.MvDwn.Size = new System.Drawing.Size(88, 23);
             this.MvDwn.TabIndex = 14;
@@ -257,7 +245,6 @@
             this.Controls.Add(this.SFZCompliant);
             this.Controls.Add(this.MvDwn);
             this.Controls.Add(this.MvUp);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.SFList);
             this.Controls.Add(this.RemoveBtn);
             this.Controls.Add(this.ImportBtn);
@@ -286,7 +273,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ImportBtn;
         private System.Windows.Forms.Button RemoveBtn;
-        private System.Windows.Forms.Label label2;
         public System.Windows.Forms.ListBox SFList;
         private System.Windows.Forms.Button MvUp;
         private System.Windows.Forms.Button MvDwn;

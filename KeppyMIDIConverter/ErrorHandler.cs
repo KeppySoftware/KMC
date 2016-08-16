@@ -7,17 +7,22 @@ using System.Linq;
 using System.Threading;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Resources;
 
 namespace KeppyMIDIConverter
 {
     public partial class ErrorHandler : Form
     {
         public static int TOE = 0;
+        ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
+        CultureInfo cul;            // declare culture info
 
         public ErrorHandler(String errortitle, String errormessage, Int16 typeoferror, Int16 ConvOrNot)
         {
             TOE = typeoferror;
             InitializeComponent();
+            InitializeLanguage();
             if (ConvOrNot == 0)
             {
                 this.ShowInTaskbar = false;
@@ -28,14 +33,23 @@ namespace KeppyMIDIConverter
             }
             if (typeoferror == 0)
             {
-                ErrorLab.Text = "There was an error during the execution of the converter.\n\nMore information down below:";
+                ErrorLab.Text = res_man.GetString("NonFatalErrorHandler", cul);
             }
             else if (typeoferror == 1)
             {
-                ErrorLab.Text = "A problem has been detected and the converter\nhas been halted to prevent further problems.\nMore information down below:";
+                ErrorLab.Text = res_man.GetString("FatalErrorHandler", cul);
             }
             Text = "Keppy's MIDI Converter - " + errortitle;
             ErrorBox.Text = errormessage;
+        }
+
+        private void InitializeLanguage()
+        {
+            res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
+            cul = Program.ReturnCulture();
+            // Translate system
+            copyErrorMessageToolStripMenuItem.Text = res_man.GetString("CopyErrorMessage", cul);
+            label1.Text = res_man.GetString("RightClickCopyNotice", cul);
         }
 
         private void ErrorHandler_Load(object sender, EventArgs e)
@@ -76,7 +90,7 @@ namespace KeppyMIDIConverter
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
             thread.Join();
-            MessageBox.Show("Error message copied to clipboard!\n\nMessage:\n" + sb.ToString(), "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(String.Format(res_man.GetString("CopiedToClipboardNotice", cul), sb.ToString()), "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

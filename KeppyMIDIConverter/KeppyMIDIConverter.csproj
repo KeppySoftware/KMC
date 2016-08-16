@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>4f603a7a</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>215f403b</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -94,9 +94,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\Bass.Net.dll</HintPath>
     </Reference>
-    <Reference Include="KMCVSTiSupport">
-      <HintPath>.\KMCVSTiSupport.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack">
       <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -175,6 +172,14 @@
     <EmbeddedResource Include="Information.resx">
       <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Languages\res.de.resx" />
+    <EmbeddedResource Include="Languages\res.ee.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\res.en.resx" />
+    <EmbeddedResource Include="Languages\res.it.resx" />
+    <EmbeddedResource Include="Languages\res.ja.resx" />
+    <EmbeddedResource Include="Languages\res.nl.resx" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="FodyWeavers.xml" />
     <Content Include="mainlogo.ico" />
     <None Include="Resources\worldwideweb.png" />
     <None Include="Resources\convpause.png" />
@@ -235,13 +241,13 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
   </Target>
+  <Import Project="..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

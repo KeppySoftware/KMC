@@ -52,9 +52,9 @@
             // 
             // Close
             // 
-            this.Close.Location = new System.Drawing.Point(381, 34);
+            this.Close.Location = new System.Drawing.Point(406, 34);
             this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(75, 23);
+            this.Close.Size = new System.Drawing.Size(50, 23);
             this.Close.TabIndex = 4;
             this.Close.Text = "OK";
             this.Close.UseVisualStyleBackColor = true;
