@@ -58,7 +58,7 @@ Turkish | No translator available
 Ukrainian | No translator available
 
 Do you want your native language to be integrated into Keppy's MIDI Converter? <br>
-Download the [following file] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/raw/master/KeppyMIDIConverter/Languages/base%20-%20ren.LANG.resx) and start editing it with [RESX Editor] (https://sourceforge.net/projects/resx/)! (Or Visual Studio, if you have it installed)<br>
+Download the [following file] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/raw/master/KeppyMIDIConverter/Languages/res.base.resx) and start editing it with [RESX Editor] (https://sourceforge.net/projects/resx/)! (Or Visual Studio, if you have it installed)<br>
 When you're done, send it to me through this form: https://goo.gl/forms/aHSvJescUqCYCHiN2<br><br>
 Thank you in advance!
 
