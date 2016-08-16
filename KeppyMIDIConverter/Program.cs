@@ -85,14 +85,10 @@ namespace KeppyMIDIConverter
                     GC.KeepAlive(m);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                Settings.Close();
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainWindow(args));
-                TriggerDate();
-                GC.KeepAlive(m);
+                MessageBox.Show("There was an error while trying to load the languages!\n\nError:" + ex.ToString(), "Keppy's MIDI Converter - Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -102,11 +98,13 @@ namespace KeppyMIDIConverter
             {
                 CultureInfo ci = CultureInfo.InstalledUICulture;
                 if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
-                    return CultureInfo.CreateSpecificCulture("it");
+                    return CultureInfo.CreateSpecificCulture("zh-CN");
                 else if (ci.Name == "et-EE")
                     return CultureInfo.CreateSpecificCulture("ee");
                 else if (ci.Name == "zh-CN")
                     return CultureInfo.CreateSpecificCulture("zh-CN");
+                else if (ci.Name == "zh-HK")
+                    return CultureInfo.CreateSpecificCulture("zh-HK");
                 else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
                     return CultureInfo.CreateSpecificCulture("de");
              // else if (ci.Name == "nl-NL" | ci.Name == "nl-BE")

@@ -592,4 +592,7 @@ Premere OK per uscire.</value>
   <data name="InfoWindowTitle" xml:space="preserve">
     <value>Informazioni</value>
   </data>
+  <data name="ZZZTranslators" xml:space="preserve">
+    <value>KaleidonKep99</value>
+  </data>
 </root>

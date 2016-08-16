@@ -81,7 +81,8 @@ namespace KeppyMIDIConverter
                     String.Format(res_man.GetString("LibraryVersion", cul), bassenclibver.FileDescription, bassenclibver.FileVersion, bassenclibver.FilePrivatePart) + "\n" +
                     String.Format(res_man.GetString("LibraryVersion", cul), bassvstlibver.FileDescription, bassvstlibver.FileVersion, bassvstlibver.FilePrivatePart);
 
-                BASSINFO2.Text = "\n\n\n" +
+                BASSINFO2.Text = "Translated by\n" +
+                    res_man.GetString("ZZZTranslators", cul) + "\n\n" + 
                      "KMC " + Application.ProductVersion + " " + SAS;
             }
             catch (Exception exception)

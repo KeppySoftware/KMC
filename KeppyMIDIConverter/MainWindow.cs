@@ -681,7 +681,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void BASSCloseStream(string message, int type) {
+        private void BASSCloseStream(string message, string title, int type) {
             BassEnc.BASS_Encode_Stop(Globals._Encoder);
             Bass.BASS_StreamFree(Globals._recHandle);
             Bass.BASS_Free();
@@ -690,7 +690,7 @@ namespace KeppyMIDIConverter
             Globals.NewWindowName = "Keppy's MIDI Converter";
             if (type == 0)
             {
-                MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 PlayConversionStop();
             }
             Globals.CancellationPendingValue = 0;
@@ -704,7 +704,7 @@ namespace KeppyMIDIConverter
             Bass.BASS_Free();
             Globals.NewWindowName = "Keppy's MIDI Converter";
             Globals.RenderingMode = false;
-            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", ex.ToString(), 0, 1);
+            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("NewValueTempo", cul), ex.ToString(), 0, 1);
             errordialog.ShowDialog();
         }
 
@@ -750,7 +750,7 @@ namespace KeppyMIDIConverter
                                 }
                                 else if (Globals.CancellationPendingValue == 1)
                                 {
-                                    BASSCloseStream("Conversion aborted.", 0);
+                                    BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
                                     KeepLooping = false;
                                     break;
                                 }
@@ -771,7 +771,7 @@ namespace KeppyMIDIConverter
                         }
                         if (Globals.CancellationPendingValue == 1)
                         {
-                            BASSCloseStream(res_man.GetString("ConversionAborted", cul), 1);
+                            BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
                             KeepLooping = false;
                             Globals.RenderingMode = false;
                             if (Environment.OSVersion.Version.Major == 5)
@@ -785,7 +785,7 @@ namespace KeppyMIDIConverter
                         }
                         else
                         {
-                            BASSCloseStream(res_man.GetString("ConversionCompleted", cul), 1);
+                            BASSCloseStream(res_man.GetString("ConversionCompleted", cul), res_man.GetString("ConversionCompleted", cul), 0);
                             KeepLooping = false;
                             Globals.RenderingMode = false;
                             if (Globals.AutoShutDownEnabled == true)

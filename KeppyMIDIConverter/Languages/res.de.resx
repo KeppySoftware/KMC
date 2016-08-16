@@ -593,4 +593,7 @@ OK klicken zum Beenden.</value>
   <data name="InfoWindowTitle" xml:space="preserve">
     <value>Information</value>
   </data>
+  <data name="ZZZTranslators" xml:space="preserve">
+    <value>Snake8Bit</value>
+  </data>
 </root>

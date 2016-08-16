@@ -179,8 +179,8 @@ Copyright ©2006 Steinberg Media Technologies. All Rights Reserved.</value>
 转换操作即将开始...</value>
   </data>
   <data name="BASSEngineConfigurationVST" xml:space="preserve">
-    <value>BASS配置中.
-请在出现提示时再修改VST/DSP设置。
+    <value>初始化BASS中.
+请在出现提示时再修改VST DSP设置。
 转换操作即将开始...</value>
   </data>
   <data name="CanNotCheckUpdates" xml:space="preserve">
@@ -255,7 +255,8 @@ BASS 状态: {0}</value>
   <data name="ConvStatusSlowerNew" xml:space="preserve">
     <value>已输出{0}MB的原始数据。（{1}）
 预计剩余时间:{2} - 已用时间:{3}
-已完成: {4}% ({5}x 慢于播放速度)</value>
+已完成: {4}% ({5}x 慢于播放速度)
+</value>
   </data>
   <data name="ConvStatusSlowerOld" xml:space="preserve">
     <value>已输出{0}MB的原始数据。（{1}）
@@ -281,7 +282,6 @@ BASS 状态: {0}</value>
   </data>
   <data name="Credits" xml:space="preserve">
     <value>Copyright(C) 2013-2016 KaleidonKep99
-
 本软件基于一个大型 BASS 库
 by Ian Luck from Un4seen Developments.
 点击 "{0}"按钮查看该开发页.
@@ -388,7 +388,7 @@ by Ian Luck from Un4seen Developments.
   </data>
   <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
     <value>初始化中...软件正在为预览分配内存.
-出现提示时再修改VST/DSP设置。
+出现提示时再修改VST DSP设置。
 请稍候...</value>
   </data>
   <data name="MoveDOWN" xml:space="preserve">
@@ -551,7 +551,8 @@ BASS 状态: {0}</value>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
     <value>DSP（效果器）是如何工作的？
 
-效果器1接收传入音频，并将处理过的音频数据传给效果器2，以此类推。（类似一个链式系统）</value>
+效果器1接收传入音频，并将处理过的音频数据传给效果器2，以此类推。
+（类似一个链式系统）</value>
   </data>
   <data name="VSTInvalidCallError" xml:space="preserve">
     <value>在尝试加载{0}时遇到错误。此VST无法被加载。
@@ -586,5 +587,8 @@ BASS 状态: {0}</value>
   </data>
   <data name="Volume" xml:space="preserve">
     <value>体积:</value>
+  </data>
+  <data name="ZZZTranslators" xml:space="preserve">
+    <value>Anti.Cesium.Chloride(SpringSnow)</value>
   </data>
 </root>

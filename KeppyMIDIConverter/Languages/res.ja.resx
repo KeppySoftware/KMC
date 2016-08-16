@@ -287,6 +287,7 @@ BASS status: {0}</value>
 Ian Luck さんによる素晴らしいBASSライブラリに基づいています。
 「{0}」ボタンをクリックして、彼のサイトを見てください。
 
+
 利用可能なソースコード:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
@@ -593,5 +594,8 @@ OKをクリックして閉じてください。</value>
   </data>
   <data name="InfoWindowTitle" xml:space="preserve">
     <value>このアプリケーションについて</value>
+  </data>
+  <data name="ZZZTranslators" xml:space="preserve">
+    <value>Tarwil and Yokkin</value>
   </data>
 </root>

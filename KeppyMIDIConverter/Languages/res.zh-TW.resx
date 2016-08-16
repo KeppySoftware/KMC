@@ -118,484 +118,481 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AbortConvPlayback" xml:space="preserve">
-    <value>Tühista muutma/taasesitus</value>
+    <value>中止轉換/預覽</value>
   </data>
   <data name="AboutSFZFormatText" xml:space="preserve">
-    <value>See programm vastab, et SFZ 1.0 formaadis ning osaliselt koos SFZ 2.0 formaadis.
+    <value>這個程式是符合了“SFZ1.0格式”，部分與“SFZ2.0格式”。
 
-Kas soovite külastada mitteametlik SFZ formaadis info koduleheküljel?</value>
+你想參觀“非官方SFZ格式的信息”的網站？</value>
   </data>
   <data name="AboutSFZFormatTitle" xml:space="preserve">
-    <value>Umbes SFZ formaadis</value>
+    <value>關於SFZ格式</value>
   </data>
   <data name="AboutVSTSupportText" xml:space="preserve">
-    <value>See programm toetab VST DSPs.
+    <value>這個程式支援 VST DSPs.
 
-Virtual Studio Technology (VST) on tarkvara kasutajaliidese ja tehnoloogia Steinberg Media Technologies.
-Autorioigus © 2006 Steinberg Meedia Technologies.
-Kõik õigused kaitstud.</value>
+Virtual Studio Technology (VST) is a software interface and technology by Steinberg Media Technologies.
+Copyright ©2006 Steinberg Media Technologies.
+All Rights Reserved.</value>
   </data>
   <data name="AboutVSTSupportTitle" xml:space="preserve">
-    <value>Umbes Virtual Studio Technology liides</value>
+    <value>關於Virtual Studio接口技術</value>
   </data>
   <data name="ActionsStrip" xml:space="preserve">
-    <value>Tegevus</value>
+    <value>動作</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Heli: </value>
+    <value>Voices:</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
-    <value>Lisage vähemalt ühe MIDI konverteerimisega nimekirja</value>
+    <value>請至少加一個MIDI檔案到轉換列表</value>
   </data>
   <data name="AdvSettingsButton" xml:space="preserve">
-    <value>Täpsemad seaded</value>
+    <value>進階設定</value>
   </data>
   <data name="AdvSettingsTitle" xml:space="preserve">
-    <value>Täpsemad seaded</value>
+    <value>進階設定</value>
   </data>
   <data name="AlreadyUpdatedText" xml:space="preserve">
-    <value>See programm on juba uusim versioon</value>
+    <value>這版本已經是最新版</value>
   </data>
   <data name="AppBusy" xml:space="preserve">
-    <value>Muutma / taasesitus protsess ei ole veel lõppenud!
-Sa tahad väljuda?</value>
+    <value>該應用程序尚未完成轉換/播放MIDIS！
+你確定要離開？</value>
   </data>
   <data name="AudioEventsStrip" xml:space="preserve">
-    <value>Heli sündmusi (muudab täielikult, muuta ei ...)</value>
+    <value>啟用音頻事件（轉換完成，失敗等）</value>
   </data>
   <data name="AudioFreq" xml:space="preserve">
-    <value>Heli sagedusel:</value>
+    <value>聲音頻率:</value>
   </data>
   <data name="AutomaticShutdownStrip" xml:space="preserve">
-    <value>Lülitage arvuti pärast otsuse</value>
+    <value>當轉換完成時,關閉電腦</value>
   </data>
   <data name="AutoUpdatesCheckStrip" xml:space="preserve">
-    <value>Uuenduste kontrollimiseks programmi käivitamine</value>
+    <value>當程式啟動時,檢查更新</value>
   </data>
   <data name="AverageLevel" xml:space="preserve">
-    <value>Läbistikune</value>
+    <value>平均</value>
   </data>
   <data name="BASSEngineConfiguration" xml:space="preserve">
-    <value>Seadistamine BASS.
-Renderdusseadistuste hakkab varsti...</value>
+    <value>配置 BASS.
+轉換即將開始...</value>
   </data>
   <data name="BASSEngineConfigurationVST" xml:space="preserve">
-    <value>Seadistamine BASS.
-Muutma VST DSP seaded, kui küsitakse.
-Renderdusseadistuste hakkab varsti...</value>
+    <value>配置 BASS.
+Edit the VST DSPs settings when asked.
+轉換即將開始...</value>
   </data>
   <data name="CanNotCheckUpdates" xml:space="preserve">
-    <value>Ei ole võimalik kontrollida värskendust! Sa pole kas ühendatud internetti või kodulehel on maas!</value>
+    <value>無法檢查更新!你處於離線狀態,或網站目前離線</value>
   </data>
   <data name="CanNotCheckUpdatesMsg" xml:space="preserve">
-    <value>Ei ole võimalik kontrollida värskendust!
+    <value>無法檢查更新
 
-Viga:
+錯誤:
 {0}</value>
   </data>
   <data name="CheckForUpdatesBtn" xml:space="preserve">
-    <value>Uuenduste kontrollimiseks</value>
+    <value>檢查更新</value>
   </data>
   <data name="ClearListAutomaticallyStrip" xml:space="preserve">
-    <value>Selge MIDI nimekirja pärast konverteeriva</value>
+    <value>當MIDIs轉換完成時,自動清除MIDIs清單</value>
   </data>
   <data name="ClearMIDIsList" xml:space="preserve">
-    <value>Selge MIDI nimekirja</value>
+    <value>清理MIDIs清單</value>
   </data>
   <data name="ClearSoundfontList" xml:space="preserve">
-    <value>Selge heli failide nimekirja</value>
+    <value>清理音色庫清單</value>
   </data>
   <data name="ConstantBitrateOGG" xml:space="preserve">
-    <value>Jõud kvaliteediga (OGG Vorbis):</value>
+    <value>強制固定比特率 (OGG Vorbis):</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
-    <value>Muutma tühistatud</value>
+    <value>轉換中止</value>
   </data>
   <data name="ConversionAbortedXPMessage" xml:space="preserve">
-    <value>Muutma tühistatud
+    <value>轉換中止
 
-BASS seisund: {0}</value>
+BASS 狀態 {0}</value>
   </data>
   <data name="ConversionCompleted" xml:space="preserve">
-    <value>Muutma täielik</value>
+    <value>轉換完成</value>
   </data>
   <data name="ConversionCompletedXPMessage" xml:space="preserve">
-    <value>Muutma täielik
+    <value>轉換完成
 
-BASS seisund: {0}</value>
+BASS 狀態: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Muutuv {0}...</value>
+    <value>Keppy's MIDI Converter | 轉換中 {0}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
-    <value>Valminud</value>
+    <value>完成</value>
   </data>
   <data name="ConvPosOrTimeLeft" xml:space="preserve">
-    <value>Näita edu asemel aega</value>
+    <value>在剩餘時間處顯示轉換位置</value>
   </data>
   <data name="ConvStatusFasterNew" xml:space="preserve">
-    <value>{0}MBs algandmeid muuta. ({1})
-Ligikaudne aeg vasakule: {2} - Kuluv aeg: {3}
-Muutus koormuse: {4}% ({5}x~ kiiremini)</value>
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}% ({5}x~ faster)</value>
   </data>
   <data name="ConvStatusFasterOld" xml:space="preserve">
-    <value>{0}MBs algandmeid muuta. ({1})
-Praeguse edu: {2} - {3}
-Muutus koormuse: {4}% ({5}x~ kiiremini)</value>
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}% ({5}x~ faster)</value>
   </data>
   <data name="ConvStatusNormalNew" xml:space="preserve">
-    <value>{0}MBs algandmeid muuta. ({1})
-Ligikaudne aeg vasakule: {2} - Kuluv aeg: {3}
-Muutus koormuse: {4}%</value>
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}%</value>
   </data>
   <data name="ConvStatusNormalOld" xml:space="preserve">
-    <value>{0}MBs algandmeid muuta. ({1})
-Praeguse edu: {2} - {3}
-Muutus koormuse: {4}%</value>
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}%</value>
   </data>
   <data name="ConvStatusSlowerNew" xml:space="preserve">
-    <value>{0}MBs algandmeid muuta. ({1})
-Ligikaudne aeg vasakule: {2} - Kuluv aeg: {3}
-Muutus koormuse: {4}% ({5}x~ aeglasemalt)</value>
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}% ({5}x~ slower)</value>
   </data>
   <data name="ConvStatusSlowerOld" xml:space="preserve">
-    <value>{0}MBs algandmeid muuta. ({1})
-Praeguse edu: {2} - {3}
-Muutus koormuse: {4}% ({5}x~ aeglasemalt)</value>
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}% ({5}x~ slower</value>
   </data>
   <data name="CopiedToClipboardNotice" xml:space="preserve">
-    <value>See viga on kopeeritud
+    <value>錯誤訊息已複製到剪貼簿.
 
-Viga:
+錯誤:
 {0}</value>
   </data>
   <data name="CopyErrorMessage" xml:space="preserve">
-    <value>Kopeerida viga lõikelauale</value>
+    <value>複製錯誤到剪貼簿</value>
   </data>
   <data name="CrashQuestion" xml:space="preserve">
-    <value>Kas soovid sundsulgemine programmi?
+    <value>你確定你想要強制關閉?
 
-Kõik lõpetamata muudatused kaduma!</value>
+所有未儲存的將會遺失</value>
   </data>
   <data name="CrashTriggeredByUser" xml:space="preserve">
-    <value>Avarii käivitada käsitsi, jõudu sulgemist!</value>
+    <value>用戶造成當機</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Autoriõigus (C) 2013-2016 KaleidonKep99
+    <value>Copyright(C) 2013-2016 KaleidonKep99
 
-See programm põhineb umbes BASS raamatukogud
-Ian Luck alates Un4seen Developments.
-Heitke pilk selle saidi klõpsates "{0}" nuppu.
+This program is based around the great BASS libraries
+by Ian Luck from Un4seen Developments.
+Take a look at his site by clicking the "{0}"
+button.
 
-
-Lähtekoodi saadaval siin:</value>
+源代碼:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
-    <value>Praeguse programmi versiooni: {0}</value>
+    <value>當前版本: {0}</value>
   </data>
   <data name="DisabledText" xml:space="preserve">
-    <value>Maha</value>
+    <value>取消</value>
   </data>
   <data name="DisableFX" xml:space="preserve">
-    <value>Lülitada heliefekte</value>
+    <value>取消聲音效果</value>
   </data>
   <data name="DSPSettings" xml:space="preserve">
-    <value>DSP seaded:</value>
+    <value>DSP 設定:</value>
   </data>
   <data name="EmptySlot" xml:space="preserve">
-    <value>Tühja pesa</value>
+    <value>空的</value>
   </data>
   <data name="EnabledText" xml:space="preserve">
-    <value>Selga</value>
+    <value>啟用</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Viga</value>
+    <value>錯誤</value>
   </data>
   <data name="ExitStrip" xml:space="preserve">
-    <value>Väljapääs</value>
+    <value>離開</value>
   </data>
   <data name="ExportWhere" xml:space="preserve">
-    <value>Kui sa soovid eksportida?</value>
+    <value>你想要在哪裡輸出?</value>
   </data>
   <data name="FatalError" xml:space="preserve">
-    <value>Saatuslik viga!</value>
+    <value>嚴重錯誤</value>
   </data>
   <data name="FatalErrorHandler" xml:space="preserve">
-    <value>Saatuslik viga on toimunud programmi täitmist!
-Programm sulgeda.
-Lisainformatsioon:</value>
+    <value>Keppy's MIDI Converter執行過程中發生嚴重錯誤
+該應用程式需要關閉
+其他信息:</value>
   </data>
   <data name="forceCloseTheApplicationStrip" xml:space="preserve">
-    <value>Sundsule programmi</value>
+    <value>強制關閉程式</value>
   </data>
   <data name="HelpStrip" xml:space="preserve">
-    <value>Aitama</value>
+    <value>幫助</value>
   </data>
   <data name="IdleMessage" xml:space="preserve">
-    <value>Ootab kasutaja sisend.
-Vali MIDI, laadida helifaile ning alustada muutust!</value>
+    <value>等待用戶回應
+選擇MIDI，加載音色庫，並開始轉換/播放</value>
   </data>
   <data name="ImportMIDI" xml:space="preserve">
-    <value>Koormus MIDI...</value>
+    <value>加入 MIDIs...</value>
   </data>
   <data name="ImportMIDIWindow" xml:space="preserve">
-    <value>Koormus MIDI muuta...</value>
+    <value>選擇要加入的MIDI檔案...</value>
   </data>
   <data name="ImportSoundfontBtn" xml:space="preserve">
-    <value>Koormus helifaili...</value>
+    <value>加入音色庫</value>
   </data>
   <data name="InfoPageTitle" xml:space="preserve">
-    <value>Info</value>
+    <value>關於</value>
   </data>
   <data name="informationAboutTheProgramStrip" xml:space="preserve">
-    <value>Programmi info...</value>
+    <value>關於這個程式</value>
   </data>
   <data name="InvalidMIDIFile" xml:space="preserve">
-    <value>{0} ei ole kehtiv MIDI faili!
+    <value>{0}不是一個有效MIDI的檔案!
 
-Palun vali kehtib MIDI faili ja proovi uuesti.</value>
+請選擇有效的MIDI檔案,並重試.</value>
   </data>
   <data name="InvalidVSTLoaded" xml:space="preserve">
-    <value>{0} ei ole kehtiv VST mõju!
-Veenduge laadimisel VST mõju mitte VST instrument.
+    <value>{0} 不是一個有效的VST特效
+確認加載VST特效而不是一個VST樂器。
 
-Kui sa üritad kasutada {1} VST vajate {1} versioon sellest programmist.
-{1} VST ei toeta {2} versioon sellest programmi, ja vastupidi.</value>
+如果你嘗試使用 {1} VST, 你需要使用 {1} 版本 Keppy's MIDI Converter too.
+這個 {2} 版本Keppy's MIDI Converter 不支援 {1} VSTs 和 反過來.</value>
   </data>
   <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
-    <value>KaleidonKep99's GitHub veebisait</value>
+    <value>KaleidonKep99的GitHub網頁</value>
   </data>
   <data name="KaleidonKep99sYouTubeChannel" xml:space="preserve">
-    <value>KaleidonKep99's YouTube veebisait</value>
+    <value>KaleidonKep99's YouTube頻道</value>
   </data>
   <data name="LatestVersionIdle" xml:space="preserve">
-    <value>Kliki uuendada nuppu, et kontrollida kõikidest uuendustest selle programmi</value>
+    <value>點擊“檢查更新”來檢查是否有可用的更新。</value>
   </data>
   <data name="LibraryVersion" xml:space="preserve">
-    <value>{0} versioon: {1}.{2}</value>
+    <value>{0} 版本: {1}.{2}</value>
   </data>
   <data name="License" xml:space="preserve">
-    <value>Litsents</value>
+    <value>許可</value>
   </data>
   <data name="LoadVST" xml:space="preserve">
-    <value>Koormus</value>
+    <value>讀取</value>
   </data>
   <data name="MemoryAllocationConversion" xml:space="preserve">
-    <value>Programm eraldab mälu ekspordi.
-Palun oota...</value>
+    <value>該應用程序轉換過程中分配內存。
+請稍候...</value>
   </data>
   <data name="MemoryAllocationPlayback" xml:space="preserve">
-    <value>Programm eraldab mälu esituse.
-Palun oota...</value>
+    <value>該應用程序的預覽分配內存。
+請稍候...</value>
   </data>
   <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
-    <value>Programm eraldab mälu esituse.
-Muutke VST DSP seaded, kui küsitakse.
-Palun oota...</value>
+    <value>該應用程序的預覽分配內存。
+當問及編輯VST的DSP設置。
+請稍候...</value>
   </data>
   <data name="MoveDOWN" xml:space="preserve">
-    <value>Liigu alla (Üks kirje)</value>
+    <value>往下移動 (一個項目)</value>
   </data>
   <data name="MoveDOWNSF" xml:space="preserve">
-    <value>Liigu alla ▼</value>
+    <value>往下移動 ▼</value>
   </data>
   <data name="MoveUP" xml:space="preserve">
-    <value>Üles liikuma (Üks kirje)</value>
+    <value>往上移動 (一個項目)</value>
   </data>
   <data name="MoveUPSF" xml:space="preserve">
-    <value>Üles liikuma ▲</value>
+    <value>往上移動 ▲</value>
   </data>
   <data name="NewValueTempo" xml:space="preserve">
-    <value>Uus tempoga väärtus:</value>
+    <value>New tempo value:</value>
   </data>
   <data name="NonFatalErrorHandler" xml:space="preserve">
-    <value>on tekkinud viga programmi töötamise ajal
+    <value>打開程式時發生錯誤.
 
-Lisainformatsioon:</value>
+更多信息:</value>
   </data>
   <data name="NoteOff1" xml:space="preserve">
-    <value>Ainult vabastada vanim näiteks pärast märkuse
-ära isegi siis, kui kattuvad juhtumeid märge.</value>
+    <value>只有在一個說明發布最早的記錄了，即使有音符重疊的實例。</value>
   </data>
   <data name="NoUpdatesText" xml:space="preserve">
-    <value>Ei ole saadaval värskendus.
-Proovige hiljem uuesti.</value>
+    <value>目前沒有找到更新.
+請稍後再試.</value>
   </data>
   <data name="NoUpdatesTitle" xml:space="preserve">
-    <value>Ei ole saadaval värskendus</value>
+    <value>目前沒更新.</value>
   </data>
   <data name="OnlyOneItemMsg" xml:space="preserve">
-    <value>Saab liikuda ainult ühe elemendi!</value>
+    <value>只能一次移動一個</value>
   </data>
   <data name="OptionsStrip" xml:space="preserve">
-    <value>Seaded</value>
+    <value>設定</value>
   </data>
   <data name="OverrideTempo1" xml:space="preserve">
-    <value>Alistamine kiirus:</value>
+    <value>覆蓋速度:</value>
   </data>
   <data name="OverrideTempo2" xml:space="preserve">
-    <value>Alistamine kiirus: (algselt {0}bpm)</value>
+    <value>覆蓋速度: (原. {0}bpm)</value>
   </data>
   <data name="PeakLevel" xml:space="preserve">
-    <value>Tipp</value>
+    <value>峰值</value>
   </data>
   <data name="PlaybackAborted" xml:space="preserve">
-    <value>Esituse tühistatud</value>
+    <value>播放中止.</value>
   </data>
   <data name="PlaybackAbortedXPMessage" xml:space="preserve">
-    <value>Esituse tühistatud
+    <value>播放中止.
 
-BASS olek: {0}</value>
+BASS 狀態: {0}</value>
   </data>
   <data name="PlaybackCompleted" xml:space="preserve">
-    <value>Esituse lõpetanud</value>
+    <value>播放完成.</value>
   </data>
   <data name="PlaybackCompletedXPMessage" xml:space="preserve">
-    <value>Esituse lõpetanud
+    <value>播放完成.
 
-BASS olek: {0}</value>
+BASS 狀態: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
-    <value>{0} ulatuses MIDI mängitakse.
-Koht: {1} - {2}</value>
+    <value>{0}% MIDI已撥放.
+位置: {1} - {2}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Mängimine {0}...</value>
+    <value>Keppy's MIDI Converter | 正在撥放 {0}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
-    <value>Valminud</value>
+    <value>完成</value>
   </data>
   <data name="RemoveMIDI" xml:space="preserve">
-    <value>Kõrvaldamiseks valitud MIDI</value>
+    <value>移除選擇MIDIs</value>
   </data>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
-    <value>Eemaldada helifaili</value>
+    <value>移除音色庫(s)</value>
   </data>
   <data name="RenderToOGG" xml:space="preserve">
-    <value>Ekspordi faili (.OGG)</value>
+    <value>輸出到Vorbis(.OGG)</value>
   </data>
   <data name="RenderToSpeakers" xml:space="preserve">
-    <value>Eelvaade faili (Reaalajas esituse)</value>
+    <value>預覽文件 (實際撥放)</value>
   </data>
   <data name="RenderToWAV" xml:space="preserve">
-    <value>Ekspordi faili (.WAV)</value>
+    <value>輸出到Wave (.WAV)</value>
   </data>
   <data name="RightClickCopyNotice" xml:space="preserve">
-    <value>Paremklõps kuskil kopeerida seda postitust</value>
+    <value>右鍵點擊視窗中的任何地方來複製信息.</value>
   </data>
   <data name="RMS" xml:space="preserve">
-    <value>Ruutkeskmine</value>
+    <value>平方根</value>
   </data>
   <data name="SaveHere" xml:space="preserve">
-    <value>Säästa siin</value>
+    <value>儲存在這裡...</value>
   </data>
   <data name="SelectOneSF" xml:space="preserve">
-    <value>Palun valige vähemalt ühe helifaili</value>
+    <value>請至少選一個音色庫</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Seaded</value>
+    <value>設定</value>
   </data>
   <data name="SettingsBox" xml:space="preserve">
-    <value>Seaded</value>
+    <value>設定</value>
   </data>
   <data name="SFVSTManager" xml:space="preserve">
-    <value>Ava helifail/VST juht</value>
+    <value>打開音色庫/VST管理</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>Koormus kuni 2.147.483.648 heli faile korraga.
-Esimene helifail nimekirja laeb enne järgmist helifaile.
-Kontrolli oma helifaile tahes korruptsiooni enne lisades need seda nimekirja, et vältida vigu.
+    <value>當你在轉換MIDI時,音色庫最高支援2.147.483.648個
+該列表中的第一個音色庫會覆蓋最新的。
+檢查音色庫未損壞，將其添加到列表之前，為避免隨機崩潰/錯誤.
 
 
-Järgmised formaate ei toetata: SF2, SF3, SFZ, SFPACK</value>
+支援音色的格式：</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
-    <value>See ei ole kehtiv helifaili!
+    <value>這不是有效的音色庫
 
-Vali sobiv helifail ja proovi uuesti</value>
+選取音色庫然後再試一次</value>
   </data>
   <data name="SoundfontManagerTitle" xml:space="preserve">
-    <value>Helifail/VST juht</value>
+    <value>音色庫/VST管理</value>
   </data>
   <data name="supportTheDeveloperWithADonation" xml:space="preserve">
-    <value>Toetada arendaja annetades</value>
+    <value>幫助開發人員提供捐贈</value>
   </data>
   <data name="Un4seenWebsite" xml:space="preserve">
-    <value>Un4seen veebisait</value>
+    <value>Un4seen網站</value>
   </data>
   <data name="UnloadAllVSTs" xml:space="preserve">
-    <value>Eemalda kõik</value>
+    <value>全部移除</value>
   </data>
   <data name="UnloadVST" xml:space="preserve">
-    <value>Eemaldama</value>
+    <value>移除</value>
   </data>
   <data name="UpdateFoundVer" xml:space="preserve">
-    <value>Uus versioon on leitud.
-Version: {0}</value>
+    <value>找到可用的更新,請燒等</value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
-    <value>Uuendused</value>
+    <value>升級</value>
   </data>
   <data name="UpdatesChecking" xml:space="preserve">
-    <value>Otsid uut versiooni</value>
+    <value>檢查可用的更新</value>
   </data>
   <data name="UpdatesFoundText" xml:space="preserve">
-    <value>Uus versioon on leitud!
-Vajuta OK, et avada allalaadimise lehele.</value>
+    <value>找到可用的更新,按OK來打開下載頁面</value>
   </data>
   <data name="UpdatesFoundTitle" xml:space="preserve">
-    <value>Uus versioon saadaval</value>
+    <value>可用更新</value>
   </data>
   <data name="VersionLabel" xml:space="preserve">
-    <value>{0} versioon, mis on optimeeritud {1} protsessorid</value>
+    <value>{0}版本{1}對處理器做最佳化</value>
   </data>
   <data name="VoiceLabel" xml:space="preserve">
-    <value>Polüfoonia:</value>
+    <value>Voice 限制:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
-    <value>Kuidas nad töötavad?
+    <value>他們如何工作？
 
-Efekt 1 kohaldatakse selle mõju audio, siis saad edasi modifitseeritud heli Effect 2,
-et siis teha sama efekt 3 ja nii edasi.
+效果1將應用效果的音響，那麼它會通過修改後的音頻效果2，
+然後，將做同樣的效應3等。
 
-See kett-like süsteemi.</value>
+這是一個連鎖系統。</value>
   </data>
   <data name="VSTInvalidCallError" xml:space="preserve">
-    <value>Tekkis viga laadida {0}.
-VST ei saa laadida.
+    <value>嘗試時發生錯誤 {0}.
+VST無法讀取.
 
-Viga:
+Errore:
 {1} 
 
-VST ei ole ilmselt kooskõlas regulaarselt Windows vormid süsteemi.
-Viga on kopeeritud lõikelauale.</value>
+該VST是可能無法在本機Windows表單系統兼容
+複製錯誤到剪貼板</value>
   </data>
   <data name="VSTInvalidCallTitle" xml:space="preserve">
-    <value>Halb VST kõne</value>
+    <value>無效的VST call</value>
   </data>
   <data name="VSTManager" xml:space="preserve">
-    <value>VST juht</value>
+    <value>VST管理</value>
   </data>
   <data name="VSTManagerButtonText" xml:space="preserve">
-    <value>Avada VST juht</value>
+    <value>打開VST DSP管理</value>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>Tahan rakendada VST DSP</value>
+    <value>我也想要新增VST DSP...</value>
   </data>
   <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
-    <value>Windows XP SP2 või uuem on vaja käivitada Keppy's MIDI Converter.
-Vajuta OK, et väljuda.</value>
+    <value>Keppy's MIDI Converter要求Windows XP SP2或最新版本.
+按OK離開.</value>
   </data>
   <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
-    <value>Windows XP SP1 ja vanemad ei toeta.</value>
-  </data>
-  <data name="Volume" xml:space="preserve">
-    <value>Valjus:</value>
+    <value>不支援Windows XP SP1或更舊的作業系統版本</value>
   </data>
   <data name="InfoWindowTitle" xml:space="preserve">
-    <value>Info</value>
+    <value>關於</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>音量:</value>
   </data>
   <data name="ZZZTranslators" xml:space="preserve">
-    <value>Aldo Talving</value>
+    <value>Ryan Video Channel</value>
   </data>
 </root>
