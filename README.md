@@ -31,7 +31,7 @@ There's a portable version of Keppy's MIDI Converter too. [Take a look here] (ht
 - Microsoft Visual Studio 2013. (or newer, your choice)
 - [BASS.NET] (http://www.bass.radio42.com/) by Radio42.
 
-## Languages:
+## Main languages available:
 Language | Available
 ------------ | -------------
 Chinese (Simplified) | No translator available
@@ -45,6 +45,11 @@ Japanese | Yes
 Portuguese | No translator available
 Russian | No translator available
 Spanish | On its way
+
+Do you want your native language to be integrated into Keppy's MIDI Converter? <br>
+Download the [following file] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/raw/master/KeppyMIDIConverter/Languages/base%20-%20ren.LANG.resx) and start editing it with [RESX Editor] (https://sourceforge.net/projects/resx/)! (Or Visual Studio, if you have it installed)<br>
+When you're done, send it to me through this form: https://goo.gl/forms/aHSvJescUqCYCHiN2<br><br>
+Thank you in advance!
 
 ## Credits
 - Thanks Ian Luck for his wonderful BASS libraries! Take a look to them here: [Un4seen website] (http://www.un4seen.com/)

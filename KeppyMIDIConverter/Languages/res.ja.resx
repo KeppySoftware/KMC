@@ -454,7 +454,7 @@ BASS status: {0}</value>
 BASS status: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
-    <value>{0}% を再生しました。
+    <value>{0} を再生しました。
 現在位置: {1} - {2}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">

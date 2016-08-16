@@ -965,10 +965,10 @@ namespace KeppyMIDIConverter
                                     BassEnc.BASS_Encode_Stop(Globals._Encoder);
                                     Bass.BASS_StreamFree(Globals._recHandle);
                                     Bass.BASS_Free();
-                                    Globals.CurrentStatusTextString = "Playback aborted.";
+                                    Globals.CurrentStatusTextString = res_man.GetString("PlaybackAborted", cul);
                                     Globals.ActiveVoicesInt = 0;
                                     Globals.NewWindowName = "Keppy's MIDI Converter";
-                                    MessageBox.Show("Playback aborted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    MessageBox.Show(res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackXPTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                     Globals.CurrentStatusTextString = null;
                                     KeepLooping = false;
                                     break;

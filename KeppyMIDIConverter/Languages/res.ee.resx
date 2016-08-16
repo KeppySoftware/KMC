@@ -456,7 +456,7 @@ BASS olek: {0}</value>
 BASS olek: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
-    <value>{0}% ulatuses MIDI mängitakse.
+    <value>{0} ulatuses MIDI mängitakse.
 Koht: {1} - {2}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">

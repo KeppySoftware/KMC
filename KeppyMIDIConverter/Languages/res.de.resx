@@ -456,7 +456,7 @@ BASS Status: {0}</value>
 BASS Status: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
-    <value>{0}% der MIDI abgespielt.
+    <value>{0} der MIDI abgespielt.
 Position: {1} - {2}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
