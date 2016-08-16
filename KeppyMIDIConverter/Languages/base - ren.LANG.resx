@@ -590,4 +590,7 @@ Click OK to exit.</value>
   <data name="Volume" xml:space="preserve">
     <value>Volume:</value>
   </data>
+  <data name="InfoWindowTitle" xml:space="preserve">
+    <value>Information</value>
+  </data>
 </root>
