@@ -38,8 +38,8 @@ Afrikaans | No translator available
 Arabic | No translator available
 Armenian | No translator available
 Bulgarian | No translator available
-Chinese (Simplified) | Yes (Need fixes)
-Chinese (Traditional) | No translator available
+Chinese (Simplified) | Yes
+Chinese (Traditional) | Yes
 Danish | No translator available
 Dutch | On its way
 English | Yes
@@ -53,8 +53,8 @@ Japanese | Yes
 Portuguese | No translator available
 Russian | No translator available
 Serbian | No translator available
-Spanish | On its way
-Turkish | No translator available
+Spanish | Yes
+Turkish | Yes
 Ukrainian | No translator available
 
 Do you want your native language to be integrated into Keppy's MIDI Converter? <br>
