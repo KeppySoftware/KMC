@@ -173,7 +173,8 @@
       <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\res.de.resx" />
-    <EmbeddedResource Include="Languages\res.ee.resx">
+    <EmbeddedResource Include="Languages\res.es.resx" />
+    <EmbeddedResource Include="Languages\res.et.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\res.en.resx" />

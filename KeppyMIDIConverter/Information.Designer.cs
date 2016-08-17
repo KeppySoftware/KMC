@@ -92,9 +92,9 @@
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.Location = new System.Drawing.Point(427, 185);
+            this.button2.Location = new System.Drawing.Point(427, 179);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 23);
+            this.button2.Size = new System.Drawing.Size(102, 29);
             this.button2.TabIndex = 4;
             this.button2.Text = "Un4seen website";
             this.button2.UseVisualStyleBackColor = true;
@@ -103,9 +103,9 @@
             // button3
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button3.Location = new System.Drawing.Point(346, 185);
+            this.button3.Location = new System.Drawing.Point(346, 179);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(75, 29);
             this.button3.TabIndex = 5;
             this.button3.Text = "License";
             this.button3.UseVisualStyleBackColor = true;

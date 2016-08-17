@@ -96,27 +96,76 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                CultureInfo ci = CultureInfo.InstalledUICulture;
-                if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
-                    return CultureInfo.CreateSpecificCulture("zh-CN");
-                else if (ci.Name == "et-EE")
-                    return CultureInfo.CreateSpecificCulture("ee");
-                else if (ci.Name == "zh-CN")
-                    return CultureInfo.CreateSpecificCulture("zh-CN");
-                else if (ci.Name == "zh-HK")
-                    return CultureInfo.CreateSpecificCulture("zh-HK");
-                else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
-                    return CultureInfo.CreateSpecificCulture("de");
-             // else if (ci.Name == "nl-NL" | ci.Name == "nl-BE")
-             //     return CultureInfo.CreateSpecificCulture("nl");
-                else if (ci.Name == "ja-JP")
-                    return CultureInfo.CreateSpecificCulture("ja");
-                else // The current language of the UI is not available, fallback to English.
-                    return CultureInfo.CreateSpecificCulture("en");
+                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+                RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", false);
+                if (Language != null)
+                {
+                    if (Convert.ToInt32(Language.GetValue("langoverride", 0)) == 1)
+                    {
+                        if (Language.GetValue("selectedlanguage", "en").ToString() != null)
+                        {
+                            return CultureInfo.CreateSpecificCulture(Language.GetValue("selectedlanguage").ToString());
+                        }
+                        else
+                        {
+                            return CultureInfo.CreateSpecificCulture("en");
+                        }
+                    }
+                    else
+                    {
+                        CultureInfo ci = CultureInfo.InstalledUICulture;
+                        if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
+                            return CultureInfo.CreateSpecificCulture("it");
+                        else if (ci.Name == "et-EE")
+                            return CultureInfo.CreateSpecificCulture("et");
+                        else if (ci.Name == "zh-CN")
+                            return CultureInfo.CreateSpecificCulture("zh-CN");
+                        else if (ci.Name == "zh-HK")
+                            return CultureInfo.CreateSpecificCulture("zh-HK");
+                        else if (ci.Name == "zh-TW")
+                            return CultureInfo.CreateSpecificCulture("zh-TW");
+                        else if (ci.Name == "tr-TR")
+                            return CultureInfo.CreateSpecificCulture("tr");
+                        else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
+                            return CultureInfo.CreateSpecificCulture("de");
+                        else if (ci.Name == "es-AR" | ci.Name == "es-VE" | ci.Name == "es-BO" | ci.Name == "es-CL" | ci.Name == "es-DO" | ci.Name == "es-EC" | ci.Name == "es-SV" | ci.Name == "es-CO" | ci.Name == "es-CR" | ci.Name == "es-ES" | ci.Name == "es-GT" | ci.Name == "es-HN" | ci.Name == "es-MX" | ci.Name == "es-NI" | ci.Name == "es-PA" | ci.Name == "es-PY" | ci.Name == "es-PE" | ci.Name == "es-PR" | ci.Name == "es-US" | ci.Name == "es-UY")
+                            return CultureInfo.CreateSpecificCulture("es");
+                        // else if (ci.Name == "nl-NL" | ci.Name == "nl-BE")
+                        //     return CultureInfo.CreateSpecificCulture("nl");
+                        else if (ci.Name == "ja-JP")
+                            return CultureInfo.CreateSpecificCulture("ja");
+                        else // The current language of the UI is not available, fallback to English.
+                            return CultureInfo.CreateSpecificCulture("en");
+                    }
+                    Language.Close();
+                }
+                else
+                {
+                    CultureInfo ci = CultureInfo.InstalledUICulture;
+                    if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
+                        return CultureInfo.CreateSpecificCulture("it");
+                    else if (ci.Name == "et-EE")
+                        return CultureInfo.CreateSpecificCulture("ee");
+                    else if (ci.Name == "zh-CN")
+                        return CultureInfo.CreateSpecificCulture("zh-CN");
+                    else if (ci.Name == "zh-HK")
+                        return CultureInfo.CreateSpecificCulture("zh-HK");
+                    else if (ci.Name == "zh-TW")
+                        return CultureInfo.CreateSpecificCulture("zh-TW");
+                    else if (ci.Name == "tr-TR")
+                        return CultureInfo.CreateSpecificCulture("tr");
+                    else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
+                        return CultureInfo.CreateSpecificCulture("de");
+                    // else if (ci.Name == "nl-NL" | ci.Name == "nl-BE")
+                    //     return CultureInfo.CreateSpecificCulture("nl");
+                    else if (ci.Name == "ja-JP")
+                        return CultureInfo.CreateSpecificCulture("ja");
+                    else // The current language of the UI is not available, fallback to English.
+                        return CultureInfo.CreateSpecificCulture("en");
+                }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.ToString());
                 return CultureInfo.CreateSpecificCulture("en");
             }
         }

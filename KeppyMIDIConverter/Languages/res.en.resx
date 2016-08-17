@@ -596,4 +596,7 @@ Click OK to exit.</value>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>KaleidonKep99</value>
   </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>Override Windows's default UI language</value>
+  </data>
 </root>

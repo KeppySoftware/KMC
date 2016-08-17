@@ -598,4 +598,7 @@ OKをクリックして閉じてください。</value>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>Tarwil and Yokkin</value>
   </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>オーバーライド言語</value>
+  </data>
 </root>

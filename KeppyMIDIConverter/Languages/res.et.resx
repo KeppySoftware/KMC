@@ -598,4 +598,7 @@ Vajuta OK, et väljuda.</value>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>Aldo Talving</value>
   </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>Alistamine keeles</value>
+  </data>
 </root>

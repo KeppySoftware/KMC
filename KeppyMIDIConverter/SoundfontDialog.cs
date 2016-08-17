@@ -19,7 +19,6 @@ namespace KeppyMIDIConverter
         public SoundfontDialog()
         {
             InitializeComponent();
-            InitializeLanguage();
         }
 
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
@@ -116,6 +115,7 @@ namespace KeppyMIDIConverter
 
         private void SoundfontDialog_Load(object sender, EventArgs e)
         {
+            InitializeLanguage();
             SFList.ContextMenu = SFMenu;
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);

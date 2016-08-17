@@ -72,6 +72,24 @@
             this.enabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
+            this.OverrideStrip = new System.Windows.Forms.MenuItem();
+            this.enabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
+            this.disabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
+            this.menuItem20 = new System.Windows.Forms.MenuItem();
+            this.DutchOverride = new System.Windows.Forms.MenuItem();
+            this.EnglishOverride = new System.Windows.Forms.MenuItem();
+            this.EstonianOverride = new System.Windows.Forms.MenuItem();
+            this.FrenchOverride = new System.Windows.Forms.MenuItem();
+            this.GermanOverride = new System.Windows.Forms.MenuItem();
+            this.ItalianOverride = new System.Windows.Forms.MenuItem();
+            this.IndonesianOverride = new System.Windows.Forms.MenuItem();
+            this.JapaneseOverride = new System.Windows.Forms.MenuItem();
+            this.ChineseCNOverride = new System.Windows.Forms.MenuItem();
+            this.ChineseTWOverride = new System.Windows.Forms.MenuItem();
+            this.SpanishOverride = new System.Windows.Forms.MenuItem();
+            this.TurkishOverride = new System.Windows.Forms.MenuItem();
+            this.ChineseHKOverride = new System.Windows.Forms.MenuItem();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.HelpStrip = new System.Windows.Forms.MenuItem();
             this.informationAboutTheProgramToolStripMenuItem = new System.Windows.Forms.MenuItem();
@@ -112,9 +130,9 @@
             // 
             this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.UsedVoices.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsedVoices.Location = new System.Drawing.Point(359, 302);
+            this.UsedVoices.Location = new System.Drawing.Point(341, 302);
             this.UsedVoices.Name = "UsedVoices";
-            this.UsedVoices.Size = new System.Drawing.Size(143, 13);
+            this.UsedVoices.Size = new System.Drawing.Size(161, 13);
             this.UsedVoices.TabIndex = 8;
             this.UsedVoices.Text = "Voices: 100000/100000";
             this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -225,9 +243,9 @@
             this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelRMS.Location = new System.Drawing.Point(12, 302);
             this.labelRMS.Name = "labelRMS";
-            this.labelRMS.Size = new System.Drawing.Size(341, 13);
+            this.labelRMS.Size = new System.Drawing.Size(329, 13);
             this.labelRMS.TabIndex = 17;
-            this.labelRMS.Text = "Root mean square: -Infinito dB | Average: -Infinito dB | Peak: -0.0 dB";
+            this.labelRMS.Text = "Root mean square: -0.0 dB | Average: -0.0 dB | Peak: -0.0 dB";
             // 
             // CurrentStatusText
             // 
@@ -415,6 +433,8 @@
             this.ConvPosOrTimeLeft,
             this.AudioEventsStrip,
             this.menuItem13,
+            this.OverrideStrip,
+            this.menuItem2,
             this.forceCloseTheApplicationToolStripMenuItem});
             this.OptionsStrip.Text = "Options";
             // 
@@ -523,10 +543,146 @@
             this.menuItem13.Index = 5;
             this.menuItem13.Text = "-";
             // 
+            // OverrideStrip
+            // 
+            this.OverrideStrip.Index = 6;
+            this.OverrideStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.enabledToolStripMenuItem5,
+            this.disabledToolStripMenuItem5,
+            this.menuItem20,
+            this.DutchOverride,
+            this.EnglishOverride,
+            this.EstonianOverride,
+            this.FrenchOverride,
+            this.GermanOverride,
+            this.ItalianOverride,
+            this.IndonesianOverride,
+            this.JapaneseOverride,
+            this.ChineseCNOverride,
+            this.ChineseTWOverride,
+            this.SpanishOverride,
+            this.TurkishOverride,
+            this.ChineseHKOverride});
+            this.OverrideStrip.Text = "Override language";
+            // 
+            // enabledToolStripMenuItem5
+            // 
+            this.enabledToolStripMenuItem5.Index = 0;
+            this.enabledToolStripMenuItem5.Text = "Enabled";
+            this.enabledToolStripMenuItem5.Click += new System.EventHandler(this.enabledToolStripMenuItem5_Click);
+            // 
+            // disabledToolStripMenuItem5
+            // 
+            this.disabledToolStripMenuItem5.Checked = true;
+            this.disabledToolStripMenuItem5.Index = 1;
+            this.disabledToolStripMenuItem5.Text = "Disabled";
+            this.disabledToolStripMenuItem5.Click += new System.EventHandler(this.disabledToolStripMenuItem5_Click);
+            // 
+            // menuItem20
+            // 
+            this.menuItem20.Index = 2;
+            this.menuItem20.Text = "-";
+            // 
+            // DutchOverride
+            // 
+            this.DutchOverride.Enabled = false;
+            this.DutchOverride.Index = 3;
+            this.DutchOverride.Text = "Dutch (Nederlands)";
+            this.DutchOverride.Click += new System.EventHandler(this.DutchOverride_Click);
+            // 
+            // EnglishOverride
+            // 
+            this.EnglishOverride.Enabled = false;
+            this.EnglishOverride.Index = 4;
+            this.EnglishOverride.Text = "English (English)";
+            this.EnglishOverride.Click += new System.EventHandler(this.EnglishOverride_Click);
+            // 
+            // EstonianOverride
+            // 
+            this.EstonianOverride.Enabled = false;
+            this.EstonianOverride.Index = 5;
+            this.EstonianOverride.Text = "Estonian (Eesti)";
+            this.EstonianOverride.Click += new System.EventHandler(this.EstonianOverride_Click);
+            // 
+            // FrenchOverride
+            // 
+            this.FrenchOverride.Enabled = false;
+            this.FrenchOverride.Index = 6;
+            this.FrenchOverride.Text = "French (Français)";
+            this.FrenchOverride.Click += new System.EventHandler(this.FrenchOverride_Click);
+            // 
+            // GermanOverride
+            // 
+            this.GermanOverride.Enabled = false;
+            this.GermanOverride.Index = 7;
+            this.GermanOverride.Text = "German (Deutsch)";
+            this.GermanOverride.Click += new System.EventHandler(this.GermanOverride_Click);
+            // 
+            // ItalianOverride
+            // 
+            this.ItalianOverride.Enabled = false;
+            this.ItalianOverride.Index = 8;
+            this.ItalianOverride.Text = "Italian (Italiano)";
+            this.ItalianOverride.Click += new System.EventHandler(this.ItalianOverride_Click);
+            // 
+            // IndonesianOverride
+            // 
+            this.IndonesianOverride.Enabled = false;
+            this.IndonesianOverride.Index = 9;
+            this.IndonesianOverride.Text = "Indonesian (Bahasa Indonesia)";
+            this.IndonesianOverride.Click += new System.EventHandler(this.IndonesianOverride_Click);
+            // 
+            // JapaneseOverride
+            // 
+            this.JapaneseOverride.Enabled = false;
+            this.JapaneseOverride.Index = 10;
+            this.JapaneseOverride.Text = "Japanese (日本語)";
+            this.JapaneseOverride.Click += new System.EventHandler(this.JapaneseOverride_Click);
+            // 
+            // ChineseCNOverride
+            // 
+            this.ChineseCNOverride.Enabled = false;
+            this.ChineseCNOverride.Index = 11;
+            this.ChineseCNOverride.Text = "Simplified Chinese (简化字, PRC)";
+            this.ChineseCNOverride.Click += new System.EventHandler(this.ChineseCN_Click);
+            // 
+            // ChineseTWOverride
+            // 
+            this.ChineseTWOverride.Enabled = false;
+            this.ChineseTWOverride.Index = 12;
+            this.ChineseTWOverride.Text = "Simplified Chinese (國語, Taiwan)";
+            this.ChineseTWOverride.Click += new System.EventHandler(this.ChineseTW_Click);
+            // 
+            // SpanishOverride
+            // 
+            this.SpanishOverride.Enabled = false;
+            this.SpanishOverride.Index = 13;
+            this.SpanishOverride.Text = "Spanish (Español)";
+            this.SpanishOverride.Click += new System.EventHandler(this.SpanishOverride_Click);
+            // 
+            // TurkishOverride
+            // 
+            this.TurkishOverride.Enabled = false;
+            this.TurkishOverride.Index = 14;
+            this.TurkishOverride.Text = "Turkish (Türkçe)";
+            this.TurkishOverride.Click += new System.EventHandler(this.TurkishOverride_Click);
+            // 
+            // ChineseHKOverride
+            // 
+            this.ChineseHKOverride.Enabled = false;
+            this.ChineseHKOverride.Index = 15;
+            this.ChineseHKOverride.Text = "Traditional Chinese (廣東話, Hong Kong)";
+            this.ChineseHKOverride.Click += new System.EventHandler(this.ChineseHK_Click);
+            // 
+            // menuItem2
+            // 
+            this.menuItem2.Index = 7;
+            this.menuItem2.Text = "-";
+            // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.forceCloseTheApplicationToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
-            this.forceCloseTheApplicationToolStripMenuItem.Index = 6;
+            this.forceCloseTheApplicationToolStripMenuItem.Index = 8;
             this.forceCloseTheApplicationToolStripMenuItem.Text = "Crash the application";
             this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
             // 
@@ -726,6 +882,24 @@
         private wyDay.Controls.VistaMenu VistaMenuSys;
         private System.Windows.Forms.MenuItem menuItem13;
         private System.Windows.Forms.MenuItem KaleidonKep99sGitHubPageToolStripMenuItem;
+        private System.Windows.Forms.MenuItem OverrideStrip;
+        private System.Windows.Forms.MenuItem ItalianOverride;
+        private System.Windows.Forms.MenuItem EnglishOverride;
+        private System.Windows.Forms.MenuItem SpanishOverride;
+        private System.Windows.Forms.MenuItem GermanOverride;
+        private System.Windows.Forms.MenuItem EstonianOverride;
+        private System.Windows.Forms.MenuItem DutchOverride;
+        private System.Windows.Forms.MenuItem IndonesianOverride;
+        private System.Windows.Forms.MenuItem FrenchOverride;
+        private System.Windows.Forms.MenuItem TurkishOverride;
+        private System.Windows.Forms.MenuItem menuItem2;
+        private System.Windows.Forms.MenuItem enabledToolStripMenuItem5;
+        private System.Windows.Forms.MenuItem disabledToolStripMenuItem5;
+        private System.Windows.Forms.MenuItem menuItem20;
+        private System.Windows.Forms.MenuItem ChineseCNOverride;
+        private System.Windows.Forms.MenuItem ChineseTWOverride;
+        private System.Windows.Forms.MenuItem ChineseHKOverride;
+        private System.Windows.Forms.MenuItem JapaneseOverride;
     }
 }
 

@@ -596,4 +596,7 @@ OK klicken zum Beenden.</value>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>Snake8Bit</value>
   </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>Aufschalten Sprache</value>
+  </data>
 </root>

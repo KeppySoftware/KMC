@@ -136,13 +136,13 @@ Copyright ©2006 Steinberg Media Technologies.
 All Rights Reserved.</value>
   </data>
   <data name="AboutVSTSupportTitle" xml:space="preserve">
-    <value>關於Virtual Studio接口技術</value>
+    <value>關於Virtual Studio Technology接口</value>
   </data>
   <data name="ActionsStrip" xml:space="preserve">
     <value>動作</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Voices:</value>
+    <value>复调音乐: </value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>請至少加一個MIDI檔案到轉換列表</value>
@@ -234,34 +234,34 @@ BASS 狀態: {0}</value>
     <value>在剩餘時間處顯示轉換位置</value>
   </data>
   <data name="ConvStatusFasterNew" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Approximate time left: {2} - Elapsed time: {3}
-Rendering time: {4}% ({5}x~ faster)</value>
+    <value>{0}原始数据转换成的MB。 （{1}）
+大致时间留给：{2} - 消逝时间：{3}
+描绘时间：{4}％（{5} X〜快）</value>
   </data>
   <data name="ConvStatusFasterOld" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Current position: {2} - {3}
-Rendering time: {4}% ({5}x~ faster)</value>
+    <value>{0}原始数据转换成的MB。 （{1}）
+大致时间留给：{2} - 消逝时间：{3}
+描绘时间：{4}％</value>
   </data>
   <data name="ConvStatusNormalNew" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Approximate time left: {2} - Elapsed time: {3}
-Rendering time: {4}%</value>
+    <value>{0}原始数据转换成的MB。 （{1}）
+大致时间留给：{2} - 消逝时间：{3}
+描绘时间：{4}％（{5} X〜慢）</value>
   </data>
   <data name="ConvStatusNormalOld" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Current position: {2} - {3}
-Rendering time: {4}%</value>
+    <value>{0}原始数据转换成的MB。 （{1}）
+当前位置：{2} - {3}
+描绘时间：{4}％（{5} X〜快）</value>
   </data>
   <data name="ConvStatusSlowerNew" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Approximate time left: {2} - Elapsed time: {3}
-Rendering time: {4}% ({5}x~ slower)</value>
+    <value>{0}原始数据转换成的MB。 （{1}）
+当前位置：{2} - {3}
+描绘时间：{4}％</value>
   </data>
   <data name="ConvStatusSlowerOld" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Current position: {2} - {3}
-Rendering time: {4}% ({5}x~ slower</value>
+    <value>{0}原始数据转换成的MB。 （{1}）
+当前位置：{2} - {3}
+描绘时间：{4}％（{5} X〜慢）</value>
   </data>
   <data name="CopiedToClipboardNotice" xml:space="preserve">
     <value>錯誤訊息已複製到剪貼簿.
@@ -406,7 +406,7 @@ button.
     <value>往上移動 ▲</value>
   </data>
   <data name="NewValueTempo" xml:space="preserve">
-    <value>New tempo value:</value>
+    <value>新增节拍值的:</value>
   </data>
   <data name="NonFatalErrorHandler" xml:space="preserve">
     <value>打開程式時發生錯誤.
@@ -547,7 +547,7 @@ BASS 狀態: {0}</value>
     <value>{0}版本{1}對處理器做最佳化</value>
   </data>
   <data name="VoiceLabel" xml:space="preserve">
-    <value>Voice 限制:</value>
+    <value>复音限制:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
     <value>他們如何工作？
@@ -594,5 +594,8 @@ Errore:
   </data>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>Ryan Video Channel</value>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>覆盖语言</value>
   </data>
 </root>

@@ -24,7 +24,6 @@ namespace KeppyMIDIConverter
         public VSTManagerWindow()
         {
             InitializeComponent();
-            InitializeLanguage();
         }
 
         public static string bitnow = null;
@@ -68,6 +67,7 @@ namespace KeppyMIDIConverter
 
         private void VSTManagerWindow_Load(object sender, EventArgs e)
         {
+            InitializeLanguage();
             if (IntPtr.Size == 8)
             {
                 bitnow = "64-bit";

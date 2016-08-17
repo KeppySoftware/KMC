@@ -19,11 +19,11 @@ namespace KeppyMIDIConverter
         public Informations()
         {
             InitializeComponent();
-            InitializeLanguage();
         }
 
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
         CultureInfo cul;            // declare culture info
+
 
         private void InitializeLanguage()
         {
@@ -47,6 +47,7 @@ namespace KeppyMIDIConverter
 
         private void Informations_Load(object sender, EventArgs e)
         {
+            InitializeLanguage();
             try
             {
                 // Auto-update stuff

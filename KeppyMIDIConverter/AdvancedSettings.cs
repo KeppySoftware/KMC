@@ -15,13 +15,13 @@ namespace KeppyMIDIConverter
         public AdvancedSettings()
         {
             InitializeComponent();
-            InitializeLanguage();
         }
 
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
-        CultureInfo cul;            // declare culture info
+        CultureInfo cul;
+        public static Action NonStaticDelegate;
 
-        private void InitializeLanguage()
+        public void InitializeLanguage()
         {
             res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
             cul = Program.ReturnCulture();
@@ -37,6 +37,7 @@ namespace KeppyMIDIConverter
 
         private void AdvancedSettings_Load(object sender, EventArgs e)
         {
+            InitializeLanguage();
             // W8
             if (MainWindow.Globals.PlaybackMode == true)
             {
