@@ -48,7 +48,7 @@
     <OutputPath>bin\x64\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>full</DebugType>
+    <DebugType>none</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -57,7 +57,7 @@
     <LangVersion>default</LangVersion>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <FileAlignment>8192</FileAlignment>
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -74,14 +74,15 @@
     <OutputPath>bin\x86\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>none</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <WarningLevel>0</WarningLevel>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <FileAlignment>512</FileAlignment>
-    <DebugSymbols>false</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>mainlogo.ico</ApplicationIcon>
@@ -172,6 +173,7 @@
     <EmbeddedResource Include="Information.resx">
       <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Languages\res.bn.resx" />
     <EmbeddedResource Include="Languages\res.de.resx" />
     <EmbeddedResource Include="Languages\res.es.resx" />
     <EmbeddedResource Include="Languages\res.et.resx">
@@ -180,8 +182,7 @@
     <EmbeddedResource Include="Languages\res.en.resx" />
     <EmbeddedResource Include="Languages\res.it.resx" />
     <EmbeddedResource Include="Languages\res.ja.resx" />
-    <EmbeddedResource Include="Languages\res.nl.resx" />
-    <EmbeddedResource Include="Languages\res.tr.resx" />
+    <EmbeddedResource Include="Languages\res.ko.resx" />
     <EmbeddedResource Include="Languages\res.zh-CN.resx" />
     <EmbeddedResource Include="Languages\res.zh-HK.resx" />
     <EmbeddedResource Include="Languages\res.zh-TW.resx" />

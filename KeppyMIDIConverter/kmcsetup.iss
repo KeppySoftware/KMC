@@ -11,7 +11,7 @@ AppPublisherURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter
 AppSupportPhone=+393511888475
 AppSupportURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/issues
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=13.0.0
+AppVersion=13.0.1
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -33,8 +33,8 @@ VersionInfoCompany=KaleidonKep99
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoDescription=Keppy's MIDI Converter
 VersionInfoProductName=KMC
-VersionInfoProductVersion=13.0.0
-VersionInfoVersion=13.0.0
+VersionInfoProductVersion=13.0.1
+VersionInfoVersion=13.0.1
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
@@ -48,32 +48,46 @@ LZMAAlgorithm=1
 [Files]
 ;Generic
 Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
+
 ;64-bit files
-Source: "bin\x64\de\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\de"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\ee\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\ee"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\en\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\en"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\it\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\it"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\ja\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\ja"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\nl\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\nl"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass_vst.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bassenc.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bassmidi.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\kmcogg.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+
 ;32-bit files
-Source: "bin\x86\de\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\de"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\ee\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\ee"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\en\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\en"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\it\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\it"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\ja\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\ja"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\nl\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\nl"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass_vst.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bassenc.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\bassmidi.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
+
+;Languages
+Source: "bin\x64\bn\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\bn"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\de\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\de"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\en\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\en"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\es\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\es"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\et\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\et"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\it\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\it"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\ja\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\ja"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\ko\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\ko"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\zh-cn\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\zh-cn"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\zh-HK\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\zh-HK"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\zh-TW\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x64\zh-TW"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x86\bn\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\bn"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\de\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\de"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\en\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\en"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\es\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\es"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\et\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\et"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\it\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\it"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\ja\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\ja"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\ko\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\ko"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\zh-cn\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\zh-cn"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\zh-HK\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\zh-HK"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\zh-TW\KeppyMIDIConverter.resources.dll"; DestDir: "{app}\x86\zh-TW"; Flags: ignoreversion replacesameversion
 
 [UninstallDelete]
 Type: files; Name: "{app}\convfin.wav"

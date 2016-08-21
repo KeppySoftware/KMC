@@ -162,9 +162,9 @@
             this.VSTImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.VSTImport.Enabled = false;
-            this.VSTImport.Location = new System.Drawing.Point(214, 366);
+            this.VSTImport.Location = new System.Drawing.Point(313, 366);
             this.VSTImport.Name = "VSTImport";
-            this.VSTImport.Size = new System.Drawing.Size(355, 23);
+            this.VSTImport.Size = new System.Drawing.Size(256, 23);
             this.VSTImport.TabIndex = 17;
             this.VSTImport.Text = "Open the VST DSP manager...";
             this.VSTImport.UseVisualStyleBackColor = true;

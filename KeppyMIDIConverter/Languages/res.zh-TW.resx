@@ -136,13 +136,13 @@ Copyright ©2006 Steinberg Media Technologies.
 All Rights Reserved.</value>
   </data>
   <data name="AboutVSTSupportTitle" xml:space="preserve">
-    <value>關於Virtual Studio Technology接口</value>
+    <value>關於Virtual Studio Technology</value>
   </data>
   <data name="ActionsStrip" xml:space="preserve">
     <value>動作</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>复调音乐: </value>
+    <value>複音數: </value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>請至少加一個MIDI檔案到轉換列表</value>
@@ -234,34 +234,34 @@ BASS 狀態: {0}</value>
     <value>在剩餘時間處顯示轉換位置</value>
   </data>
   <data name="ConvStatusFasterNew" xml:space="preserve">
-    <value>{0}原始数据转换成的MB。 （{1}）
+    <value>{0}原始數據轉換成的MB。 （{1}）
 大致时间留给：{2} - 消逝时间：{3}
-描绘时间：{4}％（{5} X〜快）</value>
+渲染时间：{4}％（{5} X〜快）</value>
   </data>
   <data name="ConvStatusFasterOld" xml:space="preserve">
-    <value>{0}原始数据转换成的MB。 （{1}）
+    <value>{0}原始數據轉換成的MB。 （{1}）
 大致时间留给：{2} - 消逝时间：{3}
-描绘时间：{4}％</value>
+渲染时间：{4}％</value>
   </data>
   <data name="ConvStatusNormalNew" xml:space="preserve">
-    <value>{0}原始数据转换成的MB。 （{1}）
+    <value>{0}原始數據轉換成的MB。 （{1}）
 大致时间留给：{2} - 消逝时间：{3}
-描绘时间：{4}％（{5} X〜慢）</value>
+渲染时间：{4}％（{5} X〜慢）</value>
   </data>
   <data name="ConvStatusNormalOld" xml:space="preserve">
-    <value>{0}原始数据转换成的MB。 （{1}）
-当前位置：{2} - {3}
-描绘时间：{4}％（{5} X〜快）</value>
+    <value>{0}原始數據轉換成的MB。 （{1}）
+當前位置：{2} - {3}
+渲染时间：{4}％（{5} X〜快）</value>
   </data>
   <data name="ConvStatusSlowerNew" xml:space="preserve">
-    <value>{0}原始数据转换成的MB。 （{1}）
-当前位置：{2} - {3}
-描绘时间：{4}％</value>
+    <value>{0}原始數據轉換成的MB。 （{1}）
+當前位置：{2} - {3}
+渲染时间：{4}％</value>
   </data>
   <data name="ConvStatusSlowerOld" xml:space="preserve">
-    <value>{0}原始数据转换成的MB。 （{1}）
-当前位置：{2} - {3}
-描绘时间：{4}％（{5} X〜慢）</value>
+    <value>{0}原始數據轉換成的MB。 （{1}）
+當前位置：{2} - {3}
+渲染时间：{4}％（{5} X〜慢）</value>
   </data>
   <data name="CopiedToClipboardNotice" xml:space="preserve">
     <value>錯誤訊息已複製到剪貼簿.
@@ -357,16 +357,16 @@ button.
   </data>
   <data name="InvalidVSTLoaded" xml:space="preserve">
     <value>{0} 不是一個有效的VST特效
-確認加載VST特效而不是一個VST樂器。
+確認加載VST特效而不是VST樂器。
 
 如果你嘗試使用 {1} VST, 你需要使用 {1} 版本 Keppy's MIDI Converter too.
-這個 {2} 版本Keppy's MIDI Converter 不支援 {1} VSTs 和 反過來.</value>
+這個 {2} 版本Keppy's MIDI Converter 不支援 {1} VSTs 和 反之亦然.</value>
   </data>
   <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
     <value>KaleidonKep99的GitHub網頁</value>
   </data>
   <data name="KaleidonKep99sYouTubeChannel" xml:space="preserve">
-    <value>KaleidonKep99's YouTube頻道</value>
+    <value>KaleidonKep99的YouTube頻道</value>
   </data>
   <data name="LatestVersionIdle" xml:space="preserve">
     <value>點擊“檢查更新”來檢查是否有可用的更新。</value>
@@ -421,7 +421,7 @@ button.
 請稍後再試.</value>
   </data>
   <data name="NoUpdatesTitle" xml:space="preserve">
-    <value>目前沒更新.</value>
+    <value>目前沒有找到更新.</value>
   </data>
   <data name="OnlyOneItemMsg" xml:space="preserve">
     <value>只能一次移動一個</value>
@@ -503,10 +503,10 @@ BASS 狀態: {0}</value>
   <data name="SoundfontDialogMessage" xml:space="preserve">
     <value>當你在轉換MIDI時,音色庫最高支援2.147.483.648個
 該列表中的第一個音色庫會覆蓋最新的。
-檢查音色庫未損壞，將其添加到列表之前，為避免隨機崩潰/錯誤.
+加到音色庫列表之前，檢查音色庫有無損壞，避免造成隨機崩潰/錯誤.
 
 
-支援音色的格式：</value>
+支援音色的格式： SF2, SF3, SFZ, SFPACK</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>這不是有效的音色庫
@@ -529,7 +529,7 @@ BASS 狀態: {0}</value>
     <value>移除</value>
   </data>
   <data name="UpdateFoundVer" xml:space="preserve">
-    <value>找到可用的更新,請燒等</value>
+    <value>找到可用的更新，, m請稍等</value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
     <value>升級</value>
@@ -547,7 +547,7 @@ BASS 狀態: {0}</value>
     <value>{0}版本{1}對處理器做最佳化</value>
   </data>
   <data name="VoiceLabel" xml:space="preserve">
-    <value>复音限制:</value>
+    <value>複音限制:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
     <value>他們如何工作？
@@ -565,7 +565,7 @@ Errore:
 {1} 
 
 該VST是可能無法在本機Windows表單系統兼容
-複製錯誤到剪貼板</value>
+複製錯誤到剪貼簿</value>
   </data>
   <data name="VSTInvalidCallTitle" xml:space="preserve">
     <value>無效的VST call</value>
@@ -577,7 +577,7 @@ Errore:
     <value>打開VST DSP管理</value>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>我也想要新增VST DSP...</value>
+    <value>我想要新增VST DSP...</value>
   </data>
   <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
     <value>Keppy's MIDI Converter要求Windows XP SP2或最新版本.

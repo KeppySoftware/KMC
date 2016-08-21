@@ -409,7 +409,7 @@ VST DSPの設定を調べています。
     <value>新しいテンポ値:</value>
   </data>
   <data name="NonFatalErrorHandler" xml:space="preserve">
-    <value>アプリケーションを実行している間に何かが上手く作動しませんでした。
+    <value>アプリケーションの実行中に問題が発生しました。
 
 追加情報：</value>
   </data>

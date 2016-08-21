@@ -22,10 +22,93 @@ namespace KeppyMIDIConverter
 {
     public partial class MainWindow : Form
     {
-        public MainWindow(String[] args)
+        public static class Globals
+        {
+            public static AdvancedSettings frm = new AdvancedSettings();
+            public static DSPPROC _myDSP;
+            public static SYNCPROC _mySync;
+            public static KeppyMIDIConverter.SoundfontDialog frm2 = new KeppyMIDIConverter.SoundfontDialog();
+            public static Un4seen.Bass.Misc.DSP_PeakLevelMeter _plm;
+            public static bool AutoClearMIDIListEnabled = false;
+            public static bool AutoShutDownEnabled = false;
+            public static bool DeleteEncoder = false;
+            public static bool FXDisabled = true;
+            public static bool NoteOff1Event = false;
+            public static bool OldTimeThingy = false;
+            public static bool PlaybackMode = false;
+            public static bool QualityOverride = false;
+            public static bool RenderingMode = false;
+            public static bool TempoOverride = false;
+            public static bool VSTMode = false;
+            public static int ActiveVoicesInt = 0;
+            public static int AverageCPU;
+            public static int Bitrate = 128;
+            public static int CancellationPendingValue = 0;
+            public static int CurrentEncoder;
+            public static int CurrentMode;
+            public static int CurrentStatusMaximumInt;
+            public static int CurrentStatusValueInt;
+            public static int DefaultSoundfont;
+            public static int FinalTempo = 120;
+            public static int Frequency = 0xbb80;
+            public static int LimitVoicesInt = 0x186a0;
+            public static int OriginalTempo;
+            public static int pictureset = 1;
+            public static int SoundFont;
+            public static int Time = 0;
+            public static int Volume;
+            public static int _Encoder;
+            public static int _recHandle;
+            public static int _Mixer;
+            public static int _VSTHandle;
+            public static int _VSTHandle2;
+            public static int _VSTHandle3;
+            public static int _VSTHandle4;
+            public static int _VSTHandle5;
+            public static int _VSTHandle6;
+            public static int _VSTHandle7;
+            public static int _VSTHandle8;
+            public static string BenchmarkTime;
+            public static string CurrentPeak = "0.0 dB";
+            public static string CurrentRMS = "0.0 dB";
+            public static string CurrentAverage = "0.0 dB";
+            public static string CurrentStatusTextString;
+            public static string DisabledOr;
+            public static string EncoderPath;
+            public static string ExportLastDirectory;
+            public static string ExportWhereYay;
+            public static string MIDILastDirectory;
+            public static string MIDIName;
+            public static string NewWindowName = null;
+            public static string VSTDLL = null;
+            public static string VSTDLL2 = null;
+            public static string VSTDLL3 = null;
+            public static string VSTDLL4 = null;
+            public static string VSTDLL5 = null;
+            public static string VSTDLL6 = null;
+            public static string VSTDLL7 = null;
+            public static string VSTDLL8 = null;
+            public static string VSTDLLDesc = null;
+            public static string VSTDLLDesc2 = null;
+            public static string VSTDLLDesc3 = null;
+            public static string VSTDLLDesc4 = null;
+            public static string VSTDLLDesc5 = null;
+            public static string VSTDLLDesc6 = null;
+            public static string VSTDLLDesc7 = null;
+            public static string VSTDLLDesc8 = null;
+            public static string WAVName;
+            public static string[] Soundfonts = { null };
+
+            // Other
+            public static string ExecutablePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        }
+
+        public MainWindow(String[] args, string encoder, bool deletencoder)
         {          
             InitializeComponent();
             InitializeLanguage();
+            Globals.EncoderPath = encoder;
+            Globals.DeleteEncoder = deletencoder;
             //To store all the soundfonts that where opened with the application
             List<String> soundfonts = null;
             //Parse through arguments
@@ -74,85 +157,6 @@ namespace KeppyMIDIConverter
         [DllImport("dwmapi.dll")]
         private static extern int DwmIsCompositionEnabled(out bool enabled);
 
-        public static class Globals
-        {
-            public static AdvancedSettings frm = new AdvancedSettings();
-            public static DSPPROC _myDSP;
-            public static SYNCPROC _mySync;
-            public static KeppyMIDIConverter.SoundfontDialog frm2 = new KeppyMIDIConverter.SoundfontDialog();
-            public static Un4seen.Bass.Misc.DSP_PeakLevelMeter _plm;
-            public static bool AutoClearMIDIListEnabled = false;
-            public static bool AutoShutDownEnabled = false;
-            public static bool FXDisabled = true;
-            public static bool NoteOff1Event = false;
-            public static bool OldTimeThingy = false;
-            public static bool PlaybackMode = false;
-            public static bool QualityOverride = false;
-            public static bool RenderingMode = false;
-            public static bool TempoOverride = false;
-            public static bool VSTMode = false;
-            public static int ActiveVoicesInt = 0;
-            public static int AverageCPU;
-            public static int Bitrate = 128;
-            public static int CancellationPendingValue = 0;
-            public static int CurrentEncoder;
-            public static int CurrentMode;
-            public static int CurrentStatusMaximumInt;
-            public static int CurrentStatusValueInt;
-            public static int DefaultSoundfont;
-            public static int FinalTempo = 120;
-            public static int Frequency = 0xbb80;
-            public static int LimitVoicesInt = 0x186a0;
-            public static int OriginalTempo;
-            public static int pictureset = 1;
-            public static int SoundFont;
-            public static int Time = 0;
-            public static int Volume;
-            public static int _Encoder;
-            public static int _recHandle;
-            public static int _Mixer;
-            public static int _VSTHandle;
-            public static int _VSTHandle2;
-            public static int _VSTHandle3;
-            public static int _VSTHandle4;
-            public static int _VSTHandle5;
-            public static int _VSTHandle6;
-            public static int _VSTHandle7;
-            public static int _VSTHandle8;
-            public static string BenchmarkTime;
-            public static string CurrentPeak = "0.0 dB";
-            public static string CurrentRMS = "0.0 dB";
-            public static string CurrentAverage = "0.0 dB";
-            public static string CurrentStatusTextString;
-            public static string DisabledOr;
-            public static string ExportLastDirectory;
-            public static string ExportWhereYay;
-            public static string MIDILastDirectory;
-            public static string MIDIName;
-            public static string NewWindowName = null;
-            public static string VSTDLL = null;
-            public static string VSTDLL2 = null;
-            public static string VSTDLL3 = null;
-            public static string VSTDLL4 = null;
-            public static string VSTDLL5 = null;
-            public static string VSTDLL6 = null;
-            public static string VSTDLL7 = null;
-            public static string VSTDLL8 = null;
-            public static string VSTDLLDesc = null;
-            public static string VSTDLLDesc2 = null;
-            public static string VSTDLLDesc3 = null;
-            public static string VSTDLLDesc4 = null;
-            public static string VSTDLLDesc5 = null;
-            public static string VSTDLLDesc6 = null;
-            public static string VSTDLLDesc7 = null;
-            public static string VSTDLLDesc8 = null;
-            public static string WAVName;
-            public static string[] Soundfonts = { null };
-
-            // Other
-            public static string ExecutablePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        }
-
         private void InitializeLanguage()
         {
             res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
@@ -189,9 +193,6 @@ namespace KeppyMIDIConverter
             startRenderingOGGToolStripMenuItem.Text = res_man.GetString("RenderToOGG", cul);
             startRenderingWAVToolStripMenuItem.Text = res_man.GetString("RenderToWAV", cul);
             supportTheDeveloperWithADonationToolStripMenuItem.Text = res_man.GetString("supportTheDeveloperWithADonation", cul);
-
-            // Language override
-
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -598,17 +599,17 @@ namespace KeppyMIDIConverter
                     {
                         if (Globals.QualityOverride == true)
                         {
-                            path = "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
+                            path = String.Format("{0} -m {1} -M {2} - -o \"{3}\"", Globals.EncoderPath, Globals.Bitrate.ToString(), Globals.Bitrate.ToString(), Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg");
                             audiopath = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg";
                         }
                         else
                         {
-                            path = "kmcogg - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg\"";
+                            path = String.Format("{0} - -o \"{1}\"", Globals.EncoderPath, Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg");
                             audiopath = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg";
                         }
                         ++num3;
                     } while (File.Exists(audiopath));
-                    foreach (Process proc in Process.GetProcessesByName("kmcogg"))
+                    foreach (Process proc in Process.GetProcessesByName(Globals.EncoderPath))
                     {
                         proc.Kill();
                     }
@@ -619,21 +620,21 @@ namespace KeppyMIDIConverter
                 {
                     if (Globals.QualityOverride == true)
                     {
-                        foreach (Process proc in Process.GetProcessesByName("kmcogg"))
+                        foreach (Process proc in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Globals.EncoderPath)))
                         {
                             proc.Kill();
                         }
                         BassEnc.BASS_Encode_Stop(Globals._recHandle);
-                        Globals._Encoder = BassEnc.BASS_Encode_Start(stream, "kmcogg -m" + Globals.Bitrate.ToString() + " -M" + Globals.Bitrate.ToString() + " - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg\"", BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
+                        Globals._Encoder = BassEnc.BASS_Encode_Start(stream, String.Format("{0} -m {1} -M {2} - -o \"{3}\"", Globals.EncoderPath, Globals.Bitrate.ToString(), Globals.Bitrate.ToString(), Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg"), BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                     }
                     else
                     {
-                        foreach (Process proc in Process.GetProcessesByName("kmcogg"))
+                        foreach (Process proc in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Globals.EncoderPath)))
                         {
                             proc.Kill();
                         }
                         BassEnc.BASS_Encode_Stop(Globals._recHandle);
-                        Globals._Encoder = BassEnc.BASS_Encode_Start(stream, "kmcogg - -o \"" + Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg\"", BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
+                        Globals._Encoder = BassEnc.BASS_Encode_Start(stream, String.Format("{0} - -o \"{1}\"", Globals.EncoderPath, Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg"), BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                     }
                 }
             }
@@ -1143,6 +1144,10 @@ namespace KeppyMIDIConverter
                 DialogResult dialogResult = MessageBox.Show(res_man.GetString("AppBusy", cul), "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    if (Globals.DeleteEncoder == true)
+                    {
+                        File.Delete(Globals.EncoderPath);
+                    }
                     Process.GetCurrentProcess().Kill();
                 }
                 else if (dialogResult == DialogResult.No)
@@ -1684,16 +1689,18 @@ namespace KeppyMIDIConverter
                 ChineseCNOverride.Enabled = true;
                 ChineseHKOverride.Enabled = true;
                 ChineseTWOverride.Enabled = true;
-                DutchOverride.Enabled = true;
+                DutchOverride.Enabled = false;
                 EnglishOverride.Enabled = true;
                 EstonianOverride.Enabled = true;
-                FrenchOverride.Enabled = true;
+                FrenchOverride.Enabled = false;
                 GermanOverride.Enabled = true;
-                IndonesianOverride.Enabled = true;
+                IndonesianOverride.Enabled = false;
                 ItalianOverride.Enabled = true;
                 JapaneseOverride.Enabled = true;
+                KoreanOverride.Enabled = true;
                 SpanishOverride.Enabled = true;
-                TurkishOverride.Enabled = true;
+                TurkishOverride.Enabled = false;
+                BengaliOverride.Enabled = true;
             }
             catch (Exception exception)
             {
@@ -1725,8 +1732,10 @@ namespace KeppyMIDIConverter
                 IndonesianOverride.Enabled = false;
                 ItalianOverride.Enabled = false;
                 JapaneseOverride.Enabled = false;
+                KoreanOverride.Enabled = false;
                 SpanishOverride.Enabled = false;
                 TurkishOverride.Enabled = false;
+                BengaliOverride.Enabled = false;
             }
             catch (Exception exception)
             {
@@ -1891,17 +1900,17 @@ namespace KeppyMIDIConverter
 
         private void DutchOverride_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This language is unavailable at the moment!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ChangeLanguage("nl");
         }
 
         private void IndonesianOverride_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This language is unavailable at the moment!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ChangeLanguage("id");
         }
 
         private void FrenchOverride_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This language is unavailable at the moment!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ChangeLanguage("fr");
         }
 
         private void ChineseCN_Click(object sender, EventArgs e)
@@ -1922,6 +1931,16 @@ namespace KeppyMIDIConverter
         private void JapaneseOverride_Click(object sender, EventArgs e)
         {
             ChangeLanguage("ja");
+        }
+
+        private void KoreanOverride_Click(object sender, EventArgs e)
+        {
+            ChangeLanguage("ko");
+        }
+
+        private void menuItem1_Click(object sender, EventArgs e)
+        {
+            ChangeLanguage("bn");
         }
     }
 

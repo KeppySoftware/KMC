@@ -25,65 +25,69 @@ namespace KeppyMIDIConverter
         static void Main(String[] args)
         {
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            if (Settings == null)
+            {
+                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", RegistryKeyPermissionCheck.ReadWriteSubTree, RegistryOptions.None);
+                Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            }
+            bool deletencoder = false;
+            string encoder = "kmcogg.exe";
             bool ok;
             Mutex m = new Mutex(true, "KepMIDIConv", out ok);
             if (!ok)
             {
-                MessageBox.Show("One instance is enough.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
+                byte length = 16;
+                var bytes = new byte[length];
+                var rnd = new Random();
+                rnd.NextBytes(bytes);
+                string originalkmcpath = String.Format("{0}\\{1}", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "kmcogg.exe");
+                string newkmcoggpath = String.Format("{0}kmcogg{1}.exe", Path.GetTempPath(), Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
+                File.Copy(originalkmcpath, newkmcoggpath);
+                deletencoder = true;
+                encoder = newkmcoggpath;
             }
             try
             {
-                if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
+                foreach (String s in args)
                 {
-                    WebClient client = new WebClient();
-                    Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppySpartanMIDIConverter/kmcupdate.txt");
-                    StreamReader reader = new StreamReader(stream);
-                    String newestversion = reader.ReadToEnd();
-                    FileVersionInfo Driver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
-                    Version x = null;
-                    Version.TryParse(newestversion.ToString(), out x);
-                    Version y = null;
-                    Version.TryParse(Driver.FileVersion.ToString(), out y);
-                    Thread.Sleep(50);
-                    if (x > y)
+                    switch (s.Substring(0, 4).ToUpper())
                     {
-                        DialogResult dialogResult = MessageBox.Show("A new update for Keppy's MIDI Converter has been found.\n\nVersion installed: " + Driver.FileVersion.ToString() + "\nVersion available online: " + newestversion.ToString() + "\n\nWould you like to update now?\nIf you choose \"Yes\", the converter will be automatically closed.\n\n(You can disable the automatic update check through \"Options > Automatically check for updates when starting the converter\".)", "New version of Keppy's MIDI Converter found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
-                            TriggerDate();
-                            Application.ExitThread();
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-                            Settings.Close();
-                            Application.EnableVisualStyles();
-                            Application.SetCompatibleTextRenderingDefault(false);
-                            TriggerDate();
-                            Application.Run(new MainWindow(args));
-                            GC.KeepAlive(m);
-                        }
-                    }
-                    else
-                    {
-                        Settings.Close();
-                        Application.EnableVisualStyles();
-                        Application.SetCompatibleTextRenderingDefault(false);
-                        TriggerDate();
-                        Application.Run(new MainWindow(args));
-                        GC.KeepAlive(m);
+                        case "/NAU":
+                            // SKIP AUTOUPDATE
+                            break;
+                        default:
+                            if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
+                            {
+                                WebClient client = new WebClient();
+                                Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppySpartanMIDIConverter/kmcupdate.txt");
+                                StreamReader reader = new StreamReader(stream);
+                                String newestversion = reader.ReadToEnd();
+                                FileVersionInfo Driver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
+                                Version x = null;
+                                Version.TryParse(newestversion.ToString(), out x);
+                                Version y = null;
+                                Version.TryParse(Driver.FileVersion.ToString(), out y);
+                                Thread.Sleep(50);
+                                if (x > y)
+                                {
+                                    DialogResult dialogResult = MessageBox.Show("A new update for Keppy's MIDI Converter has been found.\n\nVersion installed: " + Driver.FileVersion.ToString() + "\nVersion available online: " + newestversion.ToString() + "\n\nWould you like to update now?\nIf you choose \"Yes\", the converter will be automatically closed.\n\n(You can disable the automatic update check through \"Options > Automatically check for updates when starting the converter\".)", "New version of Keppy's MIDI Converter found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                    if (dialogResult == DialogResult.Yes)
+                                    {
+                                        Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
+                                        TriggerDate();
+                                        Application.ExitThread();
+                                    }
+                                }
+                            }
+                            break;
                     }
                 }
-                else
-                {
-                    Settings.Close();
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new MainWindow(args));
-                    TriggerDate();
-                    GC.KeepAlive(m);
-                }
+                Settings.Close();
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainWindow(args, encoder, deletencoder));
+                TriggerDate();
+                GC.KeepAlive(m);
             }
             catch (Exception ex)
             {
@@ -124,8 +128,14 @@ namespace KeppyMIDIConverter
                             return CultureInfo.CreateSpecificCulture("zh-HK");
                         else if (ci.Name == "zh-TW")
                             return CultureInfo.CreateSpecificCulture("zh-TW");
-                        else if (ci.Name == "tr-TR")
-                            return CultureInfo.CreateSpecificCulture("tr");
+                        else if (ci.Name == "bn-BD" | ci.Name == "bn-IN")
+                            return CultureInfo.CreateSpecificCulture("bn");
+                        // else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
+                        //    return CultureInfo.CreateSpecificCulture("fr");
+                        // else if (ci.Name == "tr-TR")
+                        //    return CultureInfo.CreateSpecificCulture("tr");
+                        else if (ci.Name == "ko-KR")
+                            return CultureInfo.CreateSpecificCulture("ko");
                         else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
                             return CultureInfo.CreateSpecificCulture("de");
                         else if (ci.Name == "es-AR" | ci.Name == "es-VE" | ci.Name == "es-BO" | ci.Name == "es-CL" | ci.Name == "es-DO" | ci.Name == "es-EC" | ci.Name == "es-SV" | ci.Name == "es-CO" | ci.Name == "es-CR" | ci.Name == "es-ES" | ci.Name == "es-GT" | ci.Name == "es-HN" | ci.Name == "es-MX" | ci.Name == "es-NI" | ci.Name == "es-PA" | ci.Name == "es-PY" | ci.Name == "es-PE" | ci.Name == "es-PR" | ci.Name == "es-US" | ci.Name == "es-UY")
