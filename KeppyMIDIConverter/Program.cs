@@ -24,12 +24,6 @@ namespace KeppyMIDIConverter
         //Take in arguments
         static void Main(String[] args)
         {
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            if (Settings == null)
-            {
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", RegistryKeyPermissionCheck.ReadWriteSubTree, RegistryOptions.None);
-                Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            }
             bool deletencoder = false;
             string encoder = "kmcogg.exe";
             bool ok;
@@ -55,34 +49,19 @@ namespace KeppyMIDIConverter
                         case "/NAU":
                             // SKIP AUTOUPDATE
                             break;
+                        case "/RLN":
+                            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+                            RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
+                            Language.SetValue("langoverride", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                            Language.SetValue("selectedlanguage", "en", Microsoft.Win32.RegistryValueKind.String);
+                            Language.Close();
+                            MessageBox.Show("Language succesfully restored.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
                         default:
-                            if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
-                            {
-                                WebClient client = new WebClient();
-                                Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppySpartanMIDIConverter/kmcupdate.txt");
-                                StreamReader reader = new StreamReader(stream);
-                                String newestversion = reader.ReadToEnd();
-                                FileVersionInfo Driver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
-                                Version x = null;
-                                Version.TryParse(newestversion.ToString(), out x);
-                                Version y = null;
-                                Version.TryParse(Driver.FileVersion.ToString(), out y);
-                                Thread.Sleep(50);
-                                if (x > y)
-                                {
-                                    DialogResult dialogResult = MessageBox.Show("A new update for Keppy's MIDI Converter has been found.\n\nVersion installed: " + Driver.FileVersion.ToString() + "\nVersion available online: " + newestversion.ToString() + "\n\nWould you like to update now?\nIf you choose \"Yes\", the converter will be automatically closed.\n\n(You can disable the automatic update check through \"Options > Automatically check for updates when starting the converter\".)", "New version of Keppy's MIDI Converter found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                                    if (dialogResult == DialogResult.Yes)
-                                    {
-                                        Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
-                                        TriggerDate();
-                                        Application.ExitThread();
-                                    }
-                                }
-                            }
+                            PerformUpdate();
                             break;
                     }
                 }
-                Settings.Close();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainWindow(args, encoder, deletencoder));
@@ -94,6 +73,67 @@ namespace KeppyMIDIConverter
                 MessageBox.Show("There was an error while trying to load the languages!\n\nError:" + ex.ToString(), "Keppy's MIDI Converter - Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        public static void PerformUpdate()
+        {
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            if (Settings == null)
+            {
+                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", RegistryKeyPermissionCheck.ReadWriteSubTree, RegistryOptions.None);
+                Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            }
+            if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
+            {
+                WebClient client = new WebClient();
+                Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppySpartanMIDIConverter/kmcupdate.txt");
+                StreamReader reader = new StreamReader(stream);
+                String newestversion = reader.ReadToEnd();
+                FileVersionInfo Driver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
+                Version x = null;
+                Version.TryParse(newestversion.ToString(), out x);
+                Version y = null;
+                Version.TryParse(Driver.FileVersion.ToString(), out y);
+                Thread.Sleep(50);
+                if (x > y)
+                {
+                    DialogResult dialogResult = MessageBox.Show("A new update for Keppy's MIDI Converter has been found.\n\nVersion installed: " + Driver.FileVersion.ToString() + "\nVersion available online: " + newestversion.ToString() + "\n\nWould you like to update now?\nIf you choose \"Yes\", the converter will be automatically closed.\n\n(You can disable the automatic update check through \"Options > Automatically check for updates when starting the converter\".)", "New version of Keppy's MIDI Converter found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
+                        Application.ExitThread();
+                    }
+                }
+            }
+            Settings.Close();
+        }
+
+        public static CultureInfo CultureFunc(CultureInfo ci)
+        {
+            if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
+                return CultureInfo.CreateSpecificCulture("it");
+            else if (ci.Name == "et-EE")
+                return CultureInfo.CreateSpecificCulture("et");
+            else if (ci.Name == "zh-CN")
+                return CultureInfo.CreateSpecificCulture("zh-CN");
+            else if (ci.Name == "zh-HK")
+                return CultureInfo.CreateSpecificCulture("zh-HK");
+            else if (ci.Name == "zh-TW")
+                return CultureInfo.CreateSpecificCulture("zh-TW");
+            else if (ci.Name == "bn-BD" | ci.Name == "bn-IN")
+                return CultureInfo.CreateSpecificCulture("bn");
+            // else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
+            //    return CultureInfo.CreateSpecificCulture("fr");
+            else if (ci.Name == "ko-KR")
+                return CultureInfo.CreateSpecificCulture("ko");
+            else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
+                return CultureInfo.CreateSpecificCulture("de");
+            else if (ci.Name == "es-AR" | ci.Name == "es-VE" | ci.Name == "es-BO" | ci.Name == "es-CL" | ci.Name == "es-DO" | ci.Name == "es-EC" | ci.Name == "es-SV" | ci.Name == "es-CO" | ci.Name == "es-CR" | ci.Name == "es-ES" | ci.Name == "es-GT" | ci.Name == "es-HN" | ci.Name == "es-MX" | ci.Name == "es-NI" | ci.Name == "es-PA" | ci.Name == "es-PY" | ci.Name == "es-PE" | ci.Name == "es-PR" | ci.Name == "es-US" | ci.Name == "es-UY")
+                return CultureInfo.CreateSpecificCulture("es");
+            else if (ci.Name == "ja-JP")
+                return CultureInfo.CreateSpecificCulture("ja");
+            else // The current language of the UI is not available, fallback to English.
+                return CultureInfo.CreateSpecificCulture("en");
         }
 
         public static CultureInfo ReturnCulture()
@@ -118,60 +158,14 @@ namespace KeppyMIDIConverter
                     else
                     {
                         CultureInfo ci = CultureInfo.InstalledUICulture;
-                        if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
-                            return CultureInfo.CreateSpecificCulture("it");
-                        else if (ci.Name == "et-EE")
-                            return CultureInfo.CreateSpecificCulture("et");
-                        else if (ci.Name == "zh-CN")
-                            return CultureInfo.CreateSpecificCulture("zh-CN");
-                        else if (ci.Name == "zh-HK")
-                            return CultureInfo.CreateSpecificCulture("zh-HK");
-                        else if (ci.Name == "zh-TW")
-                            return CultureInfo.CreateSpecificCulture("zh-TW");
-                        else if (ci.Name == "bn-BD" | ci.Name == "bn-IN")
-                            return CultureInfo.CreateSpecificCulture("bn");
-                        // else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
-                        //    return CultureInfo.CreateSpecificCulture("fr");
-                        // else if (ci.Name == "tr-TR")
-                        //    return CultureInfo.CreateSpecificCulture("tr");
-                        else if (ci.Name == "ko-KR")
-                            return CultureInfo.CreateSpecificCulture("ko");
-                        else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
-                            return CultureInfo.CreateSpecificCulture("de");
-                        else if (ci.Name == "es-AR" | ci.Name == "es-VE" | ci.Name == "es-BO" | ci.Name == "es-CL" | ci.Name == "es-DO" | ci.Name == "es-EC" | ci.Name == "es-SV" | ci.Name == "es-CO" | ci.Name == "es-CR" | ci.Name == "es-ES" | ci.Name == "es-GT" | ci.Name == "es-HN" | ci.Name == "es-MX" | ci.Name == "es-NI" | ci.Name == "es-PA" | ci.Name == "es-PY" | ci.Name == "es-PE" | ci.Name == "es-PR" | ci.Name == "es-US" | ci.Name == "es-UY")
-                            return CultureInfo.CreateSpecificCulture("es");
-                        // else if (ci.Name == "nl-NL" | ci.Name == "nl-BE")
-                        //     return CultureInfo.CreateSpecificCulture("nl");
-                        else if (ci.Name == "ja-JP")
-                            return CultureInfo.CreateSpecificCulture("ja");
-                        else // The current language of the UI is not available, fallback to English.
-                            return CultureInfo.CreateSpecificCulture("en");
+                        return CultureFunc(ci);
                     }
                     Language.Close();
                 }
                 else
                 {
                     CultureInfo ci = CultureInfo.InstalledUICulture;
-                    if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
-                        return CultureInfo.CreateSpecificCulture("it");
-                    else if (ci.Name == "et-EE")
-                        return CultureInfo.CreateSpecificCulture("ee");
-                    else if (ci.Name == "zh-CN")
-                        return CultureInfo.CreateSpecificCulture("zh-CN");
-                    else if (ci.Name == "zh-HK")
-                        return CultureInfo.CreateSpecificCulture("zh-HK");
-                    else if (ci.Name == "zh-TW")
-                        return CultureInfo.CreateSpecificCulture("zh-TW");
-                    else if (ci.Name == "tr-TR")
-                        return CultureInfo.CreateSpecificCulture("tr");
-                    else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
-                        return CultureInfo.CreateSpecificCulture("de");
-                    // else if (ci.Name == "nl-NL" | ci.Name == "nl-BE")
-                    //     return CultureInfo.CreateSpecificCulture("nl");
-                    else if (ci.Name == "ja-JP")
-                        return CultureInfo.CreateSpecificCulture("ja");
-                    else // The current language of the UI is not available, fallback to English.
-                        return CultureInfo.CreateSpecificCulture("en");
+                    return CultureFunc(ci);
                 }
             }
             catch

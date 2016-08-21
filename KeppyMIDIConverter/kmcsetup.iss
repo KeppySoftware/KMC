@@ -11,7 +11,7 @@ AppPublisherURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter
 AppSupportPhone=+393511888475
 AppSupportURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/issues
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=13.0.1
+AppVersion=13.0.2
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -33,8 +33,8 @@ VersionInfoCompany=KaleidonKep99
 VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
 VersionInfoDescription=Keppy's MIDI Converter
 VersionInfoProductName=KMC
-VersionInfoProductVersion=13.0.1
-VersionInfoVersion=13.0.1
+VersionInfoProductVersion=13.0.2
+VersionInfoVersion=13.0.2
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
@@ -186,5 +186,9 @@ Filename: "http://keppystudios.com"; Flags: shellexec
 
 [Icons]
 Name: "{group}\Keppy's MIDI Converter"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: not Is64BitInstallMode
+Name: "{group}\Restore default language"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Parameters: "/RLN"; Check: not Is64BitInstallMode
+Name: "{group}\Skip update process"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Parameters: "/NAU"; Check: not Is64BitInstallMode
 Name: "{group}\Keppy's MIDI Converter (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
 Name: "{group}\Keppy's MIDI Converter (x64)"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
+Name: "{group}\Restore default language"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Parameters: "/RLN"; Check: Is64BitInstallMode
+Name: "{group}\Skip update process"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Parameters: "/NAU"; Check: Is64BitInstallMode

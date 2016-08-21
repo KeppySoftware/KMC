@@ -1754,10 +1754,7 @@ namespace KeppyMIDIConverter
                 Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Settings.SetValue("oldtimethingy", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Globals.LimitVoicesInt = Convert.ToInt32(VoiceLimit.Value.ToString());
                 Settings.Close();
-                Process.Start(Application.ExecutablePath);
-                Environment.Exit(-1);
             }
             catch (Exception exception)
             {
@@ -1776,10 +1773,7 @@ namespace KeppyMIDIConverter
                 Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Settings.SetValue("oldtimethingy", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Globals.LimitVoicesInt = Convert.ToInt32(VoiceLimit.Value.ToString());
                 Settings.Close();
-                Process.Start(Application.ExecutablePath);
-                Environment.Exit(-1);
             }
             catch (Exception exception)
             {
