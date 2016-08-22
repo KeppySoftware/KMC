@@ -596,4 +596,7 @@ Pulsa Aceptar para salir.</value>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>Carlos Santana Montjoy</value>
   </data>
+  <data name="FLStudioDiscount" xml:space="preserve">
+    <value>Obtenga un descuento en una licencia de FL Studio</value>
+  </data>
 </root>

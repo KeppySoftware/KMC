@@ -97,6 +97,8 @@
             this.informationAboutTheProgramToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.supportTheDeveloperWithADonationToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem17 = new System.Windows.Forms.MenuItem();
+            this.FL12Discount = new System.Windows.Forms.MenuItem();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.KaleidonKep99sGitHubPageToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.DefMenu = new System.Windows.Forms.ContextMenu();
@@ -309,8 +311,8 @@
             // 
             // loadingpic
             // 
+            this.loadingpic.BackgroundImage = global::KeppyMIDIConverter.Properties.Resources.convpause;
             this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
-            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
             this.loadingpic.Location = new System.Drawing.Point(408, 0);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(60, 60);
@@ -409,6 +411,7 @@
             // 
             // abortRenderingToolStripMenuItem
             // 
+            this.VistaMenuSys.SetImage(this.abortRenderingToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.abortRenderingToolStripMenuItem.Index = 9;
             this.abortRenderingToolStripMenuItem.Text = "Abort rendering/preview";
             this.abortRenderingToolStripMenuItem.Click += new System.EventHandler(this.abortRenderingToolStripMenuItem_Click);
@@ -547,6 +550,7 @@
             // 
             // OverrideStrip
             // 
+            this.VistaMenuSys.SetImage(this.OverrideStrip, global::KeppyMIDIConverter.Properties.Resources.configure_icon);
             this.OverrideStrip.Index = 6;
             this.OverrideStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem5,
@@ -711,6 +715,8 @@
             this.informationAboutTheProgramToolStripMenuItem,
             this.supportTheDeveloperWithADonationToolStripMenuItem,
             this.menuItem17,
+            this.FL12Discount,
+            this.menuItem3,
             this.KaleidonKep99sGitHubPageToolStripMenuItem,
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem});
             this.HelpStrip.Text = "Help";
@@ -734,17 +740,29 @@
             this.menuItem17.Index = 2;
             this.menuItem17.Text = "-";
             // 
+            // FL12Discount
+            // 
+            this.VistaMenuSys.SetImage(this.FL12Discount, ((System.Drawing.Image)(resources.GetObject("FL12Discount.Image"))));
+            this.FL12Discount.Index = 3;
+            this.FL12Discount.Text = "Get a discount on a FL Studio license";
+            this.FL12Discount.Click += new System.EventHandler(this.FL12Discount_Click);
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.Index = 4;
+            this.menuItem3.Text = "-";
+            // 
             // KaleidonKep99sGitHubPageToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.KaleidonKep99sGitHubPageToolStripMenuItem, ((System.Drawing.Image)(resources.GetObject("KaleidonKep99sGitHubPageToolStripMenuItem.Image"))));
-            this.KaleidonKep99sGitHubPageToolStripMenuItem.Index = 3;
+            this.KaleidonKep99sGitHubPageToolStripMenuItem.Index = 5;
             this.KaleidonKep99sGitHubPageToolStripMenuItem.Text = "KaleidonKep99\'s GitHub Page";
             this.KaleidonKep99sGitHubPageToolStripMenuItem.Click += new System.EventHandler(this.KaleidonKep99sGitHubPageToolStripMenuItem_Click);
             // 
             // KaleidonKep99sYouTubeChannelToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.KaleidonKep99sYouTubeChannelToolStripMenuItem, ((System.Drawing.Image)(resources.GetObject("KaleidonKep99sYouTubeChannelToolStripMenuItem.Image"))));
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Index = 4;
+            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Index = 6;
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = "KaleidonKep99\'s YouTube Channel";
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Click += new System.EventHandler(this.kaleidonKep99sYouTubeChannelToolStripMenuItem_Click);
             // 
@@ -760,14 +778,12 @@
             // 
             // ImportMIDIsRightClick
             // 
-            this.VistaMenuSys.SetImage(this.ImportMIDIsRightClick, global::KeppyMIDIConverter.Properties.Resources.add_icon);
             this.ImportMIDIsRightClick.Index = 0;
             this.ImportMIDIsRightClick.Text = "Import MIDIs";
             this.ImportMIDIsRightClick.Click += new System.EventHandler(this.importMIDIsToolStripMenuItem_Click);
             // 
             // RemoveMIDIsRightClick
             // 
-            this.VistaMenuSys.SetImage(this.RemoveMIDIsRightClick, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.RemoveMIDIsRightClick.Index = 1;
             this.RemoveMIDIsRightClick.Text = "Remove selected MIDIs";
             this.RemoveMIDIsRightClick.Click += new System.EventHandler(this.removeSelectedMIDIsToolStripMenuItem_Click);
@@ -785,14 +801,12 @@
             // 
             // MoveUpMIDIRightClick
             // 
-            this.VistaMenuSys.SetImage(this.MoveUpMIDIRightClick, global::KeppyMIDIConverter.Properties.Resources.up_icon);
             this.MoveUpMIDIRightClick.Index = 4;
             this.MoveUpMIDIRightClick.Text = "Move up (One item)";
             this.MoveUpMIDIRightClick.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // MoveDownMIDIRightClick
             // 
-            this.VistaMenuSys.SetImage(this.MoveDownMIDIRightClick, global::KeppyMIDIConverter.Properties.Resources.down_icon);
             this.MoveDownMIDIRightClick.Index = 5;
             this.MoveDownMIDIRightClick.Text = "Move down (One item)";
             this.MoveDownMIDIRightClick.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
@@ -920,6 +934,8 @@
         private System.Windows.Forms.MenuItem JapaneseOverride;
         private System.Windows.Forms.MenuItem KoreanOverride;
         private System.Windows.Forms.MenuItem BengaliOverride;
+        private System.Windows.Forms.MenuItem FL12Discount;
+        private System.Windows.Forms.MenuItem menuItem3;
     }
 }
 

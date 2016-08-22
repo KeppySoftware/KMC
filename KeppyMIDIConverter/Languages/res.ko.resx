@@ -595,4 +595,7 @@ VST는 아마 기본 Windows 폼 시스템과 호환되지 않습니다.
   <data name="OverrideLanguage" xml:space="preserve">
     <value>Windows 기본 UI 언어를 오버라이드 (override)</value>
   </data>
+  <data name="FLStudioDiscount" xml:space="preserve">
+    <value>는 FL Studio 라이센스에 할인 혜택을받을</value>
+  </data>
 </root>

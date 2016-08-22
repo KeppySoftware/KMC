@@ -85,7 +85,7 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>mainlogo.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\mainlogo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -121,28 +121,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvancedSettings.cs">
+    <Compile Include="Forms\AdvancedSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdvancedSettings.Designer.cs">
+    <Compile Include="Forms\AdvancedSettings.Designer.cs">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="ErrorHandler.cs">
+    <Compile Include="Forms\ErrorHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ErrorHandler.Designer.cs">
+    <Compile Include="Forms\ErrorHandler.Designer.cs">
       <DependentUpon>ErrorHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Information.cs">
+    <Compile Include="Forms\Information.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Information.Designer.cs">
+    <Compile Include="Forms\Information.Designer.cs">
       <DependentUpon>Information.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Forms\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -152,25 +152,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SoundfontDialog.cs">
+    <Compile Include="Forms\SoundfontDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SoundfontDialog.Designer.cs">
+    <Compile Include="Forms\SoundfontDialog.Designer.cs">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="VSTManager.cs">
+    <Compile Include="Forms\VSTManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VSTManager.Designer.cs">
+    <Compile Include="Forms\VSTManager.Designer.cs">
       <DependentUpon>VSTManager.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdvancedSettings.resx">
+    <EmbeddedResource Include="Forms\AdvancedSettings.resx">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ErrorHandler.resx">
+    <EmbeddedResource Include="Forms\ErrorHandler.resx">
       <DependentUpon>ErrorHandler.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Information.resx">
+    <EmbeddedResource Include="Forms\Information.resx">
       <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\res.bn.resx" />
@@ -186,7 +186,7 @@
     <EmbeddedResource Include="Languages\res.zh-CN.resx" />
     <EmbeddedResource Include="Languages\res.zh-HK.resx" />
     <EmbeddedResource Include="Languages\res.zh-TW.resx" />
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -194,10 +194,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SoundfontDialog.resx">
+    <EmbeddedResource Include="Forms\SoundfontDialog.resx">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VSTManager.resx">
+    <EmbeddedResource Include="Forms\VSTManager.resx">
       <DependentUpon>VSTManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
@@ -222,7 +222,8 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="FodyWeavers.xml" />
-    <Content Include="mainlogo.ico" />
+    <Content Include="Resources\mainlogo.ico" />
+    <None Include="Resources\hot.png" />
     <None Include="Resources\worldwideweb.png" />
     <None Include="Resources\convpause.png" />
     <None Include="Resources\information-icon.png" />
@@ -240,7 +241,6 @@
     <None Include="Resources\convfail.wav" />
     <None Include="Resources\erroricon.png" />
     <None Include="Resources\convbusy.gif" />
-    <None Include="Resources\heart.png" />
     <None Include="Resources\donatebtn.png" />
     <None Include="Resources\sfzcomp.png" />
     <None Include="Resources\updatebk.png" />
@@ -254,6 +254,10 @@
     <Error Condition="!Exists('..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
   </Target>
   <Import Project="..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(VS120COMNTOOLS)..\tools\vsvars32.bat"
+editbin /largeaddressaware "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

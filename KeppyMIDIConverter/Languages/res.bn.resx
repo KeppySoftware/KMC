@@ -595,4 +595,7 @@ VST সম্ভবত নেটিভ উইন্ডোজ ফরম সিস
   <data name="OverrideLanguage" xml:space="preserve">
     <value>বাংলা</value>
   </data>
+  <data name="FLStudioDiscount" xml:space="preserve">
+    <value>একটি FL Studio লাইসেন্স ছাড় পান</value>
+  </data>
 </root>

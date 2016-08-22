@@ -601,4 +601,7 @@ Vajuta OK, et väljuda.</value>
   <data name="OverrideLanguage" xml:space="preserve">
     <value>Alistamine keeles</value>
   </data>
+  <data name="FLStudioDiscount" xml:space="preserve">
+    <value>Saa soodustus FL Studio litsentsi</value>
+  </data>
 </root>

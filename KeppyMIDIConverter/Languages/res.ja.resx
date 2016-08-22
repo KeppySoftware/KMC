@@ -601,4 +601,7 @@ OKをクリックして閉じてください。</value>
   <data name="OverrideLanguage" xml:space="preserve">
     <value>オーバーライド言語</value>
   </data>
+  <data name="FLStudioDiscount" xml:space="preserve">
+    <value>Get a discount on a FL Studio license</value>
+  </data>
 </root>

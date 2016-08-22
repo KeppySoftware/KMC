@@ -598,4 +598,7 @@ Errore:
   <data name="OverrideLanguage" xml:space="preserve">
     <value>覆盖语言</value>
   </data>
+  <data name="FLStudioDiscount" xml:space="preserve">
+    <value>獲取一個FL Studio許可折扣</value>
+  </data>
 </root>

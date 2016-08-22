@@ -162,6 +162,7 @@ namespace KeppyMIDIConverter
             res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
             cul = Program.ReturnCulture();
             // Translate system
+            FL12Discount.Text = res_man.GetString("FLStudioDiscount", cul);
             ActionsStrip.Text = res_man.GetString("ActionsStrip", cul);
             AdvSettingsButton.Text = res_man.GetString("AdvSettingsButton", cul);
             AudioEventsStrip.Text = res_man.GetString("AudioEventsStrip", cul);
@@ -797,18 +798,11 @@ namespace KeppyMIDIConverter
                             BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
                             KeepLooping = false;
                             Globals.RenderingMode = false;
-                            if (Environment.OSVersion.Version.Major == 5)
-                            {
-                                MessageBox.Show(String.Format(res_man.GetString("ConversionAbortedXPMessage", cul), Bass.BASS_ErrorGetCode().ToString()), res_man.GetString("ConversionXPTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                PlayConversionStop();
-                            }
+                            PlayConversionStop();
                         }
                         else
                         {
-                            BASSCloseStream(res_man.GetString("ConversionCompleted", cul), res_man.GetString("ConversionCompleted", cul), 0);
+                            BASSCloseStream(res_man.GetString("ConversionCompleted", cul), res_man.GetString("ConversionCompleted", cul), 1);
                             KeepLooping = false;
                             Globals.RenderingMode = false;
                             if (Globals.AutoShutDownEnabled == true)
@@ -824,25 +818,11 @@ namespace KeppyMIDIConverter
                                 {
                                     MIDIList.Items.Clear();
                                 });
-                                if (Environment.OSVersion.Version.Major == 5)
-                                {
-                                    MessageBox.Show(String.Format(res_man.GetString("ConversionCompletedXPMessage", cul), Bass.BASS_ErrorGetCode().ToString()), res_man.GetString("ConversionXPTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    PlayConversionStop();
-                                }
+                                PlayConversionStop();
                             }
                             else
                             {
-                                if (Environment.OSVersion.Version.Major == 5)
-                                {
-                                    MessageBox.Show(String.Format(res_man.GetString("ConversionCompletedXPMessage", cul), Bass.BASS_ErrorGetCode().ToString()), res_man.GetString("ConversionXPTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    PlayConversionStop();
-                                }
+                                PlayConversionStop();
                             }
                         }
                     }
@@ -1022,14 +1002,7 @@ namespace KeppyMIDIConverter
                             Globals.NewWindowName = "Keppy's MIDI Converter";
                             KeepLooping = false;
                             Globals.PlaybackMode = false;
-                            if (Environment.OSVersion.Version.Major == 5)
-                            {
-                                MessageBox.Show(String.Format(res_man.GetString("PlaybackAbortedXPMessage", cul), Bass.BASS_ErrorGetCode().ToString()), res_man.GetString("PlaybackXPTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                PlayConversionStop();
-                            }
+                            PlayConversionStop();
                         }
                         else
                         {
@@ -1042,14 +1015,7 @@ namespace KeppyMIDIConverter
                             Globals.NewWindowName = "Keppy's MIDI Converter";
                             KeepLooping = false;
                             Globals.PlaybackMode = false;
-                            if (Environment.OSVersion.Version.Major == 5)
-                            {
-                                MessageBox.Show(String.Format(res_man.GetString("PlaybackCompletedXPMessage", cul), Bass.BASS_ErrorGetCode().ToString()), res_man.GetString("PlaybackXPTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                PlayConversionStop();
-                            }
+                            PlayConversionStop();
                         }
                     }
                 }
@@ -1935,6 +1901,11 @@ namespace KeppyMIDIConverter
         private void menuItem1_Click(object sender, EventArgs e)
         {
             ChangeLanguage("bn");
+        }
+
+        private void FL12Discount_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://affiliate.image-line.com/BFHHCGAE552");
         }
     }
 
