@@ -39,7 +39,7 @@ Bulgarian | No translator available
 Chinese (Simplified) | Yes
 Chinese (Traditional) | Yes
 Danish | No translator available
-Dutch | No
+Dutch | No translator available
 English | Yes
 Estonian | Yes
 French | No translator available
