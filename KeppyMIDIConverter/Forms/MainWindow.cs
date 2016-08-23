@@ -118,13 +118,13 @@ namespace KeppyMIDIConverter
                 if (File.Exists(s))
                 {
                     //Find out it the current file is a MIDI
-                    if (s.EndsWith(".mid") | s.EndsWith(".midi") | s.EndsWith(".kar") | s.EndsWith(".rmi") | s.EndsWith(".MID") | s.EndsWith(".MIDI") | s.EndsWith(".KAR") | s.EndsWith(".RMI"))
+                    if (s.ToLower().EndsWith(".mid") | s.ToLower().EndsWith(".midi") | s.ToLower().EndsWith(".kar") | s.ToLower().EndsWith(".rmi"))
                     {
                         //Add MIDI to midi list
                         this.MIDIList.Items.Add(s);
                     }
                     //If the file isnt a MIDI, check if its a soundfont
-                    if (s.EndsWith(".sf2") | s.EndsWith(".sf3") | s.EndsWith(".sfpack") | s.EndsWith(".sfz") | s.EndsWith(".SF2") | s.EndsWith(".SF3") | s.EndsWith(".SFPACK") | s.EndsWith(".SFZ"))
+                    if (s.ToLower().EndsWith(".sf2") | s.ToLower().EndsWith(".sf3") | s.ToLower().EndsWith(".sfpack") | s.ToLower().EndsWith(".sfz"))
                     {
                         //There are soundfonts beeing added to the application so create the list
                         if (soundfonts == null)
@@ -1137,7 +1137,7 @@ namespace KeppyMIDIConverter
             {
                 foreach (string str in this.MIDIImport.FileNames)
                 {
-                    if (Path.GetExtension(str) == ".mid" | Path.GetExtension(str) == ".midi" | Path.GetExtension(str) == ".kar" | Path.GetExtension(str) == ".rmi" | Path.GetExtension(str) == ".MID" | Path.GetExtension(str) == ".MIDI" | Path.GetExtension(str) == ".KAR" | Path.GetExtension(str) == ".RMI")
+                    if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
                     {
                         MIDIList.Items.Add(str);
                     }
@@ -1233,7 +1233,7 @@ namespace KeppyMIDIConverter
             int i;
             for (i = 0; i < s.Length; i++)
             {
-                if (Path.GetExtension(s[i]) == ".mid" | Path.GetExtension(s[i]) == ".midi" | Path.GetExtension(s[i]) == ".kar" | Path.GetExtension(s[i]) == ".rmi" | Path.GetExtension(s[i]) == ".MID" | Path.GetExtension(s[i]) == ".MIDI" | Path.GetExtension(s[i]) == ".KAR" | Path.GetExtension(s[i]) == ".RMI")
+                if (Path.GetExtension(s[i]).ToLower() == ".mid" | Path.GetExtension(s[i]).ToLower() == ".midi" | Path.GetExtension(s[i]).ToLower() == ".kar" | Path.GetExtension(s[i]).ToLower() == ".rmi")
                 {
                     MIDIList.Items.Add(s[i]);
                 }

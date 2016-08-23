@@ -142,7 +142,7 @@ namespace KeppyMIDIConverter
             {
                 foreach (String file in SoundfontImportDialog.FileNames)
                 {
-                    if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
+                    if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sfpack" | Path.GetExtension(file).ToLower() == ".sfz")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         SFList.Items.Add(file);
@@ -253,7 +253,7 @@ namespace KeppyMIDIConverter
             int pootis = 0;
             for (i = 0; i < s.Length; i++) 
             {
-                if (Path.GetExtension(s[i]) == ".sf2" | Path.GetExtension(s[i]) == ".SF2" | Path.GetExtension(s[i]) == ".sfz" | Path.GetExtension(s[i]) == ".SFZ" | Path.GetExtension(s[i]) == ".sf3" | Path.GetExtension(s[i]) == ".SF3" | Path.GetExtension(s[i]) == ".sfpack" | Path.GetExtension(s[i]) == ".SFPACK")
+                if (Path.GetExtension(s[i]).ToLower() == ".sf2" | Path.GetExtension(s[i]).ToLower() == ".sf3" | Path.GetExtension(s[i]).ToLower() == ".sfpack" | Path.GetExtension(s[i]).ToLower() == ".sfz")
                 {
                     SFList.Items.Add(s[i]);
                 }

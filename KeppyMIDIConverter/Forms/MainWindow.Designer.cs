@@ -86,6 +86,7 @@
             this.IndonesianOverride = new System.Windows.Forms.MenuItem();
             this.JapaneseOverride = new System.Windows.Forms.MenuItem();
             this.KoreanOverride = new System.Windows.Forms.MenuItem();
+            this.RussianOverride = new System.Windows.Forms.MenuItem();
             this.ChineseCNOverride = new System.Windows.Forms.MenuItem();
             this.SpanishOverride = new System.Windows.Forms.MenuItem();
             this.TurkishOverride = new System.Windows.Forms.MenuItem();
@@ -109,7 +110,6 @@
             this.MoveUpMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.MoveDownMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.RussianOverride = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -670,6 +670,13 @@
             this.KoreanOverride.Text = "Korean (한국어)";
             this.KoreanOverride.Click += new System.EventHandler(this.KoreanOverride_Click);
             // 
+            // RussianOverride
+            // 
+            this.RussianOverride.Enabled = false;
+            this.RussianOverride.Index = 13;
+            this.RussianOverride.Text = "Russian (Pу́сский)";
+            this.RussianOverride.Click += new System.EventHandler(this.RussianOverride_Click);
+            // 
             // ChineseCNOverride
             // 
             this.ChineseCNOverride.Enabled = false;
@@ -787,12 +794,14 @@
             // 
             // ImportMIDIsRightClick
             // 
+            this.VistaMenuSys.SetImage(this.ImportMIDIsRightClick, global::KeppyMIDIConverter.Properties.Resources.add_icon);
             this.ImportMIDIsRightClick.Index = 0;
             this.ImportMIDIsRightClick.Text = "Import MIDIs";
             this.ImportMIDIsRightClick.Click += new System.EventHandler(this.importMIDIsToolStripMenuItem_Click);
             // 
             // RemoveMIDIsRightClick
             // 
+            this.VistaMenuSys.SetImage(this.RemoveMIDIsRightClick, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.RemoveMIDIsRightClick.Index = 1;
             this.RemoveMIDIsRightClick.Text = "Remove selected MIDIs";
             this.RemoveMIDIsRightClick.Click += new System.EventHandler(this.removeSelectedMIDIsToolStripMenuItem_Click);
@@ -810,12 +819,14 @@
             // 
             // MoveUpMIDIRightClick
             // 
+            this.VistaMenuSys.SetImage(this.MoveUpMIDIRightClick, global::KeppyMIDIConverter.Properties.Resources.up_icon);
             this.MoveUpMIDIRightClick.Index = 4;
             this.MoveUpMIDIRightClick.Text = "Move up (One item)";
             this.MoveUpMIDIRightClick.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
             // 
             // MoveDownMIDIRightClick
             // 
+            this.VistaMenuSys.SetImage(this.MoveDownMIDIRightClick, global::KeppyMIDIConverter.Properties.Resources.down_icon);
             this.MoveDownMIDIRightClick.Index = 5;
             this.MoveDownMIDIRightClick.Text = "Move down (One item)";
             this.MoveDownMIDIRightClick.Click += new System.EventHandler(this.moveDownToolStripMenuItem_Click);
@@ -823,13 +834,6 @@
             // VistaMenuSys
             // 
             this.VistaMenuSys.ContainerControl = this;
-            // 
-            // RussianOverride
-            // 
-            this.RussianOverride.Enabled = false;
-            this.RussianOverride.Index = 13;
-            this.RussianOverride.Text = "Russian (Pу́сский)";
-            this.RussianOverride.Click += new System.EventHandler(this.RussianOverride_Click);
             // 
             // MainWindow
             // 

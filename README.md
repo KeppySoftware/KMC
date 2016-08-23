@@ -6,9 +6,6 @@ A fully functional MIDI to WAV converter, for FREE!
 ## Where did you get the idea?
 This was actually supposed to be a clone of [Free MIDI to MP3 Converter] (http://mp3-tools.com/free-midi-to-mp3-converter.html), then I changed myself, and had the idea of making my OWN converter, with my OWN stuff.
 
-## What's the filesize limit?
-120 million notes in rendering mode, 60 million notes in live playback mode.
-
 ## Windows SmartScreen tells me that this app might infect my computer. Are you trying to steal my data???
 Why would I publish KMC on GitHub, to get sued by them? I already have money issues irl, no needs to have more on the Internet.
 Anyway no, the files are completely safe. The source code is online, even. Take a look if you don't trust my words.
@@ -42,7 +39,7 @@ Bulgarian | No translator available
 Chinese (Simplified) | Yes
 Chinese (Traditional) | Yes
 Danish | No translator available
-Dutch | On its way
+Dutch | No
 English | Yes
 Estonian | Yes
 French | No translator available

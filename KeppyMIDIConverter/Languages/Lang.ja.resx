@@ -291,7 +291,7 @@ Ian Luck さんによる素晴らしいBASSライブラリに基づいていま�
 利用可能なソースコード:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
-    <value>お使いのコンピューターにインストールされているKMCの現在のバージョンは次の通りです: {0}</value>
+    <value>現在イントストールされている現在のKMCのバージョンは{0}です。</value>
   </data>
   <data name="DisabledText" xml:space="preserve">
     <value>無効</value>
@@ -502,7 +502,7 @@ BASS status: {0}</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
     <value>一度に2.147.483.648個のサウンドフォントを使用可能です。
-リストの最初のサウンドフォントは、常に最新のものを上書きします。
+サウンドフォントはリストの下から順に読み込みます(一番上が最優先されます)。
 突然の不具合を避けるために、リストに追加する前にサウンドフォントが壊れていないかどうかを確認してください。 
 
 
@@ -542,10 +542,10 @@ BASS status: {0}</value>
 OKをクリックするとダウンロードページが開きます。</value>
   </data>
   <data name="UpdatesFoundTitle" xml:space="preserve">
-    <value>更新が利用可能です</value>
+    <value>最新版が利用可能です</value>
   </data>
   <data name="VersionLabel" xml:space="preserve">
-    <value>{0}　バージョンは　{1}　プロセッサー向けに最適化されています。</value>
+    <value>{0} バージョンは {1} プロセッサー向けに最適化されています。</value>
   </data>
   <data name="VoiceLabel" xml:space="preserve">
     <value>最大同時発音数:</value>
