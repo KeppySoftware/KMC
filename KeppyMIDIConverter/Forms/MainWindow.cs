@@ -1445,9 +1445,10 @@ namespace KeppyMIDIConverter
                         this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
-                        if (this.loadingpic.Image != KeppyMIDIConverter.Properties.Resources.convbusy)
+                        if (Globals.pictureset != 0)
                         {
                             this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
+                            Globals.pictureset = 0;
                         }
                         this.importMIDIsToolStripMenuItem.Enabled = false;
                         this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;

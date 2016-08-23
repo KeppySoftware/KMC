@@ -302,8 +302,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.CurrentStatusText);
             this.panel1.Controls.Add(this.loadingpic);
+            this.panel1.Controls.Add(this.CurrentStatusText);
             this.panel1.Location = new System.Drawing.Point(12, 330);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(472, 64);
@@ -311,13 +311,13 @@
             // 
             // loadingpic
             // 
-            this.loadingpic.BackgroundImage = global::KeppyMIDIConverter.Properties.Resources.convpause;
             this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
+            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
+            this.loadingpic.InitialImage = null;
             this.loadingpic.Location = new System.Drawing.Point(408, 0);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(60, 60);
-            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.loadingpic.TabIndex = 9;
+            this.loadingpic.TabIndex = 8;
             this.loadingpic.TabStop = false;
             // 
             // ConverterProcess
@@ -356,6 +356,7 @@
             this.importMIDIsToolStripMenuItem.DefaultItem = true;
             this.VistaMenuSys.SetImage(this.importMIDIsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.add_icon);
             this.importMIDIsToolStripMenuItem.Index = 0;
+            this.importMIDIsToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
             this.importMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.importMIDIsToolStripMenuItem.Click += new System.EventHandler(this.importMIDIsToolStripMenuItem_Click);
             // 
@@ -363,6 +364,7 @@
             // 
             this.VistaMenuSys.SetImage(this.removeSelectedMIDIsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.removeSelectedMIDIsToolStripMenuItem.Index = 1;
+            this.removeSelectedMIDIsToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.Del;
             this.removeSelectedMIDIsToolStripMenuItem.Text = "Remove selected MIDIs";
             this.removeSelectedMIDIsToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedMIDIsToolStripMenuItem_Click);
             // 
@@ -381,6 +383,7 @@
             // 
             this.VistaMenuSys.SetImage(this.openTheSoundfontsManagerToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.configure_icon);
             this.openTheSoundfontsManagerToolStripMenuItem.Index = 4;
+            this.openTheSoundfontsManagerToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
             this.openTheSoundfontsManagerToolStripMenuItem.Text = "Open the soundfonts/VST DSP manager";
             this.openTheSoundfontsManagerToolStripMenuItem.Click += new System.EventHandler(this.openTheSoundfontsManagerToolStripMenuItem_Click);
             // 
@@ -393,6 +396,7 @@
             // 
             this.VistaMenuSys.SetImage(this.startRenderingWAVToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
             this.startRenderingWAVToolStripMenuItem.Index = 6;
+            this.startRenderingWAVToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlW;
             this.startRenderingWAVToolStripMenuItem.Text = "Render files to Wave (.WAV)";
             this.startRenderingWAVToolStripMenuItem.Click += new System.EventHandler(this.startRenderingWAVToolStripMenuItem_Click);
             // 
@@ -400,6 +404,7 @@
             // 
             this.VistaMenuSys.SetImage(this.startRenderingOGGToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
             this.startRenderingOGGToolStripMenuItem.Index = 7;
+            this.startRenderingOGGToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
             this.startRenderingOGGToolStripMenuItem.Text = "Render files to Vorbis (.OGG)";
             this.startRenderingOGGToolStripMenuItem.Click += new System.EventHandler(this.startRenderingOGGToolStripMenuItem_Click);
             // 
@@ -413,6 +418,7 @@
             // 
             this.VistaMenuSys.SetImage(this.abortRenderingToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.abortRenderingToolStripMenuItem.Index = 9;
+            this.abortRenderingToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlDel;
             this.abortRenderingToolStripMenuItem.Text = "Abort rendering/preview";
             this.abortRenderingToolStripMenuItem.Click += new System.EventHandler(this.abortRenderingToolStripMenuItem_Click);
             // 
@@ -425,6 +431,7 @@
             // 
             this.VistaMenuSys.SetImage(this.exitToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.back_icon);
             this.exitToolStripMenuItem.Index = 11;
+            this.exitToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.AltF4;
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -865,7 +872,6 @@
         private System.Windows.Forms.TrackBar VolumeBar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolTip VolumeTip;
-        private System.Windows.Forms.PictureBox loadingpic;
         private System.Windows.Forms.Panel panel1;
         public System.ComponentModel.BackgroundWorker ConverterProcess;
         private System.Windows.Forms.MainMenu DefaultMenu;
@@ -936,6 +942,7 @@
         private System.Windows.Forms.MenuItem BengaliOverride;
         private System.Windows.Forms.MenuItem FL12Discount;
         private System.Windows.Forms.MenuItem menuItem3;
+        private System.Windows.Forms.PictureBox loadingpic;
     }
 }
 
