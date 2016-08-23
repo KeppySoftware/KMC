@@ -291,7 +291,7 @@ Ian Luck さんによる素晴らしいBASSライブラリに基づいていま�
 利用可能なソースコード:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
-    <value>現在イントストールされている現在のKMCのバージョンは{0}です。</value>
+    <value>現在インストールされている現在のKMCのバージョンは{0}です。</value>
   </data>
   <data name="DisabledText" xml:space="preserve">
     <value>無効</value>
