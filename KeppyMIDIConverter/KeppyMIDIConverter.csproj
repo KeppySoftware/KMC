@@ -221,6 +221,8 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\americagreatagain.jpg" />
+    <None Include="Resources\heh.wav" />
     <Content Include="Resources\mainlogo.ico" />
     <None Include="Resources\hot.png" />
     <None Include="Resources\worldwideweb.png" />

@@ -107,6 +107,7 @@ namespace KeppyMIDIConverter
         {          
             InitializeComponent();
             InitializeLanguage();
+            RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID, 0, (int)Keys.D4 | (int)Keys.D4 | (int)Keys.D6 | (int)Keys.D6);
             Globals.EncoderPath = encoder;
             Globals.DeleteEncoder = deletencoder;
             //To store all the soundfonts that where opened with the application
@@ -148,6 +149,15 @@ namespace KeppyMIDIConverter
             }
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID)
+            {
+                HelloItsMe();
+            }
+            base.WndProc(ref m);
+        }
+
         Timer t1 = new Timer();
         Timer t2 = new Timer();
 
@@ -156,6 +166,12 @@ namespace KeppyMIDIConverter
 
         [DllImport("dwmapi.dll")]
         private static extern int DwmIsCompositionEnabled(out bool enabled);
+        [DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
+        [DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        const int MYACTION_HOTKEY_ID = 1;
 
         private void InitializeLanguage()
         {
@@ -1069,6 +1085,10 @@ namespace KeppyMIDIConverter
             if (Opacity == 0)     //check if opacity is 0
             {
                 t2.Stop();    //if it is, we stop the timer
+                if (Globals.DeleteEncoder == true)
+                {
+                    File.Delete(Globals.EncoderPath);
+                }
                 Process.GetCurrentProcess().Kill();  
             }
             else
@@ -1087,7 +1107,10 @@ namespace KeppyMIDIConverter
                 DialogResult dialogResult = MessageBox.Show(res_man.GetString("AppBusy", cul), "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Process.GetCurrentProcess().Kill();
+                    e.Cancel = true;    //cancel the event so the form won't be closed
+                    t2.Interval = 10;  //we'll increase the opacity every 10ms
+                    t2.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+                    t2.Start();  
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -1110,11 +1133,9 @@ namespace KeppyMIDIConverter
                 DialogResult dialogResult = MessageBox.Show(res_man.GetString("AppBusy", cul), "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    if (Globals.DeleteEncoder == true)
-                    {
-                        File.Delete(Globals.EncoderPath);
-                    }
-                    Process.GetCurrentProcess().Kill();
+                    t2.Interval = 10;  //we'll increase the opacity every 10ms
+                    t2.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+                    t2.Start();  
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -1909,6 +1930,31 @@ namespace KeppyMIDIConverter
         private void RussianOverride_Click(object sender, EventArgs e)
         {
             ChangeLanguage("ru");
+        }
+
+        private void HelloItsMe()
+        {
+            using (Form form = new Form())
+            {
+                form.Text = "I vote for Trump.";
+                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                form.ShowIcon = false;
+                form.ShowInTaskbar = false;
+                form.BackgroundImage = KeppyMIDIConverter.Properties.Resources.americagreatagain;
+                form.Size = new Size(506, 253);
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.Shown += new System.EventHandler(PlayTrumpy);
+                form.ShowDialog();
+            }
+        }
+
+        private void PlayTrumpy(object sender, EventArgs e)
+        {
+            System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.heh;
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
+            player.PlaySync();
+            MessageBox.Show("Vote Trump 2016");
+            Environment.Exit(-1);
         }
 
         private void FL12Discount_Click(object sender, EventArgs e)

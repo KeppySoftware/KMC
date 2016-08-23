@@ -3,7 +3,7 @@ AllowCancelDuringInstall=False
 AlwaysShowDirOnReadyPage=True
 AppComments=MIDI to WAV/OGG converter
 AppContact=mailto:kaleidonkep99@outlook.com
-AppCopyright=Copyright(C) KaleidonKep99
+AppCopyright=Copyright(C) KaleidonKep99 2016
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 AppName=Keppy's MIDI Converter
 AppPublisher=KaleidonKep99
@@ -11,7 +11,7 @@ AppPublisherURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter
 AppSupportPhone=+393511888475
 AppSupportURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/issues
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=13.0.5
+AppVersion=13.0.7
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -28,17 +28,17 @@ ShowLanguageDialog=no
 TimeStampsInUTC=True
 UninstallDisplayIcon={app}\x86\KeppyMIDIConverter.exe
 UninstallDisplayName=Keppy's MIDI Converter (Remove only)
-UninstallDisplaySize=2799697
+UninstallDisplaySize=4835000
 VersionInfoCompany=KaleidonKep99
-VersionInfoCopyright=Copyright(C) Keppy Studios 2013-2016
+VersionInfoCopyright=Copyright(C) KaleidonKep99 2016
 VersionInfoDescription=Keppy's MIDI Converter
 VersionInfoProductName=KMC
-VersionInfoProductVersion=13.0.5
-VersionInfoVersion=13.0.5
+VersionInfoProductVersion=13.0.7
+VersionInfoVersion=13.0.7
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
-LZMABlockSize=65535
+LZMABlockSize=65536
 LZMANumBlockThreads=4
 EnableDirDoesntExistWarning=True
 DirExistsWarning=yes
@@ -50,6 +50,7 @@ LZMAAlgorithm=1
 Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 
 ;64-bit files
+Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass_mpc.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass_vst.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
@@ -58,10 +59,10 @@ Source: "bin\x64\bassflac.dll"; DestDir: "{app}\x64";  Flags: ignoreversion repl
 Source: "bin\x64\bassmidi.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bassopus.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\basswv.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\kmcogg.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 
 ;32-bit files
+Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass_mpc.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass_vst.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
@@ -70,16 +71,19 @@ Source: "bin\x86\bassflac.dll"; DestDir: "{app}\x86";  Flags: ignoreversion repl
 Source: "bin\x86\bassmidi.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\bassopus.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\basswv.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
-Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 
 [InstallDelete]
-Type: filesandordirs; Name: "{app}\"
-Type: filesandordirs; Name: "{group}\"
+Type: filesandordirs; Name: "{app}\x86"
+Type: filesandordirs; Name: "{app}\x64"
+Type: filesandordirs; Name: "{app}"
+Type: filesandordirs; Name: "{group}"
 
 [UninstallDelete]
-Type: filesandordirs; Name: "{app}\"
-Type: filesandordirs; Name: "{group}\"
+Type: filesandordirs; Name: "{app}\x86"
+Type: filesandordirs; Name: "{app}\x64"
+Type: filesandordirs; Name: "{app}"
+Type: filesandordirs; Name: "{group}"
 
 [Languages]
 Name: en; MessagesFile: "compiler:Default.isl"

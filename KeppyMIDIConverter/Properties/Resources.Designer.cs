@@ -73,6 +73,16 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap americagreatagain {
+            get {
+                object obj = ResourceManager.GetObject("americagreatagain", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap audio_icon {
             get {
                 object obj = ResourceManager.GetObject("audio_icon", resourceCulture);
@@ -194,6 +204,15 @@ namespace KeppyMIDIConverter.Properties {
             get {
                 object obj = ResourceManager.GetObject("erroricon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.IO.UnmanagedMemoryStream simile a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream heh {
+            get {
+                return ResourceManager.GetStream("heh", resourceCulture);
             }
         }
         
