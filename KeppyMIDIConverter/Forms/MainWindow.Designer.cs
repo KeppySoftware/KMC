@@ -109,6 +109,7 @@
             this.MoveUpMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.MoveDownMIDIRightClick = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
+            this.RussianOverride = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -573,6 +574,7 @@
             this.IndonesianOverride,
             this.JapaneseOverride,
             this.KoreanOverride,
+            this.RussianOverride,
             this.ChineseCNOverride,
             this.SpanishOverride,
             this.TurkishOverride,
@@ -603,7 +605,7 @@
             this.BengaliOverride.Enabled = false;
             this.BengaliOverride.Index = 3;
             this.BengaliOverride.Text = "Bengali (বাঙালি)";
-            this.BengaliOverride.Click += new System.EventHandler(this.menuItem1_Click);
+            this.BengaliOverride.Click += new System.EventHandler(this.Bengali_Click);
             // 
             // DutchOverride
             // 
@@ -671,35 +673,35 @@
             // ChineseCNOverride
             // 
             this.ChineseCNOverride.Enabled = false;
-            this.ChineseCNOverride.Index = 13;
+            this.ChineseCNOverride.Index = 14;
             this.ChineseCNOverride.Text = "Simplified Chinese (简化字, PRC)";
             this.ChineseCNOverride.Click += new System.EventHandler(this.ChineseCN_Click);
             // 
             // SpanishOverride
             // 
             this.SpanishOverride.Enabled = false;
-            this.SpanishOverride.Index = 14;
+            this.SpanishOverride.Index = 15;
             this.SpanishOverride.Text = "Spanish (Español)";
             this.SpanishOverride.Click += new System.EventHandler(this.SpanishOverride_Click);
             // 
             // TurkishOverride
             // 
             this.TurkishOverride.Enabled = false;
-            this.TurkishOverride.Index = 15;
+            this.TurkishOverride.Index = 16;
             this.TurkishOverride.Text = "Turkish (Türkçe)";
             this.TurkishOverride.Click += new System.EventHandler(this.TurkishOverride_Click);
             // 
             // ChineseHKOverride
             // 
             this.ChineseHKOverride.Enabled = false;
-            this.ChineseHKOverride.Index = 16;
+            this.ChineseHKOverride.Index = 17;
             this.ChineseHKOverride.Text = "Traditional Chinese (廣東話, Hong Kong)";
             this.ChineseHKOverride.Click += new System.EventHandler(this.ChineseHK_Click);
             // 
             // ChineseTWOverride
             // 
             this.ChineseTWOverride.Enabled = false;
-            this.ChineseTWOverride.Index = 17;
+            this.ChineseTWOverride.Index = 18;
             this.ChineseTWOverride.Text = "Traditional Chinese (台灣, Taiwan)";
             this.ChineseTWOverride.Click += new System.EventHandler(this.ChineseTW_Click);
             // 
@@ -822,6 +824,13 @@
             // 
             this.VistaMenuSys.ContainerControl = this;
             // 
+            // RussianOverride
+            // 
+            this.RussianOverride.Enabled = false;
+            this.RussianOverride.Index = 13;
+            this.RussianOverride.Text = "Russian (Pу́сский)";
+            this.RussianOverride.Click += new System.EventHandler(this.RussianOverride_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -943,6 +952,7 @@
         private System.Windows.Forms.MenuItem FL12Discount;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.PictureBox loadingpic;
+        private System.Windows.Forms.MenuItem RussianOverride;
     }
 }
 

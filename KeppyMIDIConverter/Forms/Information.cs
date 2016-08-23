@@ -27,7 +27,7 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
+            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
             cul = Program.ReturnCulture();
             // Translate system
             button2.Text = res_man.GetString("Un4seenWebsite", cul);

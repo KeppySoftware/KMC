@@ -8,9 +8,11 @@ using System.IO;
 using System.Globalization;
 using System.Drawing;
 using System.Diagnostics;
+using System.Resources;
 using System.Data;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Collections;
 using Microsoft.Win32;
 
 namespace KeppyMIDIConverter
@@ -122,6 +124,8 @@ namespace KeppyMIDIConverter
                 return CultureInfo.CreateSpecificCulture("zh-TW");
             else if (ci.Name == "bn-BD" | ci.Name == "bn-IN")
                 return CultureInfo.CreateSpecificCulture("bn");
+            else if (ci.Name == "ru-RU")
+                return CultureInfo.CreateSpecificCulture("ru");
             // else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
             //    return CultureInfo.CreateSpecificCulture("fr");
             else if (ci.Name == "ko-KR")

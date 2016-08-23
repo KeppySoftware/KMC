@@ -26,7 +26,7 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
+            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
             cul = Program.ReturnCulture();
             // Translate system
             VSTUse.Text = res_man.GetString("VSTUseText", cul);

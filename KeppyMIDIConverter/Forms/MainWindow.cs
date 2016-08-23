@@ -159,7 +159,7 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.res", typeof(MainWindow).Assembly);
+            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
             cul = Program.ReturnCulture();
             // Translate system
             FL12Discount.Text = res_man.GetString("FLStudioDiscount", cul);
@@ -1661,6 +1661,7 @@ namespace KeppyMIDIConverter
                 EstonianOverride.Enabled = true;
                 FrenchOverride.Enabled = false;
                 GermanOverride.Enabled = true;
+                RussianOverride.Enabled = true;
                 IndonesianOverride.Enabled = false;
                 ItalianOverride.Enabled = true;
                 JapaneseOverride.Enabled = true;
@@ -1696,6 +1697,7 @@ namespace KeppyMIDIConverter
                 EstonianOverride.Enabled = false;
                 FrenchOverride.Enabled = false;
                 GermanOverride.Enabled = false;
+                RussianOverride.Enabled = false;
                 IndonesianOverride.Enabled = false;
                 ItalianOverride.Enabled = false;
                 JapaneseOverride.Enabled = false;
@@ -1899,9 +1901,14 @@ namespace KeppyMIDIConverter
             ChangeLanguage("ko");
         }
 
-        private void menuItem1_Click(object sender, EventArgs e)
+        private void Bengali_Click(object sender, EventArgs e)
         {
             ChangeLanguage("bn");
+        }
+
+        private void RussianOverride_Click(object sender, EventArgs e)
+        {
+            ChangeLanguage("ru");
         }
 
         private void FL12Discount_Click(object sender, EventArgs e)

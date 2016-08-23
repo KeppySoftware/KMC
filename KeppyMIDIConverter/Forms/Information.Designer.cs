@@ -45,7 +45,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.InfoPg = new System.Windows.Forms.TabPage();
             this.UpdtPg = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.LatestVersion = new System.Windows.Forms.Label();
             this.ThisVersion = new System.Windows.Forms.Label();
@@ -56,7 +55,6 @@
             this.tabControl1.SuspendLayout();
             this.InfoPg.SuspendLayout();
             this.UpdtPg.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,7 +206,8 @@
             // 
             // UpdtPg
             // 
-            this.UpdtPg.Controls.Add(this.pictureBox2);
+            this.UpdtPg.BackgroundImage = global::KeppyMIDIConverter.Properties.Resources.updatebk;
+            this.UpdtPg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.UpdtPg.Controls.Add(this.label2);
             this.UpdtPg.Controls.Add(this.LatestVersion);
             this.UpdtPg.Controls.Add(this.ThisVersion);
@@ -220,16 +219,6 @@
             this.UpdtPg.TabIndex = 1;
             this.UpdtPg.Text = "Updater";
             this.UpdtPg.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::KeppyMIDIConverter.Properties.Resources.updatebk;
-            this.pictureBox2.Location = new System.Drawing.Point(170, 78);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(387, 206);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
             // 
             // label2
             // 
@@ -243,10 +232,9 @@
             // 
             // LatestVersion
             // 
-            this.LatestVersion.AutoSize = true;
             this.LatestVersion.Location = new System.Drawing.Point(7, 62);
             this.LatestVersion.Name = "LatestVersion";
-            this.LatestVersion.Size = new System.Drawing.Size(375, 13);
+            this.LatestVersion.Size = new System.Drawing.Size(375, 209);
             this.LatestVersion.TabIndex = 2;
             this.LatestVersion.Text = "Click on \"Check for updates\" to check for the latest version of the converter.";
             // 
@@ -306,7 +294,6 @@
             this.InfoPg.PerformLayout();
             this.UpdtPg.ResumeLayout(false);
             this.UpdtPg.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -333,7 +320,6 @@
         private System.Windows.Forms.Label LatestVersion;
         private System.Windows.Forms.Label ThisVersion;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label BASSINFO2;
     }

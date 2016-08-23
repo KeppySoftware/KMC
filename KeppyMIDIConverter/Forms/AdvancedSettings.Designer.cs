@@ -237,11 +237,10 @@
             // 
             // Noteoff1
             // 
-            this.Noteoff1.AutoSize = true;
             this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Noteoff1.Location = new System.Drawing.Point(7, 42);
             this.Noteoff1.Name = "Noteoff1";
-            this.Noteoff1.Size = new System.Drawing.Size(353, 31);
+            this.Noteoff1.Size = new System.Drawing.Size(381, 31);
             this.Noteoff1.TabIndex = 6;
             this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlappin" +
     "g instances of the note.";
