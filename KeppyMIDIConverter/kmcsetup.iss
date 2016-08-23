@@ -73,62 +73,14 @@ Source: "bin\x86\basswv.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replac
 Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 
+[InstallDelete]
 [UninstallDelete]
-Type: files; Name: "{app}\convfin.wav"
-Type: files; Name: "{app}\convstart.wav"
-Type: files; Name: "{app}\convfail.wav"
-Type: files; Name: "{app}\bass.dll"
-Type: files; Name: "{app}\bassenc.dll"
-Type: files; Name: "{app}\bassmidi.dll"
-Type: files; Name: "{app}\Bass.Net.dll"
-Type: files; Name: "{app}\kmcogg.exe"
-Type: files; Name: "{app}\oggenc.exe"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.dll"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.Sensors.dll"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.Shell.dll"
-Type: files; Name: "{app}\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
-Type: files; Name: "{app}\KeppyMIDIConverter.exe"
-Type: files; Name: "{app}\license.rtf"
-Type: files; Name: "{app}\x86\bass.dll"
-Type: files; Name: "{app}\x86\bass_vst.dll"
-Type: files; Name: "{app}\x86\bassenc.dll"
-Type: files; Name: "{app}\x86\bassmidi.dll"
-Type: files; Name: "{app}\x86\Bass.Net.dll"
-Type: files; Name: "{app}\x86\kmcogg.exe"
-Type: files; Name: "{app}\x86\oggenc.exe"
-Type: files; Name: "{app}\x86\de\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x86\ee\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x86\en\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x86\it\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x86\ja\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x86\nl\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.Sensors.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.Shell.dll"
-Type: files; Name: "{app}\x86\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
-Type: files; Name: "{app}\x86\KeppyMIDIConverter.exe"
-Type: files; Name: "{app}\x64\bass.dll"
-Type: files; Name: "{app}\x64\bass_vst.dll"
-Type: files; Name: "{app}\x64\bassenc.dll"
-Type: files; Name: "{app}\x64\bassmidi.dll"
-Type: files; Name: "{app}\x64\Bass.Net.dll"
-Type: files; Name: "{app}\x64\kmcogg.exe"
-Type: files; Name: "{app}\x64\oggenc.exe"
-Type: files; Name: "{app}\x64\de\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x64\ee\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x64\en\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x64\it\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x64\ja\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x64\nl\KeppyMIDIConverter.resources.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.Sensors.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.Shell.dll"
-Type: files; Name: "{app}\x64\Microsoft.WindowsAPICodePack.ShellExtensions.dll"
-Type: files; Name: "{app}\x64\KeppyMIDIConverter.exe"
-Type: files; Name: "{group}\Keppy's MIDI Converter.lnk"
+Type: filesandordirs; Name: "{app}\"
+Type: filesandordirs; Name: "{group}\"
+
+[UninstallDelete]
+Type: filesandordirs; Name: "{app}\"
+Type: filesandordirs; Name: "{group}\"
 
 [Languages]
 Name: en; MessagesFile: "compiler:Default.isl"
@@ -164,9 +116,6 @@ Filename: "{app}\x86\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasori
 Filename: "{app}\x64\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser; Description: "Run the x64 version of the converter"; Check: Is64BitInstallMode
 Filename: "{app}\license.rtf"; Flags: nowait shellexec postinstall unchecked; Description: "Read the license"
 Filename: "https://github.com/KaleidonKep99/Keppys-MIDI-Converter"; Flags: nowait postinstall shellexec unchecked; Description: "Look at the source code on GitHub"
-
-[UninstallRun]
-Filename: "http://keppystudios.com"; Flags: shellexec
 
 [Icons]
 Name: "{group}\Keppy's MIDI Converter"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: not Is64BitInstallMode
