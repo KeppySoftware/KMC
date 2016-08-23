@@ -74,7 +74,6 @@ Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignorever
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 
 [InstallDelete]
-[UninstallDelete]
 Type: filesandordirs; Name: "{app}\"
 Type: filesandordirs; Name: "{group}\"
 

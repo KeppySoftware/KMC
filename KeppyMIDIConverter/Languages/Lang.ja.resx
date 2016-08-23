@@ -200,7 +200,7 @@ VST DSPの設定を調べています。
     <value>変換終了後、自動的にMIDIリストをクリア</value>
   </data>
   <data name="ClearMIDIsList" xml:space="preserve">
-    <value>MIDIをリストから全て外す</value>
+    <value>リストから全てのMIDIを削除</value>
   </data>
   <data name="ClearSoundfontList" xml:space="preserve">
     <value>SoundFontをリストから全て外す</value>
@@ -315,7 +315,7 @@ Ian Luck さんによる素晴らしいBASSライブラリに基づいていま�
     <value>閉じる</value>
   </data>
   <data name="ExportWhere" xml:space="preserve">
-    <value>どこにエクスポートしますか？</value>
+    <value>どこに出力しますか?</value>
   </data>
   <data name="FatalError" xml:space="preserve">
     <value>致命的なエラー</value>
@@ -332,8 +332,8 @@ Ian Luck さんによる素晴らしいBASSライブラリに基づいていま�
     <value>ヘルプ</value>
   </data>
   <data name="IdleMessage" xml:space="preserve">
-    <value>ユーザーからの指示を待っています...
-MIDIを選んで、サウンドフォントを選んだら変換/ 再生です！</value>
+    <value>入力の待機中…
+MIDIとサウンドフォントを選び、何らかのプロセスをスタートさせてください！</value>
   </data>
   <data name="ImportMIDI" xml:space="preserve">
     <value>MIDIをインポート</value>
@@ -417,11 +417,11 @@ VST DSPの設定を調べています。
     <value>ノートが重なり合う場合がある時もノートに最も古いインスタンスだけをリリースする</value>
   </data>
   <data name="NoUpdatesText" xml:space="preserve">
-    <value>更新は見つかっていません。
-後でやり直してください。</value>
+    <value>アップデートは見つかりませんでした。
+後ほどお試しください。</value>
   </data>
   <data name="NoUpdatesTitle" xml:space="preserve">
-    <value>更新が見つかりませんでした。</value>
+    <value>アップデートは見つかりませんでした</value>
   </data>
   <data name="OnlyOneItemMsg" xml:space="preserve">
     <value>1項目のみ移動できます！</value>
@@ -430,10 +430,10 @@ VST DSPの設定を調べています。
     <value>設定</value>
   </data>
   <data name="OverrideTempo1" xml:space="preserve">
-    <value>BPMを変更する:</value>
+    <value>テンポの変更:</value>
   </data>
   <data name="OverrideTempo2" xml:space="preserve">
-    <value>BPMを変更する: (Orig. {0}bpm)</value>
+    <value>テンポの変更: (オリジナル. {0}bpm)</value>
   </data>
   <data name="PeakLevel" xml:space="preserve">
     <value>ピーク値</value>
@@ -465,7 +465,7 @@ BASS status: {0}</value>
     <value>完了しました。</value>
   </data>
   <data name="RemoveMIDI" xml:space="preserve">
-    <value>選択したMIDIを取り除く</value>
+    <value>選択したMIDIをリストから削除</value>
   </data>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
     <value>サウンドフォントを取り除く</value>
@@ -517,7 +517,7 @@ BASS status: {0}</value>
     <value>サウンドフォント/VSTマネージャー</value>
   </data>
   <data name="supportTheDeveloperWithADonation" xml:space="preserve">
-    <value>開発者を寄付で助ける</value>
+    <value>開発者に寄付する</value>
   </data>
   <data name="Un4seenWebsite" xml:space="preserve">
     <value>Un4seenのサイト</value>
@@ -529,7 +529,7 @@ BASS status: {0}</value>
     <value>削除</value>
   </data>
   <data name="UpdateFoundVer" xml:space="preserve">
-    <value>アップデートが見つかりました。 {0}　を利用できます。</value>
+    <value>アップデートが見つかりました。最新版は {0} です。</value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
     <value>アップデート</value>
@@ -538,8 +538,8 @@ BASS status: {0}</value>
     <value>アップデートが可能かどうか確認しています。しばらくお待ちください。</value>
   </data>
   <data name="UpdatesFoundText" xml:space="preserve">
-    <value>新しいアップデートが利用可能です！
-OKをクリックしてダウンロードページを開いてください</value>
+    <value>アップデートが見つかりました!
+OKをクリックするとダウンロードページが開きます。</value>
   </data>
   <data name="UpdatesFoundTitle" xml:space="preserve">
     <value>更新が利用可能です</value>
