@@ -37,6 +37,7 @@ Language | Available
 Afrikaans | No translator available
 Arabic | No translator available
 Armenian | No translator available
+Bengali | Yes
 Bulgarian | No translator available
 Chinese (Simplified) | Yes
 Chinese (Traditional) | Yes
@@ -50,8 +51,9 @@ Hebrew | No translator available
 Indonesian | On its way
 Italian | Yes
 Japanese | Yes
+Korean | Yes
 Portuguese | No translator available
-Russian | No translator available
+Russian | Yes
 Serbian | No translator available
 Spanish | Yes
 Turkish | Yes
