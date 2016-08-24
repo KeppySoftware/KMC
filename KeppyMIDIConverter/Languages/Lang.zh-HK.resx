@@ -528,7 +528,7 @@ BASS 狀態: {0}</value>
     <value>有更新, 最新版本:{0} </value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
-    <value>有更新！</value>
+    <value>更新</value>
   </data>
   <data name="UpdatesChecking" xml:space="preserve">
     <value>正在檢查可用的更新, 請稍候...</value>

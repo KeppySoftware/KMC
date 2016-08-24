@@ -133,14 +133,14 @@
             // 
             // UsedVoices
             // 
-            this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.UsedVoices.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsedVoices.Location = new System.Drawing.Point(341, 302);
+            this.UsedVoices.Location = new System.Drawing.Point(12, 311);
             this.UsedVoices.Name = "UsedVoices";
-            this.UsedVoices.Size = new System.Drawing.Size(161, 13);
+            this.UsedVoices.Size = new System.Drawing.Size(470, 13);
             this.UsedVoices.TabIndex = 8;
             this.UsedVoices.Text = "Voices: 100000/100000";
-            this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MIDIList
             // 
@@ -246,9 +246,9 @@
             // labelRMS
             // 
             this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelRMS.Location = new System.Drawing.Point(12, 302);
+            this.labelRMS.Location = new System.Drawing.Point(12, 293);
             this.labelRMS.Name = "labelRMS";
-            this.labelRMS.Size = new System.Drawing.Size(329, 13);
+            this.labelRMS.Size = new System.Drawing.Size(470, 13);
             this.labelRMS.TabIndex = 17;
             this.labelRMS.Text = "Root mean square: -0.0 dB | Average: -0.0 dB | Peak: -0.0 dB";
             // 
@@ -275,10 +275,10 @@
             this.VolumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VolumeBar.AutoSize = false;
             this.VolumeBar.LargeChange = 1;
-            this.VolumeBar.Location = new System.Drawing.Point(510, 303);
+            this.VolumeBar.Location = new System.Drawing.Point(490, 303);
             this.VolumeBar.Maximum = 10000;
             this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(130, 20);
+            this.VolumeBar.Size = new System.Drawing.Size(150, 20);
             this.VolumeBar.TabIndex = 18;
             this.VolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.VolumeBar.Scroll += new System.EventHandler(this.VolumeBar_Scroll);
@@ -286,9 +286,9 @@
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(510, 292);
+            this.label3.Location = new System.Drawing.Point(490, 292);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 13);
+            this.label3.Size = new System.Drawing.Size(150, 13);
             this.label3.TabIndex = 19;
             this.label3.Text = "Volume:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -152,9 +152,9 @@
             // label2
             // 
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(227, 97);
+            this.label2.Location = new System.Drawing.Point(211, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.Size = new System.Drawing.Size(110, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "New tempo value:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

@@ -328,7 +328,7 @@ BASS статус: {0}</value>
     <value>Сбой приложения</value>
   </data>
   <data name="HelpStrip" xml:space="preserve">
-    <value>Помошь</value>
+    <value>Помощь</value>
   </data>
   <data name="IdleMessage" xml:space="preserve">
     <value>Ожидание команд пользователя.
@@ -593,7 +593,7 @@ VST, вероятно, не совместимы с нативной систе�
     <value>Информация</value>
   </data>
   <data name="ZZZTranslators" xml:space="preserve">
-    <value>sangaveor and Dmitry's Music</value>
+    <value>sangaveor, Dmitry's Music</value>
   </data>
   <data name="OverrideLanguage" xml:space="preserve">
     <value>Override для Windows по умолчанию язык пользовательского интерфейса</value>
