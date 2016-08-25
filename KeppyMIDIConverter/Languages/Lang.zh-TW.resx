@@ -601,4 +601,10 @@ Errore:
   <data name="FLStudioDiscount" xml:space="preserve">
     <value>獲取一個FL Studio許可折扣</value>
   </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
 </root>

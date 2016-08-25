@@ -601,4 +601,10 @@ Premere OK per uscire.</value>
   <data name="FLStudioDiscount" xml:space="preserve">
     <value>Ottieni uno sconto sull'acquisto di FL Studio</value>
   </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>Dimensione</value>
+  </data>
 </root>

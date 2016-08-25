@@ -604,4 +604,10 @@ OKをクリックして閉じてください。</value>
   <data name="FLStudioDiscount" xml:space="preserve">
     <value>FL Studioのライセンスの割引を受ける</value>
   </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
 </root>

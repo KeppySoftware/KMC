@@ -604,4 +604,10 @@ Vajuta OK, et väljuda.</value>
   <data name="FLStudioDiscount" xml:space="preserve">
     <value>Saa soodustus FL Studio litsentsi</value>
   </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>Fail</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>Suurus</value>
+  </data>
 </root>

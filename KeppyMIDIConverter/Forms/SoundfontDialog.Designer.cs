@@ -35,7 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ImportBtn = new System.Windows.Forms.Button();
             this.RemoveBtn = new System.Windows.Forms.Button();
-            this.SFList = new System.Windows.Forms.ListBox();
             this.MvUp = new System.Windows.Forms.Button();
             this.MvDwn = new System.Windows.Forms.Button();
             this.SFListCheck = new System.Windows.Forms.Timer(this.components);
@@ -49,6 +48,7 @@
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.clearSoundfontListToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
+            this.SFList = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
@@ -99,23 +99,6 @@
             this.RemoveBtn.Text = "Remove soundfont(s)";
             this.RemoveBtn.UseVisualStyleBackColor = true;
             this.RemoveBtn.Click += new System.EventHandler(this.RemoveBtn_Click);
-            // 
-            // SFList
-            // 
-            this.SFList.AllowDrop = true;
-            this.SFList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SFList.FormattingEnabled = true;
-            this.SFList.HorizontalScrollbar = true;
-            this.SFList.Location = new System.Drawing.Point(12, 96);
-            this.SFList.Name = "SFList";
-            this.SFList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.SFList.Size = new System.Drawing.Size(557, 264);
-            this.SFList.TabIndex = 11;
-            this.SFList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SFList_DragDrop);
-            this.SFList.DragEnter += new System.Windows.Forms.DragEventHandler(this.SFList_DragEnter);
-            this.SFList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SFList_KeyPress);
             // 
             // MvUp
             // 
@@ -233,6 +216,23 @@
             // 
             this.VistaMenuSys.ContainerControl = this;
             // 
+            // SFList
+            // 
+            this.SFList.AllowDrop = true;
+            this.SFList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SFList.FormattingEnabled = true;
+            this.SFList.HorizontalScrollbar = true;
+            this.SFList.Location = new System.Drawing.Point(12, 96);
+            this.SFList.Name = "SFList";
+            this.SFList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.SFList.Size = new System.Drawing.Size(557, 264);
+            this.SFList.TabIndex = 11;
+            this.SFList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SFList_DragDrop);
+            this.SFList.DragEnter += new System.Windows.Forms.DragEventHandler(this.SFList_DragEnter);
+            this.SFList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SFList_KeyPress);
+            // 
             // SoundfontDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -273,7 +273,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ImportBtn;
         private System.Windows.Forms.Button RemoveBtn;
-        public System.Windows.Forms.ListBox SFList;
         private System.Windows.Forms.Button MvUp;
         private System.Windows.Forms.Button MvDwn;
         private System.Windows.Forms.Timer SFListCheck;
@@ -287,5 +286,6 @@
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem clearSoundfontListToolStripMenuItem;
         private wyDay.Controls.VistaMenu VistaMenuSys;
+        public System.Windows.Forms.ListBox SFList;
     }
 }

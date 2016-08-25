@@ -601,4 +601,10 @@ VST, вероятно, не совместимы с нативной систе�
   <data name="FLStudioDiscount" xml:space="preserve">
     <value>Получите скидку на лицензии FL Studio</value>
   </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>Размер</value>
+  </data>
 </root>

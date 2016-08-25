@@ -598,4 +598,10 @@ VST সম্ভবত নেটিভ উইন্ডোজ ফরম সিস
   <data name="FLStudioDiscount" xml:space="preserve">
     <value>একটি FL Studio লাইসেন্স ছাড় পান</value>
   </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>ফাইল</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>আয়তন</value>
+  </data>
 </root>

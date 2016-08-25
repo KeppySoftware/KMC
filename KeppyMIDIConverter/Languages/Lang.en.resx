@@ -602,4 +602,10 @@ Click OK to exit.</value>
   <data name="FLStudioDiscount" xml:space="preserve">
     <value>Get a discount on a FL Studio license</value>
   </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

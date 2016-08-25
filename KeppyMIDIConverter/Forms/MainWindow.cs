@@ -104,6 +104,8 @@ namespace KeppyMIDIConverter
             public static string ExecutablePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         }
 
+        private enum MoveDirection { Up = -1, Down = 1 };
+
         public MainWindow(String[] args, string encoder, bool deletencoder)
         {          
             InitializeComponent();
@@ -179,8 +181,9 @@ namespace KeppyMIDIConverter
         {
             res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
             cul = Program.ReturnCulture();
-            // Translate system
-            FL12Discount.Text = res_man.GetString("FLStudioDiscount", cul);
+            MIDIList.Columns.Clear();
+            MIDIList.Columns.Add(res_man.GetString("MIDIFile", cul), 525, HorizontalAlignment.Left);
+            MIDIList.Columns.Add(res_man.GetString("MIDISize", cul), 81, HorizontalAlignment.Center);
             ActionsStrip.Text = res_man.GetString("ActionsStrip", cul);
             AdvSettingsButton.Text = res_man.GetString("AdvSettingsButton", cul);
             AudioEventsStrip.Text = res_man.GetString("AudioEventsStrip", cul);
@@ -188,19 +191,20 @@ namespace KeppyMIDIConverter
             AutomaticShutdownStrip.Text = res_man.GetString("AutomaticShutdownStrip", cul);
             ClearListAutomaticallyStrip.Text = res_man.GetString("ClearListAutomaticallyStrip", cul);
             ConvPosOrTimeLeft.Text = res_man.GetString("ConvPosOrTimeLeft", cul);
+            FL12Discount.Text = res_man.GetString("FLStudioDiscount", cul);
             HelpStrip.Text = res_man.GetString("HelpStrip", cul);
             KaleidonKep99sGitHubPageToolStripMenuItem.Text = res_man.GetString("KaleidonKep99sGitHubPage", cul);
             KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = res_man.GetString("KaleidonKep99sYouTubeChannel", cul);
-            MoveDownMIDIRightClick.Text = res_man.GetString("MoveDOWN", cul);
-            MoveUpMIDIRightClick.Text = res_man.GetString("MoveUP", cul);
+            MoveDownItem.Text = res_man.GetString("MoveDOWN", cul);
+            MoveUpItem.Text = res_man.GetString("MoveUP", cul);
             OptionsStrip.Text = res_man.GetString("OptionsStrip", cul);
+            OverrideStrip.Text = res_man.GetString("OverrideLanguage", cul);
             SettingsBox.Text = res_man.GetString("SettingsBox", cul);
             VoiceLabel.Text = res_man.GetString("VoiceLabel", cul);
             abortRenderingToolStripMenuItem.Text = res_man.GetString("AbortConvPlayback", cul);
             clearMIDIsListToolStripMenuItem.Text = ClearMIDIsListRightClick.Text = res_man.GetString("ClearMIDIsList", cul);
             disabledToolStripMenuItem.Text = disabledToolStripMenuItem1.Text = disabledToolStripMenuItem2.Text = disabledToolStripMenuItem3.Text = disabledToolStripMenuItem4.Text = disabledToolStripMenuItem5.Text = res_man.GetString("DisabledText", cul);
             enabledToolStripMenuItem.Text = enabledToolStripMenuItem1.Text = enabledToolStripMenuItem2.Text = enabledToolStripMenuItem3.Text = enabledToolStripMenuItem4.Text = enabledToolStripMenuItem5.Text = res_man.GetString("EnabledText", cul);
-            OverrideStrip.Text = res_man.GetString("OverrideLanguage", cul);
             exitToolStripMenuItem.Text = res_man.GetString("ExitStrip", cul);
             forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
             importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
@@ -724,6 +728,21 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private delegate ListView.ListViewItemCollection GetItems(ListView lstview);
+
+        private ListView.ListViewItemCollection getListViewItems(ListView lstview)
+        {
+            ListView.ListViewItemCollection temp = new ListView.ListViewItemCollection(new ListView());
+            if (!lstview.InvokeRequired)
+            {
+                foreach (ListViewItem item in lstview.Items)
+                    temp.Add((ListViewItem)item.Clone());
+                return temp;
+            }
+            else
+                return (ListView.ListViewItemCollection)this.Invoke(new GetItems(getListViewItems), new object[] { lstview });
+        }
+
         private void BASSCloseStream(string message, string title, int type) {
             BassEnc.BASS_Encode_Stop(Globals._Encoder);
             Bass.BASS_StreamFree(Globals._recHandle);
@@ -776,8 +795,9 @@ namespace KeppyMIDIConverter
                     BASSInitSystem();
                     while (KeepLooping)
                     {
-                        foreach (string str in this.MIDIList.Items)
+                        foreach (ListViewItem itemerino in getListViewItems(MIDIList))
                         {
+                            string str = itemerino.Text;
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
                             BASSStreamSystem(str);
@@ -877,8 +897,9 @@ namespace KeppyMIDIConverter
                     bool KeepLooping = true;
                     while (KeepLooping)
                     {
-                        foreach (string str in this.MIDIList.Items)
+                        foreach (ListViewItem itemerino in getListViewItems(MIDIList))
                         {
+                            string str = itemerino.Text;
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
                             Bass.BASS_Init(-1, Globals.Frequency, BASSInit.BASS_DEVICE_LATENCY, IntPtr.Zero);
@@ -1157,7 +1178,20 @@ namespace KeppyMIDIConverter
                 {
                     if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
                     {
-                        MIDIList.Items.Add(str);
+                        string[] saLvwItem = new string[2];
+                        long length = new System.IO.FileInfo(str).Length;
+
+                        saLvwItem[0] = str;
+                        if (length / 1024f >= 1000000)
+                            saLvwItem[1] = (((length / 1024f) / 1024f) / 1024f).ToString("0 GB");
+                        else if (length / 1024f >= 1000)
+                            saLvwItem[1] = ((length / 1024f) / 1024f).ToString("0 MB");
+                        else 
+                            saLvwItem[1] = (length / 1024f).ToString("0 KB");
+
+                        ListViewItem lvi = new ListViewItem(saLvwItem);
+
+                        MIDIList.Items.Add(lvi); 
                     }
                     else
                     {
@@ -1174,45 +1208,6 @@ namespace KeppyMIDIConverter
         private void informationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Informations().ShowDialog();
-        }
-
-        private void moveUpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.MIDIList.SelectedItems.Count >= 2)
-            {
-                MessageBox.Show(res_man.GetString("OnlyOneItemMsg", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
-            else
-            {
-                this.MoveItem(-1);
-            }
-        }
-
-        private void moveDownToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.MIDIList.SelectedItems.Count >= 2)
-            {
-                MessageBox.Show(res_man.GetString("OnlyOneItemMsg", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
-            else
-            {
-                this.MoveItem(1);
-            }
-        }
-
-        public void MoveItem(int direction)
-        {
-            if ((this.MIDIList.SelectedItem != null) && (this.MIDIList.SelectedIndex >= 0))
-            {
-                int index = this.MIDIList.SelectedIndex + direction;
-                if ((index >= 0) && (index < this.MIDIList.Items.Count))
-                {
-                    object selectedItem = this.MIDIList.SelectedItem;
-                    this.MIDIList.Items.Remove(selectedItem);
-                    this.MIDIList.Items.Insert(index, selectedItem);
-                    this.MIDIList.SetSelected(index, true);
-                }
-            }
         }
 
         // Links
@@ -1242,6 +1237,46 @@ namespace KeppyMIDIConverter
             for (int i = this.MIDIList.SelectedIndices.Count - 1; i >= 0; i--)
             {
                 this.MIDIList.Items.RemoveAt(this.MIDIList.SelectedIndices[i]);
+            }
+        }
+
+        private void MoveUpItem_Click(object sender, EventArgs e)
+        {
+            MoveListViewItems(MIDIList, MoveDirection.Up);
+        }
+
+        private void MoveDownItem_Click(object sender, EventArgs e)
+        {
+            MoveListViewItems(MIDIList, MoveDirection.Down);
+        }
+
+        private static void MoveListViewItems(ListView sender, MoveDirection direction)
+        {
+            int dir = (int)direction;
+            int opp = dir * -1;
+
+            bool valid = sender.SelectedItems.Count > 0 &&
+                            ((direction == MoveDirection.Down && (sender.SelectedItems[sender.SelectedItems.Count - 1].Index < sender.Items.Count - 1))
+                        || (direction == MoveDirection.Up && (sender.SelectedItems[0].Index > 0)));
+
+            if (valid)
+            {
+                foreach (ListViewItem item in sender.SelectedItems)
+                {
+                    string str = item.Text;
+                    int index = item.Index + dir;
+
+                    string size1 = sender.Items[index].SubItems[1].Text;
+                    string size2 = item.SubItems[1].Text;
+
+                    sender.Items.RemoveAt(item.Index);
+                    sender.Items.Insert(index, item);
+
+                    long length = new System.IO.FileInfo(str).Length;
+
+                    sender.Items[index].SubItems[1].Text = size1;
+                    item.SubItems[1].Text = size2;
+                }
             }
         }
 
