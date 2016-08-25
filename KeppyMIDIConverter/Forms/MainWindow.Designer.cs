@@ -150,11 +150,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MIDIList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MIDIList.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.MIDIList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MIDIList.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MIDIList.FormattingEnabled = true;
             this.MIDIList.HorizontalScrollbar = true;
             this.MIDIList.IntegralHeight = false;
-            this.MIDIList.ItemHeight = 16;
+            this.MIDIList.ItemHeight = 15;
             this.MIDIList.Location = new System.Drawing.Point(12, 12);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;

@@ -549,7 +549,7 @@ BASS статус: {0}</value>
     <value>{0} версия, оптимизированная для {1} процессоров</value>
   </data>
   <data name="VoiceLabel" xml:space="preserve">
-    <value>Ограничитель голоса:</value>
+    <value>Полифония:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
     <value>Как они работают?
