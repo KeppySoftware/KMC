@@ -605,6 +605,9 @@ Premere OK per uscire.</value>
     <value>File</value>
   </data>
   <data name="MIDISize" xml:space="preserve">
-    <value>Dimensione</value>
+    <value>Dimens.</value>
+  </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>Durata</value>
   </data>
 </root>

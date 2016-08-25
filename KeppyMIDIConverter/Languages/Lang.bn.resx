@@ -604,4 +604,7 @@ VST সম্ভবত নেটিভ উইন্ডোজ ফরম সিস
   <data name="MIDISize" xml:space="preserve">
     <value>আয়তন</value>
   </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>দৈর্ঘ্য</value>
+  </data>
 </root>

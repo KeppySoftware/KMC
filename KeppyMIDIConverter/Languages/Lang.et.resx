@@ -610,4 +610,7 @@ Vajuta OK, et väljuda.</value>
   <data name="MIDISize" xml:space="preserve">
     <value>Suurus</value>
   </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>Kestus</value>
+  </data>
 </root>

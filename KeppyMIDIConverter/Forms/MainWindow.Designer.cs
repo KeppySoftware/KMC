@@ -105,11 +105,11 @@
             this.ImportMIDIsRightClick = new System.Windows.Forms.MenuItem();
             this.RemoveMIDIsRightClick = new System.Windows.Forms.MenuItem();
             this.ClearMIDIsListRightClick = new System.Windows.Forms.MenuItem();
-            this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.MIDIList = new System.Windows.Forms.ListView();
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.MoveUpItem = new System.Windows.Forms.MenuItem();
             this.MoveDownItem = new System.Windows.Forms.MenuItem();
+            this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
+            this.MIDIList = new System.Windows.Forms.ListView();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -335,7 +335,7 @@
             this.importMIDIsToolStripMenuItem.DefaultItem = true;
             this.VistaMenuSys.SetImage(this.importMIDIsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.add_icon);
             this.importMIDIsToolStripMenuItem.Index = 0;
-            this.importMIDIsToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
+            this.importMIDIsToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
             this.importMIDIsToolStripMenuItem.Text = "Import MIDIs";
             this.importMIDIsToolStripMenuItem.Click += new System.EventHandler(this.importMIDIsToolStripMenuItem_Click);
             // 
@@ -790,25 +790,6 @@
             this.ClearMIDIsListRightClick.Text = "Clear MIDIs list";
             this.ClearMIDIsListRightClick.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem_Click);
             // 
-            // VistaMenuSys
-            // 
-            this.VistaMenuSys.ContainerControl = this;
-            // 
-            // MIDIList
-            // 
-            this.MIDIList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MIDIList.FullRowSelect = true;
-            this.MIDIList.GridLines = true;
-            this.MIDIList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.MIDIList.Location = new System.Drawing.Point(12, 12);
-            this.MIDIList.Name = "MIDIList";
-            this.MIDIList.Size = new System.Drawing.Size(628, 276);
-            this.MIDIList.TabIndex = 20;
-            this.MIDIList.UseCompatibleStateImageBehavior = false;
-            this.MIDIList.View = System.Windows.Forms.View.Details;
-            // 
             // menuItem1
             // 
             this.menuItem1.Index = 3;
@@ -825,6 +806,30 @@
             this.MoveDownItem.Index = 5;
             this.MoveDownItem.Text = "Move down (One item)";
             this.MoveDownItem.Click += new System.EventHandler(this.MoveDownItem_Click);
+            // 
+            // VistaMenuSys
+            // 
+            this.VistaMenuSys.ContainerControl = this;
+            // 
+            // MIDIList
+            // 
+            this.MIDIList.AllowDrop = true;
+            this.MIDIList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MIDIList.FullRowSelect = true;
+            this.MIDIList.GridLines = true;
+            this.MIDIList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.MIDIList.Location = new System.Drawing.Point(12, 12);
+            this.MIDIList.Name = "MIDIList";
+            this.MIDIList.ShowGroups = false;
+            this.MIDIList.Size = new System.Drawing.Size(628, 276);
+            this.MIDIList.TabIndex = 20;
+            this.MIDIList.UseCompatibleStateImageBehavior = false;
+            this.MIDIList.View = System.Windows.Forms.View.Details;
+            this.MIDIList.DragDrop += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragDrop);
+            this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
+            this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
             // 
             // MainWindow
             // 

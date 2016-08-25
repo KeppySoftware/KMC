@@ -283,8 +283,7 @@ Nicht gespeicherte Daten gehen verloren!</value>
   <data name="Credits" xml:space="preserve">
     <value>Copyright(C) 2013-2016 KaleidonKep99
 
-Dieses Programm basiert auf Ian Lucks großartigen BASS-Libraries
-von Un4seen Developments.
+Dieses Programm basiert auf Ian Lucks großartigen BASS-Libraries von Un4seen Developments.
 Werfen Sie einen Blick auf seine Website indem Sie auf den
 "{0}" Knopf klicken.
 
@@ -607,5 +606,8 @@ OK klicken zum Beenden.</value>
   </data>
   <data name="MIDISize" xml:space="preserve">
     <value>Größe</value>
+  </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>Dauer</value>
   </data>
 </root>

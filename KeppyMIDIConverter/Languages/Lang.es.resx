@@ -605,4 +605,7 @@ Pulsa Aceptar para salir.</value>
   <data name="MIDISize" xml:space="preserve">
     <value>Tamaño</value>
   </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>Duración</value>
+  </data>
 </root>

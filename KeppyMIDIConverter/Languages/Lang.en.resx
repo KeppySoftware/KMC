@@ -608,4 +608,7 @@ Click OK to exit.</value>
   <data name="MIDISize" xml:space="preserve">
     <value>Size</value>
   </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>Length</value>
+  </data>
 </root>
