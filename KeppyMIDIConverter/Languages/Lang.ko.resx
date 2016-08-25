@@ -607,4 +607,7 @@ VST는 아마 기본 Windows 폼 시스템과 호환되지 않습니다.
   <data name="MIDILength" xml:space="preserve">
     <value>길이</value>
   </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>이름으로 정렬</value>
+  </data>
 </root>

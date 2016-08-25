@@ -607,4 +607,7 @@ VST সম্ভবত নেটিভ উইন্ডোজ ফরম সিস
   <data name="MIDILength" xml:space="preserve">
     <value>দৈর্ঘ্য</value>
   </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>নাম অনুযায়ী সাজাও</value>
+  </data>
 </root>

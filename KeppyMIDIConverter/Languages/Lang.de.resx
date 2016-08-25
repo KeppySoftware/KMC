@@ -610,4 +610,7 @@ OK klicken zum Beenden.</value>
   <data name="MIDILength" xml:space="preserve">
     <value>Dauer</value>
   </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>Ausrichten nach Name</value>
+  </data>
 </root>

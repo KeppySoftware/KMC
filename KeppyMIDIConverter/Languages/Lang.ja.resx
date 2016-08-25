@@ -613,4 +613,7 @@ OKをクリックして閉じてください。</value>
   <data name="MIDILength" xml:space="preserve">
     <value>レングス</value>
   </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>ネームを並び替え</value>
+  </data>
 </root>

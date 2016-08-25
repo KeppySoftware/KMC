@@ -613,4 +613,7 @@ Vajuta OK, et väljuda.</value>
   <data name="MIDILength" xml:space="preserve">
     <value>Kestus</value>
   </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>Järjesta nime järgi</value>
+  </data>
 </root>

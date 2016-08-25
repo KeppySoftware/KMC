@@ -110,6 +110,8 @@
             this.MoveDownItem = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.MIDIList = new System.Windows.Forms.ListView();
+            this.SortByName = new System.Windows.Forms.MenuItem();
+            this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -135,7 +137,7 @@
             // 
             this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.UsedVoices.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsedVoices.Location = new System.Drawing.Point(12, 311);
+            this.UsedVoices.Location = new System.Drawing.Point(12, 318);
             this.UsedVoices.Name = "UsedVoices";
             this.UsedVoices.Size = new System.Drawing.Size(470, 13);
             this.UsedVoices.TabIndex = 8;
@@ -148,7 +150,7 @@
             this.SettingsBox.Controls.Add(this.AdvSettingsButton);
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.VoiceLabel);
-            this.SettingsBox.Location = new System.Drawing.Point(490, 324);
+            this.SettingsBox.Location = new System.Drawing.Point(490, 331);
             this.SettingsBox.Name = "SettingsBox";
             this.SettingsBox.Size = new System.Drawing.Size(150, 70);
             this.SettingsBox.TabIndex = 12;
@@ -206,7 +208,7 @@
             // 
             this.CurrentStatus.BackColor = System.Drawing.SystemColors.Control;
             this.CurrentStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CurrentStatus.Location = new System.Drawing.Point(0, 405);
+            this.CurrentStatus.Location = new System.Drawing.Point(0, 412);
             this.CurrentStatus.Name = "CurrentStatus";
             this.CurrentStatus.Size = new System.Drawing.Size(652, 23);
             this.CurrentStatus.Step = 1;
@@ -224,7 +226,7 @@
             // labelRMS
             // 
             this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelRMS.Location = new System.Drawing.Point(12, 293);
+            this.labelRMS.Location = new System.Drawing.Point(12, 300);
             this.labelRMS.Name = "labelRMS";
             this.labelRMS.Size = new System.Drawing.Size(470, 13);
             this.labelRMS.TabIndex = 17;
@@ -253,7 +255,7 @@
             this.VolumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VolumeBar.AutoSize = false;
             this.VolumeBar.LargeChange = 1;
-            this.VolumeBar.Location = new System.Drawing.Point(490, 303);
+            this.VolumeBar.Location = new System.Drawing.Point(490, 310);
             this.VolumeBar.Maximum = 10000;
             this.VolumeBar.Name = "VolumeBar";
             this.VolumeBar.Size = new System.Drawing.Size(150, 20);
@@ -264,7 +266,7 @@
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(490, 292);
+            this.label3.Location = new System.Drawing.Point(490, 299);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(150, 13);
             this.label3.TabIndex = 19;
@@ -283,7 +285,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.loadingpic);
             this.panel1.Controls.Add(this.CurrentStatusText);
-            this.panel1.Location = new System.Drawing.Point(12, 330);
+            this.panel1.Location = new System.Drawing.Point(12, 337);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(472, 64);
             this.panel1.TabIndex = 13;
@@ -767,6 +769,8 @@
             this.RemoveMIDIsRightClick,
             this.ClearMIDIsListRightClick,
             this.menuItem1,
+            this.SortByName,
+            this.menuItem6,
             this.MoveUpItem,
             this.MoveDownItem});
             // 
@@ -797,13 +801,17 @@
             // 
             // MoveUpItem
             // 
-            this.MoveUpItem.Index = 4;
+            this.MoveUpItem.Enabled = false;
+            this.VistaMenuSys.SetImage(this.MoveUpItem, global::KeppyMIDIConverter.Properties.Resources.up_icon);
+            this.MoveUpItem.Index = 6;
             this.MoveUpItem.Text = "Move up (One item)";
             this.MoveUpItem.Click += new System.EventHandler(this.MoveUpItem_Click);
             // 
             // MoveDownItem
             // 
-            this.MoveDownItem.Index = 5;
+            this.MoveDownItem.Enabled = false;
+            this.VistaMenuSys.SetImage(this.MoveDownItem, global::KeppyMIDIConverter.Properties.Resources.down_icon);
+            this.MoveDownItem.Index = 7;
             this.MoveDownItem.Text = "Move down (One item)";
             this.MoveDownItem.Click += new System.EventHandler(this.MoveDownItem_Click);
             // 
@@ -813,17 +821,19 @@
             // 
             // MIDIList
             // 
+            this.MIDIList.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.MIDIList.AllowDrop = true;
             this.MIDIList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MIDIList.BackColor = System.Drawing.Color.White;
             this.MIDIList.FullRowSelect = true;
             this.MIDIList.GridLines = true;
             this.MIDIList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.MIDIList.Location = new System.Drawing.Point(12, 12);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.ShowGroups = false;
-            this.MIDIList.Size = new System.Drawing.Size(628, 276);
+            this.MIDIList.Size = new System.Drawing.Size(628, 283);
             this.MIDIList.TabIndex = 20;
             this.MIDIList.UseCompatibleStateImageBehavior = false;
             this.MIDIList.View = System.Windows.Forms.View.Details;
@@ -831,12 +841,23 @@
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
             // 
+            // SortByName
+            // 
+            this.SortByName.Index = 4;
+            this.SortByName.Text = "Sort by name";
+            this.SortByName.Click += new System.EventHandler(this.SortByName_Click);
+            // 
+            // menuItem6
+            // 
+            this.menuItem6.Index = 5;
+            this.menuItem6.Text = "-";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(652, 428);
+            this.ClientSize = new System.Drawing.Size(652, 435);
             this.Controls.Add(this.MIDIList);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.VolumeBar);
@@ -847,7 +868,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(668, 467);
+            this.MinimumSize = new System.Drawing.Size(668, 473);
             this.Name = "MainWindow";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -953,6 +974,8 @@
         private System.Windows.Forms.MenuItem menuItem1;
         private System.Windows.Forms.MenuItem MoveUpItem;
         private System.Windows.Forms.MenuItem MoveDownItem;
+        private System.Windows.Forms.MenuItem SortByName;
+        private System.Windows.Forms.MenuItem menuItem6;
     }
 }
 

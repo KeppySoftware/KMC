@@ -201,6 +201,7 @@ namespace KeppyMIDIConverter
             OptionsStrip.Text = res_man.GetString("OptionsStrip", cul);
             OverrideStrip.Text = res_man.GetString("OverrideLanguage", cul);
             SettingsBox.Text = res_man.GetString("SettingsBox", cul);
+            SortByName.Text = res_man.GetString("SortByName", cul);
             VoiceLabel.Text = res_man.GetString("VoiceLabel", cul);
             abortRenderingToolStripMenuItem.Text = res_man.GetString("AbortConvPlayback", cul);
             clearMIDIsListToolStripMenuItem.Text = ClearMIDIsListRightClick.Text = res_man.GetString("ClearMIDIsList", cul);
@@ -1275,6 +1276,12 @@ namespace KeppyMIDIConverter
             MoveListViewItems(MIDIList, MoveDirection.Down);
         }
 
+        private void SortByName_Click(object sender, EventArgs e)
+        {
+            MIDIList.Sorting = SortOrder.Ascending;
+            MIDIList.Sorting = SortOrder.None;
+        }
+
         private static void MoveListViewItems(ListView sender, MoveDirection direction)
         {
             int dir = (int)direction;
@@ -1356,6 +1363,13 @@ namespace KeppyMIDIConverter
                             this.MIDIList.Items.RemoveAt(this.MIDIList.SelectedIndices[i]);
                         }
                     }
+                    else if (e.KeyCode == Keys.A && e.Control)
+                    {
+                        foreach (ListViewItem item in MIDIList.Items)
+                        {
+                            item.Selected = true;
+                        }
+                    }
                 }
             }
             catch
@@ -1375,6 +1389,7 @@ namespace KeppyMIDIConverter
 
         private void RenderingTimer_Tick(object sender, EventArgs e)
         {
+            System.Threading.Thread.Sleep(1);
             MIDIImport.InitialDirectory = Globals.MIDILastDirectory;
             ExportWhere.InitialDirectory = Globals.ExportLastDirectory;
             Graphics gr = CurrentStatus.CreateGraphics();
@@ -1388,6 +1403,16 @@ namespace KeppyMIDIConverter
             {
                 Globals.AutoClearMIDIListEnabled = false;
                 disabledToolStripMenuItem1.Checked = true;
+            }
+            if (MIDIList.Items.Count <= 1)
+            {
+                MoveUpItem.Enabled = false;
+                MoveDownItem.Enabled = false;
+            }
+            else
+            {
+                MoveUpItem.Enabled = true;
+                MoveDownItem.Enabled = true;
             }
             try
             {
@@ -1429,13 +1454,12 @@ namespace KeppyMIDIConverter
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: {1:#00.0}dB | {2}: {3:#00.0}dB | {4}: {5:#00.0}dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
-                        this.SettingsBox.Enabled = true;
+                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV)); this.SettingsBox.Enabled = true;
                         this.label3.Enabled = true;
                         this.VolumeBar.Enabled = true;
                         this.VoiceLimit.Maximum = 2000;
                         Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.RealTime;
+                        thisProc.PriorityClass = ProcessPriorityClass.High;
                     }
                     else if (Globals.RenderingMode == true)
                     {
@@ -1457,13 +1481,12 @@ namespace KeppyMIDIConverter
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: {1:#00.0} dB | {2}: {3:#00.0} dB | {4}: {5:#00.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
-                        this.SettingsBox.Enabled = false;
+                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV)); this.SettingsBox.Enabled = false;
                         this.label3.Enabled = false;
                         this.VolumeBar.Enabled = false;
                         this.VoiceLimit.Maximum = 100000;
                         Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.RealTime;
+                        thisProc.PriorityClass = ProcessPriorityClass.High;
                     }
                     else if (Globals.RenderingMode == false & Globals.PlaybackMode == false)
                     {
@@ -1486,8 +1509,7 @@ namespace KeppyMIDIConverter
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = true;
                         this.abortRenderingToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: 0.0 dB | {1}: 0.0 dB | {2}: 0.0 dB", res_man.GetString("RMS", cul), res_man.GetString("AverageLevel", cul), res_man.GetString("PeakLevel", cul));
-                        this.SettingsBox.Enabled = true;
+                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV)); this.SettingsBox.Enabled = true;
                         this.label3.Enabled = true;
                         this.VolumeBar.Enabled = true;
                         this.VoiceLimit.Maximum = 100000;
@@ -1547,9 +1569,9 @@ namespace KeppyMIDIConverter
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: {1:#00.0} dB | {2}: {3:#00.0} dB | {4}: {5:#00.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
+                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
                         Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.RealTime;
+                        thisProc.PriorityClass = ProcessPriorityClass.High;
                     }
                     else
                     {
@@ -1567,12 +1589,16 @@ namespace KeppyMIDIConverter
                             this.SettingsBox.Enabled = true;
                             this.VolumeBar.Enabled = true;
                             this.VoiceLimit.Maximum = 2000;
+                            Process thisProc = Process.GetCurrentProcess();
+                            thisProc.PriorityClass = ProcessPriorityClass.RealTime;
                         }
                         else
                         {
                             this.SettingsBox.Enabled = false;
                             this.VolumeBar.Enabled = false;
                             this.VoiceLimit.Maximum = 100000;
+                            Process thisProc = Process.GetCurrentProcess();
+                            thisProc.PriorityClass = ProcessPriorityClass.High;
                         }
                         this.MIDIList.Enabled = false;
                         this.CurrentStatusText.Text = Globals.CurrentStatusTextString;
@@ -1596,8 +1622,6 @@ namespace KeppyMIDIConverter
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = String.Format("{0}: {1:#00.0} dB | {2}: {3:#00.0} dB | {4}: {5:#00.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
-                        Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.RealTime;
                     }
                     if (Globals.NewWindowName == null)
                     {

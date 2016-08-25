@@ -40,8 +40,9 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(313, 148);
+            this.button1.Location = new System.Drawing.Point(313, 161);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 23);
             this.button1.TabIndex = 31;
@@ -51,6 +52,9 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupBox1.Controls.Add(this.label4);
             this.GroupBox1.Controls.Add(this.checkBox3);
             this.GroupBox1.Controls.Add(this.BitrateBox);
@@ -65,16 +69,16 @@
             this.GroupBox1.Controls.Add(this.Noteoff1);
             this.GroupBox1.Location = new System.Drawing.Point(5, 2);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(394, 139);
+            this.GroupBox1.Size = new System.Drawing.Size(394, 152);
             this.GroupBox1.TabIndex = 29;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(364, 120);
+            this.label4.Location = new System.Drawing.Point(364, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 17;
@@ -82,9 +86,10 @@
             // 
             // checkBox3
             // 
+            this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox3.AutoSize = true;
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox3.Location = new System.Drawing.Point(7, 117);
+            this.checkBox3.Location = new System.Drawing.Point(7, 130);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(204, 18);
             this.checkBox3.TabIndex = 16;
@@ -94,7 +99,7 @@
             // 
             // BitrateBox
             // 
-            this.BitrateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BitrateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BitrateBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BitrateBox.Enabled = false;
             this.BitrateBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -109,7 +114,7 @@
             "128",
             "96",
             "64"});
-            this.BitrateBox.Location = new System.Drawing.Point(298, 116);
+            this.BitrateBox.Location = new System.Drawing.Point(298, 129);
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(66, 21);
             this.BitrateBox.TabIndex = 15;
@@ -117,9 +122,10 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(249, 120);
+            this.label3.Location = new System.Drawing.Point(249, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 14;
@@ -127,8 +133,9 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Location = new System.Drawing.Point(320, 95);
+            this.numericUpDown1.Location = new System.Drawing.Point(320, 108);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             2097120,
             0,
@@ -151,8 +158,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(211, 97);
+            this.label2.Location = new System.Drawing.Point(211, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 13);
             this.label2.TabIndex = 12;
@@ -161,9 +169,10 @@
             // 
             // checkBox1
             // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox1.AutoSize = true;
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox1.Location = new System.Drawing.Point(7, 95);
+            this.checkBox1.Location = new System.Drawing.Point(7, 108);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(133, 18);
             this.checkBox1.TabIndex = 11;
@@ -173,7 +182,6 @@
             // 
             // Label6
             // 
-            this.Label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label6.AutoSize = true;
             this.Label6.Location = new System.Drawing.Point(170, 20);
             this.Label6.Name = "Label6";
@@ -183,7 +191,6 @@
             // 
             // FrequencyBox
             // 
-            this.FrequencyBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FrequencyBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FrequencyBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.FrequencyBox.FormattingEnabled = true;
@@ -225,9 +232,10 @@
             // 
             // FXDisable
             // 
+            this.FXDisable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.FXDisable.AutoSize = true;
             this.FXDisable.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.FXDisable.Location = new System.Drawing.Point(7, 72);
+            this.FXDisable.Location = new System.Drawing.Point(7, 85);
             this.FXDisable.Name = "FXDisable";
             this.FXDisable.Size = new System.Drawing.Size(135, 18);
             this.FXDisable.TabIndex = 7;
@@ -237,10 +245,13 @@
             // 
             // Noteoff1
             // 
+            this.Noteoff1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Noteoff1.Location = new System.Drawing.Point(7, 42);
             this.Noteoff1.Name = "Noteoff1";
-            this.Noteoff1.Size = new System.Drawing.Size(381, 31);
+            this.Noteoff1.Size = new System.Drawing.Size(381, 44);
             this.Noteoff1.TabIndex = 6;
             this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlappin" +
     "g instances of the note.";
@@ -252,7 +263,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(404, 181);
+            this.ClientSize = new System.Drawing.Size(404, 194);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.GroupBox1);

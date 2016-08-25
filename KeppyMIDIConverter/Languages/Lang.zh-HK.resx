@@ -604,4 +604,7 @@ BASS 狀態: {0}</value>
   <data name="MIDILength" xml:space="preserve">
     <value>長度</value>
   </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>姓名排序</value>
+  </data>
 </root>
