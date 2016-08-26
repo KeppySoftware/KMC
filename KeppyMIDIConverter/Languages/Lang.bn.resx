@@ -454,7 +454,8 @@ BASS অবস্থা: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>{0} এর এখন MIDI খেলেছে.
-অবস্থান: {1} - {2}</value>
+অবস্থান: {1} - {2}
+সঙ্গীত: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | এর নেপথ্য {0}...</value>
@@ -609,5 +610,8 @@ VST সম্ভবত নেটিভ উইন্ডোজ ফরম সিস
   </data>
   <data name="SortByName" xml:space="preserve">
     <value>নাম অনুযায়ী সাজাও</value>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>সঙ্গীত</value>
   </data>
 </root>

@@ -29,6 +29,7 @@ namespace KeppyMIDIConverter
             bool deletencoder = false;
             string encoder = "kmcogg.exe";
             bool ok;
+            DeteOldLanguages();
             Mutex m = new Mutex(true, "KepMIDIConv", out ok);
             if (!ok)
             {
@@ -74,6 +75,23 @@ namespace KeppyMIDIConverter
             {
                 MessageBox.Show("There was an error while trying to load the languages!\n\nError:" + ex.ToString(), "Keppy's MIDI Converter - Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+        }
+
+        public static void DeteOldLanguages()
+        {
+            string[] todelete = { "de", "ee", "en", "it", "ja", "nl" };
+
+            foreach (string value in todelete)
+            {
+                try
+                {
+                    Directory.Delete(value, true);
+                }
+                catch
+                {
+                    // Nothing
+                }
             }
         }
 

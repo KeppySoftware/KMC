@@ -331,7 +331,7 @@ Source code available here:</value>
   </data>
   <data name="IdleMessage" xml:space="preserve">
     <value>사용자 명령을 기다리고 있습니다.
-, 미디를 선택 일부 사운드 폰트를로드하고, 변환 / 재생 과정을 시작합니다!</value>
+미디를 선택 일부 사운드 폰트를로드하고, 변환 / 재생 과정을 시작합니다!</value>
   </data>
   <data name="ImportMIDI" xml:space="preserve">
     <value>가져 오기 MIDIs ...</value>
@@ -454,7 +454,8 @@ BASS 상태 : {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>{0} MIDI 연주의.
-위치 : {1} - {2}</value>
+위치: {1} - {2}
+음성: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | 의 재생 {0}...</value>
@@ -609,5 +610,8 @@ VST는 아마 기본 Windows 폼 시스템과 호환되지 않습니다.
   </data>
   <data name="SortByName" xml:space="preserve">
     <value>이름으로 정렬</value>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>음성</value>
   </data>
 </root>

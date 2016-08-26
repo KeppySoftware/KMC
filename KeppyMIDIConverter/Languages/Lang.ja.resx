@@ -456,7 +456,8 @@ BASS status: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>{0} を再生しました。
-現在位置: {1} - {2}</value>
+現在位置: {1} - {2}
+ノート: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | {0} を再生中...</value>
@@ -615,5 +616,8 @@ OKをクリックして閉じてください。</value>
   </data>
   <data name="SortByName" xml:space="preserve">
     <value>ネームを並び替え</value>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>ノート</value>
   </data>
 </root>

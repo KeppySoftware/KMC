@@ -456,7 +456,8 @@ Stato BASS: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>{0} del MIDI riprodotto.
-Posizione: {1} - {2}</value>
+Posizione: {1} - {2}
+Note: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | Riproduzione di {0} in corso...</value>
@@ -612,5 +613,8 @@ Premere OK per uscire.</value>
   </data>
   <data name="SortByName" xml:space="preserve">
     <value>Riordina per nome</value>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>Note</value>
   </data>
 </root>

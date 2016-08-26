@@ -457,7 +457,8 @@ BASS статус: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>{0} MIDI проиграно.
-Позиция: {1} - {2}</value>
+Позиция: {1} - {2}
+Ноты: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | Воспроизведение {0}...</value>
@@ -612,5 +613,8 @@ VST, вероятно, не совместимы с нативной систе�
   </data>
   <data name="SortByName" xml:space="preserve">
     <value>Сортировать по названию</value>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>Ноты</value>
   </data>
 </root>

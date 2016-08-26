@@ -454,7 +454,8 @@ BASS 狀態: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>已播放{0}%
-播放位置: {1} - {2}</value>
+播放位置: {1} - {2}
+筆錄: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | 正在實時播放 {0}...</value>
@@ -606,5 +607,8 @@ BASS 狀態: {0}</value>
   </data>
   <data name="SortByName" xml:space="preserve">
     <value>姓名排序</value>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>筆錄</value>
   </data>
 </root>

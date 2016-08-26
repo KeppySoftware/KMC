@@ -457,7 +457,8 @@ BASS olek: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>{0} ulatuses MIDI mängitakse.
-Koht: {1} - {2}</value>
+Koht: {1} - {2}
+Märkima: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | Mängimine {0}...</value>
@@ -615,5 +616,8 @@ Vajuta OK, et väljuda.</value>
   </data>
   <data name="SortByName" xml:space="preserve">
     <value>Järjesta nime järgi</value>
+  </data>
+  <data name="MIDINote" xml:space="preserve">
+    <value>Märkima</value>
   </data>
 </root>
