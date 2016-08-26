@@ -617,7 +617,7 @@ Vajuta OK, et väljuda.</value>
   <data name="SortByName" xml:space="preserve">
     <value>Järjesta nime järgi</value>
   </data>
-  <data name="MIDINote" xml:space="preserve">
+  <data name="MIDINotes" xml:space="preserve">
     <value>Märkima</value>
   </data>
 </root>

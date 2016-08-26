@@ -186,46 +186,92 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-            cul = Program.ReturnCulture();
-            MIDIList.Columns.Clear();
-            MIDIList.Columns.Add(res_man.GetString("MIDIFile", cul), 434, HorizontalAlignment.Left);
-            MIDIList.Columns.Add(res_man.GetString("MIDINotes", cul), 66, HorizontalAlignment.Center);
-            MIDIList.Columns.Add(res_man.GetString("MIDILength", cul), 53, HorizontalAlignment.Center);
-            MIDIList.Columns.Add(res_man.GetString("MIDISize", cul), 53, HorizontalAlignment.Center);
-            ActionsStrip.Text = res_man.GetString("ActionsStrip", cul);
-            AdvSettingsButton.Text = res_man.GetString("AdvSettingsButton", cul);
-            AudioEventsStrip.Text = res_man.GetString("AudioEventsStrip", cul);
-            AutoUpdatesCheckStrip.Text = res_man.GetString("AutoUpdatesCheckStrip", cul);
-            AutomaticShutdownStrip.Text = res_man.GetString("AutomaticShutdownStrip", cul);
-            ClearListAutomaticallyStrip.Text = res_man.GetString("ClearListAutomaticallyStrip", cul);
-            ConvPosOrTimeLeft.Text = res_man.GetString("ConvPosOrTimeLeft", cul);
-            FL12Discount.Text = res_man.GetString("FLStudioDiscount", cul);
-            HelpStrip.Text = res_man.GetString("HelpStrip", cul);
-            KaleidonKep99sGitHubPageToolStripMenuItem.Text = res_man.GetString("KaleidonKep99sGitHubPage", cul);
-            KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = res_man.GetString("KaleidonKep99sYouTubeChannel", cul);
-            MoveDownItem.Text = res_man.GetString("MoveDOWN", cul);
-            MoveUpItem.Text = res_man.GetString("MoveUP", cul);
-            OptionsStrip.Text = res_man.GetString("OptionsStrip", cul);
-            OverrideStrip.Text = res_man.GetString("OverrideLanguage", cul);
-            SettingsBox.Text = res_man.GetString("SettingsBox", cul);
-            SortByName.Text = res_man.GetString("SortByName", cul);
-            VoiceLabel.Text = res_man.GetString("VoiceLabel", cul);
-            abortRenderingToolStripMenuItem.Text = res_man.GetString("AbortConvPlayback", cul);
-            clearMIDIsListToolStripMenuItem.Text = ClearMIDIsListRightClick.Text = res_man.GetString("ClearMIDIsList", cul);
-            disabledToolStripMenuItem.Text = disabledToolStripMenuItem1.Text = disabledToolStripMenuItem2.Text = disabledToolStripMenuItem3.Text = disabledToolStripMenuItem4.Text = disabledToolStripMenuItem5.Text = res_man.GetString("DisabledText", cul);
-            enabledToolStripMenuItem.Text = enabledToolStripMenuItem1.Text = enabledToolStripMenuItem2.Text = enabledToolStripMenuItem3.Text = enabledToolStripMenuItem4.Text = enabledToolStripMenuItem5.Text = res_man.GetString("EnabledText", cul);
-            exitToolStripMenuItem.Text = res_man.GetString("ExitStrip", cul);
-            forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
-            importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
-            informationAboutTheProgramToolStripMenuItem.Text = res_man.GetString("informationAboutTheProgramStrip", cul);
-            label3.Text = res_man.GetString("Volume", cul);
-            openTheSoundfontsManagerToolStripMenuItem.Text = res_man.GetString("SFVSTManager", cul);
-            playInRealtimeBetaToolStripMenuItem.Text = res_man.GetString("RenderToSpeakers", cul);
-            removeSelectedMIDIsToolStripMenuItem.Text = RemoveMIDIsRightClick.Text = res_man.GetString("RemoveMIDI", cul);
-            startRenderingOGGToolStripMenuItem.Text = res_man.GetString("RenderToOGG", cul);
-            startRenderingWAVToolStripMenuItem.Text = res_man.GetString("RenderToWAV", cul);
-            supportTheDeveloperWithADonationToolStripMenuItem.Text = res_man.GetString("supportTheDeveloperWithADonation", cul);
+            try {
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = Program.ReturnCulture();
+                MIDIList.Columns.Clear();
+                MIDIList.Columns.Add(res_man.GetString("MIDIFile", cul), 434, HorizontalAlignment.Left);
+                MIDIList.Columns.Add(res_man.GetString("MIDINotes", cul), 66, HorizontalAlignment.Center);
+                MIDIList.Columns.Add(res_man.GetString("MIDILength", cul), 53, HorizontalAlignment.Center);
+                MIDIList.Columns.Add(res_man.GetString("MIDISize", cul), 53, HorizontalAlignment.Center);
+                ActionsStrip.Text = res_man.GetString("ActionsStrip", cul);
+                AdvSettingsButton.Text = res_man.GetString("AdvSettingsButton", cul);
+                AudioEventsStrip.Text = res_man.GetString("AudioEventsStrip", cul);
+                AutoUpdatesCheckStrip.Text = res_man.GetString("AutoUpdatesCheckStrip", cul);
+                AutomaticShutdownStrip.Text = res_man.GetString("AutomaticShutdownStrip", cul);
+                ClearListAutomaticallyStrip.Text = res_man.GetString("ClearListAutomaticallyStrip", cul);
+                ConvPosOrTimeLeft.Text = res_man.GetString("ConvPosOrTimeLeft", cul);
+                FL12Discount.Text = res_man.GetString("FLStudioDiscount", cul);
+                HelpStrip.Text = res_man.GetString("HelpStrip", cul);
+                KaleidonKep99sGitHubPageToolStripMenuItem.Text = res_man.GetString("KaleidonKep99sGitHubPage", cul);
+                KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = res_man.GetString("KaleidonKep99sYouTubeChannel", cul);
+                MoveDownItem.Text = res_man.GetString("MoveDOWN", cul);
+                MoveUpItem.Text = res_man.GetString("MoveUP", cul);
+                OptionsStrip.Text = res_man.GetString("OptionsStrip", cul);
+                OverrideStrip.Text = res_man.GetString("OverrideLanguage", cul);
+                SettingsBox.Text = res_man.GetString("SettingsBox", cul);
+                SortByName.Text = res_man.GetString("SortByName", cul);
+                VoiceLabel.Text = res_man.GetString("VoiceLabel", cul);
+                abortRenderingToolStripMenuItem.Text = res_man.GetString("AbortConvPlayback", cul);
+                clearMIDIsListToolStripMenuItem.Text = ClearMIDIsListRightClick.Text = res_man.GetString("ClearMIDIsList", cul);
+                disabledToolStripMenuItem.Text = disabledToolStripMenuItem1.Text = disabledToolStripMenuItem2.Text = disabledToolStripMenuItem3.Text = disabledToolStripMenuItem4.Text = disabledToolStripMenuItem5.Text = res_man.GetString("DisabledText", cul);
+                enabledToolStripMenuItem.Text = enabledToolStripMenuItem1.Text = enabledToolStripMenuItem2.Text = enabledToolStripMenuItem3.Text = enabledToolStripMenuItem4.Text = enabledToolStripMenuItem5.Text = res_man.GetString("EnabledText", cul);
+                exitToolStripMenuItem.Text = res_man.GetString("ExitStrip", cul);
+                forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
+                importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
+                informationAboutTheProgramToolStripMenuItem.Text = res_man.GetString("informationAboutTheProgramStrip", cul);
+                label3.Text = res_man.GetString("Volume", cul);
+                openTheSoundfontsManagerToolStripMenuItem.Text = res_man.GetString("SFVSTManager", cul);
+                playInRealtimeBetaToolStripMenuItem.Text = res_man.GetString("RenderToSpeakers", cul);
+                removeSelectedMIDIsToolStripMenuItem.Text = RemoveMIDIsRightClick.Text = res_man.GetString("RemoveMIDI", cul);
+                startRenderingOGGToolStripMenuItem.Text = res_man.GetString("RenderToOGG", cul);
+                startRenderingWAVToolStripMenuItem.Text = res_man.GetString("RenderToWAV", cul);
+                supportTheDeveloperWithADonationToolStripMenuItem.Text = res_man.GetString("supportTheDeveloperWithADonation", cul);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = CultureInfo.CreateSpecificCulture("en");
+                MIDIList.Columns.Clear();
+                MIDIList.Columns.Add(res_man.GetString("MIDIFile", cul), 434, HorizontalAlignment.Left);
+                MIDIList.Columns.Add(res_man.GetString("MIDINotes", cul), 66, HorizontalAlignment.Center);
+                MIDIList.Columns.Add(res_man.GetString("MIDILength", cul), 53, HorizontalAlignment.Center);
+                MIDIList.Columns.Add(res_man.GetString("MIDISize", cul), 53, HorizontalAlignment.Center);
+                ActionsStrip.Text = res_man.GetString("ActionsStrip", cul);
+                AdvSettingsButton.Text = res_man.GetString("AdvSettingsButton", cul);
+                AudioEventsStrip.Text = res_man.GetString("AudioEventsStrip", cul);
+                AutoUpdatesCheckStrip.Text = res_man.GetString("AutoUpdatesCheckStrip", cul);
+                AutomaticShutdownStrip.Text = res_man.GetString("AutomaticShutdownStrip", cul);
+                ClearListAutomaticallyStrip.Text = res_man.GetString("ClearListAutomaticallyStrip", cul);
+                ConvPosOrTimeLeft.Text = res_man.GetString("ConvPosOrTimeLeft", cul);
+                FL12Discount.Text = res_man.GetString("FLStudioDiscount", cul);
+                HelpStrip.Text = res_man.GetString("HelpStrip", cul);
+                KaleidonKep99sGitHubPageToolStripMenuItem.Text = res_man.GetString("KaleidonKep99sGitHubPage", cul);
+                KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = res_man.GetString("KaleidonKep99sYouTubeChannel", cul);
+                MoveDownItem.Text = res_man.GetString("MoveDOWN", cul);
+                MoveUpItem.Text = res_man.GetString("MoveUP", cul);
+                OptionsStrip.Text = res_man.GetString("OptionsStrip", cul);
+                OverrideStrip.Text = res_man.GetString("OverrideLanguage", cul);
+                SettingsBox.Text = res_man.GetString("SettingsBox", cul);
+                SortByName.Text = res_man.GetString("SortByName", cul);
+                VoiceLabel.Text = res_man.GetString("VoiceLabel", cul);
+                abortRenderingToolStripMenuItem.Text = res_man.GetString("AbortConvPlayback", cul);
+                clearMIDIsListToolStripMenuItem.Text = ClearMIDIsListRightClick.Text = res_man.GetString("ClearMIDIsList", cul);
+                disabledToolStripMenuItem.Text = disabledToolStripMenuItem1.Text = disabledToolStripMenuItem2.Text = disabledToolStripMenuItem3.Text = disabledToolStripMenuItem4.Text = disabledToolStripMenuItem5.Text = res_man.GetString("DisabledText", cul);
+                enabledToolStripMenuItem.Text = enabledToolStripMenuItem1.Text = enabledToolStripMenuItem2.Text = enabledToolStripMenuItem3.Text = enabledToolStripMenuItem4.Text = enabledToolStripMenuItem5.Text = res_man.GetString("EnabledText", cul);
+                exitToolStripMenuItem.Text = res_man.GetString("ExitStrip", cul);
+                forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
+                importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
+                informationAboutTheProgramToolStripMenuItem.Text = res_man.GetString("informationAboutTheProgramStrip", cul);
+                label3.Text = res_man.GetString("Volume", cul);
+                openTheSoundfontsManagerToolStripMenuItem.Text = res_man.GetString("SFVSTManager", cul);
+                playInRealtimeBetaToolStripMenuItem.Text = res_man.GetString("RenderToSpeakers", cul);
+                removeSelectedMIDIsToolStripMenuItem.Text = RemoveMIDIsRightClick.Text = res_man.GetString("RemoveMIDI", cul);
+                startRenderingOGGToolStripMenuItem.Text = res_man.GetString("RenderToOGG", cul);
+                startRenderingWAVToolStripMenuItem.Text = res_man.GetString("RenderToWAV", cul);
+                supportTheDeveloperWithADonationToolStripMenuItem.Text = res_man.GetString("supportTheDeveloperWithADonation", cul);
+            }
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -916,12 +962,12 @@ namespace KeppyMIDIConverter
                             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 0);
                             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 0);
                             BASS_INFO info = Bass.BASS_GetInfo();
-                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, info.minbuf + 20);
+                            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, info.minbuf + 10 + 50);
                             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 2000);
                             Globals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, Globals.Frequency);
                             Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Convert.ToInt32(Globals.LimitVoicesInt));
                             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, Globals.Volume);
-                            Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 75);
+                            Bass.BASS_ChannelSetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 95);
                             if (Path.GetFileNameWithoutExtension(str).Length >= 49)
                                 Globals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                             else
@@ -1208,7 +1254,7 @@ namespace KeppyMIDIConverter
                 Bass.BASS_Free();
                 TimeSpan span = TimeSpan.FromSeconds(num9);
                 string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0');
-                if (str4.StartsWith("-"))
+                if (str4.Contains("-"))
                     return "-:--";
                 else
                     return str4;
