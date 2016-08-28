@@ -58,6 +58,7 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <FileAlignment>8192</FileAlignment>
     <DebugSymbols>false</DebugSymbols>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>

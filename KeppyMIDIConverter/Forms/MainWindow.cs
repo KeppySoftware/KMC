@@ -111,7 +111,6 @@ namespace KeppyMIDIConverter
         {          
             InitializeComponent();
             InitializeLanguage();
-            RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID, 0, (int)Keys.D4 | (int)Keys.D4 | (int)Keys.D6 | (int)Keys.D6);
             Globals.EncoderPath = encoder;
             Globals.DeleteEncoder = deletencoder;
             //To store all the soundfonts that where opened with the application
@@ -157,16 +156,6 @@ namespace KeppyMIDIConverter
                     Globals.frm2.SFList.Items.Add(s);
                 }
             }
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID)
-            {
-                System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(HelloItsMe));
-                thread.Start();
-            }
-            base.WndProc(ref m);
         }
 
         Timer t1 = new Timer();
@@ -731,8 +720,8 @@ namespace KeppyMIDIConverter
             double num10 = Bass.BASS_ChannelBytes2Seconds(Globals._recHandle, num6);
             TimeSpan span = TimeSpan.FromSeconds(num9);
             TimeSpan span2 = TimeSpan.FromSeconds(num10);
-            string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0');
-            string str5 = span2.Minutes.ToString() + ":" + span2.Seconds.ToString().PadLeft(2, '0');
+            string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
+            string str5 = span2.Minutes.ToString() + ":" + span2.Seconds.ToString().PadLeft(2, '0') + "." + span2.Milliseconds.ToString().PadLeft(3, '0');
             float num11 = 0f;
             float num12 = 0f;
             Bass.BASS_ChannelGetAttribute(Globals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
@@ -747,7 +736,7 @@ namespace KeppyMIDIConverter
             float percentage = num8 / num7;
             float percentagefinal;
             if (percentage * 100 < 0)
-                percentagefinal = 0.0f;
+                percentagefinal = 0.0f; // WASTING MY TIME HERE INSTEAD OF WORKING FOR DOGGO
             else if (percentage * 100 > 100)
                 percentagefinal = 1.0f;
             else
@@ -1037,8 +1026,8 @@ namespace KeppyMIDIConverter
                                     double num10 = Bass.BASS_ChannelBytes2Seconds(Globals._recHandle, num6);
                                     TimeSpan span = TimeSpan.FromSeconds(num9);
                                     TimeSpan span2 = TimeSpan.FromSeconds(num10);
-                                    string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0');
-                                    string str5 = span2.Minutes.ToString() + ":" + span2.Seconds.ToString().PadLeft(2, '0');
+                                    string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
+                                    string str5 = span2.Minutes.ToString() + ":" + span2.Seconds.ToString().PadLeft(2, '0') + "." + span2.Milliseconds.ToString().PadLeft(3, '0');
                                     float percentage = num8 / num7;
                                     float percentagefinal;
                                     if (percentage * 100 < 0)
@@ -2117,39 +2106,6 @@ namespace KeppyMIDIConverter
         private void RussianOverride_Click(object sender, EventArgs e)
         {
             ChangeLanguage("ru");
-        }
-
-        private void HelloItsMe()
-        {
-            DateTime BirthDate = DateTime.Now;
-            if (BirthDate.ToString("dd/MM") == "14/09")
-            {
-                using (Form form = new Form())
-                {
-                    form.Text = "I vote for Trump.";
-                    form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-                    form.Text = "Vote Donald Trump 2016 ~ Make America great again!";
-                    form.ShowIcon = false;
-                    form.ShowInTaskbar = false;
-                    form.BackgroundImage = KeppyMIDIConverter.Properties.Resources.americagreatagain;
-                    form.Size = new Size(506, 253);
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Shown += new System.EventHandler(PlayTrumpy);
-                    form.ShowDialog();
-                }
-            }
-        }
-
-        private void PlayTrumpy(object sender, EventArgs e)
-        {
-            System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.heh;
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
-            player.PlaySync();
-            DialogResult potato = MessageBox.Show("Vote Trump 2016!\n\n~Keppy", "Very important message", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (potato == DialogResult.Yes)
-                MessageBox.Show(":)", "Ty", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (potato == DialogResult.No)
-                MessageBox.Show(">:(", "Fu", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void FL12Discount_Click(object sender, EventArgs e)
