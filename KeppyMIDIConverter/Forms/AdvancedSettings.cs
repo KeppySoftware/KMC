@@ -56,10 +56,10 @@ namespace KeppyMIDIConverter
             // K DONE
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             //
-            FrequencyBox.Text = Convert.ToString(Settings.GetValue("audiofreq"));
-            BitrateBox.Text = Convert.ToString(Settings.GetValue("oggbitrate"));
+            FrequencyBox.Text = Convert.ToString(Settings.GetValue("audiofreq", 44100));
+            BitrateBox.Text = Convert.ToString(Settings.GetValue("oggbitrate", 256));
             //
-            if (Convert.ToInt32(Settings.GetValue("noteoff1")) == 1)
+            if (Convert.ToInt32(Settings.GetValue("noteoff1", 0)) == 1)
             {
                 MainWindow.Globals.NoteOff1Event = true;
                 Noteoff1.Checked = true;
@@ -69,7 +69,7 @@ namespace KeppyMIDIConverter
                 MainWindow.Globals.NoteOff1Event = false;
                 Noteoff1.Checked = false;
             }
-            if (Convert.ToInt32(Settings.GetValue("disablefx")) == 1)
+            if (Convert.ToInt32(Settings.GetValue("disablefx", 0)) == 1)
             {
                 MainWindow.Globals.FXDisabled = true;
                 FXDisable.Checked = true;
@@ -79,7 +79,7 @@ namespace KeppyMIDIConverter
                 MainWindow.Globals.FXDisabled = false;
                 FXDisable.Checked = false;
             }
-            if (Convert.ToInt32(Settings.GetValue("overrideogg")) == 1)
+            if (Convert.ToInt32(Settings.GetValue("overrideogg", 0)) == 1)
             {
                 checkBox3.Checked = true;
             }

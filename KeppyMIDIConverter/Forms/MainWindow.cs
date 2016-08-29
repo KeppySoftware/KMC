@@ -166,12 +166,6 @@ namespace KeppyMIDIConverter
 
         [DllImport("dwmapi.dll")]
         private static extern int DwmIsCompositionEnabled(out bool enabled);
-        [DllImport("user32.dll")]
-        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
-        [DllImport("user32.dll")]
-        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-
-        const int MYACTION_HOTKEY_ID = 1;
 
         private void InitializeLanguage()
         {
@@ -293,6 +287,9 @@ namespace KeppyMIDIConverter
             {
                 try
                 {
+                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter");
+                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages");
+                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
                     RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter");
                     if (Key != null)
                     {
@@ -318,7 +315,7 @@ namespace KeppyMIDIConverter
                         try
                         {
                             // Generic settings
-                            VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices", 1000));
+                            VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices", Convert.ToDecimal(1000)));
                             VolumeBar.Value = Convert.ToInt32(Settings.GetValue("volume", 10000));
                             Globals.Volume = Convert.ToInt32(Settings.GetValue("volume", 10000));
                             Globals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq", 44100));
@@ -403,7 +400,7 @@ namespace KeppyMIDIConverter
                         }
                         catch (Exception exception)
                         {
-                            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("FatalError", cul), exception.Message.ToString(), 1, 0);
+                            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("FatalError", cul), exception.ToString(), 1, 0);
                             errordialog.ShowDialog();
                             Settings.Close();
                         }
@@ -536,7 +533,7 @@ namespace KeppyMIDIConverter
                 thread.SetApartmentState(System.Threading.ApartmentState.STA);
                 thread.Start();
                 thread.Join();
-                MessageBox.Show(String.Format(res_man.GetString("VSTInvalidCallError", cul), vstInfo.effectName, ex.Message.ToString()), "Keppy's MIDI Converter - " + res_man.GetString("VSTInvalidCallTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format(res_man.GetString("VSTInvalidCallError", cul), vstInfo.effectName, ex.ToString()), "Keppy's MIDI Converter - " + res_man.GetString("VSTInvalidCallTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
                 BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, whichvst);
             }
@@ -1741,7 +1738,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("Error", cul), exception.Message.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("Error", cul), exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -1758,7 +1755,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("Error", cul), exception.Message.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("Error", cul), exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -1869,7 +1866,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -1905,7 +1902,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -1924,7 +1921,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -1943,7 +1940,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -2023,7 +2020,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.Message.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }

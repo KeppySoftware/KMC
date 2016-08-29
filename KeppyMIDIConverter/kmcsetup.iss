@@ -1,3 +1,10 @@
+#define use_msiproduct
+#define use_dotnetfx40
+#define use_wic
+#define use_vc2010
+
+#define Version '13.1.6'
+
 [Setup]
 AllowCancelDuringInstall=False
 AlwaysShowDirOnReadyPage=True
@@ -11,7 +18,7 @@ AppPublisherURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter
 AppSupportPhone=+393511888475
 AppSupportURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/issues
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion=13.1.5
+AppVersion={#Version}
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
@@ -33,8 +40,8 @@ VersionInfoCompany=KaleidonKep99
 VersionInfoCopyright=Copyright(C) KaleidonKep99 2016
 VersionInfoDescription=Keppy's MIDI Converter
 VersionInfoProductName=KMC
-VersionInfoProductVersion=13.1.5
-VersionInfoVersion=13.1.5
+VersionInfoProductVersion={#Version}
+VersionInfoVersion={#Version}
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
@@ -128,3 +135,26 @@ Name: "{group}\Keppy's MIDI Converter (x86)"; Filename: "{app}\x86\KeppyMIDIConv
 Name: "{group}\Keppy's MIDI Converter (x64)"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
 Name: "{group}\Restore default language"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Parameters: "/RLN"; Check: Is64BitInstallMode
 Name: "{group}\Skip update process"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Parameters: "/NAU"; Check: Is64BitInstallMode
+
+[Code]
+// shared code for installing the products
+#include "scripts\products.iss"
+// helper functions
+#include "scripts\products\stringversion.iss"
+#include "scripts\products\winversion.iss"
+#include "scripts\products\fileversion.iss"
+#include "scripts\products\dotnetfxversion.iss"
+
+#ifdef use_msiproduct
+#include "scripts\products\msiproduct.iss"
+#endif
+#ifdef use_vc2010
+#include "scripts\products\vcredist2010.iss"
+#endif
+#ifdef use_wic
+#include "scripts\products\wic.iss"
+#endif
+#ifdef use_dotnetfx40
+#include "scripts\products\dotnetfx40client.iss"
+#include "scripts\products\dotnetfx40full.iss"
+#endif
