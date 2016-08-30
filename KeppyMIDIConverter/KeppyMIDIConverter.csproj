@@ -115,6 +115,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="VistaMenu">
@@ -222,8 +223,11 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\soi.wav" />
+    <None Include="Resources\no.wav" />
     <None Include="Resources\americagreatagain.jpg" />
     <None Include="Resources\heh.wav" />
+    <None Include="Resources\kek.wav" />
     <Content Include="Resources\mainlogo.ico" />
     <None Include="Resources\hot.png" />
     <None Include="Resources\worldwideweb.png" />

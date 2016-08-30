@@ -172,14 +172,14 @@ namespace KeppyMIDIConverter
                     tabControl1.Enabled = true;
                     button5.Enabled = true;
                     LatestVersion.Text = res_man.GetString("NoUpdatesText", cul);
-                    MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     tabControl1.Enabled = true;
                     button5.Enabled = true;
                     LatestVersion.Text = res_man.GetString("NoUpdatesText", cul);
-                    MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
