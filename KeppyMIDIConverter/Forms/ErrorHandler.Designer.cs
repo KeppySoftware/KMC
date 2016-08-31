@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ErrorLab = new System.Windows.Forms.Label();
-            this.Close = new System.Windows.Forms.Button();
             this.ErrorBox = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RBTMenu = new System.Windows.Forms.ContextMenu();
             this.copyErrorMessageToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.Close = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
             this.SuspendLayout();
@@ -49,16 +49,6 @@
             this.ErrorLab.Size = new System.Drawing.Size(219, 39);
             this.ErrorLab.TabIndex = 7;
             this.ErrorLab.Text = "Error during the execution of the converter!\r\n\r\nMore information down below:";
-            // 
-            // Close
-            // 
-            this.Close.Location = new System.Drawing.Point(426, 34);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(30, 23);
-            this.Close.TabIndex = 4;
-            this.Close.Text = "OK";
-            this.Close.UseVisualStyleBackColor = true;
-            this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
             // ErrorBox
             // 
@@ -103,24 +93,35 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Enabled = false;
-            this.label1.Location = new System.Drawing.Point(9, 162);
+            this.label1.Location = new System.Drawing.Point(12, 162);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 13);
+            this.label1.Size = new System.Drawing.Size(363, 39);
             this.label1.TabIndex = 8;
             this.label1.Text = "Right-click everywhere to copy the error message.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Close
+            // 
+            this.Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Close.Location = new System.Drawing.Point(381, 170);
+            this.Close.Name = "Close";
+            this.Close.Size = new System.Drawing.Size(75, 23);
+            this.Close.TabIndex = 9;
+            this.Close.Text = "OK";
+            this.Close.UseVisualStyleBackColor = true;
+            this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
             // ErrorHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(468, 182);
+            this.ClientSize = new System.Drawing.Size(468, 205);
+            this.Controls.Add(this.Close);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ErrorLab);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Close);
             this.Controls.Add(this.ErrorBox);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -142,12 +143,12 @@
 
         private System.Windows.Forms.Label ErrorLab;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button Close;
         private System.Windows.Forms.RichTextBox ErrorBox;
         private System.Windows.Forms.ContextMenu RBTMenu;
         private System.Windows.Forms.MenuItem copyErrorMessageToolStripMenuItem;
         private wyDay.Controls.VistaMenu VistaMenuSys;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Close;
 
     }
 }

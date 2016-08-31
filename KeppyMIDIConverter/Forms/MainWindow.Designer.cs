@@ -106,12 +106,12 @@
             this.RemoveMIDIsRightClick = new System.Windows.Forms.MenuItem();
             this.ClearMIDIsListRightClick = new System.Windows.Forms.MenuItem();
             this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.SortByName = new System.Windows.Forms.MenuItem();
+            this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.MoveUpItem = new System.Windows.Forms.MenuItem();
             this.MoveDownItem = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.MIDIList = new System.Windows.Forms.ListView();
-            this.SortByName = new System.Windows.Forms.MenuItem();
-            this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -226,11 +226,12 @@
             // labelRMS
             // 
             this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelRMS.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRMS.Location = new System.Drawing.Point(12, 300);
             this.labelRMS.Name = "labelRMS";
             this.labelRMS.Size = new System.Drawing.Size(470, 13);
             this.labelRMS.TabIndex = 17;
-            this.labelRMS.Text = "Root mean square: -0.0 dB | Average: -0.0 dB | Peak: -0.0 dB";
+            this.labelRMS.Text = "tututut";
             // 
             // CurrentStatusText
             // 
@@ -799,6 +800,17 @@
             this.menuItem1.Index = 3;
             this.menuItem1.Text = "-";
             // 
+            // SortByName
+            // 
+            this.SortByName.Index = 4;
+            this.SortByName.Text = "Sort by name";
+            this.SortByName.Click += new System.EventHandler(this.SortByName_Click);
+            // 
+            // menuItem6
+            // 
+            this.menuItem6.Index = 5;
+            this.menuItem6.Text = "-";
+            // 
             // MoveUpItem
             // 
             this.MoveUpItem.Enabled = false;
@@ -840,17 +852,6 @@
             this.MIDIList.DragDrop += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragDrop);
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
-            // 
-            // SortByName
-            // 
-            this.SortByName.Index = 4;
-            this.SortByName.Text = "Sort by name";
-            this.SortByName.Click += new System.EventHandler(this.SortByName_Click);
-            // 
-            // menuItem6
-            // 
-            this.menuItem6.Index = 5;
-            this.menuItem6.Text = "-";
             // 
             // MainWindow
             // 

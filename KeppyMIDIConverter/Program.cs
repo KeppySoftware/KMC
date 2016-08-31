@@ -66,6 +66,10 @@ namespace KeppyMIDIConverter
                             System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
                             player.PlaySync();
                             return;
+                        case "/NTM":
+                            MessageBox.Show("Visual styles have been disabled.\n\nKeppy's MIDI Converter is going to use Windows 2000's style.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Application.VisualStyleState = System.Windows.Forms.VisualStyles.VisualStyleState.NoneEnabled;
+                            break;
                         case "/SOI":
                         SOI:
                             System.IO.Stream soi = KeppyMIDIConverter.Properties.Resources.soi;
@@ -96,10 +100,18 @@ namespace KeppyMIDIConverter
                         case "/KEP":
                             Process.Start("https://plus.google.com/u/0/+RichardForhenson");
                             return;
+                        case "/BMT":
+                        case "/BMC":
+                            Process.Start("https://plus.google.com/communities/105907289212970966669");
+                            return;
                         case "/THX":
                         LOL:
                             MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             goto LOL;
+                            return;
+                        case "/BGM":
+                            MessageBox.Show("Itily", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Process.Start("https://www.youtube.com/channel/UCMLqR6uhl_uANtw-aMO77Mw");
                             return;
                         case "/W98":
                             MessageBox.Show("There are no easter eggs here, go away.");
@@ -184,40 +196,32 @@ namespace KeppyMIDIConverter
 
         public static CultureInfo CultureFunc(CultureInfo ci)
         {
-            try
-            {
-                if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
-                    return CultureInfo.CreateSpecificCulture("it");
-                else if (ci.Name == "et-EE")
-                    return CultureInfo.CreateSpecificCulture("et");
-                else if (ci.Name == "zh-CN")
-                    return CultureInfo.CreateSpecificCulture("zh-CN");
-                else if (ci.Name == "zh-HK")
-                    return CultureInfo.CreateSpecificCulture("zh-HK");
-                else if (ci.Name == "zh-TW")
-                    return CultureInfo.CreateSpecificCulture("zh-TW");
-                else if (ci.Name == "bn-BD" | ci.Name == "bn-IN")
-                    return CultureInfo.CreateSpecificCulture("bn");
-                else if (ci.Name == "ru-RU")
-                    return CultureInfo.CreateSpecificCulture("ru");
-                // else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
-                //    return CultureInfo.CreateSpecificCulture("fr");
-                else if (ci.Name == "ko-KR")
-                    return CultureInfo.CreateSpecificCulture("ko");
-                else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
-                    return CultureInfo.CreateSpecificCulture("de");
-                else if (ci.Name == "es-AR" | ci.Name == "es-VE" | ci.Name == "es-BO" | ci.Name == "es-CL" | ci.Name == "es-DO" | ci.Name == "es-EC" | ci.Name == "es-SV" | ci.Name == "es-CO" | ci.Name == "es-CR" | ci.Name == "es-ES" | ci.Name == "es-GT" | ci.Name == "es-HN" | ci.Name == "es-MX" | ci.Name == "es-NI" | ci.Name == "es-PA" | ci.Name == "es-PY" | ci.Name == "es-PE" | ci.Name == "es-PR" | ci.Name == "es-US" | ci.Name == "es-UY")
-                    return CultureInfo.CreateSpecificCulture("es");
-                else if (ci.Name == "ja-JP")
-                    return CultureInfo.CreateSpecificCulture("ja");
-                else // The current language of the UI is not available, fallback to English.
-                    return CultureInfo.CreateSpecificCulture("en");
-            }
-            catch
-            {
-                // The language is invalid, let's load English instead.
+            if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
+                return CultureInfo.CreateSpecificCulture("it");
+            else if (ci.Name == "et-EE")
+                return CultureInfo.CreateSpecificCulture("et");
+            else if (ci.Name == "zh-CN")
+                return CultureInfo.CreateSpecificCulture("zh-CN");
+            else if (ci.Name == "zh-HK")
+                return CultureInfo.CreateSpecificCulture("zh-HK");
+            else if (ci.Name == "zh-TW")
+                return CultureInfo.CreateSpecificCulture("zh-TW");
+            else if (ci.Name == "bn-BD" | ci.Name == "bn-IN")
+                return CultureInfo.CreateSpecificCulture("bn");
+            else if (ci.Name == "ru-RU")
+                return CultureInfo.CreateSpecificCulture("ru");
+            // else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
+            //    return CultureInfo.CreateSpecificCulture("fr");
+            else if (ci.Name == "ko-KR")
+                return CultureInfo.CreateSpecificCulture("ko");
+            else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
+                return CultureInfo.CreateSpecificCulture("de");
+            else if (ci.Name == "es-AR" | ci.Name == "es-VE" | ci.Name == "es-BO" | ci.Name == "es-CL" | ci.Name == "es-DO" | ci.Name == "es-EC" | ci.Name == "es-SV" | ci.Name == "es-CO" | ci.Name == "es-CR" | ci.Name == "es-ES" | ci.Name == "es-GT" | ci.Name == "es-HN" | ci.Name == "es-MX" | ci.Name == "es-NI" | ci.Name == "es-PA" | ci.Name == "es-PY" | ci.Name == "es-PE" | ci.Name == "es-PR" | ci.Name == "es-US" | ci.Name == "es-UY")
+                return CultureInfo.CreateSpecificCulture("es");
+            else if (ci.Name == "ja-JP")
+                return CultureInfo.CreateSpecificCulture("ja");
+            else // The current language of the UI is not available, fallback to English.
                 return CultureInfo.CreateSpecificCulture("en");
-            }
         }
 
         public static CultureInfo ReturnCulture()

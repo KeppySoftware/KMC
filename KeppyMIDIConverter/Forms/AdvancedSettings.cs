@@ -88,6 +88,11 @@ namespace KeppyMIDIConverter
                 checkBox3.Checked = false;
             }
             //
+            if (BitrateBox.Text == "")
+            {
+                BitrateBox.Text = "256";
+            }
+            //
             Settings.Close();
         }
 

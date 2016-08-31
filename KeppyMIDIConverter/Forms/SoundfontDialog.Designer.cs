@@ -131,10 +131,9 @@
             // VSTUse
             // 
             this.VSTUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.VSTUse.AutoSize = true;
-            this.VSTUse.Location = new System.Drawing.Point(15, 370);
+            this.VSTUse.Location = new System.Drawing.Point(12, 361);
             this.VSTUse.Name = "VSTUse";
-            this.VSTUse.Size = new System.Drawing.Size(179, 17);
+            this.VSTUse.Size = new System.Drawing.Size(295, 35);
             this.VSTUse.TabIndex = 16;
             this.VSTUse.Text = "I want to apply a VST DSPs too.";
             this.VSTUse.UseVisualStyleBackColor = true;
@@ -262,7 +261,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
