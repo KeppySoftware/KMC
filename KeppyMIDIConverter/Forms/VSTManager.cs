@@ -167,11 +167,11 @@ namespace KeppyMIDIConverter
                 int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                 int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
-                    label1.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc = VSTImportDialog.FileName + " (Unverified loading)";
+                    label1.Text = VSTImportDialog.FileName + " (Unverified loading)";
                     Bass.BASS_Free();
                     Unload.Enabled = true;
                     Load1.Enabled = false;
@@ -179,8 +179,21 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
-                    Bass.BASS_Free();
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                    {
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLL = VSTImportDialog.FileName;
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        label1.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        Bass.BASS_Free();
+                        Unload.Enabled = true;
+                        Load1.Enabled = false;
+                        SaveDirectory(VSTImportDialog.FileName);
+                    }
+                    else
+                    {
+                        Bass.BASS_Free();
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
                 }
             }  
         }
@@ -194,11 +207,11 @@ namespace KeppyMIDIConverter
                 int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                 int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL2 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
-                    label2.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = VSTImportDialog.FileName + " (Unverified loading)";
+                    label2.Text = VSTImportDialog.FileName + " (Unverified loading)";
                     Bass.BASS_Free();
                     Unload2.Enabled = true;
                     Load2.Enabled = false;
@@ -206,8 +219,21 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
-                    Bass.BASS_Free();
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                    {
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLL2 = VSTImportDialog.FileName;
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        label2.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        Bass.BASS_Free();
+                        Unload2.Enabled = true;
+                        Load2.Enabled = false;
+                        SaveDirectory(VSTImportDialog.FileName);
+                    }
+                    else
+                    {
+                        Bass.BASS_Free();
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
                 }
             }  
         }
@@ -221,11 +247,11 @@ namespace KeppyMIDIConverter
                 int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                 int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL3 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
-                    label3.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = VSTImportDialog.FileName + " (Unverified loading)";
+                    label3.Text = VSTImportDialog.FileName + " (Unverified loading)";
                     Bass.BASS_Free();
                     Unload3.Enabled = true;
                     Load3.Enabled = false;
@@ -233,8 +259,21 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
-                    Bass.BASS_Free();
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                    {
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLL3 = VSTImportDialog.FileName;
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        label3.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        Bass.BASS_Free();
+                        Unload3.Enabled = true;
+                        Load3.Enabled = false;
+                        SaveDirectory(VSTImportDialog.FileName);
+                    }
+                    else
+                    {
+                        Bass.BASS_Free();
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
                 }
             }  
         }
@@ -248,11 +287,11 @@ namespace KeppyMIDIConverter
                 int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                 int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL4 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
-                    label4.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = VSTImportDialog.FileName + " (Unverified loading)";
+                    label4.Text = VSTImportDialog.FileName + " (Unverified loading)";
                     Bass.BASS_Free();
                     Unload4.Enabled = true;
                     Load4.Enabled = false;
@@ -260,8 +299,21 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
-                    Bass.BASS_Free();
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                    {
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLL4 = VSTImportDialog.FileName;
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        label4.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        Bass.BASS_Free();
+                        Unload5.Enabled = true;
+                        Load5.Enabled = false;
+                        SaveDirectory(VSTImportDialog.FileName);
+                    }
+                    else
+                    {
+                        Bass.BASS_Free();
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
                 }
             }  
         }
@@ -275,20 +327,33 @@ namespace KeppyMIDIConverter
                 int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                 int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL5 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
-                    label5.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = VSTImportDialog.FileName + " (Unverified loading)";
+                    label1.Text = VSTImportDialog.FileName + " (Unverified loading)";
                     Bass.BASS_Free();
-                    Unload5.Enabled = true;
-                    Load5.Enabled = false;
+                    Unload6.Enabled = true;
+                    Load6.Enabled = false;
                     SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
-                    Bass.BASS_Free();
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                    {
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLL5 = VSTImportDialog.FileName;
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        label5.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        Bass.BASS_Free();
+                        Unload6.Enabled = true;
+                        Load6.Enabled = false;
+                        SaveDirectory(VSTImportDialog.FileName);
+                    }
+                    else
+                    {
+                        Bass.BASS_Free();
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
                 }
             }  
         }
@@ -302,20 +367,33 @@ namespace KeppyMIDIConverter
                 int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                 int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL6 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
-                    label6.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = VSTImportDialog.FileName + " (Unverified loading)";
+                    label6.Text = VSTImportDialog.FileName + " (Unverified loading)";
                     Bass.BASS_Free();
-                    Unload6.Enabled = true;
-                    Load6.Enabled = false;
+                    Unload7.Enabled = true;
+                    Load7.Enabled = false;
                     SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
-                    Bass.BASS_Free();
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                    {
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLL6 = VSTImportDialog.FileName;
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        label6.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        Bass.BASS_Free();
+                        Unload7.Enabled = true;
+                        Load7.Enabled = false;
+                        SaveDirectory(VSTImportDialog.FileName);
+                    }
+                    else
+                    {
+                        Bass.BASS_Free();
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
                 }
             }  
         }
@@ -329,20 +407,33 @@ namespace KeppyMIDIConverter
                 int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                 int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL7 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
-                    label7.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = VSTImportDialog.FileName + " (Unverified loading)";
+                    label7.Text = VSTImportDialog.FileName + " (Unverified loading)";
                     Bass.BASS_Free();
-                    Unload7.Enabled = true;
-                    Load7.Enabled = false;
+                    Unload8.Enabled = true;
+                    Load8.Enabled = false;
                     SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
-                    Bass.BASS_Free();
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                    {
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLL7 = VSTImportDialog.FileName;
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        label7.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        Bass.BASS_Free();
+                        Unload8.Enabled = true;
+                        Load8.Enabled = false;
+                        SaveDirectory(VSTImportDialog.FileName);
+                    }
+                    else
+                    {
+                        Bass.BASS_Free();
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
                 }
             }  
         }
@@ -356,20 +447,33 @@ namespace KeppyMIDIConverter
                 int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                 int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
                 BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL8 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
-                    label8.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = VSTImportDialog.FileName + " (Unverified loading)";
+                    label8.Text = VSTImportDialog.FileName + " (Unverified loading)";
                     Bass.BASS_Free();
-                    Unload8.Enabled = true;
-                    Load8.Enabled = false;
+                    Unload.Enabled = true;
+                    Load1.Enabled = false;
                     SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
                 {
-                    Bass.BASS_Free();
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    if (BassVst.BASS_VST_GetInfo(VSTTester, vstInfo))
+                    {
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLL8 = VSTImportDialog.FileName;
+                        KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        label8.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
+                        Bass.BASS_Free();
+                        Unload.Enabled = true;
+                        Load1.Enabled = false;
+                        SaveDirectory(VSTImportDialog.FileName);
+                    }
+                    else
+                    {
+                        Bass.BASS_Free();
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidVSTLoaded", cul), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
                 }
             }  
         }

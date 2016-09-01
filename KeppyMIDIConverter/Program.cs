@@ -97,8 +97,13 @@ namespace KeppyMIDIConverter
                         case "/RRJ":
                             Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
                             return;
+                        case "/KSP":
                         case "/KEP":
                             Process.Start("https://plus.google.com/u/0/+RichardForhenson");
+                            return;
+                        case "/FRZ":
+                        case "/FSP":
+                            Process.Start("http://frozensnowproductions.com/");
                             return;
                         case "/BMT":
                         case "/BMC":
