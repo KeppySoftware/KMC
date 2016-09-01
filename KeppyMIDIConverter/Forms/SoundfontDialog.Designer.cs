@@ -102,7 +102,7 @@
             // 
             // MvUp
             // 
-            this.MvUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.MvUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MvUp.Location = new System.Drawing.Point(313, 395);
             this.MvUp.Name = "MvUp";
             this.MvUp.Size = new System.Drawing.Size(88, 23);
@@ -113,7 +113,7 @@
             // 
             // MvDwn
             // 
-            this.MvDwn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.MvDwn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MvDwn.Location = new System.Drawing.Point(400, 395);
             this.MvDwn.Name = "MvDwn";
             this.MvDwn.Size = new System.Drawing.Size(88, 23);
@@ -221,8 +221,8 @@
             this.SFList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SFList.FormattingEnabled = true;
             this.SFList.HorizontalScrollbar = true;
+            this.SFList.IntegralHeight = false;
             this.SFList.Location = new System.Drawing.Point(12, 96);
             this.SFList.Name = "SFList";
             this.SFList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;

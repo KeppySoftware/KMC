@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("Final")]
 [assembly: AssemblyCompany("KaleidonKep99")]
 [assembly: AssemblyProduct("KeppyMIDIConverter")]
-[assembly: AssemblyCopyright("Copyright © KaleidonKep99 2016")]
+[assembly: AssemblyCopyright("Copyright © KaleidonKep99 2017")]
 [assembly: AssemblyTrademark("KMC")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Resources;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come descritto di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("13.1.9")]
-[assembly: AssemblyFileVersion("13.1.9")]
-[assembly: NeutralResourcesLanguageAttribute("en-GB")]
+[assembly: AssemblyVersion("13.1.10")]
+[assembly: AssemblyFileVersion("13.1.10")]
+[assembly: NeutralResourcesLanguageAttribute("")]

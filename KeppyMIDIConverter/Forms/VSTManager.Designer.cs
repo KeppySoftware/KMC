@@ -527,10 +527,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Desc);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(629, 464);
+            this.MinimumSize = new System.Drawing.Size(633, 468);
             this.Name = "VSTManagerWindow";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

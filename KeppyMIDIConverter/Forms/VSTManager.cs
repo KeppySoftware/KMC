@@ -170,8 +170,8 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc = VSTImportDialog.FileName + " (Unverified loading)";
-                    label1.Text = VSTImportDialog.FileName + " (Unverified loading)";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc = VSTImportDialog.FileName + " (Not verified)";
+                    label1.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
                     Unload.Enabled = true;
                     Load1.Enabled = false;
@@ -210,8 +210,8 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL2 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = VSTImportDialog.FileName + " (Unverified loading)";
-                    label2.Text = VSTImportDialog.FileName + " (Unverified loading)";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc2 = VSTImportDialog.FileName + " (Not verified)";
+                    label2.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
                     Unload2.Enabled = true;
                     Load2.Enabled = false;
@@ -250,8 +250,8 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL3 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = VSTImportDialog.FileName + " (Unverified loading)";
-                    label3.Text = VSTImportDialog.FileName + " (Unverified loading)";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc3 = VSTImportDialog.FileName + " (Not verified)";
+                    label3.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
                     Unload3.Enabled = true;
                     Load3.Enabled = false;
@@ -290,8 +290,8 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL4 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = VSTImportDialog.FileName + " (Unverified loading)";
-                    label4.Text = VSTImportDialog.FileName + " (Unverified loading)";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = VSTImportDialog.FileName + " (Not verified)";
+                    label4.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
                     Unload4.Enabled = true;
                     Load4.Enabled = false;
@@ -330,8 +330,8 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL5 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = VSTImportDialog.FileName + " (Unverified loading)";
-                    label1.Text = VSTImportDialog.FileName + " (Unverified loading)";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = VSTImportDialog.FileName + " (Not verified)";
+                    label1.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
                     Unload6.Enabled = true;
                     Load6.Enabled = false;
@@ -370,8 +370,8 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL6 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = VSTImportDialog.FileName + " (Unverified loading)";
-                    label6.Text = VSTImportDialog.FileName + " (Unverified loading)";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = VSTImportDialog.FileName + " (Not verified)";
+                    label6.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
                     Unload7.Enabled = true;
                     Load7.Enabled = false;
@@ -410,8 +410,8 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL7 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = VSTImportDialog.FileName + " (Unverified loading)";
-                    label7.Text = VSTImportDialog.FileName + " (Unverified loading)";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = VSTImportDialog.FileName + " (Not verified)";
+                    label7.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
                     Unload8.Enabled = true;
                     Load8.Enabled = false;
@@ -450,8 +450,8 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLL8 = VSTImportDialog.FileName;
-                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = VSTImportDialog.FileName + " (Unverified loading)";
-                    label8.Text = VSTImportDialog.FileName + " (Unverified loading)";
+                    KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = VSTImportDialog.FileName + " (Not verified)";
+                    label8.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
                     Unload.Enabled = true;
                     Load1.Enabled = false;

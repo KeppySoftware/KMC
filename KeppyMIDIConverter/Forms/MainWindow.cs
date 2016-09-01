@@ -126,9 +126,10 @@ namespace KeppyMIDIConverter
                     {
                         //Add MIDI to midi list
                         string[] saLvwItem = new string[4];
+                        string[] midiinfo = GetMoreInfoMIDI(s);
                         saLvwItem[0] = s;
-                        saLvwItem[1] = GetNotesMIDI(s);
-                        saLvwItem[2] = GetTimeMIDI(s);
+                        saLvwItem[1] = midiinfo[1];
+                        saLvwItem[2] = midiinfo[0];
                         saLvwItem[3] = GetSizeMIDI(s);
                         ListViewItem lvi = new ListViewItem(saLvwItem);
                         this.MIDIList.Items.Add(lvi);
@@ -1224,30 +1225,6 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private string GetTimeMIDI(string str)
-        {
-            try
-            {
-                long length = new System.IO.FileInfo(str).Length;
-                if (length / 1024f >= 9860)
-                {
-                    return "-:--";
-                }
-                Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
-                int time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
-                long pos = Bass.BASS_ChannelGetLength(time);
-                double num9 = Bass.BASS_ChannelBytes2Seconds(time, pos);
-                Bass.BASS_Free();
-                TimeSpan span = TimeSpan.FromSeconds(num9);
-                string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0');
-                if (str4.Contains("-"))
-                    return "-:--";
-                else
-                    return str4;
-            }
-            catch { return "-:--"; }          
-        }
-
         private string GetSizeMIDI(string str)
         {
             try
@@ -1264,17 +1241,30 @@ namespace KeppyMIDIConverter
             catch { return "-"; }
         }
 
-        private string GetNotesMIDI(string str)
+        private string[] GetMoreInfoMIDI(string str)
         {
             try
             {
+                string[] strings;
                 long length = new System.IO.FileInfo(str).Length;
                 if (length / 1024f >= 9860)
                 {
-                    return "-";
+                    if (ModifierKeys == Keys.Control)
+                    {
+
+                    }
+                    else
+                    {
+                        strings = new string[] { "N/A", "N/A" };
+                        return strings;
+                    }
                 }
                 Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
                 int time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
+                long pos = Bass.BASS_ChannelGetLength(time);
+                double num9 = Bass.BASS_ChannelBytes2Seconds(time, pos);
+                TimeSpan span = TimeSpan.FromSeconds(num9);
+                string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0');
                 int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
                 BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
                 BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
@@ -1283,9 +1273,13 @@ namespace KeppyMIDIConverter
                 for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
                     
                 Bass.BASS_Free();
-                return notes.ToString("N0");
+                strings = new string[] { str4, notes.ToString("N0") };
+                return strings;
             }
-            catch { return "-"; }     
+            catch (Exception ex) {
+                string[] strings = new string[] { "N/A", "N/A" };
+                return strings;
+            }     
         }
 
         private void importMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1299,9 +1293,10 @@ namespace KeppyMIDIConverter
                     if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
                     {
                         string[] saLvwItem = new string[4];
+                        string[] midiinfo = GetMoreInfoMIDI(str);
                         saLvwItem[0] = str;
-                        saLvwItem[1] = GetNotesMIDI(str);
-                        saLvwItem[2] = GetTimeMIDI(str);
+                        saLvwItem[1] = midiinfo[1];
+                        saLvwItem[2] = midiinfo[0];
                         saLvwItem[3] = GetSizeMIDI(str);
                         ListViewItem lvi = new ListViewItem(saLvwItem);
                         MIDIList.Items.Add(lvi); 
@@ -1400,10 +1395,10 @@ namespace KeppyMIDIConverter
                 if (Path.GetExtension(s[i]).ToLower() == ".mid" | Path.GetExtension(s[i]).ToLower() == ".midi" | Path.GetExtension(s[i]).ToLower() == ".kar" | Path.GetExtension(s[i]).ToLower() == ".rmi")
                 {
                     string[] saLvwItem = new string[4];
+                    string[] midiinfo = GetMoreInfoMIDI(s[i]);
                     saLvwItem[0] = s[i];
-                    saLvwItem[1] = GetNotesMIDI(s[i]);
-                    saLvwItem[2] = GetTimeMIDI(s[i]);
-                    saLvwItem[3] = GetSizeMIDI(s[i]);
+                    saLvwItem[1] = midiinfo[1];
+                    saLvwItem[2] = midiinfo[0];
                     ListViewItem lvi = new ListViewItem(saLvwItem);
                     MIDIList.Items.Add(lvi); 
                 }

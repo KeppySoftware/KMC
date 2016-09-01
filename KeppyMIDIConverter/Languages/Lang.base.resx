@@ -128,13 +128,6 @@ Do you want to visit the "Unofficial SFZ format information" website?</value>
   <data name="AboutSFZFormatTitle" xml:space="preserve">
     <value>About the SFZ format</value>
   </data>
-  <data name="AboutVSTSupportText" xml:space="preserve">
-    <value>This program supports VST DSPs.
-
-Virtual Studio Technology (VST) is a software interface and technology by Steinberg Media Technologies.
-Copyright ©2006 Steinberg Media Technologies.
-All Rights Reserved.</value>
-  </data>
   <data name="AboutVSTSupportTitle" xml:space="preserve">
     <value>About the Virtual Studio Technology interface</value>
   </data>
@@ -281,7 +274,7 @@ All non-saved conversions will be lost!</value>
     <value>Crash caused by the user.</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-2016 KaleidonKep99
+    <value>Copyright(C) 2013-2017 KaleidonKep99
 
 This program is based around the great BASS libraries
 by Ian Luck from Un4seen Developments.
@@ -588,9 +581,6 @@ Click OK to exit.</value>
   <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
     <value>Windows XP SP1 and older are not supported.</value>
   </data>
-  <data name="Volume" xml:space="preserve">
-    <value>Volume:</value>
-  </data>
   <data name="InfoWindowTitle" xml:space="preserve">
     <value>Information</value>
   </data>
@@ -617,5 +607,15 @@ Click OK to exit.</value>
   </data>
   <data name="MIDINotes" xml:space="preserve">
     <value>Notes</value>
+  </data>
+  <data name="AboutVSTSupportText" xml:space="preserve">
+    <value>This program supports VST DSPs.
+
+Virtual Studio Technology (VST) is a software interface and technology by Steinberg Media Technologies.
+Copyright ©2006 Steinberg Media Technologies.
+All Rights Reserved.</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volume:</value>
   </data>
 </root>
