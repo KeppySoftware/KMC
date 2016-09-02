@@ -80,18 +80,17 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(364, 133);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 17;
             this.label4.Text = "kbps";
             // 
             // checkBox3
             // 
             this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox3.AutoSize = true;
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox3.Location = new System.Drawing.Point(7, 130);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(204, 18);
+            this.checkBox3.Size = new System.Drawing.Size(200, 18);
             this.checkBox3.TabIndex = 16;
             this.checkBox3.Text = "Force constant bitrate (OGG Vorbis)";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -123,13 +122,13 @@
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(249, 133);
+            this.label3.Location = new System.Drawing.Point(213, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 14;
             this.label3.Text = "Bitrate:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numericUpDown1
             // 
@@ -147,7 +146,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(72, 21);
+            this.numericUpDown1.Size = new System.Drawing.Size(72, 20);
             this.numericUpDown1.TabIndex = 13;
             this.numericUpDown1.Value = new decimal(new int[] {
             120,
@@ -160,9 +159,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(211, 110);
+            this.label2.Location = new System.Drawing.Point(190, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 13);
+            this.label2.Size = new System.Drawing.Size(131, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "New tempo value:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -170,11 +169,10 @@
             // checkBox1
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox1.AutoSize = true;
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox1.Location = new System.Drawing.Point(7, 108);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(133, 18);
+            this.checkBox1.Size = new System.Drawing.Size(177, 18);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "Override MIDI tempo";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -185,7 +183,7 @@
             this.Label6.AutoSize = true;
             this.Label6.Location = new System.Drawing.Point(170, 20);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(19, 13);
+            this.Label6.Size = new System.Drawing.Size(20, 13);
             this.Label6.TabIndex = 10;
             this.Label6.Text = "Hz";
             // 
@@ -226,18 +224,17 @@
             this.Label5.AutoSize = true;
             this.Label5.Location = new System.Drawing.Point(7, 20);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(90, 13);
+            this.Label5.Size = new System.Drawing.Size(87, 13);
             this.Label5.TabIndex = 8;
             this.Label5.Text = "Audio frequency:";
             // 
             // FXDisable
             // 
             this.FXDisable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.FXDisable.AutoSize = true;
             this.FXDisable.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.FXDisable.Location = new System.Drawing.Point(7, 85);
             this.FXDisable.Name = "FXDisable";
-            this.FXDisable.Size = new System.Drawing.Size(135, 18);
+            this.FXDisable.Size = new System.Drawing.Size(380, 18);
             this.FXDisable.TabIndex = 7;
             this.FXDisable.Text = "Disable sound effects";
             this.FXDisable.UseVisualStyleBackColor = true;
@@ -267,7 +264,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.GroupBox1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

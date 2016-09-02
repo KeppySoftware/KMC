@@ -3,7 +3,7 @@
 #define use_wic
 #define use_vc2010
 
-#define Version '13.1.10'
+#define Version '13.1.11'
 
 [Setup]
 AllowCancelDuringInstall=False

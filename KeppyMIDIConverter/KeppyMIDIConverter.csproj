@@ -223,6 +223,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\speaker_icon.png" />
     <None Include="Resources\soi.wav" />
     <None Include="Resources\no.wav" />
     <None Include="Resources\americagreatagain.jpg" />

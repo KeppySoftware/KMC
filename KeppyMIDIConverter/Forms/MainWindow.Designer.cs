@@ -136,7 +136,7 @@
             // UsedVoices
             // 
             this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.UsedVoices.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsedVoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.UsedVoices.Location = new System.Drawing.Point(12, 318);
             this.UsedVoices.Name = "UsedVoices";
             this.UsedVoices.Size = new System.Drawing.Size(470, 13);
@@ -171,7 +171,7 @@
             // VoiceLimit
             // 
             this.VoiceLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VoiceLimit.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VoiceLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F);
             this.VoiceLimit.Location = new System.Drawing.Point(95, 16);
             this.VoiceLimit.Maximum = new decimal(new int[] {
             100000,
@@ -196,7 +196,7 @@
             // 
             // VoiceLabel
             // 
-            this.VoiceLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VoiceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.VoiceLabel.Location = new System.Drawing.Point(1, 18);
             this.VoiceLabel.Name = "VoiceLabel";
             this.VoiceLabel.Size = new System.Drawing.Size(97, 13);
@@ -226,18 +226,18 @@
             // labelRMS
             // 
             this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelRMS.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.labelRMS.Location = new System.Drawing.Point(12, 300);
             this.labelRMS.Name = "labelRMS";
             this.labelRMS.Size = new System.Drawing.Size(470, 13);
             this.labelRMS.TabIndex = 17;
-            this.labelRMS.Text = "tututut";
+            this.labelRMS.Text = "RMS sign";
             // 
             // CurrentStatusText
             // 
             this.CurrentStatusText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentStatusText.BackColor = System.Drawing.Color.Transparent;
-            this.CurrentStatusText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
             this.CurrentStatusText.Size = new System.Drawing.Size(407, 60);
@@ -353,6 +353,7 @@
             // clearMIDIsListToolStripMenuItem
             // 
             this.clearMIDIsListToolStripMenuItem.Index = 2;
+            this.clearMIDIsListToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.ShiftDel;
             this.clearMIDIsListToolStripMenuItem.Text = "Clear MIDIs list";
             this.clearMIDIsListToolStripMenuItem.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem_Click);
             // 
@@ -392,7 +393,9 @@
             // 
             // playInRealtimeBetaToolStripMenuItem
             // 
+            this.VistaMenuSys.SetImage(this.playInRealtimeBetaToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.speaker_icon);
             this.playInRealtimeBetaToolStripMenuItem.Index = 8;
+            this.playInRealtimeBetaToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
             this.playInRealtimeBetaToolStripMenuItem.Text = "Preview files (Real-time playback)";
             this.playInRealtimeBetaToolStripMenuItem.Click += new System.EventHandler(this.playInRealtimeBetaToolStripMenuItem_Click);
             // 
@@ -774,6 +777,7 @@
             this.menuItem6,
             this.MoveUpItem,
             this.MoveDownItem});
+            this.DefMenu.Popup += new System.EventHandler(this.DefMenu_Popup);
             // 
             // ImportMIDIsRightClick
             // 
@@ -867,7 +871,7 @@
             this.Controls.Add(this.SettingsBox);
             this.Controls.Add(this.CurrentStatus);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(668, 473);
             this.Name = "MainWindow";

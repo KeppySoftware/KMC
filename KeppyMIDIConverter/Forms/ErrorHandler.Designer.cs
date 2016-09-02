@@ -46,7 +46,7 @@
             this.ErrorLab.AutoSize = true;
             this.ErrorLab.Location = new System.Drawing.Point(68, 12);
             this.ErrorLab.Name = "ErrorLab";
-            this.ErrorLab.Size = new System.Drawing.Size(219, 39);
+            this.ErrorLab.Size = new System.Drawing.Size(209, 39);
             this.ErrorLab.TabIndex = 7;
             this.ErrorLab.Text = "Error during the execution of the converter!\r\n\r\nMore information down below:";
             // 
@@ -123,7 +123,7 @@
             this.Controls.Add(this.ErrorLab);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ErrorBox);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -113,7 +113,7 @@
             this.KeppyVer.AutoSize = true;
             this.KeppyVer.Location = new System.Drawing.Point(212, 8);
             this.KeppyVer.Name = "KeppyVer";
-            this.KeppyVer.Size = new System.Drawing.Size(121, 13);
+            this.KeppyVer.Size = new System.Drawing.Size(119, 13);
             this.KeppyVer.TabIndex = 6;
             this.KeppyVer.Text = "Keppy Title with version";
             // 
@@ -138,7 +138,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(212, 151);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(290, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(287, 13);
             this.linkLabel1.TabIndex = 7;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://github.com/KaleidonKep99/Keppys-MIDI-Converter";
@@ -242,7 +242,7 @@
             this.ThisVersion.AutoSize = true;
             this.ThisVersion.Location = new System.Drawing.Point(7, 46);
             this.ThisVersion.Name = "ThisVersion";
-            this.ThisVersion.Size = new System.Drawing.Size(340, 13);
+            this.ThisVersion.Size = new System.Drawing.Size(324, 13);
             this.ThisVersion.TabIndex = 1;
             this.ThisVersion.Text = "The current version of the driver, installed on your system, is: 10.0.2";
             // 
@@ -285,7 +285,7 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

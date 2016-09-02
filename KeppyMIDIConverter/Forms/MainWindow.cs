@@ -666,7 +666,7 @@ namespace KeppyMIDIConverter
                     {
                         if (Globals.QualityOverride == true)
                         {
-                            path = String.Format("{0} -m {1} -M {2} - -o \"{3}\"", Globals.EncoderPath, Globals.Bitrate.ToString(), Globals.Bitrate.ToString(), Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg");
+                            path = String.Format("{0} --managed -b {1} -m {1} -M {1} - -o \"{2}\"", Globals.EncoderPath, Globals.Bitrate.ToString(), Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg");
                             audiopath = Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + " (Copy " + num3.ToString() + ").ogg";
                         }
                         else
@@ -692,7 +692,7 @@ namespace KeppyMIDIConverter
                             proc.Kill();
                         }
                         BassEnc.BASS_Encode_Stop(Globals._recHandle);
-                        Globals._Encoder = BassEnc.BASS_Encode_Start(stream, String.Format("{0} -m {1} -M {2} - -o \"{3}\"", Globals.EncoderPath, Globals.Bitrate.ToString(), Globals.Bitrate.ToString(), Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg"), BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
+                        Globals._Encoder = BassEnc.BASS_Encode_Start(stream, String.Format("{0} --managed -b {1} -m {1} -M {1} - -o \"{2}\"", Globals.EncoderPath, Globals.Bitrate.ToString(),  Globals.ExportWhereYay + @"\" + Path.GetFileNameWithoutExtension(str) + ".ogg"), BASSEncode.BASS_ENCODE_AUTOFREE, null, IntPtr.Zero);
                     }
                     else
                     {
@@ -1475,16 +1475,6 @@ namespace KeppyMIDIConverter
                 Globals.AutoClearMIDIListEnabled = false;
                 disabledToolStripMenuItem1.Checked = true;
             }
-            if (MIDIList.Items.Count <= 1)
-            {
-                MoveUpItem.Enabled = false;
-                MoveDownItem.Enabled = false;
-            }
-            else
-            {
-                MoveUpItem.Enabled = true;
-                MoveDownItem.Enabled = true;
-            }
             try
             {
                 if (Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_STOPPED)
@@ -1575,13 +1565,24 @@ namespace KeppyMIDIConverter
                             Globals.pictureset = 1;
                         }
                         this.importMIDIsToolStripMenuItem.Enabled = true;
-                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = true;
-                        this.clearMIDIsListToolStripMenuItem.Enabled = true;
-                        this.startRenderingWAVToolStripMenuItem.Enabled = true;
-                        this.startRenderingOGGToolStripMenuItem.Enabled = true;
+                        if (MIDIList.Items.Count < 1)
+                        {
+                            removeSelectedMIDIsToolStripMenuItem.Enabled = false;
+                            clearMIDIsListToolStripMenuItem.Enabled = false;
+                            startRenderingWAVToolStripMenuItem.Enabled = false;
+                            startRenderingOGGToolStripMenuItem.Enabled = false;
+                            playInRealtimeBetaToolStripMenuItem.Enabled = false;
+                        }
+                        else
+                        {
+                            removeSelectedMIDIsToolStripMenuItem.Enabled = true;
+                            clearMIDIsListToolStripMenuItem.Enabled = true;
+                            startRenderingWAVToolStripMenuItem.Enabled = true;
+                            startRenderingOGGToolStripMenuItem.Enabled = true;
+                            playInRealtimeBetaToolStripMenuItem.Enabled = true;
+                        }
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = true;
                         this.abortRenderingToolStripMenuItem.Enabled = false;
-                        this.playInRealtimeBetaToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), 0, res_man.GetString("AverageLevel", cul), 0, res_man.GetString("PeakLevel", cul), 0);
                         this.SettingsBox.Enabled = true;
                         this.label3.Enabled = true;
@@ -1766,6 +1767,34 @@ namespace KeppyMIDIConverter
         private void openTheSoundfontsManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Globals.frm2.ShowDialog();
+        }
+
+        private void DefMenu_Popup(object sender, EventArgs e)
+        {
+            if (MIDIList.Items.Count < 1)
+            {
+                RemoveMIDIsRightClick.Enabled = false;
+                ClearMIDIsListRightClick.Enabled = false;
+                SortByName.Enabled = false;
+                MoveUpItem.Enabled = false;
+                MoveDownItem.Enabled = false;
+            }
+            else if (MIDIList.Items.Count < 2)
+            {
+                RemoveMIDIsRightClick.Enabled = true;
+                ClearMIDIsListRightClick.Enabled = true;
+                SortByName.Enabled = false;
+                MoveUpItem.Enabled = false;
+                MoveDownItem.Enabled = false;
+            }
+            else
+            {
+                RemoveMIDIsRightClick.Enabled = true;
+                ClearMIDIsListRightClick.Enabled = true;
+                SortByName.Enabled = true;
+                MoveUpItem.Enabled = true;
+                MoveDownItem.Enabled = true;
+            }
         }
 
         private void enabledToolStripMenuItem_Click(object sender, EventArgs e)

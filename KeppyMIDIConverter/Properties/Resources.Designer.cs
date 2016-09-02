@@ -299,6 +299,16 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap speaker_icon {
+            get {
+                object obj = ResourceManager.GetObject("speaker_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap up_icon {
             get {
                 object obj = ResourceManager.GetObject("up_icon", resourceCulture);

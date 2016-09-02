@@ -141,8 +141,7 @@
             // 
             // VSTImport
             // 
-            this.VSTImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.VSTImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VSTImport.Enabled = false;
             this.VSTImport.Location = new System.Drawing.Point(313, 366);
             this.VSTImport.Name = "VSTImport";
@@ -249,7 +248,7 @@
             this.Controls.Add(this.ImportBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MinimizeBox = false;
             this.Name = "SoundfontDialog";
             this.ShowIcon = false;
