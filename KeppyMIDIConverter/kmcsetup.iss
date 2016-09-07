@@ -1,13 +1,11 @@
 #define use_ie6
-
 #define use_dotnetfx40
 #define use_wic
-
 #define use_msiproduct
-#define use_vc2010
+#define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '13.1.12'
+#define MyAppVersion '13.1.13'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -179,8 +177,9 @@ win_sp_title=Windows %1 Service Pack %2
 #ifdef use_msiproduct
 #include "scripts\products\msiproduct.iss"
 #endif
-#ifdef use_vc2010
-#include "scripts\products\vcredist2010.iss"
+
+#ifdef vc
+#include "scripts\products\vcredist.iss"
 #endif
 
 
@@ -203,7 +202,7 @@ begin
 		dotnetfx40client();
 #endif
 
-#ifdef use_vc2010
+#ifdef vc
 	vcredist2010();
 #endif
 
