@@ -56,26 +56,31 @@ namespace KeppyMIDIConverter
         {
             this.ContextMenu = RBTMenu;
             ErrorBox.ContextMenu = RBTMenu;
+            if (TOE == 0)
+            {
+                pictureBox1.Image = KeppyMIDIConverter.Properties.Resources.warningicon;
+            }
+            else
+            {
+                pictureBox1.Image = KeppyMIDIConverter.Properties.Resources.erroricon;
+            }   
             PlayConversionFail();
         }
 
         private void Close_Click(object sender, EventArgs e)
         {
             if (TOE == 0)
-            {
                 Close();
-            }
             else
-            {
                 Application.ExitThread();
-            }   
         }
 
         private void PlayConversionFail()
         {
-            System.IO.Stream str = Properties.Resources.convfail;
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
-            player.Play();
+            if (TOE == 0)
+                System.Media.SystemSounds.Exclamation.Play();
+            else
+                System.Media.SystemSounds.Hand.Play();
         }
 
         private void copyErrorMessageToolStripMenuItem_Click(object sender, EventArgs e)

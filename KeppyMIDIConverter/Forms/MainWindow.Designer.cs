@@ -147,9 +147,11 @@
             // SettingsBox
             // 
             this.SettingsBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettingsBox.BackColor = System.Drawing.Color.Transparent;
             this.SettingsBox.Controls.Add(this.AdvSettingsButton);
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.VoiceLabel);
+            this.SettingsBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsBox.Location = new System.Drawing.Point(490, 331);
             this.SettingsBox.Name = "SettingsBox";
             this.SettingsBox.Size = new System.Drawing.Size(150, 70);
@@ -238,9 +240,9 @@
             this.CurrentStatusText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentStatusText.BackColor = System.Drawing.Color.Transparent;
             this.CurrentStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
+            this.CurrentStatusText.Location = new System.Drawing.Point(0, 1);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(407, 60);
+            this.CurrentStatusText.Size = new System.Drawing.Size(409, 60);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -283,7 +285,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.loadingpic);
             this.panel1.Controls.Add(this.CurrentStatusText);
             this.panel1.Location = new System.Drawing.Point(12, 337);
@@ -296,9 +298,9 @@
             this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
             this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
             this.loadingpic.InitialImage = null;
-            this.loadingpic.Location = new System.Drawing.Point(408, 0);
+            this.loadingpic.Location = new System.Drawing.Point(410, 0);
             this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(60, 60);
+            this.loadingpic.Size = new System.Drawing.Size(60, 62);
             this.loadingpic.TabIndex = 8;
             this.loadingpic.TabStop = false;
             // 
@@ -843,6 +845,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MIDIList.BackColor = System.Drawing.Color.White;
+            this.MIDIList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MIDIList.FullRowSelect = true;
             this.MIDIList.GridLines = true;
             this.MIDIList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;

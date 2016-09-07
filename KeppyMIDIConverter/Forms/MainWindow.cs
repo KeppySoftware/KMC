@@ -809,7 +809,7 @@ namespace KeppyMIDIConverter
             Bass.BASS_Free();
             Globals.NewWindowName = null;
             Globals.RenderingMode = false;
-            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("NewValueTempo", cul), ex.ToString(), 0, 1);
+            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("Error", cul), ex.ToString(), 0, 1);
             errordialog.ShowDialog();
         }
 

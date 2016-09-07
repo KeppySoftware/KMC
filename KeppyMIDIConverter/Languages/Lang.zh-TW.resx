@@ -157,8 +157,8 @@ All Rights Reserved.</value>
     <value>這版本已經是最新版</value>
   </data>
   <data name="AppBusy" xml:space="preserve">
-    <value>該應用程序尚未完成轉換/播放MIDIS！
-你確定要離開？</value>
+    <value>該應用程序尚未完成轉換/播放MIDI!
+你確定要離開?</value>
   </data>
   <data name="AudioEventsStrip" xml:space="preserve">
     <value>啟用音頻事件（轉換完成，失敗等）</value>
@@ -197,10 +197,10 @@ Edit the VST DSPs settings when asked.
     <value>檢查更新</value>
   </data>
   <data name="ClearListAutomaticallyStrip" xml:space="preserve">
-    <value>當MIDIs轉換完成時,自動清除MIDIs清單</value>
+    <value>當MIDI轉換完成時,自動清除MIDI清單</value>
   </data>
   <data name="ClearMIDIsList" xml:space="preserve">
-    <value>清理MIDIs清單</value>
+    <value>清理MIDI清單</value>
   </data>
   <data name="ClearSoundfontList" xml:space="preserve">
     <value>清理音色庫清單</value>
@@ -336,7 +336,7 @@ button.
 選擇MIDI，加載音色庫，並開始轉換/播放</value>
   </data>
   <data name="ImportMIDI" xml:space="preserve">
-    <value>加入 MIDIs...</value>
+    <value>加入 MIDI...</value>
   </data>
   <data name="ImportMIDIWindow" xml:space="preserve">
     <value>選擇要加入的MIDI檔案...</value>
@@ -466,7 +466,7 @@ BASS 狀態: {0}</value>
     <value>完成</value>
   </data>
   <data name="RemoveMIDI" xml:space="preserve">
-    <value>移除選擇MIDIs</value>
+    <value>移除選擇MIDI</value>
   </data>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
     <value>移除音色庫(s)</value>

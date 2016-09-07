@@ -1,38 +1,48 @@
-#define use_msiproduct
+#define use_ie6
+
 #define use_dotnetfx40
 #define use_wic
+
+#define use_msiproduct
 #define use_vc2010
 
-#define Version '13.1.11'
+#define MyAppSetupName "Keppy's MIDI Converter"
+#define MyAppVersion '13.1.12'
 
 [Setup]
 AllowCancelDuringInstall=False
 AlwaysShowDirOnReadyPage=True
+AppName={#MyAppSetupName}
+AppVersion={#MyAppVersion}
+AppVerName={#MyAppSetupName} {#MyAppVersion}
 AppComments=MIDI to WAV/OGG converter
+AllowNoIcons=yes
 AppContact=mailto:kaleidonkep99@outlook.com
 AppCopyright=Copyright(C) KaleidonKep99 2016
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
-AppName=Keppy's MIDI Converter
 AppPublisher=KaleidonKep99
 AppPublisherURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter
 AppSupportPhone=+393511888475
 AppSupportURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/issues
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
-AppVersion={#Version}
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
-DefaultDirName={pf}\Keppy's MIDI Converter
-DefaultGroupName=Keppy's MIDI Converter
+OutputBaseFilename={#MyAppSetupName} - {#MyAppVersion}
+DefaultGroupName={#MyAppSetupName}
+DefaultDirName={pf}\{#MyAppSetupName}
+DisableReadyPage=no
+DisableReadyMemo=no
 InternalCompressLevel=ultra64
 LanguageDetectionMethod=locale
 LicenseFile=license.rtf
 MinVersion=0,5.01.2600sp3
-OutputBaseFilename=KeppyMIDIConverterInstaller
 OutputDir=bin
 SetupIconFile=Resources\mainlogo.ico
+SourceDir=.
 ShowLanguageDialog=no
 TimeStampsInUTC=True
+PrivilegesRequired=admin
 UninstallDisplayIcon={app}\x86\KeppyMIDIConverter.exe
 UninstallDisplayName=Keppy's MIDI Converter (Remove only)
 UninstallDisplaySize=4835000
@@ -40,8 +50,8 @@ VersionInfoCompany=KaleidonKep99
 VersionInfoCopyright=Copyright(C) KaleidonKep99 2016
 VersionInfoDescription=Keppy's MIDI Converter
 VersionInfoProductName=KMC
-VersionInfoProductVersion={#Version}
-VersionInfoVersion={#Version}
+VersionInfoProductVersion={#MyAppVersion}
+VersionInfoVersion={#MyAppVersion}
 WizardImageFile=setuppages\WizModernImage.bmp
 WizardSmallImageFile=setuppages\WizModernSmallImage.bmp
 SolidCompression=True
@@ -80,6 +90,27 @@ Source: "bin\x86\bassopus.dll"; DestDir: "{app}\x86";  Flags: ignoreversion repl
 Source: "bin\x86\basswv.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 
+[Tasks]
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
+Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+
+[Icons]
+; Start menu/screen group
+Name: "{group}\Keppy's MIDI Converter"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: not Is64BitInstallMode
+Name: "{group}\Restore default language"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Parameters: "/RLN"; Check: not Is64BitInstallMode
+Name: "{group}\Skip update process"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Parameters: "/NAU"; Check: not Is64BitInstallMode
+Name: "{group}\Keppy's MIDI Converter (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
+Name: "{group}\Keppy's MIDI Converter (x64)"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
+Name: "{group}\Restore default language"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Parameters: "/RLN"; Check: Is64BitInstallMode
+Name: "{group}\Skip update process"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Parameters: "/NAU"; Check: Is64BitInstallMode
+; Desktop/Quick launch shortcuts
+Name: "{userdesktop}\{#MyAppSetupName} (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Tasks: desktopicon; Check: not Is64BitInstallMode
+Name: "{userdesktop}\{#MyAppSetupName} (x64)"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Tasks: desktopicon; Check: Is64BitInstallMode
+Name: "{userdesktop}\{#MyAppSetupName} (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Tasks: desktopicon; Check: Is64BitInstallMode
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppSetupName} (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Tasks: quicklaunchicon; Check: not Is64BitInstallMode
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppSetupName} (x64)"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Tasks: quicklaunchicon; Check: Is64BitInstallMode
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppSetupName} (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Tasks: quicklaunchicon; Check: Is64BitInstallMode
+
 [InstallDelete]
 Type: filesandordirs; Name: "{app}\x86"
 Type: filesandordirs; Name: "{app}\x64"
@@ -94,10 +125,7 @@ Type: filesandordirs; Name: "{group}"
 
 [Languages]
 Name: en; MessagesFile: "compiler:Default.isl"
-Name: it; MessagesFile: "compiler:Languages\Italian.isl"
-Name: nl; MessagesFile: "compiler:Languages\Dutch.isl"
 Name: de; MessagesFile: "compiler:Languages\German.isl"
-Name: jp; MessagesFile: "compiler:Languages\Japanese.isl"
 
 [Registry]
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "chorus"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey
@@ -125,16 +153,9 @@ Filename: "{app}\x86\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasori
 Filename: "{app}\x86\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser unchecked; Description: "Run the x86 version of the converter"; Check: Is64BitInstallMode
 Filename: "{app}\x64\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser; Description: "Run the x64 version of the converter"; Check: Is64BitInstallMode
 Filename: "{app}\license.rtf"; Flags: nowait shellexec postinstall unchecked; Description: "Read the license"
-Filename: "https://github.com/KaleidonKep99/Keppys-MIDI-Converter"; Flags: nowait postinstall shellexec unchecked; Description: "Look at the source code on GitHub"
-
-[Icons]
-Name: "{group}\Keppy's MIDI Converter"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: not Is64BitInstallMode
-Name: "{group}\Restore default language"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Parameters: "/RLN"; Check: not Is64BitInstallMode
-Name: "{group}\Skip update process"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Parameters: "/NAU"; Check: not Is64BitInstallMode
-Name: "{group}\Keppy's MIDI Converter (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
-Name: "{group}\Keppy's MIDI Converter (x64)"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Check: Is64BitInstallMode
-Name: "{group}\Restore default language"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Parameters: "/RLN"; Check: Is64BitInstallMode
-Name: "{group}\Skip update process"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Parameters: "/NAU"; Check: Is64BitInstallMode
+Filename: "https://github.com/KaleidonKep99/Keppys-MIDI-Converter"; Flags: nowait postinstall shellexec unchecked; Description: "Look at the source code on GitHub"
+[CustomMessages]
+win_sp_title=Windows %1 Service Pack %2
 
 [Code]
 // shared code for installing the products
@@ -145,16 +166,46 @@ Name: "{group}\Skip update process"; Filename: "{app}\x64\KeppyMIDIConverter.exe
 #include "scripts\products\fileversion.iss"
 #include "scripts\products\dotnetfxversion.iss"
 
+
+#ifdef use_dotnetfx40
+#include "scripts\products\dotnetfx40client.iss"
+#include "scripts\products\dotnetfx40full.iss"
+#endif
+
+#ifdef use_wic
+#include "scripts\products\wic.iss"
+#endif
+
 #ifdef use_msiproduct
 #include "scripts\products\msiproduct.iss"
 #endif
 #ifdef use_vc2010
 #include "scripts\products\vcredist2010.iss"
 #endif
+
+
+function InitializeSetup(): boolean;
+begin
+	// initialize windows version
+	initwinversion();
+
+#ifdef use_msi40
+	msi45('4.0'); // min allowed version is 4.0
+#endif
+
 #ifdef use_wic
-#include "scripts\products\wic.iss"
+	wic();
 #endif
+
+	// if no .netfx 4.0 is found, install the client (smallest)
 #ifdef use_dotnetfx40
-#include "scripts\products\dotnetfx40client.iss"
-#include "scripts\products\dotnetfx40full.iss"
+	if (not netfxinstalled(NetFx40Client, '') and not netfxinstalled(NetFx40Full, '')) then
+		dotnetfx40client();
 #endif
+
+#ifdef use_vc2010
+	vcredist2010();
+#endif
+
+	Result := true;
+end;

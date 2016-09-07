@@ -77,10 +77,10 @@ namespace KeppyMIDIConverter
 
                 // Print the file name and version number.
                 String.Format(res_man.GetString("LibraryVersion", cul), basslibver.FileDescription, basslibver.FileVersion, basslibver.FilePrivatePart);
-                BASSINFO.Text = String.Format(res_man.GetString("LibraryVersion", cul), basslibver.FileDescription, basslibver.FileVersion, basslibver.FilePrivatePart) +"\n" +
-                    String.Format(res_man.GetString("LibraryVersion", cul), bassmidilibver.FileDescription, bassmidilibver.FileVersion, bassmidilibver.FilePrivatePart) + "\n" +
-                    String.Format(res_man.GetString("LibraryVersion", cul), bassenclibver.FileDescription, bassenclibver.FileVersion, bassenclibver.FilePrivatePart) + "\n" +
-                    String.Format(res_man.GetString("LibraryVersion", cul), bassvstlibver.FileDescription, bassvstlibver.FileVersion, bassvstlibver.FilePrivatePart);
+                BASSINFO.Text = String.Format(res_man.GetString("LibraryVersion", cul), "BASS", basslibver.FileVersion, basslibver.FilePrivatePart) +"\n" +
+                    String.Format(res_man.GetString("LibraryVersion", cul), "BASSMIDI", bassmidilibver.FileVersion, bassmidilibver.FilePrivatePart) + "\n" +
+                    String.Format(res_man.GetString("LibraryVersion", cul), "BASSenc", bassenclibver.FileVersion, bassenclibver.FilePrivatePart) + "\n" +
+                    String.Format(res_man.GetString("LibraryVersion", cul), "BASS_VST", bassvstlibver.FileVersion, bassvstlibver.FilePrivatePart);
 
                 BASSINFO2.Text = "Translated by\n" +
                     res_man.GetString("ZZZTranslators", cul) + "\n\n" + 
@@ -90,18 +90,6 @@ namespace KeppyMIDIConverter
             {
                 KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("FatalError", cul), exception.ToString(), 1, 0);
                 errordialog.ShowDialog();
-            }
-        }
-
-        public static void CopyStream(Stream input, Stream output)
-        {
-            // Insert null checking here for production
-            byte[] buffer = new byte[8192];
-
-            int bytesRead;
-            while ((bytesRead = input.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                output.Write(buffer, 0, bytesRead);
             }
         }
 
