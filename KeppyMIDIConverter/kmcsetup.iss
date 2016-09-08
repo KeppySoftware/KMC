@@ -5,7 +5,7 @@
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '13.1.13'
+#define MyAppVersion '13.1.14'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -123,7 +123,7 @@ Type: filesandordirs; Name: "{group}"
 
 [Languages]
 Name: en; MessagesFile: "compiler:Default.isl"
-Name: de; MessagesFile: "compiler:Languages\German.isl"
+Name: de; MessagesFile: "compiler:Default.isl"
 
 [Registry]
 Root: "HKCU"; Subkey: "Software\Keppy's MIDI Converter\Effects"; ValueType: dword; ValueName: "chorus"; ValueData: "0"; Flags: createvalueifdoesntexist uninsdeletekey

@@ -210,6 +210,7 @@
             // 
             this.CurrentStatus.BackColor = System.Drawing.SystemColors.Control;
             this.CurrentStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CurrentStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.CurrentStatus.Location = new System.Drawing.Point(0, 412);
             this.CurrentStatus.Name = "CurrentStatus";
             this.CurrentStatus.Size = new System.Drawing.Size(652, 23);
@@ -288,6 +289,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.loadingpic);
             this.panel1.Controls.Add(this.CurrentStatusText);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Location = new System.Drawing.Point(12, 337);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(472, 64);

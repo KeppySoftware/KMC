@@ -270,16 +270,14 @@ namespace KeppyMIDIConverter
         static void TriggerDate()
         {
             DateTime BirthDate = DateTime.Now;
-            int kepbirthday = 1999;
-            int kmcbirthday = 2015;
             int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
             if (BirthDate.ToString("dd/MM") == "23/04")
             {
-                MessageBox.Show("Today is Frozen's birthday! He turned " + (currentyear - kepbirthday).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Frozen Snow", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Today is Frozen's birthday! He turned " + (currentyear - 1996).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Frozen Snow", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (BirthDate.ToString("dd/MM") == "17/09")
             {
-                MessageBox.Show("Today, KMC turned " + (currentyear - kmcbirthday).ToString() + " year(s) old!\n\nHappy birthday, awesome converter!", "Happy birthday to me, Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Today, KMC turned " + (currentyear - 2015).ToString() + " year(s) old!\n\nHappy birthday, awesome converter!", "Happy birthday to me, Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (BirthDate.ToString("dd/MM") == "31/10")
             {
@@ -287,7 +285,7 @@ namespace KeppyMIDIConverter
             }
             else if (BirthDate.ToString("dd/MM") == "05/12")
             {
-                MessageBox.Show("Today is Keppy's birthday! He turned " + (currentyear - kepbirthday).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Kepperino", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Today is Keppy's birthday! He turned " + (currentyear - 1999).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Kepperino", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (BirthDate.ToString("dd/MM") == "25/12")
             {

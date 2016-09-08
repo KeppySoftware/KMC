@@ -305,8 +305,8 @@ namespace KeppyMIDIConverter
                         KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc4 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         label4.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         Bass.BASS_Free();
-                        Unload5.Enabled = true;
-                        Load5.Enabled = false;
+                        Unload4.Enabled = true;
+                        Load4.Enabled = false;
                         SaveDirectory(VSTImportDialog.FileName);
                     }
                     else
@@ -333,8 +333,8 @@ namespace KeppyMIDIConverter
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = VSTImportDialog.FileName + " (Not verified)";
                     label1.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
-                    Unload6.Enabled = true;
-                    Load6.Enabled = false;
+                    Unload5.Enabled = true;
+                    Load5.Enabled = false;
                     SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
@@ -345,8 +345,8 @@ namespace KeppyMIDIConverter
                         KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc5 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         label5.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         Bass.BASS_Free();
-                        Unload6.Enabled = true;
-                        Load6.Enabled = false;
+                        Unload5.Enabled = true;
+                        Load5.Enabled = false;
                         SaveDirectory(VSTImportDialog.FileName);
                     }
                     else
@@ -373,8 +373,8 @@ namespace KeppyMIDIConverter
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = VSTImportDialog.FileName + " (Not verified)";
                     label6.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
-                    Unload7.Enabled = true;
-                    Load7.Enabled = false;
+                    Unload6.Enabled = true;
+                    Load6.Enabled = false;
                     SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
@@ -385,8 +385,8 @@ namespace KeppyMIDIConverter
                         KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc6 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         label6.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         Bass.BASS_Free();
-                        Unload7.Enabled = true;
-                        Load7.Enabled = false;
+                        Unload6.Enabled = true;
+                        Load6.Enabled = false;
                         SaveDirectory(VSTImportDialog.FileName);
                     }
                     else
@@ -413,8 +413,8 @@ namespace KeppyMIDIConverter
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = VSTImportDialog.FileName + " (Not verified)";
                     label7.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
-                    Unload8.Enabled = true;
-                    Load8.Enabled = false;
+                    Unload7.Enabled = true;
+                    Load7.Enabled = false;
                     SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
@@ -425,8 +425,8 @@ namespace KeppyMIDIConverter
                         KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc7 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         label7.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         Bass.BASS_Free();
-                        Unload8.Enabled = true;
-                        Load8.Enabled = false;
+                        Unload7.Enabled = true;
+                        Load7.Enabled = false;
                         SaveDirectory(VSTImportDialog.FileName);
                     }
                     else
@@ -453,8 +453,8 @@ namespace KeppyMIDIConverter
                     KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = VSTImportDialog.FileName + " (Not verified)";
                     label8.Text = VSTImportDialog.FileName + " (Not verified)";
                     Bass.BASS_Free();
-                    Unload.Enabled = true;
-                    Load1.Enabled = false;
+                    Unload8.Enabled = true;
+                    Load8.Enabled = false;
                     SaveDirectory(VSTImportDialog.FileName);
                 }
                 else
@@ -465,8 +465,8 @@ namespace KeppyMIDIConverter
                         KeppyMIDIConverter.MainWindow.Globals.VSTDLLDesc8 = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         label8.Text = vstInfo.productName + " by " + vstInfo.vendorName + " (Version: " + vstInfo.vendorVersion + ")";
                         Bass.BASS_Free();
-                        Unload.Enabled = true;
-                        Load1.Enabled = false;
+                        Unload8.Enabled = true;
+                        Load8.Enabled = false;
                         SaveDirectory(VSTImportDialog.FileName);
                     }
                     else

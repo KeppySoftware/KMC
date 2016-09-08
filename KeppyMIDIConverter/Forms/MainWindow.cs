@@ -204,7 +204,7 @@ namespace KeppyMIDIConverter
                 forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
                 importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
                 informationAboutTheProgramToolStripMenuItem.Text = res_man.GetString("informationAboutTheProgramStrip", cul);
-                label3.Text = res_man.GetString("Volume", cul);
+                label3.Text = String.Format("{0} {1}", "🔊", res_man.GetString("Volume", cul));
                 openTheSoundfontsManagerToolStripMenuItem.Text = res_man.GetString("SFVSTManager", cul);
                 playInRealtimeBetaToolStripMenuItem.Text = res_man.GetString("RenderToSpeakers", cul);
                 removeSelectedMIDIsToolStripMenuItem.Text = RemoveMIDIsRightClick.Text = res_man.GetString("RemoveMIDI", cul);
@@ -265,7 +265,7 @@ namespace KeppyMIDIConverter
             this.Menu = DefaultMenu;
             MIDIList.ContextMenu = DefMenu;
             // Fade in
-            t1.Interval = 10; // Increases opacity every 10ms
+            t1.Interval = 1; // Increases opacity every 10ms
             t1.Tick += new EventHandler(fadeIn);  // This calls the function that changes opacity 
             t1.Start();
             // Fade in
@@ -820,19 +820,11 @@ namespace KeppyMIDIConverter
 
         private void ConverterProcess_DoWork(object sender, DoWorkEventArgs e)
         {
-            PlayConversionStart();
             try
             {
-                if (Globals.Soundfonts[0] == null)
-                {
-                    throw new Exception(res_man.GetString("SelectOneSF", cul));
-                }
-                if (this.MIDIList.Items.Count == 0)
-                {
-                    throw new Exception(res_man.GetString("AddOneMIDI", cul));
-                }
                 try
                 {
+                    PlayConversionStart();
                     Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
                     bool KeepLooping = true;
                     BASSInitSystem();
@@ -924,19 +916,11 @@ namespace KeppyMIDIConverter
 
         private void RealTimePlayBackBeta_DoWork(object sender, DoWorkEventArgs e)
         {
-            PlayConversionStart();
             try
             {
-                if (Globals.Soundfonts[0] == null)
-                {
-                    throw new Exception(res_man.GetString("SelectOneSF", cul));
-                }
-                if (this.MIDIList.Items.Count == 0)
-                {
-                    throw new Exception(res_man.GetString("AddOneMIDI", cul));
-                }
                 try
                 {
+                    PlayConversionStart();
                     bool KeepLooping = true;
                     while (KeepLooping)
                     {
@@ -1115,8 +1099,8 @@ namespace KeppyMIDIConverter
 
         private void NoteSyncProc(int handle, int channel, int data, IntPtr user)
         {
-            if ((data & 0xff00) != 0) // note on event (velocity>0)
-                Globals.notecount++;
+            if ((data & 0xff00) != 0)
+                Globals.notecount++; // Note count for playback mode
         }
 
         protected override void Dispose(bool disposing)
@@ -1140,22 +1124,22 @@ namespace KeppyMIDIConverter
         void fadeIn(object sender, EventArgs e)
         {
             if (Opacity >= 1)
-                t1.Stop();   //this stops the timer if the form is completely displayed
+                t1.Stop(); 
             else
                 if (AeroEnabled() == true) {
-                    Opacity += 0.015;
+                    Opacity += 0.025;
                 }
                 else
                 {
-                    Opacity += 0.05;
+                    Opacity += 0.025;
                 }      
         }
 
         void fadeOut(object sender, EventArgs e)
         {
-            if (Opacity == 0)     //check if opacity is 0
+            if (Opacity == 0)   
             {
-                t2.Stop();    //if it is, we stop the timer
+                t2.Stop();
                 if (Globals.DeleteEncoder == true)
                 {
                     File.Delete(Globals.EncoderPath);
@@ -1163,7 +1147,7 @@ namespace KeppyMIDIConverter
                 Process.GetCurrentProcess().Kill();  
             }
             else
-                Opacity -= 0.05;
+                Opacity -= 0.1;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1175,19 +1159,15 @@ namespace KeppyMIDIConverter
                 {
                     Bass.BASS_StreamFree(Globals._recHandle);
                     Bass.BASS_Free();
-                    t2.Interval = 10;  //we'll increase the opacity every 10ms
-                    t2.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+                    t2.Interval = 1;
+                    t2.Tick += new EventHandler(fadeOut);
                     t2.Start();
-                }
-                else if (dialogResult == DialogResult.No)
-                {
-
                 }
             }
             else
             {
-                t2.Interval = 10;  //we'll increase the opacity every 10ms
-                t2.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+                t2.Interval = 1;
+                t2.Tick += new EventHandler(fadeOut);
                 t2.Start();
             }
         }
@@ -1206,9 +1186,9 @@ namespace KeppyMIDIConverter
                 {
                     Bass.BASS_StreamFree(Globals._recHandle);
                     Bass.BASS_Free();
-                    e.Cancel = true;    //cancel the event so the form won't be closed
-                    t2.Interval = 10;  //we'll increase the opacity every 10ms
-                    t2.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+                    e.Cancel = true;
+                    t2.Interval = 1;
+                    t2.Tick += new EventHandler(fadeOut);
                     t2.Start();  
                 }
                 else if (dialogResult == DialogResult.No)
@@ -1218,9 +1198,9 @@ namespace KeppyMIDIConverter
             }
             else
             {
-                e.Cancel = true;    //cancel the event so the form won't be closed
-                t2.Interval = 10;  //we'll increase the opacity every 10ms
-                t2.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+                e.Cancel = true;
+                t2.Interval = 1;
+                t2.Tick += new EventHandler(fadeOut);
                 t2.Start();  
             }
         }
@@ -1475,6 +1455,10 @@ namespace KeppyMIDIConverter
                 Globals.AutoClearMIDIListEnabled = false;
                 disabledToolStripMenuItem1.Checked = true;
             }
+            if (Globals.Soundfonts[0] == null)
+            {
+
+            }
             try
             {
                 if (Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_STOPPED)
@@ -1502,34 +1486,7 @@ namespace KeppyMIDIConverter
                         this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
-                        if (Globals.pictureset != 0)
-                        {
-                            this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
-                            Globals.pictureset = 0;
-                        }
-                        this.importMIDIsToolStripMenuItem.Enabled = false;
-                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
-                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
-                        this.startRenderingWAVToolStripMenuItem.Enabled = false;
-                        this.startRenderingOGGToolStripMenuItem.Enabled = false;
-                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
-                        this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
-                        this.abortRenderingToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV)); 
-                        this.SettingsBox.Enabled = true;
-                        this.label3.Enabled = true;
-                        this.VolumeBar.Enabled = true;
-                        this.VoiceLimit.Maximum = 2000;
-                        Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.High;
-                    }
-                    else if (Globals.RenderingMode == true)
-                    {
-                        this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        this.CurrentStatusText.Text = res_man.GetString("MemoryAllocationConversion", cul);
-                        this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
-                        this.CurrentStatus.MarqueeAnimationSpeed = 100;
-                        this.MIDIList.Enabled = false;
+                        this.MIDIList.Cursor = Cursors.No;
                         if (Globals.pictureset != 0)
                         {
                             this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
@@ -1545,6 +1502,37 @@ namespace KeppyMIDIConverter
                         this.abortRenderingToolStripMenuItem.Enabled = true;
                         this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
                         this.SettingsBox.Enabled = false;
+                        this.SettingsBox.Cursor = Cursors.No;
+                        this.label3.Enabled = true;
+                        this.VolumeBar.Enabled = true;
+                        this.VoiceLimit.Maximum = 2000;
+                        Process thisProc = Process.GetCurrentProcess();
+                        thisProc.PriorityClass = ProcessPriorityClass.High;
+                    }
+                    else if (Globals.RenderingMode == true)
+                    {
+                        this.CurrentStatus.Style = ProgressBarStyle.Marquee;
+                        this.CurrentStatusText.Text = res_man.GetString("MemoryAllocationConversion", cul);
+                        this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
+                        this.CurrentStatus.MarqueeAnimationSpeed = 100;
+                        this.MIDIList.Enabled = false;
+                        this.MIDIList.Cursor = Cursors.No;
+                        if (Globals.pictureset != 0)
+                        {
+                            this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
+                            Globals.pictureset = 0;
+                        }
+                        this.importMIDIsToolStripMenuItem.Enabled = false;
+                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
+                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
+                        this.startRenderingWAVToolStripMenuItem.Enabled = false;
+                        this.startRenderingOGGToolStripMenuItem.Enabled = false;
+                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
+                        this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
+                        this.abortRenderingToolStripMenuItem.Enabled = true;
+                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), Globals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), Globals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(Globals._plm.PeakHoldLevelL_dBV, Globals._plm.PeakHoldLevelR_dBV));
+                        this.SettingsBox.Enabled = false;
+                        this.SettingsBox.Cursor = Cursors.No;
                         this.label3.Enabled = false;
                         this.VolumeBar.Enabled = false;
                         this.VoiceLimit.Maximum = 100000;
@@ -1559,6 +1547,7 @@ namespace KeppyMIDIConverter
                         this.CurrentStatusText.Text = res_man.GetString("IdleMessage", cul);
                         this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + @"0/" + Globals.LimitVoicesInt.ToString();
                         this.MIDIList.Enabled = true;
+                        this.MIDIList.Cursor = Cursors.Default;
                         if (Globals.pictureset != 1)
                         {
                             this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convpause;
@@ -1575,16 +1564,28 @@ namespace KeppyMIDIConverter
                         }
                         else
                         {
-                            removeSelectedMIDIsToolStripMenuItem.Enabled = true;
-                            clearMIDIsListToolStripMenuItem.Enabled = true;
-                            startRenderingWAVToolStripMenuItem.Enabled = true;
-                            startRenderingOGGToolStripMenuItem.Enabled = true;
-                            playInRealtimeBetaToolStripMenuItem.Enabled = true;
+                            if (Globals.Soundfonts[0] == null)
+                            {
+                                removeSelectedMIDIsToolStripMenuItem.Enabled = true;
+                                clearMIDIsListToolStripMenuItem.Enabled = true;
+                                startRenderingWAVToolStripMenuItem.Enabled = false;
+                                startRenderingOGGToolStripMenuItem.Enabled = false;
+                                playInRealtimeBetaToolStripMenuItem.Enabled = false;
+                            }
+                            else
+                            {
+                                removeSelectedMIDIsToolStripMenuItem.Enabled = true;
+                                clearMIDIsListToolStripMenuItem.Enabled = true;
+                                startRenderingWAVToolStripMenuItem.Enabled = true;
+                                startRenderingOGGToolStripMenuItem.Enabled = true;
+                                playInRealtimeBetaToolStripMenuItem.Enabled = true;
+                            }
                         }
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = true;
                         this.abortRenderingToolStripMenuItem.Enabled = false;
                         this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), 0, res_man.GetString("AverageLevel", cul), 0, res_man.GetString("PeakLevel", cul), 0);
                         this.SettingsBox.Enabled = true;
+                        this.SettingsBox.Cursor = Cursors.Default;
                         this.label3.Enabled = true;
                         this.VolumeBar.Enabled = true;
                         this.VoiceLimit.Maximum = 100000;
@@ -1608,6 +1609,7 @@ namespace KeppyMIDIConverter
                         if (Globals.PlaybackMode == true)
                         {
                             this.SettingsBox.Enabled = true;
+                            this.SettingsBox.Cursor = Cursors.Default;
                             this.label3.Enabled = true;
                             this.VolumeBar.Enabled = true;
                             this.VoiceLimit.Maximum = 2000;
@@ -1615,6 +1617,7 @@ namespace KeppyMIDIConverter
                         else
                         {
                             this.SettingsBox.Enabled = false;
+                            this.SettingsBox.Cursor = Cursors.No;
                             this.label3.Enabled = false;
                             this.VolumeBar.Enabled = false;
                             this.VoiceLimit.Maximum = 100000;
@@ -1631,6 +1634,7 @@ namespace KeppyMIDIConverter
                         this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.MarqueeAnimationSpeed = 100;
                         this.MIDIList.Enabled = false;
+                        this.MIDIList.Cursor = Cursors.No;
                         if (Globals.pictureset != 0)
                         {
                             this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
@@ -1676,6 +1680,7 @@ namespace KeppyMIDIConverter
                             thisProc.PriorityClass = ProcessPriorityClass.High;
                         }
                         this.MIDIList.Enabled = false;
+                        this.MIDIList.Cursor = Cursors.No;
                         this.CurrentStatusText.Text = Globals.CurrentStatusTextString;
                         this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + Globals.ActiveVoicesInt.ToString() + @"/" + Globals.LimitVoicesInt.ToString();
                         this.CurrentStatus.Style = ProgressBarStyle.Blocks;
@@ -1710,6 +1715,8 @@ namespace KeppyMIDIConverter
                             this.Text = String.Format(res_man.GetString("ConversionText", cul), Globals.NewWindowName);
                     }
                 }
+                gr.Dispose();
+                font.Dispose();
             }
             catch
             {

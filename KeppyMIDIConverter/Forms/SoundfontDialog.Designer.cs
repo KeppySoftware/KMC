@@ -250,6 +250,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(597, 468);
             this.Name = "SoundfontDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
