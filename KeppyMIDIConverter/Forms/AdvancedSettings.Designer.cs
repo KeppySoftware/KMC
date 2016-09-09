@@ -88,9 +88,9 @@
             // 
             this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox3.Location = new System.Drawing.Point(7, 130);
+            this.checkBox3.Location = new System.Drawing.Point(7, 125);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(200, 18);
+            this.checkBox3.Size = new System.Drawing.Size(200, 27);
             this.checkBox3.TabIndex = 16;
             this.checkBox3.Text = "Force constant bitrate (OGG Vorbis)";
             this.checkBox3.UseVisualStyleBackColor = true;

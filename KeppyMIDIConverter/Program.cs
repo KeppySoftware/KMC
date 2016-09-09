@@ -88,6 +88,17 @@ namespace KeppyMIDIConverter
                             kek.Dispose();
                             goto KEK;
                             return;
+                        case "/ZEB":
+                            System.IO.Stream merdinskimerdonski = KeppyMIDIConverter.Properties.Resources.merdinskimerdonski;
+                            System.Media.SoundPlayer mermerplay = new System.Media.SoundPlayer(merdinskimerdonski);
+                            mermerplay.PlaySync();
+                            mermerplay.Dispose();
+                            merdinskimerdonski.Dispose();
+                            ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
+                            {
+                                throw new MerdinskiMerdonski("MAAMMMENONMMENEFFREGAUNCCCAZO");
+                            }));
+                            break;
                         case "/TTS":
                             SpeechSynthesizer speak = new SpeechSynthesizer();
                             speak.Volume = 100;
@@ -123,6 +134,16 @@ namespace KeppyMIDIConverter
                             System.Threading.Thread.Sleep(3000);
                             MessageBox.Show("Who knows tho...");
                             return;
+                        case "/JAP" :
+                            string Emojipasta = @"👌👀👌👀👌👀👌👀👌👀 良いくそ　良( |クそ👌 それ ✔ は 良い👌👌くそだ　 ｽｸﾞ👌👌 ｿ👌 ｺ👌👌👌 すぐ✔そこ ✔✔わたL/\　と 💯 言え｜よ” 💯 コレツイテ　はなすぅ　しゅごぅすぉこぉ 素具祖子 (ｶﾞｯｼｮ: スク”ンコ) んんんんんｎ💯 👌👌 👌ほ王おおおぉぉぉおォォオォオｫｵｵｵｫゥ👌 👌👌 👌 💯 👌 👀👀 👀 👌👌ョイ糞";
+                            string Sasukechan = "Omg hai ___^ I’m anon-san and I absolutely luuuv @__@ anime <3 and my fav is naurto!!! Okies so anyways, im going to tell you about the BEST day of my life when I met my hot husband sasuke!! <333333333 OMFGZ HE WAS SOOOOO FREAKIN KAWAII IN PERSON!!! Supa kawaii desu!!!!!!!! ^___________________________________^\nWhen I walked onto Tokyo street =____=I looked up and saw…SASUKE!!!!!!!!!!!!!!! <33333333333333333333333333333333333333333333333333333333333333!!!! “ KONNICHIWA OMGZZZZZZZZZZZZZZZZ SUPA SUPA SUPA KAWAII SASUKE-SAMA!!!!!” I yelled n____n then he turned chibi then un-chibi!! he looked at me [O.O;;;;;;;;;;;] and then he saw how hot I am *___* he grabbed my hand and winked ~_^ then pulled me behind a pocky shop o_o and started to kiss me!!!!!! [OMG!!! HIS TOUNGE TASTED LIKE RAMEN!!! RLY!! >.> <.< >.< (O) (O) (O)] then I saw some baka fat bitch watching us and I could tell she was undressing him with her eyes!!!!!!! [ -___________-;;;;; OMG I COULDN’T BELIEVE IT EITHER!!! (ò_ó) (ò_ó) (ò_ó)] so I yelled “UH UH BAKA NEKO THAT’S MY MAN WHY DON’T YOU GO HOOK UP WITH NARUTO CAUSE SASUKE-SAMA LOVES ME!!! (ò_ó)” then sasuke held me close =^= and said he would only ever love me and kissed me again!!!!!!! ** (O)/ then we went to his apartment and banged all night long and made 42 babies and they all became ninjas!!!!!!!!!!!!!!! Nyaaaaa!!! (^___<) ^______________;;;;;;;;;;;;;;;;";
+                            MessageBox.Show(Emojipasta, "お兄ちゃん", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            MessageBox.Show(Sasukechan, "サスケちゃん", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
+                            {
+                                throw new IHateWeeabos("NOTICE ME SENPAI~");
+                            }));
+                            break;
                         default:
                             break;
                     }
@@ -280,5 +301,57 @@ namespace KeppyMIDIConverter
             else if (BirthDate.ToString("dd/MM") == "01/01")
                 MessageBox.Show("HAPPY NEW YEAR!", "Finally, " + BirthDate.ToString("yyyy") + " has begun!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+    }
+}
+
+// Custom exceptions
+public class IHateWeeabos : Exception
+{
+    public IHateWeeabos()
+    {
+    }
+
+    public IHateWeeabos(string message)
+        : base(message)
+    {
+    }
+
+    public IHateWeeabos(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
+public class AntiDamageCrash : Exception
+{
+    public AntiDamageCrash()
+    {
+    }
+
+    public AntiDamageCrash(string message)
+        : base(message)
+    {
+    }
+
+    public AntiDamageCrash(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
+public class MerdinskiMerdonski : Exception
+{
+    public MerdinskiMerdonski()
+    {
+    }
+
+    public MerdinskiMerdonski(string message)
+        : base(message)
+    {
+    }
+
+    public MerdinskiMerdonski(string message, Exception inner)
+        : base(message, inner)
+    {
     }
 }

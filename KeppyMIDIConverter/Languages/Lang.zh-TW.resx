@@ -502,7 +502,7 @@ BASS 狀態: {0}</value>
     <value>打開音色庫/VST管理</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>當你在轉換MIDI時,音色庫最高支援2.147.483.648個
+    <value>當你在轉換MIDI時,音色庫最高支援1.000個
 該列表中的第一個音色庫會覆蓋最新的。
 加到音色庫列表之前，檢查音色庫有無損壞，避免造成隨機崩潰/錯誤.
 

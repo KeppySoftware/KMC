@@ -129,6 +129,12 @@
     <Compile Include="Forms\AdvancedSettings.Designer.cs">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BankNPresetSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BankNPresetSel.Designer.cs">
+      <DependentUpon>BankNPresetSel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ErrorHandler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     <EmbeddedResource Include="Forms\AdvancedSettings.resx">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BankNPresetSel.resx">
+      <DependentUpon>BankNPresetSel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ErrorHandler.resx">
       <DependentUpon>ErrorHandler.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,16 +189,26 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.bn.resx" />
     <EmbeddedResource Include="Languages\Lang.de.resx" />
-    <EmbeddedResource Include="Languages\Lang.en.resx" />
+    <EmbeddedResource Include="Languages\Lang.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.es.resx" />
     <EmbeddedResource Include="Languages\Lang.et.resx" />
-    <EmbeddedResource Include="Languages\Lang.it.resx" />
+    <EmbeddedResource Include="Languages\Lang.it.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.ja.resx" />
     <EmbeddedResource Include="Languages\Lang.ko.resx" />
     <EmbeddedResource Include="Languages\Lang.ru.resx" />
-    <EmbeddedResource Include="Languages\Lang.zh-CN.resx" />
-    <EmbeddedResource Include="Languages\Lang.zh-HK.resx" />
-    <EmbeddedResource Include="Languages\Lang.zh-TW.resx" />
+    <EmbeddedResource Include="Languages\Lang.zh-CN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.zh-HK.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.zh-TW.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -223,6 +242,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\merdinskimerdonski.wav" />
     <None Include="Resources\warningicon.png" />
     <None Include="Resources\speaker_icon.png" />
     <None Include="Resources\soi.wav" />
@@ -230,6 +250,7 @@
     <None Include="Resources\americagreatagain.jpg" />
     <None Include="Resources\heh.wav" />
     <None Include="Resources\kek.wav" />
+    <None Include="Resources\gmlist.txt" />
     <Content Include="Resources\mainlogo.ico" />
     <None Include="Resources\hot.png" />
     <None Include="Resources\worldwideweb.png" />

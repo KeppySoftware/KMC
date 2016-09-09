@@ -502,7 +502,7 @@ Noten: {3} - {4}</value>
     <value>Soundfonts/VST Manager öffnen</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>Benutzten Sie bis zu 2.147.483.648 Soundfonts auf einmal, um ihre MIDIs umzuwandeln.
+    <value>Benutzten Sie bis zu 1.000 Soundfonts auf einmal, um ihre MIDIs umzuwandeln.
 Das erste Soundfont wird immer dem Letzteren vorgezogen.
 Versichern Sie sich, dass die Soundfonts nicht beschädigt sind, bevor Sie sie in die Liste hinzufügen, um Programmabstürze sowie Fehler zu vermeiden.
 

@@ -54,6 +54,10 @@ namespace KeppyMIDIConverter
                     if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        if (SFList.Items.Count == 1000)
+                        {
+                            SFList.Items.RemoveAt(1000);
+                        }
                         SFList.Items.Add(file);
                     }
                     else
@@ -145,6 +149,10 @@ namespace KeppyMIDIConverter
                     if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sfpack" | Path.GetExtension(file).ToLower() == ".sfz")
                     {
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        if (SFList.Items.Count == 1000)
+                        {
+                            SFList.Items.RemoveAt(1000);
+                        }
                         SFList.Items.Add(file);
                     }
                     else
@@ -255,6 +263,10 @@ namespace KeppyMIDIConverter
             {
                 if (Path.GetExtension(s[i]).ToLower() == ".sf2" | Path.GetExtension(s[i]).ToLower() == ".sf3" | Path.GetExtension(s[i]).ToLower() == ".sfpack" | Path.GetExtension(s[i]).ToLower() == ".sfz")
                 {
+                    if (SFList.Items.Count == 1000)
+                    {
+                        SFList.Items.RemoveAt(1000);
+                    }
                     SFList.Items.Add(s[i]);
                 }
                 else

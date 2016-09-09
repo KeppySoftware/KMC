@@ -502,7 +502,7 @@ Note: {3} - {4}</value>
     <value>Apri il gestore soundfont/VST</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>Usa fino a 2.147.483.648 soundfont nello stesso momento, per convertire i tuoi MIDI!
+    <value>Usa fino a 1.000 soundfont nello stesso momento, per convertire i tuoi MIDI!
 La prima soundfont sostituirà i preset di quelle precedenti.
 Assicurati di non aggiungere soundfont corrotte, per prevenire crash o perdite di dati.
 
@@ -616,5 +616,43 @@ Premere OK per uscire.</value>
   </data>
   <data name="MIDINotes" xml:space="preserve">
     <value>Note</value>
+  </data>
+  <data name="BankNPresetIgnore" xml:space="preserve">
+    <value>Ignora</value>
+  </data>
+  <data name="BankNPresetConfirm" xml:space="preserve">
+    <value>Conferma</value>
+  </data>
+  <data name="BankNPresetDesBank" xml:space="preserve">
+    <value>Dest. banco:</value>
+  </data>
+  <data name="BankNPresetDesPrst" xml:space="preserve">
+    <value>Dest. preset:</value>
+  </data>
+  <data name="BankNPresetDiscl" xml:space="preserve">
+    <value>Sorg.: Sorgente del banco/preset da importare.
+Dest.: Destinazione del banco/preset importato.
+
+Lasciare "Sorg. banco" e "Sorg. preset" a 0 per soundfont in formato SFZ.</value>
+  </data>
+  <data name="BankNPresetGuide" xml:space="preserve">
+    <value>Lista banchi/preset</value>
+  </data>
+  <data name="BankNPresetSelectedSF" xml:space="preserve">
+    <value>Soundfont selezionata</value>
+  </data>
+  <data name="BankNPresetSelectMsg" xml:space="preserve">
+    <value>Selezionare un banco e un preset, da 0 a 127.
+
+Usa "Banco 0" e "Preset 0" per il piano, o se non sai quale banco/preset usare.</value>
+  </data>
+  <data name="BankNPresetSrcBank" xml:space="preserve">
+    <value>Sorg. banco:</value>
+  </data>
+  <data name="BankNPresetSrcPrst" xml:space="preserve">
+    <value>Sorg. preset:</value>
+  </data>
+  <data name="BankNPresetTitle" xml:space="preserve">
+    <value>Seleziona un banco e un preset per la soundfont</value>
   </data>
 </root>

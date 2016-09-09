@@ -208,4 +208,10 @@
   <data name="warningicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warningicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gmlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gmlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="merdinskimerdonski" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\merdinskimerdonski.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -15,6 +15,7 @@ namespace KeppyMIDIConverter
     public partial class ErrorHandler : Form
     {
         public static int TOE = 0;
+
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
         CultureInfo cul;            // declare culture info
 
@@ -75,7 +76,7 @@ namespace KeppyMIDIConverter
             {
                 ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
                 {
-                    throw new NullReferenceException("The converter has been manually crashed to avoid damages to the computer.\n\nNow get out.");
+                    throw new AntiDamageCrash("The converter has been manually crashed to avoid damages to the computer.");
                 }));
             }
         }

@@ -500,7 +500,7 @@ BASS 狀態: {0}</value>
     <value>打開音色庫/VST經理</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>轉換MIDI時最多支持同時加載2,147,483,648個音色庫。
+    <value>轉換MIDI時最多支持同時加載1,000個音色庫。
 工欲善其事，必先利其器。選擇你的音色庫用來轉換MIDI文件。
 列表中的第一個音色庫會總是會覆蓋最後的音色庫。
 添加音色庫之前請檢查音色庫是否損壞，以避免意外錯誤。

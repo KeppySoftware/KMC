@@ -503,7 +503,7 @@ BASS статус: {0}</value>
     <value>Открыть SoundFont / менеджер VST</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>Используйте до 2.147.483.648 SoundFonts сразу, чтобы конвертировать MIDIs.
+    <value>Используйте до 1.000 SoundFonts сразу, чтобы конвертировать MIDIs.
 Первый SoundFont в списке всегда будут замещать последние из них.
 Проверьте, если SoundFonts не повреждены, прежде чем добавлять их в список, чтобы избежать случайные сбои / глюки.
 

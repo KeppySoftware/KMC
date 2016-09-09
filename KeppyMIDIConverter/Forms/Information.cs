@@ -19,6 +19,7 @@ namespace KeppyMIDIConverter
         public Informations()
         {
             InitializeComponent();
+            System.Media.SystemSounds.Asterisk.Play();
         }
 
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo

@@ -208,6 +208,48 @@ namespace KeppyMIDIConverter.Properties {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a The bank ID is 0.
+        ///For the presets, here&apos;s the list:
+        ///
+        ///Piano
+        ///0 Acoustic Grand Piano
+        ///1 Bright Acoustic Piano
+        ///2 Electric Grand Piano
+        ///3 Honky-tonk Piano
+        ///4 Electric Piano 1
+        ///5 Electric Piano 2
+        ///6 Harpsichord
+        ///7 Clavinet
+        ///
+        ///Chromatic Percussion
+        ///8 Celesta
+        ///9 Glockenspiel
+        ///10 Music Box
+        ///11 Vibraphone
+        ///12 Marimba
+        ///13 Xylophone
+        ///14 Tubular Bells
+        ///15 Dulcimer
+        ///
+        ///Organ
+        ///16 Drawbar Organ
+        ///17 Percussive Organ
+        ///18 Rock Organ
+        ///19 Church Organ
+        ///20 Reed Organ
+        ///21 Accordion
+        ///22 Harmonica
+        ///23 Tango Accordion
+        ///
+        ///Guitar        /// [stringa troncata]&quot;;.
+        /// </summary>
+        internal static string gmlist {
+            get {
+                return ResourceManager.GetString("gmlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.IO.UnmanagedMemoryStream simile a System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream heh {
@@ -265,6 +307,15 @@ namespace KeppyMIDIConverter.Properties {
             get {
                 object obj = ResourceManager.GetObject("mainlogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.IO.UnmanagedMemoryStream simile a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream merdinskimerdonski {
+            get {
+                return ResourceManager.GetStream("merdinskimerdonski", resourceCulture);
             }
         }
         

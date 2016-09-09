@@ -500,7 +500,7 @@ BASS অবস্থা: {0}</value>
     <value>Soundfont/VST ম্যানেজার খুলুন</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>একবারে 2.147.483.648 Soundfont আপ ব্যবহার করুন, আপনার MIDI রূপান্তর করতে.
+    <value>একবারে 1.000 Soundfont আপ ব্যবহার করুন, আপনার MIDI রূপান্তর করতে.
 তালিকার প্রথম soundfont সবসময় সর্বশেষ বেশী অগ্রাহ্য করা হবে.
 যদি soundfonts নষ্ট না হয় পরীক্ষা করে দেখুন, তাদের তালিকায় যোগ করার আগে, র্যান্ডম বিপর্যের / ত্রুটি এড়াতে.
 

@@ -500,7 +500,7 @@ BASS 状态: {0}</value>
     <value>打开音色库/VST管理</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>转换MIDI时最多支持同时加载2,147,483,648个音色库。
+    <value>转换MIDI时最多支持同时加载1,000个音色库。
 工欲善其事，必先利其器。选择你的音色库用来转换MIDI文件。
 列表中的第一个音色库会总是会覆盖最后的音色库。
 添加音色库之前请检查音色库是否损坏，以避免意外错误。

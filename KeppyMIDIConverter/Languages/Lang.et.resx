@@ -503,7 +503,7 @@ Noodi: {3} - {4}</value>
     <value>Ava helifail/VST juht</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>Koormus kuni 2.147.483.648 heli faile korraga.
+    <value>Koormus kuni 1.000 heli faile korraga.
 Esimene helifail nimekirja laeb enne järgmist helifaile.
 Kontrolli oma helifaile tahes korruptsiooni enne lisades need seda nimekirja, et vältida vigu.
 
