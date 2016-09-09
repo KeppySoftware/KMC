@@ -170,7 +170,7 @@ namespace KeppyMIDIConverter
                 if (SFList.Items.Count == 0)
                 {
                     Array.Clear(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0, KeppyMIDIConverter.MainWindow.Globals.Soundfonts.Length);
-                    KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[] { null };
+                    KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[0];
                 }
                 else
                 {

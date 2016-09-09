@@ -72,7 +72,12 @@ namespace KeppyMIDIConverter
             if (TOE == 0)
                 Close();
             else
-                Application.ExitThread();
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
+                {
+                    throw new NullReferenceException("The converter has been manually crashed to avoid damages to the computer.\n\nNow get out.");
+                }));
+            }
         }
 
         private void PlayConversionFail()

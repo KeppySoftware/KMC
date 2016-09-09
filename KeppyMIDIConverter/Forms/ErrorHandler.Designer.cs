@@ -45,24 +45,29 @@
             // 
             // ErrorLab
             // 
+            this.ErrorLab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ErrorLab.Location = new System.Drawing.Point(68, 12);
             this.ErrorLab.Name = "ErrorLab";
-            this.ErrorLab.Size = new System.Drawing.Size(388, 39);
+            this.ErrorLab.Size = new System.Drawing.Size(392, 39);
             this.ErrorLab.TabIndex = 7;
             this.ErrorLab.Text = "Type of error here hehe\r\n\r\nWhat happened mate:";
             // 
             // ErrorBox
             // 
-            this.ErrorBox.BackColor = System.Drawing.Color.Black;
+            this.ErrorBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ErrorBox.BackColor = System.Drawing.Color.White;
             this.ErrorBox.DetectUrls = false;
-            this.ErrorBox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorBox.ForeColor = System.Drawing.Color.Lime;
+            this.ErrorBox.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ErrorBox.ForeColor = System.Drawing.Color.Black;
             this.ErrorBox.Location = new System.Drawing.Point(14, 63);
             this.ErrorBox.Name = "ErrorBox";
             this.ErrorBox.ReadOnly = true;
             this.ErrorBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.ErrorBox.ShortcutsEnabled = false;
-            this.ErrorBox.Size = new System.Drawing.Size(443, 96);
+            this.ErrorBox.Size = new System.Drawing.Size(447, 100);
             this.ErrorBox.TabIndex = 5;
             this.ErrorBox.Text = "There was an error";
             // 
@@ -98,7 +103,7 @@
             this.label1.Enabled = false;
             this.label1.Location = new System.Drawing.Point(10, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(363, 39);
+            this.label1.Size = new System.Drawing.Size(356, 39);
             this.label1.TabIndex = 8;
             this.label1.Text = "Well that explains a lot";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -106,7 +111,7 @@
             // Close
             // 
             this.Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Close.Location = new System.Drawing.Point(379, 16);
+            this.Close.Location = new System.Drawing.Point(381, 16);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(75, 23);
             this.Close.TabIndex = 9;
@@ -121,9 +126,9 @@
             this.panel1.Controls.Add(this.Close);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 172);
+            this.panel1.Location = new System.Drawing.Point(0, 176);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(470, 57);
+            this.panel1.Size = new System.Drawing.Size(474, 57);
             this.panel1.TabIndex = 10;
             // 
             // ErrorHandler
@@ -131,15 +136,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(470, 229);
+            this.ClientSize = new System.Drawing.Size(474, 233);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ErrorLab);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ErrorBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(490, 272);
             this.Name = "ErrorHandler";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

@@ -240,13 +240,9 @@ namespace KeppyMIDIConverter
                     if (Convert.ToInt32(Language.GetValue("langoverride", 0)) == 1)
                     {
                         if (Language.GetValue("selectedlanguage", "en").ToString() != null)
-                        {
                             return CultureInfo.CreateSpecificCulture(Language.GetValue("selectedlanguage").ToString());
-                        }
                         else
-                        {
                             return CultureInfo.CreateSpecificCulture("en");
-                        }
                     }
                     else
                     {
@@ -272,29 +268,17 @@ namespace KeppyMIDIConverter
             DateTime BirthDate = DateTime.Now;
             int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
             if (BirthDate.ToString("dd/MM") == "23/04")
-            {
                 MessageBox.Show("Today is Frozen's birthday! He turned " + (currentyear - 1996).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Frozen Snow", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else if (BirthDate.ToString("dd/MM") == "17/09")
-            {
                 MessageBox.Show("Today, KMC turned " + (currentyear - 2015).ToString() + " year(s) old!\n\nHappy birthday, awesome converter!", "Happy birthday to me, Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else if (BirthDate.ToString("dd/MM") == "31/10")
-            {
                 MessageBox.Show("Spooky conversions today, huh?", "Happy Halloween!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else if (BirthDate.ToString("dd/MM") == "05/12")
-            {
                 MessageBox.Show("Today is Keppy's birthday! He turned " + (currentyear - 1999).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Kepperino", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else if (BirthDate.ToString("dd/MM") == "25/12")
-            {
                 MessageBox.Show("Oh oh oh, Merry Christmas!", "Happy holidays, and Merry Christmas!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else if (BirthDate.ToString("dd/MM") == "01/01")
-            {
                 MessageBox.Show("HAPPY NEW YEAR!", "Finally, " + BirthDate.ToString("yyyy") + " has begun!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
     }
 }

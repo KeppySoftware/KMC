@@ -861,6 +861,7 @@
             this.MIDIList.DragDrop += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragDrop);
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
+            this.MIDIList.SizeChanged += new System.EventHandler(this.MIDIList_SizeChanged);
             // 
             // MainWindow
             // 
