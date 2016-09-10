@@ -52,7 +52,7 @@
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label6.Location = new System.Drawing.Point(12, 125);
+            this.label6.Location = new System.Drawing.Point(9, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(339, 52);
             this.label6.TabIndex = 28;
@@ -61,58 +61,60 @@
             // 
             // DesPresetVal
             // 
-            this.DesPresetVal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.DesPresetVal.Location = new System.Drawing.Point(258, 70);
+            this.DesPresetVal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DesPresetVal.Location = new System.Drawing.Point(277, 88);
             this.DesPresetVal.Maximum = new decimal(new int[] {
             127,
             0,
             0,
             0});
             this.DesPresetVal.Name = "DesPresetVal";
-            this.DesPresetVal.Size = new System.Drawing.Size(88, 20);
+            this.DesPresetVal.Size = new System.Drawing.Size(80, 20);
             this.DesPresetVal.TabIndex = 27;
             this.DesPresetVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DesBankVal
             // 
-            this.DesBankVal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.DesBankVal.Location = new System.Drawing.Point(78, 70);
+            this.DesBankVal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DesBankVal.Location = new System.Drawing.Point(277, 69);
             this.DesBankVal.Maximum = new decimal(new int[] {
             127,
             0,
             0,
             0});
             this.DesBankVal.Name = "DesBankVal";
-            this.DesBankVal.Size = new System.Drawing.Size(88, 20);
+            this.DesBankVal.Size = new System.Drawing.Size(80, 20);
             this.DesBankVal.TabIndex = 26;
             this.DesBankVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.Location = new System.Drawing.Point(167, 73);
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(9, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 13);
+            this.label4.Size = new System.Drawing.Size(262, 13);
             this.label4.TabIndex = 25;
             this.label4.Text = "Src. Preset:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.Location = new System.Drawing.Point(0, 73);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(9, 73);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.Size = new System.Drawing.Size(262, 13);
             this.label5.TabIndex = 24;
             this.label5.Text = "Src. Bank:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // WikipediaLink
             // 
             this.WikipediaLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.WikipediaLink.Location = new System.Drawing.Point(12, 190);
+            this.WikipediaLink.Location = new System.Drawing.Point(9, 219);
             this.WikipediaLink.Name = "WikipediaLink";
-            this.WikipediaLink.Size = new System.Drawing.Size(163, 13);
+            this.WikipediaLink.Size = new System.Drawing.Size(168, 13);
             this.WikipediaLink.TabIndex = 23;
             this.WikipediaLink.TabStop = true;
             this.WikipediaLink.Text = "Banks/Presets list";
@@ -121,7 +123,7 @@
             // IgnoreBtn
             // 
             this.IgnoreBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.IgnoreBtn.Location = new System.Drawing.Point(196, 185);
+            this.IgnoreBtn.Location = new System.Drawing.Point(204, 214);
             this.IgnoreBtn.Name = "IgnoreBtn";
             this.IgnoreBtn.Size = new System.Drawing.Size(75, 23);
             this.IgnoreBtn.TabIndex = 22;
@@ -133,65 +135,67 @@
             // 
             this.SelectedSFLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SelectedSFLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SelectedSFLabel.Location = new System.Drawing.Point(0, 216);
+            this.SelectedSFLabel.Location = new System.Drawing.Point(0, 243);
             this.SelectedSFLabel.Name = "SelectedSFLabel";
-            this.SelectedSFLabel.Size = new System.Drawing.Size(360, 40);
+            this.SelectedSFLabel.Size = new System.Drawing.Size(363, 40);
             this.SelectedSFLabel.TabIndex = 21;
             this.SelectedSFLabel.Text = "Selected soundfont:\r\nPotato.sf2";
             this.SelectedSFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PresetVal
             // 
-            this.PresetVal.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.PresetVal.Location = new System.Drawing.Point(258, 96);
+            this.PresetVal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.PresetVal.Location = new System.Drawing.Point(277, 126);
             this.PresetVal.Maximum = new decimal(new int[] {
             127,
             0,
             0,
             0});
             this.PresetVal.Name = "PresetVal";
-            this.PresetVal.Size = new System.Drawing.Size(88, 20);
+            this.PresetVal.Size = new System.Drawing.Size(80, 20);
             this.PresetVal.TabIndex = 20;
             this.PresetVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BankVal
             // 
-            this.BankVal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BankVal.Location = new System.Drawing.Point(78, 96);
+            this.BankVal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BankVal.Location = new System.Drawing.Point(277, 107);
             this.BankVal.Maximum = new decimal(new int[] {
             127,
             0,
             0,
             0});
             this.BankVal.Name = "BankVal";
-            this.BankVal.Size = new System.Drawing.Size(88, 20);
+            this.BankVal.Size = new System.Drawing.Size(80, 20);
             this.BankVal.TabIndex = 19;
             this.BankVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.Location = new System.Drawing.Point(164, 99);
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 130);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 13);
+            this.label3.Size = new System.Drawing.Size(262, 13);
             this.label3.TabIndex = 18;
             this.label3.Text = "Des. Preset:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.Location = new System.Drawing.Point(-3, 99);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(9, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(262, 13);
             this.label2.TabIndex = 17;
             this.label2.Text = "Des. Bank:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ConfirmBut
             // 
             this.ConfirmBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConfirmBut.Location = new System.Drawing.Point(277, 185);
+            this.ConfirmBut.Location = new System.Drawing.Point(283, 214);
             this.ConfirmBut.Name = "ConfirmBut";
             this.ConfirmBut.Size = new System.Drawing.Size(75, 23);
             this.ConfirmBut.TabIndex = 16;
@@ -205,7 +209,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(342, 52);
+            this.label1.Size = new System.Drawing.Size(348, 52);
             this.label1.TabIndex = 15;
             this.label1.Text = "Please select a bank and a preset, from 0 to 127.\r\n\r\nUse \"Bank 0\" and \"Preset 0\" " +
     "for the standard \"Acoustic Grand Piano\",\r\nor if you don\'t know which one you sho" +
@@ -213,11 +217,12 @@
             // 
             // ToBeTranslated
             // 
+            this.ToBeTranslated.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ToBeTranslated.AutoSize = true;
             this.ToBeTranslated.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ToBeTranslated.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToBeTranslated.ForeColor = System.Drawing.Color.Red;
-            this.ToBeTranslated.Location = new System.Drawing.Point(274, 164);
+            this.ToBeTranslated.Location = new System.Drawing.Point(280, 195);
             this.ToBeTranslated.Name = "ToBeTranslated";
             this.ToBeTranslated.Size = new System.Drawing.Size(77, 13);
             this.ToBeTranslated.TabIndex = 29;
@@ -230,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 256);
+            this.ClientSize = new System.Drawing.Size(363, 283);
             this.ControlBox = false;
             this.Controls.Add(this.ToBeTranslated);
             this.Controls.Add(this.label6);

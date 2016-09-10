@@ -34,10 +34,12 @@ namespace KeppyMIDIConverter.Forms
             SelectedSFLabel.Text = String.Format("{0}:\n{1}", res_man.GetString("BankNPresetSelectedSF", cul), Path.GetFileNameWithoutExtension(SelectedSF));
             BankVal.Value = 0;
             PresetVal.Value = 0;
-            if (typeofsf == 1)
+            if (Path.GetExtension(Target).ToLower() == ".sfz")
             {
-                BankVal.Minimum = -1;
-                PresetVal.Minimum = -1;
+                label5.Enabled = false;
+                label4.Enabled = false;
+                DesBankVal.Enabled = false;
+                DesPresetVal.Enabled = false;
             }
             if (WindowMode == 1)
             {

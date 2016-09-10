@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -619,5 +619,44 @@ Vajuta OK, et väljuda.</value>
   </data>
   <data name="MIDINotes" xml:space="preserve">
     <value>Noodi</value>
+  </data>
+  <data name="BankNPresetIgnore" xml:space="preserve">
+    <value>Ignoreerima</value>
+  </data>
+  <data name="BankNPresetConfirm" xml:space="preserve">
+    <value>Kinnitama</value>
+  </data>
+  <data name="BankNPresetDesBank" xml:space="preserve">
+    <value>Sihtkoht eelseadistatud:</value>
+  </data>
+  <data name="BankNPresetDesPrst" xml:space="preserve">
+    <value>Sihtkoht muusikainstrument:</value>
+  </data>
+  <data name="BankNPresetDiscl" xml:space="preserve">
+    <value>Allikas: Allikas muusikainstrument/eelseadistatud import
+Sihtkoht: muusikainstrument / seadistatud loovutada imporditud üks.
+
+Jäta allikas instrument ja allikas eelseadistatud 0 SFZ faile.</value>
+  </data>
+  <data name="BankNPresetGuide" xml:space="preserve">
+    <value>Kasutusjuhendi</value>
+  </data>
+  <data name="BankNPresetSelectedSF" xml:space="preserve">
+    <value>Valitud helifaili</value>
+  </data>
+  <data name="BankNPresetSelectMsg" xml:space="preserve">
+    <value>Palun valige pank ja eelseadistatud, 0-127.
+
+Kasuta "Bank 0" ja "Preset 0" normaalseks "Akustiline Grand Piano",
+või kui te ei tea, milline sa peaksid kasutama.</value>
+  </data>
+  <data name="BankNPresetSrcBank" xml:space="preserve">
+    <value>Allikas eelseadistatud:</value>
+  </data>
+  <data name="BankNPresetSrcPrst" xml:space="preserve">
+    <value>Allikas muusikainstrument:</value>
+  </data>
+  <data name="BankNPresetTitle" xml:space="preserve">
+    <value>Vali eelseadistatud ja vahend helifaili</value>
   </data>
 </root>

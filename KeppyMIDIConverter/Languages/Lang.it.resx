@@ -624,16 +624,16 @@ Premere OK per uscire.</value>
     <value>Conferma</value>
   </data>
   <data name="BankNPresetDesBank" xml:space="preserve">
-    <value>Dest. banco:</value>
+    <value>Banco di destinazione:</value>
   </data>
   <data name="BankNPresetDesPrst" xml:space="preserve">
-    <value>Dest. preset:</value>
+    <value>Preset di destinazione:</value>
   </data>
   <data name="BankNPresetDiscl" xml:space="preserve">
     <value>Sorg.: Sorgente del banco/preset da importare.
 Dest.: Destinazione del banco/preset importato.
 
-Lasciare "Sorg. banco" e "Sorg. preset" a 0 per soundfont in formato SFZ.</value>
+Lasciare le sorgenti a 0 per soundfont in formato SFZ.</value>
   </data>
   <data name="BankNPresetGuide" xml:space="preserve">
     <value>Lista banchi/preset</value>
@@ -647,10 +647,10 @@ Lasciare "Sorg. banco" e "Sorg. preset" a 0 per soundfont in formato SFZ.</value
 Usa "Banco 0" e "Preset 0" per il piano, o se non sai quale banco/preset usare.</value>
   </data>
   <data name="BankNPresetSrcBank" xml:space="preserve">
-    <value>Sorg. banco:</value>
+    <value>Sorgente del banco:</value>
   </data>
   <data name="BankNPresetSrcPrst" xml:space="preserve">
-    <value>Sorg. preset:</value>
+    <value>Sorgente del preset:</value>
   </data>
   <data name="BankNPresetTitle" xml:space="preserve">
     <value>Seleziona un banco e un preset per la soundfont</value>
