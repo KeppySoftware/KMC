@@ -385,11 +385,11 @@ The {2} version of Keppy's MIDI Converter does NOT support {1} VSTs and vicevers
 Bitte warten...</value>
   </data>
   <data name="MemoryAllocationPlayback" xml:space="preserve">
-    <value>Das Programm weist RAM für den Vorschau zu.
+    <value>Das Programm weist RAM für die Vorschau zu.
 Bitte warten...</value>
   </data>
   <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
-    <value>Das Programm weist RAM für den Vorschau zu.
+    <value>Das Programm weist RAM für die Vorschau zu.
 Falls gefragt wird, Einstellungen der VST DSP bearbeiten.
 Bitte warten...</value>
   </data>
@@ -490,7 +490,7 @@ Noten: {3} - {4}</value>
     <value>Hier speichern...</value>
   </data>
   <data name="SelectOneSF" xml:space="preserve">
-    <value>Bitte mindestens ein Soundfont auswählen.</value>
+    <value>Bitte mindestens eine Soundfont auswählen.</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Einstellungen</value>
@@ -503,13 +503,13 @@ Noten: {3} - {4}</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
     <value>Benutzten Sie bis zu 1.000 Soundfonts auf einmal, um ihre MIDIs umzuwandeln.
-Das erste Soundfont wird immer dem Letzteren vorgezogen.
-Versichern Sie sich, dass die Soundfonts nicht beschädigt sind, bevor Sie sie in die Liste hinzufügen, um Programmabstürze sowie Fehler zu vermeiden.
+Das erste Soundfont wird immer der Letzteren vorgezogen.
+Stellen sie sicher, dass die Soundfonts nicht beschädigt sind, bevor Sie sie in die Liste hinzufügen, um Programmabstürze sowie Fehler zu vermeiden.
 
 Folgende Dateienformate werden unterstützt: SF2, SF3, SFZ, SFPACK</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
-    <value>Das ist kein gültiges Soundfont!
+    <value>Das ist keine gültige Soundfont!
 
 Soundfont auswählen und erneut versuchen.</value>
   </data>
@@ -616,5 +616,47 @@ OK klicken zum Beenden.</value>
   </data>
   <data name="MIDINotes" xml:space="preserve">
     <value>Noten</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Lautstärke:</value>
+  </data>
+  <data name="BankNPresetIgnore" xml:space="preserve">
+    <value>Ignorieren</value>
+  </data>
+  <data name="BankNPresetConfirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="BankNPresetDesBank" xml:space="preserve">
+    <value>Ziel-Preset:</value>
+  </data>
+  <data name="BankNPresetDesPrst" xml:space="preserve">
+    <value>Ziel-Bank</value>
+  </data>
+  <data name="BankNPresetDiscl" xml:space="preserve">
+    <value>Quelle: Quelle der Bank/des Presets zum importieren
+Ziel: Bank/Preset das dem importierten zugewiesen wird
+
+Setz quell-preset und quell-bank zu 0 bei SFZ's.</value>
+  </data>
+  <data name="BankNPresetGuide" xml:space="preserve">
+    <value>Bank/Preset Liste</value>
+  </data>
+  <data name="BankNPresetSelectedSF" xml:space="preserve">
+    <value>Ausgewählte Soundfont</value>
+  </data>
+  <data name="BankNPresetSelectMsg" xml:space="preserve">
+    <value>Bitte wähle eine Bank und ein Preset von 0 bis 127 aus.
+
+Benutze "Bank 0" und "Preset 0" für das standard "Acoustic Grand Piano",
+oder wenn du nicht weist welche du benutzen solltest.</value>
+  </data>
+  <data name="BankNPresetSrcBank" xml:space="preserve">
+    <value>Quell-Preset:</value>
+  </data>
+  <data name="BankNPresetSrcPrst" xml:space="preserve">
+    <value>Quell-Bank:</value>
+  </data>
+  <data name="BankNPresetTitle" xml:space="preserve">
+    <value>Bank und Preset für die Soundfont wählen</value>
   </data>
 </root>

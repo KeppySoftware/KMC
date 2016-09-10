@@ -615,4 +615,43 @@ Pulsa Aceptar para salir.</value>
   <data name="MIDINotes" xml:space="preserve">
     <value>Notas</value>
   </data>
+  <data name="BankNPresetConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="BankNPresetDesBank" xml:space="preserve">
+    <value>Destination preset:</value>
+  </data>
+  <data name="BankNPresetDesPrst" xml:space="preserve">
+    <value>Destination bank:</value>
+  </data>
+  <data name="BankNPresetDiscl" xml:space="preserve">
+    <value>Src.: Source of the bank/preset to import
+Des.: Bank/Preset to assign to the imported one.
+
+Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
+  </data>
+  <data name="BankNPresetGuide" xml:space="preserve">
+    <value>Banks/Presets list</value>
+  </data>
+  <data name="BankNPresetIgnore" xml:space="preserve">
+    <value>Ignore</value>
+  </data>
+  <data name="BankNPresetSelectedSF" xml:space="preserve">
+    <value>Selected soundfont</value>
+  </data>
+  <data name="BankNPresetSelectMsg" xml:space="preserve">
+    <value>Please select a bank and a preset, from 0 to 127.
+
+Use "Bank 0" and "Preset 0" for the standard "Acoustic Grand Piano",
+or if you don't know which one you should use.</value>
+  </data>
+  <data name="BankNPresetSrcBank" xml:space="preserve">
+    <value>Source preset:</value>
+  </data>
+  <data name="BankNPresetSrcPrst" xml:space="preserve">
+    <value>Source bank:</value>
+  </data>
+  <data name="BankNPresetTitle" xml:space="preserve">
+    <value>Select a bank and a preset for the soundfont</value>
+  </data>
 </root>

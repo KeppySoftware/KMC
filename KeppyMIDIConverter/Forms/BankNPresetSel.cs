@@ -68,6 +68,10 @@ namespace KeppyMIDIConverter.Forms
                 WikipediaLink.Text = res_man.GetString("BankNPresetGuide", cul);
                 IgnoreBtn.Text = res_man.GetString("BankNPresetIgnore", cul);
                 ConfirmBut.Text = res_man.GetString("BankNPresetConfirm", cul);
+                if (res_man.GetString("BankNPresetTitle", cul) == res_man.GetString("BankNPresetTitle", CultureInfo.CreateSpecificCulture("en")))
+                {
+                    ToBeTranslated.Visible = true;
+                }
             }
             catch
             {
@@ -85,6 +89,7 @@ namespace KeppyMIDIConverter.Forms
                 IgnoreBtn.Text = res_man.GetString("BankNPresetIgnore", cul);
                 ConfirmBut.Text = res_man.GetString("BankNPresetConfirm", cul);
                 ToBeTranslated.Visible = true;
+                MessageBox.Show("The program encountered an error while loading the translation.", "Keppy's MIDI Converter - Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
