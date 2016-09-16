@@ -3,6 +3,12 @@
 <br>
 A fully functional MIDI to WAV converter, for FREE!
 
+## Can I use your program's source code for my program?
+Sure you can, but there are a few "rules" you need to follow.
+1. Do not make ports of this app for phones. I want it to be "computer-exclusive".
+2. Give me proper credits when using part of my code, and give proper credits to Ian or BASS.NET when using their libraries.
+3. Please do not use parts of this program for a nuclear attack. The last thing I want is the FBI visiting me at home.
+
 ## Where did you get the idea?
 This was actually supposed to be a clone of [Free MIDI to MP3 Converter] (http://mp3-tools.com/free-midi-to-mp3-converter.html), then I changed myself, and had the idea of making my OWN converter, with my OWN stuff.
 

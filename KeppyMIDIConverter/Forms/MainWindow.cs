@@ -803,7 +803,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private int BASSPlayBackEngine(int notes, long pos)
+        private int BASSPlayBackEngine(int notes, int length, long pos)
         {
             int pnotes = notes;
             int tempo = BassMidi.BASS_MIDI_StreamGetEvent(Globals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
@@ -844,14 +844,13 @@ namespace KeppyMIDIConverter
             Globals.ActiveVoicesInt = Convert.ToInt32(num11);
             Globals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
             Globals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
-            Bass.BASS_ChannelUpdate(Globals._recHandle, 0);
+            Bass.BASS_ChannelUpdate(Globals._recHandle, length);
             System.Threading.Thread.Sleep(1);
             return pnotes;
         }
 
         private void BASSEncodingEngine(long pos, int length, DateTime starttime)
         {
-            System.Threading.Thread.Sleep(1);
             TimeSpan timespent = DateTime.Now - starttime;
             long num6 = Bass.BASS_ChannelGetPosition(Globals._recHandle);
             float num7 = ((float)pos) / 1048576f;
@@ -911,6 +910,7 @@ namespace KeppyMIDIConverter
                 else
                     Globals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusSlowerOld", cul), num8.ToString("0.00"), percentagefinal.ToString("0.0%"), str5, str4, Convert.ToInt32(num12).ToString(), ((float)(num12 / 100f)).ToString("0.0"));
             }
+            System.Threading.Thread.Sleep(1);
         }
 
         private delegate ListView.ListViewItemCollection GetItems(ListView lstview);
@@ -985,7 +985,7 @@ namespace KeppyMIDIConverter
                             BASSEncoderInit(Globals._recHandle, Globals.CurrentEncoder, str);
                             DateTime starttime = DateTime.Now;
                             long pos = Bass.BASS_ChannelGetLength(Globals._recHandle);
-                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.0275));
+                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.01666666666666666666666666666667));
                             while (Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
                                 if (Globals.CancellationPendingValue != 1)
@@ -1087,11 +1087,12 @@ namespace KeppyMIDIConverter
                             Globals._mySync = new SYNCPROC(NoteSyncProc);
                             Bass.BASS_ChannelSetSync(Globals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, Globals._mySync, IntPtr.Zero);
                             Globals.notecount = 0;
+                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(Globals._recHandle, 0.0275));
                             while (Bass.BASS_ChannelIsActive(Globals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
                                 if (Globals.CancellationPendingValue != 1)
                                 {
-                                    notes = BASSPlayBackEngine(notes, pos);
+                                    notes = BASSPlayBackEngine(notes, length, pos);
                                 }
                                 else if (Globals.CancellationPendingValue == 1)
                                 {
