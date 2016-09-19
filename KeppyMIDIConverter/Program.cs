@@ -267,7 +267,7 @@ namespace KeppyMIDIConverter
                     }
                     else
                     {
-                        CultureInfo ci = CultureInfo.InstalledUICulture;
+                        CultureInfo ci = CultureInfo.CurrentUICulture;
                         return CultureFunc(ci);
                     }
                     Language.Close();

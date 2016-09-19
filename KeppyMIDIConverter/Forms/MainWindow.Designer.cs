@@ -152,9 +152,9 @@
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.VoiceLabel);
             this.SettingsBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsBox.Location = new System.Drawing.Point(490, 331);
+            this.SettingsBox.Location = new System.Drawing.Point(490, 337);
             this.SettingsBox.Name = "SettingsBox";
-            this.SettingsBox.Size = new System.Drawing.Size(150, 70);
+            this.SettingsBox.Size = new System.Drawing.Size(150, 65);
             this.SettingsBox.TabIndex = 12;
             this.SettingsBox.TabStop = false;
             this.SettingsBox.Text = "Settings";
@@ -208,12 +208,13 @@
             // 
             // CurrentStatus
             // 
+            this.CurrentStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentStatus.BackColor = System.Drawing.SystemColors.Control;
-            this.CurrentStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.CurrentStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.CurrentStatus.Location = new System.Drawing.Point(0, 412);
+            this.CurrentStatus.Location = new System.Drawing.Point(12, 411);
             this.CurrentStatus.Name = "CurrentStatus";
-            this.CurrentStatus.Size = new System.Drawing.Size(652, 23);
+            this.CurrentStatus.Size = new System.Drawing.Size(628, 12);
             this.CurrentStatus.Step = 1;
             this.CurrentStatus.TabIndex = 14;
             // 
@@ -858,10 +859,10 @@
             this.MIDIList.TabIndex = 20;
             this.MIDIList.UseCompatibleStateImageBehavior = false;
             this.MIDIList.View = System.Windows.Forms.View.Details;
+            this.MIDIList.SizeChanged += new System.EventHandler(this.MIDIList_SizeChanged);
             this.MIDIList.DragDrop += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragDrop);
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
-            this.MIDIList.SizeChanged += new System.EventHandler(this.MIDIList_SizeChanged);
             // 
             // MainWindow
             // 

@@ -210,7 +210,8 @@ namespace KeppyMIDIConverter
                 forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
                 importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
                 informationAboutTheProgramToolStripMenuItem.Text = res_man.GetString("informationAboutTheProgramStrip", cul);
-                label3.Text = String.Format("{0} {1}", "🔊", res_man.GetString("Volume", cul));
+                if (Environment.OSVersion.Version.Major <= 6 && Environment.OSVersion.Version.Minor < 2) { label3.Text = res_man.GetString("Volume", cul); }
+                else { label3.Text = String.Format("{0} {1}", "🔊", res_man.GetString("Volume", cul)); }
                 openTheSoundfontsManagerToolStripMenuItem.Text = res_man.GetString("SFVSTManager", cul);
                 playInRealtimeBetaToolStripMenuItem.Text = res_man.GetString("RenderToSpeakers", cul);
                 removeSelectedMIDIsToolStripMenuItem.Text = RemoveMIDIsRightClick.Text = res_man.GetString("RemoveMIDI", cul);
@@ -254,7 +255,8 @@ namespace KeppyMIDIConverter
                 forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
                 importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
                 informationAboutTheProgramToolStripMenuItem.Text = res_man.GetString("informationAboutTheProgramStrip", cul);
-                label3.Text = res_man.GetString("Volume", cul);
+                if (Environment.OSVersion.Version.Major <= 6 && Environment.OSVersion.Version.Minor < 2) { label3.Text = res_man.GetString("Volume", cul); }
+                else { label3.Text = String.Format("{0} {1}", "🔊", res_man.GetString("Volume", cul)); }
                 openTheSoundfontsManagerToolStripMenuItem.Text = res_man.GetString("SFVSTManager", cul);
                 playInRealtimeBetaToolStripMenuItem.Text = res_man.GetString("RenderToSpeakers", cul);
                 removeSelectedMIDIsToolStripMenuItem.Text = RemoveMIDIsRightClick.Text = res_man.GetString("RemoveMIDI", cul);
@@ -266,6 +268,7 @@ namespace KeppyMIDIConverter
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            // Here we go
             BassNet.Registration("kaleidonkep99@outlook.com", "2X203132524822");
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             this.Menu = DefaultMenu;
@@ -1841,7 +1844,10 @@ namespace KeppyMIDIConverter
 
         private void AdvSettingsButton_Click(object sender, EventArgs e)
         {
-            Globals.frm.ShowDialog();
+            if (Globals.PlaybackMode == true)
+                Globals.frm.Show();
+            else
+                Globals.frm.ShowDialog();
         }
 
         private void openTheSoundfontsManagerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2221,6 +2227,26 @@ namespace KeppyMIDIConverter
                 parms.Style &= ~0x02000000; 
                 return parms;
             }
+        }
+
+        // Snap feature
+
+        private const int SnapDist = 25;
+
+        private bool DoSnap(int pos, int edge)
+        {
+            int delta = pos - edge;
+            return delta > 0 && delta <= SnapDist;
+        }
+
+        protected override void OnResizeEnd(EventArgs e)
+        {
+            base.OnResizeEnd(e);
+            Screen scn = Screen.FromPoint(this.Location);
+            if (DoSnap(this.Left, scn.WorkingArea.Left)) this.Left = scn.WorkingArea.Left;
+            if (DoSnap(this.Top, scn.WorkingArea.Top)) this.Top = scn.WorkingArea.Top;
+            if (DoSnap(scn.WorkingArea.Right, this.Right)) this.Left = scn.WorkingArea.Right - this.Width;
+            if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
         }
     }
 
