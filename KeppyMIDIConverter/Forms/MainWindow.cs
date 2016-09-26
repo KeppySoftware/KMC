@@ -108,6 +108,8 @@ namespace KeppyMIDIConverter
             public static string ExecutablePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         }
 
+        private Random FPSSimulator = new Random();
+
         private enum MoveDirection { Up = -1, Down = 1 };
 
         public MainWindow(String[] args, string encoder, bool deletencoder)
@@ -641,9 +643,9 @@ namespace KeppyMIDIConverter
         {
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
             if (type == 0)
-                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_MIDI_SINCINTER | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE |  BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
             else
-                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MIDI_SINCINTER | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
@@ -752,9 +754,9 @@ namespace KeppyMIDIConverter
             BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, KMCGlobals.events);
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             if (type == 0)
-                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_MIDI_SINCINTER | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency); // create MIDI player
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency); // create MIDI player
             else
-                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_MIDI_SINCINTER | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency); // create MIDI player
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency); // create MIDI player
             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
@@ -1222,12 +1224,14 @@ namespace KeppyMIDIConverter
                             DateTime starttime = DateTime.Now;
                             int pos = 0;
                             uint es = 0;
-                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 0.01666666666666666666666666666667));
-                            float[] buffer = new float[length / 4];
+                            FPSSimulator.NextDouble();
                             for (pos = 0, es = 0; ; )
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
+                                    double fpssim = FPSSimulator.NextDouble() * (0.01710000000000000000000000000001 - 0.01635000000000000000000000000001) + 0.01635000000000000000000000000001;
+                                    int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
+                                    float[] buffer = new float[length / 4];
                                     TimeSpan timespent = DateTime.Now - starttime;
                                     long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
                                     float num8 = ((float)num6) / 1048576f;
@@ -1261,17 +1265,19 @@ namespace KeppyMIDIConverter
                                         BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_END, 0);
                                     }
 
+                                    float fpsstring = 1 / (float)fpssim;
+
                                     if (num12 < 100f)
                                     {
-                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusFasterNew", cul), num8.ToString("0.00"), "???%", "??:??", str7, Convert.ToInt32(num12).ToString(), ((float)(100f / num12)).ToString("0.0"));
+                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusFasterNew", cul), num8.ToString("0.00"), fpsstring.ToString("0.0FPS"), "??:??", str7, Convert.ToInt32(num12).ToString(), ((float)(100f / num12)).ToString("0.0"));
                                     }
                                     else if (num12 == 100f)
                                     {
-                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusNormalNew", cul), num8.ToString("0.00"), "???%", "??:??", str7, Convert.ToInt32(num12).ToString());
+                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusNormalNew", cul), num8.ToString("0.00"), fpsstring.ToString("0.0FPS"), "??:??", str7, Convert.ToInt32(num12).ToString());
                                     }
                                     else if (num12 > 100f)
                                     {
-                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusSlowerNew", cul), num8.ToString("0.00"), "???%", "??:??", str7, Convert.ToInt32(num12).ToString(), ((float)(num12 / 100f)).ToString("0.0"));
+                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusSlowerNew", cul), num8.ToString("0.00"), fpsstring.ToString("0.0FPS"), "??:??", str7, Convert.ToInt32(num12).ToString(), ((float)(num12 / 100f)).ToString("0.0"));
                                     }
                                     System.Threading.Thread.Sleep(1);
                                 }
