@@ -172,6 +172,12 @@
     <Compile Include="Forms\VSTManager.Designer.cs">
       <DependentUpon>VSTManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UpdateDownloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdateDownloader.Designer.cs">
+      <DependentUpon>UpdateDownloader.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AdvancedSettings.resx">
       <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,19 +193,36 @@
     <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Lang.bn.resx" />
-    <EmbeddedResource Include="Languages\Lang.de.resx" />
+    <EmbeddedResource Include="Forms\UpdateDownloader.resx">
+      <DependentUpon>UpdateDownloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.bn.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Lang.es.resx" />
-    <EmbeddedResource Include="Languages\Lang.et.resx" />
+    <EmbeddedResource Include="Languages\Lang.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.et.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.it.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Lang.ja.resx" />
-    <EmbeddedResource Include="Languages\Lang.ko.resx" />
-    <EmbeddedResource Include="Languages\Lang.ru.resx" />
+    <EmbeddedResource Include="Languages\Lang.ja.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.ko.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.zh-CN.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

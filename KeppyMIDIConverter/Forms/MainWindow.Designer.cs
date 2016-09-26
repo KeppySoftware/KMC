@@ -96,8 +96,6 @@
             this.HelpStrip = new System.Windows.Forms.MenuItem();
             this.informationAboutTheProgramToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.supportTheDeveloperWithADonationToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem17 = new System.Windows.Forms.MenuItem();
-            this.FL12Discount = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.KaleidonKep99sGitHubPageToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem = new System.Windows.Forms.MenuItem();
@@ -112,6 +110,7 @@
             this.MoveDownItem = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.MIDIList = new System.Windows.Forms.ListView();
+            this.ConverterProcessRT = new System.ComponentModel.BackgroundWorker();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -162,9 +161,9 @@
             // AdvSettingsButton
             // 
             this.AdvSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AdvSettingsButton.Location = new System.Drawing.Point(6, 40);
+            this.AdvSettingsButton.Location = new System.Drawing.Point(7, 38);
             this.AdvSettingsButton.Name = "AdvSettingsButton";
-            this.AdvSettingsButton.Size = new System.Drawing.Size(137, 23);
+            this.AdvSettingsButton.Size = new System.Drawing.Size(137, 20);
             this.AdvSettingsButton.TabIndex = 2;
             this.AdvSettingsButton.Text = "Advanced settings";
             this.AdvSettingsButton.UseVisualStyleBackColor = true;
@@ -719,8 +718,6 @@
             this.HelpStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.informationAboutTheProgramToolStripMenuItem,
             this.supportTheDeveloperWithADonationToolStripMenuItem,
-            this.menuItem17,
-            this.FL12Discount,
             this.menuItem3,
             this.KaleidonKep99sGitHubPageToolStripMenuItem,
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem});
@@ -740,34 +737,22 @@
             this.supportTheDeveloperWithADonationToolStripMenuItem.Text = "Support the developer with a donation";
             this.supportTheDeveloperWithADonationToolStripMenuItem.Click += new System.EventHandler(this.makeADonationToSupportTheDeveloperToolStripMenuItem_Click);
             // 
-            // menuItem17
-            // 
-            this.menuItem17.Index = 2;
-            this.menuItem17.Text = "-";
-            // 
-            // FL12Discount
-            // 
-            this.VistaMenuSys.SetImage(this.FL12Discount, ((System.Drawing.Image)(resources.GetObject("FL12Discount.Image"))));
-            this.FL12Discount.Index = 3;
-            this.FL12Discount.Text = "Get a discount on a FL Studio license";
-            this.FL12Discount.Click += new System.EventHandler(this.FL12Discount_Click);
-            // 
             // menuItem3
             // 
-            this.menuItem3.Index = 4;
+            this.menuItem3.Index = 2;
             this.menuItem3.Text = "-";
             // 
             // KaleidonKep99sGitHubPageToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.KaleidonKep99sGitHubPageToolStripMenuItem, ((System.Drawing.Image)(resources.GetObject("KaleidonKep99sGitHubPageToolStripMenuItem.Image"))));
-            this.KaleidonKep99sGitHubPageToolStripMenuItem.Index = 5;
+            this.KaleidonKep99sGitHubPageToolStripMenuItem.Index = 3;
             this.KaleidonKep99sGitHubPageToolStripMenuItem.Text = "KaleidonKep99\'s GitHub Page";
             this.KaleidonKep99sGitHubPageToolStripMenuItem.Click += new System.EventHandler(this.KaleidonKep99sGitHubPageToolStripMenuItem_Click);
             // 
             // KaleidonKep99sYouTubeChannelToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.KaleidonKep99sYouTubeChannelToolStripMenuItem, ((System.Drawing.Image)(resources.GetObject("KaleidonKep99sYouTubeChannelToolStripMenuItem.Image"))));
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Index = 6;
+            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Index = 4;
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = "KaleidonKep99\'s YouTube Channel";
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Click += new System.EventHandler(this.kaleidonKep99sYouTubeChannelToolStripMenuItem_Click);
             // 
@@ -864,6 +849,12 @@
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
             // 
+            // ConverterProcessRT
+            // 
+            this.ConverterProcessRT.WorkerReportsProgress = true;
+            this.ConverterProcessRT.WorkerSupportsCancellation = true;
+            this.ConverterProcessRT.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConverterProcessRT_DoWork);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -949,7 +940,6 @@
         private System.Windows.Forms.MenuItem HelpStrip;
         private System.Windows.Forms.MenuItem informationAboutTheProgramToolStripMenuItem;
         private System.Windows.Forms.MenuItem supportTheDeveloperWithADonationToolStripMenuItem;
-        private System.Windows.Forms.MenuItem menuItem17;
         private System.Windows.Forms.MenuItem KaleidonKep99sYouTubeChannelToolStripMenuItem;
         private System.Windows.Forms.ContextMenu DefMenu;
         private System.Windows.Forms.MenuItem ImportMIDIsRightClick;
@@ -978,7 +968,6 @@
         private System.Windows.Forms.MenuItem JapaneseOverride;
         private System.Windows.Forms.MenuItem KoreanOverride;
         private System.Windows.Forms.MenuItem BengaliOverride;
-        private System.Windows.Forms.MenuItem FL12Discount;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.PictureBox loadingpic;
         private System.Windows.Forms.MenuItem RussianOverride;
@@ -988,6 +977,7 @@
         private System.Windows.Forms.MenuItem MoveDownItem;
         private System.Windows.Forms.MenuItem SortByName;
         private System.Windows.Forms.MenuItem menuItem6;
+        public System.ComponentModel.BackgroundWorker ConverterProcessRT;
     }
 }
 

@@ -66,8 +66,8 @@ namespace KeppyMIDIConverter
                         MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
-                SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+                KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+                SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
             }
             Settings.Close();
         }
@@ -82,13 +82,13 @@ namespace KeppyMIDIConverter
                 }
                 if (SFList.Items.Count == 0)
                 {
-                    Array.Clear(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0, KeppyMIDIConverter.MainWindow.Globals.Soundfonts.Length);
-                    KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[] { null };
+                    Array.Clear(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0, KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts.Length);
+                    KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[] { null };
                 }
                 else
                 {
-                    KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
-                    SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+                    KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+                    SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
                 }
             }
             catch
@@ -125,7 +125,7 @@ namespace KeppyMIDIConverter
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
             Settings.Close();
-            if (KeppyMIDIConverter.MainWindow.Globals.VSTMode == true)
+            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTMode == true)
             {
                 VSTImport.Enabled = true;
                 VSTUse.Checked = true;
@@ -161,8 +161,8 @@ namespace KeppyMIDIConverter
                         MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
-                SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+                KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+                SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
             }
             Settings.Close();
         }
@@ -177,13 +177,13 @@ namespace KeppyMIDIConverter
                 }
                 if (SFList.Items.Count == 0)
                 {
-                    Array.Clear(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0, KeppyMIDIConverter.MainWindow.Globals.Soundfonts.Length);
-                    KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[0];
+                    Array.Clear(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0, KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts.Length);
+                    KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[0];
                 }
                 else
                 {
-                    KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
-                    SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+                    KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+                    SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
                 }
             }
             catch
@@ -274,8 +274,8 @@ namespace KeppyMIDIConverter
                     MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
-            SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+            KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+            SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
         }
 
         private void SFList_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -298,13 +298,13 @@ namespace KeppyMIDIConverter
                     }
                     if (SFList.Items.Count == 0)
                     {
-                        Array.Clear(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0, KeppyMIDIConverter.MainWindow.Globals.Soundfonts.Length);
-                        KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[] { null } ;
+                        Array.Clear(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0, KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts.Length);
+                        KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[] { null } ;
                     }
                     else
                     {
-                        KeppyMIDIConverter.MainWindow.Globals.Soundfonts = new string[SFList.Items.Count];
-                        SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.Globals.Soundfonts, 0);
+                        KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+                        SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
                     }
                 }
             }
@@ -338,12 +338,12 @@ namespace KeppyMIDIConverter
             if (VSTUse.Checked == true)
             {
                 VSTImport.Enabled = true;
-                KeppyMIDIConverter.MainWindow.Globals.VSTMode = true;
+                KeppyMIDIConverter.MainWindow.KMCGlobals.VSTMode = true;
             }
             else if (VSTUse.Checked == false)
             {
                 VSTImport.Enabled = false;
-                KeppyMIDIConverter.MainWindow.Globals.VSTMode = false;
+                KeppyMIDIConverter.MainWindow.KMCGlobals.VSTMode = false;
             }
         }
 

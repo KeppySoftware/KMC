@@ -602,9 +602,6 @@ OKをクリックして閉じてください。</value>
   <data name="OverrideLanguage" xml:space="preserve">
     <value>オーバーライド言語</value>
   </data>
-  <data name="FLStudioDiscount" xml:space="preserve">
-    <value>FL Studioのライセンスの割引を受ける</value>
-  </data>
   <data name="MIDIFile" xml:space="preserve">
     <value>ファイル</value>
   </data>

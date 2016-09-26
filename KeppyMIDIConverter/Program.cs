@@ -30,7 +30,7 @@ namespace KeppyMIDIConverter
             bool deletencoder = false;
             string encoder = "kmcogg.exe";
             bool ok;
-            DeteOldLanguages();
+            DeleteOldLanguages();
             Mutex m = new Mutex(true, "KepMIDIConv", out ok);
             if (!ok)
             {
@@ -46,112 +46,177 @@ namespace KeppyMIDIConverter
             try
             {
                 int shouldupdate = 1;
-                foreach (String s in args)
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                for (int i = 0; i < args.Length; i++)
                 {
-                    switch (s.Substring(0, 4).ToUpper())
+                    if (args[i].ToLowerInvariant() == "/skipupdate")
                     {
-                        case "/NAU":
-                            shouldupdate = 0;
-                            break;
-                        case "/RLN":
-                            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                            RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
-                            Language.SetValue("langoverride", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                            Language.SetValue("selectedlanguage", "en", Microsoft.Win32.RegistryValueKind.String);
-                            Language.Close();
-                            MessageBox.Show("Language succesfully restored.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
-                        case "/NOP":
-                            System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.no;
-                            System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
-                            player.PlaySync();
-                            return;
-                        case "/NTM":
-                            MessageBox.Show("Visual styles have been disabled.\n\nKeppy's MIDI Converter is going to use Windows 2000's style.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Application.VisualStyleState = System.Windows.Forms.VisualStyles.VisualStyleState.NoneEnabled;
-                            break;
-                        case "/SOI":
-                        SOI:
-                            System.IO.Stream soi = KeppyMIDIConverter.Properties.Resources.soi;
-                            System.Media.SoundPlayer soiplay = new System.Media.SoundPlayer(soi);
-                            soiplay.PlaySync();
-                            soiplay.Dispose();
-                            soi.Dispose();
-                            goto SOI;
-                            return;
-                        case "/KEK":
-                        KEK:
-                            System.IO.Stream kek = KeppyMIDIConverter.Properties.Resources.kek;
-                            System.Media.SoundPlayer kekplay = new System.Media.SoundPlayer(kek);
-                            kekplay.PlaySync();
-                            kekplay.Dispose();
-                            kek.Dispose();
-                            goto KEK;
-                            return;
-                        case "/ZEB":
-                            System.IO.Stream merdinskimerdonski = KeppyMIDIConverter.Properties.Resources.merdinskimerdonski;
-                            System.Media.SoundPlayer mermerplay = new System.Media.SoundPlayer(merdinskimerdonski);
-                            mermerplay.PlaySync();
-                            mermerplay.Dispose();
-                            merdinskimerdonski.Dispose();
+                        shouldupdate = 0;
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/nothemespartial")
+                    {
+                        Application.VisualStyleState = System.Windows.Forms.VisualStyles.VisualStyleState.NonClientAreaEnabled;
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/nothemesfull")
+                    {
+                        Application.VisualStyleState = System.Windows.Forms.VisualStyles.VisualStyleState.NoneEnabled;
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/alternativetextrendering")
+                    {
+                        Application.SetCompatibleTextRenderingDefault(true);
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/restorelanguage")
+                    {
+                        Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+                        RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
+                        Language.SetValue("langoverride", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                        Language.SetValue("selectedlanguage", "en", Microsoft.Win32.RegistryValueKind.String);
+                        Language.Close();
+                        MessageBox.Show("Language succesfully restored.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/cancer")
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to get cancer?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            Process.Start("https://plus.google.com/115075806009670308613/posts/hwyTGoKqkx4");
+                            Process.Start("https://plus.google.com/115075806009670308613/posts/JCK4d6L5juK");
                             ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
                             {
-                                throw new MerdinskiMerdonski("MAAMMMENONMMENEFFREGAUNCCCAZO");
+                                throw new TooMuchCancerForMe("Goddamnit Jacob");
                             }));
-                            break;
-                        case "/TTS":
-                            SpeechSynthesizer speak = new SpeechSynthesizer();
-                            speak.Volume = 100;
-                            speak.Rate = 0;
-                            speak.SpeakAsync("Hello. Seems like you triggered the Speech Synthesizer secret in Keppy's MIDI Converter. Well, good for you, I guess. Here, take this cookie, you deserve it. And remember, Keppy is awesome. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                            break;
-                        case "/RRJ":
-                            Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-                            return;
-                        case "/KSP":
-                        case "/KEP":
-                            Process.Start("https://plus.google.com/u/0/+RichardForhenson");
-                            return;
-                        case "/FRZ":
-                        case "/FSP":
-                            Process.Start("http://frozensnowproductions.com/");
-                            return;
-                        case "/BMT":
-                        case "/BMC":
-                            Process.Start("https://plus.google.com/communities/105907289212970966669");
-                            return;
-                        case "/THX":
-                        LOL:
-                            MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            goto LOL;
-                            return;
-                        case "/BGM":
-                            MessageBox.Show("Itily", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Process.Start("https://www.youtube.com/channel/UCMLqR6uhl_uANtw-aMO77Mw");
-                            return;
-                        case "/W98":
-                            MessageBox.Show("There are no easter eggs here, go away.");
-                            System.Threading.Thread.Sleep(3000);
-                            MessageBox.Show("Who knows tho...");
-                            return;
-                        case "/JAP" :
-                            string Emojipasta = @"👌👀👌👀👌👀👌👀👌👀 良いくそ　良( |クそ👌 それ ✔ は 良い👌👌くそだ　 ｽｸﾞ👌👌 ｿ👌 ｺ👌👌👌 すぐ✔そこ ✔✔わたL/\　と 💯 言え｜よ” 💯 コレツイテ　はなすぅ　しゅごぅすぉこぉ 素具祖子 (ｶﾞｯｼｮ: スク”ンコ) んんんんんｎ💯 👌👌 👌ほ王おおおぉぉぉおォォオォオｫｵｵｵｫゥ👌 👌👌 👌 💯 👌 👀👀 👀 👌👌ョイ糞";
-                            string Sasukechan = "Omg hai ___^ I’m anon-san and I absolutely luuuv @__@ anime <3 and my fav is naurto!!! Okies so anyways, im going to tell you about the BEST day of my life when I met my hot husband sasuke!! <333333333 OMFGZ HE WAS SOOOOO FREAKIN KAWAII IN PERSON!!! Supa kawaii desu!!!!!!!! ^___________________________________^\nWhen I walked onto Tokyo street =____=I looked up and saw…SASUKE!!!!!!!!!!!!!!! <33333333333333333333333333333333333333333333333333333333333333!!!! “ KONNICHIWA OMGZZZZZZZZZZZZZZZZ SUPA SUPA SUPA KAWAII SASUKE-SAMA!!!!!” I yelled n____n then he turned chibi then un-chibi!! he looked at me [O.O;;;;;;;;;;;] and then he saw how hot I am *___* he grabbed my hand and winked ~_^ then pulled me behind a pocky shop o_o and started to kiss me!!!!!! [OMG!!! HIS TOUNGE TASTED LIKE RAMEN!!! RLY!! >.> <.< >.< (O) (O) (O)] then I saw some baka fat bitch watching us and I could tell she was undressing him with her eyes!!!!!!! [ -___________-;;;;; OMG I COULDN’T BELIEVE IT EITHER!!! (ò_ó) (ò_ó) (ò_ó)] so I yelled “UH UH BAKA NEKO THAT’S MY MAN WHY DON’T YOU GO HOOK UP WITH NARUTO CAUSE SASUKE-SAMA LOVES ME!!! (ò_ó)” then sasuke held me close =^= and said he would only ever love me and kissed me again!!!!!!! ** (O)/ then we went to his apartment and banged all night long and made 42 babies and they all became ninjas!!!!!!!!!!!!!!! Nyaaaaa!!! (^___<) ^______________;;;;;;;;;;;;;;;;";
-                            MessageBox.Show(Emojipasta, "お兄ちゃん", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            MessageBox.Show(Sasukechan, "サスケちゃん", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
-                            {
-                                throw new IHateWeeabos("NOTICE ME SENPAI~");
-                            }));
-                            break;
-                        default:
-                            break;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Good.", "Whew...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/nope")
+                    {
+                        System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.no;
+                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
+                        player.PlaySync();
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/sam")
+                    {
+                    SOI:
+                        System.IO.Stream soi = KeppyMIDIConverter.Properties.Resources.soi;
+                        System.Media.SoundPlayer soiplay = new System.Media.SoundPlayer(soi);
+                        soiplay.PlaySync();
+                        soiplay.Dispose();
+                        soi.Dispose();
+                        goto SOI;
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/kek")
+                    {
+                    KEK:
+                        System.IO.Stream kek = KeppyMIDIConverter.Properties.Resources.kek;
+                        System.Media.SoundPlayer kekplay = new System.Media.SoundPlayer(kek);
+                        kekplay.PlaySync();
+                        kekplay.Dispose();
+                        kek.Dispose();
+                        goto KEK;
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/zeb89")
+                    {
+                        System.IO.Stream merdinskimerdonski = KeppyMIDIConverter.Properties.Resources.merdinskimerdonski;
+                        System.Media.SoundPlayer mermerplay = new System.Media.SoundPlayer(merdinskimerdonski);
+                        mermerplay.PlaySync();
+                        mermerplay.Dispose();
+                        merdinskimerdonski.Dispose();
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
+                        {
+                            throw new MerdinskiMerdonski("MAAMMMENONMMENEFFREGAUNCCCAZO");
+                        }));
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/texttospeech")
+                    {
+                        SpeechSynthesizer speak = new SpeechSynthesizer();
+                        speak.Volume = 100;
+                        speak.Rate = 0;
+                        speak.SpeakAsync("Hello. Seems like you triggered the Speech Synthesizer secret in Keppy's MIDI Converter. Well, good for you, I guess. Here, take this cookie, you deserve it. And remember, Keppy is awesome. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/rickroll")
+                    {
+                        Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/ksp" | args[i].ToLowerInvariant() == "/keppysteinwaypiano")
+                    {
+                        Process.Start("https://github.com/KaleidonKep99/Keppy-Steinway-Piano");
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/kep" | args[i].ToLowerInvariant() == "/keppy" | args[i].ToLowerInvariant() == "/kaleidonkep99")
+                    {
+                        Process.Start("https://plus.google.com/u/0/+RichardForhenson");
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/frozen" | args[i].ToLowerInvariant() == "/frozensnow" | args[i].ToLowerInvariant() == "/frozensnowproductions")
+                    {
+                        Process.Start("http://frozensnowproductions.com/");
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/blackmidi" | args[i].ToLowerInvariant() == "/blackmiditeam" | args[i].ToLowerInvariant() == "/blackmidicommunity")
+                    {
+                        Process.Start("https://plus.google.com/communities/105907289212970966669");
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/hell")
+                    {
+                    LOL:
+                        MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        goto LOL;
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/windows98")
+                    {
+                        MessageBox.Show("There are no easter eggs here, go away.");
+                        System.Threading.Thread.Sleep(3000);
+                        MessageBox.Show("Who knows tho...");
+                        Process.Start("https://www.youtube.com/watch?v=J57LQ1OrVfs");
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/ppap")
+                    {
+                        Process.Start("https://www.youtube.com/embed/0E00Zuayv9Q?autoplay=1&start=14");
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/japan" | args[i].ToLowerInvariant() == "/weeaboo")
+                    {
+                        string Emojipasta = @"👌👀👌👀👌👀👌👀👌👀 良いくそ　良( |クそ👌 それ ✔ は 良い👌👌くそだ　 ｽｸﾞ👌👌 ｿ👌 ｺ👌👌👌 すぐ✔そこ ✔✔わたL/\　と 💯 言え｜よ” 💯 コレツイテ　はなすぅ　しゅごぅすぉこぉ 素具祖子 (ｶﾞｯｼｮ: スク”ンコ) んんんんんｎ💯 👌👌 👌ほ王おおおぉぉぉおォォオォオｫｵｵｵｫゥ👌 👌👌 👌 💯 👌 👀👀 👀 👌👌ョイ糞";
+                        string Sasukechan = "Omg hai ___^ I’m anon-san and I absolutely luuuv @__@ anime <3 and my fav is naurto!!! Okies so anyways, im going to tell you about the BEST day of my life when I met my hot husband sasuke!! <333333333 OMFGZ HE WAS SOOOOO FREAKIN KAWAII IN PERSON!!! Supa kawaii desu!!!!!!!! ^___________________________________^\nWhen I walked onto Tokyo street =____=I looked up and saw…SASUKE!!!!!!!!!!!!!!! <33333333333333333333333333333333333333333333333333333333333333!!!! “ KONNICHIWA OMGZZZZZZZZZZZZZZZZ SUPA SUPA SUPA KAWAII SASUKE-SAMA!!!!!” I yelled n____n then he turned chibi then un-chibi!! he looked at me [O.O;;;;;;;;;;;] and then he saw how hot I am *___* he grabbed my hand and winked ~_^ then pulled me behind a pocky shop o_o and started to kiss me!!!!!! [OMG!!! HIS TOUNGE TASTED LIKE RAMEN!!! RLY!! >.> <.< >.< (O) (O) (O)] then I saw some baka fat bitch watching us and I could tell she was undressing him with her eyes!!!!!!! [ -___________-;;;;; OMG I COULDN’T BELIEVE IT EITHER!!! (ò_ó) (ò_ó) (ò_ó)] so I yelled “UH UH BAKA NEKO THAT’S MY MAN WHY DON’T YOU GO HOOK UP WITH NARUTO CAUSE SASUKE-SAMA LOVES ME!!! (ò_ó)” then sasuke held me close =^= and said he would only ever love me and kissed me again!!!!!!! ** (O)/ then we went to his apartment and banged all night long and made 42 babies and they all became ninjas!!!!!!!!!!!!!!! Nyaaaaa!!! (^___<) ^______________;;;;;;;;;;;;;;;;";
+                        MessageBox.Show(Emojipasta, "お兄ちゃん", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show(Sasukechan, "サスケちゃん", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
+                        {
+                            throw new IHateWeeabos("NOTICE ME SENPAI~");
+                        }));
+                        break;
+                    }
+                    else if (args[i].Contains("/"))
+                    {
+                        MessageBox.Show(String.Format("\"{0}\" is not a valid argument!\n\nPress OK to continue.", args[i]), "Keppy's MIDI Converter - Argument error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
                 if (shouldupdate == 1)
                     PerformUpdate();
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainWindow(args, encoder, deletencoder));
                 TriggerDate();
                 GC.KeepAlive(m);
@@ -163,7 +228,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        public static void DeteOldLanguages()
+        public static void DeleteOldLanguages()
         {
             string[] todelete = { "de", "ee", "en", "it", "ja", "nl" };
 
@@ -207,8 +272,9 @@ namespace KeppyMIDIConverter
                         DialogResult dialogResult = MessageBox.Show("A new update for Keppy's MIDI Converter has been found.\n\nVersion installed: " + Driver.FileVersion.ToString() + "\nVersion available online: " + newestversion.ToString() + "\n\nWould you like to update now?\nIf you choose \"Yes\", the converter will be automatically closed.\n\n(You can disable the automatic update check through \"Options > Automatically check for updates when starting the converter\".)", "New version of Keppy's MIDI Converter found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
-                            Application.ExitThread();
+                            UpdateDownloader frm = new UpdateDownloader(newestversion);
+                            frm.StartPosition = FormStartPosition.CenterScreen;
+                            frm.ShowDialog();
                         }
                     }
                 }
@@ -317,6 +383,23 @@ public class IHateWeeabos : Exception
     }
 
     public IHateWeeabos(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
+public class TooMuchCancerForMe : Exception
+{
+    public TooMuchCancerForMe()
+    {
+    }
+
+    public TooMuchCancerForMe(string message)
+        : base(message)
+    {
+    }
+
+    public TooMuchCancerForMe(string message, Exception inner)
         : base(message, inner)
     {
     }

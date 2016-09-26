@@ -599,9 +599,6 @@ VST, вероятно, не совместимы с нативной систе�
   <data name="OverrideLanguage" xml:space="preserve">
     <value>Override для Windows по умолчанию язык пользовательского интерфейса</value>
   </data>
-  <data name="FLStudioDiscount" xml:space="preserve">
-    <value>Получите скидку на лицензии FL Studio</value>
-  </data>
   <data name="MIDIFile" xml:space="preserve">
     <value>Файл</value>
   </data>

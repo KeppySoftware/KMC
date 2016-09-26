@@ -599,9 +599,6 @@ Premere OK per uscire.</value>
   <data name="OverrideLanguage" xml:space="preserve">
     <value>Ignora lingua di sistema</value>
   </data>
-  <data name="FLStudioDiscount" xml:space="preserve">
-    <value>Ottieni uno sconto sull'acquisto di FL Studio</value>
-  </data>
   <data name="MIDIFile" xml:space="preserve">
     <value>File</value>
   </data>

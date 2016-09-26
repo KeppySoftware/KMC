@@ -5,7 +5,7 @@
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '13.1.18'
+#define MyAppVersion '14.0.0'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -26,7 +26,7 @@ AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 Compression=lzma2/ultra64
-OutputBaseFilename={#MyAppSetupName} - {#MyAppVersion}
+OutputBaseFilename=KeppyMIDIConverterSetup
 DefaultGroupName={#MyAppSetupName}
 DefaultDirName={pf}\{#MyAppSetupName}
 DisableReadyPage=no

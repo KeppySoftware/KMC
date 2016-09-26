@@ -43,7 +43,7 @@ namespace KeppyMIDIConverter
 
         public partial class ExePath
         {
-            public static string ExecutablePath = KeppyMIDIConverter.MainWindow.Globals.ExecutablePath;
+            public static string ExecutablePath = KeppyMIDIConverter.MainWindow.KMCGlobals.ExecutablePath;
         }
 
         private void Informations_Load(object sender, EventArgs e)
@@ -153,15 +153,13 @@ namespace KeppyMIDIConverter
                     tabControl1.Enabled = true;
                     button5.Enabled = true;
                     LatestVersion.Text = String.Format(res_man.GetString("UpdateFoundVer", cul), newestversion.ToString());
-                    MessageBox.Show(res_man.GetString("UpdatesFoundText", cul), res_man.GetString("UpdatesFoundTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Process.Start("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases");
-                }
-                else if (x <= y)
-                {
-                    tabControl1.Enabled = true;
-                    button5.Enabled = true;
-                    LatestVersion.Text = String.Format("{0} ({1})", res_man.GetString("NoUpdatesText", cul), y.ToString());
-                    MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult dialogResult = MessageBox.Show(res_man.GetString("UpdatesFoundText", cul), res_man.GetString("UpdatesFoundTitle", cul), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        UpdateDownloader frm = new UpdateDownloader(newestversion);
+                        frm.StartPosition = FormStartPosition.CenterScreen;
+                        frm.ShowDialog();
+                    }
                 }
                 else
                 {

@@ -595,9 +595,6 @@ BASS 状态: {0}</value>
   <data name="OverrideLanguage" xml:space="preserve">
     <value>覆蓋語言</value>
   </data>
-  <data name="FLStudioDiscount" xml:space="preserve">
-    <value>获取一个FL Studio许可折扣</value>
-  </data>
   <data name="MIDIFile" xml:space="preserve">
     <value>文件</value>
   </data>
