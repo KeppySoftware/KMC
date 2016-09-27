@@ -148,6 +148,14 @@ namespace KeppyMIDIConverter
                         speak.SpeakAsync("Hello. Seems like you triggered the Speech Synthesizer secret in Keppy's MIDI Converter. Well, good for you, I guess. Here, take this cookie, you deserve it. And remember, Keppy is awesome. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                         break;
                     }
+                    else if (args[i].ToLowerInvariant() == "/whattimeisit")
+                    {
+                        SpeechSynthesizer speak = new SpeechSynthesizer();
+                        speak.Volume = 100;
+                        speak.Rate = 0;
+                        speak.Speak(String.Format("It's now {0} and {1} {2}", DateTime.Now.ToString("hh"), DateTime.Now.ToString("mm"), DateTime.Now.ToString("tt")));
+                        return;
+                    }
                     else if (args[i].ToLowerInvariant() == "/rickroll")
                     {
                         Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
