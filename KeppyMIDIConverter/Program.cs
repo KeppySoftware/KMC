@@ -201,6 +201,11 @@ namespace KeppyMIDIConverter
                         Process.Start("https://www.youtube.com/embed/0E00Zuayv9Q?autoplay=1&start=14");
                         return;
                     }
+                    else if (args[i].ToLowerInvariant() == "/ppaprnb")
+                    {
+                        Process.Start("https://www.youtube.com/embed/SceT9PJosvQ?autoplay=1");
+                        return;
+                    }
                     else if (args[i].ToLowerInvariant() == "/japan" | args[i].ToLowerInvariant() == "/weeaboo")
                     {
                         string Emojipasta = @"👌👀👌👀👌👀👌👀👌👀 良いくそ　良( |クそ👌 それ ✔ は 良い👌👌くそだ　 ｽｸﾞ👌👌 ｿ👌 ｺ👌👌👌 すぐ✔そこ ✔✔わたL/\　と 💯 言え｜よ” 💯 コレツイテ　はなすぅ　しゅごぅすぉこぉ 素具祖子 (ｶﾞｯｼｮ: スク”ンコ) んんんんんｎ💯 👌👌 👌ほ王おおおぉぉぉおォォオォオｫｵｵｵｫゥ👌 👌👌 👌 💯 👌 👀👀 👀 👌👌ョイ糞";

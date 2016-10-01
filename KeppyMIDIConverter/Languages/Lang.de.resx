@@ -614,9 +614,6 @@ OK klicken zum Beenden.</value>
   <data name="MIDINotes" xml:space="preserve">
     <value>Noten</value>
   </data>
-  <data name="Volume" xml:space="preserve">
-    <value>Lautstärke:</value>
-  </data>
   <data name="BankNPresetIgnore" xml:space="preserve">
     <value>Ignorieren</value>
   </data>
@@ -655,5 +652,8 @@ oder wenn du nicht weist welche du benutzen solltest.</value>
   </data>
   <data name="BankNPresetTitle" xml:space="preserve">
     <value>Bank und Preset für die Soundfont wählen</value>
+  </data>
+  <data name="BankNPresetTBT" xml:space="preserve">
+    <value>no</value>
   </data>
 </root>

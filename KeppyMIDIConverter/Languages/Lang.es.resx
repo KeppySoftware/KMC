@@ -651,4 +651,7 @@ or if you don't know which one you should use.</value>
   <data name="BankNPresetTitle" xml:space="preserve">
     <value>Select a bank and a preset for the soundfont</value>
   </data>
+  <data name="BankNPresetTBT" xml:space="preserve">
+    <value>yes</value>
+  </data>
 </root>

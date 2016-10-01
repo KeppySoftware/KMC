@@ -135,9 +135,9 @@
             // 
             this.SelectedSFLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SelectedSFLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SelectedSFLabel.Location = new System.Drawing.Point(0, 243);
+            this.SelectedSFLabel.Location = new System.Drawing.Point(0, 239);
             this.SelectedSFLabel.Name = "SelectedSFLabel";
-            this.SelectedSFLabel.Size = new System.Drawing.Size(363, 40);
+            this.SelectedSFLabel.Size = new System.Drawing.Size(359, 40);
             this.SelectedSFLabel.TabIndex = 21;
             this.SelectedSFLabel.Text = "Selected soundfont:\r\nPotato.sf2";
             this.SelectedSFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 283);
+            this.ClientSize = new System.Drawing.Size(359, 279);
             this.ControlBox = false;
             this.Controls.Add(this.ToBeTranslated);
             this.Controls.Add(this.label6);
@@ -259,6 +259,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select a bank and a preset for the soundfont";
+            this.Load += new System.EventHandler(this.BankNPresetSel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DesPresetVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DesBankVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PresetVal)).EndInit();

@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Resources;
+using Microsoft.Win32;
 
 namespace KeppyMIDIConverter.Forms
 {
@@ -55,6 +56,8 @@ namespace KeppyMIDIConverter.Forms
         {
             try
             {
+                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+                RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", false);
                 res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
                 cul = Program.ReturnCulture();
                 // Translate system
@@ -68,7 +71,7 @@ namespace KeppyMIDIConverter.Forms
                 WikipediaLink.Text = res_man.GetString("BankNPresetGuide", cul);
                 IgnoreBtn.Text = res_man.GetString("BankNPresetIgnore", cul);
                 ConfirmBut.Text = res_man.GetString("BankNPresetConfirm", cul);
-                if (res_man.GetString("BankNPresetTitle", cul) == res_man.GetString("BankNPresetTitle", CultureInfo.CreateSpecificCulture("en")))
+                if (res_man.GetString("BankNPresetTBT", cul) == "yes")
                 {
                     ToBeTranslated.Visible = true;
                 }
@@ -122,6 +125,11 @@ namespace KeppyMIDIConverter.Forms
             {
                 Process.Start("https://github.com/kaleidonKep99/Keppys-MIDI-Converter#main-languages-available");
             }
+        }
+
+        private void BankNPresetSel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

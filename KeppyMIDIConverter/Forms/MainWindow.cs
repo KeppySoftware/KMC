@@ -181,9 +181,9 @@ namespace KeppyMIDIConverter
                 cul = Program.ReturnCulture();
                 MIDIList.Columns.Clear();
                 MIDIList.Columns.Add(res_man.GetString("MIDIFile", cul), 1, HorizontalAlignment.Left);
-                MIDIList.Columns.Add(res_man.GetString("MIDINotes", cul), 1, HorizontalAlignment.Center);
-                MIDIList.Columns.Add(res_man.GetString("MIDILength", cul), 1, HorizontalAlignment.Center);
-                MIDIList.Columns.Add(res_man.GetString("MIDISize", cul), 1, HorizontalAlignment.Center);
+                MIDIList.Columns.Add(res_man.GetString("MIDINotes", cul), 1, HorizontalAlignment.Left);
+                MIDIList.Columns.Add(res_man.GetString("MIDILength", cul), 1, HorizontalAlignment.Left);
+                MIDIList.Columns.Add(res_man.GetString("MIDISize", cul), 1, HorizontalAlignment.Left);
                 MIDIList.Columns[0].Tag = 7;
                 MIDIList.Columns[1].Tag = 1;
                 MIDIList.Columns[2].Tag = 1;
@@ -229,10 +229,10 @@ namespace KeppyMIDIConverter
                 res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
                 cul = CultureInfo.CreateSpecificCulture("en");
                 MIDIList.Columns.Clear();
-                MIDIList.Columns.Add(res_man.GetString("MIDIFile", cul), 434, HorizontalAlignment.Left);
-                MIDIList.Columns.Add(res_man.GetString("MIDINotes", cul), 66, HorizontalAlignment.Center);
-                MIDIList.Columns.Add(res_man.GetString("MIDILength", cul), 53, HorizontalAlignment.Center);
-                MIDIList.Columns.Add(res_man.GetString("MIDISize", cul), 53, HorizontalAlignment.Center);
+                MIDIList.Columns.Add(res_man.GetString("MIDIFile", cul), 1, HorizontalAlignment.Left);
+                MIDIList.Columns.Add(res_man.GetString("MIDINotes", cul), 1, HorizontalAlignment.Left);
+                MIDIList.Columns.Add(res_man.GetString("MIDILength", cul), 1, HorizontalAlignment.Left);
+                MIDIList.Columns.Add(res_man.GetString("MIDISize", cul), 1, HorizontalAlignment.Left);
                 ActionsStrip.Text = res_man.GetString("ActionsStrip", cul);
                 AdvSettingsButton.Text = res_man.GetString("AdvSettingsButton", cul);
                 AudioEventsStrip.Text = res_man.GetString("AudioEventsStrip", cul);
@@ -742,8 +742,8 @@ namespace KeppyMIDIConverter
                 }
             }
             KMCGlobals.SFZBankPreset = termsList.ToArray();
-            KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
-            KMCGlobals._plm.CalcRMS = true;
+            // KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
+            // KMCGlobals._plm.CalcRMS = true;
             BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
         }
 
@@ -753,7 +753,7 @@ namespace KeppyMIDIConverter
             if (type == 0)
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
             else
-                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
             try
             {
                 KMCGlobals.eventc = BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, null);
@@ -761,7 +761,7 @@ namespace KeppyMIDIConverter
             }
             catch
             {
-                throw new Exception("The MIDI is too big for real-time simulation.");
+                throw new MIDIIsTooBig("The MIDI is too big for real-time simulation.");
             }
             BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, KMCGlobals.events);
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
@@ -1035,7 +1035,7 @@ namespace KeppyMIDIConverter
             else
                 percentagefinal = percentage;
             KMCGlobals.PercentageProgress = percentagefinal.ToString("0.0%");
-            float[] buffer = new float[length / 4];
+            byte[] buffer = new byte[length];
             if (MainWindow.KMCGlobals.TempoOverride == true)
             {
                 BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals.FinalTempo);
@@ -1064,7 +1064,6 @@ namespace KeppyMIDIConverter
                 else
                     KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusSlowerOld", cul), num8.ToString("0.00"), percentagefinal.ToString("0.0%"), str5, str4, Convert.ToInt32(num12).ToString(), ((float)(num12 / 100f)).ToString("0.0"));
             }
-            System.Threading.Thread.Sleep(1);
         }
 
         private delegate ListView.ListViewItemCollection GetItems(ListView lstview);
@@ -1245,7 +1244,7 @@ namespace KeppyMIDIConverter
                                 {
                                     double fpssim = FPSSimulator.NextDouble() * (0.01710000000000000000000000000001 - 0.01635000000000000000000000000001) + 0.01635000000000000000000000000001;
                                     int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
-                                    float[] buffer = new float[length / 4];
+                                    byte[] buffer = new byte[length];
                                     TimeSpan timespent = DateTime.Now - starttime;
                                     long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
                                     float num8 = ((float)num6) / 1048576f;
@@ -1293,7 +1292,6 @@ namespace KeppyMIDIConverter
                                     {
                                         KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusSlowerNew", cul), num8.ToString("0.00"), fpsstring.ToString("0.0FPS"), "??:??", str7, Convert.ToInt32(num12).ToString(), ((float)(num12 / 100f)).ToString("0.0"));
                                     }
-                                    System.Threading.Thread.Sleep(1);
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
                                 {
@@ -2581,5 +2579,23 @@ namespace KeppyMIDIConverter
             if (value > inclusiveMaximum) { return inclusiveMaximum; }
             return value;
         }
+    }
+}
+
+// Custom exceptions
+public class MIDIIsTooBig : Exception
+{
+    public MIDIIsTooBig()
+    {
+    }
+
+    public MIDIIsTooBig(string message)
+        : base(message)
+    {
+    }
+
+    public MIDIIsTooBig(string message, Exception inner)
+        : base(message, inner)
+    {
     }
 }

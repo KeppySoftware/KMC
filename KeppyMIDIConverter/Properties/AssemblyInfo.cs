@@ -18,7 +18,7 @@ using System.Resources;
 // Se si imposta ComVisible su false, i tipi in questo assembly non saranno visibili 
 // ai componenti COM.  Se è necessario accedere a un tipo in questo assembly da 
 // COM, impostare su true l'attributo ComVisible per tale tipo.
-[assembly: ComVisible(true)]
+[assembly: ComVisible(false)]
 
 // Se il progetto viene esposto a COM, il GUID che segue verrà utilizzato per creare l'ID della libreria dei tipi
 [assembly: Guid("0632459e-6142-48d7-814c-ab89ab74b34a")]
@@ -33,6 +33,6 @@ using System.Resources;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come descritto di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("14.0.2")]
-[assembly: AssemblyFileVersion("14.0.2")]
+[assembly: AssemblyVersion("14.0.3")]
+[assembly: AssemblyFileVersion("14.0.3")]
 [assembly: NeutralResourcesLanguageAttribute("")]

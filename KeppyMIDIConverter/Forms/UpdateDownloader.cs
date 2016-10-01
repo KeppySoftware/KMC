@@ -39,6 +39,7 @@ namespace KeppyMIDIConverter
                 catch
                 {
                     MessageBox.Show("The converter can not connect to the GitHub servers.\n\nCheck your network connection, or contact your system administrator or network service provider.", "Keppy's Synthesizer - Connection error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Close();
                 }
             }
         }
@@ -50,8 +51,17 @@ namespace KeppyMIDIConverter
 
         private void Completed(object sender, AsyncCompletedEventArgs e)
         {
-            Process.Start(Path.GetTempPath() + "KeppyMIDIConverterSetup.exe");
-            Application.ExitThread();
+            try
+            {
+                Process.Start(Path.GetTempPath() + "KeppyMIDIConverterSetup.exe");
+                Application.ExitThread();
+
+            }
+            catch
+            {
+                MessageBox.Show("The converter can not connect to the GitHub servers.\n\nCheck your network connection, or contact your system administrator or network service provider.", "Keppy's Synthesizer - Connection error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Close();
+            }
         }
     }
 }

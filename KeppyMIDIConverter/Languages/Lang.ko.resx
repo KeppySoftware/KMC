@@ -651,4 +651,7 @@ SFZ 파일을 위해 소스의 뱅크, 프리셋 을 0 으로 설정합니다.</
   <data name="BankNPresetTitle" xml:space="preserve">
     <value>뱅크랑 프리셋을 선택해 주세요</value>
   </data>
+  <data name="BankNPresetTBT" xml:space="preserve">
+    <value>no</value>
+  </data>
 </root>
