@@ -126,10 +126,5 @@ namespace KeppyMIDIConverter.Forms
                 Process.Start("https://github.com/kaleidonKep99/Keppys-MIDI-Converter#main-languages-available");
             }
         }
-
-        private void BankNPresetSel_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

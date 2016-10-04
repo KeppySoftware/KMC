@@ -19,7 +19,7 @@ namespace KeppyMIDIConverter
         public Informations()
         {
             InitializeComponent();
-            System.Media.SystemSounds.Asterisk.Play();
+            InitializeLanguage();
         }
 
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
@@ -28,17 +28,35 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-            cul = Program.ReturnCulture();
-            // Translate system
-            button2.Text = res_man.GetString("Un4seenWebsite", cul);
-            button3.Text = res_man.GetString("License", cul);
-            Text = res_man.GetString("InfoWindowTitle", cul);
-            InfoPg.Text = res_man.GetString("InfoPageTitle", cul);
-            UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
-            label1.Text = String.Format(res_man.GetString("Credits", cul), res_man.GetString("Un4seenWebsite", cul));
-            LatestVersion.Text = res_man.GetString("LatestVersionIdle", cul);
-            button5.Text = res_man.GetString("CheckForUpdatesBtn", cul);
+            try
+            {
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = Program.ReturnCulture();
+                // Translate system
+                button2.Text = res_man.GetString("Un4seenWebsite", cul);
+                button3.Text = res_man.GetString("License", cul);
+                Text = res_man.GetString("InfoWindowTitle", cul);
+                InfoPg.Text = res_man.GetString("InfoPageTitle", cul);
+                UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
+                label1.Text = String.Format(res_man.GetString("Credits", cul), res_man.GetString("Un4seenWebsite", cul));
+                LatestVersion.Text = res_man.GetString("LatestVersionIdle", cul);
+                button5.Text = res_man.GetString("CheckForUpdatesBtn", cul);
+            }
+            catch
+            {
+                MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = CultureInfo.CreateSpecificCulture("en");
+                // Translate system
+                button2.Text = res_man.GetString("Un4seenWebsite", cul);
+                button3.Text = res_man.GetString("License", cul);
+                Text = res_man.GetString("InfoWindowTitle", cul);
+                InfoPg.Text = res_man.GetString("InfoPageTitle", cul);
+                UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
+                label1.Text = String.Format(res_man.GetString("Credits", cul), res_man.GetString("Un4seenWebsite", cul));
+                LatestVersion.Text = res_man.GetString("LatestVersionIdle", cul);
+                button5.Text = res_man.GetString("CheckForUpdatesBtn", cul);
+            }
         }
 
         public partial class ExePath
@@ -48,7 +66,6 @@ namespace KeppyMIDIConverter
 
         private void Informations_Load(object sender, EventArgs e)
         {
-            InitializeLanguage();
             try
             {
                 // Auto-update stuff
@@ -92,6 +109,11 @@ namespace KeppyMIDIConverter
                 KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("FatalError", cul), exception.ToString(), 1, 0);
                 errordialog.ShowDialog();
             }
+        }
+
+        private void Information_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -92,7 +92,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(593, 302);
+            this.panel1.Size = new System.Drawing.Size(593, 298);
             this.panel1.TabIndex = 0;
             // 
             // panel9
@@ -537,7 +537,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(617, 429);
             this.Controls.Add(this.UnloadAllVSTs);
             this.Controls.Add(this.button1);
@@ -546,8 +546,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(633, 468);
-            this.MinimumSize = new System.Drawing.Size(633, 468);
+            this.MinimizeBox = false;
             this.Name = "VSTManagerWindow";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

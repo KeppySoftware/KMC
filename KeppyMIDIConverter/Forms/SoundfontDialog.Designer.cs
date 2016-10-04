@@ -194,7 +194,7 @@
             // 
             // removeSoundfontsToolStripMenuItem
             // 
-            this.VistaMenuSys.SetImage(this.removeSoundfontsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
+            this.VistaMenuSys.SetImage(this.removeSoundfontsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.remove_icon);
             this.removeSoundfontsToolStripMenuItem.Index = 1;
             this.removeSoundfontsToolStripMenuItem.Text = "Remove soundfont(s)";
             this.removeSoundfontsToolStripMenuItem.Click += new System.EventHandler(this.removeSoundfontsToolStripMenuItem_Click);

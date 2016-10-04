@@ -26,20 +26,42 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-            cul = Program.ReturnCulture();
-            // Translate system
-            VSTUse.Text = res_man.GetString("VSTUseText", cul);
-            VSTImport.Text = res_man.GetString("VSTManagerButtonText", cul);
-            label1.Text = res_man.GetString("SoundfontDialogMessage", cul);
-            importSoundfontsToolStripMenuItem.Text = res_man.GetString("ImportSoundfontBtn", cul);
-            removeSoundfontsToolStripMenuItem.Text = res_man.GetString("RemoveSoundfontBtn", cul);
-            clearSoundfontListToolStripMenuItem.Text = res_man.GetString("ClearSoundfontList", cul);
-            ImportBtn.Text = res_man.GetString("ImportSoundfontBtn", cul);
-            RemoveBtn.Text = res_man.GetString("RemoveSoundfontBtn", cul);
-            MvUp.Text = res_man.GetString("MoveUPSF", cul);
-            MvDwn.Text = res_man.GetString("MoveDOWNSF", cul);
-            Text = res_man.GetString("SoundfontManagerTitle", cul);
+            try
+            {
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = Program.ReturnCulture();
+                // Translate system
+                VSTUse.Text = res_man.GetString("VSTUseText", cul);
+                VSTImport.Text = res_man.GetString("VSTManagerButtonText", cul);
+                label1.Text = res_man.GetString("SoundfontDialogMessage", cul);
+                importSoundfontsToolStripMenuItem.Text = res_man.GetString("ImportSoundfontBtn", cul);
+                removeSoundfontsToolStripMenuItem.Text = res_man.GetString("RemoveSoundfontBtn", cul);
+                clearSoundfontListToolStripMenuItem.Text = res_man.GetString("ClearSoundfontList", cul);
+                ImportBtn.Text = res_man.GetString("ImportSoundfontBtn", cul);
+                RemoveBtn.Text = res_man.GetString("RemoveSoundfontBtn", cul);
+                MvUp.Text = res_man.GetString("MoveUPSF", cul);
+                MvDwn.Text = res_man.GetString("MoveDOWNSF", cul);
+                Text = res_man.GetString("SoundfontManagerTitle", cul);
+            }
+            catch
+            {
+                MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = CultureInfo.CreateSpecificCulture("en");
+                // Translate system
+                VSTUse.Text = res_man.GetString("VSTUseText", cul);
+                VSTImport.Text = res_man.GetString("VSTManagerButtonText", cul);
+                label1.Text = res_man.GetString("SoundfontDialogMessage", cul);
+                importSoundfontsToolStripMenuItem.Text = res_man.GetString("ImportSoundfontBtn", cul);
+                removeSoundfontsToolStripMenuItem.Text = res_man.GetString("RemoveSoundfontBtn", cul);
+                clearSoundfontListToolStripMenuItem.Text = res_man.GetString("ClearSoundfontList", cul);
+                ImportBtn.Text = res_man.GetString("ImportSoundfontBtn", cul);
+                RemoveBtn.Text = res_man.GetString("RemoveSoundfontBtn", cul);
+                MvUp.Text = res_man.GetString("MoveUPSF", cul);
+                MvDwn.Text = res_man.GetString("MoveDOWNSF", cul);
+                Text = res_man.GetString("SoundfontManagerTitle", cul);
+            }
+
         }
 
         private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)

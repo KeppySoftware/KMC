@@ -742,8 +742,8 @@ namespace KeppyMIDIConverter
                 }
             }
             KMCGlobals.SFZBankPreset = termsList.ToArray();
-            // KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
-            // KMCGlobals._plm.CalcRMS = true;
+            KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
+            KMCGlobals._plm.CalcRMS = true;
             BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
         }
 
@@ -780,6 +780,7 @@ namespace KeppyMIDIConverter
             int sfnum = 0;
             int sfzload = 0;
             List<int> termsList = new List<int>();
+            termsList.Reverse();
             foreach (string s in KMCGlobals.Soundfonts)
             {
                 if (Path.GetExtension(s).ToLower() == ".sfz")
@@ -1297,21 +1298,20 @@ namespace KeppyMIDIConverter
                                 {
                                     BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
                                     KeepLooping = false;
-                                    break;
+                                    if (KeepLooping == false)
+                                    {
+                                        break;
+                                    }
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 2)
                                 {
-                                    break;
+                                    continue;
                                 }
                             }
-                            if (KMCGlobals.CancellationPendingValue >= 1)
+                            if (KMCGlobals.CancellationPendingValue == 1)
                             {
                                 KMCGlobals.RenderingMode = false;
-                                KeepLooping = false;
-                                if (KeepLooping == false)
-                                {
-                                    break;
-                                }
+                                break;
                             }
                             else
                             {
@@ -1330,8 +1330,8 @@ namespace KeppyMIDIConverter
                         else
                         {
                             BASSCloseStream(res_man.GetString("ConversionCompleted", cul), res_man.GetString("ConversionCompleted", cul), 1);
-                            KeepLooping = false;
                             KMCGlobals.RenderingMode = false;
+                            KeepLooping = false;
                             KMCGlobals.eventc = 0;
                             KMCGlobals.events = null;
                             if (KMCGlobals.AutoShutDownEnabled == true)
@@ -1406,7 +1406,6 @@ namespace KeppyMIDIConverter
                                 else if (KMCGlobals.CancellationPendingValue == 1)
                                 {
                                     BASSCloseStream(res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackAborted", cul), 0);
-                                    KeepLooping = false;
                                     KMCGlobals.PlaybackMode = false;
                                     break;
                                 }
@@ -1437,11 +1436,11 @@ namespace KeppyMIDIConverter
                             BassEnc.BASS_Encode_Stop(KMCGlobals._Encoder);
                             Bass.BASS_StreamFree(KMCGlobals._recHandle);
                             Bass.BASS_Free();
+                            KeepLooping = false;
                             KMCGlobals.CancellationPendingValue = 0;
                             KMCGlobals.ActiveVoicesInt = 0;
                             KMCGlobals.CurrentStatusTextString = null;
                             KMCGlobals.NewWindowName = null;
-                            KeepLooping = false;
                             KMCGlobals.PlaybackMode = false;
                             KMCGlobals.SFZBankPreset = new int[0];
                             PlayConversionStop();
@@ -1853,10 +1852,7 @@ namespace KeppyMIDIConverter
                     this.Text = "Keppy's MIDI Converter";
                     if (Environment.OSVersion.Version.Major != 5)
                     {
-                        if (KMCGlobals.RealTime == false)
-                        {
-                            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
-                        }
+                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                     }
                     if (KMCGlobals.PlaybackMode == true)
                     {
@@ -2401,6 +2397,7 @@ namespace KeppyMIDIConverter
             {
                 this.Enabled = false;
                 KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("FatalError", cul), res_man.GetString("CrashTriggeredByUser", cul), 1, 0);
+                RenderingTimer.Stop();
                 errordialog.ShowDialog();
                 Application.Exit();
             }

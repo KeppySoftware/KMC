@@ -293,9 +293,9 @@ namespace KeppyMIDIConverter
                 }
                 Settings.Close();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Can not check for updates.\n\nError:\n" + ex.ToString(), "Keppy's MIDI Converter- Can not check for updates", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The converter can not connect to the GitHub servers.\n\nCheck your network connection, or contact your system administrator or network service provider.\n\nPress OK to continue and open the converter's window.", "Keppy's MIDI Converter - Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

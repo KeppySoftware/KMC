@@ -187,6 +187,7 @@
             // 
             // InfoPg
             // 
+            this.InfoPg.Controls.Add(this.TrumpTrigger);
             this.InfoPg.Controls.Add(this.pictureBox1);
             this.InfoPg.Controls.Add(this.panel1);
             this.InfoPg.Controls.Add(this.label1);
@@ -270,7 +271,7 @@
             // 
             // TrumpTrigger
             // 
-            this.TrumpTrigger.Location = new System.Drawing.Point(300, 312);
+            this.TrumpTrigger.Location = new System.Drawing.Point(484, 6);
             this.TrumpTrigger.Name = "TrumpTrigger";
             this.TrumpTrigger.Size = new System.Drawing.Size(47, 23);
             this.TrumpTrigger.TabIndex = 11;
@@ -281,12 +282,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(545, 345);
-            this.Controls.Add(this.TrumpTrigger);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Informations";
@@ -295,6 +296,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Information";
             this.Load += new System.EventHandler(this.Informations_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Information_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);

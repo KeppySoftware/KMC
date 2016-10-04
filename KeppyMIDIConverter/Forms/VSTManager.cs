@@ -33,40 +33,78 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-            cul = Program.ReturnCulture();
-            // Translate system
-            Text = res_man.GetString("VSTManager", cul);
-            label1.Text = res_man.GetString("EmptySlot", cul) + " 1";
-            label2.Text = res_man.GetString("EmptySlot", cul) + " 2";
-            label3.Text = res_man.GetString("EmptySlot", cul) + " 3";
-            label4.Text = res_man.GetString("EmptySlot", cul) + " 4";
-            label5.Text = res_man.GetString("EmptySlot", cul) + " 5";
-            label6.Text = res_man.GetString("EmptySlot", cul) + " 6";
-            label7.Text = res_man.GetString("EmptySlot", cul) + " 7";
-            label8.Text = res_man.GetString("EmptySlot", cul) + " 8";
-            Load1.Text = res_man.GetString("LoadVST", cul);
-            Load2.Text = res_man.GetString("LoadVST", cul);
-            Load3.Text = res_man.GetString("LoadVST", cul);
-            Load4.Text = res_man.GetString("LoadVST", cul);
-            Load5.Text = res_man.GetString("LoadVST", cul);
-            Load6.Text = res_man.GetString("LoadVST", cul);
-            Load7.Text = res_man.GetString("LoadVST", cul);
-            Load8.Text = res_man.GetString("LoadVST", cul);
-            Unload.Text = res_man.GetString("UnloadVST", cul);
-            Unload2.Text = res_man.GetString("UnloadVST", cul);
-            Unload3.Text = res_man.GetString("UnloadVST", cul);
-            Unload4.Text = res_man.GetString("UnloadVST", cul);
-            Unload5.Text = res_man.GetString("UnloadVST", cul);
-            Unload6.Text = res_man.GetString("UnloadVST", cul);
-            Unload7.Text = res_man.GetString("UnloadVST", cul);
-            Unload8.Text = res_man.GetString("UnloadVST", cul);
-            UnloadAllVSTs.Text = res_man.GetString("UnloadAllVSTs", cul);
-            Desc.Text = res_man.GetString("VSTHowDoTheyWork", cul);
+            try
+            {
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = Program.ReturnCulture();
+                // Translate system
+                Text = res_man.GetString("VSTManager", cul);
+                label1.Text = res_man.GetString("EmptySlot", cul) + " 1";
+                label2.Text = res_man.GetString("EmptySlot", cul) + " 2";
+                label3.Text = res_man.GetString("EmptySlot", cul) + " 3";
+                label4.Text = res_man.GetString("EmptySlot", cul) + " 4";
+                label5.Text = res_man.GetString("EmptySlot", cul) + " 5";
+                label6.Text = res_man.GetString("EmptySlot", cul) + " 6";
+                label7.Text = res_man.GetString("EmptySlot", cul) + " 7";
+                label8.Text = res_man.GetString("EmptySlot", cul) + " 8";
+                Load1.Text = res_man.GetString("LoadVST", cul);
+                Load2.Text = res_man.GetString("LoadVST", cul);
+                Load3.Text = res_man.GetString("LoadVST", cul);
+                Load4.Text = res_man.GetString("LoadVST", cul);
+                Load5.Text = res_man.GetString("LoadVST", cul);
+                Load6.Text = res_man.GetString("LoadVST", cul);
+                Load7.Text = res_man.GetString("LoadVST", cul);
+                Load8.Text = res_man.GetString("LoadVST", cul);
+                Unload.Text = res_man.GetString("UnloadVST", cul);
+                Unload2.Text = res_man.GetString("UnloadVST", cul);
+                Unload3.Text = res_man.GetString("UnloadVST", cul);
+                Unload4.Text = res_man.GetString("UnloadVST", cul);
+                Unload5.Text = res_man.GetString("UnloadVST", cul);
+                Unload6.Text = res_man.GetString("UnloadVST", cul);
+                Unload7.Text = res_man.GetString("UnloadVST", cul);
+                Unload8.Text = res_man.GetString("UnloadVST", cul);
+                UnloadAllVSTs.Text = res_man.GetString("UnloadAllVSTs", cul);
+                Desc.Text = res_man.GetString("VSTHowDoTheyWork", cul);
+            }
+            catch
+            {
+                MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = CultureInfo.CreateSpecificCulture("en");
+                // Translate system
+                Text = res_man.GetString("VSTManager", cul);
+                label1.Text = res_man.GetString("EmptySlot", cul) + " 1";
+                label2.Text = res_man.GetString("EmptySlot", cul) + " 2";
+                label3.Text = res_man.GetString("EmptySlot", cul) + " 3";
+                label4.Text = res_man.GetString("EmptySlot", cul) + " 4";
+                label5.Text = res_man.GetString("EmptySlot", cul) + " 5";
+                label6.Text = res_man.GetString("EmptySlot", cul) + " 6";
+                label7.Text = res_man.GetString("EmptySlot", cul) + " 7";
+                label8.Text = res_man.GetString("EmptySlot", cul) + " 8";
+                Load1.Text = res_man.GetString("LoadVST", cul);
+                Load2.Text = res_man.GetString("LoadVST", cul);
+                Load3.Text = res_man.GetString("LoadVST", cul);
+                Load4.Text = res_man.GetString("LoadVST", cul);
+                Load5.Text = res_man.GetString("LoadVST", cul);
+                Load6.Text = res_man.GetString("LoadVST", cul);
+                Load7.Text = res_man.GetString("LoadVST", cul);
+                Load8.Text = res_man.GetString("LoadVST", cul);
+                Unload.Text = res_man.GetString("UnloadVST", cul);
+                Unload2.Text = res_man.GetString("UnloadVST", cul);
+                Unload3.Text = res_man.GetString("UnloadVST", cul);
+                Unload4.Text = res_man.GetString("UnloadVST", cul);
+                Unload5.Text = res_man.GetString("UnloadVST", cul);
+                Unload6.Text = res_man.GetString("UnloadVST", cul);
+                Unload7.Text = res_man.GetString("UnloadVST", cul);
+                Unload8.Text = res_man.GetString("UnloadVST", cul);
+                UnloadAllVSTs.Text = res_man.GetString("UnloadAllVSTs", cul);
+                Desc.Text = res_man.GetString("VSTHowDoTheyWork", cul);
+            }
         }
 
         private void VSTManagerWindow_Load(object sender, EventArgs e)
         {
+            Size = new System.Drawing.Size(633, 468);
             InitializeLanguage();
             if (IntPtr.Size == 8)
             {

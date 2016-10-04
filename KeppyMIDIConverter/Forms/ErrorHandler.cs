@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -14,6 +15,15 @@ namespace KeppyMIDIConverter
 {
     public partial class ErrorHandler : Form
     {
+        [DllImportAttribute("uxtheme.dll")]
+        private static extern int SetWindowTheme(IntPtr hWnd, string appname, string idlist);
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            SetWindowTheme(this.Handle, "", "");
+            base.OnHandleCreated(e);
+        }
+
         public static int TOE = 0;
 
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
@@ -46,11 +56,24 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-            cul = Program.ReturnCulture();
-            // Translate system
-            copyErrorMessageToolStripMenuItem.Text = res_man.GetString("CopyErrorMessage", cul);
-            label1.Text = res_man.GetString("RightClickCopyNotice", cul);
+            try
+            {
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = Program.ReturnCulture();
+                // Translate system
+                copyErrorMessageToolStripMenuItem.Text = res_man.GetString("CopyErrorMessage", cul);
+                label1.Text = res_man.GetString("RightClickCopyNotice", cul);
+            }
+            catch
+            {
+                MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = CultureInfo.CreateSpecificCulture("en");
+                // Translate system
+                copyErrorMessageToolStripMenuItem.Text = res_man.GetString("CopyErrorMessage", cul);
+                label1.Text = res_man.GetString("RightClickCopyNotice", cul);
+            }
+
         }
 
         private void ErrorHandler_Load(object sender, EventArgs e)
@@ -66,6 +89,19 @@ namespace KeppyMIDIConverter
                 pictureBox1.Image = KeppyMIDIConverter.Properties.Resources.erroricon;
             }   
             PlayConversionFail();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (TOE == 0)
+                Close();
+            else
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
+                {
+                    throw new AntiDamageCrash("The converter has been manually crashed to avoid damages to the computer.");
+                }));
+            }
         }
 
         private void Close_Click(object sender, EventArgs e)
