@@ -67,7 +67,7 @@ It's pretty easy and straightforward!<br>
 Follow these easy steps:
 
 1. Create a folder called "KMC translation" (Or whatever you want it to be called).
-2. Download the base file ["Lang.resx"] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/blob/master/KeppyMIDIConverter/Languages/Lang.base.resx). Right-click "Raw" and select "Save as > .resx file". Remember to save it inside the folder you created on your desktop.
+2. Download the base file ["Lang.resx"] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/blob/master/KeppyMIDIConverter/Languages/Lang.resx). Right-click "Raw" and select "Save as > .resx file". Remember to save it inside the folder you created on your desktop.
 3. Download the language you want to update [from there] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/tree/master/KeppyMIDIConverter/Languages). As before, right-click "Raw" and select "Save as > .resx file". **(IT NEEDS TO BE IN THE SAME FOLDER AS LANG.RESX)**
 4. *(If you don't have it)* Download and install ResEx [from there] (https://resex.codeplex.com/).
 5. Open the "Lang.resx" file.
