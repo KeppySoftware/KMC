@@ -62,10 +62,19 @@ Spanish | Yes
 Turkish | Yes
 Ukrainian | No translator available
 
-Do you want your native language to be integrated into Keppy's MIDI Converter? <br>
-Download the [following file] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/raw/master/KeppyMIDIConverter/Languages/Lang.base.resx) and start editing it with [ResEx] (https://resex.codeplex.com/)! (Or Visual Studio, if you have it installed)<br>
-When you're done, send it to me through this form: https://goo.gl/forms/aHSvJescUqCYCHiN2<br><br>
-Thank you in advance!
+## How can I edit a translation
+It's pretty easy and straightforward!<br>
+Follow these easy steps:
+
+1. Create a folder called "KMC translation" (Or whatever you want it to be called).
+2. Download the base file ["Lang.resx"] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/blob/master/KeppyMIDIConverter/Languages/Lang.base.resx). Right-click "Raw" and select "Save as > .resx file". Remember to save it inside the folder you created on your desktop.
+3. Download the language you want to update [from there] (https://github.com/KaleidonKep99/Keppys-MIDI-Converter/tree/master/KeppyMIDIConverter/Languages). As before, right-click "Raw" and select "Save as > .resx file". **(IT NEEDS TO BE IN THE SAME FOLDER AS LANG.RESX)**
+4. *(If you don't have it)* Download and install ResEx [from there] (https://resex.codeplex.com/).
+5. Open the "Lang.resx" file.
+6. Happy editing! :smile:
+
+When you're done, send the file **"Lang.(yourlanguagehere).resx"** to me through this form: https://goo.gl/forms/aHSvJescUqCYCHiN2<br><br>
+Thank you in advance! :heart: :heart:
 
 ## Credits
 - Thanks Ian Luck for his wonderful BASS libraries! Take a look to them here: [Un4seen website] (http://www.un4seen.com/)
