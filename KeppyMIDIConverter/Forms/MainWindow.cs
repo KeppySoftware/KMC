@@ -72,7 +72,6 @@ namespace KeppyMIDIConverter
             public static int _VSTHandle7;
             public static int _VSTHandle8;
             public static int notecount = 0;
-            public static int[] SFZBankPreset = new int[0];
             public static string BenchmarkTime;
             public static string CurrentPeak = "0.0 dB";
             public static string CurrentRMS = "0.0 dB";
@@ -664,70 +663,18 @@ namespace KeppyMIDIConverter
             List<int> termsList = new List<int>();
             foreach (string s in KMCGlobals.Soundfonts)
             {
-                if (Path.GetExtension(s).ToLower() == ".sfz")
+                if (s.ToLower().IndexOf('=') != -1)
                 {
-                    if (KMCGlobals.SFZBankPreset.Length < 1)
-                    {
-                        int sbank;
-                        int spreset;
-                        int dbank;
-                        int dpreset;
-                        using (var form = new Forms.BankNPresetSel(s, 0, 1))
-                        {
-                            var result = form.ShowDialog();
-
-                            if (result == DialogResult.OK)
-                            {
-                                sbank = form.BankValueReturn;
-                                spreset = form.PresetValueReturn;
-                                dbank = form.DesBankValueReturn;
-                                dpreset = form.DesPresetValueReturn;
-                            }
-                            else
-                            {
-                                sbank = 0;
-                                spreset = 0;
-                                dbank = 0;
-                                dpreset = 0;
-                            }
-                        }
-                        for (int runs = 0; runs < 4; runs++)
-                        {
-                            termsList.Add(sbank);
-                            termsList.Add(spreset);
-                            termsList.Add(dbank);
-                            termsList.Add(dpreset);
-                        }
-                        fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
-                        fonts[sfnum].spreset = spreset;
-                        fonts[sfnum].sbank = sbank;
-                        fonts[sfnum].dpreset = dpreset;
-                        fonts[sfnum].dbank = dbank;
-                        if (type == 0)
-                            BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000));
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                        sfnum += 1;
-                    }
-                    else
-                    {
-                        int sbank = KMCGlobals.SFZBankPreset[sfzload];
-                        sfzload += 1;
-                        int spreset = KMCGlobals.SFZBankPreset[sfzload];
-                        sfzload += 1;
-                        int dbank = KMCGlobals.SFZBankPreset[sfzload];
-                        sfzload += 1;
-                        int dpreset = KMCGlobals.SFZBankPreset[sfzload];
-                        sfzload += 1;
-                        fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
-                        fonts[sfnum].spreset = spreset;
-                        fonts[sfnum].sbank = sbank;
-                        fonts[sfnum].dpreset = dpreset;
-                        fonts[sfnum].dbank = dbank;
-                        if (type == 0)
-                            BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000));
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                        sfnum += 1;
-                    }
+                    var matches = System.Text.RegularExpressions.Regex.Matches(s, "[0-9]+");
+                    string sf = s.Substring(s.LastIndexOf('|') + 1);
+                    fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(sf);
+                    fonts[sfnum].spreset = Convert.ToInt32(matches[0].ToString());
+                    fonts[sfnum].sbank = Convert.ToInt32(matches[1].ToString());
+                    fonts[sfnum].dpreset = Convert.ToInt32(matches[2].ToString());
+                    fonts[sfnum].dbank = Convert.ToInt32(matches[3].ToString());
+                    if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
+                    BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
+                    sfnum += 1;
                 }
                 else
                 {
@@ -736,12 +683,11 @@ namespace KeppyMIDIConverter
                     fonts[sfnum].sbank = -1;
                     fonts[sfnum].dpreset = -1;
                     fonts[sfnum].dbank = 0;
-                    BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000));
+                    if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
                     BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
                     sfnum += 1;
                 }
             }
-            KMCGlobals.SFZBankPreset = termsList.ToArray();
             KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
             KMCGlobals._plm.CalcRMS = true;
             BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
@@ -783,70 +729,18 @@ namespace KeppyMIDIConverter
             termsList.Reverse();
             foreach (string s in KMCGlobals.Soundfonts)
             {
-                if (Path.GetExtension(s).ToLower() == ".sfz")
+                if (s.ToLower().IndexOf('=') != -1)
                 {
-                    if (KMCGlobals.SFZBankPreset.Length < 1)
-                    {
-                        int sbank;
-                        int spreset;
-                        int dbank;
-                        int dpreset;
-                        using (var form = new Forms.BankNPresetSel(s, 0, 1))
-                        {
-                            var result = form.ShowDialog();
-
-                            if (result == DialogResult.OK)
-                            {
-                                sbank = form.BankValueReturn;
-                                spreset = form.PresetValueReturn;
-                                dbank = form.DesBankValueReturn;
-                                dpreset = form.DesPresetValueReturn;
-                            }
-                            else
-                            {
-                                sbank = 0;
-                                spreset = 0;
-                                dbank = 0;
-                                dpreset = 0;
-                            }
-                        }
-                        for (int runs = 0; runs < 4; runs++)
-                        {
-                            termsList.Add(sbank);
-                            termsList.Add(spreset);
-                            termsList.Add(dbank);
-                            termsList.Add(dpreset);
-                        }
-                        fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
-                        fonts[sfnum].spreset = spreset;
-                        fonts[sfnum].sbank = sbank;
-                        fonts[sfnum].dpreset = dpreset;
-                        fonts[sfnum].dbank = dbank;
-                        if (type == 0)
-                            BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000));
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                        sfnum += 1;
-                    }
-                    else
-                    {
-                        int sbank = KMCGlobals.SFZBankPreset[sfzload];
-                        sfzload += 1;
-                        int spreset = KMCGlobals.SFZBankPreset[sfzload];
-                        sfzload += 1;
-                        int dbank = KMCGlobals.SFZBankPreset[sfzload];
-                        sfzload += 1;
-                        int dpreset = KMCGlobals.SFZBankPreset[sfzload];
-                        sfzload += 1;
-                        fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
-                        fonts[sfnum].spreset = spreset;
-                        fonts[sfnum].sbank = sbank;
-                        fonts[sfnum].dpreset = dpreset;
-                        fonts[sfnum].dbank = dbank;
-                        if (type == 0)
-                            BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000));
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                        sfnum += 1;
-                    }
+                    var matches = System.Text.RegularExpressions.Regex.Matches(s, "[0-9]+");
+                    string sf = s.Substring(s.LastIndexOf('|') + 1);
+                    fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(sf);
+                    fonts[sfnum].spreset = Convert.ToInt32(matches[0].ToString());
+                    fonts[sfnum].sbank = Convert.ToInt32(matches[1].ToString());
+                    fonts[sfnum].dpreset = Convert.ToInt32(matches[2].ToString());
+                    fonts[sfnum].dbank = Convert.ToInt32(matches[3].ToString());
+                    if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
+                    BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
+                    sfnum += 1;
                 }
                 else
                 {
@@ -855,12 +749,11 @@ namespace KeppyMIDIConverter
                     fonts[sfnum].sbank = -1;
                     fonts[sfnum].dpreset = -1;
                     fonts[sfnum].dbank = 0;
-                    BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000));
+                    if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
                     BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
                     sfnum += 1;
                 }
             }
-            KMCGlobals.SFZBankPreset = termsList.ToArray();
             KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
             KMCGlobals._plm.CalcRMS = true;
             BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
@@ -980,8 +873,10 @@ namespace KeppyMIDIConverter
             float num8 = ((float)num6) / 1048576f;
             double num9 = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, pos);
             double num10 = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, num6);
+            float num12 = 0f;
             TimeSpan span = TimeSpan.FromSeconds(num9);
             TimeSpan span2 = TimeSpan.FromSeconds(num10);
+            Bass.BASS_ChannelGetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref num12);
             string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
             string str5 = span2.Minutes.ToString() + ":" + span2.Seconds.ToString().PadLeft(2, '0') + "." + span2.Milliseconds.ToString().PadLeft(3, '0');
             float percentage = num8 / num7;
@@ -995,7 +890,11 @@ namespace KeppyMIDIConverter
             KMCGlobals.PercentageProgress = percentagefinal.ToString("0.0%");
             float num11 = 0f;
             Bass.BASS_ChannelGetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
-            KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("PlaybackStatus", cul), percentage.ToString("0%"), str5, str4, KMCGlobals.notecount.ToString("N0"), pnotes.ToString("N0"));
+            KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("PlaybackStatus", cul), percentage.ToString("0%"), str5, str4, KMCGlobals.notecount.ToString("N0"), String.Format("{0} (CPU: {1})", pnotes.ToString("N0"), ((float)(num12 / 100f)).ToString("0.0%")));
+            if (num12 >= 100.0f)
+            {
+                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_SYSTEMEX, 0);
+            }
             KMCGlobals.ActiveVoicesInt = Convert.ToInt32(num11);
             KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
             KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
@@ -1096,7 +995,6 @@ namespace KeppyMIDIConverter
             }
             KMCGlobals.CancellationPendingValue = 0;
             KMCGlobals.CurrentStatusTextString = null;
-            KMCGlobals.SFZBankPreset = new int[0];
         }
 
         private void BASSCloseStreamCrash(Exception ex)
@@ -1106,7 +1004,6 @@ namespace KeppyMIDIConverter
             Bass.BASS_Free();
             KMCGlobals.NewWindowName = null;
             KMCGlobals.RenderingMode = false;
-            KMCGlobals.SFZBankPreset = new int[0];
             KMCGlobals.eventc = 0;
             KMCGlobals.events = null;
             KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("Error", cul), ex.ToString(), 0, 1);
@@ -1427,8 +1324,7 @@ namespace KeppyMIDIConverter
                         {
                             BASSCloseStream(res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackAborted", cul), 1);
                             KeepLooping = false;
-                            KMCGlobals.PlaybackMode = false;
-                            KMCGlobals.SFZBankPreset = new int[0];
+                            KMCGlobals.PlaybackMode = false;;
                             PlayConversionStop();
                         }
                         else
@@ -1442,7 +1338,6 @@ namespace KeppyMIDIConverter
                             KMCGlobals.CurrentStatusTextString = null;
                             KMCGlobals.NewWindowName = null;
                             KMCGlobals.PlaybackMode = false;
-                            KMCGlobals.SFZBankPreset = new int[0];
                             PlayConversionStop();
                         }
                     }
@@ -1451,14 +1346,12 @@ namespace KeppyMIDIConverter
                 {
                     BASSCloseStreamCrash(exception);
                     KMCGlobals.PlaybackMode = false;
-                    KMCGlobals.SFZBankPreset = new int[0];
                 }
             }
             catch (Exception exception2)
             {
                 BASSCloseStreamCrash(exception2);
                 KMCGlobals.PlaybackMode = false;
-                KMCGlobals.SFZBankPreset = new int[0];
             }
         }
 

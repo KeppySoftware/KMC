@@ -94,7 +94,7 @@ namespace KeppyMIDIConverter
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             if (TOE == 0)
-                Close();
+                Application.ExitThread();
             else
             {
                 ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>

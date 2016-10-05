@@ -64,36 +64,6 @@ namespace KeppyMIDIConverter
 
         }
 
-        private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
-            if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
-            {
-                foreach (String file in SoundfontImportDialog.FileNames)
-                {
-                    if (Path.GetExtension(file) == ".sf2" | Path.GetExtension(file) == ".SF2" | Path.GetExtension(file) == ".sfz" | Path.GetExtension(file) == ".SFZ" | Path.GetExtension(file) == ".sf3" | Path.GetExtension(file) == ".SF3" | Path.GetExtension(file) == ".sfpack" | Path.GetExtension(file) == ".SFPACK")
-                    {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        if (SFList.Items.Count == 1000)
-                        {
-                            SFList.Items.RemoveAt(1000);
-                        }
-                        SFList.Items.Add(file);
-                    }
-                    else
-                    {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
-                SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
-            }
-            Settings.Close();
-        }
-
         private void removeSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -159,23 +129,129 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void ImportBtn_Click(object sender, EventArgs e)
+        private string ImportMePlease(string file)
         {
+            using (var form = new Forms.BankNPresetSel(file, 0, 1))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    return String.Format("p{0},{1}={2},{3}|{4}", form.BankValueReturn, form.PresetValueReturn, form.DesBankValueReturn, form.DesPresetValueReturn, file);
+                }
+                else
+                {
+                    return String.Format("p{0},{1}={2},{3}|{4}", 0, 0, 0, 0, file);
+                }
+            }
+        }
+
+        private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int importmode = 0;
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
             if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
             {
+                if (ModifierKeys == Keys.Control)
+                {
+                    importmode = 1;
+                }
                 foreach (String file in SoundfontImportDialog.FileNames)
                 {
                     if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sfpack" | Path.GetExtension(file).ToLower() == ".sfz")
                     {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         if (SFList.Items.Count == 1000)
                         {
                             SFList.Items.RemoveAt(1000);
                         }
-                        SFList.Items.Add(file);
+                        if (Path.GetExtension(file).ToLower() == ".sfz")
+                        {
+                            SFList.Items.Add(ImportMePlease(file));
+                        }
+                        else
+                        {
+                            if (importmode == 1)
+                            {
+                                SFList.Items.Add(ImportMePlease(file));
+                            }
+                            else
+                            {
+                                SFList.Items.Add(file);
+                            }
+                        }
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                    }
+                    else if (Path.GetExtension(file).ToLower() == ".sflist")
+                    {
+                        using (StreamReader r = new StreamReader(file))
+                        {
+                            string line;
+                            while ((line = r.ReadLine()) != null)
+                            {
+                                SFList.Items.Add(line); // Read the external list and add the items to the list
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                        MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+                SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
+            }
+            Settings.Close();
+        }
+
+        private void ImportBtn_Click(object sender, EventArgs e)
+        {
+            int importmode = 0;
+            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+            if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (ModifierKeys == Keys.Control)
+                {
+                    importmode = 1;
+                }
+                foreach (String file in SoundfontImportDialog.FileNames)
+                {
+                    if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sfpack" | Path.GetExtension(file).ToLower() == ".sfz")
+                    {
+                        if (SFList.Items.Count == 1000)
+                        {
+                            SFList.Items.RemoveAt(1000);
+                        }
+                        if (Path.GetExtension(file).ToLower() == ".sfz")
+                        {
+                            SFList.Items.Add(ImportMePlease(file));
+                        }
+                        else
+                        {
+                            if (importmode == 1)
+                            {
+                                SFList.Items.Add(ImportMePlease(file));
+                            }
+                            else
+                            {
+                                SFList.Items.Add(file);
+                            }
+                        }
+                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                    }
+                    else if (Path.GetExtension(file).ToLower() == ".sflist")
+                    {
+                        using (StreamReader r = new StreamReader(file))
+                        {
+                            string line;
+                            while ((line = r.ReadLine()) != null)
+                            {
+                                SFList.Items.Add(line); // Read the external list and add the items to the list
+                            }
+                        }
                     }
                     else
                     {
@@ -278,6 +354,11 @@ namespace KeppyMIDIConverter
 
         private void SFList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
+            int importmode = 0;
+            if (ModifierKeys == Keys.Control)
+            {
+                importmode = 1;
+            }
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             int i;
             int pootis = 0;
@@ -289,7 +370,32 @@ namespace KeppyMIDIConverter
                     {
                         SFList.Items.RemoveAt(1000);
                     }
-                    SFList.Items.Add(s[i]);
+                    if (Path.GetExtension(s[i]).ToLower() == ".sfz")
+                    {
+                        SFList.Items.Add(ImportMePlease(s[i]));
+                    }
+                    else
+                    {
+                        if (importmode == 1)
+                        {
+                            SFList.Items.Add(ImportMePlease(s[i]));
+                        }
+                        else
+                        {
+                            SFList.Items.Add(s[i]);
+                        }
+                    }
+                }
+                else if (Path.GetExtension(s[i]).ToLower() == ".sflist")
+                {
+                    using (StreamReader r = new StreamReader(s[i]))
+                    {
+                        string line;
+                        while ((line = r.ReadLine()) != null)
+                        {
+                            SFList.Items.Add(line); // Read the external list and add the items to the list
+                        }
+                    }
                 }
                 else
                 {
