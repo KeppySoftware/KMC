@@ -1056,13 +1056,11 @@ namespace KeppyMIDIConverter
                             {
                                 KMCGlobals.RenderingMode = false;
                                 KeepLooping = false;
-                                if (KeepLooping == false)
-                                {
-                                    break;
-                                }
+                                break;
                             }
                             else
                             {
+                                Bass.BASS_StreamFree(KMCGlobals._recHandle);
                                 continue;
                             }
                         }
@@ -1195,10 +1193,7 @@ namespace KeppyMIDIConverter
                                 {
                                     BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
                                     KeepLooping = false;
-                                    if (KeepLooping == false)
-                                    {
-                                        break;
-                                    }
+                                    break;
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 2)
                                 {
@@ -1212,6 +1207,7 @@ namespace KeppyMIDIConverter
                             }
                             else
                             {
+                                Bass.BASS_StreamFree(KMCGlobals._recHandle);
                                 continue;
                             }
                         }
@@ -1310,13 +1306,11 @@ namespace KeppyMIDIConverter
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
                                 KeepLooping = false;
-                                if (KeepLooping == false)
-                                {
-                                    break;
-                                }
+                                break;
                             }
                             else
                             {
+                                Bass.BASS_StreamFree(KMCGlobals._recHandle);
                                 continue;
                             }
                         }

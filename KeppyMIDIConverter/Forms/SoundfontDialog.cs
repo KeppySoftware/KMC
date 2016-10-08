@@ -145,12 +145,35 @@ namespace KeppyMIDIConverter
             }
         }
 
+        // NOT SUPPORTED ON XP
+        public static void OpenFileDialogAddCustomPaths(FileDialog dialog)
+        {
+            try
+            {
+                // Import the soundfont favorites file from Keppy's Synthesizer
+                using (StreamReader r = new StreamReader(System.Environment.GetEnvironmentVariable("USERPROFILE").ToString() + "\\Keppy's Synthesizer\\keppymididrv.favlist"))
+                {
+                    string line;
+                    while ((line = r.ReadLine()) != null)
+                    {
+                        dialog.CustomPlaces.Add(line);
+                    }
+                }
+            }
+            catch
+            {
+                // Trigger nothing
+            }
+        }
+        // NOT SUPPORTED ON XP
+
         private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int importmode = 0;
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+            OpenFileDialogAddCustomPaths(SoundfontImportDialog);
             if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
             {
                 if (ModifierKeys == Keys.Control)
@@ -211,6 +234,7 @@ namespace KeppyMIDIConverter
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+            OpenFileDialogAddCustomPaths(SoundfontImportDialog);
             if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
             {
                 if (ModifierKeys == Keys.Control)
