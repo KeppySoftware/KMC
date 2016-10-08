@@ -982,7 +982,6 @@ namespace KeppyMIDIConverter
         }
 
         private void BASSCloseStream(string message, string title, int type) {
-            BassEnc.BASS_Encode_Stop(KMCGlobals._Encoder);
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
             KMCGlobals.CurrentStatusTextString = message;
@@ -991,15 +990,14 @@ namespace KeppyMIDIConverter
             if (type == 0)
             {
                 MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                PlayConversionStop();
             }
             KMCGlobals.CancellationPendingValue = 0;
             KMCGlobals.CurrentStatusTextString = null;
+            PlayConversionStop();
         }
 
         private void BASSCloseStreamCrash(Exception ex)
         {
-            BassEnc.BASS_Encode_Stop(KMCGlobals._Encoder);
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
             KMCGlobals.NewWindowName = null;
@@ -1100,7 +1098,7 @@ namespace KeppyMIDIConverter
                 }
                 catch (Exception exception)
                 {
-                    BASSCloseStreamCrash(exception);
+                    WriteToConsole(exception);
                 }
             }
             catch (Exception exception2)
@@ -1251,7 +1249,7 @@ namespace KeppyMIDIConverter
                 }
                 catch (Exception exception)
                 {
-                    BASSCloseStreamCrash(exception);
+                    WriteToConsole(exception);
                 }
             }
             catch (Exception exception2)
@@ -1260,7 +1258,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void RealTimePlayBackBeta_DoWork(object sender, DoWorkEventArgs e)
+        private void RealTimePlayBack_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -1282,12 +1280,13 @@ namespace KeppyMIDIConverter
                             Bass.BASS_ChannelPlay(KMCGlobals._recHandle, false);
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                             int count = BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
+                            // cac
                             BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
                             BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
                             int notes = 0;
                             for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
                             KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
-                            Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
+                            int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
                             KMCGlobals.notecount = 0;
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 0.0275));
                             while (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
@@ -1303,8 +1302,10 @@ namespace KeppyMIDIConverter
                                     break;
                                 }
                             }
+                            Bass.BASS_ChannelRemoveSync(KMCGlobals._recHandle, sync);
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
+                                events = null;
                                 KeepLooping = false;
                                 break;
                             }
@@ -1317,42 +1318,48 @@ namespace KeppyMIDIConverter
                         if (KMCGlobals.CancellationPendingValue == 1)
                         {
                             BASSCloseStream(res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackAborted", cul), 1);
-                            KeepLooping = false;
-                            KMCGlobals.PlaybackMode = false;;
-                            PlayConversionStop();
                         }
                         else
                         {
-                            BassEnc.BASS_Encode_Stop(KMCGlobals._Encoder);
-                            Bass.BASS_StreamFree(KMCGlobals._recHandle);
-                            Bass.BASS_Free();
-                            KeepLooping = false;
-                            KMCGlobals.CancellationPendingValue = 0;
-                            KMCGlobals.ActiveVoicesInt = 0;
-                            KMCGlobals.CurrentStatusTextString = null;
-                            KMCGlobals.NewWindowName = null;
-                            KMCGlobals.PlaybackMode = false;
-                            PlayConversionStop();
+                            BASSCloseStream("null", "null", 1);
                         }
                     }
                 }
                 catch (Exception exception)
                 {
-                    BASSCloseStreamCrash(exception);
+                    WriteToConsole(exception);
                     KMCGlobals.PlaybackMode = false;
                 }
             }
             catch (Exception exception2)
             {
                 BASSCloseStreamCrash(exception2);
-                KMCGlobals.PlaybackMode = false;
             }
+        }
+
+        private void WriteToConsole(Exception exception)
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.Write("Time of the exception: " + DateTime.Now.ToString());
+            Console.WriteLine();
+            Console.Write("An error has been encountered during the playback/conversion process.");
+            Console.WriteLine();
+            Console.Write(exception.ToString());
+            Console.WriteLine();
+            Console.Write("The converter will now try to continue...");
+            Console.WriteLine();
+            Console.ResetColor();
         }
 
         private void NoteSyncProc(int handle, int channel, int data, IntPtr user)
         {
-            if ((data & 0xff00) != 0)
-                KMCGlobals.notecount++; // Note count for playback mode
+            if (KMCGlobals.PlaybackMode == false)
+            {
+                if ((data & 0xff00) != 0)
+                    KMCGlobals.notecount++; // Note count for playback mode
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -2282,11 +2289,19 @@ namespace KeppyMIDIConverter
             DialogResult dialogResult = MessageBox.Show(res_man.GetString("CrashQuestion", cul), "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dialogResult == DialogResult.Yes)
             {
-                this.Enabled = false;
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("FatalError", cul), res_man.GetString("CrashTriggeredByUser", cul), 1, 0);
-                RenderingTimer.Stop();
-                errordialog.ShowDialog();
-                Application.Exit();
+                if (ModifierKeys == Keys.Shift)
+                {
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("Error", cul), res_man.GetString("CrashTriggeredByUser", cul), 0, 1);
+                    errordialog.ShowDialog();
+                }
+                else
+                {
+                    this.Enabled = false;
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("FatalError", cul), res_man.GetString("CrashTriggeredByUser", cul), 1, 0);
+                    RenderingTimer.Stop();
+                    errordialog.ShowDialog();
+                    Application.Exit();
+                }
             }
         }
 

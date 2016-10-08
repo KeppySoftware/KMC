@@ -146,7 +146,7 @@ namespace KeppyMIDIConverter
         }
 
         // NOT SUPPORTED ON XP
-        public static void OpenFileDialogAddCustomPaths(FileDialog dialog)
+        public static void OpenFileDialogAddCustomPaths(FileDialog dialog) // This function doesn't work on Windows XP
         {
             try
             {

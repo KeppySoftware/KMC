@@ -8,7 +8,6 @@
     </StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <StartArguments>
-    </StartArguments>
+    <StartArguments>/debug</StartArguments>
   </PropertyGroup>
 </Project>

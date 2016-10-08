@@ -15,11 +15,16 @@ using System.Collections.Generic;
 using System.Collections;
 using Microsoft.Win32;
 using System.Speech.Synthesis;
+using System.Runtime.InteropServices;
 
 namespace KeppyMIDIConverter
 {
     static class Program
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
         /// </summary>
@@ -53,6 +58,30 @@ namespace KeppyMIDIConverter
                     if (args[i].ToLowerInvariant() == "/skipupdate")
                     {
                         shouldupdate = 0;
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/debug") // DO NOT USE IF NOT NEEDED <.<
+                    {
+                        System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                        FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+                        string version = fvi.FileVersion;
+                        AllocConsole();
+                        Console.Title = "Keppy's MIDI Converter Debug Window";
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Keppy's MIDI Converter Debug Window - Version " + version);
+                        Console.WriteLine("Copyright KaleidonKep99 2013 - " + DateTime.Now.Year.ToString());
+                        Console.ResetColor();
+                        Console.WriteLine();
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("This should only be used when Kep himself asks you to do so. It's not really that useful, if not for debug.");
+                        Console.WriteLine();
+                        Console.ResetColor();
+                        Console.BackgroundColor = ConsoleColor.Green;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.WriteLine("Debug started, waiting for errors...");
+                        Console.ResetColor();
                         break;
                     }
                     else if (args[i].ToLowerInvariant() == "/nothemespartial")

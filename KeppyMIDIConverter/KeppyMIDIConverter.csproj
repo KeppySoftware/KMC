@@ -49,7 +49,7 @@
     <DefineConstants>
     </DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>none</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -58,8 +58,9 @@
     <LangVersion>default</LangVersion>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <FileAlignment>512</FileAlignment>
-    <DebugSymbols>false</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -77,14 +78,14 @@
     <DefineConstants>
     </DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>none</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <WarningLevel>0</WarningLevel>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <FileAlignment>512</FileAlignment>
-    <DebugSymbols>false</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>

@@ -253,7 +253,7 @@
             // 
             this.RealTimePlayBack.WorkerReportsProgress = true;
             this.RealTimePlayBack.WorkerSupportsCancellation = true;
-            this.RealTimePlayBack.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RealTimePlayBackBeta_DoWork);
+            this.RealTimePlayBack.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RealTimePlayBack_DoWork);
             // 
             // VolumeBar
             // 
