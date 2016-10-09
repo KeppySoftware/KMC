@@ -280,11 +280,11 @@ BASS статус: {0}</value>
     <value>Авария, вызванной пользователем.</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright (C) 2013-2017 KaleidonKep99
+    <value>Copyright (C) 2013-{0} KaleidonKep99
 
 Эта программа базируется вокруг больших библиотек BASS
 по Ian Luck из Un4seen Developments.
-Посмотрите на его сайт, нажав кнопку "{0}"
+Посмотрите на его сайт, нажав кнопку "{1}"
 Кнопка.
 
 Исходный код доступен здесь:</value>

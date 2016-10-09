@@ -281,11 +281,11 @@ BASS 狀態: {0}</value>
     <value>用戶造成當機</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-2017 KaleidonKep99
+    <value>Copyright(C) 2013-{0} KaleidonKep99
 
 This program is based around the great BASS libraries
 by Ian Luck from Un4seen Developments.
-Take a look at his site by clicking the "{0}"
+Take a look at his site by clicking the "{1}"
 button.
 
 源代碼:</value>

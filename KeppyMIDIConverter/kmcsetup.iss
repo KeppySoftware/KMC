@@ -5,7 +5,7 @@
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '14.0.7'
+#define MyAppVersion '14.0.9'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -16,7 +16,7 @@ AppVerName={#MyAppSetupName} {#MyAppVersion}
 AppComments=MIDI to WAV/OGG converter
 AllowNoIcons=yes
 AppContact=mailto:kaleidonkep99@outlook.com
-AppCopyright=Copyright(C) KaleidonKep99 2016
+AppCopyright=Copyright(C) KaleidonKep99 2017
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 AppPublisher=KaleidonKep99
 AppPublisherURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter

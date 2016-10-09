@@ -279,12 +279,12 @@ Error:
     <value>Crash causado por el usuario.</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-2017 KaleidonKep99
+    <value>Copyright(C) 2013-{0} KaleidonKep99
 
 Este programa está basado en la librerías BASS
 por Ian Luck de Un4seen Developments.
 Echa un vistazo a su sitio web haciendo click
-el botón "{0}".
+el botón "{1}".
 
 Código fuente disponible aquí:</value>
   </data>

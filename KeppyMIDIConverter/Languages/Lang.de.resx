@@ -281,11 +281,11 @@ Nicht gespeicherte Daten gehen verloren!</value>
     <value>Absturz wurde vom Benutzer verursacht.</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-2017 KaleidonKep99
+    <value>Copyright(C) 2013-{0} KaleidonKep99
 
 Dieses Programm basiert auf Ian Lucks großartigen BASS-Libraries von Un4seen Developments.
 Werfen Sie einen Blick auf seine Website indem Sie auf den
-"{0}" Knopf klicken.
+"{1}" Knopf klicken.
 
 Quellcode hier verfügbar:</value>
   </data>

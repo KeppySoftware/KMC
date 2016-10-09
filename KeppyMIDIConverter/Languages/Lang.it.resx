@@ -281,12 +281,12 @@ Tutte le conversioni non completate verranno perse!</value>
     <value>Crash causato dall'utente.</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-2017 KaleidonKep99
+    <value>Copyright(C) 2013-{0} KaleidonKep99
 
 Questo programma è basato attorno alle potenti librerie
 BASS di Ian Luck, di Un4seen Developments.
 Dai uno sguardo al suo sito cliccando sul
-bottone "{0}".
+bottone "{1}".
 
 Codice sorgente dell'applicazione:</value>
   </data>

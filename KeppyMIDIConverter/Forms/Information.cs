@@ -38,7 +38,7 @@ namespace KeppyMIDIConverter
                 Text = res_man.GetString("InfoWindowTitle", cul);
                 InfoPg.Text = res_man.GetString("InfoPageTitle", cul);
                 UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
-                label1.Text = String.Format(res_man.GetString("Credits", cul), res_man.GetString("Un4seenWebsite", cul));
+                label1.Text = String.Format(res_man.GetString("Credits", cul), DateTime.Now.Year.ToString(), res_man.GetString("Un4seenWebsite", cul));
                 LatestVersion.Text = res_man.GetString("LatestVersionIdle", cul);
                 button5.Text = res_man.GetString("CheckForUpdatesBtn", cul);
             }
@@ -59,10 +59,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        public partial class ExePath
-        {
-            public static string ExecutablePath = KeppyMIDIConverter.MainWindow.KMCGlobals.ExecutablePath;
-        }
+        public static string ExecutablePath = KeppyMIDIConverter.MainWindow.KMCGlobals.ExecutablePath;
 
         private void Informations_Load(object sender, EventArgs e)
         {
@@ -85,13 +82,14 @@ namespace KeppyMIDIConverter
                     Versionlabel.Text = String.Format(res_man.GetString("VersionLabel", cul), "32-bit", "MMX");
                     SAS = "x86";
                 }
+
                 KeppyVer.Text = "Keppy's MIDI Converter " + Application.ProductVersion + ", by KaleidonKep99";
 
                 // OTHER STUFF
-                FileVersionInfo basslibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bass.dll");
-                FileVersionInfo bassmidilibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bassmidi.dll");
-                FileVersionInfo bassenclibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bassenc.dll");
-                FileVersionInfo bassvstlibver = FileVersionInfo.GetVersionInfo(ExePath.ExecutablePath + @"\bass_vst.dll");
+                FileVersionInfo basslibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bass.dll");
+                FileVersionInfo bassmidilibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bassmidi.dll");
+                FileVersionInfo bassenclibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bassenc.dll");
+                FileVersionInfo bassvstlibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bass_vst.dll");
 
                 // Print the file name and version number.
                 String.Format(res_man.GetString("LibraryVersion", cul), basslibver.FileDescription, basslibver.FileVersion, basslibver.FilePrivatePart);

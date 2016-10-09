@@ -280,11 +280,11 @@ BASS 狀態:  {0}</value>
     <value>程式被用戶強行終止.</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-2017 KaleidonKep99
+    <value>Copyright(C) 2013-{0} KaleidonKep99
 
 本軟件基於一個大型 BASS 庫
 由 Ian Luck 來自 Un4seen Developments 所開發.
-點擊 "{0}"按鈕查看該開發頁.
+點擊 "{1}"按鈕查看該開發頁.
 
 
 軟件源碼:</value>

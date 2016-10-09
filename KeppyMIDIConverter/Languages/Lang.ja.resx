@@ -281,11 +281,11 @@ BASS status: {0}</value>
     <value>ユーザーによってクラッシュされました。</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-2017 KaleidonKep99
+    <value>Copyright(C) 2013-{0} KaleidonKep99
 
 このプログラムは Un4seen Developments から
 Ian Luck さんによる素晴らしいBASSライブラリに基づいています。
-「{0}」ボタンをクリックして、彼のサイトを見てください。
+「{1}」ボタンをクリックして、彼のサイトを見てください。
 
 
 利用可能なソースコード:</value>

@@ -1136,9 +1136,9 @@ namespace KeppyMIDIConverter
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    double fpssim = FPSSimulator.NextDouble() * (0.01710000000000000000000000000001 - 0.01635000000000000000000000000001) + 0.01635000000000000000000000000001;
+                                    double fpssim = FPSSimulator.NextDouble() * (0.01676666666666666666666666666667 - 0.01656666666666666666666666666667) + 0.01656666666666666666666666666667;
                                     int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
-                                    byte[] buffer = new byte[length];
+                                    byte[] buffer = new byte[Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim)];
                                     TimeSpan timespent = DateTime.Now - starttime;
                                     long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
                                     float num8 = ((float)num6) / 1048576f;
@@ -1302,7 +1302,6 @@ namespace KeppyMIDIConverter
                                     break;
                                 }
                             }
-                            Bass.BASS_ChannelRemoveSync(KMCGlobals._recHandle, sync);
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
                                 events = null;
@@ -1355,11 +1354,8 @@ namespace KeppyMIDIConverter
 
         private void NoteSyncProc(int handle, int channel, int data, IntPtr user)
         {
-            if (KMCGlobals.PlaybackMode == false)
-            {
-                if ((data & 0xff00) != 0)
-                    KMCGlobals.notecount++; // Note count for playback mode
-            }
+            if ((data & 0xff00) != 0)
+                KMCGlobals.notecount++;
         }
 
         protected override void Dispose(bool disposing)
