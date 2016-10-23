@@ -219,34 +219,5 @@ namespace KeppyMIDIConverter
 
             Process.Start(url);
         }
-
-        private void TrumpTrigger_Click(object sender, EventArgs e)
-        {
-            using (Form form = new Form())
-            {
-                form.Text = "I vote for Trump.";
-                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-                form.Text = "Vote Donald Trump 2016 ~ Make America great again!";
-                form.ShowIcon = false;
-                form.ShowInTaskbar = false;
-                form.BackgroundImage = KeppyMIDIConverter.Properties.Resources.americagreatagain;
-                form.Size = new Size(506, 253);
-                form.StartPosition = FormStartPosition.CenterScreen;
-                form.Shown += new System.EventHandler(PlayTrumpy);
-                form.ShowDialog();
-            }
-        }
-
-        private void PlayTrumpy(object sender, EventArgs e)
-        {
-            System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.heh;
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
-            player.PlaySync();
-            DialogResult potato = MessageBox.Show("Vote Trump 2016!\n\n~Keppy", "Very important message", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (potato == DialogResult.Yes)
-                MessageBox.Show(":)", "Clinton's e-mails are interesting.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (potato == DialogResult.No)
-                MessageBox.Show(">:(", "Get out", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
     }
 }

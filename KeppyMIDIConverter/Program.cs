@@ -109,82 +109,6 @@ namespace KeppyMIDIConverter
                         MessageBox.Show("Language succesfully restored.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    else if (args[i].ToLowerInvariant() == "/cancer")
-                    {
-                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to get cancer?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            Process.Start("https://plus.google.com/115075806009670308613/posts/hwyTGoKqkx4");
-                            Process.Start("https://plus.google.com/115075806009670308613/posts/JCK4d6L5juK");
-                            ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
-                            {
-                                throw new TooMuchCancerForMe("Goddamnit Jacob");
-                            }));
-                        }
-                        else
-                        {
-                            MessageBox.Show("Good.", "Whew...", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/nope")
-                    {
-                        System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.no;
-                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
-                        player.PlaySync();
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/sam")
-                    {
-                    SOI:
-                        System.IO.Stream soi = KeppyMIDIConverter.Properties.Resources.soi;
-                        System.Media.SoundPlayer soiplay = new System.Media.SoundPlayer(soi);
-                        soiplay.PlaySync();
-                        soiplay.Dispose();
-                        soi.Dispose();
-                        goto SOI;
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/kek")
-                    {
-                    KEK:
-                        System.IO.Stream kek = KeppyMIDIConverter.Properties.Resources.kek;
-                        System.Media.SoundPlayer kekplay = new System.Media.SoundPlayer(kek);
-                        kekplay.PlaySync();
-                        kekplay.Dispose();
-                        kek.Dispose();
-                        goto KEK;
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/zeb89")
-                    {
-                        System.IO.Stream merdinskimerdonski = KeppyMIDIConverter.Properties.Resources.merdinskimerdonski;
-                        System.Media.SoundPlayer mermerplay = new System.Media.SoundPlayer(merdinskimerdonski);
-                        mermerplay.PlaySync();
-                        mermerplay.Dispose();
-                        merdinskimerdonski.Dispose();
-                        ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
-                        {
-                            throw new MerdinskiMerdonski("MAAMMMENONMMENEFFREGAUNCCCAZO");
-                        }));
-                        break;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/texttospeech")
-                    {
-                        SpeechSynthesizer speak = new SpeechSynthesizer();
-                        speak.Volume = 100;
-                        speak.Rate = 0;
-                        speak.SpeakAsync("Hello. Seems like you triggered the Speech Synthesizer secret in Keppy's MIDI Converter. Well, good for you, I guess. Here, take this cookie, you deserve it. And remember, Keppy is awesome. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        break;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/whattimeisit")
-                    {
-                        SpeechSynthesizer speak = new SpeechSynthesizer();
-                        speak.Volume = 100;
-                        speak.Rate = 0;
-                        speak.Speak(String.Format("It's now {0} and {1} {2}", DateTime.Now.ToString("hh"), DateTime.Now.ToString("mm"), DateTime.Now.ToString("tt")));
-                        return;
-                    }
                     else if (args[i].ToLowerInvariant() == "/rickroll")
                     {
                         Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
@@ -209,43 +133,6 @@ namespace KeppyMIDIConverter
                     {
                         Process.Start("https://plus.google.com/communities/105907289212970966669");
                         return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/hell")
-                    {
-                    LOL:
-                        MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        goto LOL;
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/windows98")
-                    {
-                        MessageBox.Show("There are no easter eggs here, go away.");
-                        System.Threading.Thread.Sleep(3000);
-                        MessageBox.Show("Who knows tho...");
-                        Process.Start("https://www.youtube.com/watch?v=J57LQ1OrVfs");
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/ppap")
-                    {
-                        Process.Start("https://www.youtube.com/embed/0E00Zuayv9Q?autoplay=1&start=14");
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/ppaprnb")
-                    {
-                        Process.Start("https://www.youtube.com/embed/SceT9PJosvQ?autoplay=1");
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/japan" | args[i].ToLowerInvariant() == "/weeaboo")
-                    {
-                        string Emojipasta = @"👌👀👌👀👌👀👌👀👌👀 良いくそ　良( |クそ👌 それ ✔ は 良い👌👌くそだ　 ｽｸﾞ👌👌 ｿ👌 ｺ👌👌👌 すぐ✔そこ ✔✔わたL/\　と 💯 言え｜よ” 💯 コレツイテ　はなすぅ　しゅごぅすぉこぉ 素具祖子 (ｶﾞｯｼｮ: スク”ンコ) んんんんんｎ💯 👌👌 👌ほ王おおおぉぉぉおォォオォオｫｵｵｵｫゥ👌 👌👌 👌 💯 👌 👀👀 👀 👌👌ョイ糞";
-                        string Sasukechan = "Omg hai ___^ I’m anon-san and I absolutely luuuv @__@ anime <3 and my fav is naurto!!! Okies so anyways, im going to tell you about the BEST day of my life when I met my hot husband sasuke!! <333333333 OMFGZ HE WAS SOOOOO FREAKIN KAWAII IN PERSON!!! Supa kawaii desu!!!!!!!! ^___________________________________^\nWhen I walked onto Tokyo street =____=I looked up and saw…SASUKE!!!!!!!!!!!!!!! <33333333333333333333333333333333333333333333333333333333333333!!!! “ KONNICHIWA OMGZZZZZZZZZZZZZZZZ SUPA SUPA SUPA KAWAII SASUKE-SAMA!!!!!” I yelled n____n then he turned chibi then un-chibi!! he looked at me [O.O;;;;;;;;;;;] and then he saw how hot I am *___* he grabbed my hand and winked ~_^ then pulled me behind a pocky shop o_o and started to kiss me!!!!!! [OMG!!! HIS TOUNGE TASTED LIKE RAMEN!!! RLY!! >.> <.< >.< (O) (O) (O)] then I saw some baka fat bitch watching us and I could tell she was undressing him with her eyes!!!!!!! [ -___________-;;;;; OMG I COULDN’T BELIEVE IT EITHER!!! (ò_ó) (ò_ó) (ò_ó)] so I yelled “UH UH BAKA NEKO THAT’S MY MAN WHY DON’T YOU GO HOOK UP WITH NARUTO CAUSE SASUKE-SAMA LOVES ME!!! (ò_ó)” then sasuke held me close =^= and said he would only ever love me and kissed me again!!!!!!! ** (O)/ then we went to his apartment and banged all night long and made 42 babies and they all became ninjas!!!!!!!!!!!!!!! Nyaaaaa!!! (^___<) ^______________;;;;;;;;;;;;;;;;";
-                        MessageBox.Show(Emojipasta, "お兄ちゃん", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        MessageBox.Show(Sasukechan, "サスケちゃん", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
-                        {
-                            throw new IHateWeeabos("NOTICE ME SENPAI~");
-                        }));
-                        break;
                     }
                     else if (args[i].Contains("/"))
                     {
@@ -413,40 +300,6 @@ namespace KeppyMIDIConverter
 }
 
 // Custom exceptions
-public class IHateWeeabos : Exception
-{
-    public IHateWeeabos()
-    {
-    }
-
-    public IHateWeeabos(string message)
-        : base(message)
-    {
-    }
-
-    public IHateWeeabos(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
-}
-
-public class TooMuchCancerForMe : Exception
-{
-    public TooMuchCancerForMe()
-    {
-    }
-
-    public TooMuchCancerForMe(string message)
-        : base(message)
-    {
-    }
-
-    public TooMuchCancerForMe(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
-}
-
 public class AntiDamageCrash : Exception
 {
     public AntiDamageCrash()
@@ -459,23 +312,6 @@ public class AntiDamageCrash : Exception
     }
 
     public AntiDamageCrash(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
-}
-
-public class MerdinskiMerdonski : Exception
-{
-    public MerdinskiMerdonski()
-    {
-    }
-
-    public MerdinskiMerdonski(string message)
-        : base(message)
-    {
-    }
-
-    public MerdinskiMerdonski(string message, Exception inner)
         : base(message, inner)
     {
     }

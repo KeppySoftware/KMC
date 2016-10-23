@@ -50,7 +50,6 @@
             this.ThisVersion = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.TrumpTrigger = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -187,7 +186,6 @@
             // 
             // InfoPg
             // 
-            this.InfoPg.Controls.Add(this.TrumpTrigger);
             this.InfoPg.Controls.Add(this.pictureBox1);
             this.InfoPg.Controls.Add(this.panel1);
             this.InfoPg.Controls.Add(this.label1);
@@ -269,14 +267,6 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // TrumpTrigger
-            // 
-            this.TrumpTrigger.Location = new System.Drawing.Point(484, 6);
-            this.TrumpTrigger.Name = "TrumpTrigger";
-            this.TrumpTrigger.Size = new System.Drawing.Size(47, 23);
-            this.TrumpTrigger.TabIndex = 11;
-            this.TrumpTrigger.Click += new System.EventHandler(this.TrumpTrigger_Click);
-            // 
             // Informations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -332,6 +322,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label BASSINFO2;
-        private System.Windows.Forms.Panel TrumpTrigger;
     }
 }

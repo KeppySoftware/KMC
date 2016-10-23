@@ -130,9 +130,6 @@
   <data name="convstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convstart.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="kek" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kek.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="delete_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,12 +139,6 @@
   <data name="convpause" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convpause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="americagreatagain" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\americagreatagain.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="merdinskimerdonski" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\merdinskimerdonski.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="updatebk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\updatebk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -156,9 +147,6 @@
   </data>
   <data name="worldwideweb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\worldwideweb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="no" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\no.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="convfail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convfail.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -193,9 +181,6 @@
   <data name="add_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="soi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\soi.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="convfin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convfin.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -207,9 +192,6 @@
   </data>
   <data name="vstlogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vstlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="heh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\heh.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="donatebtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\donatebtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

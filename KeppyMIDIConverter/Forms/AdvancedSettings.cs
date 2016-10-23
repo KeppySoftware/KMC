@@ -193,12 +193,14 @@ namespace KeppyMIDIConverter
                 Settings.SetValue("overrideogg", "1", Microsoft.Win32.RegistryValueKind.DWord);
                 label3.Enabled = true;
                 BitrateBox.Enabled = true;
+                MainWindow.KMCGlobals.QualityOverride = true;
             }
             else
             {
                 Settings.SetValue("overrideogg", "0", Microsoft.Win32.RegistryValueKind.DWord);
                 label3.Enabled = false;
                 BitrateBox.Enabled = false;
+                MainWindow.KMCGlobals.QualityOverride = false;
             }
         }
 
