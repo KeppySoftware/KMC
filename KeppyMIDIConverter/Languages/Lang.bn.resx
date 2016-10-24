@@ -205,7 +205,7 @@
     <value>ক্লিন soundfonts তালিকা</value>
   </data>
   <data name="ConstantBitrateOGG" xml:space="preserve">
-    <value>বল ধ্রুবক বিটরেট (OGG Vorbis):</value>
+    <value>বল ধ্রুবক বিটরেট (OGG/MP3):</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
     <value>রূপান্তর বন্ধ্যা.  </value>
@@ -652,5 +652,8 @@ or if you don't know which one you should use.</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
     <value>yes</value>
+  </data>
+  <data name="RenderToMP3" xml:space="preserve">
+    <value>জন্য LAME ফাইলগুলি রেন্ডার (.MP3)</value>
   </data>
 </root>

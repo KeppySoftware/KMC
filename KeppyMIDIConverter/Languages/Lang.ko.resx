@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AbortConvPlayback" xml:space="preserve">
     <value>변환 / 미리보기를 중단</value>
@@ -205,7 +205,7 @@
     <value>사운드 폰트 모두 삭제</value>
   </data>
   <data name="ConstantBitrateOGG" xml:space="preserve">
-    <value>강제로 일정 비트레이트 사용 (OGG Vorbis):</value>
+    <value>강제로 일정 비트레이트 사용 (OGG/MP3):</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
     <value>변환이 중단되었습니다.</value>
@@ -653,5 +653,8 @@ SFZ 파일을 위해 소스의 뱅크, 프리셋 을 0 으로 설정합니다.</
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
     <value>no</value>
+  </data>
+  <data name="RenderToMP3" xml:space="preserve">
+    <value>LAME 파일을 렌더링 (.OGG)</value>
   </data>
 </root>

@@ -78,7 +78,8 @@ namespace KeppyMIDIConverter
             public static string CurrentAverage = "0.0 dB";
             public static string CurrentStatusTextString;
             public static string DisabledOr;
-            public static string EncoderPath;
+            public static string EncoderPathOGG;
+            public static string EncoderPathMP3;
             public static string ExportLastDirectory;
             public static string ExportWhereYay;
             public static string MIDILastDirectory;
@@ -112,11 +113,12 @@ namespace KeppyMIDIConverter
 
         private enum MoveDirection { Up = -1, Down = 1 };
 
-        public MainWindow(String[] args, string encoder, bool deletencoder)
+        public MainWindow(String[] args, string oggencoder, string mp3encoder, bool deletencoder)
         {          
             InitializeComponent();
             InitializeLanguage();
-            KMCGlobals.EncoderPath = encoder;
+            KMCGlobals.EncoderPathOGG = oggencoder;
+            KMCGlobals.EncoderPathMP3 = mp3encoder;
             KMCGlobals.DeleteEncoder = deletencoder;
             //To store all the soundfonts that where opened with the application
             List<String> soundfonts = null;
@@ -220,6 +222,7 @@ namespace KeppyMIDIConverter
                 removeSelectedMIDIsToolStripMenuItem.Text = RemoveMIDIsRightClick.Text = res_man.GetString("RemoveMIDI", cul);
                 startRenderingOGGToolStripMenuItem.Text = res_man.GetString("RenderToOGG", cul);
                 startRenderingWAVToolStripMenuItem.Text = res_man.GetString("RenderToWAV", cul);
+                startRenderingMp3ToolStripMenuItem.Text = res_man.GetString("RenderToMP3", cul);
                 supportTheDeveloperWithADonationToolStripMenuItem.Text = res_man.GetString("supportTheDeveloperWithADonation", cul);
             }
             catch (Exception ex)
@@ -264,6 +267,7 @@ namespace KeppyMIDIConverter
                 removeSelectedMIDIsToolStripMenuItem.Text = RemoveMIDIsRightClick.Text = res_man.GetString("RemoveMIDI", cul);
                 startRenderingOGGToolStripMenuItem.Text = res_man.GetString("RenderToOGG", cul);
                 startRenderingWAVToolStripMenuItem.Text = res_man.GetString("RenderToWAV", cul);
+                startRenderingMp3ToolStripMenuItem.Text = res_man.GetString("RenderToMP3", cul);
                 supportTheDeveloperWithADonationToolStripMenuItem.Text = res_man.GetString("supportTheDeveloperWithADonation", cul);
             }
         }
@@ -448,7 +452,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void startRenderingWAVToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StartRenderingThread()
         {
             int convmode = 0;
             KMCGlobals.RenderingMode = true;
@@ -456,7 +460,6 @@ namespace KeppyMIDIConverter
             this.ExportWhere.FileName = res_man.GetString("SaveHere", cul);
             this.ExportWhere.InitialDirectory = KMCGlobals.ExportLastDirectory;
             this.ExportWhere.Title = res_man.GetString("ExportWhere", cul);
-            KMCGlobals.CurrentStatusTextString = null;
             if (ModifierKeys == Keys.Shift)
             {
                 convmode = 1;
@@ -471,7 +474,7 @@ namespace KeppyMIDIConverter
                 Settings.SetValue("lastexportfolder", KMCGlobals.ExportLastDirectory);
                 Settings.Close();
                 ExportWhere.InitialDirectory = KMCGlobals.ExportLastDirectory;
-                KMCGlobals.CurrentEncoder = 0;
+
                 if (convmode == 1)
                 {
                     KMCGlobals.RealTime = true;
@@ -490,46 +493,24 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private void startRenderingWAVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KMCGlobals.CurrentEncoder = 0;
+            StartRenderingThread();
+        }
+
 
         private void startRenderingOGGToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int convmode = 0;
-            KMCGlobals.RenderingMode = true;
-            this.loadingpic.Visible = true;
-            this.ExportWhere.FileName = res_man.GetString("SaveHere", cul);
-            this.ExportWhere.InitialDirectory = KMCGlobals.ExportLastDirectory;
-            this.ExportWhere.Title = res_man.GetString("ExportWhere", cul);
-            if (ModifierKeys == Keys.Shift)
-            {
-                convmode = 1;
-                MessageBox.Show("Real-time simulation mode activated.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (this.ExportWhere.ShowDialog() == DialogResult.OK)
-            {
-                KMCGlobals.CurrentStatusTextString = null;
-                KMCGlobals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                KMCGlobals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
-                Settings.SetValue("lastexportfolder", KMCGlobals.ExportLastDirectory);
-                Settings.Close();
-                ExportWhere.InitialDirectory = KMCGlobals.ExportLastDirectory;
-                KMCGlobals.CurrentEncoder = 1;
-                if (convmode == 1)
-                {
-                    KMCGlobals.RealTime = true;
-                    this.ConverterProcessRT.RunWorkerAsync();
-                }
-                else
-                {
-                    KMCGlobals.RealTime = false;
-                    this.ConverterProcess.RunWorkerAsync();
-                }
-            }
-            else
-            {
-                KMCGlobals.RenderingMode = false;
-                this.loadingpic.Visible = false;
-            }
+            KMCGlobals.CurrentEncoder = 1;
+            StartRenderingThread();
+        }
+
+
+        private void startRenderingMp3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KMCGlobals.CurrentEncoder = 2;
+            StartRenderingThread();
         }
 
         private void abortRenderingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -808,15 +789,15 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private string EncoderString(String str, String ext, String argstoadd)
+        private string EncoderString(String encpath, String str, String ext, String argstoadd)
         {
-            if (ext == "ogg")
+            if (ext == "wav")
             {
-                return String.Format("{0} {1} \"{2}.{3}\"", KMCGlobals.EncoderPath, argstoadd, str, ext);
+                return String.Format("{0}.{1}", str, ext);
             }
             else
             {
-                return String.Format("{0}.{1}", str, ext);
+                return String.Format("{0} {1} \"{2}.{3}\"", encpath, argstoadd, str, ext);
             }
         }
 
@@ -827,7 +808,7 @@ namespace KeppyMIDIConverter
             {
                 case 0:
                     return BASSEncode.BASS_ENCODE_PCM;
-                case 1:
+                default:
                     return (BASSEncode)0;
             }
             return BASSEncode.BASS_ENCODE_PCM;
@@ -839,31 +820,52 @@ namespace KeppyMIDIConverter
             {
                 string pathwithoutext = String.Format("{0}\\{1}", KMCGlobals.ExportWhereYay, Path.GetFileNameWithoutExtension(str));
                 string ext;
-                string oggargs;
+                string enc;
+                string args;
                 bool isogg;
                 int copynum = 1;
-                if (format == 0)
+                if (format == 1)
                 {
-                    ext = "wav";
-                    isogg = false;
-                    oggargs = "";
-                }
-                else
-                {
-                    foreach (Process proc in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(KMCGlobals.EncoderPath)))
+                    foreach (Process proc in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(KMCGlobals.EncoderPathOGG)))
                     {
                         proc.Kill();
                     }
                     ext = "ogg";
+                    enc = KMCGlobals.EncoderPathOGG;
                     isogg = true;
                     if (KMCGlobals.QualityOverride == true)
                     {
-                        oggargs = String.Format("--managed -b {0} -m {0} -M {0} - -o", KMCGlobals.Bitrate.ToString());
+                        args = String.Format("--managed -b {0} -m {0} -M {0} - -o", KMCGlobals.Bitrate.ToString());
                     }
                     else
                     {
-                        oggargs = "- -o";
+                        args = "- -o";
                     }
+                }
+                else if (format == 2)
+                {
+                    foreach (Process proc in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(KMCGlobals.EncoderPathMP3)))
+                    {
+                        proc.Kill();
+                    }
+                    ext = "mp3";
+                    enc = KMCGlobals.EncoderPathMP3;
+                    isogg = true;
+                    if (KMCGlobals.QualityOverride == true)
+                    {
+                        args = String.Format("-m j -b {0} - ", KMCGlobals.Bitrate.ToString());
+                    }
+                    else
+                    {
+                        args = "-m j - ";
+                    }
+                }
+                else
+                {
+                    ext = "wav";
+                    enc = null;
+                    isogg = false;
+                    args = "";
                 }
                 if (File.Exists(String.Format("{0}.{1}", pathwithoutext, ext)))
                 {
@@ -875,14 +877,14 @@ namespace KeppyMIDIConverter
                         ++copynum;
                     } while (File.Exists(String.Format("{0}.{1}", temp, ext)));
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
-                    KMCGlobals._Encoder = BassEnc.BASS_Encode_Start(stream, EncoderString(temp, ext, oggargs), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
-                    MessageBox.Show(EncoderString(temp, ext, oggargs));
+                    KMCGlobals._Encoder = BassEnc.BASS_Encode_Start(stream, EncoderString(enc, temp, ext, args), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
+                    MessageBox.Show(EncoderString(enc, temp, ext, args));
                 }
                 else
                 {
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
-                    KMCGlobals._Encoder = BassEnc.BASS_Encode_Start(stream, EncoderString(pathwithoutext, ext, oggargs), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
-                    MessageBox.Show(EncoderString(pathwithoutext, ext, oggargs));
+                    KMCGlobals._Encoder = BassEnc.BASS_Encode_Start(stream, EncoderString(enc, pathwithoutext, ext, args), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
+                    MessageBox.Show(EncoderString(enc, pathwithoutext, ext, args));
                 }
             }
             catch (Exception ex)
@@ -1437,7 +1439,8 @@ namespace KeppyMIDIConverter
                 t2.Stop();
                 if (KMCGlobals.DeleteEncoder == true)
                 {
-                    File.Delete(KMCGlobals.EncoderPath);
+                    File.Delete(KMCGlobals.EncoderPathMP3);
+                    File.Delete(KMCGlobals.EncoderPathOGG);
                 }
                 Process.GetCurrentProcess().Kill();  
             }
@@ -1807,6 +1810,7 @@ namespace KeppyMIDIConverter
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
                         this.startRenderingWAVToolStripMenuItem.Enabled = false;
                         this.startRenderingOGGToolStripMenuItem.Enabled = false;
+                        this.startRenderingMp3ToolStripMenuItem.Enabled = false;
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
@@ -1835,6 +1839,7 @@ namespace KeppyMIDIConverter
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
                         this.startRenderingWAVToolStripMenuItem.Enabled = false;
                         this.startRenderingOGGToolStripMenuItem.Enabled = false;
+                        this.startRenderingMp3ToolStripMenuItem.Enabled = false;
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
@@ -1866,6 +1871,7 @@ namespace KeppyMIDIConverter
                             clearMIDIsListToolStripMenuItem.Enabled = false;
                             startRenderingWAVToolStripMenuItem.Enabled = false;
                             startRenderingOGGToolStripMenuItem.Enabled = false;
+                            startRenderingMp3ToolStripMenuItem.Enabled = false;
                             playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         }
                         else
@@ -1878,6 +1884,7 @@ namespace KeppyMIDIConverter
                                 clearMIDIsListToolStripMenuItem.Enabled = true;
                                 startRenderingWAVToolStripMenuItem.Enabled = false;
                                 startRenderingOGGToolStripMenuItem.Enabled = false;
+                                startRenderingMp3ToolStripMenuItem.Enabled = false;
                                 playInRealtimeBetaToolStripMenuItem.Enabled = false;
                             }
                             else
@@ -1888,6 +1895,7 @@ namespace KeppyMIDIConverter
                                 clearMIDIsListToolStripMenuItem.Enabled = true;
                                 startRenderingWAVToolStripMenuItem.Enabled = true;
                                 startRenderingOGGToolStripMenuItem.Enabled = true;
+                                startRenderingMp3ToolStripMenuItem.Enabled = true;
                                 playInRealtimeBetaToolStripMenuItem.Enabled = true;
                             }
                         }
@@ -1951,6 +1959,7 @@ namespace KeppyMIDIConverter
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
                         this.startRenderingWAVToolStripMenuItem.Enabled = false;
                         this.startRenderingOGGToolStripMenuItem.Enabled = false;
+                        this.startRenderingMp3ToolStripMenuItem.Enabled = false;
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;
@@ -2009,6 +2018,7 @@ namespace KeppyMIDIConverter
                         this.clearMIDIsListToolStripMenuItem.Enabled = false;
                         this.startRenderingWAVToolStripMenuItem.Enabled = false;
                         this.startRenderingOGGToolStripMenuItem.Enabled = false;
+                        this.startRenderingMp3ToolStripMenuItem.Enabled = false;
                         this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
                         this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
                         this.abortRenderingToolStripMenuItem.Enabled = true;

@@ -199,7 +199,7 @@ Error:
     <value>Clean soundfonts list</value>
   </data>
   <data name="ConstantBitrateOGG" xml:space="preserve">
-    <value>Force constant bitrate (OGG Vorbis):</value>
+    <value>Force constant bitrate (OGG/MP3):</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
     <value>Conversion aborted.</value>
@@ -656,5 +656,8 @@ or if you don't know which one you should use.</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
     <value>no</value>
+  </data>
+  <data name="RenderToMP3" xml:space="preserve">
+    <value>Render files to LAME (.MP3)</value>
   </data>
 </root>

@@ -50,6 +50,7 @@
             this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.startRenderingWAVToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.startRenderingOGGToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.startRenderingMp3ToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.playInRealtimeBetaToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.abortRenderingToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItem12 = new System.Windows.Forms.MenuItem();
@@ -332,6 +333,7 @@
             this.menuItem7,
             this.startRenderingWAVToolStripMenuItem,
             this.startRenderingOGGToolStripMenuItem,
+            this.startRenderingMp3ToolStripMenuItem,
             this.playInRealtimeBetaToolStripMenuItem,
             this.abortRenderingToolStripMenuItem,
             this.menuItem12,
@@ -392,14 +394,20 @@
             // 
             this.VistaMenuSys.SetImage(this.startRenderingOGGToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
             this.startRenderingOGGToolStripMenuItem.Index = 7;
-            this.startRenderingOGGToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
             this.startRenderingOGGToolStripMenuItem.Text = "Render files to Vorbis (.OGG)";
             this.startRenderingOGGToolStripMenuItem.Click += new System.EventHandler(this.startRenderingOGGToolStripMenuItem_Click);
+            // 
+            // startRenderingMp3ToolStripMenuItem
+            // 
+            this.VistaMenuSys.SetImage(this.startRenderingMp3ToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
+            this.startRenderingMp3ToolStripMenuItem.Index = 8;
+            this.startRenderingMp3ToolStripMenuItem.Text = "Render files to LAME (.MP3)";
+            this.startRenderingMp3ToolStripMenuItem.Click += new System.EventHandler(this.startRenderingMp3ToolStripMenuItem_Click);
             // 
             // playInRealtimeBetaToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.playInRealtimeBetaToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.speaker_icon);
-            this.playInRealtimeBetaToolStripMenuItem.Index = 8;
+            this.playInRealtimeBetaToolStripMenuItem.Index = 9;
             this.playInRealtimeBetaToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
             this.playInRealtimeBetaToolStripMenuItem.Text = "Preview files (Real-time playback)";
             this.playInRealtimeBetaToolStripMenuItem.Click += new System.EventHandler(this.playInRealtimeBetaToolStripMenuItem_Click);
@@ -407,20 +415,20 @@
             // abortRenderingToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.abortRenderingToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
-            this.abortRenderingToolStripMenuItem.Index = 9;
+            this.abortRenderingToolStripMenuItem.Index = 10;
             this.abortRenderingToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlDel;
             this.abortRenderingToolStripMenuItem.Text = "Abort rendering/preview";
             this.abortRenderingToolStripMenuItem.Click += new System.EventHandler(this.abortRenderingToolStripMenuItem_Click);
             // 
             // menuItem12
             // 
-            this.menuItem12.Index = 10;
+            this.menuItem12.Index = 11;
             this.menuItem12.Text = "-";
             // 
             // exitToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.exitToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.back_icon);
-            this.exitToolStripMenuItem.Index = 11;
+            this.exitToolStripMenuItem.Index = 12;
             this.exitToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.AltF4;
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
@@ -980,6 +988,7 @@
         public System.ComponentModel.BackgroundWorker ConverterProcessRT;
         private System.Windows.Forms.ListView MIDIList;
         public System.Windows.Forms.Timer RenderingTimer;
+        private System.Windows.Forms.MenuItem startRenderingMp3ToolStripMenuItem;
     }
 }
 

@@ -33,7 +33,8 @@ namespace KeppyMIDIConverter
         static void Main(String[] args)
         {
             bool deletencoder = false;
-            string encoder = "kmcogg.exe";
+            string oggencoder = "kmcogg.exe";
+            string mp3encoder = "kmcmp3.exe";
             bool ok;
             DeleteOldLanguages();
             Mutex m = new Mutex(true, "KepMIDIConv", out ok);
@@ -45,8 +46,13 @@ namespace KeppyMIDIConverter
                 string originalkmcpath = String.Format("{0}\\{1}", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "kmcogg.exe");
                 string newkmcoggpath = String.Format("{0}kmcogg{1}.exe", Path.GetTempPath(), Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
                 File.Copy(originalkmcpath, newkmcoggpath);
+                rnd.NextBytes(bytes);
+                originalkmcpath = String.Format("{0}\\{1}", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "kmcmp3.exe");
+                string newkmcmp3path = String.Format("{0}kmcmp3{1}.exe", Path.GetTempPath(), Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
+                File.Copy(originalkmcpath, newkmcmp3path);
                 deletencoder = true;
-                encoder = newkmcoggpath;
+                oggencoder = newkmcoggpath;
+                mp3encoder = newkmcoggpath;
             }
             try
             {
@@ -146,7 +152,7 @@ namespace KeppyMIDIConverter
                 }
                 if (shouldupdate == 1)
                     PerformUpdate();
-                Application.Run(new MainWindow(args, encoder, deletencoder));
+                Application.Run(new MainWindow(args, oggencoder, mp3encoder, deletencoder));
                 TriggerDate();
                 GC.KeepAlive(m);
             }
