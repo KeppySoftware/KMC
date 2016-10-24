@@ -42,17 +42,20 @@ namespace KeppyMIDIConverter
             {
                 var bytes = new byte[16];
                 var rnd = new Random();
+
                 rnd.NextBytes(bytes);
                 string originalkmcpath = String.Format("{0}\\{1}", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "kmcogg.exe");
                 string newkmcoggpath = String.Format("{0}kmcogg{1}.exe", Path.GetTempPath(), Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
                 File.Copy(originalkmcpath, newkmcoggpath);
+
                 rnd.NextBytes(bytes);
                 originalkmcpath = String.Format("{0}\\{1}", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "kmcmp3.exe");
                 string newkmcmp3path = String.Format("{0}kmcmp3{1}.exe", Path.GetTempPath(), Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
                 File.Copy(originalkmcpath, newkmcmp3path);
+
                 deletencoder = true;
                 oggencoder = newkmcoggpath;
-                mp3encoder = newkmcoggpath;
+                mp3encoder = newkmcmp3path;
             }
             try
             {
@@ -152,7 +155,11 @@ namespace KeppyMIDIConverter
                 }
                 if (shouldupdate == 1)
                     PerformUpdate();
-                Application.Run(new MainWindow(args, oggencoder, mp3encoder, deletencoder));
+                var encoders = new List<string>();
+                encoders.Add(oggencoder);
+                encoders.Add(mp3encoder);
+                String[] array = encoders.ToArray();
+                Application.Run(new MainWindow(args, array, deletencoder));
                 TriggerDate();
                 GC.KeepAlive(m);
             }

@@ -5,7 +5,7 @@
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '14.1.1'
+#define MyAppVersion '14.1.2'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -75,6 +75,7 @@ Source: "bin\x64\bassmidi.dll"; DestDir: "{app}\x64";  Flags: ignoreversion repl
 Source: "bin\x64\bassopus.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\basswv.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\kmcogg.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\kmcmp3.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 
 ;32-bit files
 Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
@@ -87,6 +88,7 @@ Source: "bin\x86\bassmidi.dll"; DestDir: "{app}\x86";  Flags: ignoreversion repl
 Source: "bin\x86\bassopus.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\basswv.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\kmcmp3.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
