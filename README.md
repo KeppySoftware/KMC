@@ -34,35 +34,23 @@ There's a portable version of Keppy's MIDI Converter too. [Take a look here] (ht
 - Microsoft Visual Studio 2013. (or newer, your choice)
 - [BASS.NET] (http://www.bass.radio42.com/) by Radio42.
 
-## Main languages available:
+## Languages available:
 Language | Available
 ------------ | -------------
-Afrikaans | No translator available
-Arabic | No translator available
-Armenian | No translator available
 Bengali | Yes
-Bulgarian | No translator available
 Chinese (Simplified) | Yes
 Chinese (Traditional) | Yes
-Danish | No translator available
-Dutch | No translator available
 English | Yes
 Estonian | Yes
-French | No translator available
 German | Yes
-Hebrew | No translator available
-Indonesian | On its way
 Italian | Yes
 Japanese | Yes
 Korean | Yes
-Portuguese | No translator available
 Russian | Yes
-Serbian | No translator available
 Spanish | Yes
 Turkish | Yes
-Ukrainian | No translator available
 
-## How can I edit a translation
+## How can I contribute to the language support?
 It's pretty easy and straightforward!<br>
 Follow these easy steps:
 
