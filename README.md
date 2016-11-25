@@ -50,6 +50,8 @@ Russian | Yes
 Spanish | Yes
 Turkish | Yes
 
+If your main language isn't here, and you're willing to help, just follow the guide down below.
+
 ## How can I contribute to the language support?
 It's pretty easy and straightforward!<br>
 Follow these easy steps:
