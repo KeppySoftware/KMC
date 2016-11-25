@@ -60,6 +60,7 @@ namespace KeppyMIDIConverter
             try
             {
                 int shouldupdate = 1;
+                int skiptrigger = 1;
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 for (int i = 0; i < args.Length; i++)
@@ -67,6 +68,11 @@ namespace KeppyMIDIConverter
                     if (args[i].ToLowerInvariant() == "/skipupdate")
                     {
                         shouldupdate = 0;
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/avoidtrigger")
+                    {
+                        skiptrigger = 0;
                         break;
                     }
                     else if (args[i].ToLowerInvariant() == "/debug") // DO NOT USE IF NOT NEEDED <.<
@@ -155,12 +161,13 @@ namespace KeppyMIDIConverter
                 }
                 if (shouldupdate == 1)
                     PerformUpdate();
+                if (skiptrigger == 1)
+                    TriggerDate();
                 var encoders = new List<string>();
                 encoders.Add(oggencoder);
                 encoders.Add(mp3encoder);
                 String[] array = encoders.ToArray();
                 Application.Run(new MainWindow(args, array, deletencoder));
-                TriggerDate();
                 GC.KeepAlive(m);
             }
             catch (Exception ex)
@@ -292,7 +299,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        static void TriggerDate()
+        public static void TriggerDate()
         {
             DateTime BirthDate = DateTime.Now;
             int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));

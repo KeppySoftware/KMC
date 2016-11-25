@@ -205,14 +205,26 @@ namespace KeppyMIDIConverter
                         }
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                     }
-                    else if (Path.GetExtension(file).ToLower() == ".sflist")
+                    else if (Path.GetExtension(file).ToLower() == ".sflist" | Path.GetExtension(file).ToLower() == ".txt")
                     {
                         using (StreamReader r = new StreamReader(file))
                         {
                             string line;
                             while ((line = r.ReadLine()) != null)
                             {
-                                SFList.Items.Add(line); // Read the external list and add the items to the list
+                                bool isabsolute = Path.IsPathRooted(line);  // Check if the path to the soundfont is absolute or relative
+                                string relativepath;
+                                string absolutepath;
+                                if (isabsolute == false) // Not absolute, let's convert it
+                                {
+                                    relativepath = String.Format("{0}{1}", Path.GetDirectoryName(file), String.Format("\\{0}", line));
+                                    absolutepath = new Uri(relativepath).LocalPath;
+                                    SFList.Items.Add(absolutepath);
+                                }
+                                else // Absolute, let's just add it straight away
+                                {
+                                    SFList.Items.Add(line);
+                                }
                             }
                         }
                     }
@@ -266,14 +278,26 @@ namespace KeppyMIDIConverter
                         }
                         Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                     }
-                    else if (Path.GetExtension(file).ToLower() == ".sflist")
+                    else if (Path.GetExtension(file).ToLower() == ".sflist" | Path.GetExtension(file).ToLower() == ".txt")
                     {
                         using (StreamReader r = new StreamReader(file))
                         {
                             string line;
                             while ((line = r.ReadLine()) != null)
                             {
-                                SFList.Items.Add(line); // Read the external list and add the items to the list
+                                bool isabsolute = Path.IsPathRooted(line);  // Check if the path to the soundfont is absolute or relative
+                                string relativepath;
+                                string absolutepath;
+                                if (isabsolute == false) // Not absolute, let's convert it
+                                {
+                                    relativepath = String.Format("{0}{1}", Path.GetDirectoryName(file), String.Format("\\{0}", line));
+                                    absolutepath = new Uri(relativepath).LocalPath;
+                                    SFList.Items.Add(absolutepath);
+                                }
+                                else // Absolute, let's just add it straight away
+                                {
+                                    SFList.Items.Add(line);
+                                }    
                             }
                         }
                     }
@@ -410,14 +434,26 @@ namespace KeppyMIDIConverter
                         }
                     }
                 }
-                else if (Path.GetExtension(s[i]).ToLower() == ".sflist")
+                else if (Path.GetExtension(s[i]).ToLower() == ".sflist" | Path.GetExtension(s[i]).ToLower() == ".txt")
                 {
                     using (StreamReader r = new StreamReader(s[i]))
                     {
                         string line;
                         while ((line = r.ReadLine()) != null)
                         {
-                            SFList.Items.Add(line); // Read the external list and add the items to the list
+                            bool isabsolute = Path.IsPathRooted(line);  // Check if the path to the soundfont is absolute or relative
+                            string relativepath;
+                            string absolutepath;
+                            if (isabsolute == false) // Not absolute, let's convert it
+                            {
+                                relativepath = String.Format("{0}{1}", Path.GetDirectoryName(s[i]), String.Format("\\{0}", line));
+                                absolutepath = new Uri(relativepath).LocalPath;
+                                SFList.Items.Add(absolutepath);
+                            }
+                            else // Absolute, let's just add it straight away
+                            {
+                                SFList.Items.Add(line);
+                            }
                         }
                     }
                 }

@@ -164,6 +164,7 @@ namespace KeppyMIDIConverter
                     KMCGlobals.frm2.SFList.Items.Add(s);
                 }
             }
+            //
         }
 
         Timer t1 = new Timer();
@@ -855,7 +856,7 @@ namespace KeppyMIDIConverter
                     }
                     else
                     {
-                        args = "-m j - ";
+                        args = "-m j -b 192 - ";
                     }
                 }
                 else
@@ -875,13 +876,13 @@ namespace KeppyMIDIConverter
                     } while (File.Exists(String.Format("{0}.{1}", temp, ext)));
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
                     KMCGlobals._Encoder = BassEnc.BASS_Encode_Start(stream, EncoderString(enc, temp, ext, args), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
-                    // MessageBox.Show(EncoderString(enc, temp, ext, args));
+                    MessageBox.Show(EncoderString(enc, temp, ext, args));
                 }
                 else
                 {
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
                     KMCGlobals._Encoder = BassEnc.BASS_Encode_Start(stream, EncoderString(enc, pathwithoutext, ext, args), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
-                    // MessageBox.Show(EncoderString(enc, pathwithoutext, ext, args));
+                     MessageBox.Show(EncoderString(enc, pathwithoutext, ext, args));
                 }
             }
             catch (Exception ex)
@@ -963,8 +964,8 @@ namespace KeppyMIDIConverter
             KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
             int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
             TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
-            string str6 = span3.Minutes.ToString() + ":" + span3.Seconds.ToString().PadLeft(2, '0');
-            string str7 = timespent.Minutes.ToString() + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
+            string str6 = span3.Hours.ToString() + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
+            string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
             float percentage = num8 / num7;
             float percentagefinal;
             if (percentage * 100 < 0)
@@ -1190,8 +1191,8 @@ namespace KeppyMIDIConverter
                                     KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
                                     int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
                                     TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
-                                    string str6 = span3.Minutes.ToString() + ":" + span3.Seconds.ToString().PadLeft(2, '0');
-                                    string str7 = timespent.Minutes.ToString() + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
+                                    string str6 = span3.Hours.ToString() + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
+                                    string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
 
                                     uint e1 = es;
                                     while (es < KMCGlobals.eventc && KMCGlobals.events[es].pos < pos + length)
