@@ -41,6 +41,7 @@ namespace KeppyMIDIConverter
             public static bool RealTime = false;
             public static bool TempoOverride = false;
             public static bool VSTMode = false;
+            public static bool VSTSkipSettings = false;
             public static int ActiveVoicesInt = 0;
             public static int AverageCPU;
             public static int Bitrate = 128;
@@ -466,6 +467,16 @@ namespace KeppyMIDIConverter
                 convmode = 1;
                 MessageBox.Show("Real-time simulation mode activated.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else if (ModifierKeys == Keys.Control)
+            {
+                KMCGlobals.VSTSkipSettings = true;
+            }
+            else if (ModifierKeys == (Keys.Shift | Keys.Control))
+            {
+                KMCGlobals.VSTSkipSettings = true;
+                convmode = 1;
+                MessageBox.Show("Real-time simulation mode activated. 22", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             if (this.ExportWhere.ShowDialog() == DialogResult.OK)
             {
                 KMCGlobals.CurrentStatusTextString = null;
@@ -597,38 +608,41 @@ namespace KeppyMIDIConverter
                     KMCGlobals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 6);
                     KMCGlobals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 7);
                     KMCGlobals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 8);
-                    BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                    if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle, vstInfo) && vstInfo.hasEditor)
+                    if (KMCGlobals.VSTSkipSettings != true)
                     {
-                        BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle, vstInfo);
-                    }
-                    if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle2, vstInfo) && vstInfo.hasEditor)
-                    {
-                        BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle2, vstInfo);
-                    }
-                    if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle3, vstInfo) && vstInfo.hasEditor)
-                    {
-                        BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle3, vstInfo);
-                    }
-                    if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle4, vstInfo) && vstInfo.hasEditor)
-                    {
-                        BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle4, vstInfo);
-                    }
-                    if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle5, vstInfo) && vstInfo.hasEditor)
-                    {
-                        BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle5, vstInfo);
-                    }
-                    if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle6, vstInfo) && vstInfo.hasEditor)
-                    {
-                        BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle6, vstInfo);
-                    }
-                    if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle7, vstInfo) && vstInfo.hasEditor)
-                    {
-                        BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle7, vstInfo);
-                    }
-                    if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle8, vstInfo) && vstInfo.hasEditor)
-                    {
-                        BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle8, vstInfo);
+                        BASS_VST_INFO vstInfo = new BASS_VST_INFO();
+                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle, vstInfo) && vstInfo.hasEditor)
+                        {
+                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle, vstInfo);
+                        }
+                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle2, vstInfo) && vstInfo.hasEditor)
+                        {
+                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle2, vstInfo);
+                        }
+                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle3, vstInfo) && vstInfo.hasEditor)
+                        {
+                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle3, vstInfo);
+                        }
+                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle4, vstInfo) && vstInfo.hasEditor)
+                        {
+                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle4, vstInfo);
+                        }
+                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle5, vstInfo) && vstInfo.hasEditor)
+                        {
+                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle5, vstInfo);
+                        }
+                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle6, vstInfo) && vstInfo.hasEditor)
+                        {
+                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle6, vstInfo);
+                        }
+                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle7, vstInfo) && vstInfo.hasEditor)
+                        {
+                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle7, vstInfo);
+                        }
+                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle8, vstInfo) && vstInfo.hasEditor)
+                        {
+                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle8, vstInfo);
+                        }
                     }
                 }
             }
@@ -876,13 +890,13 @@ namespace KeppyMIDIConverter
                     } while (File.Exists(String.Format("{0}.{1}", temp, ext)));
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
                     KMCGlobals._Encoder = BassEnc.BASS_Encode_Start(stream, EncoderString(enc, temp, ext, args), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
-                    MessageBox.Show(EncoderString(enc, temp, ext, args));
+                    // MessageBox.Show(EncoderString(enc, temp, ext, args));
                 }
                 else
                 {
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
                     KMCGlobals._Encoder = BassEnc.BASS_Encode_Start(stream, EncoderString(enc, pathwithoutext, ext, args), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
-                     MessageBox.Show(EncoderString(enc, pathwithoutext, ext, args));
+                    // MessageBox.Show(EncoderString(enc, pathwithoutext, ext, args));
                 }
             }
             catch (Exception ex)
@@ -1093,6 +1107,7 @@ namespace KeppyMIDIConverter
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
                                 KMCGlobals.RenderingMode = false;
+                                KMCGlobals.VSTSkipSettings = false;
                                 KeepLooping = false;
                                 break;
                             }
@@ -1107,6 +1122,7 @@ namespace KeppyMIDIConverter
                             BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
                             KeepLooping = false;
                             KMCGlobals.RenderingMode = false;
+                            KMCGlobals.VSTSkipSettings = false;
                             PlayConversionStop();
                         }
                         else
@@ -1114,6 +1130,7 @@ namespace KeppyMIDIConverter
                             BASSCloseStream(res_man.GetString("ConversionCompleted", cul), res_man.GetString("ConversionCompleted", cul), 1);
                             KeepLooping = false;
                             KMCGlobals.RenderingMode = false;
+                            KMCGlobals.VSTSkipSettings = false;
                             if (KMCGlobals.AutoShutDownEnabled == true)
                             {
                                 var psi = new ProcessStartInfo("shutdown", "/s /t 0");
@@ -1241,6 +1258,7 @@ namespace KeppyMIDIConverter
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
                                 KMCGlobals.RenderingMode = false;
+                                KMCGlobals.VSTSkipSettings = false;
                                 break;
                             }
                             else
@@ -1254,6 +1272,7 @@ namespace KeppyMIDIConverter
                             BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
                             KeepLooping = false;
                             KMCGlobals.RenderingMode = false;
+                            KMCGlobals.VSTSkipSettings = false;
                             KMCGlobals.eventc = 0;
                             KMCGlobals.events = null;
                             PlayConversionStop();
@@ -1262,6 +1281,7 @@ namespace KeppyMIDIConverter
                         {
                             BASSCloseStream(res_man.GetString("ConversionCompleted", cul), res_man.GetString("ConversionCompleted", cul), 1);
                             KMCGlobals.RenderingMode = false;
+                            KMCGlobals.VSTSkipSettings = false;
                             KeepLooping = false;
                             KMCGlobals.eventc = 0;
                             KMCGlobals.events = null;
@@ -1513,8 +1533,10 @@ namespace KeppyMIDIConverter
                     return (((length / 1024f) / 1024f) / 1024f).ToString("0 GB");
                 else if (length / 1024f >= 1000)
                     return ((length / 1024f) / 1024f).ToString("0 MB");
-                else
+                else if (length / 1024f >= 1)
                     return (length / 1024f).ToString("0 KB");
+                else
+                    return (length).ToString("0 B");
             }
             catch { return "-"; }
         }
@@ -1560,6 +1582,18 @@ namespace KeppyMIDIConverter
             }     
         }
 
+        private void ToAddOrNotToAdd(ListViewItem lvi, string notes, string str)
+        {
+            if (notes == "0")
+            {
+                MessageBox.Show(String.Format(res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MIDIList.Items.Add(lvi); 
+            }
+        }
+
         private void importMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MIDIImport.Title = res_man.GetString("ImportMIDIWindow", cul);
@@ -1577,7 +1611,7 @@ namespace KeppyMIDIConverter
                         saLvwItem[2] = midiinfo[0];
                         saLvwItem[3] = GetSizeMIDI(str);
                         ListViewItem lvi = new ListViewItem(saLvwItem);
-                        MIDIList.Items.Add(lvi); 
+                        ToAddOrNotToAdd(lvi, midiinfo[1], str);
                     }
                     else
                     {
@@ -1678,7 +1712,7 @@ namespace KeppyMIDIConverter
                     saLvwItem[1] = midiinfo[1];
                     saLvwItem[2] = midiinfo[0];
                     ListViewItem lvi = new ListViewItem(saLvwItem);
-                    MIDIList.Items.Add(lvi); 
+                    ToAddOrNotToAdd(lvi, midiinfo[1], s[i]);
                 }
                 else
                 {
@@ -1765,8 +1799,6 @@ namespace KeppyMIDIConverter
             System.Threading.Thread.Sleep(1);
             MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
             ExportWhere.InitialDirectory = KMCGlobals.ExportLastDirectory;
-            Graphics gr = CurrentStatus.CreateGraphics();
-            Font font = new Font("Tahoma", 8, GraphicsUnit.Point);
             if (!KMCGlobals.AutoShutDownEnabled)
             {
                 KMCGlobals.AutoShutDownEnabled = false;
@@ -1991,8 +2023,6 @@ namespace KeppyMIDIConverter
                         if (KMCGlobals.RealTime == false)
                         {
                             this.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                            CurrentStatus.Refresh();
-                            gr.DrawString(KMCGlobals.PercentageProgress, font, Brushes.Black, new PointF(CurrentStatus.Width / 2 - (gr.MeasureString(KMCGlobals.PercentageProgress, font).Width / 2.0F), CurrentStatus.Height / 2 - (gr.MeasureString(KMCGlobals.PercentageProgress, font).Height / 2.0F)));
                         }
                         if (KMCGlobals.pictureset != 0)
                         {
@@ -2022,11 +2052,10 @@ namespace KeppyMIDIConverter
                             this.Text = String.Format(res_man.GetString("ConversionText", cul), KMCGlobals.NewWindowName);
                     }
                 }
-                gr.Dispose();
-                font.Dispose();
             }
             catch
             {
+
 
             }
         }
@@ -2214,18 +2243,14 @@ namespace KeppyMIDIConverter
                 ChineseCNOverride.Enabled = true;
                 ChineseHKOverride.Enabled = true;
                 ChineseTWOverride.Enabled = true;
-                DutchOverride.Enabled = false;
                 EnglishOverride.Enabled = true;
                 EstonianOverride.Enabled = true;
-                FrenchOverride.Enabled = false;
                 GermanOverride.Enabled = true;
                 RussianOverride.Enabled = true;
-                IndonesianOverride.Enabled = false;
                 ItalianOverride.Enabled = true;
                 JapaneseOverride.Enabled = true;
                 KoreanOverride.Enabled = true;
                 SpanishOverride.Enabled = true;
-                TurkishOverride.Enabled = false;
                 BengaliOverride.Enabled = true;
             }
             catch (Exception exception)
@@ -2250,18 +2275,14 @@ namespace KeppyMIDIConverter
                 ChineseCNOverride.Enabled = false;
                 ChineseHKOverride.Enabled = false;
                 ChineseTWOverride.Enabled = false;
-                DutchOverride.Enabled = false;
                 EnglishOverride.Enabled = false;
                 EstonianOverride.Enabled = false;
-                FrenchOverride.Enabled = false;
                 GermanOverride.Enabled = false;
                 RussianOverride.Enabled = false;
-                IndonesianOverride.Enabled = false;
                 ItalianOverride.Enabled = false;
                 JapaneseOverride.Enabled = false;
                 KoreanOverride.Enabled = false;
                 SpanishOverride.Enabled = false;
-                TurkishOverride.Enabled = false;
                 BengaliOverride.Enabled = false;
             }
             catch (Exception exception)

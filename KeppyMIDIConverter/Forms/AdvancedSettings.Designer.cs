@@ -42,7 +42,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(313, 161);
+            this.button1.Location = new System.Drawing.Point(315, 161);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 23);
             this.button1.TabIndex = 31;
@@ -69,7 +69,7 @@
             this.GroupBox1.Controls.Add(this.Noteoff1);
             this.GroupBox1.Location = new System.Drawing.Point(5, 2);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(394, 152);
+            this.GroupBox1.Size = new System.Drawing.Size(396, 152);
             this.GroupBox1.TabIndex = 29;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
@@ -77,10 +77,9 @@
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(364, 133);
+            this.label4.Location = new System.Drawing.Point(365, 134);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.Size = new System.Drawing.Size(30, 12);
             this.label4.TabIndex = 17;
             this.label4.Text = "kbps";
             // 
@@ -113,7 +112,7 @@
             "128",
             "96",
             "64"});
-            this.BitrateBox.Location = new System.Drawing.Point(298, 129);
+            this.BitrateBox.Location = new System.Drawing.Point(299, 129);
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(66, 21);
             this.BitrateBox.TabIndex = 15;
@@ -123,7 +122,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(213, 133);
+            this.label3.Location = new System.Drawing.Point(214, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 14;
@@ -134,7 +133,7 @@
             // 
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Location = new System.Drawing.Point(320, 108);
+            this.numericUpDown1.Location = new System.Drawing.Point(321, 108);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             2097120,
             0,
@@ -159,7 +158,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(190, 110);
+            this.label2.Location = new System.Drawing.Point(191, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 13);
             this.label2.TabIndex = 12;
@@ -248,7 +247,7 @@
             this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Noteoff1.Location = new System.Drawing.Point(7, 42);
             this.Noteoff1.Name = "Noteoff1";
-            this.Noteoff1.Size = new System.Drawing.Size(381, 44);
+            this.Noteoff1.Size = new System.Drawing.Size(383, 44);
             this.Noteoff1.TabIndex = 6;
             this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlappin" +
     "g instances of the note.";
@@ -260,7 +259,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(404, 194);
+            this.ClientSize = new System.Drawing.Size(406, 194);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.GroupBox1);

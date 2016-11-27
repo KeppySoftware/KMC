@@ -77,19 +77,15 @@
             this.disabledToolStripMenuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem20 = new System.Windows.Forms.MenuItem();
             this.BengaliOverride = new System.Windows.Forms.MenuItem();
-            this.DutchOverride = new System.Windows.Forms.MenuItem();
             this.EnglishOverride = new System.Windows.Forms.MenuItem();
             this.EstonianOverride = new System.Windows.Forms.MenuItem();
-            this.FrenchOverride = new System.Windows.Forms.MenuItem();
             this.GermanOverride = new System.Windows.Forms.MenuItem();
             this.ItalianOverride = new System.Windows.Forms.MenuItem();
-            this.IndonesianOverride = new System.Windows.Forms.MenuItem();
             this.JapaneseOverride = new System.Windows.Forms.MenuItem();
             this.KoreanOverride = new System.Windows.Forms.MenuItem();
             this.RussianOverride = new System.Windows.Forms.MenuItem();
             this.ChineseCNOverride = new System.Windows.Forms.MenuItem();
             this.SpanishOverride = new System.Windows.Forms.MenuItem();
-            this.TurkishOverride = new System.Windows.Forms.MenuItem();
             this.ChineseHKOverride = new System.Windows.Forms.MenuItem();
             this.ChineseTWOverride = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
@@ -562,19 +558,15 @@
             this.disabledToolStripMenuItem5,
             this.menuItem20,
             this.BengaliOverride,
-            this.DutchOverride,
             this.EnglishOverride,
             this.EstonianOverride,
-            this.FrenchOverride,
             this.GermanOverride,
             this.ItalianOverride,
-            this.IndonesianOverride,
             this.JapaneseOverride,
             this.KoreanOverride,
             this.RussianOverride,
             this.ChineseCNOverride,
             this.SpanishOverride,
-            this.TurkishOverride,
             this.ChineseHKOverride,
             this.ChineseTWOverride});
             this.OverrideStrip.Text = "Override language";
@@ -604,108 +596,80 @@
             this.BengaliOverride.Text = "Bengali (বাঙালি)";
             this.BengaliOverride.Click += new System.EventHandler(this.Bengali_Click);
             // 
-            // DutchOverride
-            // 
-            this.DutchOverride.Enabled = false;
-            this.DutchOverride.Index = 4;
-            this.DutchOverride.Text = "Dutch (Nederlands)";
-            this.DutchOverride.Click += new System.EventHandler(this.DutchOverride_Click);
-            // 
             // EnglishOverride
             // 
             this.EnglishOverride.Enabled = false;
-            this.EnglishOverride.Index = 5;
+            this.EnglishOverride.Index = 4;
             this.EnglishOverride.Text = "English (English)";
             this.EnglishOverride.Click += new System.EventHandler(this.EnglishOverride_Click);
             // 
             // EstonianOverride
             // 
             this.EstonianOverride.Enabled = false;
-            this.EstonianOverride.Index = 6;
+            this.EstonianOverride.Index = 5;
             this.EstonianOverride.Text = "Estonian (Eesti)";
             this.EstonianOverride.Click += new System.EventHandler(this.EstonianOverride_Click);
-            // 
-            // FrenchOverride
-            // 
-            this.FrenchOverride.Enabled = false;
-            this.FrenchOverride.Index = 7;
-            this.FrenchOverride.Text = "French (Français)";
-            this.FrenchOverride.Click += new System.EventHandler(this.FrenchOverride_Click);
             // 
             // GermanOverride
             // 
             this.GermanOverride.Enabled = false;
-            this.GermanOverride.Index = 8;
+            this.GermanOverride.Index = 6;
             this.GermanOverride.Text = "German (Deutsch)";
             this.GermanOverride.Click += new System.EventHandler(this.GermanOverride_Click);
             // 
             // ItalianOverride
             // 
             this.ItalianOverride.Enabled = false;
-            this.ItalianOverride.Index = 9;
+            this.ItalianOverride.Index = 7;
             this.ItalianOverride.Text = "Italian (Italiano)";
             this.ItalianOverride.Click += new System.EventHandler(this.ItalianOverride_Click);
-            // 
-            // IndonesianOverride
-            // 
-            this.IndonesianOverride.Enabled = false;
-            this.IndonesianOverride.Index = 10;
-            this.IndonesianOverride.Text = "Indonesian (Bahasa Indonesia)";
-            this.IndonesianOverride.Click += new System.EventHandler(this.IndonesianOverride_Click);
             // 
             // JapaneseOverride
             // 
             this.JapaneseOverride.Enabled = false;
-            this.JapaneseOverride.Index = 11;
+            this.JapaneseOverride.Index = 8;
             this.JapaneseOverride.Text = "Japanese (日本語)";
             this.JapaneseOverride.Click += new System.EventHandler(this.JapaneseOverride_Click);
             // 
             // KoreanOverride
             // 
             this.KoreanOverride.Enabled = false;
-            this.KoreanOverride.Index = 12;
+            this.KoreanOverride.Index = 9;
             this.KoreanOverride.Text = "Korean (한국어)";
             this.KoreanOverride.Click += new System.EventHandler(this.KoreanOverride_Click);
             // 
             // RussianOverride
             // 
             this.RussianOverride.Enabled = false;
-            this.RussianOverride.Index = 13;
+            this.RussianOverride.Index = 10;
             this.RussianOverride.Text = "Russian (Pу́сский)";
             this.RussianOverride.Click += new System.EventHandler(this.RussianOverride_Click);
             // 
             // ChineseCNOverride
             // 
             this.ChineseCNOverride.Enabled = false;
-            this.ChineseCNOverride.Index = 14;
+            this.ChineseCNOverride.Index = 11;
             this.ChineseCNOverride.Text = "Simplified Chinese (简化字, PRC)";
             this.ChineseCNOverride.Click += new System.EventHandler(this.ChineseCN_Click);
             // 
             // SpanishOverride
             // 
             this.SpanishOverride.Enabled = false;
-            this.SpanishOverride.Index = 15;
+            this.SpanishOverride.Index = 12;
             this.SpanishOverride.Text = "Spanish (Español)";
             this.SpanishOverride.Click += new System.EventHandler(this.SpanishOverride_Click);
-            // 
-            // TurkishOverride
-            // 
-            this.TurkishOverride.Enabled = false;
-            this.TurkishOverride.Index = 16;
-            this.TurkishOverride.Text = "Turkish (Türkçe)";
-            this.TurkishOverride.Click += new System.EventHandler(this.TurkishOverride_Click);
             // 
             // ChineseHKOverride
             // 
             this.ChineseHKOverride.Enabled = false;
-            this.ChineseHKOverride.Index = 17;
+            this.ChineseHKOverride.Index = 13;
             this.ChineseHKOverride.Text = "Traditional Chinese (廣東話, Hong Kong)";
             this.ChineseHKOverride.Click += new System.EventHandler(this.ChineseHK_Click);
             // 
             // ChineseTWOverride
             // 
             this.ChineseTWOverride.Enabled = false;
-            this.ChineseTWOverride.Index = 18;
+            this.ChineseTWOverride.Index = 14;
             this.ChineseTWOverride.Text = "Traditional Chinese (台灣, Taiwan)";
             this.ChineseTWOverride.Click += new System.EventHandler(this.ChineseTW_Click);
             // 
@@ -963,10 +927,6 @@
         private System.Windows.Forms.MenuItem SpanishOverride;
         private System.Windows.Forms.MenuItem GermanOverride;
         private System.Windows.Forms.MenuItem EstonianOverride;
-        private System.Windows.Forms.MenuItem DutchOverride;
-        private System.Windows.Forms.MenuItem IndonesianOverride;
-        private System.Windows.Forms.MenuItem FrenchOverride;
-        private System.Windows.Forms.MenuItem TurkishOverride;
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.MenuItem enabledToolStripMenuItem5;
         private System.Windows.Forms.MenuItem disabledToolStripMenuItem5;
