@@ -1193,7 +1193,7 @@ namespace KeppyMIDIConverter
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    double fpssim = FPSSimulator.NextDouble() * (0.01676666666666666666666666666667 - 0.01656666666666666666666666666667) + 0.01656666666666666666666666666667;
+                                    double fpssim = FPSSimulator.NextDouble() * (0.01663893 - 0.01669449) + 0.01669449;
                                     int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
                                     byte[] buffer = new byte[Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim)];
                                     TimeSpan timespent = DateTime.Now - starttime;
@@ -2523,6 +2523,7 @@ namespace KeppyMIDIConverter
             if (DoSnap(this.Top, scn.WorkingArea.Top)) this.Top = scn.WorkingArea.Top;
             if (DoSnap(scn.WorkingArea.Right, this.Right)) this.Left = scn.WorkingArea.Right - this.Width;
             if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
+            Refresh();
         }
     }
 
