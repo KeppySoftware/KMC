@@ -129,6 +129,12 @@ namespace KeppyMIDIConverter
                         Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
                         return;
                     }
+                    else if (args[i].ToLowerInvariant() == "/triggerdonation")
+                    {
+                        Form frm = new DonateMonthlyDialog();
+                        frm.StartPosition = FormStartPosition.CenterScreen;
+                        frm.ShowDialog();
+                    }
                     else if (args[i].ToLowerInvariant() == "/ksp" | args[i].ToLowerInvariant() == "/keppysteinwaypiano")
                     {
                         Process.Start("https://github.com/KaleidonKep99/Keppy-Steinway-Piano");
@@ -299,10 +305,41 @@ namespace KeppyMIDIConverter
             }
         }
 
+        public static void Donate()
+        {
+            string url = "";
+
+            string business = "prapapappo1999@gmail.com";
+            string description = "Donation";
+            string country = "US";
+            string currency = "USD";
+
+            url += "https://www.paypal.com/cgi-bin/webscr" +
+                "?cmd=" + "_donations" +
+                "&business=" + business +
+                "&lc=" + country +
+                "&item_name=" + description +
+                "&currency_code=" + currency +
+                "&bn=" + "PP%2dDonationsBF";
+
+            Process.Start(url);
+        }
+
         public static void TriggerDate()
         {
             DateTime BirthDate = DateTime.Now;
             int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
+            if (BirthDate.ToString("dd") == "01")
+            {
+                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                if (Convert.ToInt32(Settings.GetValue("nomoredonation", 0)) == 0)
+                {
+                    Form frm = new DonateMonthlyDialog();
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.ShowDialog();
+                }
+                Settings.Close();
+            }
             if (BirthDate.ToString("dd/MM") == "23/04")
                 MessageBox.Show("Today is Frozen's birthday! He turned " + (currentyear - 1996).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Frozen Snow", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else if (BirthDate.ToString("dd/MM") == "17/09")

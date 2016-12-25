@@ -58,7 +58,7 @@ namespace KeppyMIDIConverter
             public static int pictureset = 1;
             public static int SoundFont;
             public static int Time = 0;
-            public static int eventc;
+            public static UInt32 eventc;
             public static BASS_MIDI_EVENT[] events;
             public static int Volume;
             public static int _Encoder;
@@ -118,6 +118,7 @@ namespace KeppyMIDIConverter
         {          
             InitializeComponent();
             InitializeLanguage();
+            // Help me
             KMCGlobals.EncodersPath.Add(encoders[0]);
             KMCGlobals.EncodersPath.Add(encoders[1]);
             KMCGlobals.DeleteEncoder = deletencoder;
@@ -722,14 +723,14 @@ namespace KeppyMIDIConverter
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                 try
                 {
-                    KMCGlobals.eventc = BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, null);
+                    KMCGlobals.eventc = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, null);
                     KMCGlobals.events = new BASS_MIDI_EVENT[KMCGlobals.eventc];
+                    BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, KMCGlobals.events);
                 }
-                catch
+                catch (Exception ex)
                 {
                     throw new MIDIIsTooBig("The MIDI is too big for real-time simulation.");
                 }
-                BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, KMCGlobals.events);
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
                 if (type == 0)
                     KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency); // create MIDI player
@@ -1439,7 +1440,9 @@ namespace KeppyMIDIConverter
         void fadeIn(object sender, EventArgs e)
         {
             if (Opacity >= 1)
-                t1.Stop(); 
+            {
+                t1.Stop();
+            }
             else
                 if (AeroEnabled() == true) {
                     Opacity += 0.025;
@@ -2056,7 +2059,6 @@ namespace KeppyMIDIConverter
             catch
             {
 
-
             }
         }
 
@@ -2332,22 +2334,7 @@ namespace KeppyMIDIConverter
 
         private void makeADonationToSupportTheDeveloperToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = "";
-
-            string business = "prapapappo1999@gmail.com";
-            string description = "Donation";
-            string country = "US";
-            string currency = "USD";
-
-            url += "https://www.paypal.com/cgi-bin/webscr" +
-                "?cmd=" + "_donations" +
-                "&business=" + business +
-                "&lc=" + country +
-                "&item_name=" + description +
-                "&currency_code=" + currency +
-                "&bn=" + "PP%2dDonationsBF";
-
-            Process.Start(url);
+            Program.Donate();
         }
 
         private void forceCloseTheApplicationToolStripMenuItem_Click(object sender, EventArgs e)

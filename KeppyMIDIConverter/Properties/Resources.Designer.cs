@@ -170,6 +170,16 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap donatewin {
+            get {
+                object obj = ResourceManager.GetObject("donatewin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap down_icon {
             get {
                 object obj = ResourceManager.GetObject("down_icon", resourceCulture);
@@ -260,11 +270,8 @@ namespace KeppyMIDIConverter.Properties {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1040\deflangfe1041{\fonttbl{\f0\fswiss\fprq2\fcharset0 Microsoft Sans Serif;}{\f1\fmodern\fprq1\fcharset0 Lucida Console;}}
-        ///{\colortbl ;\red0\green0\blue255;}
-        ///{\*\generator Riched20 10.0.14393}\viewkind4\uc1 
-        ///\pard\nowidctlpar\sa200\sl276\slmult1\f0\fs18\lang2057 == README ==\line This project has been made by Riccardo Loi and ported to Java by Luca Noah Horn, two indipendent programmers who are members of the Black MIDI Team.\par
-        ///If you want to use the ba [stringa troncata]&quot;;.
+        ///   Cerca una stringa localizzata simile a {\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff0\deff0\stshfdbch0\stshfloch0\stshfhich0\stshfbi0\deflang1040\deflangfe1040{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f37\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Microsoft Sans Serif;}
+        ///{\f38\fmodern\fcharset0\fprq1{\*\panose 020b0609040504020204}Lucida Console;}{\f283\froman\fcharset238\fprq2 Times New Roman CE;}{\f284\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f286\froman\fcharset161\fprq2 Times Ne [stringa troncata]&quot;;.
         /// </summary>
         internal static string license {
             get {

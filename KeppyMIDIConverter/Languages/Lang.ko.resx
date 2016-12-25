@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -282,12 +282,11 @@ BASS 상태 : {0}</value>
   <data name="Credits" xml:space="preserve">
     <value>Copyright(C) 2013-{0} KaleidonKep99
 
-This program is based around the great BASS libraries
-by Ian Luck from Un4seen Developments.
-Take a look at his site by clicking the "{1}"
-button.
+이 프로그램은 Ian Luck 님이 만드신
+"Bass lib" 을 기반으로 만들어진 프로그램입니다.
+"{1}" 를 눌러서 제작자 홈페이지를 방문해 보세요.
 
-Source code available here:</value>
+소스 코드는 여기에 있습니다:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
     <value>현재 당신의 컴퓨터에 설치되있는 변환기 버젼 : {0}</value>
@@ -465,19 +464,19 @@ BASS 상태 : {0}</value>
     <value>완료</value>
   </data>
   <data name="RemoveMIDI" xml:space="preserve">
-    <value>선택된 미디를 제거</value>
+    <value>선택된 미디 제거</value>
   </data>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
-    <value>사운드 폰트를 제거</value>
+    <value>사운드 폰트 제거</value>
   </data>
   <data name="RenderToOGG" xml:space="preserve">
-    <value>보비스 파일을 렌더링 (.OGG)</value>
+    <value>Vorbis 포맷으로 렌더링 (.OGG)</value>
   </data>
   <data name="RenderToSpeakers" xml:space="preserve">
     <value>프리뷰 파일 (실시간 재생)</value>
   </data>
   <data name="RenderToWAV" xml:space="preserve">
-    <value>에 WAV 파일을 렌더링 (.WAV)</value>
+    <value>WAV 포맷으로 렌더링 (.WAV)</value>
   </data>
   <data name="RightClickCopyNotice" xml:space="preserve">
     <value>메시지를 복사 할 창의 아무 곳이나 마우스 오른쪽 버튼으로 클릭합니다.</value>
@@ -517,25 +516,25 @@ BASS 상태 : {0}</value>
     <value>사운드 폰트 / VST 관리자</value>
   </data>
   <data name="supportTheDeveloperWithADonation" xml:space="preserve">
-    <value>기부와 개발자 도움말</value>
+    <value>개발자를 위해 기부</value>
   </data>
   <data name="Un4seenWebsite" xml:space="preserve">
     <value>Un4seen 웹사이트</value>
   </data>
   <data name="UnloadAllVSTs" xml:space="preserve">
-    <value>모두 제거</value>
+    <value>모두 삭제</value>
   </data>
   <data name="UnloadVST" xml:space="preserve">
-    <value>없애다</value>
+    <value>삭제하기</value>
   </data>
   <data name="UpdateFoundVer" xml:space="preserve">
-    <value>업데이트 {0} 온라인, 발견했다.</value>
+    <value>버전 {0} 이(가) 발견되었습니다.</value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
     <value>업데이트</value>
   </data>
   <data name="UpdatesChecking" xml:space="preserve">
-    <value>사용 가능한 업데이트를 확인, 잠시 기다려주세요 ...</value>
+    <value>업데이트를 확인 중...</value>
   </data>
   <data name="UpdatesFoundText" xml:space="preserve">
     <value>새로운 업데이트가 발견되었습니다!
@@ -551,12 +550,11 @@ BASS 상태 : {0}</value>
     <value>노트 제한:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
-    <value>그들은 어떻게 작동합니까?
+    <value>이건 어떻게 작동합니까?
 
-효과 1, 2를 적용하기 위해 다음은 수정 된 오디오를 전달하는 것, 오디오에 효과를 적용합니다
-그 다음 효과 3 등 동일한 작업을 수행합니다.
-
-그것은 사슬 형 시스템이다.</value>
+우선 첫번째 슬롯이 오디오에 효과를 적용합니다, 그 다음에 "적용된" 오디오를
+두번째 슬롯으로 넘겨서 두번째 슬롯이 두번째 효과를 적용합니다.
+이런식으로 계속 넘어가집니다.</value>
   </data>
   <data name="VSTInvalidCallError" xml:space="preserve">
     <value>{0}로드하는 동안 오류가 발생했습니다.
@@ -564,7 +562,7 @@ VST를로드 할 수 없습니다.
 오류:
 {1}
 VST는 아마 기본 Windows 폼 시스템과 호환되지 않습니다.
-오류가 클립 보드에 복사.</value>
+오류가 클립 보드에 복사되었습니다.</value>
   </data>
   <data name="VSTInvalidCallTitle" xml:space="preserve">
     <value>잘못된 VST 호출</value>
@@ -573,10 +571,10 @@ VST는 아마 기본 Windows 폼 시스템과 호환되지 않습니다.
     <value>VST 관리자</value>
   </data>
   <data name="VSTManagerButtonText" xml:space="preserve">
-    <value>VST DSP 관리자를 엽니 다</value>
+    <value>VST DSP 설정</value>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>나는 너무 VST DSP를 적용 할 ...</value>
+    <value>VST DSP를 적용합니다</value>
   </data>
   <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
     <value>Keppy's MIDI Converter 를 실행하는데 윈도우 XP 서비스팩 2 가 필요합니다.
@@ -655,6 +653,6 @@ SFZ 파일을 위해 소스의 뱅크, 프리셋 을 0 으로 설정합니다.</
     <value>no</value>
   </data>
   <data name="RenderToMP3" xml:space="preserve">
-    <value>LAME 파일을 렌더링 (.OGG)</value>
+    <value>LAME 포맷으로 렌더링 (.MP3)</value>
   </data>
 </root>
