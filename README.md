@@ -23,10 +23,10 @@ There's a portable version of Keppy's MIDI Converter too. [Take a look here] (ht
 89Mods is working on it. It is based on Java, you can find it here: [https://github.com/89Mods/Keppy-s-MIDI-Converter-Multiplatform] (https://github.com/89Mods/Keppy-s-MIDI-Converter-Multiplatform)
 
 ## Requirements (Compiled program)
-- Windows XP SP2+ or newer.
-- 256MB of RAM. (For .NET 4.0)
+- Windows Vista SP1+ or newer.
+- 256MB of RAM. (For .NET 4.5)
 - DirectX 9 compliant sound card. (It DOES support old sound cards, but 32-bit float audio support is required for WAV playback)
-- [Microsoft .NET Framework 4.0.] (https://www.microsoft.com/en-us/download/details.aspx?id=17851)
+- [Microsoft .NET Framework 4.5.] (https://www.microsoft.com/en-us/download/details.aspx?id=30653)
 
 ## Requirements (For compiling the program)
 - Windows 7 SP1 or newer.
