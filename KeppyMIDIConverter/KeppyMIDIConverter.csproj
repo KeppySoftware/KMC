@@ -328,8 +328,8 @@
     <Error Condition="!Exists('..\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.28.3\build\Fody.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>call "$(VS120COMNTOOLS)..\tools\vsvars32.bat"
-editbin /largeaddressaware "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Resource.Embedder.1.2.0.0\build\Resource.Embedder.targets" Condition="Exists('..\packages\Resource.Embedder.1.2.0.0\build\Resource.Embedder.targets')" />
   <Import Project="..\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('..\packages\Fody.1.28.3\build\Fody.targets')" />

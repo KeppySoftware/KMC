@@ -158,7 +158,7 @@ namespace KeppyMIDIConverter
                 tabControl1.Enabled = false;
                 button5.Enabled = false;
                 WebClient client = new WebClient();
-                Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppySpartanMIDIConverter/kmcupdate.txt");
+                Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppyMIDIConverter/kmcupdate.txt");
                 StreamReader reader = new StreamReader(stream);
                 String newestversion = reader.ReadToEnd();
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo("KeppyMIDIConverter.exe");

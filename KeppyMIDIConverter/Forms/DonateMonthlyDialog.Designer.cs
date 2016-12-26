@@ -87,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 269);
+            this.ClientSize = new System.Drawing.Size(351, 265);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ShowMeNext);
@@ -100,6 +100,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Donate to keep the project alive";
+            this.Load += new System.EventHandler(this.DonateMonthlyDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

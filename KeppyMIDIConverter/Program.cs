@@ -213,7 +213,7 @@ namespace KeppyMIDIConverter
                 if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
                 {
                     WebClient client = new WebClient();
-                    Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppySpartanMIDIConverter/kmcupdate.txt");
+                    Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppyMIDIConverter/kmcupdate.txt");
                     StreamReader reader = new StreamReader(stream);
                     String newestversion = reader.ReadToEnd();
                     FileVersionInfo Driver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);

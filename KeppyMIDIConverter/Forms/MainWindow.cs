@@ -60,6 +60,7 @@ namespace KeppyMIDIConverter
             public static int Time = 0;
             public static UInt32 eventc;
             public static BASS_MIDI_EVENT[] events;
+            public static List<BASS_MIDI_EVENT[]> eventChunks;
             public static int Volume;
             public static int _Encoder;
             public static int _recHandle;
@@ -471,12 +472,13 @@ namespace KeppyMIDIConverter
             else if (ModifierKeys == Keys.Control)
             {
                 KMCGlobals.VSTSkipSettings = true;
+                MessageBox.Show("Skipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (ModifierKeys == (Keys.Shift | Keys.Control))
             {
                 KMCGlobals.VSTSkipSettings = true;
                 convmode = 1;
-                MessageBox.Show("Real-time simulation mode activated. 22", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Real-time simulation mode activated.\n\nSkipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             if (this.ExportWhere.ShowDialog() == DialogResult.OK)
             {
@@ -725,11 +727,17 @@ namespace KeppyMIDIConverter
                 {
                     KMCGlobals.eventc = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, null);
                     KMCGlobals.events = new BASS_MIDI_EVENT[KMCGlobals.eventc];
-                    BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, KMCGlobals.events);
+                    KMCGlobals.eventChunks = new List<BASS_MIDI_EVENT[]>();
+                    for (int i = 0; i <= (KMCGlobals.eventc / 50000000); i++)
+                    {
+                        Int32 subCount = 50000000;
+                        KMCGlobals.eventChunks.Add(new BASS_MIDI_EVENT[subCount]); // Thank you Falcosoft!!!
+                        BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, KMCGlobals.eventChunks[i], i * 50000000, subCount);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    throw new MIDIIsTooBig("The MIDI is too big for real-time simulation.");
+                    throw new MIDIIsTooBig("The 32-bit version of Keppy's MIDI Converter isn't able to do a real-time simulation of this MIDI.");
                 }
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
                 if (type == 0)
@@ -886,7 +894,7 @@ namespace KeppyMIDIConverter
                     string finalpath;
                     do
                     {
-                        temp = String.Format("{0} (Copy {1})", pathwithoutext, copynum);
+                        temp = String.Format("{0} ({1} {2})", pathwithoutext, res_man.GetString("CopyText", cul), copynum);
                         ++copynum;
                     } while (File.Exists(String.Format("{0}.{1}", temp, ext)));
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
@@ -1212,12 +1220,16 @@ namespace KeppyMIDIConverter
                                     string str6 = span3.Hours.ToString() + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
                                     string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
 
-                                    uint e1 = es;
-                                    while (es < KMCGlobals.eventc && KMCGlobals.events[es].pos < pos + length)
+                                    for (int i = 0; i <= KMCGlobals.eventChunks.Count - 1; i++)
                                     {
-                                        BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, KMCGlobals.events[es].chan, KMCGlobals.events[es].eventtype, KMCGlobals.events[es].param);
-                                        es++;
+                                        uint e1 = es;
+                                        while (es < KMCGlobals.eventc && KMCGlobals.eventChunks[i][es].pos < pos + length)
+                                        {
+                                            BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, KMCGlobals.eventChunks[i][es].chan, KMCGlobals.eventChunks[i][es].eventtype, KMCGlobals.eventChunks[i][es].param);
+                                            es++;
+                                        }
                                     }
+
                                     int got = Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
                                     if (got < 0)
                                     {

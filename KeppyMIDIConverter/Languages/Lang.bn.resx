@@ -656,4 +656,7 @@ or if you don't know which one you should use.</value>
   <data name="RenderToMP3" xml:space="preserve">
     <value>জন্য LAME ফাইলগুলি রেন্ডার (.MP3)</value>
   </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>কপি</value>
+  </data>
 </root>
