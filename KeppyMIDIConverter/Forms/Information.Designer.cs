@@ -36,7 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.KeppyVer = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Tipperino = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -116,10 +116,10 @@
             this.KeppyVer.TabIndex = 6;
             this.KeppyVer.Text = "Keppy Title with version";
             // 
-            // toolTip1
+            // Tipperino
             // 
-            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTip1.ToolTipTitle = "Keppy Studios";
+            this.Tipperino.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.Tipperino.ToolTipTitle = "Keppy Studios";
             // 
             // pictureBox1
             // 
@@ -309,7 +309,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label KeppyVer;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip Tipperino;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label BASSINFO;

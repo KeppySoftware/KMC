@@ -203,7 +203,7 @@ Viga:
     <value>Selge MIDI nimekirja</value>
   </data>
   <data name="ClearSoundfontList" xml:space="preserve">
-    <value>Selge heli failide nimekirja</value>
+    <value>Selge heli fondiloendis</value>
   </data>
   <data name="ConstantBitrateOGG" xml:space="preserve">
     <value>Jõud kvaliteediga (OGG/MP3):</value>
@@ -333,7 +333,7 @@ Lisainformatsioon:</value>
   </data>
   <data name="IdleMessage" xml:space="preserve">
     <value>Ootab kasutaja sisend.
-Vali MIDI, laadida helifaile ning alustada muutust!</value>
+Laadi MIDI, laadige heli kirjas, ja muuta!</value>
   </data>
   <data name="ImportMIDI" xml:space="preserve">
     <value>Koormus MIDI...</value>
@@ -342,7 +342,7 @@ Vali MIDI, laadida helifaile ning alustada muutust!</value>
     <value>Koormus MIDI muuta...</value>
   </data>
   <data name="ImportSoundfontBtn" xml:space="preserve">
-    <value>Koormus helifaili...</value>
+    <value>Koormus heli fondi...</value>
   </data>
   <data name="InfoPageTitle" xml:space="preserve">
     <value>Info</value>
@@ -409,7 +409,7 @@ Palun oota...</value>
     <value>Uus tempoga väärtus:</value>
   </data>
   <data name="NonFatalErrorHandler" xml:space="preserve">
-    <value>on tekkinud viga programmi töötamise ajal
+    <value>On tekkinud viga programmi töötamise ajal
 
 Lisainformatsioon:</value>
   </data>
@@ -470,7 +470,7 @@ Noodi: {3} - {4}</value>
     <value>Kõrvaldamiseks valitud MIDI</value>
   </data>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
-    <value>Eemaldada helifaili</value>
+    <value>Eemaldada heli fondi</value>
   </data>
   <data name="RenderToOGG" xml:space="preserve">
     <value>Ekspordi faili (.OGG)</value>
@@ -503,20 +503,20 @@ Noodi: {3} - {4}</value>
     <value>Ava helifail/VST juht</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>Koormus kuni 1.000 heli faile korraga.
-Esimene helifail nimekirja laeb enne järgmist helifaile.
-Kontrolli oma helifaile tahes korruptsiooni enne lisades need seda nimekirja, et vältida vigu.
+    <value>Koormus kuni 1000 heli fonte korraga.
+Esimene heli fondi nimekirja laeb enne järgmist helifaile.
+Kontrolli oma heli fondi tahes korruptsiooni enne lisades need seda nimekirja, et vältida vigu.
 
 
 Järgmised formaate ei toetata: SF2, SF3, SFZ, SFPACK</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
-    <value>See ei ole kehtiv helifaili!
+    <value>See ei ole kehtiv heli fondi!
 
-Vali sobiv helifail ja proovi uuesti</value>
+Vali sobiv heli fondi ja proovi uuesti</value>
   </data>
   <data name="SoundfontManagerTitle" xml:space="preserve">
-    <value>Helifail/VST juht</value>
+    <value>Heli fondi/VST juht</value>
   </data>
   <data name="supportTheDeveloperWithADonation" xml:space="preserve">
     <value>Toetada arendaja annetades</value>
@@ -554,22 +554,21 @@ Vajuta OK, et avada allalaadimise lehele.</value>
     <value>Polüfoonia:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
-    <value>Kuidas nad töötavad?
+    <value>Kuidas need tööd?
 
-Efekt 1 kohaldatakse selle mõju audio, siis saad edasi modifitseeritud heli Effect 2,
-et siis teha sama efekt 3 ja nii edasi.
+Efekt 1 kohaldatakse see mõju heli, siis andke seda Efekt 2, mis teeb sama, ja liigu heli, ja nii edasi.
 
-See kett-like süsteemi.</value>
+See on ahelsüsteemiks</value>
   </data>
   <data name="VSTInvalidCallError" xml:space="preserve">
-    <value>Tekkis viga laadida {0}.
-VST ei saa laadida.
+    <value>Tekkis viga laadida {0}
+See VST ei saa laadida.
 
 Viga:
-{1} 
+{1}
 
-VST ei ole ilmselt kooskõlas regulaarselt Windows vormid süsteemi.
-Viga on kopeeritud lõikelauale.</value>
+See VST on tõenäoliselt vastuolus native Windows vormid süsteemi.
+Viga on kopeeritud</value>
   </data>
   <data name="VSTInvalidCallTitle" xml:space="preserve">
     <value>Halb VST kõne</value>
@@ -581,7 +580,7 @@ Viga on kopeeritud lõikelauale.</value>
     <value>Avada VST juht</value>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>Tahan rakendada VST DSP</value>
+    <value>Ma tahan kasutada VST DSP</value>
   </data>
   <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
     <value>Windows XP SP2 või uuem on vaja käivitada Keppy's MIDI Converter.
@@ -639,7 +638,7 @@ Jäta allikas instrument ja allikas eelseadistatud 0 SFZ faile.</value>
     <value>Kasutusjuhendi</value>
   </data>
   <data name="BankNPresetSelectedSF" xml:space="preserve">
-    <value>Valitud helifaili</value>
+    <value>Valitud heli fondi</value>
   </data>
   <data name="BankNPresetSelectMsg" xml:space="preserve">
     <value>Palun valige pank ja eelseadistatud, 0-127.
@@ -654,7 +653,7 @@ või kui te ei tea, milline sa peaksid kasutama.</value>
     <value>Allikas muusikainstrument:</value>
   </data>
   <data name="BankNPresetTitle" xml:space="preserve">
-    <value>Vali eelseadistatud ja vahend helifaili</value>
+    <value>Vali eelseadistatud ja vahend heli fondi</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
     <value>no</value>

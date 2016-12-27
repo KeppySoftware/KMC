@@ -121,9 +121,9 @@
     <value>中止轉換/預覽</value>
   </data>
   <data name="AboutSFZFormatText" xml:space="preserve">
-    <value>這個程式是符合了“SFZ1.0格式”，部分與“SFZ2.0格式”。
+    <value>這個程式是符合了「SFZ 1.0格式」，部分與「SFZ 2.0格式」。
 
-你想參觀“非官方SFZ格式的信息”的網站？</value>
+您想參觀「關於SFZ格式」的非官方網站嗎？</value>
   </data>
   <data name="AboutSFZFormatTitle" xml:space="preserve">
     <value>關於SFZ格式</value>
@@ -145,7 +145,7 @@ All Rights Reserved.</value>
     <value>複音數: </value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
-    <value>請至少加一個MIDI檔案到轉換列表</value>
+    <value>請至少加入一個MIDI檔案到轉換列表</value>
   </data>
   <data name="AdvSettingsButton" xml:space="preserve">
     <value>進階設定</value>
@@ -154,34 +154,34 @@ All Rights Reserved.</value>
     <value>進階設定</value>
   </data>
   <data name="AlreadyUpdatedText" xml:space="preserve">
-    <value>這版本已經是最新版</value>
+    <value>該軟體已更新至最新版</value>
   </data>
   <data name="AppBusy" xml:space="preserve">
-    <value>該應用程序尚未完成轉換/播放MIDI!
-你確定要離開?</value>
+    <value>該應用程式尚未完成轉換/播放 MIDI!
+您確定要離開?</value>
   </data>
   <data name="AudioEventsStrip" xml:space="preserve">
     <value>啟用音頻事件（轉換完成，失敗等）</value>
   </data>
   <data name="AudioFreq" xml:space="preserve">
-    <value>聲音頻率:</value>
+    <value>取樣頻率:</value>
   </data>
   <data name="AutomaticShutdownStrip" xml:space="preserve">
-    <value>當轉換完成時,關閉電腦</value>
+    <value>轉換完成時關閉電腦</value>
   </data>
   <data name="AutoUpdatesCheckStrip" xml:space="preserve">
-    <value>當程式啟動時,檢查更新</value>
+    <value>程式啟動時檢查更新</value>
   </data>
   <data name="AverageLevel" xml:space="preserve">
     <value>平均</value>
   </data>
   <data name="BASSEngineConfiguration" xml:space="preserve">
-    <value>配置 BASS.
+    <value>配置 BASS 中.
 轉換即將開始...</value>
   </data>
   <data name="BASSEngineConfigurationVST" xml:space="preserve">
-    <value>配置 BASS.
-Edit the VST DSPs settings when asked.
+    <value>配置 BASS 中.
+若通知更改必要時請編輯 VST DSPs 設定.
 轉換即將開始...</value>
   </data>
   <data name="CanNotCheckUpdates" xml:space="preserve">
@@ -206,13 +206,13 @@ Edit the VST DSPs settings when asked.
     <value>清理音色庫清單</value>
   </data>
   <data name="ConstantBitrateOGG" xml:space="preserve">
-    <value>強制固定比特率 (OGG/MP3):</value>
+    <value>強制固定固定位元速率 (OGG/MP3):</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
-    <value>轉換中止</value>
+    <value>中止轉換</value>
   </data>
   <data name="ConversionAbortedXPMessage" xml:space="preserve">
-    <value>轉換中止
+    <value>中止轉換
 
 BASS 狀態 {0}</value>
   </data>
@@ -231,37 +231,37 @@ BASS 狀態: {0}</value>
     <value>完成</value>
   </data>
   <data name="ConvPosOrTimeLeft" xml:space="preserve">
-    <value>在剩餘時間處顯示轉換位置</value>
+    <value>切換顯示剩餘時間至轉換位置</value>
   </data>
   <data name="ConvStatusFasterNew" xml:space="preserve">
-    <value>{0}原始數據轉換成的MB。 （{1}）
-大致时间留给：{2} - 消逝时间：{3}
-渲染时间：{4}％（{5} X〜快）</value>
+    <value>{0}原始數據轉換大小(MB)。 （{1}）
+剩餘時間約：{2} - 已經過時間：{3}
+轉碼時間：{4}％（{5} X〜快）</value>
   </data>
   <data name="ConvStatusFasterOld" xml:space="preserve">
-    <value>{0}原始數據轉換成的MB。 （{1}）
-大致时间留给：{2} - 消逝时间：{3}
-渲染时间：{4}％</value>
+    <value>{0}原始數據轉換大小(MB)。 （{1}）
+剩餘時間約：{2} - 已經過時間：{3}
+轉碼時間：{4}％</value>
   </data>
   <data name="ConvStatusNormalNew" xml:space="preserve">
-    <value>{0}原始數據轉換成的MB。 （{1}）
-大致时间留给：{2} - 消逝时间：{3}
-渲染时间：{4}％（{5} X〜慢）</value>
+    <value>{0}原始數據轉換大小(MB)。 （{1}）
+剩餘時間約：{2} - 已經過時間：{3}
+轉碼時間：{4}％（{5} X〜慢）</value>
   </data>
   <data name="ConvStatusNormalOld" xml:space="preserve">
-    <value>{0}原始數據轉換成的MB。 （{1}）
-當前位置：{2} - {3}
-渲染时间：{4}％（{5} X〜快）</value>
+    <value>{0}原始數據轉換大小(MB)。 （{1}）
+目前位置：{2} - {3}
+轉碼時間：{4}％（{5} X〜快）</value>
   </data>
   <data name="ConvStatusSlowerNew" xml:space="preserve">
-    <value>{0}原始數據轉換成的MB。 （{1}）
-當前位置：{2} - {3}
-渲染时间：{4}％</value>
+    <value>{0}原始數據轉換大小(MB)。 （{1}）
+目前位置：{2} - {3}
+轉碼時間：{4}％</value>
   </data>
   <data name="ConvStatusSlowerOld" xml:space="preserve">
     <value>{0}原始數據轉換成的MB。 （{1}）
-當前位置：{2} - {3}
-渲染时间：{4}％（{5} X〜慢）</value>
+目前位置：{2} - {3}
+轉碼時間：{4}％（{5} X〜慢）</value>
   </data>
   <data name="CopiedToClipboardNotice" xml:space="preserve">
     <value>錯誤訊息已複製到剪貼簿.
@@ -273,12 +273,12 @@ BASS 狀態: {0}</value>
     <value>複製錯誤到剪貼簿</value>
   </data>
   <data name="CrashQuestion" xml:space="preserve">
-    <value>你確定你想要強制關閉?
+    <value>您確定你想要強制關閉嗎?
 
-所有未儲存的將會遺失</value>
+所有未儲存轉檔將會遺失</value>
   </data>
   <data name="CrashTriggeredByUser" xml:space="preserve">
-    <value>用戶造成當機</value>
+    <value>強制關閉為用戶造成</value>
   </data>
   <data name="Credits" xml:space="preserve">
     <value>Copyright(C) 2013-{0} KaleidonKep99
@@ -291,7 +291,7 @@ button.
 源代碼:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
-    <value>當前版本: {0}</value>
+    <value>目前版本: {0}</value>
   </data>
   <data name="DisabledText" xml:space="preserve">
     <value>取消</value>
@@ -303,7 +303,7 @@ button.
     <value>DSP 設定:</value>
   </data>
   <data name="EmptySlot" xml:space="preserve">
-    <value>空的</value>
+    <value>空白項目</value>
   </data>
   <data name="EnabledText" xml:space="preserve">
     <value>啟用</value>
@@ -312,10 +312,10 @@ button.
     <value>錯誤</value>
   </data>
   <data name="ExitStrip" xml:space="preserve">
-    <value>離開</value>
+    <value>關閉</value>
   </data>
   <data name="ExportWhere" xml:space="preserve">
-    <value>你想要在哪裡輸出?</value>
+    <value>您想要在哪裡輸出?</value>
   </data>
   <data name="FatalError" xml:space="preserve">
     <value>嚴重錯誤</value>
@@ -353,14 +353,14 @@ button.
   <data name="InvalidMIDIFile" xml:space="preserve">
     <value>{0}不是一個有效MIDI的檔案!
 
-請選擇有效的MIDI檔案,並重試.</value>
+請重新選擇有效的MIDI檔案.</value>
   </data>
   <data name="InvalidVSTLoaded" xml:space="preserve">
     <value>{0} 不是一個有效的VST特效
-確認加載VST特效而不是VST樂器。
+請確認加載VST特效而非VST樂器。
 
-如果你嘗試使用 {1} VST, 你需要使用 {1} 版本 Keppy's MIDI Converter too.
-這個 {2} 版本Keppy's MIDI Converter 不支援 {1} VSTs 和 反之亦然.</value>
+若您嘗試使用 {1} VST, 您需要使用 {1} 版本 Keppy's MIDI Converter.
+這個 {2} 版本 Keppy's MIDI Converter 不支援 {1} VSTs.</value>
   </data>
   <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
     <value>KaleidonKep99的GitHub網頁</value>
@@ -369,7 +369,7 @@ button.
     <value>KaleidonKep99的YouTube頻道</value>
   </data>
   <data name="LatestVersionIdle" xml:space="preserve">
-    <value>點擊“檢查更新”來檢查是否有可用的更新。</value>
+    <value>點擊「檢查更新」來檢查是否有可用的更新。</value>
   </data>
   <data name="LibraryVersion" xml:space="preserve">
     <value>{0} 版本: {1}.{2}</value>
@@ -381,16 +381,16 @@ button.
     <value>讀取</value>
   </data>
   <data name="MemoryAllocationConversion" xml:space="preserve">
-    <value>該應用程序轉換過程中分配內存。
+    <value>正在分配記憶體給轉碼程序。
 請稍候...</value>
   </data>
   <data name="MemoryAllocationPlayback" xml:space="preserve">
-    <value>該應用程序的預覽分配內存。
+    <value>正在分配記憶體給預覽程序。
 請稍候...</value>
   </data>
   <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
-    <value>該應用程序的預覽分配內存。
-當問及編輯VST的DSP設置。
+    <value>正在分配記憶體給預覽程序。
+若通知更改必要時請編輯 VST DSPs 設定。
 請稍候...</value>
   </data>
   <data name="MoveDOWN" xml:space="preserve">
@@ -406,7 +406,7 @@ button.
     <value>往上移動 ▲</value>
   </data>
   <data name="NewValueTempo" xml:space="preserve">
-    <value>新增节拍值的:</value>
+    <value>新增節拍值:</value>
   </data>
   <data name="NonFatalErrorHandler" xml:space="preserve">
     <value>打開程式時發生錯誤.
@@ -414,7 +414,7 @@ button.
 更多信息:</value>
   </data>
   <data name="NoteOff1" xml:space="preserve">
-    <value>只有在一個說明發布最早的記錄了，即使有音符重疊的實例。</value>
+    <value>只將最久單一音符放開，即使有音符重疊。</value>
   </data>
   <data name="NoUpdatesText" xml:space="preserve">
     <value>目前沒有找到更新.
@@ -430,13 +430,13 @@ button.
     <value>設定</value>
   </data>
   <data name="OverrideTempo1" xml:space="preserve">
-    <value>覆蓋速度:</value>
+    <value>覆蓋節拍:</value>
   </data>
   <data name="OverrideTempo2" xml:space="preserve">
-    <value>覆蓋速度: (原. {0}bpm)</value>
+    <value>覆蓋節拍: (原始. {0}bpm)</value>
   </data>
   <data name="PeakLevel" xml:space="preserve">
-    <value>峰值</value>
+    <value>最高值</value>
   </data>
   <data name="PlaybackAborted" xml:space="preserve">
     <value>播放中止.</value>
@@ -455,7 +455,7 @@ BASS 狀態: {0}</value>
 BASS 狀態: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
-    <value>{0}% MIDI已撥放.
+    <value>{0}% MIDI已播放.
 位置: {1} - {2}
 筆錄: {3} - {4}</value>
   </data>
@@ -466,10 +466,10 @@ BASS 狀態: {0}</value>
     <value>完成</value>
   </data>
   <data name="RemoveMIDI" xml:space="preserve">
-    <value>移除選擇MIDI</value>
+    <value>移除所選擇MIDI</value>
   </data>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
-    <value>移除音色庫(s)</value>
+    <value>移除音色庫</value>
   </data>
   <data name="RenderToOGG" xml:space="preserve">
     <value>輸出到Vorbis(.OGG)</value>
@@ -503,8 +503,8 @@ BASS 狀態: {0}</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
     <value>當你在轉換MIDI時,音色庫最高支援1.000個
-該列表中的第一個音色庫會覆蓋最新的。
-加到音色庫列表之前，檢查音色庫有無損壞，避免造成隨機崩潰/錯誤.
+該列表中最新的音色庫會覆蓋舊的。
+加到音色庫列表之前，檢查音色庫有無損壞，避免造成錯誤.
 
 
 支援音色的格式： SF2, SF3, SFZ, SFPACK</value>
@@ -518,7 +518,7 @@ BASS 狀態: {0}</value>
     <value>音色庫/VST管理</value>
   </data>
   <data name="supportTheDeveloperWithADonation" xml:space="preserve">
-    <value>幫助開發人員提供捐贈</value>
+    <value>提供捐贈幫助開發人員</value>
   </data>
   <data name="Un4seenWebsite" xml:space="preserve">
     <value>Un4seen網站</value>
@@ -530,7 +530,7 @@ BASS 狀態: {0}</value>
     <value>移除</value>
   </data>
   <data name="UpdateFoundVer" xml:space="preserve">
-    <value>找到可用的更新，, m請稍等</value>
+    <value>找到可用的更新,請稍等</value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
     <value>升級</value>
@@ -551,7 +551,7 @@ BASS 狀態: {0}</value>
     <value>複音限制:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
-    <value>他們如何工作？
+    <value>他們如何運作？
 
 效果1將應用效果的音響，那麼它會通過修改後的音頻效果2，
 然後，將做同樣的效應3等。
@@ -562,10 +562,10 @@ BASS 狀態: {0}</value>
     <value>嘗試時發生錯誤 {0}.
 VST無法讀取.
 
-Errore:
+Error:
 {1} 
 
-該VST是可能無法在本機Windows表單系統兼容
+該VST是可能無法在本機Windows表單系統相容
 複製錯誤到剪貼簿</value>
   </data>
   <data name="VSTInvalidCallTitle" xml:space="preserve">
@@ -581,7 +581,7 @@ Errore:
     <value>我想要新增VST DSP...</value>
   </data>
   <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
-    <value>Keppy's MIDI Converter要求Windows XP SP2或最新版本.
+    <value>Keppy's MIDI Converter要Windows XP SP2或更新版本.
 按OK離開.</value>
   </data>
   <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
@@ -594,7 +594,7 @@ Errore:
     <value>音量:</value>
   </data>
   <data name="ZZZTranslators" xml:space="preserve">
-    <value>Ryan Video Channel</value>
+    <value>Ryan Video Channel, Justin Chen</value>
   </data>
   <data name="OverrideLanguage" xml:space="preserve">
     <value>覆盖语言</value>

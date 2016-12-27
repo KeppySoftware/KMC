@@ -660,4 +660,7 @@ or if you don't know which one you should use.</value>
   <data name="RenderToMP3" xml:space="preserve">
     <value>Render files to LAME (.MP3)</value>
   </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>Copy</value>
+  </data>
 </root>

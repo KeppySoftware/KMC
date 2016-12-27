@@ -737,13 +737,13 @@ namespace KeppyMIDIConverter
                 }
                 catch (Exception ex)
                 {
-                    throw new MIDIIsTooBig("The 32-bit version of Keppy's MIDI Converter isn't able to do a real-time simulation of this MIDI.");
+                    throw new MIDILoadError("Can not load this MIDI.\n\n" + 
+                        "Are you sure you're not trying to open it in the 32-bit version of Keppy's MIDI Converter?\n" +
+                        "Also, try increasing the size of your paging file, you might not have enough RAM.\n\n" + 
+                        "Additional info\n" + ex.ToString());
                 }
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
-                if (type == 0)
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency); // create MIDI player
-                else
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency); // create MIDI player
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
                 Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
@@ -2548,18 +2548,18 @@ namespace KeppyMIDIConverter
 }
 
 // Custom exceptions
-public class MIDIIsTooBig : Exception
+public class MIDILoadError : Exception
 {
-    public MIDIIsTooBig()
+    public MIDILoadError()
     {
     }
 
-    public MIDIIsTooBig(string message)
+    public MIDILoadError(string message)
         : base(message)
     {
     }
 
-    public MIDIIsTooBig(string message, Exception inner)
+    public MIDILoadError(string message, Exception inner)
         : base(message, inner)
     {
     }
