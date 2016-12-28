@@ -66,6 +66,7 @@ Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 
 ;64-bit files
 Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\KeppyMIDIConverter.exe.config"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass_mpc.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 Source: "bin\x64\bass_vst.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
@@ -79,6 +80,7 @@ Source: "bin\x64\kmcmp3.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replace
 
 ;32-bit files
 Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\KeppyMIDIConverter.exe.config"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass_mpc.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\bass_vst.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion

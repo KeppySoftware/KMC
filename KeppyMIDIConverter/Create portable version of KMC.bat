@@ -7,6 +7,7 @@ rem These are the 32-bit files
 7za a bin\KeppyMIDIConverterPortable.7z "bin\x86\Restore language.bat" -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z "bin\x86\Skip update process.bat" -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z bin\x86\KeppyMIDIConverter.exe -mx9 -m0=LZMA2 -t7z
+7za a bin\KeppyMIDIConverterPortable.7z bin\x86\KeppyMIDIConverter.exe.config -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z bin\x86\kmcogg.exe -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z bin\x86\kmcmp3.exe -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z bin\x86\bass.dll -mx9 -m0=LZMA2 -t7z
@@ -22,6 +23,7 @@ rem These are the 64-bit ones
 7za a bin\KeppyMIDIConverterPortable.7z "bin\x64\Restore language.bat" -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z "bin\x64\Skip update process.bat" -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z bin\x64\KeppyMIDIConverter.exe -mx9 -m0=LZMA2 -t7z
+7za a bin\KeppyMIDIConverterPortable.7z bin\x86\KeppyMIDIConverter.exe.config -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z bin\x64\kmcogg.exe -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z bin\x64\kmcmp3.exe -mx9 -m0=LZMA2 -t7z
 7za a bin\KeppyMIDIConverterPortable.7z bin\x64\bass.dll -mx9 -m0=LZMA2 -t7z

@@ -14,7 +14,9 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Collections;
 using Microsoft.Win32;
+using System.Configuration;
 using System.Speech.Synthesis;
+using System.Collections.Specialized;
 using System.Runtime.InteropServices;
 
 namespace KeppyMIDIConverter

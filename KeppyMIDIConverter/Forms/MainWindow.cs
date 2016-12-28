@@ -60,7 +60,6 @@ namespace KeppyMIDIConverter
             public static int Time = 0;
             public static UInt32 eventc;
             public static BASS_MIDI_EVENT[] events;
-            public static List<BASS_MIDI_EVENT[]> eventChunks;
             public static int Volume;
             public static int _Encoder;
             public static int _recHandle;
@@ -723,23 +722,27 @@ namespace KeppyMIDIConverter
                 else
                     KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
+                BASS_MIDI_EVENT[] eventChunk;
                 try
                 {
+                    // Thank you so much Falcosoft for helping me there!!!
+                    // Visit his website: http://falcosoft.hu/index.html#start
                     KMCGlobals.eventc = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, null);
                     KMCGlobals.events = new BASS_MIDI_EVENT[KMCGlobals.eventc];
-                    KMCGlobals.eventChunks = new List<BASS_MIDI_EVENT[]>();
-                    for (int i = 0; i <= (KMCGlobals.eventc / 50000000); i++)
+                    for (int i = 0; i <= (KMCGlobals.eventc / 5000000); i++)
                     {
-                        Int32 subCount = 50000000;
-                        KMCGlobals.eventChunks.Add(new BASS_MIDI_EVENT[subCount]); // Thank you Falcosoft!!!
-                        BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, KMCGlobals.eventChunks[i], i * 50000000, subCount);
+                        int subCount = Math.Min(50000000, (int)KMCGlobals.eventc - (i * 50000000));
+                        eventChunk = new BASS_MIDI_EVENT[subCount];
+                        BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, eventChunk, i * 50000000, subCount); //Falcosoft: to avoid marshalling errors pass the smaller local buffer to the function   
+                        eventChunk.CopyTo(KMCGlobals.events, i * 50000000); //Falcosoft: copy local buffer to global one at each iteration
                     }
+                    eventChunk = null;
                 }
                 catch (Exception ex)
                 {
-                    throw new MIDILoadError("Can not load this MIDI.\n\n" + 
+                    throw new MIDILoadError("Can not load this MIDI.\n\n" +
                         "Are you sure you're not trying to open it in the 32-bit version of Keppy's MIDI Converter?\n" +
-                        "Also, try increasing the size of your paging file, you might not have enough RAM.\n\n" + 
+                        "Also, try increasing the size of your paging file, you might not have enough RAM.\n\n" +
                         "Additional info\n" + ex.ToString());
                 }
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
@@ -954,9 +957,13 @@ namespace KeppyMIDIConverter
             float num11 = 0f;
             Bass.BASS_ChannelGetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
             KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("PlaybackStatus", cul), percentage.ToString("0%"), str5, str4, KMCGlobals.notecount.ToString("N0"), String.Format("{0} (CPU: {1})", pnotes.ToString("N0"), ((float)(num12 / 100f)).ToString("0.0%")));
-            if (num12 >= 100.0f)
+            if (num12 > 100.0f)
             {
-                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_SYSTEMEX, 0);
+                for (int i = 0; i <= 15; i++)
+                {
+                    BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, i, BASSMIDIEvent.MIDI_EVENT_NOTESOFF, 0);
+                    BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, i, BASSMIDIEvent.MIDI_EVENT_RESET, 0);
+                }
             }
             KMCGlobals.ActiveVoicesInt = Convert.ToInt32(num11);
             KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
@@ -1220,17 +1227,13 @@ namespace KeppyMIDIConverter
                                     string str6 = span3.Hours.ToString() + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
                                     string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
 
-                                    for (int i = 0; i <= KMCGlobals.eventChunks.Count - 1; i++)
+                                    while (es < KMCGlobals.eventc && KMCGlobals.events[es].pos < pos + length)
                                     {
-                                        uint e1 = es;
-                                        while (es < KMCGlobals.eventc && KMCGlobals.eventChunks[i][es].pos < pos + length)
-                                        {
-                                            BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, KMCGlobals.eventChunks[i][es].chan, KMCGlobals.eventChunks[i][es].eventtype, KMCGlobals.eventChunks[i][es].param);
-                                            es++;
-                                        }
+                                        BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, KMCGlobals.events[es].chan, KMCGlobals.events[es].eventtype, KMCGlobals.events[es].param);
+                                        es++;
                                     }
-
                                     int got = Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
+
                                     if (got < 0)
                                     {
                                         KMCGlobals.CancellationPendingValue = 2;
@@ -1516,8 +1519,7 @@ namespace KeppyMIDIConverter
             {
                 DialogResult dialogResult = MessageBox.Show(res_man.GetString("AppBusy", cul), "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
-                {
-                    Bass.BASS_StreamFree(KMCGlobals._recHandle);
+                { 
                     Bass.BASS_Free();
                     e.Cancel = true;
                     t2.Interval = 1;
