@@ -24,13 +24,13 @@ There's a portable version of Keppy's MIDI Converter too. [Take a look here] (ht
 
 ## Requirements (Compiled program)
 - Windows Vista SP1+ or newer.
-- 256MB of RAM. (For .NET 4.5)
+- 256MB of RAM for normal conversions and playback, 1GB of RAM for the real-time simulator.
 - DirectX 9 compliant sound card. (It DOES support old sound cards, but 32-bit float audio support is required for WAV playback)
 - [Microsoft .NET Framework 4.5.] (https://www.microsoft.com/en-us/download/details.aspx?id=30653)
 
 ## Requirements (For compiling the program)
 - Windows 7 SP1 or newer.
-- 1GB of RAM or more.
+- 2GB of RAM or more.
 - Microsoft Visual Studio 2013. (or newer, your choice)
 - [BASS.NET] (http://www.bass.radio42.com/) by Radio42.
 
