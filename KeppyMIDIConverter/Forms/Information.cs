@@ -25,6 +25,28 @@ namespace KeppyMIDIConverter
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
         CultureInfo cul;            // declare culture info
 
+        private DateTime GetLinkerTime(Assembly assembly, TimeZoneInfo target = null)
+        {
+            var filePath = assembly.Location;
+            const int c_PeHeaderOffset = 60;
+            const int c_LinkerTimestampOffset = 8;
+
+            var buffer = new byte[2048];
+
+            using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                stream.Read(buffer, 0, 2048);
+
+            var offset = BitConverter.ToInt32(buffer, c_PeHeaderOffset);
+            var secondsSince1970 = BitConverter.ToInt32(buffer, offset + c_LinkerTimestampOffset);
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+            var linkTimeUtc = epoch.AddSeconds(secondsSince1970);
+
+            var tz = target ?? TimeZoneInfo.Local;
+            var localTime = TimeZoneInfo.ConvertTimeFromUtc(linkTimeUtc, tz);
+
+            return localTime;
+        }
 
         private void InitializeLanguage()
         {
@@ -35,7 +57,7 @@ namespace KeppyMIDIConverter
                 // Translate system
                 button2.Text = res_man.GetString("Un4seenWebsite", cul);
                 button3.Text = res_man.GetString("License", cul);
-                Text = res_man.GetString("InfoWindowTitle", cul);
+                Text = String.Format("{0} (Build date: {1})", res_man.GetString("InfoWindowTitle", cul), GetLinkerTime(Assembly.GetExecutingAssembly(), TimeZoneInfo.Utc));
                 InfoPg.Text = res_man.GetString("InfoPageTitle", cul);
                 UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
                 label1.Text = String.Format(res_man.GetString("Credits", cul), DateTime.Now.Year.ToString(), res_man.GetString("Un4seenWebsite", cul));

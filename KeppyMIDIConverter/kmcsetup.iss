@@ -1,11 +1,11 @@
 #define use_ie6
-#define use_dotnetfx40
+#define use_dotnetfx46
 #define use_wic
 #define use_msiproduct
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '15.0.1'
+#define MyAppVersion '15.0.3'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -169,9 +169,8 @@ win_sp_title=Windows %1 Service Pack %2
 #include "scripts\products\dotnetfxversion.iss"
 
 
-#ifdef use_dotnetfx40
-#include "scripts\products\dotnetfx40client.iss"
-#include "scripts\products\dotnetfx40full.iss"
+#ifdef use_dotnetfx46
+#include "scripts\products\dotnetfx46.iss"
 #endif
 
 #ifdef use_wic
@@ -200,10 +199,9 @@ begin
 	wic();
 #endif
 
-	// if no .netfx 4.0 is found, install the client (smallest)
-#ifdef use_dotnetfx40
-	if (not netfxinstalled(NetFx40Client, '') and not netfxinstalled(NetFx40Full, '')) then
-		dotnetfx40client();
+	// if no .netfx 4.5+ is found, install the client (smallest)
+#ifdef use_dotnetfx46
+    dotnetfx46(50); // min allowed version is 4.5.0
 #endif
 
 #ifdef vc

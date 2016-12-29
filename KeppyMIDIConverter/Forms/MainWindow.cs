@@ -729,7 +729,7 @@ namespace KeppyMIDIConverter
                     // Visit his website: http://falcosoft.hu/index.html#start
                     KMCGlobals.eventc = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, 0, null);
                     KMCGlobals.events = new BASS_MIDI_EVENT[KMCGlobals.eventc];
-                    for (int i = 0; i <= (KMCGlobals.eventc / 5000000); i++)
+                    for (int i = 0; i <= (KMCGlobals.eventc / 50000000); i++)
                     {
                         int subCount = Math.Min(50000000, (int)KMCGlobals.eventc - (i * 50000000));
                         eventChunk = new BASS_MIDI_EVENT[subCount];
@@ -743,7 +743,7 @@ namespace KeppyMIDIConverter
                     throw new MIDILoadError("Can not load this MIDI.\n\n" +
                         "Are you sure you're not trying to open it in the 32-bit version of Keppy's MIDI Converter?\n" +
                         "Also, try increasing the size of your paging file, you might not have enough RAM.\n\n" +
-                        "Additional info\n" + ex.ToString());
+                        "Additional info:\n" + ex.ToString());
                 }
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
@@ -1263,16 +1263,19 @@ namespace KeppyMIDIConverter
                                 else if (KMCGlobals.CancellationPendingValue == 1)
                                 {
                                     BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
+                                    KMCGlobals.events = null;
                                     KeepLooping = false;
                                     break;
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 2)
                                 {
+                                    KMCGlobals.events = null;
                                     continue;
                                 }
                             }
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
+                                KMCGlobals.events = null;
                                 KMCGlobals.RenderingMode = false;
                                 KMCGlobals.VSTSkipSettings = false;
                                 break;
@@ -1280,6 +1283,7 @@ namespace KeppyMIDIConverter
                             else
                             {
                                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
+                                KMCGlobals.events = null;
                                 continue;
                             }
                         }
