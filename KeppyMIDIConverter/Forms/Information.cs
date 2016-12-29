@@ -131,11 +131,6 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void Information_KeyDown(object sender, KeyEventArgs e)
-        {
-            this.Close();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -190,25 +185,34 @@ namespace KeppyMIDIConverter
                 Version.TryParse(newestversion.ToString(), out x);
                 Version y = null;
                 Version.TryParse(Converter.FileVersion.ToString(), out y);
-                if (x > y)
+                if (ModifierKeys == Keys.Shift)
                 {
-                    tabControl1.Enabled = true;
-                    button5.Enabled = true;
-                    LatestVersion.Text = String.Format(res_man.GetString("UpdateFoundVer", cul), newestversion.ToString());
-                    DialogResult dialogResult = MessageBox.Show(res_man.GetString("UpdatesFoundText", cul), res_man.GetString("UpdatesFoundTitle", cul), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        UpdateDownloader frm = new UpdateDownloader(newestversion);
-                        frm.StartPosition = FormStartPosition.CenterScreen;
-                        frm.ShowDialog();
-                    }
+                    UpdateDownloader frm = new UpdateDownloader(newestversion);
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.ShowDialog();
                 }
                 else
                 {
-                    tabControl1.Enabled = true;
-                    button5.Enabled = true;
-                    LatestVersion.Text = String.Format("{0} ({1})", res_man.GetString("NoUpdatesText", cul), y.ToString());
-                    MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (x > y)
+                    {
+                        tabControl1.Enabled = true;
+                        button5.Enabled = true;
+                        LatestVersion.Text = String.Format(res_man.GetString("UpdateFoundVer", cul), newestversion.ToString());
+                        DialogResult dialogResult = MessageBox.Show(res_man.GetString("UpdatesFoundText", cul), res_man.GetString("UpdatesFoundTitle", cul), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            UpdateDownloader frm = new UpdateDownloader(newestversion);
+                            frm.StartPosition = FormStartPosition.CenterScreen;
+                            frm.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        tabControl1.Enabled = true;
+                        button5.Enabled = true;
+                        LatestVersion.Text = String.Format("{0} ({1})", res_man.GetString("NoUpdatesText", cul), y.ToString());
+                        MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception ex)

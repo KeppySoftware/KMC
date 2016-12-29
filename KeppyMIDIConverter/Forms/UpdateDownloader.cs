@@ -25,21 +25,30 @@ namespace KeppyMIDIConverter
 
         private void UpdateDownloader_Load(object sender, EventArgs e)
         {
-            using (webClient = new WebClient())
+            String PathPortable = Path.GetDirectoryName(Application.ExecutablePath);
+            if (File.Exists(PathPortable + "\\portable"))
             {
-                webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
-                webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
-
-                Uri URL = new Uri(String.Format("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases/download/{0}/KeppyMIDIConverterSetup.exe", VersionToDownload));
-
-                try
+                Process.Start(String.Format("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases/tag/{0}", VersionToDownload));
+                Close();
+            }
+            else
+            {
+                using (webClient = new WebClient())
                 {
-                    webClient.DownloadFileAsync(URL, Path.GetTempPath() + "KeppyMIDIConverterSetup.exe");
-                }
-                catch
-                {
-                    MessageBox.Show("The converter can not connect to the GitHub servers.\n\nCheck your network connection, or contact your system administrator or network service provider.", "Keppy's Synthesizer - Connection error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Close();
+                    webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
+                    webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+
+                    Uri URL = new Uri(String.Format("https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases/download/{0}/KeppyMIDIConverterSetup.exe", VersionToDownload));
+
+                    try
+                    {
+                        webClient.DownloadFileAsync(URL, Path.GetTempPath() + "KeppyMIDIConverterSetup.exe");
+                    }
+                    catch
+                    {
+                        MessageBox.Show("The converter can not connect to the GitHub servers.\n\nCheck your network connection, or contact your system administrator or network service provider.", "Keppy's Synthesizer - Connection error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Close();
+                    }
                 }
             }
         }
@@ -55,7 +64,6 @@ namespace KeppyMIDIConverter
             {
                 Process.Start(Path.GetTempPath() + "KeppyMIDIConverterSetup.exe");
                 Application.ExitThread();
-
             }
             catch
             {

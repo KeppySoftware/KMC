@@ -286,7 +286,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Information";
             this.Load += new System.EventHandler(this.Informations_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Information_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
