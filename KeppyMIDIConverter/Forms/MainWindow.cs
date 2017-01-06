@@ -2376,7 +2376,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void PlayConversionStart()
+        public static void PlayConversionStart()
         {
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
@@ -2388,12 +2388,24 @@ namespace KeppyMIDIConverter
             Settings.Close();
         }
 
-        private void PlayConversionStop()
+        public static void PlayConversionStop()
         {
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
             {
                 System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convfin;
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
+                player.Play();
+            }
+            Settings.Close();
+        }
+
+        public static void PlayConverterError()
+        {
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
+            {
+                System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convfail;
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
                 player.Play();
             }

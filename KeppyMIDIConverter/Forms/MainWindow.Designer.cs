@@ -239,7 +239,7 @@
             this.CurrentStatusText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentStatusText.BackColor = System.Drawing.Color.Transparent;
             this.CurrentStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CurrentStatusText.Location = new System.Drawing.Point(0, 1);
+            this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
             this.CurrentStatusText.Size = new System.Drawing.Size(409, 60);
             this.CurrentStatusText.TabIndex = 7;
@@ -288,9 +288,9 @@
             this.panel1.Controls.Add(this.loadingpic);
             this.panel1.Controls.Add(this.CurrentStatusText);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.Location = new System.Drawing.Point(12, 337);
+            this.panel1.Location = new System.Drawing.Point(12, 340);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(472, 64);
+            this.panel1.Size = new System.Drawing.Size(472, 62);
             this.panel1.TabIndex = 13;
             // 
             // loadingpic
@@ -300,7 +300,7 @@
             this.loadingpic.InitialImage = null;
             this.loadingpic.Location = new System.Drawing.Point(410, 0);
             this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(60, 62);
+            this.loadingpic.Size = new System.Drawing.Size(60, 60);
             this.loadingpic.TabIndex = 8;
             this.loadingpic.TabStop = false;
             // 

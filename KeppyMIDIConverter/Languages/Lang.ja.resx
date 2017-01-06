@@ -270,13 +270,11 @@ BASS status: {0}</value>
   <data name="ConvStatusFasterNew" xml:space="preserve">
     <value>出力中: {0}MB ({1})
 残り時間: {2} - 経過時間: {3}
-
 レンダリング時間: {4}% (倍速, x{5})</value>
   </data>
   <data name="ConvStatusFasterOld" xml:space="preserve">
     <value>出力中: {0}MB ({1})
 {2} - {3}
-
 レンダリング時間: {4}% (倍速, x{5})</value>
   </data>
   <data name="ConvStatusNormalNew" xml:space="preserve">
@@ -286,21 +284,17 @@ BASS status: {0}</value>
   </data>
   <data name="ConvStatusNormalOld" xml:space="preserve">
     <value>出力中: {0}MB ({1})
-
 {2} - {3}
 レンダリング時間: {4}%</value>
   </data>
   <data name="ConvStatusSlowerNew" xml:space="preserve">
     <value>出力中: {0}MB ({1})
-
 残り時間: {2} - 経過時間: {3}
-
 レンダリング時間: {4}% (遅延中, x{5})</value>
   </data>
   <data name="ConvStatusSlowerOld" xml:space="preserve">
     <value>出力中: {0}MB ({1})
 {2} - {3}
-
 レンダリング時間: {4}% (遅延中, x{5})</value>
   </data>
   <data name="CopiedToClipboardNotice" xml:space="preserve">
@@ -312,8 +306,7 @@ BASS status: {0}</value>
     <value>エラーをクリップボードにコピー</value>
   </data>
   <data name="CrashQuestion" xml:space="preserve">
-    <value>全ての変換が中止されますが、本当にいいんですね？
-</value>
+    <value>全ての変換が中止されますが、本当にいいんですね？</value>
   </data>
   <data name="CrashTriggeredByUser" xml:space="preserve">
     <value>ユーザーによってクラッシュされました。</value>
@@ -502,7 +495,6 @@ Keppy's MIDI Converterは最新です。</value>
   </data>
   <data name="PlaybackAbortedXPMessage" xml:space="preserve">
     <value>再生が中断されました。
-
 BASS status: {0}</value>
   </data>
   <data name="PlaybackCompleted" xml:space="preserve">
@@ -510,11 +502,12 @@ BASS status: {0}</value>
   </data>
   <data name="PlaybackCompletedXPMessage" xml:space="preserve">
     <value>再生が完了しました。
-
 BASS status: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
-    <value>再生中: {0} {1} - {2} Notes: {3} - {4}</value>
+    <value>再生中: {0}
+{1} - {2}
+Notes: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | {0} を再生中...</value>

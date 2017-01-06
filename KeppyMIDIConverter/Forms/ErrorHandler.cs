@@ -119,10 +119,7 @@ namespace KeppyMIDIConverter
 
         private void PlayConversionFail()
         {
-            if (TOE == 0)
-                System.Media.SystemSounds.Exclamation.Play();
-            else
-                System.Media.SystemSounds.Hand.Play();
+            MainWindow.PlayConverterError();
         }
 
         private void copyErrorMessageToolStripMenuItem_Click(object sender, EventArgs e)
