@@ -686,8 +686,8 @@ namespace KeppyMIDIConverter
                         fonts[sfnum].sbank = Convert.ToInt32(matches[1].ToString());
                         fonts[sfnum].dpreset = Convert.ToInt32(matches[2].ToString());
                         fonts[sfnum].dbank = Convert.ToInt32(matches[3].ToString());
+                        fonts[sfnum].dbanklsb = 0;
                         if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
                         sfnum += 1;
                     }
                     else
@@ -697,11 +697,12 @@ namespace KeppyMIDIConverter
                         fonts[sfnum].sbank = -1;
                         fonts[sfnum].dpreset = -1;
                         fonts[sfnum].dbank = 0;
+                        fonts[sfnum].dbanklsb = 0;
                         if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
                         sfnum += 1;
                     }
                 }
+                BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, KMCGlobals.Soundfonts.Length);
                 KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
                 KMCGlobals._plm.CalcRMS = true;
                 BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
@@ -1379,13 +1380,14 @@ namespace KeppyMIDIConverter
                                 {
                                     BASSCloseStream(res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackAborted", cul), 0);
                                     KMCGlobals.PlaybackMode = false;
+                                    KeepLooping = false;
                                     break;
                                 }
                             }
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
-                                events = null;
-                                KeepLooping = false;
+                                Bass.BASS_Free();
+                                events = null;                                
                                 break;
                             }
                             else

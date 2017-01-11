@@ -92,21 +92,8 @@ namespace KeppyMIDIConverter
         private void clearSoundfontListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SFList.Items.Clear();
-        }
-
-        public static string getBetween(string strSource, string strStart, string strEnd)
-        {
-            int Start, End;
-            if (strSource.Contains(strStart) && strSource.Contains(strEnd))
-            {
-                Start = strSource.IndexOf(strStart, 0) + strStart.Length;
-                End = strSource.IndexOf(strEnd, Start);
-                return strSource.Substring(Start, End - Start);
-            }
-            else
-            {
-                return "";
-            }
+            Array.Clear(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0, KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts.Length);
+            KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[0];
         }
 
         private void SoundfontDialog_Load(object sender, EventArgs e)
@@ -145,7 +132,6 @@ namespace KeppyMIDIConverter
             }
         }
 
-        // NOT SUPPORTED ON XP
         public static void OpenFileDialogAddCustomPaths(FileDialog dialog) // This function doesn't work on Windows XP
         {
             try
@@ -165,7 +151,6 @@ namespace KeppyMIDIConverter
                 // Trigger nothing
             }
         }
-        // NOT SUPPORTED ON XP
 
         private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -358,6 +343,8 @@ namespace KeppyMIDIConverter
                     SFList.SetSelected(indx - 1, true);
                 }
             }
+            KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+            SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
         }
 
         private void MvDwn_Click(object sender, EventArgs e)
@@ -380,6 +367,8 @@ namespace KeppyMIDIConverter
                     SFList.SetSelected(indx + 1, true);
                 }
             }
+            KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+            SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
         }
 
         private void SFZCompliant_Click(object sender, EventArgs e)
@@ -388,10 +377,6 @@ namespace KeppyMIDIConverter
             if (dialogResult == DialogResult.Yes)
             {
                 Process.Start("http://drealm.info/sfz/plj-sfz.xhtml");
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-
             }
         }
 
@@ -504,6 +489,8 @@ namespace KeppyMIDIConverter
 
         private void button1_Click(object sender, EventArgs e)
         {
+            KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+            SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
             this.Close();
         }
 

@@ -294,7 +294,7 @@ namespace KeppyMIDIConverter.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap remove_icon {
             get {
-                object obj = ResourceManager.GetObject("remove-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("remove_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
