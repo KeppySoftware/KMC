@@ -133,7 +133,7 @@
             // 
             this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.UsedVoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.UsedVoices.Location = new System.Drawing.Point(12, 318);
+            this.UsedVoices.Location = new System.Drawing.Point(12, 319);
             this.UsedVoices.Name = "UsedVoices";
             this.UsedVoices.Size = new System.Drawing.Size(470, 13);
             this.UsedVoices.TabIndex = 8;
@@ -228,7 +228,7 @@
             // 
             this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelRMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.labelRMS.Location = new System.Drawing.Point(12, 300);
+            this.labelRMS.Location = new System.Drawing.Point(12, 301);
             this.labelRMS.Name = "labelRMS";
             this.labelRMS.Size = new System.Drawing.Size(470, 13);
             this.labelRMS.TabIndex = 17;

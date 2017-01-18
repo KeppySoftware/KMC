@@ -67,7 +67,8 @@
             // 
             // SoundfontImportDialog
             // 
-            this.SoundfontImportDialog.Filter = "Soundfont files|*.sf2;*.sfz;*.sf3;*.sfpack;|Soundfont lists|*.sflist;*.txt;";
+            this.SoundfontImportDialog.Filter = "Soundfont files and lists|*.sf2;*.sfz;*.sf3;*.sfpack;*.sflist;*.txt;|Soundfont fi" +
+    "les|*.sf2;*.sfz;*.sf3;*.sfpack;|Soundfont lists|*.sflist;*.txt;";
             this.SoundfontImportDialog.Multiselect = true;
             // 
             // label1

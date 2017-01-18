@@ -152,150 +152,106 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddSoundfont()
         {
-            int importmode = 0;
             Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
             RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
-            OpenFileDialogAddCustomPaths(SoundfontImportDialog);
-            if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                if (ModifierKeys == Keys.Control)
+                int importmode = 0;
+                SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+                OpenFileDialogAddCustomPaths(SoundfontImportDialog);
+                if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
                 {
-                    importmode = 1;
-                }
-                foreach (String file in SoundfontImportDialog.FileNames)
-                {
-                    if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sfpack" | Path.GetExtension(file).ToLower() == ".sfz")
+                    if (ModifierKeys == Keys.Control)
                     {
-                        if (SFList.Items.Count == 1000)
+                        importmode = 1;
+                    }
+                    foreach (String file in SoundfontImportDialog.FileNames)
+                    {
+                        if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sfpack" | Path.GetExtension(file).ToLower() == ".sfz")
                         {
-                            SFList.Items.RemoveAt(1000);
-                        }
-                        if (Path.GetExtension(file).ToLower() == ".sfz")
-                        {
-                            SFList.Items.Add(ImportMePlease(file));
-                        }
-                        else
-                        {
-                            if (importmode == 1)
+                            if (SFList.Items.Count == 1000)
+                            {
+                                SFList.Items.RemoveAt(1000);
+                            }
+                            if (Path.GetExtension(file).ToLower() == ".sfz")
                             {
                                 SFList.Items.Add(ImportMePlease(file));
                             }
                             else
                             {
-                                SFList.Items.Add(file);
+                                if (importmode == 1)
+                                {
+                                    SFList.Items.Add(ImportMePlease(file));
+                                }
+                                else
+                                {
+                                    SFList.Items.Add(file);
+                                }
                             }
+                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
                         }
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                    }
-                    else if (Path.GetExtension(file).ToLower() == ".sflist" | Path.GetExtension(file).ToLower() == ".txt")
-                    {
-                        using (StreamReader r = new StreamReader(file))
+                        else if (Path.GetExtension(file).ToLower() == ".sflist" | Path.GetExtension(file).ToLower() == ".txt")
                         {
-                            string line;
-                            while ((line = r.ReadLine()) != null)
+                            using (StreamReader r = new StreamReader(file))
                             {
-                                bool isabsolute = Path.IsPathRooted(line);  // Check if the path to the soundfont is absolute or relative
-                                string relativepath;
-                                string absolutepath;
-                                if (isabsolute == false) // Not absolute, let's convert it
+                                string line;
+                                while ((line = r.ReadLine()) != null)
                                 {
-                                    relativepath = String.Format("{0}{1}", Path.GetDirectoryName(file), String.Format("\\{0}", line));
-                                    absolutepath = new Uri(relativepath).LocalPath;
-                                    SFList.Items.Add(absolutepath);
-                                }
-                                else // Absolute, let's just add it straight away
-                                {
-                                    SFList.Items.Add(line);
+                                    if (line.ToLower().IndexOf('=') != -1)
+                                    {
+                                        SFList.Items.Add(line);
+                                    }
+                                    else if (line.ToLower().IndexOf('@') != -1)
+                                    {
+                                        // Ignore it
+                                    }
+                                    else
+                                    {
+                                        bool isabsolute = Path.IsPathRooted(line);  // Check if the path to the soundfont is absolute or relative
+                                        string relativepath;
+                                        string absolutepath;
+                                        if (isabsolute == false) // Not absolute, let's convert it
+                                        {
+                                            relativepath = String.Format("{0}{1}", Path.GetDirectoryName(file), String.Format("\\{0}", line));
+                                            absolutepath = new Uri(relativepath).LocalPath;
+                                            SFList.Items.Add(absolutepath);
+                                        }
+                                        else // Absolute, let's just add it straight away
+                                        {
+                                            SFList.Items.Add(line);
+                                        }
+                                    }
                                 }
                             }
                         }
+                        else
+                        {
+                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                            MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    else
-                    {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
+                    SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
                 }
-                KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
-                SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
+                Settings.Close();
             }
-            Settings.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                Settings.Close();
+            }
+        }
+
+        private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddSoundfont();
         }
 
         private void ImportBtn_Click(object sender, EventArgs e)
         {
-            int importmode = 0;
-            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
-            OpenFileDialogAddCustomPaths(SoundfontImportDialog);
-            if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
-            {
-                if (ModifierKeys == Keys.Control)
-                {
-                    importmode = 1;
-                }
-                foreach (String file in SoundfontImportDialog.FileNames)
-                {
-                    if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sfpack" | Path.GetExtension(file).ToLower() == ".sfz")
-                    {
-                        if (SFList.Items.Count == 1000)
-                        {
-                            SFList.Items.RemoveAt(1000);
-                        }
-                        if (Path.GetExtension(file).ToLower() == ".sfz")
-                        {
-                            SFList.Items.Add(ImportMePlease(file));
-                        }
-                        else
-                        {
-                            if (importmode == 1)
-                            {
-                                SFList.Items.Add(ImportMePlease(file));
-                            }
-                            else
-                            {
-                                SFList.Items.Add(file);
-                            }
-                        }
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                    }
-                    else if (Path.GetExtension(file).ToLower() == ".sflist" | Path.GetExtension(file).ToLower() == ".txt")
-                    {
-                        using (StreamReader r = new StreamReader(file))
-                        {
-                            string line;
-                            while ((line = r.ReadLine()) != null)
-                            {
-                                bool isabsolute = Path.IsPathRooted(line);  // Check if the path to the soundfont is absolute or relative
-                                string relativepath;
-                                string absolutepath;
-                                if (isabsolute == false) // Not absolute, let's convert it
-                                {
-                                    relativepath = String.Format("{0}{1}", Path.GetDirectoryName(file), String.Format("\\{0}", line));
-                                    absolutepath = new Uri(relativepath).LocalPath;
-                                    SFList.Items.Add(absolutepath);
-                                }
-                                else // Absolute, let's just add it straight away
-                                {
-                                    SFList.Items.Add(line);
-                                }    
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
-                        MessageBox.Show(res_man.GetString("SoundfontImportError", cul), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
-                SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
-            }
-            Settings.Close();
+            AddSoundfont();
         }
 
         private void RemoveBtn_Click(object sender, EventArgs e)

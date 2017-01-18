@@ -314,6 +314,8 @@
     <None Include="Resources\kek.wav" />
     <None Include="Resources\gmlist.txt" />
     <None Include="Resources\donatewin.png" />
+    <None Include="Resources\convprwo.gif" />
+    <None Include="Resources\convsave.gif" />
     <Content Include="Resources\mainlogo.ico" />
     <None Include="Resources\hot.png" />
     <None Include="Resources\worldwideweb.png" />
