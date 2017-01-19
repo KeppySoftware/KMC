@@ -663,6 +663,66 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private void LoadSoundFontsToStream(int type)
+        {
+            if (KMCGlobals.Soundfonts.Length == 0)
+            {
+                DirectoryInfo PathToGenericSF = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                String FullPath = String.Format("{0}\\GMGeneric.sf2", PathToGenericSF.Parent.FullName);
+                if (File.Exists(FullPath))
+                {
+                    BASS_MIDI_FONTEX[] fonts = new BASS_MIDI_FONTEX[1];
+                    fonts[0].font = BassMidi.BASS_MIDI_FontInit(FullPath);
+                    fonts[0].spreset = -1;
+                    fonts[0].sbank = -1;
+                    fonts[0].dpreset = -1;
+                    fonts[0].dbank = 0;
+                    if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[0].font, ((float)KMCGlobals.Volume / 10000)); }
+                    BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, 1);
+                }
+                else
+                {
+                    throw new Exception("No soundfont available.");
+                }
+            }
+            else
+            {
+                BASS_MIDI_FONTEX[] fonts = new BASS_MIDI_FONTEX[KMCGlobals.Soundfonts.Length];
+                int sfnum = 0;
+                int sfzload = 0;
+                List<int> termsList = new List<int>();
+                termsList.Reverse();
+                foreach (string s in KMCGlobals.Soundfonts)
+                {
+                    if (s.ToLower().IndexOf('=') != -1)
+                    {
+                        var matches = System.Text.RegularExpressions.Regex.Matches(s, "[0-9]+");
+                        string sf = s.Substring(s.LastIndexOf('|') + 1);
+                        fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(sf);
+                        fonts[sfnum].spreset = Convert.ToInt32(matches[0].ToString());
+                        fonts[sfnum].sbank = Convert.ToInt32(matches[1].ToString());
+                        fonts[sfnum].dpreset = Convert.ToInt32(matches[2].ToString());
+                        fonts[sfnum].dbank = Convert.ToInt32(matches[3].ToString());
+                        if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
+                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
+                        sfnum += 1;
+                    }
+                    else
+                    {
+                        fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
+                        fonts[sfnum].spreset = -1;
+                        fonts[sfnum].sbank = -1;
+                        fonts[sfnum].dpreset = -1;
+                        fonts[sfnum].dbank = 0;
+                        if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
+                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
+                        sfnum += 1;
+                    }
+                }
+                BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, KMCGlobals.Soundfonts.Length);
+            }
+        }
+
         private void BASSStreamSystem(String str, int type)
         {
             try
@@ -689,60 +749,7 @@ namespace KeppyMIDIConverter
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                 else
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);
-                if (KMCGlobals.Soundfonts.Length == 0)
-                {
-                    if (File.Exists("GMGeneric.sf2"))
-                    {
-                        BASS_MIDI_FONTEX[] fonts = new BASS_MIDI_FONTEX[1];
-                        fonts[0].font = BassMidi.BASS_MIDI_FontInit(String.Format("{0}\\GMGeneric.sf2", Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)));
-                        fonts[0].spreset = -1;
-                        fonts[0].sbank = -1;
-                        fonts[0].dpreset = -1;
-                        fonts[0].dbank = 0;
-                        if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[0].font, ((float)KMCGlobals.Volume / 10000)); }
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, 1);
-                    }
-                    else
-                    {
-                        throw new Exception("No soundfont available.");
-                    }
-                }
-                else
-                {
-                    BASS_MIDI_FONTEX[] fonts = new BASS_MIDI_FONTEX[KMCGlobals.Soundfonts.Length];
-                    int sfnum = 0;
-                    int sfzload = 0;
-                    List<int> termsList = new List<int>();
-                    termsList.Reverse();
-                    foreach (string s in KMCGlobals.Soundfonts)
-                    {
-                        if (s.ToLower().IndexOf('=') != -1)
-                        {
-                            var matches = System.Text.RegularExpressions.Regex.Matches(s, "[0-9]+");
-                            string sf = s.Substring(s.LastIndexOf('|') + 1);
-                            fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(sf);
-                            fonts[sfnum].spreset = Convert.ToInt32(matches[0].ToString());
-                            fonts[sfnum].sbank = Convert.ToInt32(matches[1].ToString());
-                            fonts[sfnum].dpreset = Convert.ToInt32(matches[2].ToString());
-                            fonts[sfnum].dbank = Convert.ToInt32(matches[3].ToString());
-                            if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
-                            BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                            sfnum += 1;
-                        }
-                        else
-                        {
-                            fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
-                            fonts[sfnum].spreset = -1;
-                            fonts[sfnum].sbank = -1;
-                            fonts[sfnum].dpreset = -1;
-                            fonts[sfnum].dbank = 0;
-                            if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
-                            BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                            sfnum += 1;
-                        }
-                    }
-                    BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, KMCGlobals.Soundfonts.Length);
-                }
+                LoadSoundFontsToStream(type);
                 KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
                 KMCGlobals._plm.CalcRMS = true;
                 BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
@@ -795,60 +802,7 @@ namespace KeppyMIDIConverter
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                 else
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);
-                if (KMCGlobals.Soundfonts.Length == 0)
-                {
-                    if (File.Exists("GMGeneric.sf2"))
-                    {
-                        BASS_MIDI_FONTEX[] fonts = new BASS_MIDI_FONTEX[1];
-                        fonts[0].font = BassMidi.BASS_MIDI_FontInit(String.Format("{0}\\GMGeneric.sf2", Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)));
-                        fonts[0].spreset = -1;
-                        fonts[0].sbank = -1;
-                        fonts[0].dpreset = -1;
-                        fonts[0].dbank = 0;
-                        if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[0].font, ((float)KMCGlobals.Volume / 10000)); }
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, 1);
-                    }
-                    else
-                    {
-                        throw new Exception("No soundfont available.");
-                    }
-                }
-                else
-                {
-                    BASS_MIDI_FONTEX[] fonts = new BASS_MIDI_FONTEX[KMCGlobals.Soundfonts.Length];
-                    int sfnum = 0;
-                    int sfzload = 0;
-                    List<int> termsList = new List<int>();
-                    termsList.Reverse();
-                    foreach (string s in KMCGlobals.Soundfonts)
-                    {
-                        if (s.ToLower().IndexOf('=') != -1)
-                        {
-                            var matches = System.Text.RegularExpressions.Regex.Matches(s, "[0-9]+");
-                            string sf = s.Substring(s.LastIndexOf('|') + 1);
-                            fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(sf);
-                            fonts[sfnum].spreset = Convert.ToInt32(matches[0].ToString());
-                            fonts[sfnum].sbank = Convert.ToInt32(matches[1].ToString());
-                            fonts[sfnum].dpreset = Convert.ToInt32(matches[2].ToString());
-                            fonts[sfnum].dbank = Convert.ToInt32(matches[3].ToString());
-                            if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
-                            BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                            sfnum += 1;
-                        }
-                        else
-                        {
-                            fonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
-                            fonts[sfnum].spreset = -1;
-                            fonts[sfnum].sbank = -1;
-                            fonts[sfnum].dpreset = -1;
-                            fonts[sfnum].dbank = 0;
-                            if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
-                            BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                            sfnum += 1;
-                        }
-                    }
-                    BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, KMCGlobals.Soundfonts.Length);
-                }
+                LoadSoundFontsToStream(type);
                 KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
                 KMCGlobals._plm.CalcRMS = true;
                 BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
@@ -2026,7 +1980,9 @@ namespace KeppyMIDIConverter
                         {
                             if (KMCGlobals.Soundfonts.Length == 0)
                             {
-                                if (File.Exists("GMGeneric.sf2"))
+                                DirectoryInfo PathToGenericSF = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                                String FullPath = String.Format("{0}\\GMGeneric.sf2", PathToGenericSF.Parent.FullName);
+                                if (File.Exists(FullPath))
                                 {
                                     openTheSoundfontsManagerToolStripMenuItem.DefaultItem = false;
                                     importMIDIsToolStripMenuItem.DefaultItem = true;
