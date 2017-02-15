@@ -166,21 +166,26 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private static void SetPeak()
+        private static void SetPeak(Int32 Mode)
         {
-            if (!MainWindow.KMCGlobals.IsKMCBusy)
+            try
             {
-                MainWindow.Delegate.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB",
-                     MainWindow.res_man.GetString("RMS", MainWindow.cul), 0,
-                     MainWindow.res_man.GetString("AverageLevel", MainWindow.cul), 0,
-                     MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), 0);
+                if (Mode == 0)
+                {
+                    MainWindow.Delegate.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB",
+                         MainWindow.res_man.GetString("RMS", MainWindow.cul), 0,
+                         MainWindow.res_man.GetString("AverageLevel", MainWindow.cul), 0,
+                         MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), 0);
+                }
+                else if (Mode == 1)
+                {
+                    MainWindow.Delegate.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB",
+                         MainWindow.res_man.GetString("RMS", MainWindow.cul), MainWindow.KMCGlobals._plm.RMS_dBV,
+                         MainWindow.res_man.GetString("AverageLevel", MainWindow.cul), MainWindow.KMCGlobals._plm.AVG_dBV,
+                         MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), Math.Max(MainWindow.KMCGlobals._plm.PeakHoldLevelL_dBV, MainWindow.KMCGlobals._plm.PeakHoldLevelR_dBV));
+                }
             }
-            else {
-                MainWindow.Delegate.labelRMS.Text = String.Format("{0}: {1:#0.0} | {2}: {3:#0.0} | {4}: {5:#0.0}",
-                     MainWindow.res_man.GetString("RMS", MainWindow.cul), MainWindow.KMCGlobals._plm.RMS_dBV,
-                     MainWindow.res_man.GetString("AverageLevel", MainWindow.cul), MainWindow.KMCGlobals._plm.AVG_dBV,
-                     MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), Math.Max(MainWindow.KMCGlobals._plm.PeakHoldLevelL_dBV, MainWindow.KMCGlobals._plm.PeakHoldLevelR_dBV));
-            }
+            catch { }
         }
 
         private static void CurrentMode(Int32 Mode) 
@@ -342,21 +347,21 @@ namespace KeppyMIDIConverter
         {
             SetStatus(0);
             CurrentMode(0);
-            SetPeak();
+            SetPeak(0);
         }
 
         public static void KMCMemoryAllocation()
         {
             SetStatus(1);
             CurrentMode(1);
-            SetPeak();
+            SetPeak(0);
         }
 
         public static void KMCBusy()
         {
             SetStatus(2);
             CurrentMode(2);
-            SetPeak();
+            SetPeak(1);
         }
 
         public static bool CheckOpened(string name)
