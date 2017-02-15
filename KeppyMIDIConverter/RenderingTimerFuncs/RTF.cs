@@ -185,7 +185,12 @@ namespace KeppyMIDIConverter
                          MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), Math.Max(MainWindow.KMCGlobals._plm.PeakHoldLevelL_dBV, MainWindow.KMCGlobals._plm.PeakHoldLevelR_dBV));
                 }
             }
-            catch { }
+            catch {
+                MainWindow.Delegate.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB",
+                     MainWindow.res_man.GetString("RMS", MainWindow.cul), 0,
+                     MainWindow.res_man.GetString("AverageLevel", MainWindow.cul), 0,
+                     MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), 0);
+            }
         }
 
         private static void CurrentMode(Int32 Mode) 
@@ -239,15 +244,67 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private static void SetProgressBar(Int32 Mode)
+        {
+            try
+            {
+                if (Mode == 0) // IDle
+                {
+                    MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
+                    MainWindow.Delegate.CurrentStatus.Minimum = 0;
+                    MainWindow.Delegate.CurrentStatus.Maximum = 1;
+                    MainWindow.Delegate.CurrentStatus.Value = 0;
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                }
+                if (Mode == 1) // Memory allocation
+                {
+                    MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Marquee;
+                    MainWindow.Delegate.CurrentStatus.Maximum = 1;
+                    MainWindow.Delegate.CurrentStatus.Value = 0;
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                }
+                if (Mode == 2) // Rendering/Playback
+                {
+                    if (!MainWindow.KMCGlobals.RealTime)
+                    {
+                        MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
+                        MainWindow.Delegate.CurrentStatus.Minimum = 0;
+                        MainWindow.Delegate.CurrentStatus.Maximum = MainWindow.KMCGlobals.CurrentStatusMaximumInt;
+                        MainWindow.Delegate.CurrentStatus.Value = MainWindow.KMCGlobals.CurrentStatusValueInt;
+                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
+                        TaskbarManager.Instance.SetProgressValue(MainWindow.KMCGlobals.CurrentStatusValueInt, MainWindow.KMCGlobals.CurrentStatusMaximumInt);
+                    }
+                    else
+                    {
+                        MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Marquee;
+                        MainWindow.Delegate.CurrentStatus.Maximum = 1;
+                        MainWindow.Delegate.CurrentStatus.Value = 0;
+                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                    }
+                }
+            }
+            catch {
+                if (Mode == 2) // Rendering/Playback 
+                {
+                    if (!MainWindow.KMCGlobals.RealTime)
+                    {
+                        MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
+                        MainWindow.Delegate.CurrentStatus.Minimum = 0;
+                        MainWindow.Delegate.CurrentStatus.Maximum = 1;
+                        MainWindow.Delegate.CurrentStatus.Value = 1;
+                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
+                        TaskbarManager.Instance.SetProgressValue(1, 1);
+                    }
+                }
+            }
+        }
+
         private static void SetStatus(Int32 Mode)
         {
             if (Mode == 0) // Idle
             {
                 MainWindow.Delegate.MIDIList.Enabled = true;
-                MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                MainWindow.Delegate.CurrentStatus.Maximum = 999;
-                MainWindow.Delegate.CurrentStatus.Value = 0;
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                SetProgressBar(0);
                 MainWindow.Delegate.CurrentStatusText.Text = MainWindow.res_man.GetString("IdleMessage", MainWindow.cul);
                 if (MainWindow.KMCGlobals.pictureset != 1)
                 {
@@ -290,10 +347,7 @@ namespace KeppyMIDIConverter
             else if (Mode == 1) // Memory allocation
             {
                 MainWindow.Delegate.MIDIList.Enabled = false;
-                MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                MainWindow.Delegate.CurrentStatus.Maximum = 1;
-                MainWindow.Delegate.CurrentStatus.Value = 0;
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                SetProgressBar(1);
                 if (MainWindow.KMCGlobals.pictureset != 0)
                 {
                     MainWindow.Delegate.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
@@ -310,7 +364,6 @@ namespace KeppyMIDIConverter
                     else
                         MainWindow.Delegate.CurrentStatusText.Text = MainWindow.res_man.GetString("MemoryAllocationPlaybackVST", MainWindow.cul);
                 }
-
                 DisableImportButtons();
                 DisableEncoderButtons();
                 thisProc.PriorityClass = ProcessPriorityClass.AboveNormal;
@@ -318,22 +371,7 @@ namespace KeppyMIDIConverter
             else if (Mode == 2) // Rendering/Playback
             {
                 MainWindow.Delegate.MIDIList.Enabled = false;
-
-                if (!MainWindow.KMCGlobals.RealTime)
-                {
-                    MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                    MainWindow.Delegate.CurrentStatus.Maximum = MainWindow.KMCGlobals.CurrentStatusMaximumInt;
-                    MainWindow.Delegate.CurrentStatus.Value = MainWindow.KMCGlobals.CurrentStatusValueInt;
-                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
-                    TaskbarManager.Instance.SetProgressValue(MainWindow.KMCGlobals.CurrentStatusValueInt, MainWindow.KMCGlobals.CurrentStatusMaximumInt);
-                }
-                else
-                {
-                    MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                    MainWindow.Delegate.CurrentStatus.Maximum = 1;
-                    MainWindow.Delegate.CurrentStatus.Value = 0;
-                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
-                }
+                SetProgressBar(2);
                 DisableImportButtons();
                 DisableEncoderButtons();
                 UpdateText();
