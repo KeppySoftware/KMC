@@ -96,52 +96,91 @@ namespace KeppyMIDIConverter
                 }
                 if (MainWindow.KMCStatus.CPUUsage < 100f)
                 {
-                    if (MainWindow.KMCGlobals.OldTimeThingy == false)
+                    if (MainWindow.KMCGlobals.RealTime)
+                    {
                         MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusFasterNew", MainWindow.cul),
-                            MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.PassedTime,
-                            MainWindow.KMCStatus.EstimatedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                            MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.EstimatedTime,
+                            MainWindow.KMCStatus.PassedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
                             ((float)(100f / MainWindow.KMCStatus.CPUUsage)).ToString("0.0"));
+                    }
                     else
-                        MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusFasterOld", MainWindow.cul),
-                            MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.CurrentTime,
-                            MainWindow.KMCStatus.TotalTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
-                            ((float)(100f / MainWindow.KMCStatus.CPUUsage)).ToString("0.0"));
+                    {
+                        if (MainWindow.KMCGlobals.OldTimeThingy == false)
+                            MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusFasterNew", MainWindow.cul),
+                                MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.EstimatedTime,
+                                MainWindow.KMCStatus.PassedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                                ((float)(100f / MainWindow.KMCStatus.CPUUsage)).ToString("0.0"));
+                        else
+                            MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusFasterOld", MainWindow.cul),
+                                MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.CurrentTime,
+                                MainWindow.KMCStatus.TotalTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                                ((float)(100f / MainWindow.KMCStatus.CPUUsage)).ToString("0.0"));
+                    }
                 }
                 else if (MainWindow.KMCStatus.CPUUsage == 100f)
                 {
-                    if (MainWindow.KMCGlobals.OldTimeThingy == false)
+                    if (MainWindow.KMCGlobals.RealTime)
+                    {
                         MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusNormalNew", MainWindow.cul),
-                            MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.PassedTime,
-                            MainWindow.KMCStatus.EstimatedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                            MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.EstimatedTime,
+                            MainWindow.KMCStatus.PassedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
                             (MainWindow.KMCStatus.CPUUsage).ToString("0.0"));
+                    }
                     else
-                        MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusNormalOld", MainWindow.cul),
-                            MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.CurrentTime,
-                            MainWindow.KMCStatus.TotalTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
-                            (MainWindow.KMCStatus.CPUUsage).ToString("0.0"));
+                    {
+                        if (MainWindow.KMCGlobals.OldTimeThingy == false)
+                            MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusNormalNew", MainWindow.cul),
+                                MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.EstimatedTime,
+                                MainWindow.KMCStatus.PassedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                                (MainWindow.KMCStatus.CPUUsage).ToString("0.0"));
+                        else
+                            MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusNormalOld", MainWindow.cul),
+                                MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.CurrentTime,
+                                MainWindow.KMCStatus.TotalTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                                (MainWindow.KMCStatus.CPUUsage).ToString("0.0"));
+                    }
                 }
                 else if (MainWindow.KMCStatus.CPUUsage > 100f)
                 {
-                    if (MainWindow.KMCGlobals.OldTimeThingy == false)
+                    if (MainWindow.KMCGlobals.RealTime)
+                    {
                         MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusSlowerNew", MainWindow.cul),
-                           MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.PassedTime,
-                           MainWindow.KMCStatus.EstimatedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
-                           ((float)(MainWindow.KMCStatus.CPUUsage / 100f)).ToString("0.0"));
-                    else
-                        MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusSlowerOld", MainWindow.cul),
-                            MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.CurrentTime,
-                            MainWindow.KMCStatus.TotalTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                            MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.EstimatedTime,
+                            MainWindow.KMCStatus.PassedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
                             ((float)(MainWindow.KMCStatus.CPUUsage / 100f)).ToString("0.0"));
+                    }
+                    else
+                    {
+                        if (MainWindow.KMCGlobals.OldTimeThingy == false)
+                            MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusSlowerNew", MainWindow.cul),
+                                MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.EstimatedTime,
+                                MainWindow.KMCStatus.PassedTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                                ((float)(MainWindow.KMCStatus.CPUUsage / 100f)).ToString("0.0"));
+                        else
+                            MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusSlowerOld", MainWindow.cul),
+                                MainWindow.KMCStatus.RAWConverted, MainWindow.KMCStatus.Percentage, MainWindow.KMCStatus.CurrentTime,
+                                MainWindow.KMCStatus.TotalTime, Convert.ToInt32(MainWindow.KMCStatus.CPUUsage).ToString(),
+                                ((float)(MainWindow.KMCStatus.CPUUsage / 100f)).ToString("0.0"));
+                    }
                 }
             }
         }
 
         private static void SetPeak()
         {
-            MainWindow.Delegate.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB",
-                MainWindow.res_man.GetString("RMS", MainWindow.cul), 0,
-                MainWindow.res_man.GetString("AverageLevel", MainWindow.cul), 0,
-                MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), 0);
+            if (!MainWindow.KMCGlobals.IsKMCBusy)
+            {
+                MainWindow.Delegate.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB",
+                     MainWindow.res_man.GetString("RMS", MainWindow.cul), 0,
+                     MainWindow.res_man.GetString("AverageLevel", MainWindow.cul), 0,
+                     MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), 0);
+            }
+            else {
+                MainWindow.Delegate.labelRMS.Text = String.Format("{0}: {1:#0.0} | {2}: {3:#0.0} | {4}: {5:#0.0}",
+                     MainWindow.res_man.GetString("RMS", MainWindow.cul), MainWindow.KMCGlobals._plm.RMS_dBV,
+                     MainWindow.res_man.GetString("AverageLevel", MainWindow.cul), MainWindow.KMCGlobals._plm.AVG_dBV,
+                     MainWindow.res_man.GetString("PeakLevel", MainWindow.cul), Math.Max(MainWindow.KMCGlobals._plm.PeakHoldLevelL_dBV, MainWindow.KMCGlobals._plm.PeakHoldLevelR_dBV));
+            }
         }
 
         private static void CurrentMode(Int32 Mode) 

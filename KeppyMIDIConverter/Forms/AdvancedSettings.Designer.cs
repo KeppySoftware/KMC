@@ -174,9 +174,9 @@
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox1.Location = new System.Drawing.Point(7, 108);
+            this.checkBox1.Location = new System.Drawing.Point(7, 102);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(177, 18);
+            this.checkBox1.Size = new System.Drawing.Size(177, 30);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "Override MIDI tempo";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -271,6 +271,7 @@
             // RTFPS
             // 
             this.RTFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RTFPS.DecimalPlaces = 1;
             this.RTFPS.Location = new System.Drawing.Point(321, 17);
             this.RTFPS.Maximum = new decimal(new int[] {
             2147483647,

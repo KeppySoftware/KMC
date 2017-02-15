@@ -108,6 +108,7 @@
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.ConverterProcessRT = new System.ComponentModel.BackgroundWorker();
             this.MIDIList = new System.Windows.Forms.ListView();
+            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -169,7 +170,7 @@
             // VoiceLimit
             // 
             this.VoiceLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VoiceLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F);
+            this.VoiceLimit.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VoiceLimit.Location = new System.Drawing.Point(94, 16);
             this.VoiceLimit.Margin = new System.Windows.Forms.Padding(0);
             this.VoiceLimit.Maximum = new decimal(new int[] {
@@ -441,7 +442,8 @@
             this.menuItem13,
             this.OverrideStrip,
             this.menuItem2,
-            this.forceCloseTheApplicationToolStripMenuItem});
+            this.forceCloseTheApplicationToolStripMenuItem,
+            this.menuItem4});
             this.OptionsStrip.Text = "Options";
             // 
             // AutoUpdatesCheckStrip
@@ -829,6 +831,12 @@
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
             // 
+            // menuItem4
+            // 
+            this.menuItem4.Index = 9;
+            this.menuItem4.Text = "Calculate MS";
+            this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -949,6 +957,7 @@
         public System.Windows.Forms.TrackBar VolumeBar;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.PictureBox loadingpic;
+        private System.Windows.Forms.MenuItem menuItem4;
     }
 }
 

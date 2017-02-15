@@ -28,25 +28,28 @@ namespace KeppyMIDIConverter
 
         public static class KMCGlobals
         {
-            public static AdvancedSettings frm = new AdvancedSettings();
+            public static BASS_MIDI_EVENT[] events;
             public static DSPPROC _myDSP;
-            public static SYNCPROC _mySync;
             public static KeppyMIDIConverter.SoundfontDialog frm2 = new KeppyMIDIConverter.SoundfontDialog();
+            public static List<string> EncodersPath = new List<string>();
+            public static SYNCPROC _mySync;
+            public static UInt32 eventc;
             public static Un4seen.Bass.Misc.DSP_PeakLevelMeter _plm;
             public static bool AutoClearMIDIListEnabled = false;
             public static bool AutoShutDownEnabled = false;
             public static bool DeleteEncoder = false;
+            public static bool DoNotCountNotes = false;
             public static bool FXDisabled = true;
+            public static bool IsKMCBusy = false;
             public static bool NoteOff1Event = false;
             public static bool OldTimeThingy = false;
             public static bool QualityOverride = false;
-            public static bool RenderingMode = false;
             public static bool RealTime = false;
+            public static bool RenderingMode = false;
             public static bool TempoOverride = false;
             public static bool VSTMode = false;
             public static bool VSTSkipSettings = false;
-            public static bool DoNotCountNotes = false;
-            public static bool IsKMCBusy = false;
+            public static double RTFPS = 60.0;
             public static int ActiveVoicesInt = 0;
             public static int AverageCPU;
             public static int Bitrate = 128;
@@ -57,20 +60,15 @@ namespace KeppyMIDIConverter
             public static int CurrentStatusValueInt;
             public static int DefaultSoundfont;
             public static int FinalTempo = 120;
-            public static int RTFPS = 60;
             public static int Frequency = 0xbb80;
             public static int LimitVoicesInt = 0x186a0;
             public static int OriginalTempo;
-            public static int pictureset = 1;
             public static int SoundFont;
             public static int Time = 0;
-            public static UInt32 eventc;
-            public static BASS_MIDI_EVENT[] events;
+            public static int UpdateRate;
             public static int Volume;
             public static int _Encoder;
-            public static int _recHandle;
             public static int _Mixer;
-            public static int _VSTHandle;
             public static int _VSTHandle2;
             public static int _VSTHandle3;
             public static int _VSTHandle4;
@@ -78,15 +76,13 @@ namespace KeppyMIDIConverter
             public static int _VSTHandle6;
             public static int _VSTHandle7;
             public static int _VSTHandle8;
-            public static int UpdateRate;
+            public static int _VSTHandle;
+            public static int _recHandle;
+            public static int pictureset = 1;
             public static long StreamSizeFLAC;
             public static string BenchmarkTime;
-            public static string CurrentPeak = "0.0 dB";
-            public static string CurrentRMS = "0.0 dB";
-            public static string CurrentAverage = "0.0 dB";
             public static string CurrentStatusTextString;
             public static string DisabledOr;
-            public static List<string> EncodersPath = new List<string>();
             public static string ExportLastDirectory;
             public static string ExportWhereYay;
             public static string MIDILastDirectory;
@@ -111,6 +107,7 @@ namespace KeppyMIDIConverter
             public static string VSTDLLDesc8 = null;
             public static string WAVName;
             public static string[] Soundfonts = new string[0];
+            public static AdvancedSettings frm = new AdvancedSettings();
 
             // Other
             public static string ExecutablePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -118,17 +115,17 @@ namespace KeppyMIDIConverter
 
         public static class KMCStatus
         {
-            public static string RAWConverted;
-            public static string CurrentTime;
-            public static string TotalTime;
+            public static float CPUUsage;
             public static int PlayedNotes = 0;
             public static int TotalNotes = 0;
-            public static float CPUUsage;
-            public static string PassedTime;
+            public static string CurrentTime;
             public static string EstimatedTime;
-            public static string Percentage;
             public static string Faster;
+            public static string PassedTime;
+            public static string Percentage;
+            public static string RAWConverted;
             public static string Slower;
+            public static string TotalTime;
         }
 
         public static class ID3Meta
@@ -366,7 +363,7 @@ namespace KeppyMIDIConverter
                             KMCGlobals.Volume = Convert.ToInt32(Settings.GetValue("volume", 10000));
                             KMCGlobals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq", 44100));
                             KMCGlobals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate", 256));
-                            KMCGlobals.RTFPS = Convert.ToInt32(Settings.GetValue("customfps", 60));
+                            KMCGlobals.RTFPS = Convert.ToDouble(Settings.GetValue("customfps", 60.0));
                             // Audio events
                             if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
                             {
@@ -1247,7 +1244,7 @@ namespace KeppyMIDIConverter
 
         private void ReturnCustomFramerate(out double[] fpsarr)
         {
-            fpsarr = new double[2] { (1 / KMCGlobals.RTFPS) - 0.00005556, (1 / KMCGlobals.RTFPS) + 0.00005556 };
+            fpsarr = new double[2] { (1.0 / KMCGlobals.RTFPS) - 0.00005556, (1.0 / KMCGlobals.RTFPS) + 0.00005556 };
         }
 
         private void ConverterProcessRT_DoWork(object sender, DoWorkEventArgs e)
@@ -2386,6 +2383,13 @@ namespace KeppyMIDIConverter
             if (DoSnap(scn.WorkingArea.Right, this.Right)) this.Left = scn.WorkingArea.Right - this.Width;
             if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
             Refresh();
+        }
+
+        private void menuItem4_Click(object sender, EventArgs e)
+        {
+            double[] fpsarr = new double[2] { (1.0 / 60.0), (1.0 / 60.0) };
+            MessageBox.Show(String.Format("The values are:\n1: {0}\n2: {1}", fpsarr[0], fpsarr[1]));
+
         }
     }
 

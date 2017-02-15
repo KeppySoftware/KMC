@@ -58,6 +58,7 @@ namespace KeppyMIDIConverter
             //
             FrequencyBox.Text = Convert.ToString(Settings.GetValue("audiofreq", 44100));
             BitrateBox.Text = Convert.ToString(Settings.GetValue("oggbitrate", 256));
+            RTFPS.Value = Convert.ToDecimal(MainWindow.KMCGlobals.RTFPS);
             //
             if (Convert.ToInt32(Settings.GetValue("noteoff1", 0)) == 1)
             {
@@ -184,13 +185,6 @@ namespace KeppyMIDIConverter
             MainWindow.KMCGlobals.FinalTempo = Convert.ToInt32(TempoVal.Value);
         }
 
-        private void RTFPS_ValueChanged(object sender, EventArgs e)
-        {
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            MainWindow.KMCGlobals.RTFPS = Convert.ToInt32(RTFPS.Value);
-            Settings.SetValue("customfps", RTFPS.Value, Microsoft.Win32.RegistryValueKind.DWord);
-        }
-
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
@@ -249,6 +243,13 @@ namespace KeppyMIDIConverter
             if (DoSnap(this.Top, scn.WorkingArea.Top)) this.Top = scn.WorkingArea.Top;
             if (DoSnap(scn.WorkingArea.Right, this.Right)) this.Left = scn.WorkingArea.Right - this.Width;
             if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
+        }
+
+        private void RTFPS_ValueChanged(object sender, EventArgs e)
+        {
+            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            MainWindow.KMCGlobals.RTFPS = Convert.ToDouble(RTFPS.Value);
+            Settings.SetValue("customfps", RTFPS.Value, Microsoft.Win32.RegistryValueKind.String);
         }
     }
 }
