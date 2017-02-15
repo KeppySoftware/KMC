@@ -864,33 +864,15 @@
         #endregion
 
         private System.Windows.Forms.OpenFileDialog MIDIImport;
-        private System.Windows.Forms.Label UsedVoices;
-        private System.Windows.Forms.Label CurrentStatusText;
-        private System.Windows.Forms.GroupBox SettingsBox;
-        private System.Windows.Forms.Button AdvSettingsButton;
-        private System.Windows.Forms.NumericUpDown VoiceLimit;
-        private System.Windows.Forms.Label VoiceLabel;
-        private System.Windows.Forms.ProgressBar CurrentStatus;
         private System.Windows.Forms.SaveFileDialog ExportWhere;
-        private System.Windows.Forms.Label labelRMS;
         public System.ComponentModel.BackgroundWorker RealTimePlayBack;
-        private System.Windows.Forms.TrackBar VolumeBar;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolTip VolumeTip;
         private System.Windows.Forms.Panel panel1;
         public System.ComponentModel.BackgroundWorker ConverterProcess;
         private System.Windows.Forms.MainMenu DefaultMenu;
         private System.Windows.Forms.MenuItem ActionsStrip;
-        private System.Windows.Forms.MenuItem importMIDIsToolStripMenuItem;
-        private System.Windows.Forms.MenuItem removeSelectedMIDIsToolStripMenuItem;
-        private System.Windows.Forms.MenuItem clearMIDIsListToolStripMenuItem;
         private System.Windows.Forms.MenuItem menuItem5;
-        private System.Windows.Forms.MenuItem openTheSoundfontsManagerToolStripMenuItem;
         private System.Windows.Forms.MenuItem menuItem7;
-        private System.Windows.Forms.MenuItem startRenderingWAVToolStripMenuItem;
-        private System.Windows.Forms.MenuItem startRenderingOGGToolStripMenuItem;
-        private System.Windows.Forms.MenuItem playInRealtimeBetaToolStripMenuItem;
-        private System.Windows.Forms.MenuItem abortRenderingToolStripMenuItem;
         private System.Windows.Forms.MenuItem menuItem12;
         private System.Windows.Forms.MenuItem exitToolStripMenuItem;
         private System.Windows.Forms.MenuItem OptionsStrip;
@@ -915,9 +897,6 @@
         private System.Windows.Forms.MenuItem supportTheDeveloperWithADonationToolStripMenuItem;
         private System.Windows.Forms.MenuItem KaleidonKep99sYouTubeChannelToolStripMenuItem;
         private System.Windows.Forms.ContextMenu DefMenu;
-        private System.Windows.Forms.MenuItem ImportMIDIsRightClick;
-        private System.Windows.Forms.MenuItem RemoveMIDIsRightClick;
-        private System.Windows.Forms.MenuItem ClearMIDIsListRightClick;
         private wyDay.Controls.VistaMenu VistaMenuSys;
         private System.Windows.Forms.MenuItem menuItem13;
         private System.Windows.Forms.MenuItem KaleidonKep99sGitHubPageToolStripMenuItem;
@@ -938,17 +917,38 @@
         private System.Windows.Forms.MenuItem KoreanOverride;
         private System.Windows.Forms.MenuItem BengaliOverride;
         private System.Windows.Forms.MenuItem menuItem3;
-        private System.Windows.Forms.PictureBox loadingpic;
         private System.Windows.Forms.MenuItem RussianOverride;
         private System.Windows.Forms.MenuItem menuItem1;
-        private System.Windows.Forms.MenuItem MoveUpItem;
-        private System.Windows.Forms.MenuItem MoveDownItem;
-        private System.Windows.Forms.MenuItem SortByName;
         private System.Windows.Forms.MenuItem menuItem6;
         public System.ComponentModel.BackgroundWorker ConverterProcessRT;
-        private System.Windows.Forms.ListView MIDIList;
         public System.Windows.Forms.Timer RenderingTimer;
-        private System.Windows.Forms.MenuItem startRenderingMp3ToolStripMenuItem;
+        public System.Windows.Forms.ProgressBar CurrentStatus;
+        public System.Windows.Forms.Label UsedVoices;
+        public System.Windows.Forms.Label CurrentStatusText;
+        public System.Windows.Forms.GroupBox SettingsBox;
+        public System.Windows.Forms.Button AdvSettingsButton;
+        public System.Windows.Forms.NumericUpDown VoiceLimit;
+        public System.Windows.Forms.Label VoiceLabel;
+        public System.Windows.Forms.Label labelRMS;
+        public System.Windows.Forms.MenuItem importMIDIsToolStripMenuItem;
+        public System.Windows.Forms.MenuItem removeSelectedMIDIsToolStripMenuItem;
+        public System.Windows.Forms.MenuItem clearMIDIsListToolStripMenuItem;
+        public System.Windows.Forms.MenuItem openTheSoundfontsManagerToolStripMenuItem;
+        public System.Windows.Forms.MenuItem startRenderingWAVToolStripMenuItem;
+        public System.Windows.Forms.MenuItem startRenderingOGGToolStripMenuItem;
+        public System.Windows.Forms.MenuItem playInRealtimeBetaToolStripMenuItem;
+        public System.Windows.Forms.MenuItem abortRenderingToolStripMenuItem;
+        public System.Windows.Forms.MenuItem ImportMIDIsRightClick;
+        public System.Windows.Forms.MenuItem RemoveMIDIsRightClick;
+        public System.Windows.Forms.MenuItem ClearMIDIsListRightClick;
+        public System.Windows.Forms.MenuItem MoveUpItem;
+        public System.Windows.Forms.MenuItem MoveDownItem;
+        public System.Windows.Forms.MenuItem SortByName;
+        public System.Windows.Forms.ListView MIDIList;
+        public System.Windows.Forms.MenuItem startRenderingMp3ToolStripMenuItem;
+        public System.Windows.Forms.TrackBar VolumeBar;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.PictureBox loadingpic;
     }
 }
 

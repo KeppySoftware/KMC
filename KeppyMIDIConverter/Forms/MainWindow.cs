@@ -23,6 +23,9 @@ namespace KeppyMIDIConverter
 {
     public partial class MainWindow : Form
     {
+        // Delegate for RTF
+        public static MainWindow Delegate;
+
         public static class KMCGlobals
         {
             public static AdvancedSettings frm = new AdvancedSettings();
@@ -36,7 +39,6 @@ namespace KeppyMIDIConverter
             public static bool FXDisabled = true;
             public static bool NoteOff1Event = false;
             public static bool OldTimeThingy = false;
-            public static bool PlaybackMode = false;
             public static bool QualityOverride = false;
             public static bool RenderingMode = false;
             public static bool RealTime = false;
@@ -44,6 +46,7 @@ namespace KeppyMIDIConverter
             public static bool VSTMode = false;
             public static bool VSTSkipSettings = false;
             public static bool DoNotCountNotes = false;
+            public static bool IsKMCBusy = false;
             public static int ActiveVoicesInt = 0;
             public static int AverageCPU;
             public static int Bitrate = 128;
@@ -54,6 +57,7 @@ namespace KeppyMIDIConverter
             public static int CurrentStatusValueInt;
             public static int DefaultSoundfont;
             public static int FinalTempo = 120;
+            public static int RTFPS = 60;
             public static int Frequency = 0xbb80;
             public static int LimitVoicesInt = 0x186a0;
             public static int OriginalTempo;
@@ -76,7 +80,6 @@ namespace KeppyMIDIConverter
             public static int _VSTHandle8;
             public static int UpdateRate;
             public static long StreamSizeFLAC;
-            public static int notecount = 0;
             public static string BenchmarkTime;
             public static string CurrentPeak = "0.0 dB";
             public static string CurrentRMS = "0.0 dB";
@@ -111,6 +114,21 @@ namespace KeppyMIDIConverter
 
             // Other
             public static string ExecutablePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        }
+
+        public static class KMCStatus
+        {
+            public static string RAWConverted;
+            public static string CurrentTime;
+            public static string TotalTime;
+            public static int PlayedNotes = 0;
+            public static int TotalNotes = 0;
+            public static float CPUUsage;
+            public static string PassedTime;
+            public static string EstimatedTime;
+            public static string Percentage;
+            public static string Faster;
+            public static string Slower;
         }
 
         public static class ID3Meta
@@ -148,7 +166,7 @@ namespace KeppyMIDIConverter
                         saLvwItem[0] = s;
                         saLvwItem[1] = midiinfo[1];
                         saLvwItem[2] = midiinfo[0];
-                        saLvwItem[3] = GetSizeMIDI(s);
+                        saLvwItem[3] = midiinfo[2];
                         ListViewItem lvi = new ListViewItem(saLvwItem);
                         this.MIDIList.Items.Add(lvi);
                     }
@@ -348,6 +366,7 @@ namespace KeppyMIDIConverter
                             KMCGlobals.Volume = Convert.ToInt32(Settings.GetValue("volume", 10000));
                             KMCGlobals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq", 44100));
                             KMCGlobals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate", 256));
+                            KMCGlobals.RTFPS = Convert.ToInt32(Settings.GetValue("customfps", 60));
                             // Audio events
                             if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
                             {
@@ -453,6 +472,7 @@ namespace KeppyMIDIConverter
                         Settings.SetValue("volume", "10000", RegistryValueKind.DWord);
                         Settings.Close();
                     }
+                    Delegate = this;
                 }
                 catch (Exception exception2)
                 {
@@ -467,6 +487,7 @@ namespace KeppyMIDIConverter
         private void StartRenderingThread()
         {
             int convmode = 0;
+            KMCGlobals.IsKMCBusy = true;
             KMCGlobals.RenderingMode = true;
             this.loadingpic.Visible = true;
             this.ExportWhere.FileName = res_man.GetString("SaveHere", cul);
@@ -511,6 +532,7 @@ namespace KeppyMIDIConverter
             }
             else
             {
+                KMCGlobals.IsKMCBusy = false;
                 KMCGlobals.RenderingMode = false;
                 this.loadingpic.Visible = false;
             }
@@ -690,8 +712,6 @@ namespace KeppyMIDIConverter
                 BASS_MIDI_FONTEX[] fonts = new BASS_MIDI_FONTEX[KMCGlobals.Soundfonts.Length];
                 int sfnum = 0;
                 int sfzload = 0;
-                List<int> termsList = new List<int>();
-                termsList.Reverse();
                 foreach (string s in KMCGlobals.Soundfonts)
                 {
                     if (s.ToLower().IndexOf('=') != -1)
@@ -979,9 +999,17 @@ namespace KeppyMIDIConverter
             else
                 percentagefinal = percentage;
             KMCGlobals.PercentageProgress = percentagefinal.ToString("0.0%");
+
+            KMCStatus.RAWConverted = num8.ToString("0.00");
+            KMCStatus.Percentage = percentagefinal.ToString("0.0%");
+            KMCStatus.CurrentTime = str5;
+            KMCStatus.TotalTime = str4;
+            KMCStatus.PassedTime = "??:??";
+            KMCStatus.EstimatedTime = "??:??";
+            KMCStatus.CPUUsage = num12;
+
             float num11 = 0f;
             Bass.BASS_ChannelGetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
-            KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("PlaybackStatus", cul), percentage.ToString("0%"), str5, str4, KMCGlobals.notecount.ToString("N0"), String.Format("{0} (CPU: {1})", pnotes.ToString("N0"), ((float)(num12 / 100f)).ToString("0.0%")));
             if (num12 > 100.0f)
             {
                 for (int i = 0; i <= 15; i++)
@@ -1041,28 +1069,18 @@ namespace KeppyMIDIConverter
 
             Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
 
-            if (num12 < 100f)
-            {
-                if (KMCGlobals.OldTimeThingy == false)
-                    KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusFasterNew", cul), num8.ToString("0.00"), percentagefinal.ToString("0.0%"), str6, str7, Convert.ToInt32(num12).ToString(), ((float)(100f / num12)).ToString("0.0"));
-                else
-                    KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusFasterOld", cul), num8.ToString("0.00"), percentagefinal.ToString("0.0%"), str5, str4, Convert.ToInt32(num12).ToString(), ((float)(100f / num12)).ToString("0.0"));
-            }
-            else if (num12 == 100f)
-            {
-                if (KMCGlobals.OldTimeThingy == false)
-                    KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusNormalNew", cul), num8.ToString("0.00"), percentagefinal.ToString("0.0%"), str6, str7, Convert.ToInt32(num12).ToString());
-                else
-                    KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusNormalOld", cul), num8.ToString("0.00"), percentagefinal.ToString("0.0%"), str5, str4, Convert.ToInt32(num12).ToString());
-            }
-            else if (num12 > 100f)
-            {
-                if (KMCGlobals.OldTimeThingy == false)
-                    KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusSlowerNew", cul), num8.ToString("0.00"), percentagefinal.ToString("0.0%"), str6, str7, Convert.ToInt32(num12).ToString(), ((float)(num12 / 100f)).ToString("0.0"));
-                else
-                    KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusSlowerOld", cul), num8.ToString("0.00"), percentagefinal.ToString("0.0%"), str5, str4, Convert.ToInt32(num12).ToString(), ((float)(num12 / 100f)).ToString("0.0"));
-            }
+            KMCStatus.RAWConverted = num8.ToString("0.00");
+            KMCStatus.Percentage = percentagefinal.ToString("0.0%");
+            KMCStatus.CurrentTime = str5;
+            KMCStatus.TotalTime = str4;
+            KMCStatus.PassedTime = str7;
+            KMCStatus.EstimatedTime = str6;
+            KMCStatus.CPUUsage = num12;
+            KMCStatus.Faster = ((float)(100f / num12)).ToString("0.0");
+            KMCStatus.Slower = ((float)(num12 / 100f)).ToString("0.0");
         }
+
+
 
         private delegate ListView.ListViewItemCollection GetItems(ListView lstview);
 
@@ -1110,8 +1128,8 @@ namespace KeppyMIDIConverter
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
             KMCGlobals.NewWindowName = null;
+            KMCGlobals.IsKMCBusy = false;
             KMCGlobals.RenderingMode = false;
-            KMCGlobals.PlaybackMode = false;
             KMCGlobals.DoNotCountNotes = false;
             KMCGlobals.eventc = 0;
             KMCGlobals.events = null;
@@ -1165,6 +1183,7 @@ namespace KeppyMIDIConverter
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
                                 KMCGlobals.RenderingMode = false;
+                                KMCGlobals.IsKMCBusy = false;
                                 KMCGlobals.VSTSkipSettings = false;
                                 KeepLooping = false;
                                 break;
@@ -1181,6 +1200,7 @@ namespace KeppyMIDIConverter
                             BASSSetID3(false);
                             KeepLooping = false;
                             KMCGlobals.RenderingMode = false;
+                            KMCGlobals.IsKMCBusy = false;
                             KMCGlobals.VSTSkipSettings = false;
                             PlayConversionStop();
                         }
@@ -1190,6 +1210,7 @@ namespace KeppyMIDIConverter
                             BASSSetID3(false);
                             KeepLooping = false;
                             KMCGlobals.RenderingMode = false;
+                            KMCGlobals.IsKMCBusy = false; 
                             KMCGlobals.VSTSkipSettings = false;
                             if (KMCGlobals.AutoShutDownEnabled == true)
                             {
@@ -1224,6 +1245,11 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private void ReturnCustomFramerate(out double[] fpsarr)
+        {
+            fpsarr = new double[2] { (1 / KMCGlobals.RTFPS) - 0.00005556, (1 / KMCGlobals.RTFPS) + 0.00005556 };
+        }
+
         private void ConverterProcessRT_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -1238,6 +1264,8 @@ namespace KeppyMIDIConverter
                     {
                         foreach (ListViewItem itemerino in getListViewItems(MIDIList))
                         {
+                            double[] CustomFramerates;
+                            ReturnCustomFramerate(out CustomFramerates);
                             string str = itemerino.Text;
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
@@ -1253,7 +1281,7 @@ namespace KeppyMIDIConverter
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    double fpssim = FPSSimulator.NextDouble() * (0.01663893 - 0.01669449) + 0.01669449;
+                                    double fpssim = FPSSimulator.NextDouble() * (CustomFramerates[0] - CustomFramerates[1]) + CustomFramerates[1];
                                     int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
                                     byte[] buffer = new byte[Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim)];
                                     TimeSpan timespent = DateTime.Now - starttime;
@@ -1268,7 +1296,6 @@ namespace KeppyMIDIConverter
                                     KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
                                     int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
                                     TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
-                                    string str6 = span3.Hours.ToString() + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
                                     string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
 
                                     while (es < KMCGlobals.eventc && KMCGlobals.events[es].pos < pos + length)
@@ -1291,18 +1318,15 @@ namespace KeppyMIDIConverter
 
                                     float fpsstring = 1 / (float)fpssim;
 
-                                    if (num12 < 100f)
-                                    {
-                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusFasterNew", cul), num8.ToString("0.00"), fpsstring.ToString("0.0FPS"), "??:??", str7, Convert.ToInt32(num12).ToString(), ((float)(100f / num12)).ToString("0.0"));
-                                    }
-                                    else if (num12 == 100f)
-                                    {
-                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusNormalNew", cul), num8.ToString("0.00"), fpsstring.ToString("0.0FPS"), "??:??", str7, Convert.ToInt32(num12).ToString());
-                                    }
-                                    else if (num12 > 100f)
-                                    {
-                                        KMCGlobals.CurrentStatusTextString = String.Format(res_man.GetString("ConvStatusSlowerNew", cul), num8.ToString("0.00"), fpsstring.ToString("0.0FPS"), "??:??", str7, Convert.ToInt32(num12).ToString(), ((float)(num12 / 100f)).ToString("0.0"));
-                                    }
+                                    KMCStatus.RAWConverted = num8.ToString("0.00");
+                                    KMCStatus.Percentage = fpsstring.ToString("0.0FPS");
+                                    KMCStatus.CurrentTime = "??:??";
+                                    KMCStatus.TotalTime = "??:??";
+                                    KMCStatus.PassedTime = str7;
+                                    KMCStatus.EstimatedTime = "??:??";
+                                    KMCStatus.CPUUsage = num12;
+                                    KMCStatus.Faster = ((float)(100f / num12)).ToString("0.0");
+                                    KMCStatus.Slower = ((float)(num12 / 100f)).ToString("0.0");
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
                                 {
@@ -1323,6 +1347,7 @@ namespace KeppyMIDIConverter
                             {
                                 KMCGlobals.events = null;
                                 KMCGlobals.RenderingMode = false;
+                                KMCGlobals.IsKMCBusy = false;
                                 KMCGlobals.VSTSkipSettings = false;
                                 break;
                             }
@@ -1338,6 +1363,7 @@ namespace KeppyMIDIConverter
                             BASSCloseStream(res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
                             BASSSetID3(false);
                             KeepLooping = false;
+                            KMCGlobals.IsKMCBusy = false;
                             KMCGlobals.RenderingMode = false;
                             KMCGlobals.VSTSkipSettings = false;
                             KMCGlobals.eventc = 0;
@@ -1348,6 +1374,7 @@ namespace KeppyMIDIConverter
                         {
                             BASSCloseStream(res_man.GetString("ConversionCompleted", cul), res_man.GetString("ConversionCompleted", cul), 1);
                             BASSSetID3(false);
+                            KMCGlobals.IsKMCBusy = false;
                             KMCGlobals.RenderingMode = false;
                             KMCGlobals.VSTSkipSettings = false;
                             KeepLooping = false;
@@ -1418,7 +1445,7 @@ namespace KeppyMIDIConverter
                                 KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
                                 int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
                             }
-                            KMCGlobals.notecount = 0;
+                            KMCStatus.TotalNotes = notes;
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 1.0));
                             while (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
@@ -1430,7 +1457,7 @@ namespace KeppyMIDIConverter
                                 {
                                     KMCGlobals.DoNotCountNotes = false;
                                     BASSCloseStream(res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackAborted", cul), 0);
-                                    KMCGlobals.PlaybackMode = false;
+                                    KMCGlobals.IsKMCBusy = false;
                                     KeepLooping = false;
                                     break;
                                 }
@@ -1461,7 +1488,7 @@ namespace KeppyMIDIConverter
                 catch (Exception exception)
                 {
                     WriteToConsole(exception);
-                    KMCGlobals.PlaybackMode = false;
+                    KMCGlobals.IsKMCBusy = false;
                     KMCGlobals.DoNotCountNotes = false;
                 }
             }
@@ -1490,7 +1517,7 @@ namespace KeppyMIDIConverter
         private void NoteSyncProc(int handle, int channel, int data, IntPtr user)
         {
             if ((data & 0xff00) != 0)
-                KMCGlobals.notecount++;
+                KMCStatus.PlayedNotes++;
         }
 
         protected override void Dispose(bool disposing)
@@ -1599,62 +1626,66 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private string GetSizeMIDI(string str)
-        {
-            try
-            {
-                long length = new System.IO.FileInfo(str).Length;
-
-                if (length / 1024f >= 1000000)
-                    return (((length / 1024f) / 1024f) / 1024f).ToString("0 GB");
-                else if (length / 1024f >= 1000)
-                    return ((length / 1024f) / 1024f).ToString("0 MB");
-                else if (length / 1024f >= 1)
-                    return (length / 1024f).ToString("0 KB");
-                else
-                    return (length).ToString("0 B");
-            }
-            catch { return "-"; }
-        }
-
         private string[] GetMoreInfoMIDI(string str)
         {
             try
             {
-                string[] strings;
+                // Get size of MIDI
                 long length = new System.IO.FileInfo(str).Length;
+                string size;
+                try
+                {
+                    if (length / 1024f >= 1000000000)
+                        size = ((((length / 1024f) / 1024f) / 1024f) / 1024f).ToString("0.0 TB");
+                    else if (length / 1024f >= 1000000)
+                        size = (((length / 1024f) / 1024f) / 1024f).ToString("0.0 GB");
+                    else if (length / 1024f >= 1000)
+                        size = ((length / 1024f) / 1024f).ToString("0.0 MB");
+                    else if (length / 1024f >= 1)
+                        size = (length / 1024f).ToString("0.0 KB");
+                    else
+                        size = (length).ToString("0.0 B");
+                }
+                catch { size = "-"; }
+
+                // If the MIDI is too big, skip data parsing
                 if (length / 1024f >= 9860)
                 {
+                    // If the user is holding CTRL, continue the data parsing anyway
                     if (ModifierKeys == Keys.Control)
                     {
 
                     }
+                    // Else, skip
                     else
                     {
-                        strings = new string[] { "N/A", "N/A" };
-                        return strings;
+                        return new string[] { "N/A", "N/A", size, };
                     }
                 }
+
                 Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
                 int time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
                 long pos = Bass.BASS_ChannelGetLength(time);
                 double num9 = Bass.BASS_ChannelBytes2Seconds(time, pos);
                 TimeSpan span = TimeSpan.FromSeconds(num9);
-                string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0');
+
+
+
+                // Get length of MIDI
+                string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
+
+                // Get note count
                 int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
                 BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
                 BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
-
                 int notes = 0;
                 for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
                     
                 Bass.BASS_Free();
-                strings = new string[] { str4, notes.ToString("N0") };
-                return strings;
+                return new string[] { str4, notes.ToString("N0"), size, };
             }
             catch (Exception ex) {
-                string[] strings = new string[] { "N/A", "N/A" };
-                return strings;
+                return new string[] { "N/A", "N/A", "N/A", };
             }     
         }
 
@@ -1676,29 +1707,48 @@ namespace KeppyMIDIConverter
             MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
             if (this.MIDIImport.ShowDialog() == DialogResult.OK)
             {
-                foreach (string str in this.MIDIImport.FileNames)
+                AddFilesToList(MIDIImport.FileNames, true);
+            }
+        }
+
+        private void MIDIList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            AddFilesToList(s, false);
+        }
+
+        private void MIDIList_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void AddFilesToList(String[] filenames, Boolean IsImportDialog)
+        {
+            foreach (string str in filenames)
+            {
+                if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
                 {
-                    if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
-                    {
-                        string[] saLvwItem = new string[4];
-                        string[] midiinfo = GetMoreInfoMIDI(str);
-                        saLvwItem[0] = str;
-                        saLvwItem[1] = midiinfo[1];
-                        saLvwItem[2] = midiinfo[0];
-                        saLvwItem[3] = GetSizeMIDI(str);
-                        ListViewItem lvi = new ListViewItem(saLvwItem);
-                        ToAddOrNotToAdd(lvi, midiinfo[1], str);
-                    }
-                    else
-                    {
-                        MessageBox.Show(String.Format(res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } 
+                    string[] saLvwItem = new string[4];
+                    string[] midiinfo = GetMoreInfoMIDI(str);
+                    saLvwItem[0] = str;
+                    saLvwItem[1] = midiinfo[1];
+                    saLvwItem[2] = midiinfo[0];
+                    saLvwItem[3] = midiinfo[2];
+                    ListViewItem lvi = new ListViewItem(saLvwItem);
+                    ToAddOrNotToAdd(lvi, midiinfo[1], str);
                 }
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                KMCGlobals.MIDILastDirectory = Path.GetDirectoryName(MIDIImport.FileName);
-                Settings.SetValue("lastmidifolder", KMCGlobals.MIDILastDirectory);
-                MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
-            }  
+                else
+                {
+                    MessageBox.Show(String.Format(res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            KMCGlobals.MIDILastDirectory = Path.GetDirectoryName(filenames[0]);
+            Settings.SetValue("lastmidifolder", KMCGlobals.MIDILastDirectory);
+            MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
         }
 
         private void informationsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1774,42 +1824,11 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void MIDIList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
-        {
-            string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            int i;
-            for (i = 0; i < s.Length; i++)
-            {
-                if (Path.GetExtension(s[i]).ToLower() == ".mid" | Path.GetExtension(s[i]).ToLower() == ".midi" | Path.GetExtension(s[i]).ToLower() == ".kar" | Path.GetExtension(s[i]).ToLower() == ".rmi")
-                {
-                    string[] saLvwItem = new string[4];
-                    string[] midiinfo = GetMoreInfoMIDI(s[i]);
-                    saLvwItem[0] = s[i];
-                    saLvwItem[1] = midiinfo[1];
-                    saLvwItem[2] = midiinfo[0];
-                    ListViewItem lvi = new ListViewItem(saLvwItem);
-                    ToAddOrNotToAdd(lvi, midiinfo[1], s[i]);
-                }
-                else
-                {
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(s[i])), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void MIDIList_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.All;
-            else
-                e.Effect = DragDropEffects.None;
-        }
-
         private void MIDIList_KeyPress(object sender, KeyEventArgs e)
         {
             try
             {
-                if (KMCGlobals.RenderingMode == true | KMCGlobals.PlaybackMode == true)
+                if (KMCGlobals.IsKMCBusy == true)
                 {
 
                 }
@@ -1870,9 +1889,10 @@ namespace KeppyMIDIConverter
             return listBox.SelectedItems.Contains(item);
         }
 
+
+
         private void RenderingTimer_Tick(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(1);
             MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
             ExportWhere.InitialDirectory = KMCGlobals.ExportLastDirectory;
             if (!KMCGlobals.AutoShutDownEnabled)
@@ -1889,283 +1909,24 @@ namespace KeppyMIDIConverter
             {
                 if (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_STOPPED)
                 {
-                    this.Text = "Keppy's MIDI Converter";
-                    if (Environment.OSVersion.Version.Major != 5)
+                    if (!KMCGlobals.IsKMCBusy)
                     {
-                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                        RTF.KMCIdle();
                     }
-                    if (KMCGlobals.PlaybackMode == true)
+                    else
                     {
-                        this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        if (KMCGlobals.VSTMode == true)
-                        {
-                            this.CurrentStatusText.Text = res_man.GetString("MemoryAllocationPlayback", cul);
-                        }
-                        else
-                        {
-                            this.CurrentStatusText.Text = res_man.GetString("MemoryAllocationPlaybackVST", cul);
-                        }
-                        this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + KMCGlobals.ActiveVoicesInt.ToString() + @"/" + KMCGlobals.LimitVoicesInt.ToString();
-                        this.CurrentStatus.MarqueeAnimationSpeed = 100;
-                        this.MIDIList.Enabled = false;
-                        if (KMCGlobals.pictureset != 0)
-                        {
-                            this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
-                            KMCGlobals.pictureset = 0;
-                        }
-                        this.importMIDIsToolStripMenuItem.Enabled = false;
-                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
-                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
-                        this.DisableEncoderButtons();
-                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
-                        this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
-                        this.abortRenderingToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), KMCGlobals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), KMCGlobals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(KMCGlobals._plm.PeakHoldLevelL_dBV, KMCGlobals._plm.PeakHoldLevelR_dBV));
-                        this.SettingsBox.Enabled = false;
-                        this.label3.Enabled = true;
-                        this.VolumeBar.Enabled = true;
-                        this.VoiceLimit.Maximum = 2000;
-                        Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.High;
+                        RTF.KMCMemoryAllocation();
                     }
-                    else if (KMCGlobals.RenderingMode == true)
-                    {
-                        this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        this.CurrentStatusText.Text = res_man.GetString("MemoryAllocationConversion", cul);
-                        this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + KMCGlobals.ActiveVoicesInt.ToString() + @"/" + KMCGlobals.LimitVoicesInt.ToString();
-                        this.CurrentStatus.MarqueeAnimationSpeed = 100;
-                        this.MIDIList.Enabled = false;
-                        if (KMCGlobals.pictureset != 0)
-                        {
-                            this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
-                            KMCGlobals.pictureset = 0;
-                        }
-                        this.importMIDIsToolStripMenuItem.Enabled = false;
-                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
-                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
-                        this.DisableEncoderButtons();
-                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
-                        this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
-                        this.abortRenderingToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), KMCGlobals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), KMCGlobals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(KMCGlobals._plm.PeakHoldLevelL_dBV, KMCGlobals._plm.PeakHoldLevelR_dBV));
-                        this.SettingsBox.Enabled = false;
-                        this.label3.Enabled = false;
-                        this.VolumeBar.Enabled = false;
-                        this.VoiceLimit.Maximum = 100000;
-                        Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.High;
-                    }
-                    else if (KMCGlobals.RenderingMode == false & KMCGlobals.PlaybackMode == false)
-                    {
-                        this.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                        this.CurrentStatus.Maximum = 999;
-                        this.CurrentStatus.Value = 0;
-                        this.CurrentStatusText.Text = res_man.GetString("IdleMessage", cul);
-                        this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + @"0/" + KMCGlobals.LimitVoicesInt.ToString();
-                        this.MIDIList.Enabled = true;
-                        if (KMCGlobals.pictureset != 1)
-                        {
-                            this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convpause;
-                            KMCGlobals.pictureset = 1;
-                        }
-                        this.importMIDIsToolStripMenuItem.Enabled = true;
-                        if (MIDIList.Items.Count < 1)
-                        {
-                            removeSelectedMIDIsToolStripMenuItem.Enabled = false;
-                            clearMIDIsListToolStripMenuItem.Enabled = false;
-                            DisableEncoderButtons();
-                            playInRealtimeBetaToolStripMenuItem.Enabled = false;
-                        }
-                        else
-                        {
-                            if (KMCGlobals.Soundfonts.Length == 0)
-                            {
-                                DirectoryInfo PathToGenericSF = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                                String FullPath = String.Format("{0}\\GMGeneric.sf2", PathToGenericSF.Parent.FullName);
-                                if (File.Exists(FullPath))
-                                {
-                                    openTheSoundfontsManagerToolStripMenuItem.DefaultItem = false;
-                                    importMIDIsToolStripMenuItem.DefaultItem = true;
-                                    removeSelectedMIDIsToolStripMenuItem.Enabled = true;
-                                    clearMIDIsListToolStripMenuItem.Enabled = true;
-                                    EnableEncoderButtons();
-                                    playInRealtimeBetaToolStripMenuItem.Enabled = true;
-                                }
-                                else
-                                {
-                                    importMIDIsToolStripMenuItem.DefaultItem = false;
-                                    openTheSoundfontsManagerToolStripMenuItem.DefaultItem = true;
-                                    removeSelectedMIDIsToolStripMenuItem.Enabled = true;
-                                    clearMIDIsListToolStripMenuItem.Enabled = true;
-                                    DisableEncoderButtons();
-                                    playInRealtimeBetaToolStripMenuItem.Enabled = false;
-                                }
-                            }
-                            else
-                            {
-                                openTheSoundfontsManagerToolStripMenuItem.DefaultItem = false;
-                                importMIDIsToolStripMenuItem.DefaultItem = true;
-                                removeSelectedMIDIsToolStripMenuItem.Enabled = true;
-                                clearMIDIsListToolStripMenuItem.Enabled = true;
-                                EnableEncoderButtons();
-                                playInRealtimeBetaToolStripMenuItem.Enabled = true;
-                            }
-                        }
-                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = true;
-                        this.abortRenderingToolStripMenuItem.Enabled = false;
-                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), 0, res_man.GetString("AverageLevel", cul), 0, res_man.GetString("PeakLevel", cul), 0);
-                        this.SettingsBox.Enabled = true;
-                        this.label3.Enabled = true;
-                        this.VolumeBar.Enabled = true;
-                        this.VoiceLimit.Maximum = 100000;
-                        Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.Idle;
-                    }
-
                 }
                 else if (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                 {
-                    if (KMCGlobals.CurrentStatusTextString == null)
-                    {
-                        if (Environment.OSVersion.Version.Major != 5)
-                        {
-                            if (KMCGlobals.RealTime == false)
-                            {
-                                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
-                            }
-                        }
-                        if (KMCGlobals.PlaybackMode == true)
-                        {
-                            this.SettingsBox.Enabled = true;
-                            this.SettingsBox.Cursor = Cursors.Default;
-                            this.label3.Enabled = true;
-                            this.VolumeBar.Enabled = true;
-                            this.VoiceLimit.Maximum = 2000;
-                        }
-                        else
-                        {
-                            this.SettingsBox.Enabled = false;
-                            this.label3.Enabled = false;
-                            this.VolumeBar.Enabled = false;
-                            this.VoiceLimit.Maximum = 100000;
-                        }
-                        this.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        if (KMCGlobals.VSTMode == true)
-                        {
-                            this.CurrentStatusText.Text = res_man.GetString("BASSEngineConfigurationVST", cul);
-                        }
-                        else
-                        {
-                            this.CurrentStatusText.Text = res_man.GetString("BASSEngineConfiguration", cul);
-                        }
-                        this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + KMCGlobals.ActiveVoicesInt.ToString() + @"/" + KMCGlobals.LimitVoicesInt.ToString();
-                        this.CurrentStatus.MarqueeAnimationSpeed = 100;
-                        this.MIDIList.Enabled = false;
-                        if (KMCGlobals.pictureset != 0)
-                        {
-                            this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
-                            KMCGlobals.pictureset = 0;
-                        }
-                        this.importMIDIsToolStripMenuItem.Enabled = false;
-                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
-                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
-                        this.DisableEncoderButtons();
-                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
-                        this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
-                        this.abortRenderingToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: {1:#0.0} dB | {2}: {3:#0.0} dB | {4}: {5:#0.0} dB", res_man.GetString("RMS", cul), KMCGlobals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), KMCGlobals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(KMCGlobals._plm.PeakHoldLevelL_dBV, KMCGlobals._plm.PeakHoldLevelR_dBV));
-                        Process thisProc = Process.GetCurrentProcess();
-                        thisProc.PriorityClass = ProcessPriorityClass.High;
-                    }
-                    else
-                    {
-                        if (Environment.OSVersion.Version.Major != 5)
-                        {
-                            if (KMCGlobals.RealTime == false)
-                            {
-                                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
-                                TaskbarManager.Instance.SetProgressValue(KMCGlobals.CurrentStatusValueInt, KMCGlobals.CurrentStatusMaximumInt);
-                            }
-                            else
-                            {
-                                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
-                            }
-                        }
-                        if (KMCGlobals.PlaybackMode == true)
-                        {
-                            if (KMCGlobals.pictureset != 2)
-                            {
-                                this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convprwo;
-                                KMCGlobals.pictureset = 2;
-                            }
-                            this.SettingsBox.Enabled = true;
-                            this.VolumeBar.Enabled = true;
-                            this.VoiceLimit.Maximum = 2000;
-                            Process thisProc = Process.GetCurrentProcess();
-                            thisProc.PriorityClass = ProcessPriorityClass.RealTime;
-                        }
-                        else
-                        {
-                            if (KMCGlobals.pictureset != 3)
-                            {
-                                this.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convsave;
-                                KMCGlobals.pictureset = 3;
-                            }
-                            this.SettingsBox.Enabled = false;
-                            this.VolumeBar.Enabled = false;
-                            this.VoiceLimit.Maximum = 100000;
-                            Process thisProc = Process.GetCurrentProcess();
-                            thisProc.PriorityClass = ProcessPriorityClass.High;
-                        }
-                        this.MIDIList.Enabled = false;
-                        this.CurrentStatusText.Text = KMCGlobals.CurrentStatusTextString;
-                        this.UsedVoices.Text = res_man.GetString("ActiveVoices", cul) + KMCGlobals.ActiveVoicesInt.ToString() + @"/" + KMCGlobals.LimitVoicesInt.ToString();
-                        if (KMCGlobals.RealTime == false)
-                        {
-                            this.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                        }
-                        this.CurrentStatus.Value = KMCGlobals.CurrentStatusValueInt;
-                        this.CurrentStatus.Maximum = KMCGlobals.CurrentStatusMaximumInt;
-                        this.importMIDIsToolStripMenuItem.Enabled = false;
-                        this.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
-                        this.clearMIDIsListToolStripMenuItem.Enabled = false;
-                        this.DisableEncoderButtons();
-                        this.openTheSoundfontsManagerToolStripMenuItem.Enabled = false;
-                        this.playInRealtimeBetaToolStripMenuItem.Enabled = false;
-                        this.abortRenderingToolStripMenuItem.Enabled = true;
-                        this.labelRMS.Text = String.Format("{0}: {1:#00.0} dB | {2}: {3:#00.0} dB | {4}: {5:#00.0} dB", res_man.GetString("RMS", cul), KMCGlobals._plm.RMS_dBV, res_man.GetString("AverageLevel", cul), KMCGlobals._plm.AVG_dBV, res_man.GetString("PeakLevel", cul), Math.Max(KMCGlobals._plm.PeakHoldLevelL_dBV, KMCGlobals._plm.PeakHoldLevelR_dBV));
-                    }
-                    if (KMCGlobals.NewWindowName == null)
-                    {
-                        this.Text = "Keppy's MIDI Converter";
-                    }
-                    else
-                    {
-                        if (KMCGlobals.PlaybackMode == true)
-                            this.Text = String.Format(res_man.GetString("PlaybackText", cul), KMCGlobals.NewWindowName);
-                        else
-                            this.Text = String.Format(res_man.GetString("ConversionText", cul), KMCGlobals.NewWindowName);
-                    }
+                    RTF.KMCBusy();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void DisableEncoderButtons()
-        {
-            this.startRenderingWAVToolStripMenuItem.Enabled = false;
-            this.startRenderingOGGToolStripMenuItem.Enabled = false;
-            this.startRenderingMp3ToolStripMenuItem.Enabled = false;
-        }
-
-        private void EnableEncoderButtons()
-        {
-            this.startRenderingWAVToolStripMenuItem.Enabled = true;
-            this.startRenderingOGGToolStripMenuItem.Enabled = true;
-            this.startRenderingMp3ToolStripMenuItem.Enabled = true;
         }
 
         private void playInRealtimeBetaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2175,7 +1936,8 @@ namespace KeppyMIDIConverter
                 KMCGlobals.DoNotCountNotes = true;
             }
             this.loadingpic.Visible = true;
-            KMCGlobals.PlaybackMode = true;
+            KMCGlobals.RenderingMode = false;
+            KMCGlobals.IsKMCBusy = true;
             this.RealTimePlayBack.RunWorkerAsync();
         }
 
@@ -2216,11 +1978,16 @@ namespace KeppyMIDIConverter
 
         private void AdvSettingsButton_Click(object sender, EventArgs e)
         {
-            if (KMCGlobals.PlaybackMode == true)
+            if (KMCGlobals.IsKMCBusy == true && KMCGlobals.RenderingMode == false)
             {
-                KMCGlobals.frm = new AdvancedSettings();
-                KMCGlobals.frm.StartPosition = FormStartPosition.CenterScreen;
-                KMCGlobals.frm.Show();
+                if (!KMCGlobals.frm.Visible)
+                {
+                    KMCGlobals.frm.Show();
+                }
+                else
+                {
+                    KMCGlobals.frm.Focus();
+                }
             }
             else
             {

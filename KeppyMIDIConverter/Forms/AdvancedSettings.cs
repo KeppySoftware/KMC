@@ -39,7 +39,7 @@ namespace KeppyMIDIConverter
         {
             InitializeLanguage();
             // W8
-            if (MainWindow.KMCGlobals.PlaybackMode == true)
+            if (MainWindow.KMCGlobals.IsKMCBusy == true && MainWindow.KMCGlobals.RenderingMode == false)
             {
                 Label5.Enabled = false;
                 FrequencyBox.Enabled = false;
@@ -90,12 +90,12 @@ namespace KeppyMIDIConverter
             if (MainWindow.KMCGlobals.TempoOverride == true)
             {
                 label2.Enabled = true;
-                numericUpDown1.Enabled = true;
+                TempoVal.Enabled = true;
             }
             else
             {
                 label2.Enabled = false;
-                numericUpDown1.Enabled = false;
+                TempoVal.Enabled = false;
             }
             //
             if (BitrateBox.Text == "")
@@ -169,19 +169,26 @@ namespace KeppyMIDIConverter
             {
                 MainWindow.KMCGlobals.TempoOverride = true;
                 label2.Enabled = true;
-                numericUpDown1.Enabled = true;
+                TempoVal.Enabled = true;
             }
             else
             {
                 MainWindow.KMCGlobals.TempoOverride = false;
                 label2.Enabled = false;
-                numericUpDown1.Enabled = false;
+                TempoVal.Enabled = false;
             }
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            MainWindow.KMCGlobals.FinalTempo = Convert.ToInt32(numericUpDown1.Value);
+            MainWindow.KMCGlobals.FinalTempo = Convert.ToInt32(TempoVal.Value);
+        }
+
+        private void RTFPS_ValueChanged(object sender, EventArgs e)
+        {
+            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+            MainWindow.KMCGlobals.RTFPS = Convert.ToInt32(RTFPS.Value);
+            Settings.SetValue("customfps", RTFPS.Value, Microsoft.Win32.RegistryValueKind.DWord);
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
@@ -202,6 +209,26 @@ namespace KeppyMIDIConverter
                 BitrateBox.Enabled = false;
                 MainWindow.KMCGlobals.QualityOverride = false;
             }
+        }
+
+        // Overrides
+
+        protected override void OnShown(EventArgs e)
+        {
+
+            if (Properties.Settings.Default.SettLocation.X == 0 || Properties.Settings.Default.SettLocation.Y == 0)
+                this.CenterToScreen();
+            else
+                Location = Properties.Settings.Default.SettLocation;
+            base.OnShown(e);
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Properties.Settings.Default.SettLocation = Location;
+            Properties.Settings.Default.Save();
+            Hide();
         }
 
         // Snap feature

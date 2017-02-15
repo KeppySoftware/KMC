@@ -213,6 +213,7 @@
     <Compile Include="Forms\UpdateDownloader.Designer.cs">
       <DependentUpon>UpdateDownloader.cs</DependentUpon>
     </Compile>
+    <Compile Include="RenderingTimerFuncs\RTF.cs" />
     <EmbeddedResource Include="Forms\DonateMonthlyDialog.resx">
       <DependentUpon>DonateMonthlyDialog.cs</DependentUpon>
     </EmbeddedResource>

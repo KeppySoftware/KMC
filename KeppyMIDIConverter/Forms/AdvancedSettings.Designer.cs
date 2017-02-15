@@ -26,7 +26,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.BitrateBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.TempoVal = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Label6 = new System.Windows.Forms.Label();
@@ -34,8 +34,11 @@
             this.Label5 = new System.Windows.Forms.Label();
             this.FXDisable = new System.Windows.Forms.CheckBox();
             this.Noteoff1 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.RTFPS = new System.Windows.Forms.NumericUpDown();
             this.GroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TempoVal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -55,11 +58,13 @@
             this.GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupBox1.Controls.Add(this.RTFPS);
+            this.GroupBox1.Controls.Add(this.label1);
             this.GroupBox1.Controls.Add(this.label4);
             this.GroupBox1.Controls.Add(this.checkBox3);
             this.GroupBox1.Controls.Add(this.BitrateBox);
             this.GroupBox1.Controls.Add(this.label3);
-            this.GroupBox1.Controls.Add(this.numericUpDown1);
+            this.GroupBox1.Controls.Add(this.TempoVal);
             this.GroupBox1.Controls.Add(this.label2);
             this.GroupBox1.Controls.Add(this.checkBox1);
             this.GroupBox1.Controls.Add(this.Label6);
@@ -129,30 +134,30 @@
             this.label3.Text = "Bitrate:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // numericUpDown1
+            // TempoVal
             // 
-            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Location = new System.Drawing.Point(321, 108);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.TempoVal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TempoVal.Enabled = false;
+            this.TempoVal.Location = new System.Drawing.Point(321, 108);
+            this.TempoVal.Maximum = new decimal(new int[] {
             2097120,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.TempoVal.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(72, 20);
-            this.numericUpDown1.TabIndex = 13;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.TempoVal.Name = "TempoVal";
+            this.TempoVal.Size = new System.Drawing.Size(72, 20);
+            this.TempoVal.TabIndex = 13;
+            this.TempoVal.Value = new decimal(new int[] {
             120,
             0,
             0,
             0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.TempoVal.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label2
             // 
@@ -254,6 +259,40 @@
             this.Noteoff1.UseVisualStyleBackColor = true;
             this.Noteoff1.CheckedChanged += new System.EventHandler(this.Noteoff1_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(274, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "RT FPS:";
+            // 
+            // RTFPS
+            // 
+            this.RTFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RTFPS.Location = new System.Drawing.Point(321, 17);
+            this.RTFPS.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.RTFPS.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RTFPS.Name = "RTFPS";
+            this.RTFPS.Size = new System.Drawing.Size(72, 20);
+            this.RTFPS.TabIndex = 19;
+            this.RTFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RTFPS.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.RTFPS.ValueChanged += new System.EventHandler(this.RTFPS_ValueChanged);
+            // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -275,7 +314,8 @@
             this.Load += new System.EventHandler(this.AdvancedSettings_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TempoVal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -290,11 +330,13 @@
         internal System.Windows.Forms.CheckBox FXDisable;
         internal System.Windows.Forms.CheckBox Noteoff1;
         internal System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown TempoVal;
         private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.ComboBox BitrateBox;
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.CheckBox checkBox3;
         internal System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown RTFPS;
+        private System.Windows.Forms.Label label1;
     }
 }
