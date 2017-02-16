@@ -108,7 +108,6 @@
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.ConverterProcessRT = new System.ComponentModel.BackgroundWorker();
             this.MIDIList = new System.Windows.Forms.ListView();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -442,8 +441,7 @@
             this.menuItem13,
             this.OverrideStrip,
             this.menuItem2,
-            this.forceCloseTheApplicationToolStripMenuItem,
-            this.menuItem4});
+            this.forceCloseTheApplicationToolStripMenuItem});
             this.OptionsStrip.Text = "Options";
             // 
             // AutoUpdatesCheckStrip
@@ -594,6 +592,7 @@
             // BengaliOverride
             // 
             this.BengaliOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.BengaliOverride, global::KeppyMIDIConverter.Properties.Resources.Bangladesh);
             this.BengaliOverride.Index = 3;
             this.BengaliOverride.Text = "Bengali (বাঙালি)";
             this.BengaliOverride.Click += new System.EventHandler(this.Bengali_Click);
@@ -601,6 +600,7 @@
             // EnglishOverride
             // 
             this.EnglishOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.EnglishOverride, global::KeppyMIDIConverter.Properties.Resources.United_Kingdom_Great_Britain_);
             this.EnglishOverride.Index = 4;
             this.EnglishOverride.Text = "English (English)";
             this.EnglishOverride.Click += new System.EventHandler(this.EnglishOverride_Click);
@@ -608,6 +608,7 @@
             // EstonianOverride
             // 
             this.EstonianOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.EstonianOverride, global::KeppyMIDIConverter.Properties.Resources.Estonia);
             this.EstonianOverride.Index = 5;
             this.EstonianOverride.Text = "Estonian (Eesti)";
             this.EstonianOverride.Click += new System.EventHandler(this.EstonianOverride_Click);
@@ -615,6 +616,7 @@
             // GermanOverride
             // 
             this.GermanOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.GermanOverride, global::KeppyMIDIConverter.Properties.Resources.Germany);
             this.GermanOverride.Index = 6;
             this.GermanOverride.Text = "German (Deutsch)";
             this.GermanOverride.Click += new System.EventHandler(this.GermanOverride_Click);
@@ -622,6 +624,7 @@
             // ItalianOverride
             // 
             this.ItalianOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.ItalianOverride, global::KeppyMIDIConverter.Properties.Resources.Italy);
             this.ItalianOverride.Index = 7;
             this.ItalianOverride.Text = "Italian (Italiano)";
             this.ItalianOverride.Click += new System.EventHandler(this.ItalianOverride_Click);
@@ -629,6 +632,7 @@
             // JapaneseOverride
             // 
             this.JapaneseOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.JapaneseOverride, global::KeppyMIDIConverter.Properties.Resources.Japan);
             this.JapaneseOverride.Index = 8;
             this.JapaneseOverride.Text = "Japanese (日本語)";
             this.JapaneseOverride.Click += new System.EventHandler(this.JapaneseOverride_Click);
@@ -636,6 +640,7 @@
             // KoreanOverride
             // 
             this.KoreanOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.KoreanOverride, global::KeppyMIDIConverter.Properties.Resources.South_Korea);
             this.KoreanOverride.Index = 9;
             this.KoreanOverride.Text = "Korean (한국어)";
             this.KoreanOverride.Click += new System.EventHandler(this.KoreanOverride_Click);
@@ -643,6 +648,7 @@
             // RussianOverride
             // 
             this.RussianOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.RussianOverride, global::KeppyMIDIConverter.Properties.Resources.Russian_Federation);
             this.RussianOverride.Index = 10;
             this.RussianOverride.Text = "Russian (Pу́сский)";
             this.RussianOverride.Click += new System.EventHandler(this.RussianOverride_Click);
@@ -650,6 +656,7 @@
             // ChineseCNOverride
             // 
             this.ChineseCNOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.ChineseCNOverride, global::KeppyMIDIConverter.Properties.Resources.China);
             this.ChineseCNOverride.Index = 11;
             this.ChineseCNOverride.Text = "Simplified Chinese (简化字, PRC)";
             this.ChineseCNOverride.Click += new System.EventHandler(this.ChineseCN_Click);
@@ -657,6 +664,7 @@
             // SpanishOverride
             // 
             this.SpanishOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.SpanishOverride, global::KeppyMIDIConverter.Properties.Resources.Spain);
             this.SpanishOverride.Index = 12;
             this.SpanishOverride.Text = "Spanish (Español)";
             this.SpanishOverride.Click += new System.EventHandler(this.SpanishOverride_Click);
@@ -664,6 +672,7 @@
             // ChineseHKOverride
             // 
             this.ChineseHKOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.ChineseHKOverride, global::KeppyMIDIConverter.Properties.Resources.Hong_Kong);
             this.ChineseHKOverride.Index = 13;
             this.ChineseHKOverride.Text = "Traditional Chinese (廣東話, Hong Kong)";
             this.ChineseHKOverride.Click += new System.EventHandler(this.ChineseHK_Click);
@@ -671,6 +680,7 @@
             // ChineseTWOverride
             // 
             this.ChineseTWOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.ChineseTWOverride, global::KeppyMIDIConverter.Properties.Resources.Taiwan);
             this.ChineseTWOverride.Index = 14;
             this.ChineseTWOverride.Text = "Traditional Chinese (台灣, Taiwan)";
             this.ChineseTWOverride.Click += new System.EventHandler(this.ChineseTW_Click);
@@ -831,12 +841,6 @@
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
             // 
-            // menuItem4
-            // 
-            this.menuItem4.Index = 9;
-            this.menuItem4.Text = "Calculate MS";
-            this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -957,7 +961,6 @@
         public System.Windows.Forms.TrackBar VolumeBar;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.PictureBox loadingpic;
-        private System.Windows.Forms.MenuItem menuItem4;
     }
 }
 

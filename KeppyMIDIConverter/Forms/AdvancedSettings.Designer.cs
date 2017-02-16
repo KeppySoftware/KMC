@@ -22,6 +22,8 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.RTFPS = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.BitrateBox = new System.Windows.Forms.ComboBox();
@@ -34,11 +36,9 @@
             this.Label5 = new System.Windows.Forms.Label();
             this.FXDisable = new System.Windows.Forms.CheckBox();
             this.Noteoff1 = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.RTFPS = new System.Windows.Forms.NumericUpDown();
             this.GroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TempoVal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TempoVal)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -78,6 +78,41 @@
             this.GroupBox1.TabIndex = 29;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
+            // 
+            // RTFPS
+            // 
+            this.RTFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RTFPS.DecimalPlaces = 1;
+            this.RTFPS.Location = new System.Drawing.Point(321, 17);
+            this.RTFPS.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RTFPS.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RTFPS.Name = "RTFPS";
+            this.RTFPS.Size = new System.Drawing.Size(72, 20);
+            this.RTFPS.TabIndex = 19;
+            this.RTFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RTFPS.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.RTFPS.ValueChanged += new System.EventHandler(this.RTFPS_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(274, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "RT FPS:";
             // 
             // label4
             // 
@@ -259,41 +294,6 @@
             this.Noteoff1.UseVisualStyleBackColor = true;
             this.Noteoff1.CheckedChanged += new System.EventHandler(this.Noteoff1_CheckedChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(274, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "RT FPS:";
-            // 
-            // RTFPS
-            // 
-            this.RTFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RTFPS.DecimalPlaces = 1;
-            this.RTFPS.Location = new System.Drawing.Point(321, 17);
-            this.RTFPS.Maximum = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            0});
-            this.RTFPS.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.RTFPS.Name = "RTFPS";
-            this.RTFPS.Size = new System.Drawing.Size(72, 20);
-            this.RTFPS.TabIndex = 19;
-            this.RTFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.RTFPS.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.RTFPS.ValueChanged += new System.EventHandler(this.RTFPS_ValueChanged);
-            // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -315,8 +315,8 @@
             this.Load += new System.EventHandler(this.AdvancedSettings_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TempoVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TempoVal)).EndInit();
             this.ResumeLayout(false);
 
         }

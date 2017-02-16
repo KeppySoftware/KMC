@@ -2384,13 +2384,6 @@ namespace KeppyMIDIConverter
             if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
             Refresh();
         }
-
-        private void menuItem4_Click(object sender, EventArgs e)
-        {
-            double[] fpsarr = new double[2] { (1.0 / 60.0), (1.0 / 60.0) };
-            MessageBox.Show(String.Format("The values are:\n1: {0}\n2: {1}", fpsarr[0], fpsarr[1]));
-
-        }
     }
 
     public static class StringExt

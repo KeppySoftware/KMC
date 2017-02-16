@@ -78,3 +78,10 @@ Thank you in advance! :heart: :heart:
 ## Credits
 - Thanks Ian Luck for his wonderful BASS libraries! Take a look to them here: [Un4seen website] (http://www.un4seen.com/)
 - Thanks to Radio42 for his BASS.NET wrapper, that allows me to develop VB.NET/C# apps based off BASS libraries! Link: [BASS.NET] (http://www.bass.radio42.com/)
+- Thanks to Jonathan from 365Icons, for the wonderful icon set used for the language selector! You can find the icon set here: [Click me] (http://365icon.com/icon-styles/ethnic/classic2/)
+- Thanks to wyDay for VistaMenu, which I'm using to add icons to the default MainMenu control (MenuStrip is garbage). Download it here: [Click me] (https://wyday.com/vistamenu/)
+
+## NuGet packages used
+- Costura.Fody.1.3.3.0
+- Resource.Embedder.1.2.0.0
+- WindowsAPICodePack.1.1.0
