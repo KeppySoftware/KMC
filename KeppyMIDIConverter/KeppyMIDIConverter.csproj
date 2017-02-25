@@ -262,6 +262,7 @@
     <EmbeddedResource Include="Languages\Lang.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.th-TH.resx" />
     <EmbeddedResource Include="Languages\Lang.zh-CN.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

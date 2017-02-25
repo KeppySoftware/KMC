@@ -123,29 +123,28 @@
   <data name="AboutSFZFormatText" xml:space="preserve">
     <value>Эта программа совместима с SFZ 1.0 и частично с SFZ 2.0.
 
-Вы хотите посетить веб-сайт "Неофициальная информация о формате SFZ"? (сайт на английском языке)</value>
+Открыть сайт о формате SFZ ?(сайт на английском языке)</value>
   </data>
   <data name="AboutSFZFormatTitle" xml:space="preserve">
     <value>О формате SFZ</value>
   </data>
   <data name="AboutVSTSupportText" xml:space="preserve">
-    <value>Эта программа поддерживает VST.
+    <value>Эта программа поддерживает технологию VST.
 
-Virtual Studio Technology (VST) представляет собой программный интерфейс и технологии по Steinberg Media Technologies.
-Copyright © 2006 Steinberg Media Technologies.
-Все права защищены.</value>
+Virtual Studio Technology (VST) представляет собой программный интерфейс и наработки Steinberg Media Technologies.
+Все права защищены © 2006 Steinberg Media Technologies.</value>
   </data>
   <data name="AboutVSTSupportTitle" xml:space="preserve">
     <value>О интерфейсе Virtual Studio Technology</value>
   </data>
   <data name="ActionsStrip" xml:space="preserve">
-    <value>Действие</value>
+    <value>Файл</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
     <value>Полифиния: </value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
-    <value>Для запуска преобразование требуется загрузить не менее одного файла.</value>
+    <value>Для конвертации требуется загрузить не менее одного файла.</value>
   </data>
   <data name="AdvSettingsButton" xml:space="preserve">
     <value>Расширенные настройки</value>
@@ -154,11 +153,11 @@ Copyright © 2006 Steinberg Media Technologies.
     <value>Расширенные настройки</value>
   </data>
   <data name="AlreadyUpdatedText" xml:space="preserve">
-    <value>Эта версия Keppy's MIDI Converter уже обновлена.
+    <value>Эта версия Keppy's MIDI Converter не нуждается в обновлении.
 </value>
   </data>
   <data name="AppBusy" xml:space="preserve">
-    <value>Приложение ещё не завершило преобразование MIDI
+    <value>Приложение ещё не завершило преобразование.
 Закрыть программу?</value>
   </data>
   <data name="AudioEventsStrip" xml:space="preserve">
@@ -174,7 +173,7 @@ Copyright © 2006 Steinberg Media Technologies.
     <value>Проверить наличие обновлений при запуске приложения</value>
   </data>
   <data name="AverageLevel" xml:space="preserve">
-    <value>В среднем</value>
+    <value>Средний уровень</value>
   </data>
   <data name="BASSEngineConfiguration" xml:space="preserve">
     <value>Настройка BASS.
@@ -197,7 +196,7 @@ Copyright © 2006 Steinberg Media Technologies.
     <value>Проверить наличие обновлений</value>
   </data>
   <data name="ClearListAutomaticallyStrip" xml:space="preserve">
-    <value>Автоматически очистить список MIDI, когда процесс преобразования будет завершён.</value>
+    <value>Очистить список MIDI, когда процесс преобразования будет завершён.</value>
   </data>
   <data name="ClearMIDIsList" xml:space="preserve">
     <value>Очистить список MIDI</value>
@@ -285,7 +284,7 @@ BASS статус: {0}</value>
 Эта программа базируется на библиотеках BASS
 от Ian Luck из Un4seen Developments.
 Вы можете перейти на его сайт, нажав кнопку "{1}"
-Кнопка.
+
 
 Исходный код доступен здесь:</value>
   </data>
@@ -314,34 +313,34 @@ BASS статус: {0}</value>
     <value>Выход</value>
   </data>
   <data name="ExportWhere" xml:space="preserve">
-    <value>Куда вы хотите экспортировать?</value>
+    <value>Сохранить как...</value>
   </data>
   <data name="FatalError" xml:space="preserve">
     <value>Фатальная ошибка</value>
   </data>
   <data name="FatalErrorHandler" xml:space="preserve">
     <value>Экстренное завершиние приложения из- за ошибки
-Приложение должно быть закрыто.
+Приложение будет закрыто.
 Дополнительная информация:</value>
   </data>
   <data name="forceCloseTheApplicationStrip" xml:space="preserve">
     <value>Сбой приложения</value>
   </data>
   <data name="HelpStrip" xml:space="preserve">
-    <value>Помощь</value>
+    <value>Информация</value>
   </data>
   <data name="IdleMessage" xml:space="preserve">
     <value>Ожидание команд пользователя.
-Выберите MIDI, загрузите звуковый банки и начните процесс преобразования!</value>
+Необходимо загрузить файлы в конвертер</value>
   </data>
   <data name="ImportMIDI" xml:space="preserve">
-    <value>Импортировать MIDI...</value>
+    <value>Открыть...</value>
   </data>
   <data name="ImportMIDIWindow" xml:space="preserve">
-    <value>Выберите MIDI для импорта ...</value>
+    <value>Открыть как...</value>
   </data>
   <data name="ImportSoundfontBtn" xml:space="preserve">
-    <value>Импорт SoundFont(ов)</value>
+    <value>Импорт банков </value>
   </data>
   <data name="InfoPageTitle" xml:space="preserve">
     <value>Информация</value>
@@ -363,10 +362,10 @@ BASS статус: {0}</value>
 Версия {2} из MIDI конвертер Keppy не поддерживает {1} VSTs и ViceVersa</value>
   </data>
   <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
-    <value>KaleidonKep99- GitHub</value>
+    <value>KaleidonKep99 GitHub</value>
   </data>
   <data name="KaleidonKep99sYouTubeChannel" xml:space="preserve">
-    <value>KaleidonKep99- YouTube</value>
+    <value>KaleidonKep99 YouTube</value>
   </data>
   <data name="LatestVersionIdle" xml:space="preserve">
     <value>Проверка обновлений</value>
@@ -397,10 +396,10 @@ BASS статус: {0}</value>
     <value>Переместить вниз</value>
   </data>
   <data name="MoveDOWNSF" xml:space="preserve">
-    <value>Переместить вниз</value>
+    <value>Вниз</value>
   </data>
   <data name="MoveUP" xml:space="preserve">
-    <value>Переместить вверх(Один пункт)</value>
+    <value>Вверх</value>
   </data>
   <data name="MoveUPSF" xml:space="preserve">
     <value>Переместить вверх</value>
@@ -414,17 +413,17 @@ BASS статус: {0}</value>
 Дополнительная информация:</value>
   </data>
   <data name="NoteOff1" xml:space="preserve">
-    <value>Воспроизводить более старые ноты, даже когда они перекрывают друг друга</value>
+    <value>Воспроизводить более старые ноты, когда они перекрывают сами себя</value>
   </data>
   <data name="NoUpdatesText" xml:space="preserve">
-    <value>Это самая новая версия!
-Пожалуйста, попробуйте позднее.</value>
+    <value>Это самая новая версия.
+Обновление не требуется.</value>
   </data>
   <data name="NoUpdatesTitle" xml:space="preserve">
-    <value>Это самая новая версия!</value>
+    <value>Это самая новая версия.</value>
   </data>
   <data name="OnlyOneItemMsg" xml:space="preserve">
-    <value>Вы можете перемещать только один пункт!</value>
+    <value>Вы можете перемещать только один пункт.</value>
   </data>
   <data name="OptionsStrip" xml:space="preserve">
     <value>Настройки</value>
@@ -433,7 +432,7 @@ BASS статус: {0}</value>
     <value>Поменять темп(BPM):</value>
   </data>
   <data name="OverrideTempo2" xml:space="preserve">
-    <value>Поменять темп(BPM (Стандартно {0} )</value>
+    <value>Изменить темп(BPM (Стандартно {0} )</value>
   </data>
   <data name="PeakLevel" xml:space="preserve">
     <value>Уравень клипа</value>
@@ -472,19 +471,19 @@ BASS статус: {0}</value>
     <value>Убрать Звуковый банки</value>
   </data>
   <data name="RenderToOGG" xml:space="preserve">
-    <value>Конвертировать файлы в Vorbis (.ogg)</value>
+    <value>Конвертация файла в Vorbis (.ogg)</value>
   </data>
   <data name="RenderToSpeakers" xml:space="preserve">
-    <value>Предварительный просмотр файлов (воспроизведение в режиме реального времени)</value>
+    <value>Воспроизведение в реальном времени</value>
   </data>
   <data name="RenderToWAV" xml:space="preserve">
-    <value>Конвертировать файлы в Wave (.WAV)</value>
+    <value>Конвертация файла в Wave (.WAV)</value>
   </data>
   <data name="RightClickCopyNotice" xml:space="preserve">
-    <value>Щелкните правой кнопкой мыши в любом месте окна, чтобы скопировать сообщение.</value>
+    <value>Щелкните правой кнопкой мыши, чтобы скопировать сообщение.</value>
   </data>
   <data name="RMS" xml:space="preserve">
-    <value>Среднеквадратического</value>
+    <value>Средняя громкость</value>
   </data>
   <data name="SaveHere" xml:space="preserve">
     <value>Сохранить здесь...</value>
@@ -502,22 +501,22 @@ BASS статус: {0}</value>
     <value>Открыть SoundFont / менеджер VST</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
-    <value>Используйте до 1.000 SoundFonts сразу, чтобы конвертировать MIDIs.
+    <value>Возможно использоватоь до 1000 звуковых банков. для конвертации файлов
 Первый SoundFont в списке всегда будут замещать последние из них.
-Проверьте, не повреженый ли звуковые банки, прежде чем добавлять их в список, чтобы избежать глюков\багов.
+Проверьте, не поврежены ли звуковые банки, прежде чем добавлять их в список, чтобы избежать глюков\багов.
 
 Данная программа поддерживает: SF2, SF3, SFZ, SFPACK</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>Ошибка импорта звуковых банков!
 
-Выберите банк и повторите попытку.</value>
+Выберите другой банк и повторите попытку.</value>
   </data>
   <data name="SoundfontManagerTitle" xml:space="preserve">
     <value>Звуки / Менеджер VST</value>
   </data>
   <data name="supportTheDeveloperWithADonation" xml:space="preserve">
-    <value>Донат:</value>
+    <value>Поддержать разработчиков копеечкой:</value>
   </data>
   <data name="Un4seenWebsite" xml:space="preserve">
     <value>Un4seen сайт</value>
@@ -529,7 +528,7 @@ BASS статус: {0}</value>
     <value>Удалить</value>
   </data>
   <data name="UpdateFoundVer" xml:space="preserve">
-    <value>Обновление найдено, {0} онлайн.</value>
+    <value>Обновление найдено, {0} версии</value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
     <value>Обновления</value>
@@ -538,8 +537,8 @@ BASS статус: {0}</value>
     <value>Проверка наличия обновлений, пожалуйста, подождите ...</value>
   </data>
   <data name="UpdatesFoundText" xml:space="preserve">
-    <value>Новое обновление было обнаружено!
-Нажмите кнопку ОК, чтобы открыть страницу для загрузки.</value>
+    <value>Было обнаружено обновление.
+Нажмите кнопку ОК чтобы открыть страницу для загрузки.</value>
   </data>
   <data name="UpdatesFoundTitle" xml:space="preserve">
     <value>
@@ -552,24 +551,21 @@ BASS статус: {0}</value>
     <value>Полифония:</value>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
-    <value>Как они работают?
+    <value>Как работает система VST?
 
-Эффект 1 будет применять его влияние на звук, то он будет передавать модифицированный аудио Эффект 2,
-что будет делать то же самое с эффектом 3 и так далее.
-
-Это цепеобразная система.</value>
+Эффекты накладываются друг на друга. Учтите это при их загрузке.
+</value>
   </data>
   <data name="VSTInvalidCallError" xml:space="preserve">
-    <value>Была ошибка при попытке загрузить {0}.
+    <value>Ошибка при попытке загрузить {0}.
 VST не может быть загружен.
 Ошибка:
 {1}
-The VST is probably not compatible with the native Windows forms system.
-Error copied to clipboard.
+Этот VST возможно несовместим с вашей версией Windows
 Ошибка копируется в буфер обмена.</value>
   </data>
   <data name="VSTInvalidCallTitle" xml:space="preserve">
-    <value>Инвалид VST call</value>
+    <value>Ошибка при загрузке VST</value>
   </data>
   <data name="VSTManager" xml:space="preserve">
     <value>Менеджер VST</value>
@@ -578,13 +574,13 @@ Error copied to clipboard.
     <value>Открыть диспетчер VST DSP</value>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>Я хочу, чтобы применить VST DSP тоже ...</value>
+    <value>Применений VST эффектов</value>
   </data>
   <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
     <value>Для работы данной программы требуется Windows XP SP 2 или выше. Нажмите ОК, чтобы выйти.</value>
   </data>
   <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
-    <value>Windows XP SP1 и младше не поддерживаются.</value>
+    <value>Системы младше Windows XP SP 2 не поддерживаются.</value>
   </data>
   <data name="Volume" xml:space="preserve">
     <value>Объем:</value>
@@ -593,19 +589,19 @@ Error copied to clipboard.
     <value>Информация</value>
   </data>
   <data name="ZZZTranslators" xml:space="preserve">
-    <value>Саша Петров, Dmitry's Music</value>
+    <value>Sasha Petrov, Dmitry's Music</value>
   </data>
   <data name="OverrideLanguage" xml:space="preserve">
-    <value>Индивидуальныя смена языка</value>
+    <value>Смена языка</value>
   </data>
   <data name="MIDIFile" xml:space="preserve">
     <value>Файл</value>
   </data>
   <data name="MIDISize" xml:space="preserve">
-    <value>Размер</value>
+    <value>Размер </value>
   </data>
   <data name="MIDILength" xml:space="preserve">
-    <value>Длины</value>
+    <value>Длина</value>
   </data>
   <data name="SortByName" xml:space="preserve">
     <value>Сортировать по названию</value>
@@ -632,16 +628,16 @@ Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
     <value>Banks/Presets list</value>
   </data>
   <data name="BankNPresetIgnore" xml:space="preserve">
-    <value>Ignore</value>
+    <value>Пропуск</value>
   </data>
   <data name="BankNPresetSelectedSF" xml:space="preserve">
-    <value>Selected soundfont</value>
+    <value>Выбранный звуковой банк</value>
   </data>
   <data name="BankNPresetSelectMsg" xml:space="preserve">
-    <value>Please select a bank and a preset, from 0 to 127.
+    <value>Выберите звуковй банк, номером от 0 to 127.
 
-Use "Bank 0" and "Preset 0" for the standard "Acoustic Grand Piano",
-or if you don't know which one you should use.</value>
+Выберите "Bank 0" и "Preset 0" для "Acoustic Grand Piano",
+Или если вы не знаете, что выбирать.</value>
   </data>
   <data name="BankNPresetSrcBank" xml:space="preserve">
     <value>Source preset:</value>
@@ -650,15 +646,15 @@ or if you don't know which one you should use.</value>
     <value>Source bank:</value>
   </data>
   <data name="BankNPresetTitle" xml:space="preserve">
-    <value>Select a bank and a preset for the soundfont</value>
+    <value>Выберите банк и надстройку для звукового банка</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
     <value>yes</value>
   </data>
   <data name="RenderToMP3" xml:space="preserve">
-    <value>Конвертировать файлы в LAME (.mp3)</value>
+    <value>Конвертация файла в LAME (.mp3)</value>
   </data>
   <data name="CopyText" xml:space="preserve">
-    <value>копии</value>
+    <value>Копировать</value>
   </data>
 </root>

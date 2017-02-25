@@ -108,6 +108,7 @@
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.ConverterProcessRT = new System.ComponentModel.BackgroundWorker();
             this.MIDIList = new System.Windows.Forms.ListView();
+            this.ThaiTHOverride = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -567,6 +568,7 @@
             this.RussianOverride,
             this.ChineseCNOverride,
             this.SpanishOverride,
+            this.ThaiTHOverride,
             this.ChineseHKOverride,
             this.ChineseTWOverride});
             this.OverrideStrip.Text = "Override language";
@@ -673,7 +675,7 @@
             // 
             this.ChineseHKOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.ChineseHKOverride, global::KeppyMIDIConverter.Properties.Resources.Hong_Kong);
-            this.ChineseHKOverride.Index = 13;
+            this.ChineseHKOverride.Index = 14;
             this.ChineseHKOverride.Text = "Traditional Chinese (廣東話, Hong Kong)";
             this.ChineseHKOverride.Click += new System.EventHandler(this.ChineseHK_Click);
             // 
@@ -681,7 +683,7 @@
             // 
             this.ChineseTWOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.ChineseTWOverride, global::KeppyMIDIConverter.Properties.Resources.Taiwan);
-            this.ChineseTWOverride.Index = 14;
+            this.ChineseTWOverride.Index = 15;
             this.ChineseTWOverride.Text = "Traditional Chinese (台灣, Taiwan)";
             this.ChineseTWOverride.Click += new System.EventHandler(this.ChineseTW_Click);
             // 
@@ -841,6 +843,14 @@
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
             // 
+            // ThaiTHOverride
+            // 
+            this.ThaiTHOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.ThaiTHOverride, global::KeppyMIDIConverter.Properties.Resources.Thailand);
+            this.ThaiTHOverride.Index = 13;
+            this.ThaiTHOverride.Text = "Thai (ภาษาไทย)";
+            this.ThaiTHOverride.Click += new System.EventHandler(this.ThaiTHOverride_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -961,6 +971,7 @@
         public System.Windows.Forms.TrackBar VolumeBar;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.PictureBox loadingpic;
+        private System.Windows.Forms.MenuItem ThaiTHOverride;
     }
 }
 

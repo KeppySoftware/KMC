@@ -1028,6 +1028,10 @@ namespace KeppyMIDIConverter
 
         private void BASSEncodingEngine(long pos, int length, DateTime starttime)
         {
+            int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
+            KMCGlobals.OriginalTempo = 60000000 / tempo;
+            if (MainWindow.KMCGlobals.TempoOverride == true)
+                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, 60000000 / KMCGlobals.FinalTempo);
             TimeSpan timespent = DateTime.Now - starttime;
             long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
             float num7 = ((float)pos) / 1048576f;
@@ -1278,6 +1282,10 @@ namespace KeppyMIDIConverter
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
+                                    int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
+                                    KMCGlobals.OriginalTempo = 60000000 / tempo;
+                                    if (MainWindow.KMCGlobals.TempoOverride == true)
+                                        BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, 60000000 / KMCGlobals.FinalTempo);
                                     double fpssim = FPSSimulator.NextDouble() * (CustomFramerates[0] - CustomFramerates[1]) + CustomFramerates[1];
                                     int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
                                     byte[] buffer = new byte[Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim)];
@@ -2114,6 +2122,7 @@ namespace KeppyMIDIConverter
                 KoreanOverride.Enabled = true;
                 SpanishOverride.Enabled = true;
                 BengaliOverride.Enabled = true;
+                ThaiTHOverride.Enabled = true;
             }
             catch (Exception exception)
             {
@@ -2146,6 +2155,7 @@ namespace KeppyMIDIConverter
                 KoreanOverride.Enabled = false;
                 SpanishOverride.Enabled = false;
                 BengaliOverride.Enabled = false;
+                ThaiTHOverride.Enabled = false;
             }
             catch (Exception exception)
             {
@@ -2342,6 +2352,11 @@ namespace KeppyMIDIConverter
         private void KoreanOverride_Click(object sender, EventArgs e)
         {
             ChangeLanguage("ko");
+        }
+
+        private void ThaiTHOverride_Click(object sender, EventArgs e)
+        {
+            ChangeLanguage("th-TH");
         }
 
         private void Bengali_Click(object sender, EventArgs e)
