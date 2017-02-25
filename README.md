@@ -57,7 +57,7 @@ Japanese | Yes
 Korean | Yes
 Russian | Yes
 Spanish | Yes
-Turkish | Yes
+Thai | Yes
 
 If your main language isn't here, and you're willing to help, just follow the guide down below.
 
