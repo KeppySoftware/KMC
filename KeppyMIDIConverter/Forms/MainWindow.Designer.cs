@@ -86,6 +86,7 @@
             this.RussianOverride = new System.Windows.Forms.MenuItem();
             this.ChineseCNOverride = new System.Windows.Forms.MenuItem();
             this.SpanishOverride = new System.Windows.Forms.MenuItem();
+            this.ThaiTHOverride = new System.Windows.Forms.MenuItem();
             this.ChineseHKOverride = new System.Windows.Forms.MenuItem();
             this.ChineseTWOverride = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
@@ -108,7 +109,7 @@
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.ConverterProcessRT = new System.ComponentModel.BackgroundWorker();
             this.MIDIList = new System.Windows.Forms.ListView();
-            this.ThaiTHOverride = new System.Windows.Forms.MenuItem();
+            this.GarbageCollector = new System.ComponentModel.BackgroundWorker();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -671,6 +672,14 @@
             this.SpanishOverride.Text = "Spanish (Español)";
             this.SpanishOverride.Click += new System.EventHandler(this.SpanishOverride_Click);
             // 
+            // ThaiTHOverride
+            // 
+            this.ThaiTHOverride.Enabled = false;
+            this.VistaMenuSys.SetImage(this.ThaiTHOverride, global::KeppyMIDIConverter.Properties.Resources.Thailand);
+            this.ThaiTHOverride.Index = 13;
+            this.ThaiTHOverride.Text = "Thai (ภาษาไทย)";
+            this.ThaiTHOverride.Click += new System.EventHandler(this.ThaiTHOverride_Click);
+            // 
             // ChineseHKOverride
             // 
             this.ChineseHKOverride.Enabled = false;
@@ -843,13 +852,9 @@
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
             // 
-            // ThaiTHOverride
+            // GarbageCollector
             // 
-            this.ThaiTHOverride.Enabled = false;
-            this.VistaMenuSys.SetImage(this.ThaiTHOverride, global::KeppyMIDIConverter.Properties.Resources.Thailand);
-            this.ThaiTHOverride.Index = 13;
-            this.ThaiTHOverride.Text = "Thai (ภาษาไทย)";
-            this.ThaiTHOverride.Click += new System.EventHandler(this.ThaiTHOverride_Click);
+            this.GarbageCollector.DoWork += new System.ComponentModel.DoWorkEventHandler(this.GarbageCollector_DoWork);
             // 
             // MainWindow
             // 
@@ -972,6 +977,7 @@
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.PictureBox loadingpic;
         private System.Windows.Forms.MenuItem ThaiTHOverride;
+        private System.ComponentModel.BackgroundWorker GarbageCollector;
     }
 }
 

@@ -41,6 +41,7 @@ namespace KeppyMIDIConverter
             public static bool DoNotCountNotes = false;
             public static bool FXDisabled = true;
             public static bool IsKMCBusy = false;
+            public static bool IsKMCNowExporting = false;
             public static bool NoteOff1Event = false;
             public static bool OldTimeThingy = false;
             public static bool QualityOverride = false;
@@ -470,6 +471,7 @@ namespace KeppyMIDIConverter
                         Settings.Close();
                     }
                     Delegate = this;
+                    GarbageCollector.RunWorkerAsync();
                 }
                 catch (Exception exception2)
                 {
@@ -1167,6 +1169,7 @@ namespace KeppyMIDIConverter
                             DateTime starttime = DateTime.Now;
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 0.01666666666666666666666666666667));
+                            KMCGlobals.IsKMCNowExporting = true;
                             while (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
@@ -1185,6 +1188,7 @@ namespace KeppyMIDIConverter
                             {
                                 KMCGlobals.RenderingMode = false;
                                 KMCGlobals.IsKMCBusy = false;
+                                KMCGlobals.IsKMCNowExporting = false;
                                 KMCGlobals.VSTSkipSettings = false;
                                 KeepLooping = false;
                                 break;
@@ -1202,6 +1206,7 @@ namespace KeppyMIDIConverter
                             KeepLooping = false;
                             KMCGlobals.RenderingMode = false;
                             KMCGlobals.IsKMCBusy = false;
+                            KMCGlobals.IsKMCNowExporting = false;
                             KMCGlobals.VSTSkipSettings = false;
                             PlayConversionStop();
                         }
@@ -1211,7 +1216,8 @@ namespace KeppyMIDIConverter
                             BASSSetID3(false);
                             KeepLooping = false;
                             KMCGlobals.RenderingMode = false;
-                            KMCGlobals.IsKMCBusy = false; 
+                            KMCGlobals.IsKMCBusy = false;
+                            KMCGlobals.IsKMCNowExporting = false;
                             KMCGlobals.VSTSkipSettings = false;
                             if (KMCGlobals.AutoShutDownEnabled == true)
                             {
@@ -1278,14 +1284,11 @@ namespace KeppyMIDIConverter
                             int pos = 0;
                             uint es = 0;
                             FPSSimulator.NextDouble();
+                            KMCGlobals.IsKMCNowExporting = true;
                             for (pos = 0, es = 0; ; )
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
-                                    KMCGlobals.OriginalTempo = 60000000 / tempo;
-                                    if (MainWindow.KMCGlobals.TempoOverride == true)
-                                        BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, 60000000 / KMCGlobals.FinalTempo);
                                     double fpssim = FPSSimulator.NextDouble() * (CustomFramerates[0] - CustomFramerates[1]) + CustomFramerates[1];
                                     int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
                                     byte[] buffer = new byte[Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim)];
@@ -1353,6 +1356,7 @@ namespace KeppyMIDIConverter
                                 KMCGlobals.events = null;
                                 KMCGlobals.RenderingMode = false;
                                 KMCGlobals.IsKMCBusy = false;
+                                KMCGlobals.IsKMCNowExporting = false;
                                 KMCGlobals.VSTSkipSettings = false;
                                 break;
                             }
@@ -1369,6 +1373,7 @@ namespace KeppyMIDIConverter
                             BASSSetID3(false);
                             KeepLooping = false;
                             KMCGlobals.IsKMCBusy = false;
+                            KMCGlobals.IsKMCNowExporting = false;
                             KMCGlobals.RenderingMode = false;
                             KMCGlobals.VSTSkipSettings = false;
                             KMCGlobals.eventc = 0;
@@ -1380,6 +1385,7 @@ namespace KeppyMIDIConverter
                             BASSCloseStream(res_man.GetString("ConversionCompleted", cul), res_man.GetString("ConversionCompleted", cul), 1);
                             BASSSetID3(false);
                             KMCGlobals.IsKMCBusy = false;
+                            KMCGlobals.IsKMCNowExporting = false; 
                             KMCGlobals.RenderingMode = false;
                             KMCGlobals.VSTSkipSettings = false;
                             KeepLooping = false;
@@ -1451,6 +1457,7 @@ namespace KeppyMIDIConverter
                                 int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
                             }
                             KMCStatus.TotalNotes = notes;
+                            KMCGlobals.IsKMCNowExporting = true;
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 1.0));
                             while (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
@@ -1463,6 +1470,7 @@ namespace KeppyMIDIConverter
                                     KMCGlobals.DoNotCountNotes = false;
                                     BASSCloseStream(res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackAborted", cul), 0);
                                     KMCGlobals.IsKMCBusy = false;
+                                    KMCGlobals.IsKMCNowExporting = false;
                                     KeepLooping = false;
                                     break;
                                 }
@@ -1494,6 +1502,7 @@ namespace KeppyMIDIConverter
                 {
                     WriteToConsole(exception);
                     KMCGlobals.IsKMCBusy = false;
+                    KMCGlobals.IsKMCNowExporting = false;
                     KMCGlobals.DoNotCountNotes = false;
                 }
             }
@@ -1925,7 +1934,14 @@ namespace KeppyMIDIConverter
                 }
                 else if (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                 {
-                    RTF.KMCBusy();
+                    if (!KMCGlobals.IsKMCNowExporting)
+                    {
+                        RTF.KMCMemoryAllocation();
+                    }
+                    else
+                    {
+                        RTF.KMCBusy();
+                    }
                 }
             }
             catch (Exception ex)
@@ -2398,6 +2414,16 @@ namespace KeppyMIDIConverter
             if (DoSnap(scn.WorkingArea.Right, this.Right)) this.Left = scn.WorkingArea.Right - this.Width;
             if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
             Refresh();
+        }
+
+        private void GarbageCollector_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                System.Threading.Thread.Sleep(1);
+            }
         }
     }
 
