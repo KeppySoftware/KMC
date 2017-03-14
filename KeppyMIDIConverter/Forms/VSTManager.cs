@@ -164,6 +164,18 @@ namespace KeppyMIDIConverter
                 Unload8.Enabled = true;
                 Load8.Enabled = false;
             }
+            if (MainWindow.KMCGlobals.IsLoudMaxEnabled)
+            {
+                LoudMaxCheck.ForeColor = Color.Green;
+                LoudMaxCheck.Text = "LoudMax on";
+                LoudMaxCheck.Checked = true;
+            }
+            else
+            {
+                LoudMaxCheck.ForeColor = Color.DarkRed;
+                LoudMaxCheck.Text = "LoudMax off";
+                LoudMaxCheck.Checked = false;
+            }
         }
 
         private void InitStartDirectory()
@@ -603,6 +615,28 @@ namespace KeppyMIDIConverter
             Unload6.PerformClick();
             Unload7.PerformClick();
             Unload8.PerformClick();
+        }
+
+        private void LoudMaxCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+
+            if (LoudMaxCheck.Checked)
+            {
+                Settings.SetValue("loudmaxenabled", "1", Microsoft.Win32.RegistryValueKind.DWord);
+                MainWindow.KMCGlobals.IsLoudMaxEnabled = true;
+                LoudMaxCheck.ForeColor = Color.Green;
+                LoudMaxCheck.Text = "LoudMax on";
+            }
+            else
+            {
+                Settings.SetValue("loudmaxenabled", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                MainWindow.KMCGlobals.IsLoudMaxEnabled = false;
+                LoudMaxCheck.ForeColor = Color.DarkRed;
+                LoudMaxCheck.Text = "LoudMax off";
+            }
+
+           Settings.Close();
         }
     }
 }

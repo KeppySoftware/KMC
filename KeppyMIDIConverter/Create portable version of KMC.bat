@@ -19,6 +19,7 @@ rem These are the 32-bit files
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x86\bassmidi.dll
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x86\bassopus.dll
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x86\basswv.dll
+7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x86\LoudMax.dll
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x86\portable
 
 rem These are the 64-bit ones
@@ -36,4 +37,5 @@ rem These are the 64-bit ones
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x64\bassmidi.dll
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x64\bassopus.dll
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x64\basswv.dll
+7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x64\LoudMax.dll
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x64\portable

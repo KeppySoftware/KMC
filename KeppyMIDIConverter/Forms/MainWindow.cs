@@ -42,6 +42,7 @@ namespace KeppyMIDIConverter
             public static bool FXDisabled = true;
             public static bool IsKMCBusy = false;
             public static bool IsKMCNowExporting = false;
+            public static bool IsLoudMaxEnabled = false;
             public static bool NoteOff1Event = false;
             public static bool OldTimeThingy = false;
             public static bool QualityOverride = false;
@@ -62,6 +63,7 @@ namespace KeppyMIDIConverter
             public static int DefaultSoundfont;
             public static int FinalTempo = 120;
             public static int Frequency = 0xbb80;
+            public static int _LoudMaxHan;
             public static int LimitVoicesInt = 0x186a0;
             public static int OriginalTempo;
             public static int SoundFont;
@@ -406,6 +408,15 @@ namespace KeppyMIDIConverter
                                 KMCGlobals.OldTimeThingy = false;
                                 Settings.SetValue("oldtimethingy", "0", RegistryValueKind.DWord);
                             }
+                            // LoudMax
+                            if (Convert.ToInt32(Settings.GetValue("loudmaxenabled", 0)) == 0)
+                            {
+                                KMCGlobals.IsLoudMaxEnabled = false;
+                            }
+                            else
+                            {
+                                KMCGlobals.IsLoudMaxEnabled = true;
+                            }
                             // Note off setting
                             if (Convert.ToInt32(Settings.GetValue("noteoff1", 0)) == 1)
                             {
@@ -640,6 +651,10 @@ namespace KeppyMIDIConverter
                     KMCGlobals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 6);
                     KMCGlobals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 7);
                     KMCGlobals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 8);
+                    if (KMCGlobals.IsLoudMaxEnabled)
+                    {
+                        KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(towhichstream, String.Format("{0}\\LoudMax.dll", Application.StartupPath), BASSVSTDsp.BASS_VST_DEFAULT, 9);
+                    }
                     if (KMCGlobals.VSTSkipSettings != true)
                     {
                         BASS_VST_INFO vstInfo = new BASS_VST_INFO();

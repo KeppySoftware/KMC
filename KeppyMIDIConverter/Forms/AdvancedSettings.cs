@@ -17,6 +17,7 @@ namespace KeppyMIDIConverter
             InitializeComponent();
         }
 
+        Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);          
         ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
         CultureInfo cul;
         public static Action NonStaticDelegate;
@@ -109,23 +110,20 @@ namespace KeppyMIDIConverter
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Settings.Close();
             base.Close();
         }
 
         private void FrequencyBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.Frequency = Convert.ToInt32(this.FrequencyBox.Text);
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             Settings.SetValue("audiofreq", MainWindow.KMCGlobals.Frequency, Microsoft.Win32.RegistryValueKind.DWord);
-            Settings.Close();
         }
 
         private void BitrateBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.Bitrate = Convert.ToInt32(this.BitrateBox.Text);
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             Settings.SetValue("oggbitrate", MainWindow.KMCGlobals.Bitrate, Microsoft.Win32.RegistryValueKind.DWord);
-            Settings.Close();
         }
 
         private void FXDisable_CheckedChanged(object sender, EventArgs e)
@@ -133,16 +131,12 @@ namespace KeppyMIDIConverter
             if (this.FXDisable.Checked)
             {
                 MainWindow.KMCGlobals.FXDisabled = true;
-                Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Settings.SetValue("disablefx", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Settings.Close();
             }
             else
             {
                 MainWindow.KMCGlobals.FXDisabled = false;
-                Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Settings.SetValue("disablefx", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Settings.Close();
             }
         }
 
@@ -151,16 +145,12 @@ namespace KeppyMIDIConverter
             if (this.Noteoff1.Checked)
             {
                 MainWindow.KMCGlobals.NoteOff1Event = true;
-                Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Settings.SetValue("noteoff1", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Settings.Close();
             }
             else
             {
                 MainWindow.KMCGlobals.NoteOff1Event = false;
-                Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 Settings.SetValue("noteoff1", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Settings.Close();
             }
         }
 
@@ -187,8 +177,6 @@ namespace KeppyMIDIConverter
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            
             if (checkBox3.Checked == true)
             {
                 Settings.SetValue("overrideogg", "1", Microsoft.Win32.RegistryValueKind.DWord);
@@ -247,7 +235,6 @@ namespace KeppyMIDIConverter
 
         private void RTFPS_ValueChanged(object sender, EventArgs e)
         {
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             MainWindow.KMCGlobals.RTFPS = Convert.ToDouble(RTFPS.Value);
             Settings.SetValue("customfps", RTFPS.Value, Microsoft.Win32.RegistryValueKind.String);
         }
