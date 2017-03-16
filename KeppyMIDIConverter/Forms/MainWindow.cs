@@ -1155,6 +1155,14 @@ namespace KeppyMIDIConverter
             errordialog.ShowDialog();
         }
 
+        private void ReleaseResources()
+        {
+            Bass.BASS_StreamFree(KMCGlobals._recHandle);
+            Bass.BASS_Free();
+            KMCGlobals.eventc = 0;
+            KMCGlobals.events = null;
+        }
+
         private void clearMIDIsListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.MIDIList.Items.Clear();
@@ -1169,11 +1177,11 @@ namespace KeppyMIDIConverter
                     PlayConversionStart();
                     Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
                     bool KeepLooping = true;
-                    BASSInitSystem(0);
                     while (KeepLooping)
                     {
                         foreach (ListViewItem itemerino in getListViewItems(MIDIList))
                         {
+                            BASSInitSystem(0);
                             string str = itemerino.Text;
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
@@ -1210,6 +1218,7 @@ namespace KeppyMIDIConverter
                             }
                             else
                             {
+                                ReleaseResources();
                                 BASSSetID3(true);
                                 continue;
                             }
@@ -1281,11 +1290,11 @@ namespace KeppyMIDIConverter
                     PlayConversionStart();
                     Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
                     bool KeepLooping = true;
-                    BASSInitSystem(0);
                     while (KeepLooping)
                     {
                         foreach (ListViewItem itemerino in getListViewItems(MIDIList))
                         {
+                            BASSInitSystem(0);
                             double[] CustomFramerates;
                             ReturnCustomFramerate(out CustomFramerates);
                             string str = itemerino.Text;
@@ -1361,8 +1370,8 @@ namespace KeppyMIDIConverter
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 2)
                                 {
+                                    ReleaseResources();
                                     BASSSetID3(true);
-                                    KMCGlobals.events = null;
                                     continue;
                                 }
                             }
@@ -1447,11 +1456,11 @@ namespace KeppyMIDIConverter
                 {
                     PlayConversionStart();
                     bool KeepLooping = true;
-                    BASSInitSystem(1);
                     while (KeepLooping)
                     {
                         foreach (ListViewItem itemerino in getListViewItems(MIDIList))
                         {
+                            BASSInitSystem(1);
                             string str = itemerino.Text;
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
@@ -1499,7 +1508,7 @@ namespace KeppyMIDIConverter
                             }
                             else
                             {
-                                Bass.BASS_StreamFree(KMCGlobals._recHandle);
+                                ReleaseResources();
                                 continue;
                             }
                         }
@@ -1756,28 +1765,48 @@ namespace KeppyMIDIConverter
 
         private void AddFilesToList(String[] filenames, Boolean IsImportDialog)
         {
-            foreach (string str in filenames)
+            if (ModifierKeys == Keys.Shift)
             {
-                if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
+                Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
+                    "How many times do you want to add it?", "Keppy's MIDI Converter", "1"));
+
+                for (int i = 0; i < UserAnswer; i++)
                 {
                     string[] saLvwItem = new string[4];
-                    string[] midiinfo = GetMoreInfoMIDI(str);
-                    saLvwItem[0] = str;
+                    string[] midiinfo = GetMoreInfoMIDI(filenames[0]);
+                    saLvwItem[0] = filenames[0];
                     saLvwItem[1] = midiinfo[1];
                     saLvwItem[2] = midiinfo[0];
                     saLvwItem[3] = midiinfo[2];
                     ListViewItem lvi = new ListViewItem(saLvwItem);
-                    ToAddOrNotToAdd(lvi, midiinfo[1], str);
-                }
-                else
-                {
-                    MessageBox.Show(String.Format(res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ToAddOrNotToAdd(lvi, midiinfo[1], filenames[0]);
                 }
             }
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            KMCGlobals.MIDILastDirectory = Path.GetDirectoryName(filenames[0]);
-            Settings.SetValue("lastmidifolder", KMCGlobals.MIDILastDirectory);
-            MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
+            else
+            {
+                foreach (string str in filenames)
+                {
+                    if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
+                    {
+                        string[] saLvwItem = new string[4];
+                        string[] midiinfo = GetMoreInfoMIDI(str);
+                        saLvwItem[0] = str;
+                        saLvwItem[1] = midiinfo[1];
+                        saLvwItem[2] = midiinfo[0];
+                        saLvwItem[3] = midiinfo[2];
+                        ListViewItem lvi = new ListViewItem(saLvwItem);
+                        ToAddOrNotToAdd(lvi, midiinfo[1], str);
+                    }
+                    else
+                    {
+                        MessageBox.Show(String.Format(res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
+                KMCGlobals.MIDILastDirectory = Path.GetDirectoryName(filenames[0]);
+                Settings.SetValue("lastmidifolder", KMCGlobals.MIDILastDirectory);
+                MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
+            }
         }
 
         private void informationsToolStripMenuItem_Click(object sender, EventArgs e)
