@@ -62,7 +62,8 @@ namespace KeppyMIDIConverter
                 UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
                 label1.Text = String.Format(res_man.GetString("Credits", cul), DateTime.Now.Year.ToString(), res_man.GetString("Un4seenWebsite", cul));
                 LatestVersion.Text = res_man.GetString("LatestVersionIdle", cul);
-                button5.Text = res_man.GetString("CheckForUpdatesBtn", cul);
+                CFU.Text = res_man.GetString("CheckForUpdatesBtn", cul);
+                DonateBtn.Text = res_man.GetString("Donate", cul);
             }
             catch
             {
@@ -77,7 +78,8 @@ namespace KeppyMIDIConverter
                 UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
                 label1.Text = String.Format(res_man.GetString("Credits", cul), res_man.GetString("Un4seenWebsite", cul));
                 LatestVersion.Text = res_man.GetString("LatestVersionIdle", cul);
-                button5.Text = res_man.GetString("CheckForUpdatesBtn", cul);
+                CFU.Text = res_man.GetString("CheckForUpdatesBtn", cul);
+                DonateBtn.Text = res_man.GetString("Donate", cul);
             }
         }
 
@@ -173,7 +175,7 @@ namespace KeppyMIDIConverter
             try
             {
                 tabControl1.Enabled = false;
-                button5.Enabled = false;
+                CFU.Enabled = false;
                 WebClient client = new WebClient();
                 Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppyMIDIConverter/kmcupdate.txt");
                 StreamReader reader = new StreamReader(stream);
@@ -196,7 +198,7 @@ namespace KeppyMIDIConverter
                     if (x > y)
                     {
                         tabControl1.Enabled = true;
-                        button5.Enabled = true;
+                        CFU.Enabled = true;
                         LatestVersion.Text = String.Format(res_man.GetString("UpdateFoundVer", cul), newestversion.ToString());
                         DialogResult dialogResult = MessageBox.Show(res_man.GetString("UpdatesFoundText", cul), res_man.GetString("UpdatesFoundTitle", cul), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                         if (dialogResult == DialogResult.Yes)
@@ -209,7 +211,7 @@ namespace KeppyMIDIConverter
                     else
                     {
                         tabControl1.Enabled = true;
-                        button5.Enabled = true;
+                        CFU.Enabled = true;
                         LatestVersion.Text = String.Format("{0} ({1})", res_man.GetString("NoUpdatesText", cul), y.ToString());
                         MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -218,7 +220,7 @@ namespace KeppyMIDIConverter
             catch (Exception ex)
             {
                 tabControl1.Enabled = true;
-                button5.Enabled = true;
+                CFU.Enabled = true;
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo("KeppyMIDIConverter.exe");
                 ThisVersion.Text = String.Format(res_man.GetString("CurrentVersion", cul), Converter.FileVersion.ToString());
                 LatestVersion.Text = res_man.GetString("CanNotCheckUpdates", cul);
@@ -226,7 +228,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void DonateBtn_Click(object sender, EventArgs e)
         {
             string url = "";
 

@@ -664,4 +664,7 @@ või kui te ei tea, milline sa peaksid kasutama.</value>
   <data name="CopyText" xml:space="preserve">
     <value>Koopia</value>
   </data>
+  <data name="Donate" xml:space="preserve">
+    <value>Anneta PayPal'i kaudu</value>
+  </data>
 </root>

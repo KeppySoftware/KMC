@@ -658,4 +658,7 @@ SFZ 파일을 위해 소스의 뱅크, 프리셋 을 0 으로 설정합니다.</
   <data name="CopyText" xml:space="preserve">
     <value>복사</value>
   </data>
+  <data name="Donate" xml:space="preserve">
+    <value>페이팔으로 기부</value>
+  </data>
 </root>

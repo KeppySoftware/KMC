@@ -41,7 +41,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::KeppyMIDIConverter.Properties.Resources.donatewin;
-            this.pictureBox1.Location = new System.Drawing.Point(178, 207);
+            this.pictureBox1.Location = new System.Drawing.Point(167, 194);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(165, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -52,7 +52,7 @@
             // DontShowAnymore
             // 
             this.DontShowAnymore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DontShowAnymore.Location = new System.Drawing.Point(12, 234);
+            this.DontShowAnymore.Location = new System.Drawing.Point(12, 221);
             this.DontShowAnymore.Name = "DontShowAnymore";
             this.DontShowAnymore.Size = new System.Drawing.Size(150, 23);
             this.DontShowAnymore.TabIndex = 1;
@@ -63,7 +63,7 @@
             // ShowMeNext
             // 
             this.ShowMeNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ShowMeNext.Location = new System.Drawing.Point(12, 207);
+            this.ShowMeNext.Location = new System.Drawing.Point(12, 194);
             this.ShowMeNext.Name = "ShowMeNext";
             this.ShowMeNext.Size = new System.Drawing.Size(150, 23);
             this.ShowMeNext.TabIndex = 2;
@@ -76,9 +76,9 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(12, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(331, 191);
+            this.label1.Size = new System.Drawing.Size(320, 170);
             this.label1.TabIndex = 3;
             this.label1.Text = resources.GetString("label1.Text");
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 265);
+            this.ClientSize = new System.Drawing.Size(344, 256);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ShowMeNext);

@@ -657,4 +657,7 @@ OKをクリックしてウィンドウを閉じてください。</value>
   <data name="CopyText" xml:space="preserve">
     <value>コピー</value>
   </data>
+  <data name="Donate" xml:space="preserve">
+    <value>寄付ペイパル</value>
+  </data>
 </root>

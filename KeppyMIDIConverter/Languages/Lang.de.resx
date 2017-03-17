@@ -662,4 +662,7 @@ oder wenn du nicht weist welche du benutzen solltest.</value>
   <data name="CopyText" xml:space="preserve">
     <value>Kopie</value>
   </data>
+  <data name="Donate" xml:space="preserve">
+    <value>Spenden mit PayPal</value>
+  </data>
 </root>

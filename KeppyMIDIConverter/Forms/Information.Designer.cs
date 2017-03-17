@@ -48,14 +48,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.LatestVersion = new System.Windows.Forms.Label();
             this.ThisVersion = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.CFU = new System.Windows.Forms.Button();
+            this.DonateBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.InfoPg.SuspendLayout();
             this.UpdtPg.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -209,7 +208,7 @@
             this.UpdtPg.Controls.Add(this.label2);
             this.UpdtPg.Controls.Add(this.LatestVersion);
             this.UpdtPg.Controls.Add(this.ThisVersion);
-            this.UpdtPg.Controls.Add(this.button5);
+            this.UpdtPg.Controls.Add(this.CFU);
             this.UpdtPg.Location = new System.Drawing.Point(4, 22);
             this.UpdtPg.Name = "UpdtPg";
             this.UpdtPg.Padding = new System.Windows.Forms.Padding(3);
@@ -245,34 +244,35 @@
             this.ThisVersion.TabIndex = 1;
             this.ThisVersion.Text = "The current version of the driver, installed on your system, is: 10.0.2";
             // 
-            // button5
+            // CFU
             // 
-            this.button5.Location = new System.Drawing.Point(401, 6);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(130, 23);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Check for updates";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.CFU.Location = new System.Drawing.Point(401, 6);
+            this.CFU.Name = "CFU";
+            this.CFU.Size = new System.Drawing.Size(130, 23);
+            this.CFU.TabIndex = 0;
+            this.CFU.Text = "Check for updates";
+            this.CFU.UseVisualStyleBackColor = true;
+            this.CFU.Click += new System.EventHandler(this.button5_Click);
             // 
-            // pictureBox3
+            // DonateBtn
             // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::KeppyMIDIConverter.Properties.Resources.donatebtn;
-            this.pictureBox3.Location = new System.Drawing.Point(10, 310);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(142, 27);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 10;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.DonateBtn.Image = global::KeppyMIDIConverter.Properties.Resources.ppdonate;
+            this.DonateBtn.Location = new System.Drawing.Point(10, 312);
+            this.DonateBtn.Name = "DonateBtn";
+            this.DonateBtn.Size = new System.Drawing.Size(174, 23);
+            this.DonateBtn.TabIndex = 11;
+            this.DonateBtn.Text = "Donate with PayPal";
+            this.DonateBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DonateBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DonateBtn.UseVisualStyleBackColor = true;
+            this.DonateBtn.Click += new System.EventHandler(this.DonateBtn_Click);
             // 
             // Informations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(545, 345);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.DonateBtn);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -293,9 +293,7 @@
             this.InfoPg.PerformLayout();
             this.UpdtPg.ResumeLayout(false);
             this.UpdtPg.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -315,11 +313,11 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage InfoPg;
         private System.Windows.Forms.TabPage UpdtPg;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button CFU;
         private System.Windows.Forms.Label LatestVersion;
         private System.Windows.Forms.Label ThisVersion;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label BASSINFO2;
+        private System.Windows.Forms.Button DonateBtn;
     }
 }

@@ -662,4 +662,7 @@ or if you don't know which one you should use.</value>
   <data name="CopyText" xml:space="preserve">
     <value>複製</value>
   </data>
+  <data name="Donate" xml:space="preserve">
+    <value>捐赠与贝宝</value>
+  </data>
 </root>

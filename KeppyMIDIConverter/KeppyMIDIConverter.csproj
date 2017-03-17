@@ -305,6 +305,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\ppdonate.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -578,7 +579,6 @@
     <None Include="Resources\convfail.wav" />
     <None Include="Resources\erroricon.png" />
     <None Include="Resources\convbusy.gif" />
-    <None Include="Resources\donatebtn.png" />
     <None Include="Resources\sfzcomp.png" />
     <None Include="Resources\updatebk.png" />
   </ItemGroup>
