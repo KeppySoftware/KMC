@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AbortConvPlayback" xml:space="preserve">
-    <value>中斷轉換或預覽</value>
+    <value>停止轉換或預覽</value>
   </data>
   <data name="AboutSFZFormatText" xml:space="preserve">
-    <value>個程式支援「SFZ 1.0格式」， 同部分「SFZ 2.0格式」
+    <value>呢個程式支援「SFZ 1.0格式」，而及部分「SFZ 2.0格式」
 
 您係咪想訪問「非官方SFZ格式信息」嘅網站？ </value>
   </data>
@@ -129,13 +129,13 @@
     <value>關於SFZ格式</value>
   </data>
   <data name="AboutVSTSupportText" xml:space="preserve">
-    <value>個程式支持VST DSP插件。
+    <value>呢個程式支持VST DSP插件。
 
 Virtual Studio Technology (VST) 係屬於 Steinberg Media Technologies GmbH.
 Copyright ©2006 Steinberg Media Technologies. All rights reserved.</value>
   </data>
   <data name="AboutVSTSupportTitle" xml:space="preserve">
-    <value>關於Virtual Studio Technology Interface</value>
+    <value>有關於Virtual Studio Technology Interface</value>
   </data>
   <data name="ActionsStrip" xml:space="preserve">
     <value>功能</value>
@@ -153,10 +153,10 @@ Copyright ©2006 Steinberg Media Technologies. All rights reserved.</value>
     <value>高級選項</value>
   </data>
   <data name="AlreadyUpdatedText" xml:space="preserve">
-    <value>呢個版本的Keppy's MIDI Converter已經係最新版。</value>
+    <value>呢個版本的Keppy's MIDI Converter已經係最新版本。</value>
   </data>
   <data name="AppBusy" xml:space="preserve">
-    <value>MIDI轉換/播放工作都未完！
+    <value>MIDI轉換/播放工作未完成！
 您確定要退出？ </value>
   </data>
   <data name="AudioEventsStrip" xml:space="preserve">
@@ -175,7 +175,7 @@ Copyright ©2006 Steinberg Media Technologies. All rights reserved.</value>
     <value>平均</value>
   </data>
   <data name="BASSEngineConfiguration" xml:space="preserve">
-    <value>BASS配置緊
+    <value>BASS配置中 
 轉換工作即將開始...</value>
   </data>
   <data name="BASSEngineConfigurationVST" xml:space="preserve">
@@ -184,10 +184,10 @@ Copyright ©2006 Steinberg Media Technologies. All rights reserved.</value>
 轉換工作即將開始...</value>
   </data>
   <data name="CanNotCheckUpdates" xml:space="preserve">
-    <value>檢查唔到更新！您部電腦可能斷線或者網站暫時無法連線！ </value>
+    <value>檢查唔到有咩更新！可能您部電腦或者網站暫時無法連線！ </value>
   </data>
   <data name="CanNotCheckUpdatesMsg" xml:space="preserve">
-    <value>檢查唔到更新！
+    <value>檢查唔到有咩更新！
 
 錯誤:
 {0}</value>
@@ -196,16 +196,16 @@ Copyright ©2006 Steinberg Media Technologies. All rights reserved.</value>
     <value>檢查更新</value>
   </data>
   <data name="ClearListAutomaticallyStrip" xml:space="preserve">
-    <value>轉換完之後就自動清理MIDI列表</value>
+    <value>轉換完之後就自動清空MIDI列表</value>
   </data>
   <data name="ClearMIDIsList" xml:space="preserve">
-    <value>清理MIDI列表</value>
+    <value>清空MIDI列表</value>
   </data>
   <data name="ClearSoundfontList" xml:space="preserve">
-    <value>清理音色庫列表</value>
+    <value>清空音色庫列表</value>
   </data>
   <data name="ConstantBitrateOGG" xml:space="preserve">
-    <value>強制鎖定音頻比特率 (OGG/MP3 格式)</value>
+    <value>強制鎖定音頻Bit Rate (OGG/MP3 格式)</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
     <value>轉換過程中斷。</value>
@@ -224,7 +224,7 @@ BASS 狀態: {0}</value>
 BASS 狀態:  {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | 轉換緊 {0​​}...</value>
+    <value>Keppy's MIDI Converter | 轉換中 {0​​}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>完成</value>
@@ -277,7 +277,7 @@ BASS 狀態:  {0}</value>
 所有未保存的轉換將會永遠消失!</value>
   </data>
   <data name="CrashTriggeredByUser" xml:space="preserve">
-    <value>程式被用戶強行終止.</value>
+    <value>程式已被用戶強行終止.</value>
   </data>
   <data name="Credits" xml:space="preserve">
     <value>Copyright(C) 2013-{0} KaleidonKep99
@@ -286,14 +286,13 @@ BASS 狀態:  {0}</value>
 由 Ian Luck 來自 Un4seen Developments 所開發.
 點擊 "{1}"按鈕查看該開發頁.
 
-
 軟件源碼:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
     <value>當前軟件版本: {0}</value>
   </data>
   <data name="DisabledText" xml:space="preserve">
-    <value>已禁用</value>
+    <value>已停用</value>
   </data>
   <data name="DisableFX" xml:space="preserve">
     <value>關閉音效</value>
@@ -321,7 +320,7 @@ BASS 狀態:  {0}</value>
   </data>
   <data name="FatalErrorHandler" xml:space="preserve">
     <value>運行Keppy's MIDI Converter時出現嚴重錯誤!
-軟件需要退出.
+軟件需要重新載入。
 更多信息:</value>
   </data>
   <data name="forceCloseTheApplicationStrip" xml:space="preserve">
@@ -347,7 +346,7 @@ BASS 狀態:  {0}</value>
     <value>關於</value>
   </data>
   <data name="informationAboutTheProgramStrip" xml:space="preserve">
-    <value>關於本軟件...</value>
+    <value>關於呢個軟件...</value>
   </data>
   <data name="InvalidMIDIFile" xml:space="preserve">
     <value>{0}不是一個有效的MIDI文件！
@@ -355,8 +354,8 @@ BASS 狀態:  {0}</value>
 請選擇有效的MIDI文件,並重試.</value>
   </data>
   <data name="InvalidVSTLoaded" xml:space="preserve">
-    <value>{0}不是一個有效的VST特效！
-請確保您加載的是VST特效而不是VST樂器！
+    <value>{0}唔係一個有效概VST特效！
+請確保您加載概是VST特效而唔係VST樂器！
 如果你嘗試使用一個{1} VST, 您需要使用版本為{1} 的Keppy's MIDI Converter.
 版本{2}的Keppy's MIDI Converter不支持 {1} 的VST ,反之亦然.</value>
   </data>
@@ -609,13 +608,13 @@ BASS 狀態: {0}</value>
     <value>筆錄</value>
   </data>
   <data name="BankNPresetConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>確認</value>
   </data>
   <data name="BankNPresetDesBank" xml:space="preserve">
-    <value>Destination preset:</value>
+    <value>預設目的地:</value>
   </data>
   <data name="BankNPresetDesPrst" xml:space="preserve">
-    <value>Destination bank:</value>
+    <value>預設目的地:</value>
   </data>
   <data name="BankNPresetDiscl" xml:space="preserve">
     <value>Src.: Source of the bank/preset to import
@@ -624,39 +623,38 @@ Des.: Bank/Preset to assign to the imported one.
 Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
   </data>
   <data name="BankNPresetGuide" xml:space="preserve">
-    <value>Banks/Presets list</value>
+    <value>預設列表</value>
   </data>
   <data name="BankNPresetIgnore" xml:space="preserve">
-    <value>Ignore</value>
+    <value>忽視</value>
   </data>
   <data name="BankNPresetSelectedSF" xml:space="preserve">
-    <value>Selected soundfont</value>
+    <value>選擇音色檔</value>
   </data>
   <data name="BankNPresetSelectMsg" xml:space="preserve">
-    <value>Please select a bank and a preset, from 0 to 127.
+    <value>選擇一組合音色檔設定，由0至127。
 
-Use "Bank 0" and "Preset 0" for the standard "Acoustic Grand Piano",
-or if you don't know which one you should use.</value>
+如果你唔清楚應該要用咩設定，請選擇用鋼琴作準，使用 Bank 0 Preset 0</value>
   </data>
   <data name="BankNPresetSrcBank" xml:space="preserve">
-    <value>Source preset:</value>
+    <value>預設列表:</value>
   </data>
   <data name="BankNPresetSrcPrst" xml:space="preserve">
-    <value>Source bank:</value>
+    <value>預設 bank:</value>
   </data>
   <data name="BankNPresetTitle" xml:space="preserve">
-    <value>Select a bank and a preset for the soundfont</value>
+    <value>選擇一組合音色檔設定</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
-    <value>yes</value>
+    <value>係</value>
   </data>
   <data name="RenderToMP3" xml:space="preserve">
     <value>導出LAME格式音頻(.MP3)</value>
   </data>
   <data name="CopyText" xml:space="preserve">
-    <value>复制</value>
+    <value>複製</value>
   </data>
   <data name="Donate" xml:space="preserve">
-    <value>捐贈與貝寶</value>
+    <value>用PayPal捐錢</value>
   </data>
 </root>
