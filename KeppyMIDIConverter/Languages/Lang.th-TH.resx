@@ -274,7 +274,7 @@
     <value>ถูกทำให้ค้างโดยผู้ใช้เอง</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>สงวนลิขสิทธิ์ (C) ค.ศ. 2013-{0} KaleidonKep99
+    <value>สงวนลิขสิทธิ์ (C) ค.ศ. 2013 KaleidonKep99
 
 โปรแกรมนี้ถูกต่อยอดจากไลบรารี่ BASS อันยอดเยี่ยม
 โดย Ian Luck จาก Un4seen Developments
@@ -464,14 +464,8 @@
   <data name="RemoveSoundfontBtn" xml:space="preserve">
     <value>นำซาวด์ฟอนต์ออก</value>
   </data>
-  <data name="RenderToOGG" xml:space="preserve">
-    <value>แปลงไฟล์เป็น Vorbis (.OGG)</value>
-  </data>
   <data name="RenderToSpeakers" xml:space="preserve">
     <value>แสดงตัวอย่างไฟล์ (เปิดฟังในเวลาจริง)</value>
-  </data>
-  <data name="RenderToWAV" xml:space="preserve">
-    <value>แปลงไฟล์ไปยัง Wave (.WAV)</value>
   </data>
   <data name="RightClickCopyNotice" xml:space="preserve">
     <value>คลิกขวาตรงไหนก็ได้บนหน้าต่างเพื่อคัดลอกข้อความ</value>
@@ -656,8 +650,8 @@ Des.: แบงก์/พรีเซ็ตที่จะกำหนดตั�
   <data name="BankNPresetTBT" xml:space="preserve">
     <value>หมายเลข</value>
   </data>
-  <data name="RenderToMP3" xml:space="preserve">
-    <value>แปลงไฟล์เป็น LAME (.MP3)</value>
+  <data name="RenderTo" xml:space="preserve">
+    <value>แปลงไฟล์เป็น {0} (.{1})</value>
   </data>
   <data name="CopyText" xml:space="preserve">
     <value>คัดลอก</value>

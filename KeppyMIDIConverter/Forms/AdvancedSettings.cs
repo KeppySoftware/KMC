@@ -18,22 +18,18 @@ namespace KeppyMIDIConverter
         }
 
         Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);          
-        ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
-        CultureInfo cul;
         public static Action NonStaticDelegate;
 
         public void InitializeLanguage()
         {
-            res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-            cul = Program.ReturnCulture();
             // Translate system
-            GroupBox1.Text = res_man.GetString("Settings", cul);
-            Text = res_man.GetString("AdvSettingsTitle", cul);
-            Label5.Text = res_man.GetString("AudioFreq", cul);
-            Noteoff1.Text = res_man.GetString("NoteOff1", cul);
-            FXDisable.Text = res_man.GetString("DisableFX", cul);
-            label2.Text = res_man.GetString("NewValueTempo", cul);
-            checkBox3.Text = res_man.GetString("ConstantBitrateOGG", cul);
+            GroupBox1.Text = MainWindow.res_man.GetString("Settings", MainWindow.cul);
+            Text = MainWindow.res_man.GetString("AdvSettingsTitle", MainWindow.cul);
+            Label5.Text = MainWindow.res_man.GetString("AudioFreq", MainWindow.cul);
+            Noteoff1.Text = MainWindow.res_man.GetString("NoteOff1", MainWindow.cul);
+            FXDisable.Text = MainWindow.res_man.GetString("DisableFX", MainWindow.cul);
+            label2.Text = MainWindow.res_man.GetString("NewValueTempo", MainWindow.cul);
+            checkBox3.Text = MainWindow.res_man.GetString("ConstantBitrateOGG", MainWindow.cul);
         }
 
         private void AdvancedSettings_Load(object sender, EventArgs e)
@@ -45,14 +41,14 @@ namespace KeppyMIDIConverter
                 Label5.Enabled = false;
                 FrequencyBox.Enabled = false;
                 Label6.Enabled = false;
-                checkBox1.Text = String.Format(res_man.GetString("OverrideTempo2", cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
+                checkBox1.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo2", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
             }
             else
             {
                 Label5.Enabled = true;
                 FrequencyBox.Enabled = true;
                 Label6.Enabled = true;
-                checkBox1.Text = String.Format(res_man.GetString("OverrideTempo1", cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
+                checkBox1.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo1", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
             }
             // K DONE
             Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");

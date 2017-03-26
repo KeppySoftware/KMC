@@ -281,7 +281,7 @@ BASS 状态: {0}</value>
     <value>进程被用户强行终止.</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-{0} KaleidonKep99
+    <value>Copyright(C) 2013 KaleidonKep99
 
 本软件基于一个大型 BASS 库
 by Ian Luck from Un4seen Developments.
@@ -469,14 +469,11 @@ BASS 状态: {0}</value>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
     <value>移除音色库</value>
   </data>
-  <data name="RenderToOGG" xml:space="preserve">
-    <value>导出OGG格式音频(.ogg)</value>
+  <data name="RenderTo" xml:space="preserve">
+    <value>导出{0}格式音频(.{1})</value>
   </data>
   <data name="RenderToSpeakers" xml:space="preserve">
     <value>预览音频（实时播放）</value>
-  </data>
-  <data name="RenderToWAV" xml:space="preserve">
-    <value>导出WAV格式音频(.wav)</value>
   </data>
   <data name="RightClickCopyNotice" xml:space="preserve">
     <value>右键点击窗口中的任何位置来复制信息。</value>
@@ -651,9 +648,6 @@ or if you don't know which one you should use.</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
     <value>yes</value>
-  </data>
-  <data name="RenderToMP3" xml:space="preserve">
-    <value>导出LAME格式音频(.mp3)</value>
   </data>
   <data name="CopyText" xml:space="preserve">
     <value>复制</value>

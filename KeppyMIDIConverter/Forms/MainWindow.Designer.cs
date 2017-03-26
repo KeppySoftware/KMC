@@ -35,7 +35,7 @@
             this.CurrentStatusText = new System.Windows.Forms.Label();
             this.RealTimePlayBack = new System.ComponentModel.BackgroundWorker();
             this.VolumeBar = new System.Windows.Forms.TrackBar();
-            this.label3 = new System.Windows.Forms.Label();
+            this.VolumeLabel = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.loadingpic = new System.Windows.Forms.PictureBox();
@@ -127,7 +127,6 @@
             // 
             // RenderingTimer
             // 
-            this.RenderingTimer.Enabled = true;
             this.RenderingTimer.Interval = 1;
             this.RenderingTimer.Tick += new System.EventHandler(this.RenderingTimer_Tick);
             // 
@@ -267,15 +266,15 @@
             this.VolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.VolumeBar.Scroll += new System.EventHandler(this.VolumeBar_Scroll);
             // 
-            // label3
+            // VolumeLabel
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(490, 299);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 13);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Volume:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.VolumeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.VolumeLabel.Location = new System.Drawing.Point(490, 299);
+            this.VolumeLabel.Name = "VolumeLabel";
+            this.VolumeLabel.Size = new System.Drawing.Size(150, 13);
+            this.VolumeLabel.TabIndex = 19;
+            this.VolumeLabel.Text = "Volume:";
+            this.VolumeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // VolumeTip
             // 
@@ -863,7 +862,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(652, 435);
             this.Controls.Add(this.MIDIList);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.VolumeLabel);
             this.Controls.Add(this.VolumeBar);
             this.Controls.Add(this.UsedVoices);
             this.Controls.Add(this.labelRMS);
@@ -974,7 +973,7 @@
         public System.Windows.Forms.ListView MIDIList;
         public System.Windows.Forms.MenuItem startRenderingMp3ToolStripMenuItem;
         public System.Windows.Forms.TrackBar VolumeBar;
-        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label VolumeLabel;
         public System.Windows.Forms.PictureBox loadingpic;
         private System.Windows.Forms.MenuItem ThaiTHOverride;
         private System.ComponentModel.BackgroundWorker GarbageCollector;

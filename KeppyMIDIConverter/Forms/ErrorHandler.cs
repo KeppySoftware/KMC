@@ -26,9 +26,6 @@ namespace KeppyMIDIConverter
 
         public static int TOE = 0;
 
-        ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
-        CultureInfo cul;            // declare culture info
-
         public ErrorHandler(String errortitle, String errormessage, Int16 typeoferror, Int16 ConvOrNot)
         {
             TOE = typeoferror;
@@ -44,11 +41,11 @@ namespace KeppyMIDIConverter
             }
             if (typeoferror == 0)
             {
-                ErrorLab.Text = res_man.GetString("NonFatalErrorHandler", cul);
+                ErrorLab.Text = MainWindow.res_man.GetString("NonFatalErrorHandler", MainWindow.cul);
             }
             else if (typeoferror == 1)
             {
-                ErrorLab.Text = res_man.GetString("FatalErrorHandler", cul);
+                ErrorLab.Text = MainWindow.res_man.GetString("FatalErrorHandler", MainWindow.cul);
             }
             Text = "Keppy's MIDI Converter - " + errortitle;
             ErrorBox.Text = errormessage;
@@ -56,24 +53,8 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            try
-            {
-                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-                cul = Program.ReturnCulture();
-                // Translate system
-                copyErrorMessageToolStripMenuItem.Text = res_man.GetString("CopyErrorMessage", cul);
-                label1.Text = res_man.GetString("RightClickCopyNotice", cul);
-            }
-            catch
-            {
-                MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-                cul = CultureInfo.CreateSpecificCulture("en");
-                // Translate system
-                copyErrorMessageToolStripMenuItem.Text = res_man.GetString("CopyErrorMessage", cul);
-                label1.Text = res_man.GetString("RightClickCopyNotice", cul);
-            }
-
+            copyErrorMessageToolStripMenuItem.Text = MainWindow.res_man.GetString("CopyErrorMessage", MainWindow.cul);
+            label1.Text = MainWindow.res_man.GetString("RightClickCopyNotice", MainWindow.cul);
         }
 
         private void ErrorHandler_Load(object sender, EventArgs e)
@@ -134,7 +115,7 @@ namespace KeppyMIDIConverter
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
             thread.Join();
-            MessageBox.Show(String.Format(res_man.GetString("CopiedToClipboardNotice", cul), sb.ToString()), "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(String.Format(MainWindow.res_man.GetString("CopiedToClipboardNotice", MainWindow.cul), sb.ToString()), "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

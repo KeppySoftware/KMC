@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbortConvPlayback" xml:space="preserve">
+    <value>변환 / 미리보기를 중단</value>
+  </data>
+  <data name="AboutSFZFormatText" xml:space="preserve">
+    <value>이 프로그램은 "SFZ 1.0 형식"을 준수하고, 부분적으로 "SFZ 2.0 형식"와.
+
+당신은 "비공식 SFZ 포맷 정보"웹 사이트를 방문 하시겠습니까?</value>
+  </data>
+  <data name="AboutSFZFormatTitle" xml:space="preserve">
+    <value>SFZ 형식에 대한</value>
+  </data>
+  <data name="AboutVSTSupportText" xml:space="preserve">
+    <value>이 프로그램은 VST의 DSP를 지원합니다.
+
+가상 스튜디오 기술 (VST)가 스타인버그 미디어 기술에 의해 소프트웨어 인터페이스 기술입니다.
+저작권 2006 스타인버그 미디어 기술 ©.
+판권 소유.</value>
+  </data>
+  <data name="AboutVSTSupportTitle" xml:space="preserve">
+    <value>가상 스튜디오 기술 인터페이스에 대하여</value>
+  </data>
+  <data name="ActionsStrip" xml:space="preserve">
+    <value>파일</value>
+  </data>
+  <data name="ActiveVoices" xml:space="preserve">
+    <value>노트 : </value>
+  </data>
+  <data name="AddOneMIDI" xml:space="preserve">
+    <value>최소 MIDI 파일 하나를 추가해 주세요.</value>
+  </data>
+  <data name="AdvSettingsButton" xml:space="preserve">
+    <value>고급 설정</value>
+  </data>
+  <data name="AdvSettingsTitle" xml:space="preserve">
+    <value>고급 설정</value>
+  </data>
+  <data name="AlreadyUpdatedText" xml:space="preserve">
+    <value>Keppy 의 MIDI 변환기는 이미 최신 버전입니다.</value>
+  </data>
+  <data name="AppBusy" xml:space="preserve">
+    <value>아직 변환/미리보기 가 끝나지 않았습니다!
+	정말로 종료하시겠습니까?</value>
+  </data>
+  <data name="AudioEventsStrip" xml:space="preserve">
+    <value>알람 활성화 (변환 끝남, 실패 등)</value>
+  </data>
+  <data name="AudioFreq" xml:space="preserve">
+    <value>오디오 주파수 :</value>
+  </data>
+  <data name="AutomaticShutdownStrip" xml:space="preserve">
+    <value>변환이 완료되면 컴퓨터를 종료합니다</value>
+  </data>
+  <data name="AutoUpdatesCheckStrip" xml:space="preserve">
+    <value>프로그램을 시작 할 때 최신버젼이 있는지 확인합니다</value>
+  </data>
+  <data name="AverageLevel" xml:space="preserve">
+    <value>평균</value>
+  </data>
+  <data name="BASSEngineConfiguration" xml:space="preserve">
+    <value>BASS 엔진 설정중.
+변환이 곧 시작됩니다...</value>
+  </data>
+  <data name="BASSEngineConfigurationVST" xml:space="preserve">
+    <value>BASS 설정.
+질문 할 때 VST의 DSP 설정을 편집합니다.
+변환 프로세스 곧 개시 될 ...</value>
+  </data>
+  <data name="CanNotCheckUpdates" xml:space="preserve">
+    <value>업데이트를 할수 없었습니다! 오프라인이거나 웹사이트가 다운 되었습니다.</value>
+  </data>
+  <data name="CanNotCheckUpdatesMsg" xml:space="preserve">
+    <value>업데이트 불가!
+오류:
+{0}</value>
+  </data>
+  <data name="CheckForUpdatesBtn" xml:space="preserve">
+    <value>업데이트 확인</value>
+  </data>
+  <data name="ClearListAutomaticallyStrip" xml:space="preserve">
+    <value>변환후 자동으로 미디 리스트를 삭제합니다</value>
+  </data>
+  <data name="ClearMIDIsList" xml:space="preserve">
+    <value>미디 리스트 모두 삭제</value>
+  </data>
+  <data name="ClearSoundfontList" xml:space="preserve">
+    <value>사운드 폰트 모두 삭제</value>
+  </data>
+  <data name="ConstantBitrateOGG" xml:space="preserve">
+    <value>강제로 일정 비트레이트 사용 (OGG/MP3):</value>
+  </data>
+  <data name="ConversionAborted" xml:space="preserve">
+    <value>변환이 중단되었습니다.</value>
+  </data>
+  <data name="ConversionAbortedXPMessage" xml:space="preserve">
+    <value>변환이 중단되었습니다.
+
+BASS 상태 : {0}</value>
+  </data>
+  <data name="ConversionCompleted" xml:space="preserve">
+    <value>변환이 완료되었습니다.</value>
+  </data>
+  <data name="ConversionCompletedXPMessage" xml:space="preserve">
+    <value>변환이 완료되었습니다.
+
+BASS 상태 : {0}</value>
+  </data>
+  <data name="ConversionText" xml:space="preserve">
+    <value>Keppy's MIDI Converter | 변환중 {0}...</value>
+  </data>
+  <data name="ConversionXPTitle" xml:space="preserve">
+    <value>완료</value>
+  </data>
+  <data name="ConvPosOrTimeLeft" xml:space="preserve">
+    <value>남은 시간 대신에 변환중인 위치를 표시합니다</value>
+  </data>
+  <data name="ConvStatusFasterNew" xml:space="preserve">
+    <value>{0}MBs 의 데이터가 변환됨 ({1})
+대략 {2} 남음 - 경과 시간 : {3}
+렌더링 시간 : {4} % ({5} 배 빨라짐)</value>
+  </data>
+  <data name="ConvStatusFasterOld" xml:space="preserve">
+    <value>{0}MBs 의 데이터가 변환됨 ({1})
+현재 위치 : {2} - {3}
+렌더링 시간 : {4} % ({5} X ~ 빠름)</value>
+  </data>
+  <data name="ConvStatusNormalNew" xml:space="preserve">
+    <value>{0}MBs 의 데이터가 변환됨 ({1})
+대략 {2} 남음 - 경과 시간 : {3}
+렌더링 시간 : {4} %</value>
+  </data>
+  <data name="ConvStatusNormalOld" xml:space="preserve">
+    <value>{0}MBs 의 데이터가 변환됨 ({1})
+현재 위치 : {2} - {3}
+렌더링 시간 : {4} %</value>
+  </data>
+  <data name="ConvStatusSlowerNew" xml:space="preserve">
+    <value>{0}MBs 의 데이터가 변환됨 ({1})
+대략 {2} 남음 - 경과 시간 : {3}
+렌더링 시간 : {4} % ({5} 배 느려짐)</value>
+  </data>
+  <data name="ConvStatusSlowerOld" xml:space="preserve">
+    <value>{0}MBs 의 데이터가 변환됨 ({1})
+현재 위치 : {2} - {3}
+렌더링 시간 : {4} % ({5} 배 느려짐)</value>
+  </data>
+  <data name="CopiedToClipboardNotice" xml:space="preserve">
+    <value>오류가 클립 보드에 복사되었습니다.
+
+오류:
+{0}</value>
+  </data>
+  <data name="CopyErrorMessage" xml:space="preserve">
+    <value>클립 보드에 오류 복사</value>
+  </data>
+  <data name="CrashQuestion" xml:space="preserve">
+    <value>정말로 강제로 프로그램을 종료 하시겠습니까?
+	
+현재 변환중인 파일을 잃을 수 있습니다!</value>
+  </data>
+  <data name="CrashTriggeredByUser" xml:space="preserve">
+    <value>사용자에 의해 프로그램이 강제로 종료됩니다.</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Copyright(C) 2013 KaleidonKep99
+
+이 프로그램은 Ian Luck 님이 만드신
+"Bass lib" 을 기반으로 만들어진 프로그램입니다.
+"{1}" 를 눌러서 제작자 홈페이지를 방문해 보세요.
+
+소스 코드는 여기에 있습니다:</value>
+  </data>
+  <data name="CurrentVersion" xml:space="preserve">
+    <value>현재 당신의 컴퓨터에 설치되있는 변환기 버젼 : {0}</value>
+  </data>
+  <data name="DisabledText" xml:space="preserve">
+    <value>비활성화</value>
+  </data>
+  <data name="DisableFX" xml:space="preserve">
+    <value>오디오 효과 비활성화</value>
+  </data>
+  <data name="DSPSettings" xml:space="preserve">
+    <value>DSP 설정 :</value>
+  </data>
+  <data name="EmptySlot" xml:space="preserve">
+    <value>빈 슬롯</value>
+  </data>
+  <data name="EnabledText" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>오류</value>
+  </data>
+  <data name="ExitStrip" xml:space="preserve">
+    <value>종료</value>
+  </data>
+  <data name="ExportWhere" xml:space="preserve">
+    <value>어디에 저장하실껍니까?</value>
+  </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>치명적인 오류</value>
+  </data>
+  <data name="FatalErrorHandler" xml:space="preserve">
+    <value>치명적인 오류가 발생하였습니다!
+프로그램이 종료됩니다.
+추가 정보 :</value>
+  </data>
+  <data name="forceCloseTheApplicationStrip" xml:space="preserve">
+    <value>프로그램 강제 종료</value>
+  </data>
+  <data name="HelpStrip" xml:space="preserve">
+    <value>도움말</value>
+  </data>
+  <data name="IdleMessage" xml:space="preserve">
+    <value>사용자의 명령을 기다리고 있습니다.
+미디를 선택하고 사운드 폰트를 불러오고 변환/미리보기 를 시작합니다!</value>
+  </data>
+  <data name="ImportMIDI" xml:space="preserve">
+    <value>미디 불러오기 ...</value>
+  </data>
+  <data name="ImportMIDIWindow" xml:space="preserve">
+    <value>불러올 미디 선택 ...</value>
+  </data>
+  <data name="ImportSoundfontBtn" xml:space="preserve">
+    <value>사운드 폰트 불러오기</value>
+  </data>
+  <data name="InfoPageTitle" xml:space="preserve">
+    <value>정보</value>
+  </data>
+  <data name="informationAboutTheProgramStrip" xml:space="preserve">
+    <value>프로그램의 대한 정보 ...</value>
+  </data>
+  <data name="InvalidMIDIFile" xml:space="preserve">
+    <value>{0} 는(은) 비 정상적인 미디 파일 입니다!
+
+정상적인 미디 파일을 선택하고 다시 불러오세요.</value>
+  </data>
+  <data name="InvalidVSTLoaded" xml:space="preserve">
+    <value>{0} 는(은) 비 정상적인 VST 이펙트 입니다!
+VST instrument 을 불러온게 아닌지 확인하세요. VST 이펙트 를 불러와야 됩니다.
+
+당신이 선택한 {2} VST 는 현재 Keppy's MIDI Converter {1} 에서 지원하지 않습니다.
+당신은 Keppy's MIDI Converter {2} 을(를) 사용해야만 이 VST 를 사용할 수 있습니다.</value>
+  </data>
+  <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
+    <value>KaleidonKep99의 GitHub 페이지</value>
+  </data>
+  <data name="KaleidonKep99sYouTubeChannel" xml:space="preserve">
+    <value>KaleidonKep99의 YouTube 채널</value>
+  </data>
+  <data name="LatestVersionIdle" xml:space="preserve">
+    <value>만약에 업데이트가 나올 경우를 위해 "업데이트 확인" 을 누르세요.</value>
+  </data>
+  <data name="LibraryVersion" xml:space="preserve">
+    <value>{0} 버전: {1}.{2}</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>라이센스</value>
+  </data>
+  <data name="LoadVST" xml:space="preserve">
+    <value>불러오기</value>
+  </data>
+  <data name="MemoryAllocationConversion" xml:space="preserve">
+    <value>프로그램이 변환을 위해서 메모리를 할당하는 중 입니다.
+잠시 기다려주십시오 ...</value>
+  </data>
+  <data name="MemoryAllocationPlayback" xml:space="preserve">
+    <value>프로그램이 미리보기를 위해서 메모리를 할당하는 중 입니다.
+잠시 기다려주십시오 ...</value>
+  </data>
+  <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
+    <value>프로그램이 미리보기를 위해서 메모리를 할당하는 중 입니다.
+질문 할 때 VST의 DSP 설정을 편집합니다.
+잠시 기다려주십시오 ...</value>
+  </data>
+  <data name="MoveDOWN" xml:space="preserve">
+    <value>아래로 이동 (한 항목)</value>
+  </data>
+  <data name="MoveDOWNSF" xml:space="preserve">
+    <value>아래로 이동 ▼</value>
+  </data>
+  <data name="MoveUP" xml:space="preserve">
+    <value>위로 이동 (한 항목)</value>
+  </data>
+  <data name="MoveUPSF" xml:space="preserve">
+    <value>위로 이동 ▲</value>
+  </data>
+  <data name="NewValueTempo" xml:space="preserve">
+    <value>새로운 템포 값 :</value>
+  </data>
+  <data name="NonFatalErrorHandler" xml:space="preserve">
+    <value>프로그램을 실행하는동안 문제가 발생하였습니다.
+
+추가 정보 :</value>
+  </data>
+  <data name="NoteOff1" xml:space="preserve">
+    <value>만 노트의 중복 인스턴스가있는 경우에도 오프 메모에 가장 오래된 인스턴스를 놓습니다.</value>
+  </data>
+  <data name="NoUpdatesText" xml:space="preserve">
+    <value>업데이트가 발견되지 않았습니다.
+나중에 다시 시도해보세요.</value>
+  </data>
+  <data name="NoUpdatesTitle" xml:space="preserve">
+    <value>최신 버전 없음.</value>
+  </data>
+  <data name="OnlyOneItemMsg" xml:space="preserve">
+    <value>당신은 하나의 항목 만 이동할 수 있습니다!</value>
+  </data>
+  <data name="OptionsStrip" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="OverrideTempo1" xml:space="preserve">
+    <value>템포 오버라이드 :</value>
+  </data>
+  <data name="OverrideTempo2" xml:space="preserve">
+    <value>재설정된 템포 : (기본 값 {0} BPM)</value>
+  </data>
+  <data name="PeakLevel" xml:space="preserve">
+    <value>최대</value>
+  </data>
+  <data name="PlaybackAborted" xml:space="preserve">
+    <value>재생이 중단되었습니다.</value>
+  </data>
+  <data name="PlaybackAbortedXPMessage" xml:space="preserve">
+    <value>재생이 중단되었습니다.
+
+BASS 상태 : {0}</value>
+  </data>
+  <data name="PlaybackCompleted" xml:space="preserve">
+    <value>재생이 취소되었습니다.</value>
+  </data>
+  <data name="PlaybackCompletedXPMessage" xml:space="preserve">
+    <value>재생이 취소되었습니다.
+
+BASS 상태 : {0}</value>
+  </data>
+  <data name="PlaybackStatus" xml:space="preserve">
+    <value>{0} MIDI 연주의.
+위치: {1} - {2}
+음성: {3} - {4}</value>
+  </data>
+  <data name="PlaybackText" xml:space="preserve">
+    <value>Keppy's MIDI Converter | 의 재생 {0}...</value>
+  </data>
+  <data name="PlaybackXPTitle" xml:space="preserve">
+    <value>완료</value>
+  </data>
+  <data name="RemoveMIDI" xml:space="preserve">
+    <value>선택된 미디 제거</value>
+  </data>
+  <data name="RemoveSoundfontBtn" xml:space="preserve">
+    <value>사운드 폰트 제거</value>
+  </data>
+  <data name="RenderToSpeakers" xml:space="preserve">
+    <value>프리뷰 파일 (실시간 재생)</value>
+  </data>
+  <data name="RightClickCopyNotice" xml:space="preserve">
+    <value>메시지를 복사 할 창의 아무 곳이나 마우스 오른쪽 버튼으로 클릭합니다.</value>
+  </data>
+  <data name="RMS" xml:space="preserve">
+    <value>실효 값:</value>
+  </data>
+  <data name="SaveHere" xml:space="preserve">
+    <value>여기에 저장 ...</value>
+  </data>
+  <data name="SelectOneSF" xml:space="preserve">
+    <value>적어도 하나의 사운드 폰트를 선택하세요.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="SettingsBox" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="SFVSTManager" xml:space="preserve">
+    <value>사운드 폰트 / VST 관리자를 엽니 다</value>
+  </data>
+  <data name="SoundfontDialogMessage" xml:space="preserve">
+    <value>한 번에 2.147.483.648 개 의 사운드 폰트를 변환을 위해 사용할 수 있습니다.
+목록의 첫 번째 사운드 폰트는 항상 밑에 있는 사운드폰트 보다 우선도가 높습니다.
+튕김 방지를 위해서 추가하기 전에 사운드 폰트가 재대로 된 것인지 확인해주세요.
+
+
+지원되는 포맷 : SF2, SF3, SFZ, SFPACK</value>
+  </data>
+  <data name="SoundfontImportError" xml:space="preserve">
+    <value>이것은 올바른 사운드 폰트하지 않습니다!
+
+사운드 폰트를 선택하고 다시 시도하십시오.</value>
+  </data>
+  <data name="SoundfontManagerTitle" xml:space="preserve">
+    <value>사운드 폰트 / VST 관리자</value>
+  </data>
+  <data name="supportTheDeveloperWithADonation" xml:space="preserve">
+    <value>개발자를 위해 기부</value>
+  </data>
+  <data name="Un4seenWebsite" xml:space="preserve">
+    <value>Un4seen 웹사이트</value>
+  </data>
+  <data name="UnloadAllVSTs" xml:space="preserve">
+    <value>모두 삭제</value>
+  </data>
+  <data name="UnloadVST" xml:space="preserve">
+    <value>삭제하기</value>
+  </data>
+  <data name="UpdateFoundVer" xml:space="preserve">
+    <value>버전 {0} 이(가) 발견되었습니다.</value>
+  </data>
+  <data name="UpdaterPageTitle" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="UpdatesChecking" xml:space="preserve">
+    <value>업데이트를 확인 중...</value>
+  </data>
+  <data name="UpdatesFoundText" xml:space="preserve">
+    <value>새로운 업데이트가 발견되었습니다!
+다운로드 페이지를 열려면 확인을 클릭합니다.</value>
+  </data>
+  <data name="UpdatesFoundTitle" xml:space="preserve">
+    <value>사용 가능한 업데이트</value>
+  </data>
+  <data name="VersionLabel" xml:space="preserve">
+    <value>{0}버전에 최적화 {1}프로세서</value>
+  </data>
+  <data name="VoiceLabel" xml:space="preserve">
+    <value>노트 제한:</value>
+  </data>
+  <data name="VSTHowDoTheyWork" xml:space="preserve">
+    <value>이건 어떻게 작동합니까?
+
+우선 첫번째 슬롯이 오디오에 효과를 적용합니다, 그 다음에 "적용된" 오디오를
+두번째 슬롯으로 넘겨서 두번째 슬롯이 두번째 효과를 적용합니다.
+이런식으로 계속 넘어가집니다.</value>
+  </data>
+  <data name="VSTInvalidCallError" xml:space="preserve">
+    <value>{0}로드하는 동안 오류가 발생했습니다.
+VST를로드 할 수 없습니다.
+오류:
+{1}
+VST는 아마 기본 Windows 폼 시스템과 호환되지 않습니다.
+오류가 클립 보드에 복사되었습니다.</value>
+  </data>
+  <data name="VSTInvalidCallTitle" xml:space="preserve">
+    <value>잘못된 VST 호출</value>
+  </data>
+  <data name="VSTManager" xml:space="preserve">
+    <value>VST 관리자</value>
+  </data>
+  <data name="VSTManagerButtonText" xml:space="preserve">
+    <value>VST DSP 설정</value>
+  </data>
+  <data name="VSTUseText" xml:space="preserve">
+    <value>VST DSP를 적용합니다</value>
+  </data>
+  <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
+    <value>Keppy's MIDI Converter 를 실행하는데 윈도우 XP 서비스팩 2 가 필요합니다.
+종료하려면 확인을 누르세요.</value>
+  </data>
+  <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
+    <value>윈도우 XP 서비스팩 1 은 지원되지 않습니다.</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>음량:</value>
+  </data>
+  <data name="InfoWindowTitle" xml:space="preserve">
+    <value>정보</value>
+  </data>
+  <data name="ZZZTranslators" xml:space="preserve">
+    <value>nan5205, Fex_Kanade</value>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>윈도우의 기본 UI 언어를 바꿉니다</value>
+  </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>리스트</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>사이즈</value>
+  </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>길이</value>
+  </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>이름으로 정렬</value>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>노트</value>
+  </data>
+  <data name="BankNPresetIgnore" xml:space="preserve">
+    <value>무시</value>
+  </data>
+  <data name="BankNPresetConfirm" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="BankNPresetDesBank" xml:space="preserve">
+    <value>목적 프리셋:</value>
+  </data>
+  <data name="BankNPresetDesPrst" xml:space="preserve">
+    <value>목적 뱅크:</value>
+  </data>
+  <data name="BankNPresetDiscl" xml:space="preserve">
+    <value>소스 : 불러올 사운드 폰트의 뱅크/프리셋
+목적 : 붙여넣을 사운드 폰트의 뱅크/프리셋
+
+SFZ 파일을 위해 소스의 뱅크, 프리셋 을 0 으로 설정합니다.</value>
+  </data>
+  <data name="BankNPresetGuide" xml:space="preserve">
+    <value>뱅크/프리셋 리스트</value>
+  </data>
+  <data name="BankNPresetSelectedSF" xml:space="preserve">
+    <value>선택된 사운드 폰트</value>
+  </data>
+  <data name="BankNPresetSelectMsg" xml:space="preserve">
+    <value>0 에서 127 중에 뱅크, 프리셋을 선택해 주세요.
+
+기본 "Acoustic Grand Piano" 는 "뱅크 0" "프리셋 0" 을 사용 해 주세요.
+모르는 경우 저렇게 사용해 주세요.</value>
+  </data>
+  <data name="BankNPresetSrcBank" xml:space="preserve">
+    <value>소스 프리셋:</value>
+  </data>
+  <data name="BankNPresetSrcPrst" xml:space="preserve">
+    <value>소스 뱅크:</value>
+  </data>
+  <data name="BankNPresetTitle" xml:space="preserve">
+    <value>뱅크랑 프리셋을 선택해 주세요</value>
+  </data>
+  <data name="BankNPresetTBT" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="RenderTo" xml:space="preserve">
+    <value>{0} 포맷으로 렌더링 (.{1})</value>
+  </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>복사</value>
+  </data>
+  <data name="Donate" xml:space="preserve">
+    <value>페이팔으로 기부</value>
+  </data>
+</root>

@@ -22,9 +22,6 @@ namespace KeppyMIDIConverter
             InitializeLanguage();
         }
 
-        ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
-        CultureInfo cul;            // declare culture info
-
         private DateTime GetLinkerTime(Assembly assembly, TimeZoneInfo target = null)
         {
             var filePath = assembly.Location;
@@ -50,37 +47,15 @@ namespace KeppyMIDIConverter
 
         private void InitializeLanguage()
         {
-            try
-            {
-                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-                cul = Program.ReturnCulture();
-                // Translate system
-                button2.Text = res_man.GetString("Un4seenWebsite", cul);
-                button3.Text = res_man.GetString("License", cul);
-                Text = String.Format("{0} (Build date: {1})", res_man.GetString("InfoWindowTitle", cul), GetLinkerTime(Assembly.GetExecutingAssembly(), TimeZoneInfo.Utc));
-                InfoPg.Text = res_man.GetString("InfoPageTitle", cul);
-                UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
-                label1.Text = String.Format(res_man.GetString("Credits", cul), DateTime.Now.Year.ToString(), res_man.GetString("Un4seenWebsite", cul));
-                LatestVersion.Text = res_man.GetString("LatestVersionIdle", cul);
-                CFU.Text = res_man.GetString("CheckForUpdatesBtn", cul);
-                DonateBtn.Text = res_man.GetString("Donate", cul);
-            }
-            catch
-            {
-                MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-                cul = CultureInfo.CreateSpecificCulture("en");
-                // Translate system
-                button2.Text = res_man.GetString("Un4seenWebsite", cul);
-                button3.Text = res_man.GetString("License", cul);
-                Text = res_man.GetString("InfoWindowTitle", cul);
-                InfoPg.Text = res_man.GetString("InfoPageTitle", cul);
-                UpdtPg.Text = res_man.GetString("UpdaterPageTitle", cul);
-                label1.Text = String.Format(res_man.GetString("Credits", cul), res_man.GetString("Un4seenWebsite", cul));
-                LatestVersion.Text = res_man.GetString("LatestVersionIdle", cul);
-                CFU.Text = res_man.GetString("CheckForUpdatesBtn", cul);
-                DonateBtn.Text = res_man.GetString("Donate", cul);
-            }
+            button2.Text = MainWindow.res_man.GetString("Un4seenWebsite", MainWindow.cul);
+            button3.Text = MainWindow.res_man.GetString("License", MainWindow.cul);
+            Text = String.Format("{0} (Build date: {1})", MainWindow.res_man.GetString("InfoWindowTitle", MainWindow.cul), GetLinkerTime(Assembly.GetExecutingAssembly(), TimeZoneInfo.Utc));
+            InfoPg.Text = MainWindow.res_man.GetString("InfoPageTitle", MainWindow.cul);
+            UpdtPg.Text = MainWindow.res_man.GetString("UpdaterPageTitle", MainWindow.cul);
+            label1.Text = String.Format(MainWindow.res_man.GetString("Credits", MainWindow.cul), DateTime.Now.Year.ToString(), MainWindow.res_man.GetString("Un4seenWebsite", MainWindow.cul));
+            LatestVersion.Text = MainWindow.res_man.GetString("LatestVersionIdle", MainWindow.cul);
+            CFU.Text = MainWindow.res_man.GetString("CheckForUpdatesBtn", MainWindow.cul);
+            DonateBtn.Text = MainWindow.res_man.GetString("Donate", MainWindow.cul);
         }
 
         public static string ExecutablePath = KeppyMIDIConverter.MainWindow.KMCGlobals.ExecutablePath;
@@ -93,17 +68,17 @@ namespace KeppyMIDIConverter
                 System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
                 string SAS = null;
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo(assembly.Location);
-                ThisVersion.Text = String.Format(res_man.GetString("CurrentVersion", cul), Converter.FileVersion.ToString());
+                ThisVersion.Text = String.Format(MainWindow.res_man.GetString("CurrentVersion", MainWindow.cul), Converter.FileVersion.ToString());
 
                 // STUFF
                 if (IntPtr.Size == 8)
                 {
-                    Versionlabel.Text = String.Format(res_man.GetString("VersionLabel", cul), "64-bit", "SSE2");
+                    Versionlabel.Text = String.Format(MainWindow.res_man.GetString("VersionLabel", MainWindow.cul), "64-bit", "SSE2");
                     SAS = "x64";
                 }
                 else if (IntPtr.Size == 4)
                 {
-                    Versionlabel.Text = String.Format(res_man.GetString("VersionLabel", cul), "32-bit", "MMX");
+                    Versionlabel.Text = String.Format(MainWindow.res_man.GetString("VersionLabel", MainWindow.cul), "32-bit", "MMX");
                     SAS = "x86";
                 }
 
@@ -116,19 +91,19 @@ namespace KeppyMIDIConverter
                 FileVersionInfo bassvstlibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bass_vst.dll");
 
                 // Print the file name and version number.
-                String.Format(res_man.GetString("LibraryVersion", cul), basslibver.FileDescription, basslibver.FileVersion, basslibver.FilePrivatePart);
-                BASSINFO.Text = String.Format(res_man.GetString("LibraryVersion", cul), "BASS", basslibver.FileVersion, basslibver.FilePrivatePart) +"\n" +
-                    String.Format(res_man.GetString("LibraryVersion", cul), "BASSMIDI", bassmidilibver.FileVersion, bassmidilibver.FilePrivatePart) + "\n" +
-                    String.Format(res_man.GetString("LibraryVersion", cul), "BASSenc", bassenclibver.FileVersion, bassenclibver.FilePrivatePart) + "\n" +
-                    String.Format(res_man.GetString("LibraryVersion", cul), "BASS_VST", bassvstlibver.FileVersion, bassvstlibver.FilePrivatePart);
+                String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), basslibver.FileDescription, basslibver.FileVersion, basslibver.FilePrivatePart);
+                BASSINFO.Text = String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), "BASS", basslibver.FileVersion, basslibver.FilePrivatePart) +"\n" +
+                    String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), "BASSMIDI", bassmidilibver.FileVersion, bassmidilibver.FilePrivatePart) + "\n" +
+                    String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), "BASSenc", bassenclibver.FileVersion, bassenclibver.FilePrivatePart) + "\n" +
+                    String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), "BASS_VST", bassvstlibver.FileVersion, bassvstlibver.FilePrivatePart);
 
                 BASSINFO2.Text = "Translated by\n" +
-                    res_man.GetString("ZZZTranslators", cul) + "\n\n" + 
+                    MainWindow.res_man.GetString("ZZZTranslators", MainWindow.cul) + "\n\n" + 
                      "KMC " + Application.ProductVersion + " " + SAS;
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(res_man.GetString("FatalError", cul), exception.ToString(), 1, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("FatalError", MainWindow.cul), exception.ToString(), 1, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -182,7 +157,7 @@ namespace KeppyMIDIConverter
                 String newestversion = reader.ReadToEnd();
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo("KeppyMIDIConverter.exe");
                 LatestVersion.Text = "Checking for updates, please wait...";
-                ThisVersion.Text = String.Format(res_man.GetString("CurrentVersion", cul), Converter.FileVersion.ToString());
+                ThisVersion.Text = String.Format(MainWindow.res_man.GetString("CurrentVersion", MainWindow.cul), Converter.FileVersion.ToString());
                 Version x = null;
                 Version.TryParse(newestversion.ToString(), out x);
                 Version y = null;
@@ -199,8 +174,8 @@ namespace KeppyMIDIConverter
                     {
                         tabControl1.Enabled = true;
                         CFU.Enabled = true;
-                        LatestVersion.Text = String.Format(res_man.GetString("UpdateFoundVer", cul), newestversion.ToString());
-                        DialogResult dialogResult = MessageBox.Show(res_man.GetString("UpdatesFoundText", cul), res_man.GetString("UpdatesFoundTitle", cul), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        LatestVersion.Text = String.Format(MainWindow.res_man.GetString("UpdateFoundVer", MainWindow.cul), newestversion.ToString());
+                        DialogResult dialogResult = MessageBox.Show(MainWindow.res_man.GetString("UpdatesFoundText", MainWindow.cul), MainWindow.res_man.GetString("UpdatesFoundTitle", MainWindow.cul), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                         if (dialogResult == DialogResult.Yes)
                         {
                             UpdateDownloader frm = new UpdateDownloader(newestversion);
@@ -212,8 +187,8 @@ namespace KeppyMIDIConverter
                     {
                         tabControl1.Enabled = true;
                         CFU.Enabled = true;
-                        LatestVersion.Text = String.Format("{0} ({1})", res_man.GetString("NoUpdatesText", cul), y.ToString());
-                        MessageBox.Show(res_man.GetString("NoUpdatesText", cul), res_man.GetString("NoUpdatesTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LatestVersion.Text = String.Format("{0} ({1})", MainWindow.res_man.GetString("NoUpdatesText", MainWindow.cul), y.ToString());
+                        MessageBox.Show(MainWindow.res_man.GetString("NoUpdatesText", MainWindow.cul), MainWindow.res_man.GetString("NoUpdatesTitle", MainWindow.cul), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -222,9 +197,9 @@ namespace KeppyMIDIConverter
                 tabControl1.Enabled = true;
                 CFU.Enabled = true;
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo("KeppyMIDIConverter.exe");
-                ThisVersion.Text = String.Format(res_man.GetString("CurrentVersion", cul), Converter.FileVersion.ToString());
-                LatestVersion.Text = res_man.GetString("CanNotCheckUpdates", cul);
-                MessageBox.Show(String.Format(res_man.GetString("CanNotCheckUpdatesMsg", cul), ex.ToString()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThisVersion.Text = String.Format(MainWindow.res_man.GetString("CurrentVersion", MainWindow.cul), Converter.FileVersion.ToString());
+                LatestVersion.Text = MainWindow.res_man.GetString("CanNotCheckUpdates", MainWindow.cul);
+                MessageBox.Show(String.Format(MainWindow.res_man.GetString("CanNotCheckUpdatesMsg", MainWindow.cul), ex.ToString()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

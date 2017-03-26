@@ -135,9 +135,9 @@
             // 
             this.SelectedSFLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SelectedSFLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SelectedSFLabel.Location = new System.Drawing.Point(0, 239);
+            this.SelectedSFLabel.Location = new System.Drawing.Point(0, 235);
             this.SelectedSFLabel.Name = "SelectedSFLabel";
-            this.SelectedSFLabel.Size = new System.Drawing.Size(359, 40);
+            this.SelectedSFLabel.Size = new System.Drawing.Size(355, 40);
             this.SelectedSFLabel.TabIndex = 21;
             this.SelectedSFLabel.Text = "Selected soundfont:\r\nPotato.sf2";
             this.SelectedSFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 279);
+            this.ClientSize = new System.Drawing.Size(355, 275);
             this.ControlBox = false;
             this.Controls.Add(this.ToBeTranslated);
             this.Controls.Add(this.label6);

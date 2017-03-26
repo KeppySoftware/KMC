@@ -26,6 +26,8 @@ namespace KeppyMIDIConverter
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
+      
+        public static RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", false);
 
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
@@ -246,9 +248,9 @@ namespace KeppyMIDIConverter
         public static CultureInfo CultureFunc(CultureInfo ci)
         {
             if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
-                return CultureInfo.CreateSpecificCulture("it");
+                return CultureInfo.CreateSpecificCulture("it-IT");
             else if (ci.Name == "et-EE")
-                return CultureInfo.CreateSpecificCulture("et");
+                return CultureInfo.CreateSpecificCulture("et-EE");
             else if (ci.Name == "zh-CN")
                 return CultureInfo.CreateSpecificCulture("zh-CN");
             else if (ci.Name == "zh-HK")
@@ -256,56 +258,65 @@ namespace KeppyMIDIConverter
             else if (ci.Name == "zh-TW")
                 return CultureInfo.CreateSpecificCulture("zh-TW");
             else if (ci.Name == "bn-BD" | ci.Name == "bn-IN")
-                return CultureInfo.CreateSpecificCulture("bn");
+                return CultureInfo.CreateSpecificCulture("bn-BD");
+            else if (ci.Name == "en-US" | ci.Name == "en-BZ" | ci.Name == "en-CA" | ci.Name == "en-029" | ci.Name == "en-IN" | ci.Name == "en-IE" | ci.Name == "en-JM" | ci.Name == "en-MY" | ci.Name == "en-NZ" | ci.Name == "en-PH" | ci.Name == "en-SG" | ci.Name == "en-ZA" | ci.Name == "en-TT" | ci.Name == "en-GB" | ci.Name == "en-ZW")
+                return CultureInfo.CreateSpecificCulture("en-US");
             else if (ci.Name == "ru-RU")
-                return CultureInfo.CreateSpecificCulture("ru");
+                return CultureInfo.CreateSpecificCulture("ru-RU");
             else if (ci.Name == "th-TH")
                 return CultureInfo.CreateSpecificCulture("th-TH");
             // else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
-            //    return CultureInfo.CreateSpecificCulture("fr");
+            //     return CultureInfo.CreateSpecificCulture("fr");
             else if (ci.Name == "ko-KR")
-                return CultureInfo.CreateSpecificCulture("ko");
+                return CultureInfo.CreateSpecificCulture("ko-KR");
             else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
-                return CultureInfo.CreateSpecificCulture("de");
+                return CultureInfo.CreateSpecificCulture("de-DE");
             else if (ci.Name == "es-AR" | ci.Name == "es-VE" | ci.Name == "es-BO" | ci.Name == "es-CL" | ci.Name == "es-DO" | ci.Name == "es-EC" | ci.Name == "es-SV" | ci.Name == "es-CO" | ci.Name == "es-CR" | ci.Name == "es-ES" | ci.Name == "es-GT" | ci.Name == "es-HN" | ci.Name == "es-MX" | ci.Name == "es-NI" | ci.Name == "es-PA" | ci.Name == "es-PY" | ci.Name == "es-PE" | ci.Name == "es-PR" | ci.Name == "es-US" | ci.Name == "es-UY")
-                return CultureInfo.CreateSpecificCulture("es");
+                return CultureInfo.CreateSpecificCulture("es-ES");
             else if (ci.Name == "ja-JP")
-                return CultureInfo.CreateSpecificCulture("ja");
+                return CultureInfo.CreateSpecificCulture("ja-JP");
             else // The current language of the UI is not available, fallback to English.
-                return CultureInfo.CreateSpecificCulture("en");
+                return CultureInfo.CreateSpecificCulture("en-US");
         }
 
-        public static CultureInfo ReturnCulture()
+        public static CultureInfo ReturnCulture(Boolean Default)
         {
             try
             {
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", false);
-                if (Language != null)
+                if (Default)
                 {
-                    if (Convert.ToInt32(Language.GetValue("langoverride", 0)) == 1)
-                    {
-                        if (Language.GetValue("selectedlanguage", "en").ToString() != null)
-                            return CultureInfo.CreateSpecificCulture(Language.GetValue("selectedlanguage").ToString());
-                        else
-                            return CultureInfo.CreateSpecificCulture("en");
-                    }
-                    else
-                    {
-                        CultureInfo ci = CultureInfo.CurrentUICulture;
-                        return CultureFunc(ci);
-                    }
-                    Language.Close();
+                    return CultureInfo.CreateSpecificCulture("en-US");
                 }
                 else
                 {
-                    CultureInfo ci = CultureInfo.InstalledUICulture;
-                    return CultureFunc(ci);
+                    if (Language != null)
+                    {
+                        if (Convert.ToInt32(Language.GetValue("langoverride", 0)) == 1)
+                        {
+                            if (Language.GetValue("selectedlanguage", "en-US").ToString() != null)
+                            {
+                                return CultureInfo.CreateSpecificCulture(Language.GetValue("selectedlanguage").ToString());
+                            }
+                            else {  
+                                return CultureInfo.CreateSpecificCulture("en-US");
+                            }
+                        }
+                        else
+                        {
+                            CultureInfo ci = CultureInfo.CurrentUICulture;
+                            return CultureFunc(ci);
+                        }
+                    }
+                    else
+                    {
+                        CultureInfo ci = CultureInfo.InstalledUICulture;
+                        return CultureFunc(ci);
+                    }
                 }
             }
             catch
             {
-                return CultureInfo.CreateSpecificCulture("en");
+                return CultureInfo.CreateSpecificCulture("en-US");
             }
         }
 

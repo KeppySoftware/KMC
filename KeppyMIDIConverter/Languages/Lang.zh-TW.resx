@@ -281,7 +281,7 @@ BASS 狀態: {0}</value>
     <value>強制關閉為用戶造成</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013-{0} KaleidonKep99
+    <value>Copyright(C) 2013 KaleidonKep99
 
 This program is based around the great BASS libraries
 by Ian Luck from Un4seen Developments.
@@ -471,14 +471,11 @@ BASS 狀態: {0}</value>
   <data name="RemoveSoundfontBtn" xml:space="preserve">
     <value>移除音色庫</value>
   </data>
-  <data name="RenderToOGG" xml:space="preserve">
-    <value>輸出到Vorbis(.OGG)</value>
+  <data name="RenderTo" xml:space="preserve">
+    <value>輸出到{0} (.{1})</value>
   </data>
   <data name="RenderToSpeakers" xml:space="preserve">
     <value>預覽文件 (實際撥放)</value>
-  </data>
-  <data name="RenderToWAV" xml:space="preserve">
-    <value>輸出到Wave (.WAV)</value>
   </data>
   <data name="RightClickCopyNotice" xml:space="preserve">
     <value>右鍵點擊視窗中的任何地方來複製信息.</value>
@@ -655,9 +652,6 @@ or if you don't know which one you should use.</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
     <value>yes</value>
-  </data>
-  <data name="RenderToMP3" xml:space="preserve">
-    <value>輸出到LAME(.MP3)</value>
   </data>
   <data name="CopyText" xml:space="preserve">
     <value>複製</value>

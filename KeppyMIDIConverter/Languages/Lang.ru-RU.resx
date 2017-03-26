@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbortConvPlayback" xml:space="preserve">
+    <value>Прервать преобразование / предварительный просмотр</value>
+  </data>
+  <data name="AboutSFZFormatText" xml:space="preserve">
+    <value>Эта программа совместима с SFZ 1.0 и частично с SFZ 2.0.
+
+Открыть сайт о формате SFZ ?(сайт на английском языке)</value>
+  </data>
+  <data name="AboutSFZFormatTitle" xml:space="preserve">
+    <value>О формате SFZ</value>
+  </data>
+  <data name="AboutVSTSupportText" xml:space="preserve">
+    <value>Эта программа поддерживает технологию VST.
+
+Virtual Studio Technology (VST) представляет собой программный интерфейс и наработки Steinberg Media Technologies.
+Все права защищены © 2006 Steinberg Media Technologies.</value>
+  </data>
+  <data name="AboutVSTSupportTitle" xml:space="preserve">
+    <value>О интерфейсе Virtual Studio Technology</value>
+  </data>
+  <data name="ActionsStrip" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="ActiveVoices" xml:space="preserve">
+    <value>Полифиния: </value>
+  </data>
+  <data name="AddOneMIDI" xml:space="preserve">
+    <value>Для конвертации требуется загрузить не менее одного файла.</value>
+  </data>
+  <data name="AdvSettingsButton" xml:space="preserve">
+    <value>Расширенные настройки</value>
+  </data>
+  <data name="AdvSettingsTitle" xml:space="preserve">
+    <value>Расширенные настройки</value>
+  </data>
+  <data name="AlreadyUpdatedText" xml:space="preserve">
+    <value>Эта версия Keppy's MIDI Converter не нуждается в обновлении.
+</value>
+  </data>
+  <data name="AppBusy" xml:space="preserve">
+    <value>Приложение ещё не завершило преобразование.
+Закрыть программу?</value>
+  </data>
+  <data name="AudioEventsStrip" xml:space="preserve">
+    <value>Включение звуковых событий (преобразование завершено, не удалось и т.д.)</value>
+  </data>
+  <data name="AudioFreq" xml:space="preserve">
+    <value>Частота дискретизации:</value>
+  </data>
+  <data name="AutomaticShutdownStrip" xml:space="preserve">
+    <value>Выключить компьютер после того, как процесс преобразования будет завершен</value>
+  </data>
+  <data name="AutoUpdatesCheckStrip" xml:space="preserve">
+    <value>Проверить наличие обновлений при запуске приложения</value>
+  </data>
+  <data name="AverageLevel" xml:space="preserve">
+    <value>Средний уровень</value>
+  </data>
+  <data name="BASSEngineConfiguration" xml:space="preserve">
+    <value>Настройка BASS.
+Процесс преобразования начнется в ближайшее время ...</value>
+  </data>
+  <data name="BASSEngineConfigurationVST" xml:space="preserve">
+    <value>Настройка BASS.
+Изменение параметров VST.
+Процесс преобразования начнется в ближайшее время ...</value>
+  </data>
+  <data name="CanNotCheckUpdates" xml:space="preserve">
+    <value>Невозможно проверить наличие обновлений</value>
+  </data>
+  <data name="CanNotCheckUpdatesMsg" xml:space="preserve">
+    <value>Невозможно проверить наличие обновлений
+Ошибка:
+{0}</value>
+  </data>
+  <data name="CheckForUpdatesBtn" xml:space="preserve">
+    <value>Проверить наличие обновлений</value>
+  </data>
+  <data name="ClearListAutomaticallyStrip" xml:space="preserve">
+    <value>Очистить список MIDI, когда процесс преобразования будет завершён.</value>
+  </data>
+  <data name="ClearMIDIsList" xml:space="preserve">
+    <value>Очистить список MIDI</value>
+  </data>
+  <data name="ClearSoundfontList" xml:space="preserve">
+    <value>Очистить список звуковых банкок</value>
+  </data>
+  <data name="ConstantBitrateOGG" xml:space="preserve">
+    <value>Удерживать постоянный битрейт (OGG/MP3):</value>
+  </data>
+  <data name="ConversionAborted" xml:space="preserve">
+    <value>Преобразование прервано.</value>
+  </data>
+  <data name="ConversionAbortedXPMessage" xml:space="preserve">
+    <value>Преобразование прервано.
+
+BASS статус: {0}</value>
+  </data>
+  <data name="ConversionCompleted" xml:space="preserve">
+    <value>Преобразование завершено.</value>
+  </data>
+  <data name="ConversionCompletedXPMessage" xml:space="preserve">
+    <value>Преобразование завершено.
+
+BASS статус: {0}</value>
+  </data>
+  <data name="ConversionText" xml:space="preserve">
+    <value>Keppy's MIDI Converter | Преобразование {0}...</value>
+  </data>
+  <data name="ConversionXPTitle" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="ConvPosOrTimeLeft" xml:space="preserve">
+    <value>Показать прогресс преобразования вместо оставшегося времени</value>
+  </data>
+  <data name="ConvStatusFasterNew" xml:space="preserve">
+    <value>{0} MBs данных RAW преобразования. ({1})
+Времени осталось осталось: {2} - Прошло: {3}
+Время визуализации: {4}% ({5} х ~ быстрее)</value>
+  </data>
+  <data name="ConvStatusFasterOld" xml:space="preserve">
+    <value>{0} MBs данных RAW преобразования. ({1})
+Текущее положение: {2} - {3}
+Время визуализации: {4}% ({5} х ~ быстрее)</value>
+  </data>
+  <data name="ConvStatusNormalNew" xml:space="preserve">
+    <value>{0} MBs данных RAW преобразования. ({1})
+Примерное время осталось: {2} - Прошло: {3}
+Время визуализации: {4}%</value>
+  </data>
+  <data name="ConvStatusNormalOld" xml:space="preserve">
+    <value>{0} MBs данных RAW преобразования. ({1})
+Текущее положение: {2} - {3}
+Время визуализации: {4}%</value>
+  </data>
+  <data name="ConvStatusSlowerNew" xml:space="preserve">
+    <value>{0} MBs данных RAW преобразования. ({1})
+Примерное время осталось: {2} - Прошло: {3}
+Время визуализации: {4}% ({5} х ~ медленнее)</value>
+  </data>
+  <data name="ConvStatusSlowerOld" xml:space="preserve">
+    <value>{0} MBs данных RAW преобразования. ({1})
+Текущее положение: {2} - {3}
+Время визуализации: {4}% ({5} х ~ медленнее)</value>
+  </data>
+  <data name="CopiedToClipboardNotice" xml:space="preserve">
+    <value>Ошибка была скопирована в буфер обмена.
+
+Ошибка:
+{0}</value>
+  </data>
+  <data name="CopyErrorMessage" xml:space="preserve">
+    <value>Ошибка копирования в буфер обмена</value>
+  </data>
+  <data name="CrashQuestion" xml:space="preserve">
+    <value>Действительно дварийно выйти из приложения?
+Все несохраненные данные будут утеряны!</value>
+  </data>
+  <data name="CrashTriggeredByUser" xml:space="preserve">
+    <value>Вылет, вызванный пользователем.</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Copyright (C) 2013 KaleidonKep99
+
+Эта программа базируется на библиотеках BASS
+от Ian Luck из Un4seen Developments.
+Вы можете перейти на его сайт, нажав кнопку "{1}"
+
+
+Исходный код доступен здесь:</value>
+  </data>
+  <data name="CurrentVersion" xml:space="preserve">
+    <value>Текущая версия преобразователя, установленного в системе, является: {0}</value>
+  </data>
+  <data name="DisabledText" xml:space="preserve">
+    <value>Отключено</value>
+  </data>
+  <data name="DisableFX" xml:space="preserve">
+    <value>Отключение звуковых эффектов</value>
+  </data>
+  <data name="DSPSettings" xml:space="preserve">
+    <value>Настройки DSP:</value>
+  </data>
+  <data name="EmptySlot" xml:space="preserve">
+    <value>Пустой слот</value>
+  </data>
+  <data name="EnabledText" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="ExitStrip" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="ExportWhere" xml:space="preserve">
+    <value>Сохранить как...</value>
+  </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>Фатальная ошибка</value>
+  </data>
+  <data name="FatalErrorHandler" xml:space="preserve">
+    <value>Экстренное завершиние приложения из- за ошибки
+Приложение будет закрыто.
+Дополнительная информация:</value>
+  </data>
+  <data name="forceCloseTheApplicationStrip" xml:space="preserve">
+    <value>Сбой приложения</value>
+  </data>
+  <data name="HelpStrip" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="IdleMessage" xml:space="preserve">
+    <value>Ожидание команд пользователя.
+Необходимо загрузить файлы в конвертер</value>
+  </data>
+  <data name="ImportMIDI" xml:space="preserve">
+    <value>Открыть...</value>
+  </data>
+  <data name="ImportMIDIWindow" xml:space="preserve">
+    <value>Открыть как...</value>
+  </data>
+  <data name="ImportSoundfontBtn" xml:space="preserve">
+    <value>Импорт банков </value>
+  </data>
+  <data name="InfoPageTitle" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="informationAboutTheProgramStrip" xml:space="preserve">
+    <value>Информация о программе ...</value>
+  </data>
+  <data name="InvalidMIDIFile" xml:space="preserve">
+    <value>{0} не является допустимым MIDI-файлом!
+
+Пожалуйста, выберите правильный MIDI файл, и повторите попытку.</value>
+  </data>
+  <data name="InvalidVSTLoaded" xml:space="preserve">
+    <value>
+{0} не является допустимым эффектом VST!
+Загрузите эффект VST, а не VST инструмент.
+
+Если вы пытаетесь использовать {1} VST, вам нужно использовать {1} версию Keppy's MIDI Converter. 
+Версия {2} из MIDI конвертер Keppy не поддерживает {1} VSTs и ViceVersa</value>
+  </data>
+  <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
+    <value>KaleidonKep99 GitHub</value>
+  </data>
+  <data name="KaleidonKep99sYouTubeChannel" xml:space="preserve">
+    <value>KaleidonKep99 YouTube</value>
+  </data>
+  <data name="LatestVersionIdle" xml:space="preserve">
+    <value>Проверка обновлений</value>
+  </data>
+  <data name="LibraryVersion" xml:space="preserve">
+    <value>{0} версия библиотеки:. {1} {2}</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>Лицензия</value>
+  </data>
+  <data name="LoadVST" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="MemoryAllocationConversion" xml:space="preserve">
+    <value>Приложение выделяет память для процесса преобразования.
+Пожалуйста, подождите...</value>
+  </data>
+  <data name="MemoryAllocationPlayback" xml:space="preserve">
+    <value>Приложение выделяет память для предварительного просмотра.
+Пожалуйста, подождите...</value>
+  </data>
+  <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
+    <value>Приложение выделяет память для предварительного просмотра.
+Измените параметры VST DSPs.
+Пожалуйста, подождите...</value>
+  </data>
+  <data name="MoveDOWN" xml:space="preserve">
+    <value>Переместить вниз</value>
+  </data>
+  <data name="MoveDOWNSF" xml:space="preserve">
+    <value>Вниз</value>
+  </data>
+  <data name="MoveUP" xml:space="preserve">
+    <value>Вверх</value>
+  </data>
+  <data name="MoveUPSF" xml:space="preserve">
+    <value>Переместить вверх</value>
+  </data>
+  <data name="NewValueTempo" xml:space="preserve">
+    <value>Новое значение темпа:</value>
+  </data>
+  <data name="NonFatalErrorHandler" xml:space="preserve">
+    <value>Ошибка во время выполнения приложения.
+
+Дополнительная информация:</value>
+  </data>
+  <data name="NoteOff1" xml:space="preserve">
+    <value>Воспроизводить более старые ноты, когда они перекрывают сами себя</value>
+  </data>
+  <data name="NoUpdatesText" xml:space="preserve">
+    <value>Это самая новая версия.
+Обновление не требуется.</value>
+  </data>
+  <data name="NoUpdatesTitle" xml:space="preserve">
+    <value>Это самая новая версия.</value>
+  </data>
+  <data name="OnlyOneItemMsg" xml:space="preserve">
+    <value>Вы можете перемещать только один пункт.</value>
+  </data>
+  <data name="OptionsStrip" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="OverrideTempo1" xml:space="preserve">
+    <value>Поменять темп(BPM):</value>
+  </data>
+  <data name="OverrideTempo2" xml:space="preserve">
+    <value>Изменить темп(BPM (Стандартно {0} )</value>
+  </data>
+  <data name="PeakLevel" xml:space="preserve">
+    <value>Уравень клипа</value>
+  </data>
+  <data name="PlaybackAborted" xml:space="preserve">
+    <value>Воспроизведение прервано.</value>
+  </data>
+  <data name="PlaybackAbortedXPMessage" xml:space="preserve">
+    <value>Воспроизведение прервано
+
+BASS статус: {0}</value>
+  </data>
+  <data name="PlaybackCompleted" xml:space="preserve">
+    <value>Воспроизведение завершено.</value>
+  </data>
+  <data name="PlaybackCompletedXPMessage" xml:space="preserve">
+    <value>Воспроизведение завершено.
+
+BASS статус: {0}</value>
+  </data>
+  <data name="PlaybackStatus" xml:space="preserve">
+    <value>{0} MIDI проиграно.
+Позиция: {1} - {2}
+Ноты: {3} - {4}</value>
+  </data>
+  <data name="PlaybackText" xml:space="preserve">
+    <value>Keppy's MIDI Converter | Воспроизведение {0}...</value>
+  </data>
+  <data name="PlaybackXPTitle" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="RemoveMIDI" xml:space="preserve">
+    <value>Убрать выбранные MIDI</value>
+  </data>
+  <data name="RemoveSoundfontBtn" xml:space="preserve">
+    <value>Убрать Звуковый банки</value>
+  </data>
+  <data name="RenderToSpeakers" xml:space="preserve">
+    <value>Воспроизведение в реальном времени</value>
+  </data>
+  <data name="RightClickCopyNotice" xml:space="preserve">
+    <value>Щелкните правой кнопкой мыши, чтобы скопировать сообщение.</value>
+  </data>
+  <data name="RMS" xml:space="preserve">
+    <value>Средняя громкость</value>
+  </data>
+  <data name="SaveHere" xml:space="preserve">
+    <value>Сохранить здесь...</value>
+  </data>
+  <data name="SelectOneSF" xml:space="preserve">
+    <value>Пожалуйста, выберите по крайней мере один звуковой банк</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="SettingsBox" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="SFVSTManager" xml:space="preserve">
+    <value>Открыть SoundFont / менеджер VST</value>
+  </data>
+  <data name="SoundfontDialogMessage" xml:space="preserve">
+    <value>Возможно использоватоь до 1000 звуковых банков. для конвертации файлов
+Первый SoundFont в списке всегда будут замещать последние из них.
+Проверьте, не поврежены ли звуковые банки, прежде чем добавлять их в список, чтобы избежать глюков\багов.
+
+Данная программа поддерживает: SF2, SF3, SFZ, SFPACK</value>
+  </data>
+  <data name="SoundfontImportError" xml:space="preserve">
+    <value>Ошибка импорта звуковых банков!
+
+Выберите другой банк и повторите попытку.</value>
+  </data>
+  <data name="SoundfontManagerTitle" xml:space="preserve">
+    <value>Звуки / Менеджер VST</value>
+  </data>
+  <data name="supportTheDeveloperWithADonation" xml:space="preserve">
+    <value>Поддержать разработчиков копеечкой:</value>
+  </data>
+  <data name="Un4seenWebsite" xml:space="preserve">
+    <value>Un4seen сайт</value>
+  </data>
+  <data name="UnloadAllVSTs" xml:space="preserve">
+    <value>Убрать все</value>
+  </data>
+  <data name="UnloadVST" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="UpdateFoundVer" xml:space="preserve">
+    <value>Обновление найдено, {0} версии</value>
+  </data>
+  <data name="UpdaterPageTitle" xml:space="preserve">
+    <value>Обновления</value>
+  </data>
+  <data name="UpdatesChecking" xml:space="preserve">
+    <value>Проверка наличия обновлений, пожалуйста, подождите ...</value>
+  </data>
+  <data name="UpdatesFoundText" xml:space="preserve">
+    <value>Было обнаружено обновление.
+Нажмите кнопку ОК чтобы открыть страницу для загрузки.</value>
+  </data>
+  <data name="UpdatesFoundTitle" xml:space="preserve">
+    <value>
+Доступно обновление</value>
+  </data>
+  <data name="VersionLabel" xml:space="preserve">
+    <value>{0} версия, оптимизированная для {1} процессоров</value>
+  </data>
+  <data name="VoiceLabel" xml:space="preserve">
+    <value>Полифония:</value>
+  </data>
+  <data name="VSTHowDoTheyWork" xml:space="preserve">
+    <value>Как работает система VST?
+
+Эффекты накладываются друг на друга. Учтите это при их загрузке.
+</value>
+  </data>
+  <data name="VSTInvalidCallError" xml:space="preserve">
+    <value>Ошибка при попытке загрузить {0}.
+VST не может быть загружен.
+Ошибка:
+{1}
+Этот VST возможно несовместим с вашей версией Windows
+Ошибка копируется в буфер обмена.</value>
+  </data>
+  <data name="VSTInvalidCallTitle" xml:space="preserve">
+    <value>Ошибка при загрузке VST</value>
+  </data>
+  <data name="VSTManager" xml:space="preserve">
+    <value>Менеджер VST</value>
+  </data>
+  <data name="VSTManagerButtonText" xml:space="preserve">
+    <value>Открыть диспетчер VST DSP</value>
+  </data>
+  <data name="VSTUseText" xml:space="preserve">
+    <value>Применений VST эффектов</value>
+  </data>
+  <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
+    <value>Для работы данной программы требуется Windows XP SP 2 или выше. Нажмите ОК, чтобы выйти.</value>
+  </data>
+  <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
+    <value>Системы младше Windows XP SP 2 не поддерживаются.</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Объем:</value>
+  </data>
+  <data name="InfoWindowTitle" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="ZZZTranslators" xml:space="preserve">
+    <value>Sasha Petrov, Dmitry's Music</value>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>Смена языка</value>
+  </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>Размер </value>
+  </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>Длина</value>
+  </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>Сортировать по названию</value>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>Ноты</value>
+  </data>
+  <data name="BankNPresetConfirm" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="BankNPresetDesBank" xml:space="preserve">
+    <value>Изначальные настройки банка</value>
+  </data>
+  <data name="BankNPresetDesPrst" xml:space="preserve">
+    <value>Этот банк:</value>
+  </data>
+  <data name="BankNPresetDiscl" xml:space="preserve">
+    <value>Src.: Source of the bank/preset to import
+Des.: Bank/Preset to assign to the imported one.
+
+Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
+  </data>
+  <data name="BankNPresetGuide" xml:space="preserve">
+    <value>Banks/Presets list</value>
+  </data>
+  <data name="BankNPresetIgnore" xml:space="preserve">
+    <value>Пропуск</value>
+  </data>
+  <data name="BankNPresetSelectedSF" xml:space="preserve">
+    <value>Выбранный звуковой банк</value>
+  </data>
+  <data name="BankNPresetSelectMsg" xml:space="preserve">
+    <value>Выберите звуковй банк, номером от 0 to 127.
+
+Выберите "Bank 0" и "Preset 0" для "Acoustic Grand Piano",
+Или если вы не знаете, что выбирать.</value>
+  </data>
+  <data name="BankNPresetSrcBank" xml:space="preserve">
+    <value>Source preset:</value>
+  </data>
+  <data name="BankNPresetSrcPrst" xml:space="preserve">
+    <value>Source bank:</value>
+  </data>
+  <data name="BankNPresetTitle" xml:space="preserve">
+    <value>Выберите банк и надстройку для звукового банка</value>
+  </data>
+  <data name="BankNPresetTBT" xml:space="preserve">
+    <value>yes</value>
+  </data>
+  <data name="RenderTo" xml:space="preserve">
+    <value>Конвертация файла в {0} (.{1})</value>
+  </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="Donate" xml:space="preserve">
+    <value>Пожертвовать через PayPal</value>
+  </data>
+</root>
