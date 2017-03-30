@@ -81,12 +81,12 @@ namespace KeppyMIDIConverter
             float CPUUsage = 0f;
             long MIDILengthRAW = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
             long MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(MainWindow.KMCGlobals._recHandle);
+            float RAWTotal = ((float)MIDILengthRAW) / 1048576f;
+            float RAWConverted = ((float)MIDICurrentPosRAW) / 1048576f;
             double LenRAWToDouble = Bass.BASS_ChannelBytes2Seconds(MainWindow.KMCGlobals._recHandle, MIDILengthRAW);
             double CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(MainWindow.KMCGlobals._recHandle, MIDICurrentPosRAW);
             TimeSpan LenDoubleToSpan = TimeSpan.FromSeconds(LenRAWToDouble);
             TimeSpan CurDoubleToSpan = TimeSpan.FromSeconds(CurRAWToDouble);
-            float RAWTotal = ((float)MIDILengthRAW) / 1048576f;
-            float RAWConverted = ((float)MIDICurrentPosRAW) / 1048576f;
             Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref CPUUsage);
             string MIDILengthString = String.Format("{0}:{1}:{2}",
                 LenDoubleToSpan.Minutes.ToString().PadLeft(2, '0'),
@@ -96,7 +96,7 @@ namespace KeppyMIDIConverter
                 CurDoubleToSpan.Minutes.ToString().PadLeft(2, '0'),
                 CurDoubleToSpan.Seconds.ToString().PadLeft(2, '0'),
                 CurDoubleToSpan.Milliseconds.ToString().PadLeft(3, '0'));
-            float percentage = RAWTotal / RAWConverted;
+            float percentage = RAWConverted / RAWTotal;
             float percentagefinal;
             if (percentage * 100 < 0)
                 percentagefinal = 0.0f;

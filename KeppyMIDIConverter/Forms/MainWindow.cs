@@ -590,6 +590,7 @@ namespace KeppyMIDIConverter
                     BASS_INFO info = Bass.BASS_GetInfo();
                     Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, info.minbuf + 10 + 50);
                     Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 2000);
+                    
                 }
             }
             catch (Exception ex)
@@ -718,7 +719,6 @@ namespace KeppyMIDIConverter
             {
                 BASS_MIDI_FONTEX[] fonts = new BASS_MIDI_FONTEX[KMCGlobals.Soundfonts.Length];
                 int sfnum = 0;
-                int sfzload = 0;
                 foreach (string s in KMCGlobals.Soundfonts)
                 {
                     if (s.ToLower().IndexOf('=') != -1)
@@ -731,8 +731,7 @@ namespace KeppyMIDIConverter
                         fonts[sfnum].dpreset = Convert.ToInt32(matches[2].ToString());
                         fonts[sfnum].dbank = Convert.ToInt32(matches[3].ToString());
                         if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                        sfnum += 1;
+                        sfnum++;
                     }
                     else
                     {
@@ -742,11 +741,10 @@ namespace KeppyMIDIConverter
                         fonts[sfnum].dpreset = -1;
                         fonts[sfnum].dbank = 0;
                         if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
-                        BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, sfnum + 1);
-                        sfnum += 1;
+                        sfnum++;
                     }
                 }
-                BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, KMCGlobals.Soundfonts.Length);
+                BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, fonts.Length);
             }
         }
 
@@ -997,6 +995,7 @@ namespace KeppyMIDIConverter
             KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
             KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(MIDICurrentPosRAW / 0x100000L));
             Bass.BASS_ChannelUpdate(KMCGlobals._recHandle, KMCGlobals.UpdateRate);
+
             System.Threading.Thread.Sleep(1);
 
             if (!KMCGlobals.DoNotCountNotes)
@@ -1005,7 +1004,7 @@ namespace KeppyMIDIConverter
                 return 0;
         }
 
-        private void BASSEncodingEngine(long pos, int length, DateTime starttime)
+        private bool BASSEncodingEngine(long pos, int length, DateTime starttime)
         {
             int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
             KMCGlobals.OriginalTempo = 60000000 / tempo;
@@ -1026,16 +1025,16 @@ namespace KeppyMIDIConverter
                 BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals.FinalTempo);
             }
 
-            Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
+            int decoded = Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
+            if (decoded == (int) - 1) return false;
 
             KMCStatus.PassedTime = str7;
             KMCStatus.EstimatedTime = str6;
+
+            return true;
         }
 
-
-
         private delegate ListView.ListViewItemCollection GetItems(ListView lstview);
-
         private ListView.ListViewItemCollection getListViewItems(ListView lstview)
         {
             ListView.ListViewItemCollection temp = new ListView.ListViewItemCollection(new ListView());
@@ -1089,14 +1088,14 @@ namespace KeppyMIDIConverter
             errordialog.ShowDialog();
         }
 
-        private void ReleaseResources()
+        private void ReleaseResources(bool stillrendering)
         {
             KMCGlobals.DoNotCountNotes = false;
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
-            KMCGlobals.IsKMCBusy = false;
+            KMCGlobals.IsKMCBusy = stillrendering;
             KMCGlobals.IsKMCNowExporting = false;
-            KMCGlobals.RenderingMode = false;
+            KMCGlobals.RenderingMode = stillrendering;
             KMCGlobals.eventc = 0;
             KMCGlobals.events = null;
         }
@@ -1131,11 +1130,12 @@ namespace KeppyMIDIConverter
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 0.01666666666666666666666666666667));
                             KMCGlobals.IsKMCNowExporting = true;
-                            while (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
+                            while (true)
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    BASSEncodingEngine(pos, length, starttime);
+                                    if (!BASSEncodingEngine(pos, length, starttime))
+                                        break;
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
                                 {
@@ -1147,16 +1147,14 @@ namespace KeppyMIDIConverter
                             }
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
-                                KMCGlobals.RenderingMode = false;
-                                KMCGlobals.IsKMCBusy = false;
-                                KMCGlobals.IsKMCNowExporting = false;
-                                KMCGlobals.VSTSkipSettings = false;
+                                ReleaseResources(false);
                                 KeepLooping = false;
+                                BASSSetID3(false);
                                 break;
                             }
                             else
                             {
-                                ReleaseResources();
+                                ReleaseResources(true);
                                 KeepLooping = false;
                                 BASSSetID3(true);
                                 continue;
@@ -1293,14 +1291,14 @@ namespace KeppyMIDIConverter
                                 else if (KMCGlobals.CancellationPendingValue == 1)
                                 {
                                     BASSCloseStream(MainWindow.res_man.GetString("ConversionAborted", cul), res_man.GetString("ConversionAborted", cul), 0);
-                                    BASSSetID3(false);
-                                    KMCGlobals.events = null;
+                                    ReleaseResources(false);
                                     KeepLooping = false;
+                                    BASSSetID3(false);
                                     break;
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 2)
                                 {
-                                    ReleaseResources();
+                                    ReleaseResources(true);
                                     KeepLooping = false;
                                     BASSSetID3(true);
                                     continue;
@@ -1399,7 +1397,6 @@ namespace KeppyMIDIConverter
                             BASSStreamSystem(str, 1);
                             BASSVSTInit(KMCGlobals._recHandle);
                             BASSEffectSettings();
-                            Bass.BASS_ChannelPlay(KMCGlobals._recHandle, false);
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                             int count = BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
                             // cac
@@ -1414,6 +1411,7 @@ namespace KeppyMIDIConverter
                             }
                             KMCStatus.TotalNotes = notes;
                             KMCGlobals.IsKMCNowExporting = true;
+                            Bass.BASS_ChannelPlay(KMCGlobals._recHandle, false);
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 1.0));
                             while (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
@@ -1422,28 +1420,23 @@ namespace KeppyMIDIConverter
                                     notes = BASSPlayBackEngine(notes, length, pos);
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
-                                {
-                                    KMCGlobals.DoNotCountNotes = false;
-                                    BASSCloseStream(MainWindow.res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackAborted", cul), 0);
-                                    KMCGlobals.IsKMCBusy = false;
-                                    KMCGlobals.IsKMCNowExporting = false;
-                                    KeepLooping = false;
+                                {                          
                                     break;
                                 }
                             }
                             if (KMCGlobals.CancellationPendingValue == 1)
                             {
-                                KMCGlobals.DoNotCountNotes = false;
-                                Bass.BASS_Free();
-                                KMCGlobals.IsKMCBusy = false;
-                                KMCGlobals.IsKMCNowExporting = false;
+                                BASSCloseStream(MainWindow.res_man.GetString("PlaybackAborted", cul), res_man.GetString("PlaybackAborted", cul), 0);
+                                ReleaseResources(false);
                                 KeepLooping = false;
+                                BASSSetID3(false);
                                 break;
                             }
                             else
                             {
-                                ReleaseResources();
+                                ReleaseResources(true);
                                 KeepLooping = false;
+                                BASSSetID3(true);
                                 continue;
                             }
                         }
@@ -1454,15 +1447,15 @@ namespace KeppyMIDIConverter
                         else
                         {
                             BASSCloseStream("null", "null", 1);
+                            break;
                         }
                     }
                 }
                 catch (Exception exception)
                 {
                     WriteToConsole(exception);
-                    KMCGlobals.IsKMCBusy = false;
-                    KMCGlobals.IsKMCNowExporting = false;
-                    KMCGlobals.DoNotCountNotes = false;
+                    ReleaseResources(false);
+                    BASSSetID3(false);
                 }
             }
             catch (Exception exception2)
@@ -1902,18 +1895,11 @@ namespace KeppyMIDIConverter
                     KMCGlobals.AutoClearMIDIListEnabled = false;
                     disabledToolStripMenuItem1.Checked = true;
                 }
-                if (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_STOPPED)
+                if (!KMCGlobals.IsKMCBusy)
                 {
-                    if (!KMCGlobals.IsKMCBusy)
-                    {
-                        RTF.KMCIdle();
-                    }
-                    else
-                    {
-                        RTF.KMCMemoryAllocation();
-                    }
+                    RTF.KMCIdle();
                 }
-                else if (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
+                else
                 {
                     if (!KMCGlobals.IsKMCNowExporting)
                     {
