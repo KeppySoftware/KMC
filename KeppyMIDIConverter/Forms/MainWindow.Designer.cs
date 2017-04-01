@@ -127,12 +127,13 @@
             // 
             // RenderingTimer
             // 
-            this.RenderingTimer.Interval = 1;
+            this.RenderingTimer.Interval = 10;
             this.RenderingTimer.Tick += new System.EventHandler(this.RenderingTimer_Tick);
             // 
             // UsedVoices
             // 
             this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.UsedVoices.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UsedVoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.UsedVoices.Location = new System.Drawing.Point(12, 319);
             this.UsedVoices.Name = "UsedVoices";
@@ -140,6 +141,7 @@
             this.UsedVoices.TabIndex = 8;
             this.UsedVoices.Text = "Voices: 100000/100000";
             this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.UsedVoices.Click += new System.EventHandler(this.UsedVoices_Click);
             // 
             // SettingsBox
             // 

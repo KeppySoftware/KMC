@@ -106,6 +106,8 @@ namespace KeppyMIDIConverter
                 percentagefinal = percentage;
             MainWindow.KMCGlobals.PercentageProgress = percentagefinal.ToString("0.0%");
 
+            GetVoices();
+
             if (!MainWindow.KMCGlobals.RenderingMode)
             {
                 if (MainWindow.KMCGlobals.pictureset != 2)
@@ -411,6 +413,26 @@ namespace KeppyMIDIConverter
                 UpdateText();
                 thisProc.PriorityClass = ProcessPriorityClass.High;
             }
+        }
+
+        private static void GetVoices()
+        {
+            MainWindow.KMCChannelsVoices.ch1 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 0, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch2 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 1, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch3 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 2, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch4 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 3, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch5 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 4, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch6 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 5, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch7 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 6, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch8 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 7, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch9 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 8, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.chD = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 9, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch11 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 10, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch12 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 11, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch13 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 12, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch14 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 13, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch15 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 14, (BASSMIDIEvent)0x20001);
+            MainWindow.KMCChannelsVoices.ch16 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 15, (BASSMIDIEvent)0x20001);
         }
 
         // Imports

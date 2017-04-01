@@ -124,6 +124,27 @@ namespace KeppyMIDIConverter
             public static string EstimatedTime;
         }
 
+        public static class KMCChannelsVoices
+        {
+            public static int ch1 = 0;
+            public static int ch2 = 0;
+            public static int ch3 = 0;
+            public static int ch4 = 0;
+            public static int ch5 = 0;
+            public static int ch6 = 0;
+            public static int ch7 = 0;
+            public static int ch8 = 0;
+            public static int ch9 = 0;
+            public static int chD = 0;
+            public static int ch11 = 0;
+            public static int ch12 = 0;
+            public static int ch13 = 0;
+            public static int ch14 = 0;
+            public static int ch15 = 0;
+            public static int ch16 = 0;
+
+        }
+
         public static class ID3Meta
         {
             public static string FileToEdit;
@@ -258,6 +279,11 @@ namespace KeppyMIDIConverter
                 MIDIList.Columns.Add(MainWindow.res_man.GetString("MIDINotes", cul), 1, HorizontalAlignment.Left);
                 MIDIList.Columns.Add(MainWindow.res_man.GetString("MIDILength", cul), 1, HorizontalAlignment.Left);
                 MIDIList.Columns.Add(MainWindow.res_man.GetString("MIDISize", cul), 1, HorizontalAlignment.Left);
+                MIDIList.Columns[0].Tag = 7;
+                MIDIList.Columns[1].Tag = 1;
+                MIDIList.Columns[2].Tag = 1;
+                MIDIList.Columns[3].Tag = 1;
+                MIDIList_SizeChanged(MIDIList, new EventArgs());
                 ActionsStrip.Text = res_man.GetString("ActionsStrip", cul);
                 AdvSettingsButton.Text = res_man.GetString("AdvSettingsButton", cul);
                 AudioEventsStrip.Text = res_man.GetString("AudioEventsStrip", cul);
@@ -1982,6 +2008,16 @@ namespace KeppyMIDIConverter
             {
                 KMCGlobals.frm.ShowDialog();
             }          
+        }
+
+        private void UsedVoices_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AdvancedVoices vfrm = new AdvancedVoices();
+                vfrm.Show();
+            }
+            catch { }
         }
 
         private void openTheSoundfontsManagerToolStripMenuItem_Click(object sender, EventArgs e)
