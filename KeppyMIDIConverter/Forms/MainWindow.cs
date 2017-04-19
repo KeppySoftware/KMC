@@ -176,7 +176,7 @@ namespace KeppyMIDIConverter
                     {
                         //Add MIDI to midi list
                         string[] saLvwItem = new string[4];
-                        string[] midiinfo = GetMoreInfoMIDI(s);
+                        string[] midiinfo = GetMoreInfoMIDI(s, false);
                         saLvwItem[0] = s;
                         saLvwItem[1] = midiinfo[1];
                         saLvwItem[2] = midiinfo[0];
@@ -1620,7 +1620,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private string[] GetMoreInfoMIDI(string str)
+        private string[] GetMoreInfoMIDI(string str, bool overridedefault)
         {
             try
             {
@@ -1646,7 +1646,7 @@ namespace KeppyMIDIConverter
                 if (length / 1024f >= 9860)
                 {
                     // If the user is holding CTRL, continue the data parsing anyway
-                    if (ModifierKeys == Keys.Control)
+                    if (overridedefault)
                     {
 
                     }
@@ -1721,6 +1721,7 @@ namespace KeppyMIDIConverter
 
         private void AddFilesToList(String[] filenames, Boolean IsImportDialog)
         {
+            bool overridedefault = false;
             if (ModifierKeys == Keys.Shift)
             {
                 Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
@@ -1729,7 +1730,7 @@ namespace KeppyMIDIConverter
                 for (int i = 0; i < UserAnswer; i++)
                 {
                     string[] saLvwItem = new string[4];
-                    string[] midiinfo = GetMoreInfoMIDI(filenames[0]);
+                    string[] midiinfo = GetMoreInfoMIDI(filenames[0], false);
                     saLvwItem[0] = filenames[0];
                     saLvwItem[1] = midiinfo[1];
                     saLvwItem[2] = midiinfo[0];
@@ -1740,12 +1741,14 @@ namespace KeppyMIDIConverter
             }
             else
             {
+                if (ModifierKeys == Keys.Control)
+                    overridedefault = true;
                 foreach (string str in filenames)
                 {
                     if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
                     {
                         string[] saLvwItem = new string[4];
-                        string[] midiinfo = GetMoreInfoMIDI(str);
+                        string[] midiinfo = GetMoreInfoMIDI(str, overridedefault);
                         saLvwItem[0] = str;
                         saLvwItem[1] = midiinfo[1];
                         saLvwItem[2] = midiinfo[0];
