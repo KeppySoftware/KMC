@@ -18,11 +18,23 @@ using System.Globalization;
 using System.Resources;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace KeppyMIDIConverter
 {
     class RTF
     {
+        public static float CPUUsage = 0f;
+        public static float ActiveVoices = 0f;
+        public static long MIDILengthRAW;
+        public static long MIDICurrentPosRAW;
+        public static float RAWTotal;
+        public static float RAWConverted;
+        public static double LenRAWToDouble;
+        public static double CurRAWToDouble;
+        public static TimeSpan LenDoubleToSpan;
+        public static TimeSpan CurDoubleToSpan;
+
         private static Process thisProc = Process.GetCurrentProcess();
 
         private static void DisableEncoderButtons()
@@ -78,20 +90,10 @@ namespace KeppyMIDIConverter
 
         private static void UpdateText()
         {
-            float CPUUsage = 0f;
-            long MIDILengthRAW = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
-            long MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(MainWindow.KMCGlobals._recHandle);
-            float RAWTotal = ((float)MIDILengthRAW) / 1048576f;
-            float RAWConverted = ((float)MIDICurrentPosRAW) / 1048576f;
-            double LenRAWToDouble = Bass.BASS_ChannelBytes2Seconds(MainWindow.KMCGlobals._recHandle, MIDILengthRAW);
-            double CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(MainWindow.KMCGlobals._recHandle, MIDICurrentPosRAW);
-            TimeSpan LenDoubleToSpan = TimeSpan.FromSeconds(LenRAWToDouble);
-            TimeSpan CurDoubleToSpan = TimeSpan.FromSeconds(CurRAWToDouble);
-            Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref CPUUsage);
             string MIDILengthString = String.Format("{0}:{1}:{2}",
-                LenDoubleToSpan.Minutes.ToString().PadLeft(2, '0'),
-                LenDoubleToSpan.Seconds.ToString().PadLeft(2, '0'),
-                LenDoubleToSpan.Milliseconds.ToString().PadLeft(3, '0'));
+            LenDoubleToSpan.Minutes.ToString().PadLeft(2, '0'),
+            LenDoubleToSpan.Seconds.ToString().PadLeft(2, '0'),
+            LenDoubleToSpan.Milliseconds.ToString().PadLeft(3, '0'));
             string MIDICurrentString = String.Format("{0}:{1}:{2}",
                 CurDoubleToSpan.Minutes.ToString().PadLeft(2, '0'),
                 CurDoubleToSpan.Seconds.ToString().PadLeft(2, '0'),
@@ -106,8 +108,6 @@ namespace KeppyMIDIConverter
                 percentagefinal = percentage;
             MainWindow.KMCGlobals.PercentageProgress = percentagefinal.ToString("0.0%");
 
-            GetVoices();
-
             if (!MainWindow.KMCGlobals.RenderingMode)
             {
                 if (MainWindow.KMCGlobals.pictureset != 2)
@@ -116,8 +116,8 @@ namespace KeppyMIDIConverter
                     MainWindow.KMCGlobals.pictureset = 2;
                 }
                 MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("PlaybackStatus", MainWindow.cul),
-                            RAWConverted.ToString("0.00MB"), 
-                            MIDICurrentString, MIDILengthString, 
+                            RAWConverted.ToString("0.00MB"),
+                            MIDICurrentString, MIDILengthString,
                             MainWindow.KMCStatus.PlayedNotes, MainWindow.KMCStatus.TotalNotes);
             }
             else
@@ -187,7 +187,7 @@ namespace KeppyMIDIConverter
                     {
                         if (MainWindow.KMCGlobals.OldTimeThingy == false)
                             MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusSlowerNew", MainWindow.cul),
-                                RAWConverted.ToString("0.00"), percentagefinal.ToString("0.0%"), 
+                                RAWConverted.ToString("0.00"), percentagefinal.ToString("0.0%"),
                                 MainWindow.KMCStatus.EstimatedTime, MainWindow.KMCStatus.PassedTime, Convert.ToInt32(CPUUsage).ToString(),
                                 ((float)(CPUUsage / 100f)).ToString("0.0"));
                         else
@@ -259,8 +259,6 @@ namespace KeppyMIDIConverter
             }
             else if (Mode == 2) // Rendering/Playback
             {
-                float ActiveVoices = 0f;
-                Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref ActiveVoices);
                 MainWindow.Delegate.UsedVoices.Text = String.Format("{0}{1}/{2}", MainWindow.res_man.GetString("ActiveVoices", MainWindow.cul), Convert.ToInt32(ActiveVoices), MainWindow.KMCGlobals.LimitVoicesInt);
                 if (MainWindow.KMCGlobals.RenderingMode)
                 {
@@ -415,7 +413,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private static void GetVoices()
+        public static void GetVoices()
         {
             MainWindow.KMCChannelsVoices.ch1 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 0, (BASSMIDIEvent)0x20001);
             MainWindow.KMCChannelsVoices.ch2 = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 1, (BASSMIDIEvent)0x20001);

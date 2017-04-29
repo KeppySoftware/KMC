@@ -31,14 +31,14 @@ namespace KeppyMIDIConverter.Forms
             InitializeLanguage();
             SelectedSF = Target;
             SelectedSFLabel.Text = String.Format("{0}:\n{1}", MainWindow.res_man.GetString("BankNPresetSelectedSF", MainWindow.cul), Path.GetFileNameWithoutExtension(SelectedSF));
-            BankVal.Value = 0;
-            PresetVal.Value = 0;
+            DesBankVal.Value = 0;
+            DesPresetVal.Value = 0;
             if (Path.GetExtension(Target).ToLower() == ".sfz")
             {
-                label5.Enabled = false;
-                label4.Enabled = false;
-                DesBankVal.Enabled = false;
-                DesPresetVal.Enabled = false;
+                SrcBankLab.Enabled = false;
+                SrcPresetLab.Enabled = false;
+                SrcBankVal.Enabled = false;
+                SrcPresetVal.Enabled = false;
             }
             if (WindowMode == 1)
             {
@@ -53,10 +53,10 @@ namespace KeppyMIDIConverter.Forms
         private void InitializeLanguage()
         {
             Text = MainWindow.res_man.GetString("BankNPresetTitle", MainWindow.cul);
-            label5.Text = MainWindow.res_man.GetString("BankNPresetSrcPrst", MainWindow.cul);
-            label4.Text = MainWindow.res_man.GetString("BankNPresetSrcBank", MainWindow.cul);
-            label2.Text = MainWindow.res_man.GetString("BankNPresetDesPrst", MainWindow.cul);
-            label3.Text = MainWindow.res_man.GetString("BankNPresetDesBank", MainWindow.cul);
+            SrcBankLab.Text = MainWindow.res_man.GetString("BankNPresetSrcBank", MainWindow.cul);
+            SrcPresetLab.Text = MainWindow.res_man.GetString("BankNPresetSrcPrst", MainWindow.cul);
+            DesBankLab.Text = MainWindow.res_man.GetString("BankNPresetDesBank", MainWindow.cul);
+            DesPresetLab.Text = MainWindow.res_man.GetString("BankNPresetDesPrst", MainWindow.cul);
             label1.Text = MainWindow.res_man.GetString("BankNPresetSelectMsg", MainWindow.cul);
             label6.Text = MainWindow.res_man.GetString("BankNPresetDiscl", MainWindow.cul);
             WikipediaLink.Text = MainWindow.res_man.GetString("BankNPresetGuide", MainWindow.cul);
@@ -70,10 +70,10 @@ namespace KeppyMIDIConverter.Forms
 
         private void ConfirmBut_Click(object sender, EventArgs e)
         {
-            BankValueReturn = Convert.ToInt32(BankVal.Value);
-            PresetValueReturn = Convert.ToInt32(PresetVal.Value);
-            DesBankValueReturn = Convert.ToInt32(DesBankVal.Value);
-            DesPresetValueReturn = Convert.ToInt32(DesPresetVal.Value);
+            BankValueReturn = Convert.ToInt32(DesBankVal.Value);
+            PresetValueReturn = Convert.ToInt32(DesPresetVal.Value);
+            DesBankValueReturn = Convert.ToInt32(SrcBankVal.Value);
+            DesPresetValueReturn = Convert.ToInt32(SrcPresetVal.Value);
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -97,6 +97,11 @@ namespace KeppyMIDIConverter.Forms
             {
                 Process.Start("https://github.com/kaleidonKep99/Keppys-MIDI-Converter#main-languages-available");
             }
+        }
+
+        private void BankNPresetSel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

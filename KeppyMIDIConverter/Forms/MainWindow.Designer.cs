@@ -79,6 +79,7 @@
             this.BengaliOverride = new System.Windows.Forms.MenuItem();
             this.EnglishOverride = new System.Windows.Forms.MenuItem();
             this.EstonianOverride = new System.Windows.Forms.MenuItem();
+            this.FrenchOverride = new System.Windows.Forms.MenuItem();
             this.GermanOverride = new System.Windows.Forms.MenuItem();
             this.ItalianOverride = new System.Windows.Forms.MenuItem();
             this.JapaneseOverride = new System.Windows.Forms.MenuItem();
@@ -137,7 +138,7 @@
             this.UsedVoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.UsedVoices.Location = new System.Drawing.Point(12, 319);
             this.UsedVoices.Name = "UsedVoices";
-            this.UsedVoices.Size = new System.Drawing.Size(470, 13);
+            this.UsedVoices.Size = new System.Drawing.Size(453, 13);
             this.UsedVoices.TabIndex = 8;
             this.UsedVoices.Text = "Voices: 100000/100000";
             this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -151,19 +152,22 @@
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.VoiceLabel);
             this.SettingsBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsBox.Location = new System.Drawing.Point(490, 337);
+            this.SettingsBox.Location = new System.Drawing.Point(471, 337);
             this.SettingsBox.Name = "SettingsBox";
-            this.SettingsBox.Size = new System.Drawing.Size(150, 65);
+            this.SettingsBox.Size = new System.Drawing.Size(169, 65);
             this.SettingsBox.TabIndex = 12;
             this.SettingsBox.TabStop = false;
             this.SettingsBox.Text = "Settings";
             // 
             // AdvSettingsButton
             // 
+            this.AdvSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AdvSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.AdvSettingsButton.Location = new System.Drawing.Point(7, 38);
             this.AdvSettingsButton.Name = "AdvSettingsButton";
-            this.AdvSettingsButton.Size = new System.Drawing.Size(137, 20);
+            this.AdvSettingsButton.Size = new System.Drawing.Size(156, 20);
             this.AdvSettingsButton.TabIndex = 3;
             this.AdvSettingsButton.Text = "Advanced settings";
             this.AdvSettingsButton.UseVisualStyleBackColor = true;
@@ -171,9 +175,10 @@
             // 
             // VoiceLimit
             // 
+            this.VoiceLimit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.VoiceLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VoiceLimit.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VoiceLimit.Location = new System.Drawing.Point(94, 16);
+            this.VoiceLimit.Location = new System.Drawing.Point(113, 16);
             this.VoiceLimit.Margin = new System.Windows.Forms.Padding(0);
             this.VoiceLimit.Maximum = new decimal(new int[] {
             100000,
@@ -198,10 +203,12 @@
             // 
             // VoiceLabel
             // 
+            this.VoiceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.VoiceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.VoiceLabel.Location = new System.Drawing.Point(1, 18);
             this.VoiceLabel.Name = "VoiceLabel";
-            this.VoiceLabel.Size = new System.Drawing.Size(97, 13);
+            this.VoiceLabel.Size = new System.Drawing.Size(116, 13);
             this.VoiceLabel.TabIndex = 0;
             this.VoiceLabel.Text = "Voice limit:";
             this.VoiceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -212,9 +219,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentStatus.BackColor = System.Drawing.SystemColors.Control;
             this.CurrentStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.CurrentStatus.Location = new System.Drawing.Point(12, 411);
+            this.CurrentStatus.Location = new System.Drawing.Point(12, 408);
             this.CurrentStatus.Name = "CurrentStatus";
-            this.CurrentStatus.Size = new System.Drawing.Size(628, 12);
+            this.CurrentStatus.Size = new System.Drawing.Size(628, 15);
             this.CurrentStatus.Step = 1;
             this.CurrentStatus.TabIndex = 14;
             // 
@@ -233,7 +240,7 @@
             this.labelRMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.labelRMS.Location = new System.Drawing.Point(12, 301);
             this.labelRMS.Name = "labelRMS";
-            this.labelRMS.Size = new System.Drawing.Size(470, 13);
+            this.labelRMS.Size = new System.Drawing.Size(453, 13);
             this.labelRMS.TabIndex = 17;
             this.labelRMS.Text = "RMS sign";
             // 
@@ -244,7 +251,7 @@
             this.CurrentStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(409, 60);
+            this.CurrentStatusText.Size = new System.Drawing.Size(390, 60);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -260,10 +267,10 @@
             this.VolumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VolumeBar.AutoSize = false;
             this.VolumeBar.LargeChange = 1;
-            this.VolumeBar.Location = new System.Drawing.Point(490, 315);
+            this.VolumeBar.Location = new System.Drawing.Point(471, 315);
             this.VolumeBar.Maximum = 10000;
             this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(150, 15);
+            this.VolumeBar.Size = new System.Drawing.Size(169, 15);
             this.VolumeBar.TabIndex = 1;
             this.VolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.VolumeBar.Scroll += new System.EventHandler(this.VolumeBar_Scroll);
@@ -271,9 +278,9 @@
             // VolumeLabel
             // 
             this.VolumeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.VolumeLabel.Location = new System.Drawing.Point(490, 299);
+            this.VolumeLabel.Location = new System.Drawing.Point(471, 299);
             this.VolumeLabel.Name = "VolumeLabel";
-            this.VolumeLabel.Size = new System.Drawing.Size(150, 13);
+            this.VolumeLabel.Size = new System.Drawing.Size(169, 13);
             this.VolumeLabel.TabIndex = 19;
             this.VolumeLabel.Text = "Volume:";
             this.VolumeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -293,7 +300,7 @@
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Location = new System.Drawing.Point(12, 340);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(472, 62);
+            this.panel1.Size = new System.Drawing.Size(453, 62);
             this.panel1.TabIndex = 13;
             // 
             // loadingpic
@@ -301,7 +308,7 @@
             this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
             this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
             this.loadingpic.InitialImage = null;
-            this.loadingpic.Location = new System.Drawing.Point(410, 0);
+            this.loadingpic.Location = new System.Drawing.Point(391, 0);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(60, 60);
             this.loadingpic.TabIndex = 8;
@@ -563,6 +570,7 @@
             this.BengaliOverride,
             this.EnglishOverride,
             this.EstonianOverride,
+            this.FrenchOverride,
             this.GermanOverride,
             this.ItalianOverride,
             this.JapaneseOverride,
@@ -617,11 +625,19 @@
             this.EstonianOverride.Text = "Estonian (Eesti)";
             this.EstonianOverride.Click += new System.EventHandler(this.EstonianOverride_Click);
             // 
+            // FrenchOverride
+            // 
+            this.FrenchOverride.Enabled = false;
+            this.FrenchOverride.Index = 6;
+            this.FrenchOverride.Text = "French (Français)";
+            this.FrenchOverride.Visible = false;
+            this.FrenchOverride.Click += new System.EventHandler(this.FrenchOverride_Click);
+            // 
             // GermanOverride
             // 
             this.GermanOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.GermanOverride, global::KeppyMIDIConverter.Properties.Resources.Germany);
-            this.GermanOverride.Index = 6;
+            this.GermanOverride.Index = 7;
             this.GermanOverride.Text = "German (Deutsch)";
             this.GermanOverride.Click += new System.EventHandler(this.GermanOverride_Click);
             // 
@@ -629,7 +645,7 @@
             // 
             this.ItalianOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.ItalianOverride, global::KeppyMIDIConverter.Properties.Resources.Italy);
-            this.ItalianOverride.Index = 7;
+            this.ItalianOverride.Index = 8;
             this.ItalianOverride.Text = "Italian (Italiano)";
             this.ItalianOverride.Click += new System.EventHandler(this.ItalianOverride_Click);
             // 
@@ -637,7 +653,7 @@
             // 
             this.JapaneseOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.JapaneseOverride, global::KeppyMIDIConverter.Properties.Resources.Japan);
-            this.JapaneseOverride.Index = 8;
+            this.JapaneseOverride.Index = 9;
             this.JapaneseOverride.Text = "Japanese (日本語)";
             this.JapaneseOverride.Click += new System.EventHandler(this.JapaneseOverride_Click);
             // 
@@ -645,7 +661,7 @@
             // 
             this.KoreanOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.KoreanOverride, global::KeppyMIDIConverter.Properties.Resources.South_Korea);
-            this.KoreanOverride.Index = 9;
+            this.KoreanOverride.Index = 10;
             this.KoreanOverride.Text = "Korean (한국어)";
             this.KoreanOverride.Click += new System.EventHandler(this.KoreanOverride_Click);
             // 
@@ -653,7 +669,7 @@
             // 
             this.RussianOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.RussianOverride, global::KeppyMIDIConverter.Properties.Resources.Russian_Federation);
-            this.RussianOverride.Index = 10;
+            this.RussianOverride.Index = 11;
             this.RussianOverride.Text = "Russian (Pу́сский)";
             this.RussianOverride.Click += new System.EventHandler(this.RussianOverride_Click);
             // 
@@ -661,7 +677,7 @@
             // 
             this.ChineseCNOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.ChineseCNOverride, global::KeppyMIDIConverter.Properties.Resources.China);
-            this.ChineseCNOverride.Index = 11;
+            this.ChineseCNOverride.Index = 12;
             this.ChineseCNOverride.Text = "Simplified Chinese (简化字, PRC)";
             this.ChineseCNOverride.Click += new System.EventHandler(this.ChineseCN_Click);
             // 
@@ -669,7 +685,7 @@
             // 
             this.SpanishOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.SpanishOverride, global::KeppyMIDIConverter.Properties.Resources.Spain);
-            this.SpanishOverride.Index = 12;
+            this.SpanishOverride.Index = 13;
             this.SpanishOverride.Text = "Spanish (Español)";
             this.SpanishOverride.Click += new System.EventHandler(this.SpanishOverride_Click);
             // 
@@ -677,7 +693,7 @@
             // 
             this.ThaiTHOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.ThaiTHOverride, global::KeppyMIDIConverter.Properties.Resources.Thailand);
-            this.ThaiTHOverride.Index = 13;
+            this.ThaiTHOverride.Index = 14;
             this.ThaiTHOverride.Text = "Thai (ภาษาไทย)";
             this.ThaiTHOverride.Click += new System.EventHandler(this.ThaiTHOverride_Click);
             // 
@@ -685,7 +701,7 @@
             // 
             this.ChineseHKOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.ChineseHKOverride, global::KeppyMIDIConverter.Properties.Resources.Hong_Kong);
-            this.ChineseHKOverride.Index = 14;
+            this.ChineseHKOverride.Index = 15;
             this.ChineseHKOverride.Text = "Traditional Chinese (廣東話, Hong Kong)";
             this.ChineseHKOverride.Click += new System.EventHandler(this.ChineseHK_Click);
             // 
@@ -693,7 +709,7 @@
             // 
             this.ChineseTWOverride.Enabled = false;
             this.VistaMenuSys.SetImage(this.ChineseTWOverride, global::KeppyMIDIConverter.Properties.Resources.Taiwan);
-            this.ChineseTWOverride.Index = 15;
+            this.ChineseTWOverride.Index = 16;
             this.ChineseTWOverride.Text = "Traditional Chinese (台灣, Taiwan)";
             this.ChineseTWOverride.Click += new System.EventHandler(this.ChineseTW_Click);
             // 
@@ -979,6 +995,7 @@
         public System.Windows.Forms.PictureBox loadingpic;
         private System.Windows.Forms.MenuItem ThaiTHOverride;
         private System.ComponentModel.BackgroundWorker GarbageCollector;
+        private System.Windows.Forms.MenuItem FrenchOverride;
     }
 }
 

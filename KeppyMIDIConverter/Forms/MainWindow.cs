@@ -500,7 +500,6 @@ namespace KeppyMIDIConverter
                         Settings.Close();
                     }
                     Delegate = this;
-                    GarbageCollector.RunWorkerAsync();
                 }
                 catch (Exception exception2)
                 {
@@ -719,7 +718,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void LoadSoundFontsToStream(int type)
+        private void BASSLoadSoundFonts(int type)
         {
             if (KMCGlobals.Soundfonts.Length == 0)
             {
@@ -733,6 +732,7 @@ namespace KeppyMIDIConverter
                     fonts[0].sbank = -1;
                     fonts[0].dpreset = -1;
                     fonts[0].dbank = 0;
+                    fonts[0].dbanklsb = 0;
                     if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[0].font, ((float)KMCGlobals.Volume / 10000)); }
                     BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, 1);
                 }
@@ -756,6 +756,7 @@ namespace KeppyMIDIConverter
                         fonts[sfnum].sbank = Convert.ToInt32(matches[1].ToString());
                         fonts[sfnum].dpreset = Convert.ToInt32(matches[2].ToString());
                         fonts[sfnum].dbank = Convert.ToInt32(matches[3].ToString());
+                        fonts[sfnum].dbanklsb = 0;
                         if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
                         sfnum++;
                     }
@@ -766,12 +767,14 @@ namespace KeppyMIDIConverter
                         fonts[sfnum].sbank = -1;
                         fonts[sfnum].dpreset = -1;
                         fonts[sfnum].dbank = 0;
+                        fonts[sfnum].dbanklsb = 0;
                         if (type == 0) { BassMidi.BASS_MIDI_FontSetVolume(fonts[sfnum].font, ((float)KMCGlobals.Volume / 10000)); }
                         sfnum++;
                     }
                 }
                 BassMidi.BASS_MIDI_StreamSetFonts(KMCGlobals._recHandle, fonts, fonts.Length);
             }
+            BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
         }
 
         private void BASSStreamSystem(String str, int type)
@@ -780,13 +783,13 @@ namespace KeppyMIDIConverter
             {
                 Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
                 if (type == 0)
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
+                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, KMCGlobals.Frequency);
                 else
                 {
                     Int32 buflen = Bass.BASS_GetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD);
                     BASS_INFO info = new BASS_INFO();
                     Bass.BASS_GetInfo(info);
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
+                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, KMCGlobals.Frequency);
                     KMCGlobals.UpdateRate = (buflen * 2);
                     buflen += info.minbuf + 20;
                     Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, buflen);
@@ -799,8 +802,7 @@ namespace KeppyMIDIConverter
                 if (Path.GetFileNameWithoutExtension(str).Length >= 49)
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                 else
-                    KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);
-                LoadSoundFontsToStream(type);
+                    KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);             
                 KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
                 KMCGlobals._plm.CalcRMS = true;
                 BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
@@ -819,7 +821,7 @@ namespace KeppyMIDIConverter
                 if (type == 0)
                     KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
                 else
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_MIDI_DECAYEND | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
+                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                 BASS_MIDI_EVENT[] eventChunk;
                 try
@@ -853,10 +855,8 @@ namespace KeppyMIDIConverter
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                 else
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);
-                LoadSoundFontsToStream(type);
                 KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
                 KMCGlobals._plm.CalcRMS = true;
-                BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
             }
             catch (Exception ex)
             {
@@ -999,8 +999,6 @@ namespace KeppyMIDIConverter
             int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
             KMCGlobals.OriginalTempo = 60000000 / tempo;
 
-            long MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(MainWindow.KMCGlobals._recHandle);
-
             if (MainWindow.KMCGlobals.TempoOverride == true)
                 BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, 60000000 / KMCGlobals.FinalTempo);
             if (KMCGlobals.FXDisabled == true)
@@ -1014,12 +1012,13 @@ namespace KeppyMIDIConverter
 
             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
+            GetConversionInformation();
 
             KMCStatus.PassedTime = "?:??:??";
             KMCStatus.EstimatedTime = "?:??:??";
 
             KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
-            KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(MIDICurrentPosRAW / 0x100000L));
+            KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
             Bass.BASS_ChannelUpdate(KMCGlobals._recHandle, KMCGlobals.UpdateRate);
 
             System.Threading.Thread.Sleep(1);
@@ -1034,28 +1033,65 @@ namespace KeppyMIDIConverter
         {
             int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
             KMCGlobals.OriginalTempo = 60000000 / tempo;
-            if (MainWindow.KMCGlobals.TempoOverride == true)
+            byte[] buffer = new byte[length];
+            if (MainWindow.KMCGlobals.TempoOverride)
                 BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, 60000000 / KMCGlobals.FinalTempo);
             TimeSpan timespent = DateTime.Now - starttime;
             long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
-            KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
-            KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
             int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
             TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
             string str6 = span3.Hours.ToString() + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
             string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
-
-            byte[] buffer = new byte[length];
-            if (MainWindow.KMCGlobals.TempoOverride == true)
-            {
-                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals.FinalTempo);
-            }
+            GetConversionInformation();
 
             int decoded = Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
-            if (decoded == (int) - 1) return false;
+            if (decoded < 0)
+            {
+                KMCGlobals.CancellationPendingValue = 2;
+                return false;
+            }
 
             KMCStatus.PassedTime = str7;
             KMCStatus.EstimatedTime = str6;
+
+            return true;
+        }
+
+        private bool BASSEncodingEngineRT(double[] CustomFramerates, ref int pos, ref uint es, DateTime starttime)
+        {
+            double fpssim = FPSSimulator.NextDouble() * (CustomFramerates[0] - CustomFramerates[1]) + CustomFramerates[1];
+            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
+            byte[] buffer = new byte[length];
+            TimeSpan timespent = DateTime.Now - starttime;
+            long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
+            float num8 = ((float)num6) / 1048576f;
+            int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
+            TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
+            string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
+            GetConversionInformation();
+
+            while (es < KMCGlobals.eventc && KMCGlobals.events[es].pos < pos + length)
+            {
+                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, KMCGlobals.events[es].chan, KMCGlobals.events[es].eventtype, KMCGlobals.events[es].param);
+                es++;
+            }
+            int got = Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
+
+            if (got < 0)
+            {
+                KMCGlobals.CancellationPendingValue = 2;
+                return false;
+            }
+            pos += got;
+            if (es == KMCGlobals.eventc)
+            {
+                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_END, 0);
+            }
+
+            float fpsstring = 1 / (float)fpssim;
+
+            KMCStatus.PassedTime = str7;
+            KMCStatus.EstimatedTime = "??:??";
 
             return true;
         }
@@ -1137,8 +1173,7 @@ namespace KeppyMIDIConverter
             {
                 try
                 {
-                    PlayConversionStart();
-                    Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
+                    PlayConversionStart();         
                     bool KeepLooping = true;
                     while (KeepLooping)
                     {
@@ -1149,19 +1184,21 @@ namespace KeppyMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
                             BASSStreamSystem(str, 0);
+                            BASSLoadSoundFonts(0);
                             BASSVSTInit(KMCGlobals._recHandle);
                             BASSEffectSettings();
                             BASSEncoderInit(KMCGlobals._recHandle, KMCGlobals.CurrentEncoder, str);
                             DateTime starttime = DateTime.Now;
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
-                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 0.01666666666666666666666666666667));
+                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 0.03));
                             KMCGlobals.IsKMCNowExporting = true;
+                            bool DoINeedToContinue;
                             while (true)
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    if (!BASSEncodingEngine(pos, length, starttime))
-                                        break;
+                                    DoINeedToContinue = BASSEncodingEngine(pos, length, starttime);
+                                    if (!DoINeedToContinue) break;
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
                                 {
@@ -1264,6 +1301,7 @@ namespace KeppyMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
                             BASSStreamSystemRT(str, 0);
+                            BASSLoadSoundFonts(0);
                             BASSVSTInit(KMCGlobals._recHandle);
                             BASSEffectSettings();
                             BASSEncoderInit(KMCGlobals._recHandle, KMCGlobals.CurrentEncoder, str);
@@ -1272,47 +1310,13 @@ namespace KeppyMIDIConverter
                             uint es = 0;
                             FPSSimulator.NextDouble();
                             KMCGlobals.IsKMCNowExporting = true;
+                            bool DoINeedToContinue;
                             for (pos = 0, es = 0; ; )
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    double fpssim = FPSSimulator.NextDouble() * (CustomFramerates[0] - CustomFramerates[1]) + CustomFramerates[1];
-                                    int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
-                                    byte[] buffer = new byte[Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim)];
-                                    TimeSpan timespent = DateTime.Now - starttime;
-                                    long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
-                                    float num8 = ((float)num6) / 1048576f;
-                                    float num11 = 0f;
-                                    Bass.BASS_ChannelGetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref num11);
-                                    KMCGlobals.ActiveVoicesInt = Convert.ToInt32(num11);
-                                    KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
-                                    KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(num6 / 0x100000L));
-                                    int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
-                                    TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
-                                    string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
-
-                                    while (es < KMCGlobals.eventc && KMCGlobals.events[es].pos < pos + length)
-                                    {
-                                        BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, KMCGlobals.events[es].chan, KMCGlobals.events[es].eventtype, KMCGlobals.events[es].param);
-                                        es++;
-                                    }
-                                    int got = Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
-
-                                    if (got < 0)
-                                    {
-                                        KMCGlobals.CancellationPendingValue = 2;
-                                        break;
-                                    }
-                                    pos += got;
-                                    if (es == KMCGlobals.eventc)
-                                    {
-                                        BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_END, 0);
-                                    }
-
-                                    float fpsstring = 1 / (float)fpssim;
-
-                                    KMCStatus.PassedTime = str7;
-                                    KMCStatus.EstimatedTime = "??:??";
+                                    DoINeedToContinue = BASSEncodingEngineRT(CustomFramerates, ref pos, ref es, starttime);
+                                    if (!DoINeedToContinue) break;
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
                                 {
@@ -1421,6 +1425,7 @@ namespace KeppyMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             string encpath = null;
                             BASSStreamSystem(str, 1);
+                            BASSLoadSoundFonts(1);
                             BASSVSTInit(KMCGlobals._recHandle);
                             BASSEffectSettings();
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
@@ -1906,8 +1911,6 @@ namespace KeppyMIDIConverter
             return listBox.SelectedItems.Contains(item);
         }
 
-
-
         private void RenderingTimer_Tick(object sender, EventArgs e)
         {
             try
@@ -2138,6 +2141,7 @@ namespace KeppyMIDIConverter
                 ChineseTWOverride.Enabled = true;
                 EnglishOverride.Enabled = true;
                 EstonianOverride.Enabled = true;
+                FrenchOverride.Enabled = true;
                 GermanOverride.Enabled = true;
                 RussianOverride.Enabled = true;
                 ItalianOverride.Enabled = true;
@@ -2171,6 +2175,7 @@ namespace KeppyMIDIConverter
                 ChineseTWOverride.Enabled = false;
                 EnglishOverride.Enabled = false;
                 EstonianOverride.Enabled = false;
+                FrenchOverride.Enabled = false;
                 GermanOverride.Enabled = false;
                 RussianOverride.Enabled = false;
                 ItalianOverride.Enabled = false;
@@ -2293,16 +2298,19 @@ namespace KeppyMIDIConverter
         {
             try
             {
+                RenderingTimer.Enabled = false;
                 Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
                 RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
                 Settings.SetValue("selectedlanguage", selectedlanguage, Microsoft.Win32.RegistryValueKind.String);
                 Settings.Close();
                 InitializeLanguage();
+                RenderingTimer.Enabled = true;
             }
             catch (Exception exception)
             {
                 KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
+                RenderingTimer.Enabled = true;
             }
         }
 
@@ -2324,6 +2332,11 @@ namespace KeppyMIDIConverter
         private void GermanOverride_Click(object sender, EventArgs e)
         {
             ChangeLanguage("de-DE");
+        }
+
+        private void FrenchOverride_Click(object sender, EventArgs e)
+        {
+            ChangeLanguage("fr-FR");
         }
 
         private void EstonianOverride_Click(object sender, EventArgs e)
@@ -2410,6 +2423,23 @@ namespace KeppyMIDIConverter
                 GC.WaitForPendingFinalizers();
                 System.Threading.Thread.Sleep(1);
             }
+        }
+
+        private void GetConversionInformation()
+        {
+            RTF.MIDILengthRAW = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
+            RTF.MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
+            RTF.RAWTotal = ((float)RTF.MIDILengthRAW) / 1048576f;
+            RTF.RAWConverted = ((float)RTF.MIDICurrentPosRAW) / 1048576f;
+            RTF.LenRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDILengthRAW);
+            RTF.CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDICurrentPosRAW);
+            RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble);
+            RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble);
+            Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
+            Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
+            KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(RTF.MIDILengthRAW / 0x100000L));
+            KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
+            RTF.GetVoices();
         }
     }
 

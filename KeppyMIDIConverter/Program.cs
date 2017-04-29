@@ -265,8 +265,8 @@ namespace KeppyMIDIConverter
                 return CultureInfo.CreateSpecificCulture("ru-RU");
             else if (ci.Name == "th-TH")
                 return CultureInfo.CreateSpecificCulture("th-TH");
-            // else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
-            //     return CultureInfo.CreateSpecificCulture("fr");
+           else if (ci.Name == "fr-BE" | ci.Name == "fr-CA" | ci.Name == "fr-FR" | ci.Name == "fr-LU" | ci.Name == "fr-MC" | ci.Name == "fr-CH")
+                return CultureInfo.CreateSpecificCulture("en-US"); // Not done yet, should be fr-FR
             else if (ci.Name == "ko-KR")
                 return CultureInfo.CreateSpecificCulture("ko-KR");
             else if (ci.Name == "de-DE" | ci.Name == "de-AT" | ci.Name == "de-CH")
