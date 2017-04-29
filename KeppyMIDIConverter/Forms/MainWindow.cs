@@ -500,6 +500,8 @@ namespace KeppyMIDIConverter
                         Settings.Close();
                     }
                     Delegate = this;
+                    GarbageCollector.RunWorkerAsync();
+                    GetInfoWorker.RunWorkerAsync();
                 }
                 catch (Exception exception2)
                 {
@@ -1012,7 +1014,6 @@ namespace KeppyMIDIConverter
 
             Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
-            GetConversionInformation();
 
             KMCStatus.PassedTime = "?:??:??";
             KMCStatus.EstimatedTime = "?:??:??";
@@ -1042,7 +1043,6 @@ namespace KeppyMIDIConverter
             TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
             string str6 = span3.Hours.ToString() + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
             string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
-            GetConversionInformation();
 
             int decoded = Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
             if (decoded < 0)
@@ -1068,7 +1068,6 @@ namespace KeppyMIDIConverter
             int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
             TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
             string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
-            GetConversionInformation();
 
             while (es < KMCGlobals.eventc && KMCGlobals.events[es].pos < pos + length)
             {
@@ -1127,6 +1126,11 @@ namespace KeppyMIDIConverter
             KMCGlobals.CurrentStatusTextString = message;
             KMCGlobals.ActiveVoicesInt = 0;
             KMCGlobals.NewWindowName = null;
+            KMCGlobals.IsKMCBusy = false;
+            KMCGlobals.RenderingMode = false;
+            KMCGlobals.DoNotCountNotes = false;
+            KMCGlobals.eventc = 0;
+            KMCGlobals.events = null;
             if (type == 0)
             {
                 MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -2421,25 +2425,32 @@ namespace KeppyMIDIConverter
             {
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
-                System.Threading.Thread.Sleep(1);
+                System.Threading.Thread.Sleep(100);
             }
         }
 
-        private void GetConversionInformation()
+        private void GetInfoWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            RTF.MIDILengthRAW = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
-            RTF.MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
-            RTF.RAWTotal = ((float)RTF.MIDILengthRAW) / 1048576f;
-            RTF.RAWConverted = ((float)RTF.MIDICurrentPosRAW) / 1048576f;
-            RTF.LenRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDILengthRAW);
-            RTF.CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDICurrentPosRAW);
-            RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble);
-            RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble);
-            Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
-            Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
-            KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(RTF.MIDILengthRAW / 0x100000L));
-            KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
-            RTF.GetVoices();
+            while (true)
+            {
+                if (KMCGlobals.IsKMCBusy || KMCGlobals.IsKMCNowExporting)
+                {
+                    RTF.MIDILengthRAW = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
+                    RTF.MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
+                    RTF.RAWTotal = ((float)RTF.MIDILengthRAW) / 1048576f;
+                    RTF.RAWConverted = ((float)RTF.MIDICurrentPosRAW) / 1048576f;
+                    RTF.LenRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDILengthRAW);
+                    RTF.CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDICurrentPosRAW);
+                    RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble);
+                    RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble);
+                    Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
+                    Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
+                    KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(RTF.MIDILengthRAW / 0x100000L));
+                    KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
+                    RTF.GetVoices();
+                }
+                System.Threading.Thread.Sleep(10);
+            }
         }
     }
 

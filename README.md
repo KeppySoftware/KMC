@@ -50,6 +50,7 @@ Bengali | Yes
 Chinese (Simplified) | Yes
 Chinese (Traditional) | Yes
 English | Yes
+French | Not yet
 Estonian | Yes
 German | Yes
 Italian | Yes

@@ -118,7 +118,8 @@ namespace KeppyMIDIConverter
                 MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("PlaybackStatus", MainWindow.cul),
                             RAWConverted.ToString("0.00MB"),
                             MIDICurrentString, MIDILengthString,
-                            MainWindow.KMCStatus.PlayedNotes, MainWindow.KMCStatus.TotalNotes);
+                            MainWindow.KMCStatus.PlayedNotes.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("de")),
+                            MainWindow.KMCStatus.TotalNotes.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("de")));
             }
             else
             {

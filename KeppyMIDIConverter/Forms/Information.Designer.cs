@@ -144,10 +144,10 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.BASSINFO2);
             this.panel1.Controls.Add(this.BASSINFO);
-            this.panel1.Location = new System.Drawing.Point(6, 214);
+            this.panel1.Location = new System.Drawing.Point(5, 214);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(525, 58);
             this.panel1.TabIndex = 8;
@@ -155,9 +155,9 @@
             // BASSINFO2
             // 
             this.BASSINFO2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BASSINFO2.Location = new System.Drawing.Point(261, 0);
+            this.BASSINFO2.Location = new System.Drawing.Point(263, 0);
             this.BASSINFO2.Name = "BASSINFO2";
-            this.BASSINFO2.Size = new System.Drawing.Size(260, 54);
+            this.BASSINFO2.Size = new System.Drawing.Size(260, 56);
             this.BASSINFO2.TabIndex = 1;
             this.BASSINFO2.Text = "A\r\na\r\na\r\na";
             this.BASSINFO2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -167,7 +167,7 @@
             this.BASSINFO.Dock = System.Windows.Forms.DockStyle.Left;
             this.BASSINFO.Location = new System.Drawing.Point(0, 0);
             this.BASSINFO.Name = "BASSINFO";
-            this.BASSINFO.Size = new System.Drawing.Size(260, 54);
+            this.BASSINFO.Size = new System.Drawing.Size(260, 56);
             this.BASSINFO.TabIndex = 0;
             this.BASSINFO.Text = "A\r\na\r\na\r\na";
             this.BASSINFO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

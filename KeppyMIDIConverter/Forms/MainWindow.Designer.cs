@@ -111,6 +111,7 @@
             this.ConverterProcessRT = new System.ComponentModel.BackgroundWorker();
             this.MIDIList = new System.Windows.Forms.ListView();
             this.GarbageCollector = new System.ComponentModel.BackgroundWorker();
+            this.GetInfoWorker = new System.ComponentModel.BackgroundWorker();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -873,6 +874,10 @@
             // 
             this.GarbageCollector.DoWork += new System.ComponentModel.DoWorkEventHandler(this.GarbageCollector_DoWork);
             // 
+            // GetInfoWorker
+            // 
+            this.GetInfoWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.GetInfoWorker_DoWork);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -996,6 +1001,7 @@
         private System.Windows.Forms.MenuItem ThaiTHOverride;
         private System.ComponentModel.BackgroundWorker GarbageCollector;
         private System.Windows.Forms.MenuItem FrenchOverride;
+        private System.ComponentModel.BackgroundWorker GetInfoWorker;
     }
 }
 
