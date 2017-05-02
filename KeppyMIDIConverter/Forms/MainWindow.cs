@@ -1672,22 +1672,51 @@ namespace KeppyMIDIConverter
                 double num9 = Bass.BASS_ChannelBytes2Seconds(time, pos);
                 TimeSpan span = TimeSpan.FromSeconds(num9);
 
-
-
                 // Get length of MIDI
                 string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
 
                 // Get note count
-                int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
-                BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
-                BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
+                BASS_MIDI_EVENT[] eventChunk;
                 int notes = 0;
-                for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
-                    
+
+                if ((length / 1024f) > 500)
+                {
+                    DialogResult dialogResult = MessageBox.Show("The size of the MIDI is bigger than 500MB.\n\nKMC needs a lot of RAM to get the full information.\nIf you don't have enough RAM, the computer might get unresponsive for a few minutes, or crash.\n\nAre you sure you want to continue?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        UInt32 count = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, null); // Counts all the events in the MIDI         
+                        BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
+                        for (int i = 0; i <= (count / 50000000); i++)
+                        {
+                            int subCount = Math.Min(50000000, (int)count - (i * 50000000));
+                            eventChunk = new BASS_MIDI_EVENT[subCount];
+                            BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, eventChunk, i * 50000000, subCount); //Falcosoft: to avoid marshalling errors pass the smaller local buffer to the function   
+                            eventChunk.CopyTo(events, i * 50000000); //Falcosoft: copy local buffer to global one at each iteration
+                        }
+                        eventChunk = null;
+                        for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
+                    }
+                }
+                else
+                {
+                    UInt32 count = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, null); // Counts all the events in the MIDI         
+                    BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
+                    for (int i = 0; i <= (count / 50000000); i++)
+                    {
+                        int subCount = Math.Min(50000000, (int)count - (i * 50000000));
+                        eventChunk = new BASS_MIDI_EVENT[subCount];
+                        BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, eventChunk, i * 50000000, subCount); //Falcosoft: to avoid marshalling errors pass the smaller local buffer to the function   
+                        eventChunk.CopyTo(events, i * 50000000); //Falcosoft: copy local buffer to global one at each iteration
+                    }
+                    eventChunk = null;
+                    for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
+                }
+
                 Bass.BASS_Free();
                 return new string[] { str4, notes.ToString("N0"), size, };
             }
             catch (Exception ex) {
+                MessageBox.Show(String.Format("There's no enough memory to get the info for this MIDI:\n{0}", str), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return new string[] { "N/A", "N/A", "N/A", };
             }     
         }
@@ -1706,18 +1735,30 @@ namespace KeppyMIDIConverter
 
         private void importMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Boolean overridedefault = false;
             MIDIImport.Title = res_man.GetString("ImportMIDIWindow", cul);
             MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
+            if (ModifierKeys == Keys.Control)
+            {
+                overridedefault = true;
+                MessageBox.Show("The converter will ignore the size of the MIDIs, and get their full info anyway.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             if (this.MIDIImport.ShowDialog() == DialogResult.OK)
             {
-                AddFilesToList(MIDIImport.FileNames, true);
+                AddFilesToList(MIDIImport.FileNames, true, overridedefault);
             }
         }
 
         private void MIDIList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
+            Boolean overridedefault = false;
+            if (ModifierKeys == Keys.Control)
+            {
+                overridedefault = true;
+                MessageBox.Show("The converter will ignore the size of the MIDIs, and get their full info anyway.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            AddFilesToList(s, false);
+            AddFilesToList(s, false, overridedefault);
         }
 
         private void MIDIList_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -1728,36 +1769,48 @@ namespace KeppyMIDIConverter
                 e.Effect = DragDropEffects.None;
         }
 
-        private void AddFilesToList(String[] filenames, Boolean IsImportDialog)
+        private void AddFilesToList(String[] filenames, Boolean IsImportDialog, Boolean GetEntireSize)
         {
-            bool overridedefault = false;
             if (ModifierKeys == Keys.Shift)
             {
-                Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
-                    "How many times do you want to add it?", "Keppy's MIDI Converter", "1"));
-
-                for (int i = 0; i < UserAnswer; i++)
+                foreach (string str in filenames)
                 {
-                    string[] saLvwItem = new string[4];
-                    string[] midiinfo = GetMoreInfoMIDI(filenames[0], false);
-                    saLvwItem[0] = filenames[0];
-                    saLvwItem[1] = midiinfo[1];
-                    saLvwItem[2] = midiinfo[0];
-                    saLvwItem[3] = midiinfo[2];
-                    ListViewItem lvi = new ListViewItem(saLvwItem);
-                    ToAddOrNotToAdd(lvi, midiinfo[1], filenames[0]);
+                    if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi")
+                    {
+                        Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
+                            String.Format("How many times do you want to add this MIDI?\n{0}", str), "Keppy's MIDI Converter", "1"));
+
+                        if (UserAnswer == 0 || UserAnswer == null) UserAnswer = 1;
+
+                        for (int i = 0; i < UserAnswer; i++)
+                        {
+                            string[] saLvwItem = new string[4];
+                            string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
+                            saLvwItem[0] = str;
+                            saLvwItem[1] = midiinfo[1];
+                            saLvwItem[2] = midiinfo[0];
+                            saLvwItem[3] = midiinfo[2];
+                            ListViewItem lvi = new ListViewItem(saLvwItem);
+                            ToAddOrNotToAdd(lvi, midiinfo[1], filenames[0]);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
-                if (ModifierKeys == Keys.Control)
-                    overridedefault = true;
                 foreach (string str in filenames)
                 {
-                    if (Path.GetExtension(str).ToLower() == ".mid" | Path.GetExtension(str).ToLower() == ".midi" | Path.GetExtension(str).ToLower() == ".kar" | Path.GetExtension(str).ToLower() == ".rmi")
+                    if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi")
                     {
+                        MessageBox.Show("ok");
                         string[] saLvwItem = new string[4];
-                        string[] midiinfo = GetMoreInfoMIDI(str, overridedefault);
+                        MessageBox.Show("ok2");
+                        string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
+                        MessageBox.Show("ok3");
                         saLvwItem[0] = str;
                         saLvwItem[1] = midiinfo[1];
                         saLvwItem[2] = midiinfo[0];
