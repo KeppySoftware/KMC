@@ -1806,11 +1806,8 @@ namespace KeppyMIDIConverter
                 {
                     if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi")
                     {
-                        MessageBox.Show("ok");
                         string[] saLvwItem = new string[4];
-                        MessageBox.Show("ok2");
                         string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
-                        MessageBox.Show("ok3");
                         saLvwItem[0] = str;
                         saLvwItem[1] = midiinfo[1];
                         saLvwItem[2] = midiinfo[0];
