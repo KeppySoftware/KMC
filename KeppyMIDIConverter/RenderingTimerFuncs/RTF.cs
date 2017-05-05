@@ -24,8 +24,8 @@ namespace KeppyMIDIConverter
 {
     class RTF
     {
-        public static float CPUUsage = 0f;
-        public static float ActiveVoices = 0f;
+        public static float CPUUsage = 0.0f;
+        public static float ActiveVoices = 0.0f;
         public static long MIDILengthRAW;
         public static long MIDICurrentPosRAW;
         public static float RAWTotal;
@@ -88,16 +88,36 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private static String ReturnOutputText(TimeSpan TimeToCheck)
+        {
+            if (LenDoubleToSpan.Hours >= 10) return @"hh\:mm\:ss\.f";
+            else
+            {
+                if (LenDoubleToSpan.Hours >= 1) return @"h\:mm\:ss\.f";
+                else
+                {
+                    if (LenDoubleToSpan.Minutes >= 10) return @"mm\:ss\.f";
+                    else
+                    {
+                        if (LenDoubleToSpan.Minutes >= 1) return @"m\:ss\.f";
+                        else
+                        {
+                            if (LenDoubleToSpan.Seconds >= 10) return @"ss\.f";
+                            else return @"s\.f";
+                        }
+                    }
+                }
+            }
+        }
+
         private static void UpdateText()
         {
-            string MIDILengthString = String.Format("{0}:{1}:{2}",
-            LenDoubleToSpan.Minutes.ToString().PadLeft(2, '0'),
-            LenDoubleToSpan.Seconds.ToString().PadLeft(2, '0'),
-            LenDoubleToSpan.Milliseconds.ToString().PadLeft(3, '0'));
-            string MIDICurrentString = String.Format("{0}:{1}:{2}",
-                CurDoubleToSpan.Minutes.ToString().PadLeft(2, '0'),
-                CurDoubleToSpan.Seconds.ToString().PadLeft(2, '0'),
-                CurDoubleToSpan.Milliseconds.ToString().PadLeft(3, '0'));
+            String Time = ReturnOutputText(LenDoubleToSpan);
+            String TotalNotesLength = "";
+            for (int i = 1; i <= MainWindow.KMCStatus.TotalNotes.ToString().Length; i++) TotalNotesLength += "0";
+
+            string MIDILengthString = LenDoubleToSpan.ToString(Time);
+            string MIDICurrentString = CurDoubleToSpan.ToString(Time);
             float percentage = RAWConverted / RAWTotal;
             float percentagefinal;
             if (percentage * 100 < 0)
@@ -115,11 +135,18 @@ namespace KeppyMIDIConverter
                     MainWindow.Delegate.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convprwo;
                     MainWindow.KMCGlobals.pictureset = 2;
                 }
-                MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("PlaybackStatus", MainWindow.cul),
+
+                if (!MainWindow.KMCGlobals.DoNotCountNotes) MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("PlaybackStatus", MainWindow.cul),
                             RAWConverted.ToString("0.00MB"),
                             MIDICurrentString, MIDILengthString,
-                            MainWindow.KMCStatus.PlayedNotes.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("de")),
-                            MainWindow.KMCStatus.TotalNotes.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("de")));
+                            MainWindow.KMCStatus.PlayedNotes.ToString(TotalNotesLength, System.Globalization.CultureInfo.GetCultureInfo("de")),
+                            MainWindow.KMCStatus.TotalNotes.ToString(TotalNotesLength, System.Globalization.CultureInfo.GetCultureInfo("de")));
+
+                else MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("PlaybackStatus", MainWindow.cul),
+                            RAWConverted.ToString("0.00MB"),
+                            MIDICurrentString, MIDILengthString,
+                            "N/A",
+                            "N/A");
             }
             else
             {

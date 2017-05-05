@@ -1433,16 +1433,24 @@ namespace KeppyMIDIConverter
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                             int count = BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
                             // cac
-                            BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
-                            BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
                             int notes = 0;
-                            for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
                             if (!KMCGlobals.DoNotCountNotes)
                             {
-                                KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
-                                int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
+                                try
+                                {
+                                    BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
+                                    BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
+                                    for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
+                                    KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
+                                    int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
+                                    KMCStatus.TotalNotes = notes;
+                                }
+                                catch (Exception ex)
+                                {
+                                    WriteToConsole(ex);
+                                    KMCGlobals.DoNotCountNotes = true;
+                                }
                             }
-                            KMCStatus.TotalNotes = notes;
                             KMCGlobals.IsKMCNowExporting = true;
                             Bass.BASS_ChannelPlay(KMCGlobals._recHandle, false);
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 1.0));
@@ -2323,7 +2331,7 @@ namespace KeppyMIDIConverter
             {
                 System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convstart;
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
-                player.Play();
+                player.PlaySync();
             }
             Settings.Close();
         }

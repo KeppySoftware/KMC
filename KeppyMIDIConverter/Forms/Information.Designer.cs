@@ -39,9 +39,7 @@
             this.Tipperino = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.BASSINFO2 = new System.Windows.Forms.Label();
-            this.BASSINFO = new System.Windows.Forms.Label();
+            this.TranslationInfo = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.InfoPg = new System.Windows.Forms.TabPage();
             this.UpdtPg = new System.Windows.Forms.TabPage();
@@ -51,7 +49,6 @@
             this.CFU = new System.Windows.Forms.Button();
             this.DonateBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.InfoPg.SuspendLayout();
             this.UpdtPg.SuspendLayout();
@@ -75,8 +72,9 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(460, 312);
+            this.button1.Location = new System.Drawing.Point(460, 230);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -86,10 +84,11 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.Location = new System.Drawing.Point(427, 179);
+            this.button2.Location = new System.Drawing.Point(241, 230);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 29);
+            this.button2.Size = new System.Drawing.Size(132, 23);
             this.button2.TabIndex = 4;
             this.button2.Text = "Un4seen website";
             this.button2.UseVisualStyleBackColor = true;
@@ -97,10 +96,11 @@
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button3.Location = new System.Drawing.Point(346, 179);
+            this.button3.Location = new System.Drawing.Point(379, 230);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 29);
+            this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
             this.button3.Text = "License";
             this.button3.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@
             this.pictureBox1.Image = global::KeppyMIDIConverter.Properties.Resources.mainlogo;
             this.pictureBox1.Location = new System.Drawing.Point(6, 8);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 182);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -142,61 +142,43 @@
             this.linkLabel1.Text = "https://github.com/KaleidonKep99/Keppys-MIDI-Converter";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // panel1
+            // TranslationInfo
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.BASSINFO2);
-            this.panel1.Controls.Add(this.BASSINFO);
-            this.panel1.Location = new System.Drawing.Point(5, 214);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(525, 58);
-            this.panel1.TabIndex = 8;
-            // 
-            // BASSINFO2
-            // 
-            this.BASSINFO2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BASSINFO2.Location = new System.Drawing.Point(263, 0);
-            this.BASSINFO2.Name = "BASSINFO2";
-            this.BASSINFO2.Size = new System.Drawing.Size(260, 56);
-            this.BASSINFO2.TabIndex = 1;
-            this.BASSINFO2.Text = "A\r\na\r\na\r\na";
-            this.BASSINFO2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // BASSINFO
-            // 
-            this.BASSINFO.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BASSINFO.Location = new System.Drawing.Point(0, 0);
-            this.BASSINFO.Name = "BASSINFO";
-            this.BASSINFO.Size = new System.Drawing.Size(260, 56);
-            this.BASSINFO.TabIndex = 0;
-            this.BASSINFO.Text = "A\r\na\r\na\r\na";
-            this.BASSINFO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TranslationInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TranslationInfo.AutoSize = true;
+            this.TranslationInfo.Location = new System.Drawing.Point(212, 177);
+            this.TranslationInfo.Name = "TranslationInfo";
+            this.TranslationInfo.Size = new System.Drawing.Size(83, 13);
+            this.TranslationInfo.TabIndex = 1;
+            this.TranslationInfo.Text = "Translation by A";
+            this.TranslationInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.InfoPg);
             this.tabControl1.Controls.Add(this.UpdtPg);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(545, 304);
+            this.tabControl1.Size = new System.Drawing.Size(545, 222);
             this.tabControl1.TabIndex = 9;
             // 
             // InfoPg
             // 
+            this.InfoPg.Controls.Add(this.TranslationInfo);
             this.InfoPg.Controls.Add(this.pictureBox1);
-            this.InfoPg.Controls.Add(this.panel1);
             this.InfoPg.Controls.Add(this.label1);
             this.InfoPg.Controls.Add(this.linkLabel1);
             this.InfoPg.Controls.Add(this.Versionlabel);
             this.InfoPg.Controls.Add(this.KeppyVer);
-            this.InfoPg.Controls.Add(this.button3);
-            this.InfoPg.Controls.Add(this.button2);
             this.InfoPg.Location = new System.Drawing.Point(4, 22);
             this.InfoPg.Name = "InfoPg";
             this.InfoPg.Padding = new System.Windows.Forms.Padding(3);
-            this.InfoPg.Size = new System.Drawing.Size(537, 278);
+            this.InfoPg.Size = new System.Drawing.Size(537, 196);
             this.InfoPg.TabIndex = 0;
             this.InfoPg.Text = "Information";
             this.InfoPg.UseVisualStyleBackColor = true;
@@ -212,7 +194,7 @@
             this.UpdtPg.Location = new System.Drawing.Point(4, 22);
             this.UpdtPg.Name = "UpdtPg";
             this.UpdtPg.Padding = new System.Windows.Forms.Padding(3);
-            this.UpdtPg.Size = new System.Drawing.Size(537, 278);
+            this.UpdtPg.Size = new System.Drawing.Size(537, 196);
             this.UpdtPg.TabIndex = 1;
             this.UpdtPg.Text = "Updater";
             this.UpdtPg.UseVisualStyleBackColor = true;
@@ -229,9 +211,11 @@
             // 
             // LatestVersion
             // 
+            this.LatestVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.LatestVersion.Location = new System.Drawing.Point(7, 62);
             this.LatestVersion.Name = "LatestVersion";
-            this.LatestVersion.Size = new System.Drawing.Size(375, 209);
+            this.LatestVersion.Size = new System.Drawing.Size(375, 134);
             this.LatestVersion.TabIndex = 2;
             this.LatestVersion.Text = "Click on \"Check for updates\" to check for the latest version of the converter.";
             // 
@@ -246,9 +230,10 @@
             // 
             // CFU
             // 
+            this.CFU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CFU.Location = new System.Drawing.Point(401, 6);
             this.CFU.Name = "CFU";
-            this.CFU.Size = new System.Drawing.Size(130, 23);
+            this.CFU.Size = new System.Drawing.Size(130, 39);
             this.CFU.TabIndex = 0;
             this.CFU.Text = "Check for updates";
             this.CFU.UseVisualStyleBackColor = true;
@@ -256,8 +241,9 @@
             // 
             // DonateBtn
             // 
+            this.DonateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DonateBtn.Image = global::KeppyMIDIConverter.Properties.Resources.ppdonate;
-            this.DonateBtn.Location = new System.Drawing.Point(10, 312);
+            this.DonateBtn.Location = new System.Drawing.Point(10, 230);
             this.DonateBtn.Name = "DonateBtn";
             this.DonateBtn.Size = new System.Drawing.Size(174, 23);
             this.DonateBtn.TabIndex = 11;
@@ -271,10 +257,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(545, 345);
+            this.ClientSize = new System.Drawing.Size(545, 263);
             this.Controls.Add(this.DonateBtn);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
@@ -287,7 +275,6 @@
             this.Text = "Information";
             this.Load += new System.EventHandler(this.Informations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.InfoPg.ResumeLayout(false);
             this.InfoPg.PerformLayout();
@@ -308,8 +295,6 @@
         private System.Windows.Forms.Label KeppyVer;
         private System.Windows.Forms.ToolTip Tipperino;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label BASSINFO;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage InfoPg;
         private System.Windows.Forms.TabPage UpdtPg;
@@ -317,7 +302,7 @@
         private System.Windows.Forms.Label LatestVersion;
         private System.Windows.Forms.Label ThisVersion;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label BASSINFO2;
+        private System.Windows.Forms.Label TranslationInfo;
         private System.Windows.Forms.Button DonateBtn;
     }
 }

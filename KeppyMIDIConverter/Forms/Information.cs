@@ -66,40 +66,15 @@ namespace KeppyMIDIConverter
             {
                 // Auto-update stuff
                 System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-                string SAS = null;
                 FileVersionInfo Converter = FileVersionInfo.GetVersionInfo(assembly.Location);
                 ThisVersion.Text = String.Format(MainWindow.res_man.GetString("CurrentVersion", MainWindow.cul), Converter.FileVersion.ToString());
 
-                // STUFF
-                if (IntPtr.Size == 8)
-                {
-                    Versionlabel.Text = String.Format(MainWindow.res_man.GetString("VersionLabel", MainWindow.cul), "64-bit", "SSE2");
-                    SAS = "x64";
-                }
-                else if (IntPtr.Size == 4)
-                {
-                    Versionlabel.Text = String.Format(MainWindow.res_man.GetString("VersionLabel", MainWindow.cul), "32-bit", "MMX");
-                    SAS = "x86";
-                }
-
                 KeppyVer.Text = "Keppy's MIDI Converter " + Application.ProductVersion + ", by KaleidonKep99";
+                if (IntPtr.Size == 8) Versionlabel.Text = String.Format(MainWindow.res_man.GetString("VersionLabel", MainWindow.cul), "x64", "SSE2");
+                else if (IntPtr.Size == 4) Versionlabel.Text = String.Format(MainWindow.res_man.GetString("VersionLabel", MainWindow.cul), "x86", "MMX");
 
-                // OTHER STUFF
-                FileVersionInfo basslibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bass.dll");
-                FileVersionInfo bassmidilibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bassmidi.dll");
-                FileVersionInfo bassenclibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bassenc.dll");
-                FileVersionInfo bassvstlibver = FileVersionInfo.GetVersionInfo(ExecutablePath + @"\bass_vst.dll");
-
-                // Print the file name and version number.
-                String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), basslibver.FileDescription, basslibver.FileVersion, basslibver.FilePrivatePart);
-                BASSINFO.Text = String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), "BASS", basslibver.FileVersion, basslibver.FilePrivatePart) +"\n" +
-                    String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), "BASSMIDI", bassmidilibver.FileVersion, bassmidilibver.FilePrivatePart) + "\n" +
-                    String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), "BASSenc", bassenclibver.FileVersion, bassenclibver.FilePrivatePart) + "\n" +
-                    String.Format(MainWindow.res_man.GetString("LibraryVersion", MainWindow.cul), "BASS_VST", bassvstlibver.FileVersion, bassvstlibver.FilePrivatePart);
-
-                BASSINFO2.Text = "Translated by\n" +
-                    MainWindow.res_man.GetString("ZZZTranslators", MainWindow.cul) + "\n\n" + 
-                     "KMC " + Application.ProductVersion + " " + SAS;
+                TranslationInfo.Text = "Translated by " +
+                    MainWindow.res_man.GetString("ZZZTranslators", MainWindow.cul);
             }
             catch (Exception exception)
             {

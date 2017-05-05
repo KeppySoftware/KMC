@@ -16,6 +16,7 @@ namespace KeppyMIDIConverter
     {
         public static uint BringToFrontMessage;
         public static Mutex m;
+        const int WM_SETREDRAW = 0x0b;
 
         public AdvancedVoices()
         {
@@ -35,6 +36,7 @@ namespace KeppyMIDIConverter
 
         private void AdvancedVoices_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             CVList.Columns.Add("Channels", 1, HorizontalAlignment.Left);
             CVList.Columns.Add("Voices", 1, HorizontalAlignment.Left);
             CVList.Columns[0].Tag = 1;
@@ -68,22 +70,34 @@ namespace KeppyMIDIConverter
 
         private void CheckVoices_Tick(object sender, EventArgs e)
         {
-            CVList.Items[0].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch1.ToString();
-            CVList.Items[1].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch2.ToString();
-            CVList.Items[2].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch3.ToString();
-            CVList.Items[3].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch4.ToString();
-            CVList.Items[4].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch5.ToString();
-            CVList.Items[5].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch6.ToString();
-            CVList.Items[6].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch7.ToString();
-            CVList.Items[7].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch8.ToString();
-            CVList.Items[8].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch9.ToString();
-            CVList.Items[9].SubItems[1].Text = MainWindow.KMCChannelsVoices.chD.ToString();
-            CVList.Items[10].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch11.ToString();
-            CVList.Items[11].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch12.ToString();
-            CVList.Items[12].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch13.ToString();
-            CVList.Items[13].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch14.ToString();
-            CVList.Items[14].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch15.ToString();
-            CVList.Items[15].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch16.ToString();
+            Text = String.Format("Active voices - Advanced (CPU usage: {0}%)", RTF.CPUUsage.ToString("0.0"));
+            this.SuspendLayout();
+            CVList.BeginUpdate();
+            try
+            {
+                CVList.Items[0].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch1.ToString();
+                CVList.Items[1].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch2.ToString();
+                CVList.Items[2].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch3.ToString();
+                CVList.Items[3].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch4.ToString();
+                CVList.Items[4].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch5.ToString();
+                CVList.Items[5].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch6.ToString();
+                CVList.Items[6].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch7.ToString();
+                CVList.Items[7].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch8.ToString();
+                CVList.Items[8].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch9.ToString();
+                CVList.Items[9].SubItems[1].Text = MainWindow.KMCChannelsVoices.chD.ToString();
+                CVList.Items[10].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch11.ToString();
+                CVList.Items[11].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch12.ToString();
+                CVList.Items[12].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch13.ToString();
+                CVList.Items[13].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch14.ToString();
+                CVList.Items[14].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch15.ToString();
+                CVList.Items[15].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch16.ToString();
+            }
+            finally
+            {
+                CVList.EndUpdate();
+            }
+            this.ResumeLayout(false);
+            this.PerformLayout();
             System.Threading.Thread.Sleep(1);
         }
 
