@@ -9,6 +9,7 @@ using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack;
 using Microsoft.WindowsAPICodePack.Taskbar;
 using Un4seen.Bass;
+using Un4seen.BassWasapi;
 using Un4seen.Bass.AddOn.Enc;
 using Un4seen.Bass.AddOn.Mix;
 using Un4seen.Bass.AddOn.Vst;
@@ -33,6 +34,7 @@ namespace KeppyMIDIConverter
             public static KeppyMIDIConverter.SoundfontDialog frm2 = new KeppyMIDIConverter.SoundfontDialog();
             public static List<string> EncodersPath = new List<string>();
             public static SYNCPROC _mySync;
+            public static WASAPIPROC _myWasapi;
             public static UInt32 eventc;
             public static Un4seen.Bass.Misc.DSP_PeakLevelMeter _plm;
             public static bool AutoClearMIDIListEnabled = false;
@@ -600,24 +602,24 @@ namespace KeppyMIDIConverter
         {
             try
             {
+                Bass.BASS_StreamFree(KMCGlobals._recHandle);
+                Bass.BASS_Free();
+                Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
                 if (type == 0)
                 {
-                    Bass.BASS_StreamFree(KMCGlobals._recHandle);
-                    Bass.BASS_Free();
-                    Bass.BASS_Init(0, KMCGlobals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
                     Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
                 }
                 else
                 {
-                    Bass.BASS_StreamFree(KMCGlobals._recHandle);
+                    int freq = 0;
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_BUFFER | BASSWASAPIInit.BASS_WASAPI_SHARED, 0, 0, null, IntPtr.Zero);
+                    BASS_WASAPI_DEVICEINFO info = new BASS_WASAPI_DEVICEINFO();
+                    BassWasapi.BASS_WASAPI_GetDeviceInfo(BassWasapi.BASS_WASAPI_GetDevice(), info);
+                    freq = info.mixfreq;
+                    BassWasapi.BASS_WASAPI_Free();
                     Bass.BASS_Free();
-                    Bass.BASS_Init(-1, KMCGlobals.Frequency, BASSInit.BASS_DEVICE_LATENCY, IntPtr.Zero);
-                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 0);
-                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, 0);
-                    BASS_INFO info = Bass.BASS_GetInfo();
-                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, info.minbuf + 10 + 50);
+                    Bass.BASS_Init(0, freq, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
                     Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 2000);
-                    
                 }
             }
             catch (Exception ex)
@@ -784,18 +786,11 @@ namespace KeppyMIDIConverter
             try
             {
                 Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
-                if (type == 0)
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, KMCGlobals.Frequency);
-                else
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, 0);
+                if (type == 1)
                 {
-                    Int32 buflen = Bass.BASS_GetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD);
-                    BASS_INFO info = new BASS_INFO();
-                    Bass.BASS_GetInfo(info);
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, KMCGlobals.Frequency);
-                    KMCGlobals.UpdateRate = (buflen * 2);
-                    buflen += info.minbuf + 20;
-                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, buflen);
-                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 20);
+                    KMCGlobals._myWasapi = new WASAPIPROC(MyWasapiProc);
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_EVENT | BASSWASAPIInit.BASS_WASAPI_SHARED, 0, 0, KMCGlobals._myWasapi, IntPtr.Zero);
                 }
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                 Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
@@ -820,10 +815,7 @@ namespace KeppyMIDIConverter
             try
             {
                 Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
-                if (type == 0)
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
-                else
-                    KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                 BASS_MIDI_EVENT[] eventChunk;
                 try
@@ -850,7 +842,7 @@ namespace KeppyMIDIConverter
                 }
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
-                Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
+                BassWasapi.BASS_WASAPI_SetVolume(BASSWASAPIVolume.BASS_WASAPI_VOL_SESSION, ((float)KMCGlobals.Volume / 10000.0f));
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
                 if (Path.GetFileNameWithoutExtension(str).Length >= 49)
@@ -1012,7 +1004,7 @@ namespace KeppyMIDIConverter
             else
                 Bass.BASS_ChannelFlags(KMCGlobals._recHandle, 0, BASSFlag.BASS_MIDI_NOTEOFF1);
 
-            Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
+            BassWasapi.BASS_WASAPI_SetVolume(BASSWASAPIVolume.BASS_WASAPI_VOL_SESSION, ((float)KMCGlobals.Volume / 10000.0f));
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
 
             KMCStatus.PassedTime = "?:??:??";
@@ -1121,6 +1113,8 @@ namespace KeppyMIDIConverter
 
         private void BASSCloseStream(string message, string title, int type) {
             KMCGlobals.DoNotCountNotes = false;
+            BassWasapi.BASS_WASAPI_Stop(true);
+            BassWasapi.BASS_WASAPI_Free();
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
             KMCGlobals.CurrentStatusTextString = message;
@@ -1142,6 +1136,8 @@ namespace KeppyMIDIConverter
 
         private void BASSCloseStreamCrash(Exception ex)
         {
+            BassWasapi.BASS_WASAPI_Stop(true);
+            BassWasapi.BASS_WASAPI_Free();
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
             KMCGlobals.NewWindowName = null;
@@ -1157,6 +1153,8 @@ namespace KeppyMIDIConverter
         private void ReleaseResources(bool stillrendering)
         {
             KMCGlobals.DoNotCountNotes = false;
+            BassWasapi.BASS_WASAPI_Stop(true);
+            BassWasapi.BASS_WASAPI_Free();
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
             KMCGlobals.IsKMCBusy = stillrendering;
@@ -1448,6 +1446,7 @@ namespace KeppyMIDIConverter
                             KMCGlobals.IsKMCNowExporting = true;
                             Bass.BASS_ChannelPlay(KMCGlobals._recHandle, false);
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 1.0));
+                            BassWasapi.BASS_WASAPI_Start();
                             while (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
@@ -1455,7 +1454,8 @@ namespace KeppyMIDIConverter
                                     notes = BASSPlayBackEngine(notes, length, pos);
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
-                                {                          
+                                {
+                                    BassWasapi.BASS_WASAPI_Stop(true);
                                     break;
                                 }
                             }
@@ -1521,6 +1521,11 @@ namespace KeppyMIDIConverter
             {
                 ++KMCStatus.PlayedNotes;
             }
+        }
+
+        private int MyWasapiProc(IntPtr buffer, Int32 length, IntPtr user)
+        {
+            return Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
         }
 
         protected override void Dispose(bool disposing)
@@ -1629,6 +1634,24 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private Int32 ReturnNoteCount(Int32 time)
+        {
+            int notes = 0;
+            BASS_MIDI_EVENT[] eventChunk;
+            UInt32 count = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, null); // Counts all the events in the MIDI         
+            BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
+            for (int i = 0; i <= (count / 50000000); i++)
+            {
+                int subCount = Math.Min(50000000, (int)count - (i * 50000000));
+                eventChunk = new BASS_MIDI_EVENT[subCount];
+                BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, eventChunk, i * 50000000, subCount); //Falcosoft: to avoid marshalling errors pass the smaller local buffer to the function   
+                eventChunk.CopyTo(events, i * 50000000); //Falcosoft: copy local buffer to global one at each iteration
+            }
+            eventChunk = null;
+            for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
+            return notes;
+        }
+
         private string[] GetMoreInfoMIDI(string str, bool overridedefault)
         {
             try
@@ -1676,40 +1699,23 @@ namespace KeppyMIDIConverter
                 string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
 
                 // Get note count
-                BASS_MIDI_EVENT[] eventChunk;
                 int notes = 0;
 
-                if ((length / 1024f) > 500)
+                if ((length / 1024f) >= 500000)
                 {
                     DialogResult dialogResult = MessageBox.Show("The size of the MIDI is bigger than 500MB.\n\nKMC needs a lot of RAM to get the full information.\nIf you don't have enough RAM, the computer might get unresponsive for a few minutes, or crash.\n\nAre you sure you want to continue?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        UInt32 count = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, null); // Counts all the events in the MIDI         
-                        BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
-                        for (int i = 0; i <= (count / 50000000); i++)
-                        {
-                            int subCount = Math.Min(50000000, (int)count - (i * 50000000));
-                            eventChunk = new BASS_MIDI_EVENT[subCount];
-                            BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, eventChunk, i * 50000000, subCount); //Falcosoft: to avoid marshalling errors pass the smaller local buffer to the function   
-                            eventChunk.CopyTo(events, i * 50000000); //Falcosoft: copy local buffer to global one at each iteration
-                        }
-                        eventChunk = null;
-                        for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
+                        notes = ReturnNoteCount(time);
+                    }
+                    else
+                    {
+                        return new string[] { "N/A", "N/A", size, };
                     }
                 }
                 else
                 {
-                    UInt32 count = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, null); // Counts all the events in the MIDI         
-                    BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
-                    for (int i = 0; i <= (count / 50000000); i++)
-                    {
-                        int subCount = Math.Min(50000000, (int)count - (i * 50000000));
-                        eventChunk = new BASS_MIDI_EVENT[subCount];
-                        BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, eventChunk, i * 50000000, subCount); //Falcosoft: to avoid marshalling errors pass the smaller local buffer to the function   
-                        eventChunk.CopyTo(events, i * 50000000); //Falcosoft: copy local buffer to global one at each iteration
-                    }
-                    eventChunk = null;
-                    for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
+                    notes = ReturnNoteCount(time);
                 }
 
                 Bass.BASS_Free();

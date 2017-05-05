@@ -101,12 +101,10 @@ namespace KeppyMIDIConverter
                 BitrateBox.Text = "256";
             }
             //
-            Settings.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Settings.Close();
             base.Close();
         }
 
