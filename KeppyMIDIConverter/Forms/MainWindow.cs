@@ -1437,6 +1437,8 @@ namespace KeppyMIDIConverter
                             {
                                 try
                                 {
+                                    KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
+                                    int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
                                     KMCStatus.TotalNotes = ReturnNoteCount(KMCGlobals._recHandle);
                                 }
                                 catch (Exception ex)
