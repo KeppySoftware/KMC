@@ -113,8 +113,6 @@ namespace KeppyMIDIConverter
         private static void UpdateText()
         {
             String Time = ReturnOutputText(LenDoubleToSpan);
-            String TotalNotesLength = "";
-            for (int i = 1; i <= MainWindow.KMCStatus.TotalNotes.ToString().Length; i++) TotalNotesLength += "0";
 
             string MIDILengthString = LenDoubleToSpan.ToString(Time);
             string MIDICurrentString = CurDoubleToSpan.ToString(Time);
@@ -139,8 +137,8 @@ namespace KeppyMIDIConverter
                 if (!MainWindow.KMCGlobals.DoNotCountNotes) MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("PlaybackStatus", MainWindow.cul),
                             RAWConverted.ToString("0.00MB"),
                             MIDICurrentString, MIDILengthString,
-                            MainWindow.KMCStatus.PlayedNotes.ToString(TotalNotesLength, System.Globalization.CultureInfo.GetCultureInfo("de")),
-                            MainWindow.KMCStatus.TotalNotes.ToString(TotalNotesLength, System.Globalization.CultureInfo.GetCultureInfo("de")));
+                            MainWindow.KMCStatus.PlayedNotes.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("de")),
+                            MainWindow.KMCStatus.TotalNotes.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("de")));
 
                 else MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("PlaybackStatus", MainWindow.cul),
                             RAWConverted.ToString("0.00MB"),

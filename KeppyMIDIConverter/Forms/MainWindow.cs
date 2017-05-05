@@ -1431,19 +1431,13 @@ namespace KeppyMIDIConverter
                             BASSVSTInit(KMCGlobals._recHandle);
                             BASSEffectSettings();
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
-                            int count = BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
                             // cac
                             int notes = 0;
                             if (!KMCGlobals.DoNotCountNotes)
                             {
                                 try
                                 {
-                                    BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
-                                    BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
-                                    for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
-                                    KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
-                                    int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
-                                    KMCStatus.TotalNotes = notes;
+                                    KMCStatus.TotalNotes = ReturnNoteCount(KMCGlobals._recHandle);
                                 }
                                 catch (Exception ex)
                                 {
@@ -1645,17 +1639,9 @@ namespace KeppyMIDIConverter
         private Int32 ReturnNoteCount(Int32 time)
         {
             int notes = 0;
-            BASS_MIDI_EVENT[] eventChunk;
-            UInt32 count = (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, null); // Counts all the events in the MIDI         
+            int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
             BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
-            for (int i = 0; i <= (count / 50000000); i++)
-            {
-                int subCount = Math.Min(50000000, (int)count - (i * 50000000));
-                eventChunk = new BASS_MIDI_EVENT[subCount];
-                BassMidi.BASS_MIDI_StreamGetEvents(time, -1, 0, eventChunk, i * 50000000, subCount); //Falcosoft: to avoid marshalling errors pass the smaller local buffer to the function   
-                eventChunk.CopyTo(events, i * 50000000); //Falcosoft: copy local buffer to global one at each iteration
-            }
-            eventChunk = null;
+            BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
             for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
             return notes;
         }
@@ -1711,14 +1697,15 @@ namespace KeppyMIDIConverter
 
                 if ((length / 1024f) >= 500000)
                 {
-                    DialogResult dialogResult = MessageBox.Show("The size of the MIDI is bigger than 500MB.\n\nKMC needs a lot of RAM to get the full information.\nIf you don't have enough RAM, the computer might get unresponsive for a few minutes, or crash.\n\nAre you sure you want to continue?", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    DialogResult dialogResult = MessageBox.Show("The size of the MIDI is bigger than 500MB.\n\nKMC needs a lot of RAM to get the full information.\nIf you don't have enough RAM, the computer might get unresponsive for a few minutes, or crash.\n\nAre you sure you want to continue?\n\nClick Yes to get the precise note count, otherwise click No for an approximation.", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (dialogResult == DialogResult.Yes)
                     {
                         notes = ReturnNoteCount(time);
                     }
                     else
                     {
-                        return new string[] { "N/A", "N/A", size, };
+                        int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
+                        return new string[] { str4, (count / 2).ToString("N0"), size, };
                     }
                 }
                 else
