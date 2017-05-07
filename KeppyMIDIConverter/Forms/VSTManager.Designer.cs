@@ -32,35 +32,35 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.Unload8 = new System.Windows.Forms.Button();
             this.Load8 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
+            this.Desc8 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.Unload7 = new System.Windows.Forms.Button();
             this.Load7 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.Desc7 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.Unload6 = new System.Windows.Forms.Button();
             this.Load6 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Desc6 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.Unload5 = new System.Windows.Forms.Button();
             this.Load5 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Desc5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Unload4 = new System.Windows.Forms.Button();
             this.Load4 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.Desc4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.Unload3 = new System.Windows.Forms.Button();
             this.Load3 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Desc3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Unload2 = new System.Windows.Forms.Button();
             this.Load2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Desc2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Unload = new System.Windows.Forms.Button();
+            this.Unload1 = new System.Windows.Forms.Button();
             this.Load1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Desc1 = new System.Windows.Forms.Label();
             this.VSTImportDialog = new System.Windows.Forms.OpenFileDialog();
             this.Desc = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -100,7 +100,7 @@
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel9.Controls.Add(this.Unload8);
             this.panel9.Controls.Add(this.Load8);
-            this.panel9.Controls.Add(this.label8);
+            this.panel9.Controls.Add(this.Desc8);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 259);
             this.panel9.Name = "panel9";
@@ -132,25 +132,25 @@
             this.Load8.UseVisualStyleBackColor = true;
             this.Load8.Click += new System.EventHandler(this.Load8_Click);
             // 
-            // label8
+            // Desc8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Desc8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.Location = new System.Drawing.Point(0, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(421, 33);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Empty slot 8";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Desc8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Desc8.Location = new System.Drawing.Point(0, 0);
+            this.Desc8.Name = "Desc8";
+            this.Desc8.Size = new System.Drawing.Size(421, 33);
+            this.Desc8.TabIndex = 0;
+            this.Desc8.Text = "Empty slot 8";
+            this.Desc8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel8
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel8.Controls.Add(this.Unload7);
             this.panel8.Controls.Add(this.Load7);
-            this.panel8.Controls.Add(this.label7);
+            this.panel8.Controls.Add(this.Desc7);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 222);
             this.panel8.Name = "panel8";
@@ -182,25 +182,25 @@
             this.Load7.UseVisualStyleBackColor = true;
             this.Load7.Click += new System.EventHandler(this.Load7_Click);
             // 
-            // label7
+            // Desc7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Desc7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label7.Location = new System.Drawing.Point(0, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(421, 33);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Empty slot 7";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Desc7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Desc7.Location = new System.Drawing.Point(0, 0);
+            this.Desc7.Name = "Desc7";
+            this.Desc7.Size = new System.Drawing.Size(421, 33);
+            this.Desc7.TabIndex = 0;
+            this.Desc7.Text = "Empty slot 7";
+            this.Desc7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel7.Controls.Add(this.Unload6);
             this.panel7.Controls.Add(this.Load6);
-            this.panel7.Controls.Add(this.label6);
+            this.panel7.Controls.Add(this.Desc6);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 185);
             this.panel7.Name = "panel7";
@@ -232,25 +232,25 @@
             this.Load6.UseVisualStyleBackColor = true;
             this.Load6.Click += new System.EventHandler(this.Load6_Click);
             // 
-            // label6
+            // Desc6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Desc6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(421, 33);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Empty slot 6";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Desc6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Desc6.Location = new System.Drawing.Point(0, 0);
+            this.Desc6.Name = "Desc6";
+            this.Desc6.Size = new System.Drawing.Size(421, 33);
+            this.Desc6.TabIndex = 0;
+            this.Desc6.Text = "Empty slot 6";
+            this.Desc6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel6.Controls.Add(this.Unload5);
             this.panel6.Controls.Add(this.Load5);
-            this.panel6.Controls.Add(this.label5);
+            this.panel6.Controls.Add(this.Desc5);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 148);
             this.panel6.Name = "panel6";
@@ -282,25 +282,25 @@
             this.Load5.UseVisualStyleBackColor = true;
             this.Load5.Click += new System.EventHandler(this.Load5_Click);
             // 
-            // label5
+            // Desc5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Desc5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(421, 33);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Empty slot 5";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Desc5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Desc5.Location = new System.Drawing.Point(0, 0);
+            this.Desc5.Name = "Desc5";
+            this.Desc5.Size = new System.Drawing.Size(421, 33);
+            this.Desc5.TabIndex = 0;
+            this.Desc5.Text = "Empty slot 5";
+            this.Desc5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.Unload4);
             this.panel5.Controls.Add(this.Load4);
-            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.Desc4);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 111);
             this.panel5.Name = "panel5";
@@ -332,25 +332,25 @@
             this.Load4.UseVisualStyleBackColor = true;
             this.Load4.Click += new System.EventHandler(this.Load4_Click);
             // 
-            // label4
+            // Desc4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Desc4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(421, 33);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Empty slot 4";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Desc4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Desc4.Location = new System.Drawing.Point(0, 0);
+            this.Desc4.Name = "Desc4";
+            this.Desc4.Size = new System.Drawing.Size(421, 33);
+            this.Desc4.TabIndex = 0;
+            this.Desc4.Text = "Empty slot 4";
+            this.Desc4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.Unload3);
             this.panel4.Controls.Add(this.Load3);
-            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.Desc3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 74);
             this.panel4.Name = "panel4";
@@ -382,25 +382,25 @@
             this.Load3.UseVisualStyleBackColor = true;
             this.Load3.Click += new System.EventHandler(this.Load3_Click);
             // 
-            // label3
+            // Desc3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Desc3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(421, 33);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Empty slot 3";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Desc3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Desc3.Location = new System.Drawing.Point(0, 0);
+            this.Desc3.Name = "Desc3";
+            this.Desc3.Size = new System.Drawing.Size(421, 33);
+            this.Desc3.TabIndex = 0;
+            this.Desc3.Text = "Empty slot 3";
+            this.Desc3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.Unload2);
             this.panel3.Controls.Add(this.Load2);
-            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.Desc2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 37);
             this.panel3.Name = "panel3";
@@ -432,43 +432,43 @@
             this.Load2.UseVisualStyleBackColor = true;
             this.Load2.Click += new System.EventHandler(this.Load2_Click);
             // 
-            // label2
+            // Desc2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Desc2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(421, 33);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Empty slot 2";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Desc2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Desc2.Location = new System.Drawing.Point(0, 0);
+            this.Desc2.Name = "Desc2";
+            this.Desc2.Size = new System.Drawing.Size(421, 33);
+            this.Desc2.TabIndex = 0;
+            this.Desc2.Text = "Empty slot 2";
+            this.Desc2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.Unload);
+            this.panel2.Controls.Add(this.Unload1);
             this.panel2.Controls.Add(this.Load1);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.Desc1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(593, 37);
             this.panel2.TabIndex = 0;
             // 
-            // Unload
+            // Unload1
             // 
-            this.Unload.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.Unload.Enabled = false;
-            this.Unload.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Unload.Location = new System.Drawing.Point(508, 5);
-            this.Unload.Name = "Unload";
-            this.Unload.Size = new System.Drawing.Size(75, 23);
-            this.Unload.TabIndex = 2;
-            this.Unload.Text = "Unload";
-            this.Unload.UseVisualStyleBackColor = true;
-            this.Unload.Click += new System.EventHandler(this.Unload_Click);
+            this.Unload1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Unload1.Enabled = false;
+            this.Unload1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Unload1.Location = new System.Drawing.Point(508, 5);
+            this.Unload1.Name = "Unload1";
+            this.Unload1.Size = new System.Drawing.Size(75, 23);
+            this.Unload1.TabIndex = 2;
+            this.Unload1.Text = "Unload";
+            this.Unload1.UseVisualStyleBackColor = true;
+            this.Unload1.Click += new System.EventHandler(this.Unload_Click);
             // 
             // Load1
             // 
@@ -482,18 +482,18 @@
             this.Load1.UseVisualStyleBackColor = true;
             this.Load1.Click += new System.EventHandler(this.Load_Click);
             // 
-            // label1
+            // Desc1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Desc1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(421, 33);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Empty slot 1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Desc1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Desc1.Location = new System.Drawing.Point(0, 0);
+            this.Desc1.Name = "Desc1";
+            this.Desc1.Size = new System.Drawing.Size(421, 33);
+            this.Desc1.TabIndex = 0;
+            this.Desc1.Text = "Empty slot 1";
+            this.Desc1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // VSTImportDialog
             // 
@@ -587,35 +587,35 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button Unload8;
         private System.Windows.Forms.Button Load8;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label Desc8;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button Unload7;
         private System.Windows.Forms.Button Load7;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Desc7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button Unload6;
         private System.Windows.Forms.Button Load6;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label Desc6;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button Unload5;
         private System.Windows.Forms.Button Load5;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Desc5;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button Unload4;
         private System.Windows.Forms.Button Load4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label Desc4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button Unload3;
         private System.Windows.Forms.Button Load3;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Desc3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button Unload2;
         private System.Windows.Forms.Button Load2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Desc2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button Unload;
+        private System.Windows.Forms.Button Unload1;
         private System.Windows.Forms.Button Load1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Desc1;
         private System.Windows.Forms.OpenFileDialog VSTImportDialog;
         private System.Windows.Forms.Label Desc;
         private System.Windows.Forms.Button button1;

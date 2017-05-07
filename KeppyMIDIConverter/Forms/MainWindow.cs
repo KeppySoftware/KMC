@@ -334,186 +334,134 @@ namespace KeppyMIDIConverter
             t1.Tick += new EventHandler(fadeIn);  // This calls the function that changes opacity 
             t1.Start();
             // Fade in
-            if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 1)
-            {
-                if (Environment.OSVersion.Version.Build == 2600)
-                {
-                    // Continues
-                }
-                else
-                {
-                    // If you're using Windows XP SP1 or older, the converter will close itself.
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("WinXPSP1NotSupportedTitle", cul), res_man.GetString("WinXPSP1NotSupportedMessage", cul), 1, 0);
-                    errordialog.ShowDialog();
-                    this.Hide();
-                    Application.ExitThread();
-                }
-            }
-            else
+            try
             {
                 try
                 {
-                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter");
-                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages");
-                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-                    RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter");
-                    if (Key != null)
+                    // Generic settings
+                    VoiceLimit.Value = Properties.Settings.Default.Voices;
+                    VolumeBar.Value = Properties.Settings.Default.Volume;
+                    KMCGlobals.Volume = Properties.Settings.Default.Volume;
+                    KMCGlobals.Frequency = Properties.Settings.Default.AudioFreq;
+                    KMCGlobals.Bitrate = Properties.Settings.Default.OGGBitrate;
+                    KMCGlobals.RTFPS = Properties.Settings.Default.RTFPS;
+                    // Audio events
+                    if (Properties.Settings.Default.AudioEvents)
                     {
-                        RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
-                        try
-                        {
-                            if (Convert.ToInt32(Language.GetValue("langoverride", 0)) == 1)
-                            {
-                                enabledToolStripMenuItem5.PerformClick();
-                            }
-                            else
-                            {
-                                disabledToolStripMenuItem5.PerformClick();
-                            }
-                        }
-                        catch
-                        {
-                            enabledToolStripMenuItem5.Checked = false;
-                            disabledToolStripMenuItem5.Checked = true;
-                            Language.SetValue("langoverride", "0", RegistryValueKind.DWord);
-                        }
-                        RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                        try
-                        {
-                            // Generic settings
-                            VoiceLimit.Value = Convert.ToInt32(Settings.GetValue("voices", Convert.ToDecimal(1000)));
-                            VolumeBar.Value = Convert.ToInt32(Settings.GetValue("volume", 10000));
-                            KMCGlobals.Volume = Convert.ToInt32(Settings.GetValue("volume", 10000));
-                            KMCGlobals.Frequency = Convert.ToInt32(Settings.GetValue("audiofreq", 44100));
-                            KMCGlobals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate", 256));
-                            KMCGlobals.RTFPS = Convert.ToDouble(Settings.GetValue("customfps", 60.0));
-                            // Audio events
-                            if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
-                            {
-                                enabledToolStripMenuItem4.Checked = true;
-                                disabledToolStripMenuItem4.Checked = false;
-                                Settings.SetValue("audioevents", "1", RegistryValueKind.DWord);
-                            }
-                            else
-                            {
-                                enabledToolStripMenuItem4.Checked = false;
-                                disabledToolStripMenuItem4.Checked = true;
-                                Settings.SetValue("audioevents", "0", RegistryValueKind.DWord);
-                            }
-                            // Autoupdate lel
-                            if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
-                            {
-                                enabledToolStripMenuItem3.Checked = true;
-                                disabledToolStripMenuItem3.Checked = false;
-                                Settings.SetValue("autoupdatecheck", "1", RegistryValueKind.DWord);
-                            }
-                            else
-                            {
-                                enabledToolStripMenuItem3.Checked = false;
-                                disabledToolStripMenuItem3.Checked = true;
-                                Settings.SetValue("autoupdatecheck", "0", RegistryValueKind.DWord);
-                            }
-                            // Old time thingy for TheGhastModding lel
-                            if (Convert.ToInt32(Settings.GetValue("oldtimethingy", 0)) == 1)
-                            {
-                                enabledToolStripMenuItem2.Checked = true;
-                                disabledToolStripMenuItem2.Checked = false;
-                                KMCGlobals.OldTimeThingy = true;
-                                Settings.SetValue("oldtimethingy", "1", RegistryValueKind.DWord);
-                            }
-                            else
-                            {
-                                enabledToolStripMenuItem2.Checked = false;
-                                disabledToolStripMenuItem2.Checked = true;
-                                KMCGlobals.OldTimeThingy = false;
-                                Settings.SetValue("oldtimethingy", "0", RegistryValueKind.DWord);
-                            }
-                            // LoudMax
-                            if (Convert.ToInt32(Settings.GetValue("loudmaxenabled", 0)) == 0)
-                            {
-                                KMCGlobals.IsLoudMaxEnabled = false;
-                            }
-                            else
-                            {
-                                KMCGlobals.IsLoudMaxEnabled = true;
-                            }
-                            // Note off setting
-                            if (Convert.ToInt32(Settings.GetValue("noteoff1", 0)) == 1)
-                            {
-                                KMCGlobals.NoteOff1Event = true;
-                                Settings.SetValue("noteoff1", "1", RegistryValueKind.DWord);
-                            }
-                            else
-                            {
-                                KMCGlobals.NoteOff1Event = false;
-                                Settings.SetValue("noteoff1", "0", RegistryValueKind.DWord);
-                            }
-                            // BASS default sound effects (Reverb and chorus)
-                            if (Convert.ToInt32(Settings.GetValue("disablefx", 0)) == 1)
-                            {
-                                KMCGlobals.FXDisabled = true;
-                                Settings.SetValue("disablefx", "1", RegistryValueKind.DWord);
-                            }
-                            else
-                            {
-                                KMCGlobals.FXDisabled = false;
-                                Settings.SetValue("disablefx", "0", RegistryValueKind.DWord);
-                            }
-                            // OGG bitrate override
-                            MainWindow.KMCGlobals.Bitrate = Convert.ToInt32(Settings.GetValue("oggbitrate", 128));
-                            if (Convert.ToInt32(Settings.GetValue("overrideogg", 0)) == 1)
-                            {
-                                KMCGlobals.QualityOverride = true;
-                                Settings.SetValue("overrideogg", "1", RegistryValueKind.DWord);
-                            }
-                            else
-                            {
-                                KMCGlobals.QualityOverride = false;
-                                Settings.SetValue("overrideogg", "0", RegistryValueKind.DWord);
-                            }
-                            KMCGlobals.MIDILastDirectory = Settings.GetValue("lastmidifolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
-                            KMCGlobals.ExportLastDirectory = Settings.GetValue("lastexportfolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
-                            Settings.Close();
-                        }
-                        catch (Exception exception)
-                        {
-                            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("FatalError", cul), exception.ToString(), 1, 0);
-                            errordialog.ShowDialog();
-                            Settings.Close();
-                        }
+                        enabledToolStripMenuItem4.Checked = true;
+                        disabledToolStripMenuItem4.Checked = false;
                     }
-                    else if (Key == null)
+                    else
                     {
-                        Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-                        RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                        VoiceLimit.Value = 100000;
-                        Settings.SetValue("voices", "100000", RegistryValueKind.DWord);
-                        Settings.SetValue("lastmidifolder", "", RegistryValueKind.String);
-                        Settings.SetValue("lastsffolder", "", RegistryValueKind.String);
-                        Settings.SetValue("lastexportfolder", "", RegistryValueKind.String);
-                        Settings.SetValue("audioevents", "1", RegistryValueKind.DWord);
-                        Settings.SetValue("autoupdatecheck", "1", RegistryValueKind.DWord);
-                        Settings.SetValue("oldtimethingy", "0", RegistryValueKind.DWord);
-                        Settings.SetValue("noteoff1", "0", RegistryValueKind.DWord);
-                        Settings.SetValue("disablefx", "0", RegistryValueKind.DWord);
-                        Settings.SetValue("maxcpu", "0", RegistryValueKind.DWord);
-                        Settings.SetValue("audiofreq", "44100", RegistryValueKind.DWord);
-                        Settings.SetValue("volume", "10000", RegistryValueKind.DWord);
-                        Settings.Close();
+                        enabledToolStripMenuItem4.Checked = false;
+                        disabledToolStripMenuItem4.Checked = true;
                     }
-                    Delegate = this;
-                    GarbageCollector.RunWorkerAsync();
-                    GetInfoWorker.RunWorkerAsync();
+                    // Audio events
+                    if (Properties.Settings.Default.LangOverride)
+                    {
+                        enabledToolStripMenuItem5.Checked = true;
+                        disabledToolStripMenuItem5.Checked = false;
+                        // List
+                        ChineseCNOverride.Enabled = true;
+                        ChineseHKOverride.Enabled = true;
+                        ChineseTWOverride.Enabled = true;
+                        EnglishOverride.Enabled = true;
+                        EstonianOverride.Enabled = true;
+                        FrenchOverride.Enabled = true;
+                        GermanOverride.Enabled = true;
+                        RussianOverride.Enabled = true;
+                        ItalianOverride.Enabled = true;
+                        JapaneseOverride.Enabled = true;
+                        KoreanOverride.Enabled = true;
+                        SpanishOverride.Enabled = true;
+                        BengaliOverride.Enabled = true;
+                        ThaiTHOverride.Enabled = true;
+                    }
+                    else
+                    {
+                        enabledToolStripMenuItem5.Checked = false;
+                        disabledToolStripMenuItem5.Checked = true;
+                    }
+                    // Autoupdate lel
+                    if (Properties.Settings.Default.AutoUpdateCheck)
+                    {
+                        enabledToolStripMenuItem3.Checked = true;
+                        disabledToolStripMenuItem3.Checked = false;
+                    }
+                    else
+                    {
+                        enabledToolStripMenuItem3.Checked = false;
+                        disabledToolStripMenuItem3.Checked = true;
+                    }
+                    // Old time thingy for TheGhastModding lel
+                    if (Properties.Settings.Default.ShowOldTimeInfo)
+                    {
+                        enabledToolStripMenuItem2.Checked = true;
+                        disabledToolStripMenuItem2.Checked = false;
+                        KMCGlobals.OldTimeThingy = true;
+                    }
+                    else
+                    {
+                        enabledToolStripMenuItem2.Checked = false;
+                        disabledToolStripMenuItem2.Checked = true;
+                        KMCGlobals.OldTimeThingy = false;
+                    }
+                    // LoudMax
+                    if (Properties.Settings.Default.LoudMaxEnabled)
+                    {
+                        KMCGlobals.IsLoudMaxEnabled = true;
+                    }
+                    else
+                    {
+                        KMCGlobals.IsLoudMaxEnabled = false;
+                    }
+                    // Note off setting
+                    if (Properties.Settings.Default.NoteOff1)
+                    {
+                        KMCGlobals.NoteOff1Event = true;
+                    }
+                    else
+                    {
+                        KMCGlobals.NoteOff1Event = false;
+                    }
+                    // BASS default sound effects (Reverb and chorus)
+                    if (Properties.Settings.Default.DisableFX)
+                    {
+                        KMCGlobals.FXDisabled = true;
+                    }
+                    else
+                    {
+                        KMCGlobals.FXDisabled = false;
+                    }
+                    // OGG bitrate override
+                    if (Properties.Settings.Default.OverrideOGG)
+                    {
+                        KMCGlobals.QualityOverride = true;
+                    }
+                    else
+                    {
+                        KMCGlobals.QualityOverride = false;
+                    }
+                    KMCGlobals.MIDILastDirectory = Properties.Settings.Default.LastMIDIFolder;
+                    KMCGlobals.ExportLastDirectory = Properties.Settings.Default.LastExportFolder;
                 }
-                catch (Exception exception2)
+                catch (Exception exception)
                 {
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), exception2.ToString(), 0, 0);
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("FatalError", cul), exception.ToString(), 1, 0);
                     errordialog.ShowDialog();
                 }
-                KMCGlobals.AutoShutDownEnabled = false;
-                KMCGlobals.AutoClearMIDIListEnabled = false;
-                RenderingTimer.Enabled = true;
+                Delegate = this;
+                GarbageCollector.RunWorkerAsync();
+                GetInfoWorker.RunWorkerAsync();
             }
+            catch (Exception exception2)
+            {
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), exception2.ToString(), 0, 0);
+                errordialog.ShowDialog();
+            }
+            KMCGlobals.AutoShutDownEnabled = false;
+            KMCGlobals.AutoClearMIDIListEnabled = false;
+            RenderingTimer.Enabled = true;
         }
 
         private void StartRenderingThread()
@@ -545,10 +493,9 @@ namespace KeppyMIDIConverter
             {
                 KMCGlobals.CurrentStatusTextString = null;
                 KMCGlobals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 KMCGlobals.ExportLastDirectory = Path.GetDirectoryName(ExportWhere.FileName);
-                Settings.SetValue("lastexportfolder", KMCGlobals.ExportLastDirectory);
-                Settings.Close();
+                Properties.Settings.Default.LastExportFolder = Path.GetDirectoryName(KMCGlobals.ExportLastDirectory);
+                Properties.Settings.Default.Save();
                 ExportWhere.InitialDirectory = KMCGlobals.ExportLastDirectory;
 
                 if (convmode == 1)
@@ -664,54 +611,57 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                if (KMCGlobals.VSTMode == true)
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    KMCGlobals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 1);
-                    KMCGlobals._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 2);
-                    KMCGlobals._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 3);
-                    KMCGlobals._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 4);
-                    KMCGlobals._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 5);
-                    KMCGlobals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 6);
-                    KMCGlobals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 7);
-                    KMCGlobals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 8);
-                    if (KMCGlobals.IsLoudMaxEnabled)
+                    if (KMCGlobals.VSTMode == true)
                     {
-                        KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(towhichstream, String.Format("{0}\\LoudMax.dll", Application.StartupPath), BASSVSTDsp.BASS_VST_DEFAULT, 9);
-                    }
-                    if (KMCGlobals.VSTSkipSettings != true)
-                    {
-                        BASS_VST_INFO vstInfo = new BASS_VST_INFO();
-                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle, vstInfo) && vstInfo.hasEditor)
+                        KMCGlobals._VSTHandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 1);
+                        KMCGlobals._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 2);
+                        KMCGlobals._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 3);
+                        KMCGlobals._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 4);
+                        KMCGlobals._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 5);
+                        KMCGlobals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 6);
+                        KMCGlobals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 7);
+                        KMCGlobals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 8);
+                        if (KMCGlobals.IsLoudMaxEnabled)
                         {
-                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle, vstInfo);
+                            KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(towhichstream, String.Format("{0}\\LoudMax.dll", Application.StartupPath), BASSVSTDsp.BASS_VST_DEFAULT, 9);
                         }
-                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle2, vstInfo) && vstInfo.hasEditor)
+                        if (KMCGlobals.VSTSkipSettings != true)
                         {
-                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle2, vstInfo);
-                        }
-                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle3, vstInfo) && vstInfo.hasEditor)
-                        {
-                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle3, vstInfo);
-                        }
-                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle4, vstInfo) && vstInfo.hasEditor)
-                        {
-                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle4, vstInfo);
-                        }
-                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle5, vstInfo) && vstInfo.hasEditor)
-                        {
-                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle5, vstInfo);
-                        }
-                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle6, vstInfo) && vstInfo.hasEditor)
-                        {
-                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle6, vstInfo);
-                        }
-                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle7, vstInfo) && vstInfo.hasEditor)
-                        {
-                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle7, vstInfo);
-                        }
-                        if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle8, vstInfo) && vstInfo.hasEditor)
-                        {
-                            BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle8, vstInfo);
+                            BASS_VST_INFO vstInfo = new BASS_VST_INFO();
+                            if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle, vstInfo) && vstInfo.hasEditor)
+                            {
+                                BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle, vstInfo);
+                            }
+                            if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle2, vstInfo) && vstInfo.hasEditor)
+                            {
+                                BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle2, vstInfo);
+                            }
+                            if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle3, vstInfo) && vstInfo.hasEditor)
+                            {
+                                BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle3, vstInfo);
+                            }
+                            if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle4, vstInfo) && vstInfo.hasEditor)
+                            {
+                                BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle4, vstInfo);
+                            }
+                            if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle5, vstInfo) && vstInfo.hasEditor)
+                            {
+                                BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle5, vstInfo);
+                            }
+                            if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle6, vstInfo) && vstInfo.hasEditor)
+                            {
+                                BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle6, vstInfo);
+                            }
+                            if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle7, vstInfo) && vstInfo.hasEditor)
+                            {
+                                BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle7, vstInfo);
+                            }
+                            if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle8, vstInfo) && vstInfo.hasEditor)
+                            {
+                                BASSVSTShowDialog(towhichstream, KMCGlobals._VSTHandle8, vstInfo);
+                            }
                         }
                     }
                 }
@@ -785,7 +735,6 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, 0);
                 if (type == 1)
                 {
@@ -814,7 +763,6 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                 BASS_MIDI_EVENT[] eventChunk;
@@ -1290,7 +1238,6 @@ namespace KeppyMIDIConverter
                 try
                 {
                     PlayConversionStart();
-                    Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", false);
                     bool KeepLooping = true;
                     while (KeepLooping)
                     {
@@ -1823,9 +1770,9 @@ namespace KeppyMIDIConverter
                         MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
                 KMCGlobals.MIDILastDirectory = Path.GetDirectoryName(filenames[0]);
-                Settings.SetValue("lastmidifolder", KMCGlobals.MIDILastDirectory);
+                Properties.Settings.Default.LastMIDIFolder = KMCGlobals.MIDILastDirectory;
+                Properties.Settings.Default.Save();
                 MIDIImport.InitialDirectory = KMCGlobals.MIDILastDirectory;
             }
         }
@@ -2023,11 +1970,9 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Settings.SetValue("volume", VolumeBar.Value.ToString(), Microsoft.Win32.RegistryValueKind.DWord);
+                Properties.Settings.Default.Volume = VolumeBar.Value;
+                Properties.Settings.Default.Save();
                 KMCGlobals.Volume = Convert.ToInt32(this.VolumeBar.Value);
-                Settings.Close();
                 VolumeTip.SetToolTip(VolumeBar, Convert.ToString(Convert.ToInt32(KMCGlobals.Volume / 100)) + "%");
             }
             catch (Exception exception)
@@ -2041,11 +1986,9 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Settings.SetValue("voices", VoiceLimit.Value.ToString(), Microsoft.Win32.RegistryValueKind.DWord);
+                Properties.Settings.Default.Voices = (int)VoiceLimit.Value;
+                Properties.Settings.Default.Save();
                 KMCGlobals.LimitVoicesInt = Convert.ToInt32(VoiceLimit.Value.ToString());
-                Settings.Close();
             }
             catch (Exception exception)
             {
@@ -2146,40 +2089,35 @@ namespace KeppyMIDIConverter
 
         private void enabledToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            Settings.SetValue("audioevents", "1", RegistryValueKind.DWord);
+            Properties.Settings.Default.AudioEvents = true;
+            Properties.Settings.Default.Save();
             enabledToolStripMenuItem4.Checked = true;
             disabledToolStripMenuItem4.Checked = false;
-            Settings.Close();
         }
 
         private void disabledToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            Settings.SetValue("audioevents", "0", RegistryValueKind.DWord);
+            Properties.Settings.Default.AudioEvents = false;
+            Properties.Settings.Default.Save();
             enabledToolStripMenuItem4.Checked = false;
             disabledToolStripMenuItem4.Checked = true;
-            Settings.Close();
         }
 
         private void enabledToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            Settings.SetValue("autoupdatecheck", "1", RegistryValueKind.DWord);
+            Properties.Settings.Default.AutoUpdateCheck = true;
+            Properties.Settings.Default.Save();
             enabledToolStripMenuItem3.Checked = true;
             disabledToolStripMenuItem2.Checked = false;
-            Settings.Close();
         }
 
         private void disabledToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            Settings.SetValue("autoupdatecheck", "0", RegistryValueKind.DWord);
+            Properties.Settings.Default.AudioEvents = false;
+            Properties.Settings.Default.Save();
             enabledToolStripMenuItem3.Checked = false;
             disabledToolStripMenuItem2.Checked = true;
-            Settings.Close();
         }
-
 
         private void enabledToolStripMenuItem5_Click(object sender, EventArgs e)
         {
@@ -2187,10 +2125,8 @@ namespace KeppyMIDIConverter
             {
                 enabledToolStripMenuItem5.Checked = true;
                 disabledToolStripMenuItem5.Checked = false;
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
-                Language.SetValue("langoverride", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Language.Close();
+                Properties.Settings.Default.LangOverride = true;
+                Properties.Settings.Default.Save();
                 InitializeLanguage();
                 // List
                 ChineseCNOverride.Enabled = true;
@@ -2221,10 +2157,8 @@ namespace KeppyMIDIConverter
             {
                 enabledToolStripMenuItem5.Checked = false;
                 disabledToolStripMenuItem5.Checked = true;
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
-                Language.SetValue("langoverride", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Language.Close();
+                Properties.Settings.Default.LangOverride = false;
+                Properties.Settings.Default.Save();
                 InitializeLanguage();
                 // List
                 ChineseCNOverride.Enabled = false;
@@ -2256,10 +2190,8 @@ namespace KeppyMIDIConverter
                 enabledToolStripMenuItem2.Checked = true;
                 disabledToolStripMenuItem2.Checked = false;
                 KMCGlobals.OldTimeThingy = true;
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Settings.SetValue("oldtimethingy", "1", Microsoft.Win32.RegistryValueKind.DWord);
-                Settings.Close();
+                Properties.Settings.Default.ShowOldTimeInfo = true;
+                Properties.Settings.Default.Save();
             }
             catch (Exception exception)
             {
@@ -2275,10 +2207,8 @@ namespace KeppyMIDIConverter
                 enabledToolStripMenuItem2.Checked = false;
                 disabledToolStripMenuItem2.Checked = true;
                 KMCGlobals.OldTimeThingy = false;
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                Settings.SetValue("oldtimethingy", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                Settings.Close();
+                Properties.Settings.Default.ShowOldTimeInfo = false;
+                Properties.Settings.Default.Save();
             }
             catch (Exception exception)
             {
@@ -2315,38 +2245,32 @@ namespace KeppyMIDIConverter
 
         public static void PlayConversionStart()
         {
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
+            if (Properties.Settings.Default.AudioEvents)
             {
                 System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convstart;
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
                 player.PlaySync();
             }
-            Settings.Close();
         }
 
         public static void PlayConversionStop()
         {
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
+            if (Properties.Settings.Default.AudioEvents)
             {
                 System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convfin;
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
                 player.Play();
             }
-            Settings.Close();
         }
 
         public static void PlayConverterError()
         {
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            if (Convert.ToInt32(Settings.GetValue("audioevents", 1)) == 1)
+            if (Properties.Settings.Default.AudioEvents)
             {
                 System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convfail;
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
                 player.Play();
             }
-            Settings.Close();
         }
 
         // Language overrides
@@ -2356,10 +2280,8 @@ namespace KeppyMIDIConverter
             try
             {
                 RenderingTimer.Enabled = false;
-                Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
-                Settings.SetValue("selectedlanguage", selectedlanguage, Microsoft.Win32.RegistryValueKind.String);
-                Settings.Close();
+                Properties.Settings.Default.SelectedLang = selectedlanguage;
+                Properties.Settings.Default.Save();
                 InitializeLanguage();
                 RenderingTimer.Enabled = true;
             }

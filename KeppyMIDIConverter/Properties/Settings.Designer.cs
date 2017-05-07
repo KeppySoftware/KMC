@@ -34,5 +34,245 @@ namespace KeppyMIDIConverter.Properties {
                 this["SettLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AudioEvents {
+            get {
+                return ((bool)(this["AudioEvents"]));
+            }
+            set {
+                this["AudioEvents"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("44100")]
+        public int AudioFreq {
+            get {
+                return ((int)(this["AudioFreq"]));
+            }
+            set {
+                this["AudioFreq"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoUpdateCheck {
+            get {
+                return ((bool)(this["AutoUpdateCheck"]));
+            }
+            set {
+                this["AutoUpdateCheck"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisableFX {
+            get {
+                return ((bool)(this["DisableFX"]));
+            }
+            set {
+                this["DisableFX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastExportFolder {
+            get {
+                return ((string)(this["LastExportFolder"]));
+            }
+            set {
+                this["LastExportFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastMIDIFolder {
+            get {
+                return ((string)(this["LastMIDIFolder"]));
+            }
+            set {
+                this["LastMIDIFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSFFolder {
+            get {
+                return ((string)(this["LastSFFolder"]));
+            }
+            set {
+                this["LastSFFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LoudMaxEnabled {
+            get {
+                return ((bool)(this["LoudMaxEnabled"]));
+            }
+            set {
+                this["LoudMaxEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool NoteOff1 {
+            get {
+                return ((bool)(this["NoteOff1"]));
+            }
+            set {
+                this["NoteOff1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192")]
+        public int OGGBitrate {
+            get {
+                return ((int)(this["OGGBitrate"]));
+            }
+            set {
+                this["OGGBitrate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowOldTimeInfo {
+            get {
+                return ((bool)(this["ShowOldTimeInfo"]));
+            }
+            set {
+                this["ShowOldTimeInfo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OverrideOGG {
+            get {
+                return ((bool)(this["OverrideOGG"]));
+            }
+            set {
+                this["OverrideOGG"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int Voices {
+            get {
+                return ((int)(this["Voices"]));
+            }
+            set {
+                this["Voices"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
+        public int Volume {
+            get {
+                return ((int)(this["Volume"]));
+            }
+            set {
+                this["Volume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LangOverride {
+            get {
+                return ((bool)(this["LangOverride"]));
+            }
+            set {
+                this["LangOverride"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en-US")]
+        public string SelectedLang {
+            get {
+                return ((string)(this["SelectedLang"]));
+            }
+            set {
+                this["SelectedLang"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public double RTFPS {
+            get {
+                return ((double)(this["RTFPS"]));
+            }
+            set {
+                this["RTFPS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastVSTFolder {
+            get {
+                return ((string)(this["LastVSTFolder"]));
+            }
+            set {
+                this["LastVSTFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool NoMoreDonation {
+            get {
+                return ((bool)(this["NoMoreDonation"]));
+            }
+            set {
+                this["NoMoreDonation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TempoOverride {
+            get {
+                return ((bool)(this["TempoOverride"]));
+            }
+            set {
+                this["TempoOverride"] = value;
+            }
+        }
     }
 }

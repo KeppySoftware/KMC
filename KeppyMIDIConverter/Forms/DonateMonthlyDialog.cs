@@ -21,7 +21,7 @@ namespace KeppyMIDIConverter
         
         private void DonateMonthlyDialog_Load(object sender, EventArgs e)
         {
-
+            // Lel
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -36,10 +36,8 @@ namespace KeppyMIDIConverter
 
         private void DontShowAnymore_Click(object sender, EventArgs e)
         {
-            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", RegistryKeyPermissionCheck.ReadWriteSubTree);
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            Settings.SetValue("nomoredonation", 1);
-            Settings.Close();
+            Properties.Settings.Default.NoMoreDonation = false;
+            Properties.Settings.Default.Save();
             Close();
         }
     }

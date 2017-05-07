@@ -309,7 +309,6 @@
             this.MinimizeBox = false;
             this.Name = "AdvancedSettings";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Advanced settings";
             this.Load += new System.EventHandler(this.AdvancedSettings_Load);

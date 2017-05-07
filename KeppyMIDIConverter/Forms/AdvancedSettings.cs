@@ -17,7 +17,6 @@ namespace KeppyMIDIConverter
             InitializeComponent();
         }
 
-        Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);          
         public static Action NonStaticDelegate;
 
         public void InitializeLanguage()
@@ -34,73 +33,72 @@ namespace KeppyMIDIConverter
 
         private void AdvancedSettings_Load(object sender, EventArgs e)
         {
-            InitializeLanguage();
-            // W8
-            if (MainWindow.KMCGlobals.IsKMCBusy == true && MainWindow.KMCGlobals.RenderingMode == false)
+            try
             {
-                Label5.Enabled = false;
-                FrequencyBox.Enabled = false;
-                Label6.Enabled = false;
-                checkBox1.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo2", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
+                InitializeLanguage();
+                // W8
+                if (MainWindow.KMCGlobals.IsKMCBusy == true && MainWindow.KMCGlobals.RenderingMode == false)
+                {
+                    Label5.Enabled = false;
+                    FrequencyBox.Enabled = false;
+                    Label6.Enabled = false;
+                    checkBox1.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo2", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
+                }
+                else
+                {
+                    Label5.Enabled = true;
+                    FrequencyBox.Enabled = true;
+                    Label6.Enabled = true;
+                    checkBox1.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo1", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
+                }
+                // K DONE
+                FrequencyBox.Text = Convert.ToString(Properties.Settings.Default.AudioFreq);
+                BitrateBox.Text = Convert.ToString(Properties.Settings.Default.OGGBitrate);
+                RTFPS.Value = Convert.ToDecimal(MainWindow.KMCGlobals.RTFPS);
+                //
+                if (Properties.Settings.Default.NoteOff1)
+                {
+                    MainWindow.KMCGlobals.NoteOff1Event = true;
+                    Noteoff1.Checked = true;
+                }
+                else
+                {
+                    MainWindow.KMCGlobals.NoteOff1Event = false;
+                    Noteoff1.Checked = false;
+                }
+                if (Properties.Settings.Default.DisableFX)
+                {
+                    MainWindow.KMCGlobals.FXDisabled = true;
+                    FXDisable.Checked = true;
+                }
+                else
+                {
+                    MainWindow.KMCGlobals.FXDisabled = false;
+                    FXDisable.Checked = false;
+                }
+                if (Properties.Settings.Default.OverrideOGG)
+                {
+                    checkBox3.Checked = true;
+                }
+                else
+                {
+                    checkBox3.Checked = false;
+                }
+                if (Properties.Settings.Default.TempoOverride)
+                {
+                    label2.Enabled = true;
+                    TempoVal.Enabled = true;
+                }
+                else
+                {
+                    label2.Enabled = false;
+                    TempoVal.Enabled = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Label5.Enabled = true;
-                FrequencyBox.Enabled = true;
-                Label6.Enabled = true;
-                checkBox1.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo1", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("FatalError", MainWindow.cul), ex.ToString(), 1, 0);
             }
-            // K DONE
-            Microsoft.Win32.RegistryKey Settings = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-            //
-            FrequencyBox.Text = Convert.ToString(Settings.GetValue("audiofreq", 44100));
-            BitrateBox.Text = Convert.ToString(Settings.GetValue("oggbitrate", 256));
-            RTFPS.Value = Convert.ToDecimal(MainWindow.KMCGlobals.RTFPS);
-            //
-            if (Convert.ToInt32(Settings.GetValue("noteoff1", 0)) == 1)
-            {
-                MainWindow.KMCGlobals.NoteOff1Event = true;
-                Noteoff1.Checked = true;
-            }
-            else
-            {
-                MainWindow.KMCGlobals.NoteOff1Event = false;
-                Noteoff1.Checked = false;
-            }
-            if (Convert.ToInt32(Settings.GetValue("disablefx", 0)) == 1)
-            {
-                MainWindow.KMCGlobals.FXDisabled = true;
-                FXDisable.Checked = true;
-            }
-            else
-            {
-                MainWindow.KMCGlobals.FXDisabled = false;
-                FXDisable.Checked = false;
-            }
-            if (Convert.ToInt32(Settings.GetValue("overrideogg", 0)) == 1)
-            {
-                checkBox3.Checked = true;
-            }
-            else
-            {
-                checkBox3.Checked = false;
-            }
-            if (MainWindow.KMCGlobals.TempoOverride == true)
-            {
-                label2.Enabled = true;
-                TempoVal.Enabled = true;
-            }
-            else
-            {
-                label2.Enabled = false;
-                TempoVal.Enabled = false;
-            }
-            //
-            if (BitrateBox.Text == "")
-            {
-                BitrateBox.Text = "256";
-            }
-            //
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -111,13 +109,15 @@ namespace KeppyMIDIConverter
         private void FrequencyBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.Frequency = Convert.ToInt32(this.FrequencyBox.Text);
-            Settings.SetValue("audiofreq", MainWindow.KMCGlobals.Frequency, Microsoft.Win32.RegistryValueKind.DWord);
+            Properties.Settings.Default.AudioFreq = MainWindow.KMCGlobals.Frequency;
+            Properties.Settings.Default.Save();
         }
 
         private void BitrateBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.Bitrate = Convert.ToInt32(this.BitrateBox.Text);
-            Settings.SetValue("oggbitrate", MainWindow.KMCGlobals.Bitrate, Microsoft.Win32.RegistryValueKind.DWord);
+            Properties.Settings.Default.AudioFreq = MainWindow.KMCGlobals.Bitrate;
+            Properties.Settings.Default.Save();
         }
 
         private void FXDisable_CheckedChanged(object sender, EventArgs e)
@@ -125,12 +125,14 @@ namespace KeppyMIDIConverter
             if (this.FXDisable.Checked)
             {
                 MainWindow.KMCGlobals.FXDisabled = true;
-                Settings.SetValue("disablefx", "1", Microsoft.Win32.RegistryValueKind.DWord);
+                Properties.Settings.Default.DisableFX = true;
+                Properties.Settings.Default.Save();
             }
             else
             {
                 MainWindow.KMCGlobals.FXDisabled = false;
-                Settings.SetValue("disablefx", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                Properties.Settings.Default.DisableFX = false;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -139,12 +141,14 @@ namespace KeppyMIDIConverter
             if (this.Noteoff1.Checked)
             {
                 MainWindow.KMCGlobals.NoteOff1Event = true;
-                Settings.SetValue("noteoff1", "1", Microsoft.Win32.RegistryValueKind.DWord);
+                Properties.Settings.Default.NoteOff1 = true;
+                Properties.Settings.Default.Save();
             }
             else
             {
                 MainWindow.KMCGlobals.NoteOff1Event = false;
-                Settings.SetValue("noteoff1", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                Properties.Settings.Default.NoteOff1 = false;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -173,14 +177,16 @@ namespace KeppyMIDIConverter
         {
             if (checkBox3.Checked == true)
             {
-                Settings.SetValue("overrideogg", "1", Microsoft.Win32.RegistryValueKind.DWord);
+                Properties.Settings.Default.OverrideOGG = true;
+                Properties.Settings.Default.Save();
                 label3.Enabled = true;
                 BitrateBox.Enabled = true;
                 MainWindow.KMCGlobals.QualityOverride = true;
             }
             else
             {
-                Settings.SetValue("overrideogg", "0", Microsoft.Win32.RegistryValueKind.DWord);
+                Properties.Settings.Default.OverrideOGG = false;
+                Properties.Settings.Default.Save();
                 label3.Enabled = false;
                 BitrateBox.Enabled = false;
                 MainWindow.KMCGlobals.QualityOverride = false;
@@ -230,7 +236,8 @@ namespace KeppyMIDIConverter
         private void RTFPS_ValueChanged(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.RTFPS = Convert.ToDouble(RTFPS.Value);
-            Settings.SetValue("customfps", RTFPS.Value, Microsoft.Win32.RegistryValueKind.String);
+            Properties.Settings.Default.RTFPS = MainWindow.KMCGlobals.RTFPS;
+            Properties.Settings.Default.Save();
         }
     }
 }

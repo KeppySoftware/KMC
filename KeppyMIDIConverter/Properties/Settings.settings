@@ -5,5 +5,65 @@
     <Setting Name="SettLocation" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
+    <Setting Name="AudioEvents" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AudioFreq" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">44100</Value>
+    </Setting>
+    <Setting Name="AutoUpdateCheck" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DisableFX" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LastExportFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastMIDIFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastSFFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LoudMaxEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="NoteOff1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="OGGBitrate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">192</Value>
+    </Setting>
+    <Setting Name="ShowOldTimeInfo" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="OverrideOGG" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Voices" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="Volume" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="LangOverride" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SelectedLang" Type="System.String" Scope="User">
+      <Value Profile="(Default)">en-US</Value>
+    </Setting>
+    <Setting Name="RTFPS" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="LastVSTFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="NoMoreDonation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="TempoOverride" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

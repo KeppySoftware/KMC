@@ -26,8 +26,6 @@ namespace KeppyMIDIConverter
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
-      
-        public static RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", false);
 
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
@@ -120,11 +118,9 @@ namespace KeppyMIDIConverter
                     }
                     else if (args[i].ToLowerInvariant() == "/restorelanguage")
                     {
-                        Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-                        RegistryKey Language = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Languages", true);
-                        Language.SetValue("langoverride", "0", Microsoft.Win32.RegistryValueKind.DWord);
-                        Language.SetValue("selectedlanguage", "en", Microsoft.Win32.RegistryValueKind.String);
-                        Language.Close();
+                        Properties.Settings.Default.LangOverride = false;
+                        Properties.Settings.Default.SelectedLang = "en-US";
+                        Properties.Settings.Default.Save();
                         MessageBox.Show("Language succesfully restored.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
@@ -208,13 +204,7 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                if (Settings == null)
-                {
-                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", RegistryKeyPermissionCheck.ReadWriteSubTree, RegistryOptions.None);
-                    Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                }
-                if (Convert.ToInt32(Settings.GetValue("autoupdatecheck", 1)) == 1)
+                if (Properties.Settings.Default.AutoUpdateCheck)
                 {
                     WebClient client = new WebClient();
                     Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppyMIDIConverter/kmcupdate.txt");
@@ -237,7 +227,6 @@ namespace KeppyMIDIConverter
                         }
                     }
                 }
-                Settings.Close();
             }
             catch
             {
@@ -289,27 +278,13 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
-                    if (Language != null)
+                    if (Properties.Settings.Default.LangOverride)
                     {
-                        if (Convert.ToInt32(Language.GetValue("langoverride", 0)) == 1)
-                        {
-                            if (Language.GetValue("selectedlanguage", "en-US").ToString() != null)
-                            {
-                                return CultureInfo.CreateSpecificCulture(Language.GetValue("selectedlanguage").ToString());
-                            }
-                            else {  
-                                return CultureInfo.CreateSpecificCulture("en-US");
-                            }
-                        }
-                        else
-                        {
-                            CultureInfo ci = CultureInfo.CurrentUICulture;
-                            return CultureFunc(ci);
-                        }
+                        return CultureInfo.CreateSpecificCulture(Properties.Settings.Default.SelectedLang);
                     }
                     else
                     {
-                        CultureInfo ci = CultureInfo.InstalledUICulture;
+                        CultureInfo ci = CultureInfo.CurrentUICulture;
                         return CultureFunc(ci);
                     }
                 }
@@ -346,14 +321,12 @@ namespace KeppyMIDIConverter
             int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
             if (BirthDate.ToString("dd") == "01")
             {
-                RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-                if (Convert.ToInt32(Settings.GetValue("nomoredonation", 0)) == 0)
+                if (!Properties.Settings.Default.NoMoreDonation)
                 {
                     Form frm = new DonateMonthlyDialog();
                     frm.StartPosition = FormStartPosition.CenterScreen;
                     frm.ShowDialog();
                 }
-                Settings.Close();
             }
             if (BirthDate.ToString("dd/MM") == "23/04")
                 MessageBox.Show("Today is Frozen's birthday! He turned " + (currentyear - 1996).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Frozen Snow", MessageBoxButtons.OK, MessageBoxIcon.Information);

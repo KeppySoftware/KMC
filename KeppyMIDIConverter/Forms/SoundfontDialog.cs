@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Globalization;
 using System.Resources;
+using System.Runtime.InteropServices;
 
 namespace KeppyMIDIConverter
 {
@@ -55,10 +56,7 @@ namespace KeppyMIDIConverter
                     SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
                 }
             }
-            catch
-            {
-
-            }
+            catch { }
         }
 
         private void clearSoundfontListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,18 +70,24 @@ namespace KeppyMIDIConverter
         {
             InitializeLanguage();
             SFList.ContextMenu = SFMenu;
-            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
-            SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
-            Settings.Close();
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTMode == true)
+            SoundfontImportDialog.InitialDirectory = Properties.Settings.Default.LastSFFolder;
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                VSTImport.Enabled = true;
-                VSTUse.Checked = true;
+                if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTMode == true)
+                {
+                    VSTImport.Enabled = true;
+                    VSTUse.Checked = true;
+                }
+                else
+                {
+                    VSTImport.Enabled = false;
+                    VSTUse.Checked = false;
+                }
             }
             else
             {
                 VSTImport.Enabled = false;
+                VSTUse.Enabled = false;
                 VSTUse.Checked = false;
             }
         }
@@ -126,12 +130,10 @@ namespace KeppyMIDIConverter
 
         private void AddSoundfont()
         {
-            Registry.CurrentUser.CreateSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings");
-            RegistryKey Settings = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Keppy's MIDI Converter\\Settings", true);
             try
             {
                 int importmode = 0;
-                SoundfontImportDialog.InitialDirectory = Settings.GetValue("lastsffolder", System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)).ToString();
+                SoundfontImportDialog.InitialDirectory = Properties.Settings.Default.LastSFFolder;
                 OpenFileDialogAddCustomPaths(SoundfontImportDialog);
                 if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -162,7 +164,8 @@ namespace KeppyMIDIConverter
                                     SFList.Items.Add(file);
                                 }
                             }
-                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                            Properties.Settings.Default.LastSFFolder = Path.GetDirectoryName(file);
+                            Properties.Settings.Default.Save();
                         }
                         else if (Path.GetExtension(file).ToLower() == ".sflist" | Path.GetExtension(file).ToLower() == ".txt")
                         {
@@ -200,19 +203,18 @@ namespace KeppyMIDIConverter
                         }
                         else
                         {
-                            Settings.SetValue("lastsffolder", Path.GetDirectoryName(file), RegistryValueKind.String);
+                            Properties.Settings.Default.LastSFFolder = Path.GetDirectoryName(file);
+                            Properties.Settings.Default.Save();
                             MessageBox.Show(MainWindow.res_man.GetString("SoundfontImportError", MainWindow.cul), MainWindow.res_man.GetString("Error", MainWindow.cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts = new string[SFList.Items.Count];
                     SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.KMCGlobals.Soundfonts, 0);
                 }
-                Settings.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                Settings.Close();
             }
         }
 

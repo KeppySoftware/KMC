@@ -35,7 +35,7 @@
     </Otherwise>
   </Choose>
   <PropertyGroup>
-    <IntermediateDir>$(ProjectDir)$(IntermediateOutputPath)</IntermediateDir>
+    <ProjectWeaverXml>$(ProjectDir)FodyWeavers.xml</ProjectWeaverXml>
     <FodySignAssembly Condition="$(FodySignAssembly) == '' Or $(FodySignAssembly) == '*Undefined*'">$(SignAssembly)</FodySignAssembly>
     <FodyPath Condition="$(FodyPath) == '' Or $(FodyPath) == '*Undefined*'">$(MSBuildThisFileDirectory)..\..\</FodyPath>
   </PropertyGroup>
@@ -44,12 +44,15 @@
       AssemblyFile="$(FodyPath)\Fody.dll" />
   <Target
       AfterTargets="AfterCompile"
+      Condition="Exists('@(IntermediateAssembly)')"
       Name="FodyTarget"
-      DependsOnTargets="$(FodyDependsOnTargets)">
+      DependsOnTargets="$(FodyDependsOnTargets)"
+      Inputs="@(IntermediateAssembly->'%(FullPath)');$(FodyKeyFilePath);$(ProjectWeaverXml)"
+      Outputs="$(TargetPath)">
 
     <Fody.WeavingTask
           AssemblyPath="@(IntermediateAssembly)"
-          IntermediateDir="$(IntermediateDir)"
+          IntermediateDir="$(ProjectDir)$(IntermediateOutputPath)"
           KeyFilePath="$(FodyKeyFilePath)"
           NuGetPackageRoot="$(NuGetPackageRoot)"
           ProjectDirectory="$(ProjectDir)"
@@ -58,19 +61,25 @@
           SignAssembly="$(FodySignAssembly)"
           ReferenceCopyLocalPaths="@(ReferenceCopyLocalPaths)"
           DefineConstants="$(DefineConstants)"
+          PackageDefinitions="@(PackageDefinitions->'%(ResolvedPath)')"
       >
 
       <Output 
         TaskParameter="ExecutedWeavers"
         PropertyName="FodyExecutedWeavers" />
     </Fody.WeavingTask>
+
+    <PropertyGroup>
+      <FodyWeavingTargetWasRun>True</FodyWeavingTargetWasRun>
+    </PropertyGroup>
+
   </Target>
 
 
   <UsingTask
     TaskName="Fody.VerifyTask"
     AssemblyFile="$(FodyPath)\Fody.dll" />
-  <Target Condition="'$(NCrunch)' != '1'"
+  <Target Condition="'$(NCrunch)' != '1' And ('$(FodyWeavingTargetWasRun)' == 'True')"
       AfterTargets="AfterBuild"
       Name="FodyVerifyTarget"
       DependsOnTargets="$(FodyVerifyDependsOnTargets)">
@@ -82,8 +91,8 @@
           DefineConstants="$(DefineConstants)"
       />
   </Target>
-  
-  
+
+
   <!--Support for ncrunch-->
   <ItemGroup  Condition="'$(NCrunch)' == '1'">
     <None Include="$(FodyPath)\*.*" />
