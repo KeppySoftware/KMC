@@ -661,5 +661,6 @@ or if you don't know which one you should use.</value>
     <value>Donate with PayPal</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
+    <value>Change language</value>
   </data>
 </root>
