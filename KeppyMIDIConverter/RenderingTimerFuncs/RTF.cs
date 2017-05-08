@@ -113,6 +113,7 @@ namespace KeppyMIDIConverter
         private static void UpdateText()
         {
             String Time = ReturnOutputText(LenDoubleToSpan);
+            String TimeExpect = @"hh\:mm\:ss";
 
             string MIDILengthString = LenDoubleToSpan.ToString(Time);
             string MIDICurrentString = CurDoubleToSpan.ToString(Time);
@@ -125,6 +126,17 @@ namespace KeppyMIDIConverter
             else
                 percentagefinal = percentage;
             MainWindow.KMCGlobals.PercentageProgress = percentagefinal.ToString("0.0%");
+
+            MainWindow.KMCStatus.PassedTime = DateTime.Now - MainWindow.KMCStatus.StartTime;
+            if (!MainWindow.KMCGlobals.RealTime)
+            {
+                Double secondsremaining = (Double)(MainWindow.KMCStatus.PassedTime.TotalSeconds / (Double)RTF.MIDICurrentPosRAW) * ((Double)RTF.MIDILengthRAW - (Double)RTF.MIDICurrentPosRAW);
+                MainWindow.KMCStatus.EstimatedTime = TimeSpan.FromSeconds(secondsremaining);
+            }
+            else
+            {
+                MainWindow.KMCStatus.EstimatedTime = TimeSpan.FromSeconds(0);
+            }
 
             if (!MainWindow.KMCGlobals.RenderingMode)
             {
@@ -159,7 +171,7 @@ namespace KeppyMIDIConverter
                     {
                         MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusFasterNew", MainWindow.cul),
                             RAWConverted.ToString("0.00"), percentagefinal.ToString("0.0%"),
-                            MainWindow.KMCStatus.EstimatedTime, MainWindow.KMCStatus.PassedTime, Convert.ToInt32(CPUUsage).ToString(),
+                            MainWindow.KMCStatus.EstimatedTime.ToString(TimeExpect), MainWindow.KMCStatus.PassedTime.ToString(TimeExpect), Convert.ToInt32(CPUUsage).ToString(),
                             ((float)(100f / CPUUsage)).ToString("0.0"));
                     }
                     else
@@ -167,7 +179,7 @@ namespace KeppyMIDIConverter
                         if (MainWindow.KMCGlobals.OldTimeThingy == false)
                             MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusFasterNew", MainWindow.cul),
                                 RAWConverted.ToString("0.00"), percentagefinal.ToString("0.0%"),
-                                MainWindow.KMCStatus.EstimatedTime, MainWindow.KMCStatus.PassedTime, Convert.ToInt32(CPUUsage).ToString(),
+                                MainWindow.KMCStatus.EstimatedTime.ToString(TimeExpect), MainWindow.KMCStatus.PassedTime.ToString(TimeExpect), Convert.ToInt32(CPUUsage).ToString(),
                                 ((float)(100f / CPUUsage)).ToString("0.0"));
                         else
                             MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusFasterOld", MainWindow.cul),
@@ -182,7 +194,7 @@ namespace KeppyMIDIConverter
                     {
                         MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusNormalNew", MainWindow.cul),
                             RAWConverted.ToString("0.00"), percentagefinal.ToString("0.0%"),
-                            MainWindow.KMCStatus.EstimatedTime, MainWindow.KMCStatus.PassedTime, Convert.ToInt32(CPUUsage).ToString(),
+                            MainWindow.KMCStatus.EstimatedTime.ToString(TimeExpect), MainWindow.KMCStatus.PassedTime.ToString(TimeExpect), Convert.ToInt32(CPUUsage).ToString(),
                             CPUUsage.ToString("0.0"));
 
                     }
@@ -191,7 +203,7 @@ namespace KeppyMIDIConverter
                         if (MainWindow.KMCGlobals.OldTimeThingy == false)
                             MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusNormalNew", MainWindow.cul),
                                 RAWConverted.ToString("0.00"), percentagefinal.ToString("0.0%"),
-                                MainWindow.KMCStatus.EstimatedTime, MainWindow.KMCStatus.PassedTime, Convert.ToInt32(CPUUsage).ToString(),
+                                MainWindow.KMCStatus.EstimatedTime.ToString(TimeExpect), MainWindow.KMCStatus.PassedTime.ToString(TimeExpect), Convert.ToInt32(CPUUsage).ToString(),
                                 CPUUsage.ToString("0.0"));
                         else
                             MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusNormalOld", MainWindow.cul),
@@ -206,7 +218,7 @@ namespace KeppyMIDIConverter
                     {
                         MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusSlowerNew", MainWindow.cul),
                             RAWConverted.ToString("0.00"), percentagefinal.ToString("0.0%"),
-                            MainWindow.KMCStatus.EstimatedTime, MainWindow.KMCStatus.PassedTime, Convert.ToInt32(CPUUsage).ToString(),
+                            MainWindow.KMCStatus.EstimatedTime.ToString(TimeExpect), MainWindow.KMCStatus.PassedTime.ToString(TimeExpect), Convert.ToInt32(CPUUsage).ToString(),
                             ((float)(CPUUsage / 100f)).ToString("0.0"));
                     }
                     else
@@ -214,7 +226,7 @@ namespace KeppyMIDIConverter
                         if (MainWindow.KMCGlobals.OldTimeThingy == false)
                             MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusSlowerNew", MainWindow.cul),
                                 RAWConverted.ToString("0.00"), percentagefinal.ToString("0.0%"),
-                                MainWindow.KMCStatus.EstimatedTime, MainWindow.KMCStatus.PassedTime, Convert.ToInt32(CPUUsage).ToString(),
+                                MainWindow.KMCStatus.EstimatedTime.ToString(TimeExpect), MainWindow.KMCStatus.PassedTime.ToString(TimeExpect), Convert.ToInt32(CPUUsage).ToString(),
                                 ((float)(CPUUsage / 100f)).ToString("0.0"));
                         else
                             MainWindow.Delegate.CurrentStatusText.Text = String.Format(MainWindow.res_man.GetString("ConvStatusSlowerOld", MainWindow.cul),

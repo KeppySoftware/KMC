@@ -193,6 +193,12 @@
     <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Languages\OverrideLanguage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Languages\OverrideLanguage.Designer.cs">
+      <DependentUpon>OverrideLanguage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Forms\AdvancedVoices.cs">
       <SubType>Form</SubType>
@@ -268,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdvancedVoices.resx">
       <DependentUpon>AdvancedVoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\OverrideLanguage.resx">
+      <DependentUpon>OverrideLanguage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

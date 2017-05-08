@@ -654,4 +654,7 @@ Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
   <data name="Donate" xml:space="preserve">
     <value>Пожертвовать через PayPal</value>
   </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Изменение языка</value>
+  </data>
 </root>

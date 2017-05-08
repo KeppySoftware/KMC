@@ -659,4 +659,7 @@ or if you don't know which one you should use.</value>
   <data name="Donate" xml:space="preserve">
     <value>捐赠与贝宝</value>
   </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>改變語言</value>
+  </data>
 </root>

@@ -659,4 +659,7 @@ oder wenn du nicht weist welche du benutzen solltest.</value>
   <data name="Donate" xml:space="preserve">
     <value>Spenden mit PayPal</value>
   </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Sprache ändern</value>
+  </data>
 </root>

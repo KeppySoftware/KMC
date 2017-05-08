@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Informations));
-            this.label1 = new System.Windows.Forms.Label();
+            this.Credits = new System.Windows.Forms.Label();
             this.Versionlabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -54,17 +54,17 @@
             this.UpdtPg.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // Credits
             // 
-            this.label1.Location = new System.Drawing.Point(212, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(317, 104);
-            this.label1.TabIndex = 1;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.Credits.Location = new System.Drawing.Point(212, 46);
+            this.Credits.Name = "Credits";
+            this.Credits.Size = new System.Drawing.Size(317, 104);
+            this.Credits.TabIndex = 1;
+            this.Credits.Text = resources.GetString("Credits.Text");
             // 
             // Versionlabel
             // 
-            this.Versionlabel.Location = new System.Drawing.Point(212, 21);
+            this.Versionlabel.Location = new System.Drawing.Point(212, 20);
             this.Versionlabel.Name = "Versionlabel";
             this.Versionlabel.Size = new System.Drawing.Size(317, 13);
             this.Versionlabel.TabIndex = 2;
@@ -109,7 +109,7 @@
             // KeppyVer
             // 
             this.KeppyVer.AutoSize = true;
-            this.KeppyVer.Location = new System.Drawing.Point(212, 8);
+            this.KeppyVer.Location = new System.Drawing.Point(212, 7);
             this.KeppyVer.Name = "KeppyVer";
             this.KeppyVer.Size = new System.Drawing.Size(119, 13);
             this.KeppyVer.TabIndex = 6;
@@ -134,7 +134,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(212, 151);
+            this.linkLabel1.Location = new System.Drawing.Point(212, 150);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(287, 13);
             this.linkLabel1.TabIndex = 7;
@@ -171,7 +171,7 @@
             // 
             this.InfoPg.Controls.Add(this.TranslationInfo);
             this.InfoPg.Controls.Add(this.pictureBox1);
-            this.InfoPg.Controls.Add(this.label1);
+            this.InfoPg.Controls.Add(this.Credits);
             this.InfoPg.Controls.Add(this.linkLabel1);
             this.InfoPg.Controls.Add(this.Versionlabel);
             this.InfoPg.Controls.Add(this.KeppyVer);
@@ -287,7 +287,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Credits;
         private System.Windows.Forms.Label Versionlabel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

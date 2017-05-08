@@ -595,8 +595,8 @@ Vajuta OK, et väljuda.</value>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>Aldo Talving</value>
   </data>
-  <data name="OverrideLanguage" xml:space="preserve">
-    <value>Alistamine keeles</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Vali keel</value>
   </data>
   <data name="MIDIFile" xml:space="preserve">
     <value>Fail</value>
@@ -660,5 +660,8 @@ või kui te ei tea, milline sa peaksid kasutama.</value>
   </data>
   <data name="Donate" xml:space="preserve">
     <value>Anneta PayPal'i kaudu</value>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>Alistamine keeles</value>
   </data>
 </root>

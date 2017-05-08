@@ -3,6 +3,10 @@
 <br>
 A fully functional MIDI to WAV converter, for FREE!
 
+## Keppy's Updates Server on Discord
+I also post my updates on Discord, to keep everyone up-to-date 24/7!
+Join now here: https://discord.gg/jUaHPrP
+
 ## Can I use your program's source code for my program?
 Sure you can, but there are a few "rules" you need to follow.
 

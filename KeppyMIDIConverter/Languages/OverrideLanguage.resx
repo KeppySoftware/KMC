@@ -117,17 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Credits.Text" xml:space="preserve">
-    <value>Copyright(C) 2013-2017 KaleidonKep99
-
-This program is based around the great BASS libraries
-by Ian Luck from Un4seen Developments.
-Take a look at his site by clicking the "Un4seen website"
-button.
-
-Source code available here:</value>
-  </data>
-  <metadata name="Tipperino.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

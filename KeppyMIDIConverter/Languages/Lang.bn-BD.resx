@@ -590,8 +590,8 @@ VST সম্ভবত নেটিভ উইন্ডোজ ফরম সিস
   <data name="ZZZTranslators" xml:space="preserve">
     <value>TIM AA</value>
   </data>
-  <data name="OverrideLanguage" xml:space="preserve">
-    <value>বাংলা</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>ভাষা পরিবর্তন করুন</value>
   </data>
   <data name="MIDIFile" xml:space="preserve">
     <value>ফাইল</value>
@@ -655,5 +655,8 @@ or if you don't know which one you should use.</value>
   </data>
   <data name="Donate" xml:space="preserve">
     <value>Paypal এর মাধ্যমে সংস্করণ</value>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>বাংলা</value>
   </data>
 </root>

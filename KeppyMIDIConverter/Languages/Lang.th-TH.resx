@@ -659,4 +659,7 @@ Des.: แบงก์/พรีเซ็ตที่จะกำหนดตั�
   <data name="Donate" xml:space="preserve">
     <value>บริจาคกับ PayPal</value>
   </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>เปลี่ยนภาษา</value>
+  </data>
 </root>

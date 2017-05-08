@@ -658,4 +658,7 @@ Usa "Banco 0" e "Preset 0" per il piano, o se non sai quale banco/preset usare.<
   <data name="Donate" xml:space="preserve">
     <value>Dona con PayPal</value>
   </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Cambia lingua</value>
+  </data>
 </root>

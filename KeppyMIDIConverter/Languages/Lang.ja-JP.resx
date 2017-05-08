@@ -318,7 +318,6 @@ BASS status: {0}</value>
 Ian Luckさんによる偉大なBASSライブラリをベースとしています。
 "Un4seenのサイト"ボタンをクリックして、彼のウェブサイトを見てみませんか。
 
-
 ソースコードはここより利用できます:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
@@ -653,5 +652,8 @@ OKをクリックしてウィンドウを閉じてください。</value>
   </data>
   <data name="Donate" xml:space="preserve">
     <value>寄付ペイパル</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>言語を変えてください</value>
   </data>
 </root>

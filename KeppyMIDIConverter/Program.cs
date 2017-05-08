@@ -18,6 +18,7 @@ using System.Configuration;
 using System.Speech.Synthesis;
 using System.Collections.Specialized;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace KeppyMIDIConverter
 {
@@ -77,6 +78,13 @@ namespace KeppyMIDIConverter
                         skiptrigger = 0;
                         break;
                     }
+                    else if (args[i].ToLowerInvariant() == "/resetsettings")
+                    {
+                        Properties.Settings.Default.Reset();
+                        Properties.Settings.Default.Save();
+                        MessageBox.Show("Settings have been reset to their default values.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    }
                     else if (args[i].ToLowerInvariant() == "/debug") // DO NOT USE IF NOT NEEDED <.<
                     {
                         System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
@@ -131,6 +139,8 @@ namespace KeppyMIDIConverter
                     }
                     else if (args[i].ToLowerInvariant() == "/triggerdonation")
                     {
+                        Properties.Settings.Default.NoMoreDonation = false;
+                        Properties.Settings.Default.Save();
                         Form frm = new DonateMonthlyDialog();
                         frm.StartPosition = FormStartPosition.CenterScreen;
                         frm.ShowDialog();
@@ -142,12 +152,7 @@ namespace KeppyMIDIConverter
                     }
                     else if (args[i].ToLowerInvariant() == "/kep" | args[i].ToLowerInvariant() == "/keppy" | args[i].ToLowerInvariant() == "/kaleidonkep99")
                     {
-                        Process.Start("https://plus.google.com/u/0/+RichardForhenson");
-                        return;
-                    }
-                    else if (args[i].ToLowerInvariant() == "/frozen" | args[i].ToLowerInvariant() == "/frozensnow" | args[i].ToLowerInvariant() == "/frozensnowproductions")
-                    {
-                        Process.Start("http://frozensnowproductions.com/");
+                        Process.Start("https://plus.google.com/u/0/+RiccardoLoi");
                         return;
                     }
                     else if (args[i].ToLowerInvariant() == "/blackmidi" | args[i].ToLowerInvariant() == "/blackmiditeam" | args[i].ToLowerInvariant() == "/blackmidicommunity")
@@ -155,9 +160,14 @@ namespace KeppyMIDIConverter
                         Process.Start("https://plus.google.com/communities/105907289212970966669");
                         return;
                     }
-                    else if (args[i].Contains("/"))
+                    else if (args[i].ToLowerInvariant() == "/blackmididiscord" | args[i].ToLowerInvariant() == "/bmcdiscord" | args[i].ToLowerInvariant() == "/bmtdiscord")
                     {
-                        MessageBox.Show(String.Format("\"{0}\" is not a valid argument!\n\nPress OK to continue.", args[i]), "Keppy's MIDI Converter - Argument error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Process.Start("https://discord.gg/9afWatV");
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant().Contains("/"))
+                    {
+                        MessageBox.Show(String.Format("\"{0}\" is not a valid command line argument!\n\nPress OK to continue.", args[i]), "Keppy's MIDI Converter - Argument error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     }
                     else
@@ -246,6 +256,8 @@ namespace KeppyMIDIConverter
                 return CultureInfo.CreateSpecificCulture("zh-HK");
             else if (ci.Name == "zh-TW")
                 return CultureInfo.CreateSpecificCulture("zh-TW");
+            else if (ci.Name == "cy-GB")
+                return CultureInfo.CreateSpecificCulture("en-US"); // Not done yet, should be cy-GB
             else if (ci.Name == "bn-BD" | ci.Name == "bn-IN")
                 return CultureInfo.CreateSpecificCulture("bn-BD");
             else if (ci.Name == "en-US" | ci.Name == "en-BZ" | ci.Name == "en-CA" | ci.Name == "en-029" | ci.Name == "en-IN" | ci.Name == "en-IE" | ci.Name == "en-JM" | ci.Name == "en-MY" | ci.Name == "en-NZ" | ci.Name == "en-PH" | ci.Name == "en-SG" | ci.Name == "en-ZA" | ci.Name == "en-TT" | ci.Name == "en-GB" | ci.Name == "en-ZW")
@@ -340,6 +352,58 @@ namespace KeppyMIDIConverter
                 MessageBox.Show("Oh oh oh, Merry Christmas!", "Happy holidays, and Merry Christmas!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else if (BirthDate.ToString("dd/MM") == "01/01")
                 MessageBox.Show("HAPPY NEW YEAR!", "Finally, " + BirthDate.ToString("yyyy") + " has begun!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+
+    public class Languages
+    {
+        public static String[] LanguagesAvailable = new String[13] {
+            "বাঙালি (Bengali)",
+            "English (English)",
+            "Eesti (Estonian)",
+            "Deutsch (German)",
+            "Italiano (Italian)",
+            "日本語 (Japanese)",
+            "한국어 (Korean)",
+            "Pу́сский (Russian)",
+            "简化字 (Simplified Chinese, PRC)",
+            "Español (Spanish)",
+            "ภาษาไทย (Thai)",
+            "廣東話 (Traditional Chinese, Hong Kong)",
+            "台灣 (Traditional Chinese, Taiwan)",
+        };
+
+        public static String[] LanguagesCodes = new String[13] {
+            "bn-BD",
+            "en-US",
+            "et-EE",
+            "de-DE",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "ru-RU",
+            "zh-CN",
+            "es-ES",
+            "th-TH",
+            "zh-HK",
+            "zh-TW",
+        };
+
+
+        // Language overrides
+
+        public static void ChangeLanguage(string selectedlanguage)
+        {
+            try
+            {
+                Properties.Settings.Default.SelectedLang = selectedlanguage;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception exception)
+            {
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
+                errordialog.ShowDialog();
+            }
         }
     }
 }

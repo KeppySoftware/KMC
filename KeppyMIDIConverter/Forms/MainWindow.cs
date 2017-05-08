@@ -122,8 +122,9 @@ namespace KeppyMIDIConverter
         {
             public static Int64 PlayedNotes = 0;
             public static Int64 TotalNotes = 0;
-            public static string PassedTime;
-            public static string EstimatedTime;
+            public static DateTime StartTime;
+            public static TimeSpan PassedTime;
+            public static TimeSpan EstimatedTime;
         }
 
         public static class KMCChannelsVoices
@@ -249,14 +250,14 @@ namespace KeppyMIDIConverter
                 MoveDownItem.Text = res_man.GetString("MoveDOWN", cul);
                 MoveUpItem.Text = res_man.GetString("MoveUP", cul);
                 OptionsStrip.Text = res_man.GetString("OptionsStrip", cul);
-                OverrideStrip.Text = res_man.GetString("OverrideLanguage", cul);
+                OverrideStrip.Text = res_man.GetString("ChangeLanguage", cul);
                 SettingsBox.Text = res_man.GetString("SettingsBox", cul);
                 SortByName.Text = res_man.GetString("SortByName", cul);
                 VoiceLabel.Text = res_man.GetString("VoiceLabel", cul);
                 abortRenderingToolStripMenuItem.Text = res_man.GetString("AbortConvPlayback", cul);
                 clearMIDIsListToolStripMenuItem.Text = ClearMIDIsListRightClick.Text = res_man.GetString("ClearMIDIsList", cul);
-                disabledToolStripMenuItem.Text = disabledToolStripMenuItem1.Text = disabledToolStripMenuItem2.Text = disabledToolStripMenuItem3.Text = disabledToolStripMenuItem4.Text = disabledToolStripMenuItem5.Text = res_man.GetString("DisabledText", cul);
-                enabledToolStripMenuItem.Text = enabledToolStripMenuItem1.Text = enabledToolStripMenuItem2.Text = enabledToolStripMenuItem3.Text = enabledToolStripMenuItem4.Text = enabledToolStripMenuItem5.Text = res_man.GetString("EnabledText", cul);
+                disabledToolStripMenuItem.Text = disabledToolStripMenuItem1.Text = disabledToolStripMenuItem2.Text = disabledToolStripMenuItem3.Text = disabledToolStripMenuItem4.Text = res_man.GetString("DisabledText", cul);
+                enabledToolStripMenuItem.Text = enabledToolStripMenuItem1.Text = enabledToolStripMenuItem2.Text = enabledToolStripMenuItem3.Text = enabledToolStripMenuItem4.Text = res_man.GetString("EnabledText", cul);
                 exitToolStripMenuItem.Text = res_man.GetString("ExitStrip", cul);
                 forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
                 importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
@@ -299,14 +300,14 @@ namespace KeppyMIDIConverter
                 MoveDownItem.Text = res_man.GetString("MoveDOWN", cul);
                 MoveUpItem.Text = res_man.GetString("MoveUP", cul);
                 OptionsStrip.Text = res_man.GetString("OptionsStrip", cul);
-                OverrideStrip.Text = res_man.GetString("OverrideLanguage", cul);
+                OverrideStrip.Text = res_man.GetString("ChangeLanguage", cul);
                 SettingsBox.Text = res_man.GetString("SettingsBox", cul);
                 SortByName.Text = res_man.GetString("SortByName", cul);
                 VoiceLabel.Text = res_man.GetString("VoiceLabel", cul);
                 abortRenderingToolStripMenuItem.Text = res_man.GetString("AbortConvPlayback", cul);
                 clearMIDIsListToolStripMenuItem.Text = ClearMIDIsListRightClick.Text = res_man.GetString("ClearMIDIsList", cul);
-                disabledToolStripMenuItem.Text = disabledToolStripMenuItem1.Text = disabledToolStripMenuItem2.Text = disabledToolStripMenuItem3.Text = disabledToolStripMenuItem4.Text = disabledToolStripMenuItem5.Text = res_man.GetString("DisabledText", cul);
-                enabledToolStripMenuItem.Text = enabledToolStripMenuItem1.Text = enabledToolStripMenuItem2.Text = enabledToolStripMenuItem3.Text = enabledToolStripMenuItem4.Text = enabledToolStripMenuItem5.Text = res_man.GetString("EnabledText", cul);
+                disabledToolStripMenuItem.Text = disabledToolStripMenuItem1.Text = disabledToolStripMenuItem2.Text = disabledToolStripMenuItem3.Text = disabledToolStripMenuItem4.Text = res_man.GetString("DisabledText", cul);
+                enabledToolStripMenuItem.Text = enabledToolStripMenuItem1.Text = enabledToolStripMenuItem2.Text = enabledToolStripMenuItem3.Text = enabledToolStripMenuItem4.Text = res_man.GetString("EnabledText", cul);
                 exitToolStripMenuItem.Text = res_man.GetString("ExitStrip", cul);
                 forceCloseTheApplicationToolStripMenuItem.Text = res_man.GetString("forceCloseTheApplicationStrip", cul);
                 importMIDIsToolStripMenuItem.Text = ImportMIDIsRightClick.Text = res_man.GetString("ImportMIDI", cul);
@@ -329,15 +330,11 @@ namespace KeppyMIDIConverter
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             this.Menu = DefaultMenu;
             MIDIList.ContextMenu = DefMenu;
-            // Fade in
-            t1.Interval = 1; // Increases opacity every 10ms
-            t1.Tick += new EventHandler(fadeIn);  // This calls the function that changes opacity 
-            t1.Start();
-            // Fade in
             try
             {
                 try
                 {
+                    Properties.Settings.Default.Reload();
                     // Generic settings
                     VoiceLimit.Value = Properties.Settings.Default.Voices;
                     VolumeBar.Value = Properties.Settings.Default.Volume;
@@ -355,32 +352,6 @@ namespace KeppyMIDIConverter
                     {
                         enabledToolStripMenuItem4.Checked = false;
                         disabledToolStripMenuItem4.Checked = true;
-                    }
-                    // Audio events
-                    if (Properties.Settings.Default.LangOverride)
-                    {
-                        enabledToolStripMenuItem5.Checked = true;
-                        disabledToolStripMenuItem5.Checked = false;
-                        // List
-                        ChineseCNOverride.Enabled = true;
-                        ChineseHKOverride.Enabled = true;
-                        ChineseTWOverride.Enabled = true;
-                        EnglishOverride.Enabled = true;
-                        EstonianOverride.Enabled = true;
-                        FrenchOverride.Enabled = true;
-                        GermanOverride.Enabled = true;
-                        RussianOverride.Enabled = true;
-                        ItalianOverride.Enabled = true;
-                        JapaneseOverride.Enabled = true;
-                        KoreanOverride.Enabled = true;
-                        SpanishOverride.Enabled = true;
-                        BengaliOverride.Enabled = true;
-                        ThaiTHOverride.Enabled = true;
-                    }
-                    else
-                    {
-                        enabledToolStripMenuItem5.Checked = false;
-                        disabledToolStripMenuItem5.Checked = true;
                     }
                     // Autoupdate lel
                     if (Properties.Settings.Default.AutoUpdateCheck)
@@ -520,18 +491,21 @@ namespace KeppyMIDIConverter
         private void startRenderingWAVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             KMCGlobals.CurrentEncoder = 0;
+            KMCStatus.StartTime = DateTime.Now;
             StartRenderingThread();
         }
 
         private void startRenderingOGGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             KMCGlobals.CurrentEncoder = 1;
+            KMCStatus.StartTime = DateTime.Now;
             StartRenderingThread();
         }
 
         private void startRenderingMp3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             KMCGlobals.CurrentEncoder = 2;
+            KMCStatus.StartTime = DateTime.Now;
             StartRenderingThread();
         }
 
@@ -955,12 +929,8 @@ namespace KeppyMIDIConverter
             BassWasapi.BASS_WASAPI_SetVolume(BASSWASAPIVolume.BASS_WASAPI_VOL_SESSION, ((float)KMCGlobals.Volume / 10000.0f));
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
 
-            KMCStatus.PassedTime = "?:??:??";
-            KMCStatus.EstimatedTime = "?:??:??";
-
             KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
             KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
-            Bass.BASS_ChannelUpdate(KMCGlobals._recHandle, KMCGlobals.UpdateRate);
 
             System.Threading.Thread.Sleep(1);
 
@@ -970,19 +940,13 @@ namespace KeppyMIDIConverter
                 return 0;
         }
 
-        private bool BASSEncodingEngine(long pos, int length, DateTime starttime)
+        private bool BASSEncodingEngine(long pos, int length)
         {
             int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
             KMCGlobals.OriginalTempo = 60000000 / tempo;
             byte[] buffer = new byte[length];
             if (MainWindow.KMCGlobals.TempoOverride)
                 BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, 60000000 / KMCGlobals.FinalTempo);
-            TimeSpan timespent = DateTime.Now - starttime;
-            long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
-            int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
-            TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
-            string str6 = span3.Hours.ToString() + ":" + span3.Minutes.ToString().PadLeft(2, '0') + ":" + span3.Seconds.ToString().PadLeft(2, '0');
-            string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
 
             int decoded = Bass.BASS_ChannelGetData(KMCGlobals._recHandle, buffer, length);
             if (decoded < 0)
@@ -991,23 +955,14 @@ namespace KeppyMIDIConverter
                 return false;
             }
 
-            KMCStatus.PassedTime = str7;
-            KMCStatus.EstimatedTime = str6;
-
             return true;
         }
 
-        private bool BASSEncodingEngineRT(double[] CustomFramerates, ref int pos, ref uint es, DateTime starttime)
+        private bool BASSEncodingEngineRT(double[] CustomFramerates, ref int pos, ref uint es)
         {
             double fpssim = FPSSimulator.NextDouble() * (CustomFramerates[0] - CustomFramerates[1]) + CustomFramerates[1];
             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, fpssim));
             byte[] buffer = new byte[length];
-            TimeSpan timespent = DateTime.Now - starttime;
-            long num6 = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
-            float num8 = ((float)num6) / 1048576f;
-            int secondsremaining = (int)(timespent.TotalSeconds / (int)num6 * ((int)pos - (int)num6));
-            TimeSpan span3 = TimeSpan.FromSeconds(secondsremaining);
-            string str7 = timespent.Hours.ToString() + ":" + timespent.Minutes.ToString().PadLeft(2, '0') + ":" + timespent.Seconds.ToString().PadLeft(2, '0');
 
             while (es < KMCGlobals.eventc && KMCGlobals.events[es].pos < pos + length)
             {
@@ -1028,9 +983,6 @@ namespace KeppyMIDIConverter
             }
 
             float fpsstring = 1 / (float)fpssim;
-
-            KMCStatus.PassedTime = str7;
-            KMCStatus.EstimatedTime = "??:??";
 
             return true;
         }
@@ -1138,7 +1090,6 @@ namespace KeppyMIDIConverter
                             BASSVSTInit(KMCGlobals._recHandle);
                             BASSEffectSettings();
                             BASSEncoderInit(KMCGlobals._recHandle, KMCGlobals.CurrentEncoder, str);
-                            DateTime starttime = DateTime.Now;
                             long pos = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(KMCGlobals._recHandle, 0.03));
                             KMCGlobals.IsKMCNowExporting = true;
@@ -1147,7 +1098,7 @@ namespace KeppyMIDIConverter
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    DoINeedToContinue = BASSEncodingEngine(pos, length, starttime);
+                                    DoINeedToContinue = BASSEncodingEngine(pos, length);
                                     if (!DoINeedToContinue) break;
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
@@ -1254,7 +1205,6 @@ namespace KeppyMIDIConverter
                             BASSVSTInit(KMCGlobals._recHandle);
                             BASSEffectSettings();
                             BASSEncoderInit(KMCGlobals._recHandle, KMCGlobals.CurrentEncoder, str);
-                            DateTime starttime = DateTime.Now;
                             int pos = 0;
                             uint es = 0;
                             FPSSimulator.NextDouble();
@@ -1264,7 +1214,7 @@ namespace KeppyMIDIConverter
                             {
                                 if (KMCGlobals.CancellationPendingValue != 1)
                                 {
-                                    DoINeedToContinue = BASSEncodingEngineRT(CustomFramerates, ref pos, ref es, starttime);
+                                    DoINeedToContinue = BASSEncodingEngineRT(CustomFramerates, ref pos, ref es);
                                     if (!DoINeedToContinue) break;
                                 }
                                 else if (KMCGlobals.CancellationPendingValue == 1)
@@ -1488,49 +1438,6 @@ namespace KeppyMIDIConverter
             base.Dispose(disposing);
         }
 
-        public bool AeroEnabled()
-        {
-            if (Environment.OSVersion.Version.Major < 6)
-                return false;
-            bool Enabled = false;
-            DwmIsCompositionEnabled(out Enabled);
-            return Enabled;
-        }
-
-        void fadeIn(object sender, EventArgs e)
-        {
-            if (Opacity >= 1)
-            {
-                t1.Stop();
-            }
-            else
-                if (AeroEnabled() == true) {
-                    Opacity += 0.025;
-                }
-                else
-                {
-                    Opacity += 0.025;
-                }      
-        }
-
-        void fadeOut(object sender, EventArgs e)
-        {
-            if (Opacity == 0)   
-            {
-                t2.Stop();
-                if (KMCGlobals.DeleteEncoder == true)
-                {
-                    foreach (string i in KMCGlobals.EncodersPath)
-                    {
-                        File.Delete(i);
-                    }
-                }
-                Process.GetCurrentProcess().Kill();  
-            }
-            else
-                Opacity -= 0.1;
-        }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
@@ -1538,19 +1445,27 @@ namespace KeppyMIDIConverter
                 DialogResult dialogResult = MessageBox.Show(MainWindow.res_man.GetString("AppBusy", cul), "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Bass.BASS_StreamFree(KMCGlobals._recHandle);
-                    Bass.BASS_Free();
-                    t2.Interval = 1;
-                    t2.Tick += new EventHandler(fadeOut);
-                    t2.Start();
+                    CloseApp();
                 }
             }
             else
             {
-                t2.Interval = 1;
-                t2.Tick += new EventHandler(fadeOut);
-                t2.Start();
+                CloseApp();
             }
+        }
+
+        private void CloseApp()
+        {
+            Bass.BASS_StreamFree(KMCGlobals._recHandle);
+            Bass.BASS_Free();
+            if (KMCGlobals.DeleteEncoder == true)
+            {
+                foreach (string i in KMCGlobals.EncodersPath)
+                {
+                    File.Delete(i);
+                }
+            }
+            Process.GetCurrentProcess().Kill();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -1564,12 +1479,8 @@ namespace KeppyMIDIConverter
             {
                 DialogResult dialogResult = MessageBox.Show(MainWindow.res_man.GetString("AppBusy", cul), "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
-                { 
-                    Bass.BASS_Free();
-                    e.Cancel = true;
-                    t2.Interval = 1;
-                    t2.Tick += new EventHandler(fadeOut);
-                    t2.Start();  
+                {
+                    CloseApp();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -1578,10 +1489,7 @@ namespace KeppyMIDIConverter
             }
             else
             {
-                e.Cancel = true;
-                t2.Interval = 1;
-                t2.Tick += new EventHandler(fadeOut);
-                t2.Start();  
+                CloseApp();
             }
         }
 
@@ -1782,6 +1690,14 @@ namespace KeppyMIDIConverter
             new Informations().ShowDialog();
         }
 
+        private void OverrideStrip_Click(object sender, EventArgs e)
+        {
+            new OverrideLanguage().ShowDialog();
+            RenderingTimer.Enabled = false;
+            InitializeLanguage();
+            RenderingTimer.Enabled = true;
+        }
+
         // Links
 
         private void kaleidonKep99sYouTubeChannelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1948,10 +1864,7 @@ namespace KeppyMIDIConverter
                 }
                 System.Threading.Thread.Sleep(1);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            catch { }
         }
 
         private void playInRealtimeBetaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2119,70 +2032,6 @@ namespace KeppyMIDIConverter
             disabledToolStripMenuItem2.Checked = true;
         }
 
-        private void enabledToolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                enabledToolStripMenuItem5.Checked = true;
-                disabledToolStripMenuItem5.Checked = false;
-                Properties.Settings.Default.LangOverride = true;
-                Properties.Settings.Default.Save();
-                InitializeLanguage();
-                // List
-                ChineseCNOverride.Enabled = true;
-                ChineseHKOverride.Enabled = true;
-                ChineseTWOverride.Enabled = true;
-                EnglishOverride.Enabled = true;
-                EstonianOverride.Enabled = true;
-                FrenchOverride.Enabled = true;
-                GermanOverride.Enabled = true;
-                RussianOverride.Enabled = true;
-                ItalianOverride.Enabled = true;
-                JapaneseOverride.Enabled = true;
-                KoreanOverride.Enabled = true;
-                SpanishOverride.Enabled = true;
-                BengaliOverride.Enabled = true;
-                ThaiTHOverride.Enabled = true;
-            }
-            catch (Exception exception)
-            {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
-                errordialog.ShowDialog();
-            }
-        }
-
-        private void disabledToolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                enabledToolStripMenuItem5.Checked = false;
-                disabledToolStripMenuItem5.Checked = true;
-                Properties.Settings.Default.LangOverride = false;
-                Properties.Settings.Default.Save();
-                InitializeLanguage();
-                // List
-                ChineseCNOverride.Enabled = false;
-                ChineseHKOverride.Enabled = false;
-                ChineseTWOverride.Enabled = false;
-                EnglishOverride.Enabled = false;
-                EstonianOverride.Enabled = false;
-                FrenchOverride.Enabled = false;
-                GermanOverride.Enabled = false;
-                RussianOverride.Enabled = false;
-                ItalianOverride.Enabled = false;
-                JapaneseOverride.Enabled = false;
-                KoreanOverride.Enabled = false;
-                SpanishOverride.Enabled = false;
-                BengaliOverride.Enabled = false;
-                ThaiTHOverride.Enabled = false;
-            }
-            catch (Exception exception)
-            {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
-                errordialog.ShowDialog();
-            }
-        }
-
         private void enabledToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             try
@@ -2273,96 +2122,6 @@ namespace KeppyMIDIConverter
             }
         }
 
-        // Language overrides
-
-        private void ChangeLanguage(string selectedlanguage)
-        {
-            try
-            {
-                RenderingTimer.Enabled = false;
-                Properties.Settings.Default.SelectedLang = selectedlanguage;
-                Properties.Settings.Default.Save();
-                InitializeLanguage();
-                RenderingTimer.Enabled = true;
-            }
-            catch (Exception exception)
-            {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler("Error", exception.ToString(), 0, 0);
-                errordialog.ShowDialog();
-                RenderingTimer.Enabled = true;
-            }
-        }
-
-        private void ItalianOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("it-IT");
-        }
-
-        private void EnglishOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("en-US");
-        }
-
-        private void SpanishOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("es-ES");
-        }
-
-        private void GermanOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("de-DE");
-        }
-
-        private void FrenchOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("fr-FR");
-        }
-
-        private void EstonianOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("et-EE");
-        }
-
-        private void ChineseCN_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("zh-CN");
-        }
-
-        private void ChineseTW_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("zh-TW");
-        }
-
-        private void ChineseHK_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("zh-HK");
-        }
-
-        private void JapaneseOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("ja-JP");
-        }
-
-        private void KoreanOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("ko-KR");
-        }
-
-        private void ThaiTHOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("th-TH");
-        }
-
-        private void Bengali_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("bn-BD");
-        }
-
-        private void RussianOverride_Click(object sender, EventArgs e)
-        {
-            ChangeLanguage("ru-RU");
-        }
-
         protected override CreateParams CreateParams
         {
             get
@@ -2408,23 +2167,27 @@ namespace KeppyMIDIConverter
         {
             while (true)
             {
-                if (KMCGlobals.IsKMCBusy || KMCGlobals.IsKMCNowExporting)
+                try
                 {
-                    RTF.MIDILengthRAW = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
-                    RTF.MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
-                    RTF.RAWTotal = ((float)RTF.MIDILengthRAW) / 1048576f;
-                    RTF.RAWConverted = ((float)RTF.MIDICurrentPosRAW) / 1048576f;
-                    RTF.LenRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDILengthRAW);
-                    RTF.CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDICurrentPosRAW);
-                    RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble);
-                    RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble);
-                    Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
-                    Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
-                    KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(RTF.MIDILengthRAW / 0x100000L));
-                    KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
-                    RTF.GetVoices();
+                    if (KMCGlobals.IsKMCBusy || KMCGlobals.IsKMCNowExporting)
+                    {
+                        RTF.MIDILengthRAW = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
+                        RTF.MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
+                        RTF.RAWTotal = ((float)RTF.MIDILengthRAW) / 1048576f;
+                        RTF.RAWConverted = ((float)RTF.MIDICurrentPosRAW) / 1048576f;
+                        RTF.LenRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDILengthRAW);
+                        RTF.CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDICurrentPosRAW);
+                        RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble);
+                        RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble);
+                        Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
+                        Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
+                        KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(RTF.MIDILengthRAW / 0x100000L));
+                        KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
+                        RTF.GetVoices();
+                    }
+                    System.Threading.Thread.Sleep(10);
                 }
-                System.Threading.Thread.Sleep(10);
+                catch { }
             }
         }
     }

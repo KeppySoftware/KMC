@@ -588,8 +588,8 @@ Pulsa Aceptar para salir.</value>
   <data name="InfoWindowTitle" xml:space="preserve">
     <value>Información</value>
   </data>
-  <data name="OverrideLanguage" xml:space="preserve">
-    <value>Anular el idioma por defecto del sistema</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Cambiar idioma</value>
   </data>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>Carlos Santana Montjoy</value>
@@ -656,5 +656,8 @@ or if you don't know which one you should use.</value>
   </data>
   <data name="Donate" xml:space="preserve">
     <value>Donar con PayPal</value>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>Anular el idioma por defecto del sistema</value>
   </data>
 </root>

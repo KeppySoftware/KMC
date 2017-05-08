@@ -52,7 +52,7 @@ namespace KeppyMIDIConverter
             Text = String.Format("{0} (Build date: {1})", MainWindow.res_man.GetString("InfoWindowTitle", MainWindow.cul), GetLinkerTime(Assembly.GetExecutingAssembly(), TimeZoneInfo.Utc));
             InfoPg.Text = MainWindow.res_man.GetString("InfoPageTitle", MainWindow.cul);
             UpdtPg.Text = MainWindow.res_man.GetString("UpdaterPageTitle", MainWindow.cul);
-            label1.Text = String.Format(MainWindow.res_man.GetString("Credits", MainWindow.cul), DateTime.Now.Year.ToString(), MainWindow.res_man.GetString("Un4seenWebsite", MainWindow.cul));
+            Credits.Text = String.Format(MainWindow.res_man.GetString("Credits", MainWindow.cul), DateTime.Now.Year.ToString(), MainWindow.res_man.GetString("Un4seenWebsite", MainWindow.cul));
             LatestVersion.Text = MainWindow.res_man.GetString("LatestVersionIdle", MainWindow.cul);
             CFU.Text = MainWindow.res_man.GetString("CheckForUpdatesBtn", MainWindow.cul);
             DonateBtn.Text = MainWindow.res_man.GetString("Donate", MainWindow.cul);
