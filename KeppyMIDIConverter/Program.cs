@@ -35,6 +35,13 @@ namespace KeppyMIDIConverter
         //Take in arguments
         static void Main(String[] args)
         {
+            if (Properties.Settings.Default.MigrateSettings)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.MigrateSettings = false;
+                Properties.Settings.Default.Save();
+            }
+
             bool deletencoder = false;
             string oggencoder = "kmcogg.exe";
             string mp3encoder = "kmcmp3.exe";
