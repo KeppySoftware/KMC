@@ -1336,7 +1336,7 @@ namespace KeppyMIDIConverter
                                 {
                                     KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
                                     int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
-                                    KMCStatus.TotalNotes = ReturnNoteCount(KMCGlobals._recHandle);
+                                    KMCStatus.TotalNotes = BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, (BASSMIDIEvent)0x20000, null);
                                 }
                                 catch (Exception ex)
                                 {
@@ -1493,16 +1493,6 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private Int32 ReturnNoteCount(Int32 time)
-        {
-            int notes = 0;
-            int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
-            BASS_MIDI_EVENT[] events = new BASS_MIDI_EVENT[count];
-            BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, events);
-            for (int a = 0; a < count; a++) { if ((events[a].param & 0xff00) != 0) { notes++; } }
-            return notes;
-        }
-
         private string[] GetMoreInfoMIDI(string str, bool overridedefault)
         {
             try
@@ -1549,29 +1539,10 @@ namespace KeppyMIDIConverter
                 // Get length of MIDI
                 string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
 
-                // Get note count
-                int notes = 0;
-
-                if ((length / 1024f) >= 500000)
-                {
-                    DialogResult dialogResult = MessageBox.Show("The size of the MIDI is bigger than 500MB.\n\nKMC needs a lot of RAM to get the full information.\nIf you don't have enough RAM, the computer might get unresponsive for a few minutes, or crash.\n\nAre you sure you want to continue?\n\nClick Yes to get the precise note count, otherwise click No for an approximation.", "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        notes = ReturnNoteCount(time);
-                    }
-                    else
-                    {
-                        int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTE, null);
-                        return new string[] { str4, (count / 2).ToString("N0"), size, };
-                    }
-                }
-                else
-                {
-                    notes = ReturnNoteCount(time);
-                }
+                int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, (BASSMIDIEvent)0x20000, null);
 
                 Bass.BASS_Free();
-                return new string[] { str4, notes.ToString("N0"), size, };
+                return new string[] { str4, count.ToString("N0"), size, };
             }
             catch (Exception ex) {
                 MessageBox.Show(String.Format("There's no enough memory to get the info for this MIDI:\n{0}", str), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
