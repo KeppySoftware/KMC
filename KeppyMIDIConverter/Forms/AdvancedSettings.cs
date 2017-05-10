@@ -116,7 +116,7 @@ namespace KeppyMIDIConverter
         private void BitrateBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.Bitrate = Convert.ToInt32(this.BitrateBox.Text);
-            Properties.Settings.Default.AudioFreq = MainWindow.KMCGlobals.Bitrate;
+            Properties.Settings.Default.OGGBitrate = MainWindow.KMCGlobals.Bitrate;
             Properties.Settings.Default.Save();
         }
 

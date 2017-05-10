@@ -1,7 +1,9 @@
 # Keppy's MIDI Converter
-[![Join the chat at https://gitter.im/KaleidonKep99/Keppys-MIDI-Converter](https://badges.gitter.im/KaleidonKep99/Keppys-MIDI-Converter.svg)](https://gitter.im/KaleidonKep99/Keppys-MIDI-Converter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-<br>
-A fully functional MIDI to WAV converter, for FREE!
+<p align="center">
+  <a href="http://www.softpedia.com/get/Multimedia/Audio/Audio-Convertors/Keppy-s-MIDI-Converter.shtml#status"><img src="http://s1.softpedia-static.com/_img/sp100free.png?1" /></a>
+  <br />
+  A fully functional MIDI to WAV converter, for FREE!
+</p>
 
 ## Keppy's Updates Server on Discord
 I also post my updates on Discord, to keep everyone up-to-date 24/7!

@@ -130,13 +130,14 @@ namespace KeppyMIDIConverter
             MainWindow.KMCStatus.PassedTime = DateTime.Now - MainWindow.KMCStatus.StartTime;
             if (!MainWindow.KMCGlobals.RealTime)
             {
-                Double secondsremaining = (Double)(MainWindow.KMCStatus.PassedTime.TotalSeconds / (Double)RTF.MIDICurrentPosRAW) * ((Double)RTF.MIDILengthRAW - (Double)RTF.MIDICurrentPosRAW);
-                MainWindow.KMCStatus.EstimatedTime = TimeSpan.FromSeconds(secondsremaining);
+                try
+                {
+                    Double secondsremaining = (Double)(MainWindow.KMCStatus.PassedTime.TotalSeconds / (Double)RTF.MIDICurrentPosRAW * ((Double)RTF.MIDILengthRAW - (Double)RTF.MIDICurrentPosRAW));
+                    MainWindow.KMCStatus.EstimatedTime = TimeSpan.FromSeconds(secondsremaining);
+                }
+                catch { MainWindow.KMCStatus.EstimatedTime = TimeSpan.FromSeconds(0); }
             }
-            else
-            {
-                MainWindow.KMCStatus.EstimatedTime = TimeSpan.FromSeconds(0);
-            }
+            else MainWindow.KMCStatus.EstimatedTime = TimeSpan.FromSeconds(0);
 
             if (!MainWindow.KMCGlobals.RenderingMode)
             {
@@ -320,7 +321,7 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                if (Mode == 0) // IDle
+                if (Mode == 0) // Idle
                 {
                     MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
                     MainWindow.Delegate.CurrentStatus.Minimum = 0;
@@ -339,12 +340,15 @@ namespace KeppyMIDIConverter
                 {
                     if (!MainWindow.KMCGlobals.RealTime)
                     {
+                        Int32 CurPercentage = (int)((RAWConverted / RAWTotal) * 10000);
+                        if (CurPercentage > 10000) CurPercentage = 10000;
+                        else if (CurPercentage < 0) CurPercentage = 0;
                         MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
                         MainWindow.Delegate.CurrentStatus.Minimum = 0;
-                        MainWindow.Delegate.CurrentStatus.Maximum = MainWindow.KMCGlobals.CurrentStatusMaximumInt;
-                        MainWindow.Delegate.CurrentStatus.Value = MainWindow.KMCGlobals.CurrentStatusValueInt;
+                        MainWindow.Delegate.CurrentStatus.Maximum = 10000;
+                        MainWindow.Delegate.CurrentStatus.Value = CurPercentage;
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
-                        TaskbarManager.Instance.SetProgressValue(MainWindow.KMCGlobals.CurrentStatusValueInt, MainWindow.KMCGlobals.CurrentStatusMaximumInt);
+                        TaskbarManager.Instance.SetProgressValue(CurPercentage, 10000);
                     }
                     else
                     {

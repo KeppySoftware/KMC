@@ -60,8 +60,6 @@ namespace KeppyMIDIConverter
             public static int CancellationPendingValue = 0;
             public static int CurrentEncoder;
             public static int CurrentMode;
-            public static int CurrentStatusMaximumInt;
-            public static int CurrentStatusValueInt;
             public static int DefaultSoundfont;
             public static int FinalTempo = 120;
             public static int Frequency = 0xbb80;
@@ -928,9 +926,6 @@ namespace KeppyMIDIConverter
 
             BassWasapi.BASS_WASAPI_SetVolume(BASSWASAPIVolume.BASS_WASAPI_VOL_SESSION, ((float)KMCGlobals.Volume / 10000.0f));
             Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
-
-            KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(pos / 0x100000L));
-            KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
 
             System.Threading.Thread.Sleep(1);
 
@@ -1835,7 +1830,10 @@ namespace KeppyMIDIConverter
                 }
                 System.Threading.Thread.Sleep(1);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                WriteToConsole(ex);
+            }
         }
 
         private void playInRealtimeBetaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2152,8 +2150,6 @@ namespace KeppyMIDIConverter
                         RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble);
                         Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
                         Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
-                        KMCGlobals.CurrentStatusMaximumInt = Convert.ToInt32((long)(RTF.MIDILengthRAW / 0x100000L));
-                        KMCGlobals.CurrentStatusValueInt = Convert.ToInt32((long)(RTF.MIDICurrentPosRAW / 0x100000L));
                         RTF.GetVoices();
                     }
                     System.Threading.Thread.Sleep(10);
