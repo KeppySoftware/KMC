@@ -198,8 +198,28 @@ namespace KeppyMIDIConverter
                 {
                     if (NumVST == 1)
                     {
-                        status = 2;
-                        MessageBox.Show("VSTi mode activated.", "Keppy's MIDI Converter - Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (Properties.Settings.Default.VSTiDisclaimer)
+                        {
+                            DialogResult dialogResult = MessageBox.Show("By clicking 'Yes', you agree not to abuse the 'VST instrument' feature to create, disseminate, or make accessible anything exploiting the copyrighted/protected samples or files included within a VST (\"Visual Studio Technology\" plugin).\n\nSuch resultant files could include (but are not limited to):\nSoundFonts, VSTs, or any other usable tool that commits copyright infringement.\n\nSimply put it, you may not use this tool to commit piracy on a copyrighted/trademarked/protected VST, free or paid, unless you have permission from the developer.\nYou may create audio at will from the VST, but DO NOT use this export feature to extract/\"rip\" samples from the VST.\n\nThe author assumes no legal responsibility from the use of this tool.", "Keppy's MIDI Converter - Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                Properties.Settings.Default.VSTiDisclaimer = false;
+                                Properties.Settings.Default.Save();
+                                status = 2;
+                                MessageBox.Show("VSTi mode activated.", "Keppy's MIDI Converter - Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else if (dialogResult == DialogResult.No)
+                            {
+                                Properties.Settings.Default.VSTiDisclaimer = true;
+                                Properties.Settings.Default.Save();
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            status = 2;
+                            MessageBox.Show("VSTi mode activated.", "Keppy's MIDI Converter - Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else status = 0;
                 }

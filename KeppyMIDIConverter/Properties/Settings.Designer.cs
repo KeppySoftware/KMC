@@ -286,5 +286,17 @@ namespace KeppyMIDIConverter.Properties {
                 this["MigrateSettings"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool VSTiDisclaimer {
+            get {
+                return ((bool)(this["VSTiDisclaimer"]));
+            }
+            set {
+                this["VSTiDisclaimer"] = value;
+            }
+        }
     }
 }

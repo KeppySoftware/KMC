@@ -319,7 +319,7 @@ namespace KeppyMIDIConverter
             string url = "";
 
             string business = "prapapappo1999@gmail.com";
-            string description = "Donation";
+            string description = MainWindow.res_man.GetString("supportTheDeveloperWithADonation", MainWindow.cul);
             string country = "US";
             string currency = "USD";
 
