@@ -142,7 +142,7 @@ All Rights Reserved.</value>
     <value>動作</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>複音數: </value>
+    <value>複音數</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>請至少加入一個MIDI檔案到轉換列表</value>

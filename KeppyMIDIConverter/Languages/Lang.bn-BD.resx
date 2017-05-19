@@ -142,7 +142,7 @@
     <value>ক্রিয়াকলাপ</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>ভয়েসেস: </value>
+    <value>ভয়েসেস</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>রূপান্তর তালিকায় অন্তত একটি এখন MIDI যোগ করুন.</value>

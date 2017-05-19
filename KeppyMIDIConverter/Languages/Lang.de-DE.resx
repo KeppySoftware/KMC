@@ -142,7 +142,7 @@ Alle Rechte vorbehalten.</value>
     <value>Ablage</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Stimmen: </value>
+    <value>Stimmen</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>Bitte mindestens eine MIDI-Datei zur Liste für die Umwandlung hinzufügen.</value>

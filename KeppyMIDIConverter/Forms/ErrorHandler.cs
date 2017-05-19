@@ -31,22 +31,13 @@ namespace KeppyMIDIConverter
             TOE = typeoferror;
             InitializeComponent();
             InitializeLanguage();
-            if (ConvOrNot == 0)
-            {
-                this.ShowInTaskbar = false;
-            }
-            if (ConvOrNot == 1)
-            {
-                this.ShowInTaskbar = true;
-            }
-            if (typeoferror == 0)
-            {
-                ErrorLab.Text = MainWindow.res_man.GetString("NonFatalErrorHandler", MainWindow.cul);
-            }
-            else if (typeoferror == 1)
-            {
-                ErrorLab.Text = MainWindow.res_man.GetString("FatalErrorHandler", MainWindow.cul);
-            }
+
+            if (ConvOrNot == 0) this.ShowInTaskbar = false;
+            if (ConvOrNot == 1) this.ShowInTaskbar = true;
+
+            if (typeoferror == 0) ErrorLab.Text = MainWindow.res_man.GetString("NonFatalErrorHandler", MainWindow.cul);
+            else if (typeoferror == 1) ErrorLab.Text = MainWindow.res_man.GetString("FatalErrorHandler", MainWindow.cul);
+
             Text = "Keppy's MIDI Converter - " + errortitle;
             ErrorBox.Text = errormessage;
         }
@@ -74,9 +65,7 @@ namespace KeppyMIDIConverter
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (TOE == 0)
-                Application.ExitThread();
-            else
+            if (TOE == 1)
             {
                 ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
                 {
@@ -87,15 +76,7 @@ namespace KeppyMIDIConverter
 
         private void Close_Click(object sender, EventArgs e)
         {
-            if (TOE == 0)
-                Close();
-            else
-            {
-                ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
-                {
-                    throw new AntiDamageCrash("The converter has been manually crashed to avoid damages to the computer.");
-                }));
-            }
+            Close();
         }
 
         private void PlayConversionFail()

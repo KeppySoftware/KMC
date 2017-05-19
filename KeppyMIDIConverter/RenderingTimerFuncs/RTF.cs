@@ -270,7 +270,7 @@ namespace KeppyMIDIConverter
         {
             if (Mode == 0) // Idle
             {
-                MainWindow.Delegate.UsedVoices.Text = String.Format("{0}0/{2}", MainWindow.res_man.GetString("ActiveVoices", MainWindow.cul), 0, MainWindow.KMCGlobals.LimitVoicesInt);
+                MainWindow.Delegate.UsedVoices.Text = String.Format("{0}: 0/{2}", MainWindow.res_man.GetString("ActiveVoices", MainWindow.cul), 0, MainWindow.KMCGlobals.LimitVoicesInt);
                 MainWindow.Delegate.SettingsBox.Enabled = true;
                 MainWindow.Delegate.VolumeLabel.Enabled = true;
                 MainWindow.Delegate.VolumeBar.Enabled = true;
@@ -279,7 +279,7 @@ namespace KeppyMIDIConverter
             }
             else if (Mode == 1) // Memory allocation
             {
-                MainWindow.Delegate.UsedVoices.Text = String.Format("{0}0/{2}", MainWindow.res_man.GetString("ActiveVoices", MainWindow.cul), 0, MainWindow.KMCGlobals.LimitVoicesInt);
+                MainWindow.Delegate.UsedVoices.Text = String.Format("{0}: 0/{2}", MainWindow.res_man.GetString("ActiveVoices", MainWindow.cul), 0, MainWindow.KMCGlobals.LimitVoicesInt);
                 if (MainWindow.KMCGlobals.RenderingMode)
                 {
                     MainWindow.Delegate.SettingsBox.Enabled = false;
@@ -298,7 +298,7 @@ namespace KeppyMIDIConverter
             }
             else if (Mode == 2) // Rendering/Playback
             {
-                MainWindow.Delegate.UsedVoices.Text = String.Format("{0}{1}/{2}", MainWindow.res_man.GetString("ActiveVoices", MainWindow.cul), Convert.ToInt32(ActiveVoices), MainWindow.KMCGlobals.LimitVoicesInt);
+                MainWindow.Delegate.UsedVoices.Text = String.Format("{0}: {1}/{2}", MainWindow.res_man.GetString("ActiveVoices", MainWindow.cul), Convert.ToInt32(ActiveVoices), MainWindow.KMCGlobals.LimitVoicesInt);
                 if (MainWindow.KMCGlobals.RenderingMode)
                 {
                     MainWindow.Delegate.SettingsBox.Enabled = false;

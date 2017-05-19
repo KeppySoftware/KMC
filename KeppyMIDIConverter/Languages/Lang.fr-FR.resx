@@ -135,7 +135,7 @@ Do you want to visit the "Unofficial SFZ format information" website?</value>
     <value>Actions</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Voix : </value>
+    <value>Voix</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>S'îl vous plaît , ajoutez au moins un MIDI dans la liste de conversion</value>

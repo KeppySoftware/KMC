@@ -438,52 +438,63 @@ namespace KeppyMIDIConverter
 
         private void StartRenderingThread()
         {
-            int convmode = 0;
-            KMCGlobals.IsKMCBusy = true;
-            KMCGlobals.RenderingMode = true;
-            this.loadingpic.Visible = true;
-            this.ExportWhere.FileName = res_man.GetString("SaveHere", cul);
-            this.ExportWhere.InitialDirectory = Properties.Settings.Default.LastExportFolder;
-            this.ExportWhere.Title = res_man.GetString("ExportWhere", cul);
-            if (ModifierKeys == Keys.Shift)
+            try
             {
-                convmode = 1;
-                MessageBox.Show("Real-time simulation mode activated.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (ModifierKeys == Keys.Control)
-            {
-                KMCGlobals.VSTSkipSettings = true;
-                MessageBox.Show("Skipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (ModifierKeys == (Keys.Shift | Keys.Control))
-            {
-                KMCGlobals.VSTSkipSettings = true;
-                convmode = 1;
-                MessageBox.Show("Real-time simulation mode activated.\n\nSkipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (this.ExportWhere.ShowDialog() == DialogResult.OK)
-            {
-                KMCGlobals.CurrentStatusTextString = null;
-                KMCGlobals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
-                Properties.Settings.Default.LastExportFolder = Path.GetDirectoryName(Path.GetDirectoryName(ExportWhere.FileName));
-                Properties.Settings.Default.Save();
-
-                if (convmode == 1)
+                int convmode = 0;
+                KMCGlobals.IsKMCBusy = true;
+                KMCGlobals.RenderingMode = true;
+                this.loadingpic.Visible = true;
+                this.ExportWhere.FileName = res_man.GetString("SaveHere", cul);
+                this.ExportWhere.InitialDirectory = Properties.Settings.Default.LastExportFolder;
+                this.ExportWhere.Title = res_man.GetString("ExportWhere", cul);
+                if (ModifierKeys == Keys.Shift)
                 {
-                    KMCGlobals.RealTime = true;
-                    this.ConverterProcessRT.RunWorkerAsync();
+                    convmode = 1;
+                    MessageBox.Show("Real-time simulation mode activated.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (ModifierKeys == Keys.Control)
+                {
+                    KMCGlobals.VSTSkipSettings = true;
+                    MessageBox.Show("Skipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (ModifierKeys == (Keys.Shift | Keys.Control))
+                {
+                    KMCGlobals.VSTSkipSettings = true;
+                    convmode = 1;
+                    MessageBox.Show("Real-time simulation mode activated.\n\nSkipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                if (this.ExportWhere.ShowDialog() == DialogResult.OK)
+                {
+                    KMCGlobals.CurrentStatusTextString = null;
+                    KMCGlobals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
+                    Properties.Settings.Default.LastExportFolder = Path.GetDirectoryName(Path.GetDirectoryName(ExportWhere.FileName));
+                    Properties.Settings.Default.Save();
+
+                    if (convmode == 1)
+                    {
+                        KMCGlobals.RealTime = true;
+                        this.ConverterProcessRT.RunWorkerAsync();
+                    }
+                    else
+                    {
+                        KMCGlobals.RealTime = false;
+                        this.ConverterProcess.RunWorkerAsync();
+                    }
                 }
                 else
                 {
-                    KMCGlobals.RealTime = false;
-                    this.ConverterProcess.RunWorkerAsync();
+                    KMCGlobals.IsKMCBusy = false;
+                    KMCGlobals.RenderingMode = false;
+                    this.loadingpic.Visible = false;
                 }
             }
-            else
+            catch (Exception ex)
             {
                 KMCGlobals.IsKMCBusy = false;
                 KMCGlobals.RenderingMode = false;
                 this.loadingpic.Visible = false;
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), ex.ToString(), 0, 0);
+                errordialog.ShowDialog();
             }
         }
 
@@ -506,6 +517,29 @@ namespace KeppyMIDIConverter
             KMCGlobals.CurrentEncoder = 2;
             KMCStatus.StartTime = DateTime.Now;
             StartRenderingThread();
+        }
+
+        private void playInRealtimeBetaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ModifierKeys == Keys.Shift)
+                {
+                    KMCGlobals.DoNotCountNotes = true;
+                }
+                this.loadingpic.Visible = true;
+                KMCGlobals.RenderingMode = false;
+                KMCGlobals.IsKMCBusy = true;
+                this.RealTimePlayBack.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+                KMCGlobals.IsKMCBusy = false;
+                KMCGlobals.RenderingMode = false;
+                this.loadingpic.Visible = false;
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), ex.ToString(), 0, 0);
+                errordialog.ShowDialog();
+            }
         }
 
         private void abortRenderingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1903,18 +1937,6 @@ namespace KeppyMIDIConverter
             }
         }
 
-        private void playInRealtimeBetaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ModifierKeys == Keys.Shift)
-            {
-                KMCGlobals.DoNotCountNotes = true;
-            }
-            this.loadingpic.Visible = true;
-            KMCGlobals.RenderingMode = false;
-            KMCGlobals.IsKMCBusy = true;
-            this.RealTimePlayBack.RunWorkerAsync();
-        }
-
         private void VolumeBar_Scroll(object sender, EventArgs e)
         {
             try
@@ -1922,7 +1944,7 @@ namespace KeppyMIDIConverter
                 Properties.Settings.Default.Volume = VolumeBar.Value;
                 Properties.Settings.Default.Save();
                 KMCGlobals.Volume = Convert.ToInt32(this.VolumeBar.Value);
-                VolumeTip.SetToolTip(VolumeBar, Convert.ToString(Convert.ToInt32(KMCGlobals.Volume / 100)) + "%");
+                VolumeTip.SetToolTip(VolumeBar, String.Format("{0} {1}", res_man.GetString("Volume", cul), ((float)KMCGlobals.Volume / 100).ToString("000.00") + "%"));
             }
             catch (Exception exception)
             {

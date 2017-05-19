@@ -141,7 +141,7 @@ Virtual Studio Technology (VST) представляет собой програ
     <value>Файл</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Полифиния: </value>
+    <value>Полифиния</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>Для конвертации требуется загрузить не менее одного файла.</value>

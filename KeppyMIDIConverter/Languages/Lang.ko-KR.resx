@@ -142,7 +142,7 @@
     <value>파일</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>노트 : </value>
+    <value>노트</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>최소 MIDI 파일 하나를 추가해 주세요.</value>

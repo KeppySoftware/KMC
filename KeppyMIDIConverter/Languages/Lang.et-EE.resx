@@ -142,7 +142,7 @@ Kõik õigused kaitstud.</value>
     <value>Tegevus</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Heli: </value>
+    <value>Heli</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>Lisage vähemalt ühe MIDI konverteerimisega nimekirja</value>

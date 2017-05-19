@@ -133,7 +133,7 @@
     <value>アクション</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>発音数:</value>
+    <value>発音数</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>リストには少なくとも1つのMIDIを追加してください。</value>
@@ -271,7 +271,7 @@ BASS status: {0}</value>
     <value>ユーザーによってクラッシュされました。</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013 KaleidonKep99
+    <value>Copyright (C) 2013 KaleidonKep99
 
 このプログラムはUn4seen Developmentsから
 Ian LuckさんによるBASS Libraryをベースとしています。
@@ -424,7 +424,7 @@ VSTプラグインの設定を調べています。
     <value>BPMを上書き: (元BPM: {0})</value>
   </data>
   <data name="PeakLevel" xml:space="preserve">
-    <value>ピーク:</value>
+    <value>ピーク</value>
   </data>
   <data name="PlaybackAborted" xml:space="preserve">
     <value>再生が中断されました。</value>
@@ -445,7 +445,7 @@ BASS status: {0}</value>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>MIDIファイルの{0}を再生しました。
 再生位置: {1} - {2}
-Notes: {3} - {4}</value>
+曲譜: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | {0}を再生中...</value>
@@ -487,7 +487,6 @@ Notes: {3} - {4}</value>
     <value>一度に1.000個のSoundFontを変換に使用することができます。
 SoundFontはリストの下から順に読み込まれ、常に一番上が優先されます。
 突然のアプリのクラッシュ、またグリッチ(不具合)を回避するために、SoundFontがリストに追加される前に壊れていないかどうかを確認してください。 
-
 
 以下のフォーマットがサポートされています: SF2, SF3, SFZ, SFPACK</value>
   </data>

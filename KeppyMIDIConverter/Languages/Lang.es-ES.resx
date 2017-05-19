@@ -141,7 +141,7 @@ Todos los derechos reservados.</value>
     <value>Acciones</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Voces: </value>
+    <value>Voces</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>Añade al menos un MIDI a la lista de conversión.</value>

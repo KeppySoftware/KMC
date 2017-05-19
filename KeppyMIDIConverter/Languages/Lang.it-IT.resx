@@ -142,7 +142,7 @@ Tutti i diritti riservati.</value>
     <value>Azioni</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>Voci attive: </value>
+    <value>Voci attive</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>Per favore aggiungere almeno un MIDI.</value>

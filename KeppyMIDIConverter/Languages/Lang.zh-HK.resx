@@ -141,7 +141,7 @@ Copyright ©2006 Steinberg Media Technologies. All rights reserved.</value>
     <value>功能</value>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
-    <value>複音數: </value>
+    <value>複音數</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
     <value>請導入至少一個MIDI文件到待轉換列表。</value>
