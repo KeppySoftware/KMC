@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Resources;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace KeppyMIDIConverter
 {
@@ -116,7 +117,7 @@ namespace KeppyMIDIConverter
             public static AdvancedSettings frm = new AdvancedSettings();
 
             // Other
-            public static string ExecutablePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            public static string ExecutablePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         }
 
         public static class KMCStatus
@@ -336,6 +337,7 @@ namespace KeppyMIDIConverter
                 try
                 {
                     Properties.Settings.Default.Reload();
+
                     // Generic settings
                     VoiceLimit.Value = Properties.Settings.Default.Voices;
                     VolumeBar.Value = Properties.Settings.Default.Volume;
@@ -343,6 +345,7 @@ namespace KeppyMIDIConverter
                     KMCGlobals.Frequency = Properties.Settings.Default.AudioFreq;
                     KMCGlobals.Bitrate = Properties.Settings.Default.OGGBitrate;
                     KMCGlobals.RTFPS = Properties.Settings.Default.RTFPS;
+
                     // Audio events
                     if (Properties.Settings.Default.AudioEvents)
                     {
@@ -354,6 +357,7 @@ namespace KeppyMIDIConverter
                         enabledToolStripMenuItem4.Checked = false;
                         disabledToolStripMenuItem4.Checked = true;
                     }
+
                     // Autoupdate lel
                     if (Properties.Settings.Default.AutoUpdateCheck)
                     {
@@ -365,7 +369,8 @@ namespace KeppyMIDIConverter
                         enabledToolStripMenuItem3.Checked = false;
                         disabledToolStripMenuItem3.Checked = true;
                     }
-                    // Old time thingy for TheGhastModding lel
+
+                    // Old time thingy
                     if (Properties.Settings.Default.ShowOldTimeInfo)
                     {
                         enabledToolStripMenuItem2.Checked = true;
@@ -378,42 +383,21 @@ namespace KeppyMIDIConverter
                         disabledToolStripMenuItem2.Checked = true;
                         KMCGlobals.OldTimeThingy = false;
                     }
+
                     // LoudMax
-                    if (Properties.Settings.Default.LoudMaxEnabled)
-                    {
-                        KMCGlobals.IsLoudMaxEnabled = true;
-                    }
-                    else
-                    {
-                        KMCGlobals.IsLoudMaxEnabled = false;
-                    }
+                    KMCGlobals.IsLoudMaxEnabled = Properties.Settings.Default.LoudMaxEnabled;
+                    KMCGlobals.VSTMode = Properties.Settings.Default.LoudMaxEnabled;
+
                     // Note off setting
-                    if (Properties.Settings.Default.NoteOff1)
-                    {
-                        KMCGlobals.NoteOff1Event = true;
-                    }
-                    else
-                    {
-                        KMCGlobals.NoteOff1Event = false;
-                    }
+                    KMCGlobals.NoteOff1Event = Properties.Settings.Default.NoteOff1;
+
                     // BASS default sound effects (Reverb and chorus)
-                    if (Properties.Settings.Default.DisableFX)
-                    {
-                        KMCGlobals.FXDisabled = true;
-                    }
-                    else
-                    {
-                        KMCGlobals.FXDisabled = false;
-                    }
+                    KMCGlobals.FXDisabled = Properties.Settings.Default.DisableFX;
+
                     // OGG bitrate override
-                    if (Properties.Settings.Default.OverrideOGG)
-                    {
-                        KMCGlobals.QualityOverride = true;
-                    }
-                    else
-                    {
-                        KMCGlobals.QualityOverride = false;
-                    }
+                    KMCGlobals.QualityOverride = Properties.Settings.Default.OverrideOGG;
+
+                    // Folders
                     KMCGlobals.MIDILastDirectory = Properties.Settings.Default.LastMIDIFolder;
                     KMCGlobals.ExportLastDirectory = Properties.Settings.Default.LastExportFolder;
                 }
@@ -443,10 +427,11 @@ namespace KeppyMIDIConverter
                 int convmode = 0;
                 KMCGlobals.IsKMCBusy = true;
                 KMCGlobals.RenderingMode = true;
-                this.loadingpic.Visible = true;
-                this.ExportWhere.FileName = res_man.GetString("SaveHere", cul);
-                this.ExportWhere.InitialDirectory = Properties.Settings.Default.LastExportFolder;
-                this.ExportWhere.Title = res_man.GetString("ExportWhere", cul);
+                loadingpic.Visible = true;
+                ExportWhere.FileName = res_man.GetString("SaveHere", cul);
+                ExportWhere.Title = res_man.GetString("ExportWhere", cul);
+                ExportWhere.InitialDirectory = Properties.Settings.Default.LastExportFolder;
+
                 if (ModifierKeys == Keys.Shift)
                 {
                     convmode = 1;
@@ -463,11 +448,12 @@ namespace KeppyMIDIConverter
                     convmode = 1;
                     MessageBox.Show("Real-time simulation mode activated.\n\nSkipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                if (this.ExportWhere.ShowDialog() == DialogResult.OK)
+
+                if (ExportWhere.ShowDialog() == DialogResult.OK)
                 {
                     KMCGlobals.CurrentStatusTextString = null;
                     KMCGlobals.ExportWhereYay = Path.GetDirectoryName(this.ExportWhere.FileName);
-                    Properties.Settings.Default.LastExportFolder = Path.GetDirectoryName(Path.GetDirectoryName(ExportWhere.FileName));
+                    Properties.Settings.Default.LastExportFolder = KMCGlobals.ExportWhereYay;
                     Properties.Settings.Default.Save();
 
                     if (convmode == 1)
@@ -627,16 +613,13 @@ namespace KeppyMIDIConverter
                         KMCGlobals._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 6);
                         KMCGlobals._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 7);
                         KMCGlobals._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, KMCGlobals.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 8);
-                        if (KMCGlobals.IsLoudMaxEnabled)
-                        {
-                            KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(towhichstream, String.Format("{0}\\LoudMax.dll", Application.StartupPath), BASSVSTDsp.BASS_VST_DEFAULT, 9);
-                        }
+                        if (KMCGlobals.IsLoudMaxEnabled == true) KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(towhichstream, String.Format("{0}\\LoudMax.dll", Application.StartupPath), BASSVSTDsp.BASS_VST_DEFAULT, 9);
                         if (KMCGlobals.VSTSkipSettings != true)
                         {
                             BASS_VST_INFO vstInfo = new BASS_VST_INFO();
                             if (BassVst.BASS_VST_GetInfo(temphandle, vstInfo) && vstInfo.hasEditor)
                             {
-                                if (KMCGlobals._VSTHandle == null)
+                                if (KMCGlobals._VSTHandle == null) // VSTi check
                                 {
                                     if (BassVst.BASS_VST_GetInfo(KMCGlobals._VSTHandle, vstInfo) && vstInfo.hasEditor)
                                     {

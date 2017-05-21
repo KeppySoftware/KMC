@@ -317,6 +317,35 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private static void CurrentTitle(Int32 Mode)
+        {
+            try
+            {
+                if (Mode == 0 || Mode == 1) // Idle
+                {
+                    MainWindow.Delegate.Text = "Keppy's MIDI Converter";
+                }
+                else
+                {
+                    if (MainWindow.KMCGlobals.IsKMCBusy == false)
+                    {
+                        MainWindow.Delegate.Text = "Keppy's MIDI Converter";
+                    }
+                    else
+                    {
+                        if (MainWindow.KMCGlobals.RenderingMode == false)
+                            MainWindow.Delegate.Text = String.Format(MainWindow.res_man.GetString("PlaybackText", MainWindow.cul), MainWindow.KMCGlobals.NewWindowName);
+                        else
+                            MainWindow.Delegate.Text = String.Format(MainWindow.res_man.GetString("ConversionText", MainWindow.cul), MainWindow.KMCGlobals.NewWindowName);
+                    }
+                }
+            }
+            catch
+            {
+                MainWindow.Delegate.Text = "Keppy's MIDI Converter";
+            }
+        }
+
         private static void SetProgressBar(Int32 Mode)
         {
             try
@@ -479,6 +508,7 @@ namespace KeppyMIDIConverter
 
         public static void KMCIdle()
         {
+            CurrentTitle(0);
             SetStatus(0);
             CurrentMode(0);
             SetPeak(0);
@@ -486,6 +516,7 @@ namespace KeppyMIDIConverter
 
         public static void KMCMemoryAllocation()
         {
+            CurrentTitle(1);
             SetStatus(1);
             CurrentMode(1);
             SetPeak(0);
@@ -493,6 +524,7 @@ namespace KeppyMIDIConverter
 
         public static void KMCBusy()
         {
+            CurrentTitle(2);
             SetStatus(2);
             CurrentMode(2);
             SetPeak(1);
