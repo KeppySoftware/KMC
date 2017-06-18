@@ -47,6 +47,7 @@ namespace KeppyMIDIConverter
 
             // Then check if the override is enabled
             OverrideLanguageCheck.Checked = Properties.Settings.Default.LangOverride;
+            LangSel.Enabled = Properties.Settings.Default.LangOverride;
 
             // Then scan
             int num = 0;
@@ -63,16 +64,9 @@ namespace KeppyMIDIConverter
 
         private void OverrideLanguageCheck_CheckedChanged(object sender, EventArgs e)
         {
-            if (OverrideLanguageCheck.Checked)
-            {
-                Properties.Settings.Default.LangOverride = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.LangOverride = false;
-                Properties.Settings.Default.Save();
-            }
+            LangSel.Enabled = OverrideLanguageCheck.Checked;
+            Properties.Settings.Default.LangOverride = OverrideLanguageCheck.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void LangSel_SelectedIndexChanged(object sender, EventArgs e)

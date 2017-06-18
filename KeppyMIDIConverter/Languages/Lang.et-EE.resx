@@ -473,7 +473,7 @@ Noodi: {3} - {4}</value>
     <value>Eemaldada heli fondi</value>
   </data>
   <data name="RenderTo" xml:space="preserve">
-    <value>Ekspordi faili (.OGG)</value>
+    <value>Ekspordi faili (.{1})</value>
   </data>
   <data name="RenderToSpeakers" xml:space="preserve">
     <value>Eelvaade faili (Reaalajas esituse)</value>
