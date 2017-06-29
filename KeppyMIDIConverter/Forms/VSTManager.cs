@@ -391,9 +391,10 @@ namespace KeppyMIDIConverter
 
         private void LoudMaxCheck_CheckedChanged(object sender, EventArgs e)
         {
-            if (LoudMaxCheck.Checked)
+            if (LoudMaxCheck.Checked == true)
             {
                 Properties.Settings.Default.LoudMaxEnabled = true;
+                MainWindow.KMCGlobals.IsLoudMaxEnabled = true;
                 Properties.Settings.Default.Save();
                 LoudMaxCheck.ForeColor = Color.Green;
                 LoudMaxCheck.Text = "LoudMax on";
@@ -401,6 +402,7 @@ namespace KeppyMIDIConverter
             else
             {
                 Properties.Settings.Default.LoudMaxEnabled = false;
+                MainWindow.KMCGlobals.IsLoudMaxEnabled = false;
                 Properties.Settings.Default.Save();
                 LoudMaxCheck.ForeColor = Color.DarkRed;
                 LoudMaxCheck.Text = "LoudMax off";
