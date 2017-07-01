@@ -157,6 +157,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\DiscordHypeSquad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DiscordHypeSquad.Designer.cs">
+      <DependentUpon>DiscordHypeSquad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DonateMonthlyDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
       <DependentUpon>UpdateDownloader.cs</DependentUpon>
     </Compile>
     <Compile Include="RenderingTimerFuncs\RTF.cs" />
+    <EmbeddedResource Include="Forms\DiscordHypeSquad.resx">
+      <DependentUpon>DiscordHypeSquad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DonateMonthlyDialog.resx">
       <DependentUpon>DonateMonthlyDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -564,6 +573,13 @@
     <None Include="LanguagesIcons\Afghanistan.png" />
     <None Include="LanguagesIcons\African Union.png" />
     <None Include="LanguagesIcons\Albania.png" />
+    <None Include="Resources\hypebadge.png" />
+    <None Include="Resources\dslogo.png" />
+    <None Include="Resources\dsdesc.png" />
+    <None Include="Resources\hypebadgebig.png" />
+    <None Include="Resources\dsapply1.png" />
+    <None Include="Resources\dsapply2.png" />
+    <None Include="Resources\dsagemin.png" />
     <Content Include="Resources\mainlogo.ico" />
     <None Include="Resources\hot.png" />
     <None Include="Resources\worldwideweb.png" />

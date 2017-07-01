@@ -340,7 +340,8 @@ namespace KeppyMIDIConverter
             int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
             if (BirthDate.ToString("dd") == "01")
             {
-                if (!Properties.Settings.Default.NoMoreDonation)
+                double days = (DateTime.Now.Date - Properties.Settings.Default.DonationShownWhen).TotalDays;
+                if (days > 30 && Properties.Settings.Default.NoMoreDonation == false)
                 {
                     Form frm = new DonateMonthlyDialog();
                     frm.StartPosition = FormStartPosition.CenterScreen;

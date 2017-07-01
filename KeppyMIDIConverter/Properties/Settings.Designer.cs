@@ -298,5 +298,29 @@ namespace KeppyMIDIConverter.Properties {
                 this["VSTiDisclaimer"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DonationAlreadyShown {
+            get {
+                return ((bool)(this["DonationAlreadyShown"]));
+            }
+            set {
+                this["DonationAlreadyShown"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2017-05-31")]
+        public global::System.DateTime DonationShownWhen {
+            get {
+                return ((global::System.DateTime)(this["DonationShownWhen"]));
+            }
+            set {
+                this["DonationShownWhen"] = value;
+            }
+        }
     }
 }

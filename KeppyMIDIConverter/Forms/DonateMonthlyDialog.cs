@@ -31,12 +31,17 @@ namespace KeppyMIDIConverter
 
         private void ShowMeNext_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.DonationShownWhen = DateTime.Now;
+            Properties.Settings.Default.DonationAlreadyShown = true;
+            Properties.Settings.Default.Save();
             Close();
         }
 
         private void DontShowAnymore_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.NoMoreDonation = false;
+            Properties.Settings.Default.DonationShownWhen = DateTime.Now;
+            Properties.Settings.Default.DonationAlreadyShown = true;
+            Properties.Settings.Default.NoMoreDonation = true;
             Properties.Settings.Default.Save();
             Close();
         }

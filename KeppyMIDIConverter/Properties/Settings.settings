@@ -71,5 +71,11 @@
     <Setting Name="VSTiDisclaimer" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="DonationAlreadyShown" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DonationShownWhen" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2017-05-31</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

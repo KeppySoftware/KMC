@@ -81,6 +81,8 @@
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.KaleidonKep99sGitHubPageToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.DiscordHypeSquadRef = new System.Windows.Forms.MenuItem();
             this.DefMenu = new System.Windows.Forms.ContextMenu();
             this.ImportMIDIsRightClick = new System.Windows.Forms.MenuItem();
             this.RemoveMIDIsRightClick = new System.Windows.Forms.MenuItem();
@@ -570,7 +572,9 @@
             this.supportTheDeveloperWithADonationToolStripMenuItem,
             this.menuItem3,
             this.KaleidonKep99sGitHubPageToolStripMenuItem,
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem});
+            this.KaleidonKep99sYouTubeChannelToolStripMenuItem,
+            this.menuItem8,
+            this.DiscordHypeSquadRef});
             this.HelpStrip.Text = "Help";
             // 
             // informationAboutTheProgramToolStripMenuItem
@@ -606,6 +610,18 @@
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Index = 4;
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = "KaleidonKep99\'s YouTube Channel";
             this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Click += new System.EventHandler(this.kaleidonKep99sYouTubeChannelToolStripMenuItem_Click);
+            // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 5;
+            this.menuItem8.Text = "-";
+            // 
+            // DiscordHypeSquadRef
+            // 
+            this.VistaMenuSys.SetImage(this.DiscordHypeSquadRef, global::KeppyMIDIConverter.Properties.Resources.hypebadge);
+            this.DiscordHypeSquadRef.Index = 6;
+            this.DiscordHypeSquadRef.Text = "Join the Discord HypeSquad!";
+            this.DiscordHypeSquadRef.Click += new System.EventHandler(this.DiscordHypeSquadRef_Click);
             // 
             // DefMenu
             // 
@@ -820,6 +836,8 @@
         public System.Windows.Forms.PictureBox loadingpic;
         private System.ComponentModel.BackgroundWorker GarbageCollector;
         private System.ComponentModel.BackgroundWorker GetInfoWorker;
+        private System.Windows.Forms.MenuItem menuItem8;
+        private System.Windows.Forms.MenuItem DiscordHypeSquadRef;
     }
 }
 

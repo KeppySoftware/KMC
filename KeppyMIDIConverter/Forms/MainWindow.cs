@@ -2229,6 +2229,11 @@ namespace KeppyMIDIConverter
                 catch { }
             }
         }
+
+        private void DiscordHypeSquadRef_Click(object sender, EventArgs e)
+        {
+            new KeppyMIDIConverter.Forms.DiscordHypeSquad().ShowDialog();
+        }
     }
 
     public static class StringExt

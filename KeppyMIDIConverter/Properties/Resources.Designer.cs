@@ -830,6 +830,56 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dsagemin {
+            get {
+                object obj = ResourceManager.GetObject("dsagemin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dsapply1 {
+            get {
+                object obj = ResourceManager.GetObject("dsapply1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dsapply2 {
+            get {
+                object obj = ResourceManager.GetObject("dsapply2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dsdesc {
+            get {
+                object obj = ResourceManager.GetObject("dsdesc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dslogo {
+            get {
+                object obj = ResourceManager.GetObject("dslogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ecuador {
             get {
                 object obj = ResourceManager.GetObject("Ecuador", resourceCulture);
@@ -1232,6 +1282,26 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hypebadge {
+            get {
+                object obj = ResourceManager.GetObject("hypebadge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hypebadgebig {
+            get {
+                object obj = ResourceManager.GetObject("hypebadgebig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Iceland {
             get {
                 object obj = ResourceManager.GetObject("Iceland", resourceCulture);
@@ -1500,8 +1570,8 @@ namespace KeppyMIDIConverter.Properties {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a {\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff0\deff0\stshfdbch0\stshfloch0\stshfhich0\stshfbi0\deflang1040\deflangfe1040{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f37\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Microsoft Sans Serif;}
-        ///{\f38\fmodern\fcharset0\fprq1{\*\panose 020b0609040504020204}Lucida Console;}{\f283\froman\fcharset238\fprq2 Times New Roman CE;}{\f284\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f286\froman\fcharset161\fprq2 Times Ne [stringa troncata]&quot;;.
+        ///   Cerca una stringa localizzata simile a {\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff0\deff0\stshfdbch0\stshfloch0\stshfhich0\stshfbi0\deflang1040\deflangfe1040\themelang1040\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f2\fbidi \fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
+        ///{\f3\fbidi \froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f10\fbidi \fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}{\f34\fbidi \froman\fcharse [stringa troncata]&quot;;.
         /// </summary>
         internal static string license {
             get {
