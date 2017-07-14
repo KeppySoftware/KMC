@@ -649,7 +649,7 @@ Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
     <value>複製</value>
   </data>
   <data name="Donate" xml:space="preserve">
-    <value>用PayPal捐錢</value>
+    <value>用PayPal捐款</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>改變語言</value>

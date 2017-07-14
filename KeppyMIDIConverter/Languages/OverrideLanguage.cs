@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -14,20 +15,25 @@ namespace KeppyMIDIConverter
 {
     public partial class OverrideLanguage : Form
     {
+        static ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
+        static CultureInfo cul;            // declare culture info
+        
         private void InitializeLanguage()
         {
             try
             {
-                Text = MainWindow.res_man.GetString("ChangeLanguage", MainWindow.cul);
-                OverrideLanguageCheck.Text = MainWindow.res_man.GetString("OverrideLanguage", MainWindow.cul);
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = Program.ReturnCulture(false);
+                Text = MainWindow.res_man.GetString("ChangeLanguage", cul);
+                OverrideLanguageCheck.Text = MainWindow.res_man.GetString("OverrideLanguage", cul);
             }
             catch (Exception ex)
             {
-                MainWindow.res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
-                MainWindow.cul = Program.ReturnCulture(true);
+                res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
+                cul = Program.ReturnCulture(false);
                 MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Text = MainWindow.res_man.GetString("ChangeLanguage", MainWindow.cul);
-                OverrideLanguageCheck.Text = MainWindow.res_man.GetString("OverrideLanguage", MainWindow.cul);
+                Text = MainWindow.res_man.GetString("ChangeLanguage", cul);
+                OverrideLanguageCheck.Text = MainWindow.res_man.GetString("OverrideLanguage", cul);
             }
         }
 
@@ -38,27 +44,35 @@ namespace KeppyMIDIConverter
         }
 
         private void OverrideLanguage_Load(object sender, EventArgs e)
-        {    
-            // First of all, add all the languages to the combobox
-            foreach (string x in Languages.LanguagesAvailable)
+        {
+            try
             {
-                LangSel.Items.Add(x);
-            }
-
-            // Then check if the override is enabled
-            OverrideLanguageCheck.Checked = Properties.Settings.Default.LangOverride;
-            LangSel.Enabled = Properties.Settings.Default.LangOverride;
-
-            // Then scan
-            int num = 0;
-            foreach (string x in Languages.LanguagesCodes)
-            {
-                if (String.Equals(x, Properties.Settings.Default.SelectedLang))
+                // First of all, add all the languages to the combobox
+                foreach (string x in Languages.LanguagesAvailable)
                 {
-                    LangSel.SelectedIndex = num;
-                    break;
+                    LangSel.Items.Add(x);
                 }
-                num++;
+
+                // Then check if the override is enabled
+                OverrideLanguageCheck.Checked = Properties.Settings.Default.LangOverride;
+                LangSel.Enabled = Properties.Settings.Default.LangOverride;
+
+                // Then scan
+                int num = 0;
+                foreach (string x in Languages.LanguagesCodes)
+                {
+                    if (String.Equals(x, Properties.Settings.Default.SelectedLang))
+                    {
+                        LangSel.SelectedIndex = num;
+                        break;
+                    }
+                    num++;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", MainWindow.cul), ex.ToString(), 0, 1);
+                errordialog.ShowDialog();
             }
         }
 
@@ -71,9 +85,9 @@ namespace KeppyMIDIConverter
 
         private void LangSel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.SelectedLang = Languages.LanguagesCodes[LangSel.SelectedIndex];
             Languages.ChangeLanguage(Languages.LanguagesCodes[LangSel.SelectedIndex]);
-            Properties.Settings.Default.Save();
+            Flag.BackgroundImage = Languages.LanguagesFlags[LangSel.SelectedIndex];
+            cul = Program.ReturnCulture(false);
             InitializeLanguage();
         }
     }

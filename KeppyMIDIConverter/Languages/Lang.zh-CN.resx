@@ -129,7 +129,7 @@
     <value>关于SFZ格式</value>
   </data>
   <data name="AboutVSTSupportText" xml:space="preserve">
-    <value>本程序支持VST DSP插件。
+    <value>本程序支持VST效果器插件。
 
 Virtual Studio Technology (VST) 属于 Steinberg Media Technologies GmbH.
 Copyright ©2006 Steinberg Media Technologies. All Rights Reserved.</value>
@@ -144,7 +144,7 @@ Copyright ©2006 Steinberg Media Technologies. All Rights Reserved.</value>
     <value>复音数</value>
   </data>
   <data name="AddOneMIDI" xml:space="preserve">
-    <value>请导入至少一个midi文件到待转换列表。</value>
+    <value>请导入至少一个MIDI文件到待转换列表。</value>
   </data>
   <data name="AdvSettingsButton" xml:space="preserve">
     <value>高级设置</value>
@@ -235,33 +235,38 @@ BASS 状态: {0}</value>
   <data name="ConvStatusFasterNew" xml:space="preserve">
     <value>已输出{0}MB的原始数据。（{1}）
 预计剩余时间:{2} - 已用时间:{3}
-已完成: {4}% ({5}x)</value>
+CPU使用率: {4}% ({5}x 快于播放速度)</value>
   </data>
   <data name="ConvStatusFasterOld" xml:space="preserve">
     <value>已输出{0}MB的原始数据。（{1}）
 当前位置:{2} - {3}
-已完成:{4}% ({5}x 快于播放速度)</value>
+
+CPU使用率: {4}% ({5}x 快于播放速度)</value>
   </data>
   <data name="ConvStatusNormalNew" xml:space="preserve">
     <value>已输出{0}MB的原始数据。（{1}）
 预计剩余时间:{2} - 已用时间:{3}
-已完成: {4}% </value>
+
+CPU使用率: {4}% </value>
   </data>
   <data name="ConvStatusNormalOld" xml:space="preserve">
     <value>已输出{0}MB的原始数据。（{1}）
 当前位置:{2} - {3}
-已完成: {4}% </value>
+
+CPU使用率: {4}% </value>
   </data>
   <data name="ConvStatusSlowerNew" xml:space="preserve">
     <value>已输出{0}MB的原始数据。（{1}）
 预计剩余时间:{2} - 已用时间:{3}
-已完成: {4}% ({5}x 慢于播放速度)
+
+CPU使用率: {4}% ({5}x 慢于播放速度)
 </value>
   </data>
   <data name="ConvStatusSlowerOld" xml:space="preserve">
     <value>已输出{0}MB的原始数据。（{1}）
 当前位置:{2} - {3}
-已完成:{4}% ({5}x 慢于播放速度)</value>
+
+CPU使用率: {4}% ({5}x 慢于播放速度)</value>
   </data>
   <data name="CopiedToClipboardNotice" xml:space="preserve">
     <value>错误信息已经复制到剪贴板。
@@ -299,7 +304,7 @@ by Ian Luck from Un4seen Developments.
     <value>关闭声效</value>
   </data>
   <data name="DSPSettings" xml:space="preserve">
-    <value>DSP 设置:</value>
+    <value>效果器设置:</value>
   </data>
   <data name="EmptySlot" xml:space="preserve">
     <value>空白效果器接口</value>
@@ -355,8 +360,8 @@ by Ian Luck from Un4seen Developments.
 请选择有效的MIDI文件,并重试.</value>
   </data>
   <data name="InvalidVSTLoaded" xml:space="preserve">
-    <value>{0}不是一个有效的VST特效！
-请确保您加载的是VST特效而不是VST乐器！
+    <value>{0}不是一个有效的VST效果器！
+请确保您加载的是VST效果器而不是VST乐器！
 如果你尝试使用一个{1} VST, 您需要使用版本为{1} 的Keppy's MIDI Converter.
 版本{2}的Keppy's MIDI Converter不支持 {1} 的VST ,反之亦然.</value>
   </data>
@@ -388,7 +393,7 @@ by Ian Luck from Un4seen Developments.
   </data>
   <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
     <value>初始化中...软件正在为预览分配内存.
-出现提示时再修改VST DSP设置。
+出现提示时再修改VST效果器设置。
 请稍候...</value>
   </data>
   <data name="MoveDOWN" xml:space="preserve">
@@ -412,7 +417,7 @@ by Ian Luck from Un4seen Developments.
 更多信息:</value>
   </data>
   <data name="NoteOff1" xml:space="preserve">
-    <value>当有音符重叠时仅对最先的NoteOFF事件使用发布。</value>
+    <value>当有音符重叠时仅对最先的Note off事件使用release。</value>
   </data>
   <data name="NoUpdatesText" xml:space="preserve">
     <value>暂无更新。
@@ -455,7 +460,7 @@ BASS 状态: {0}</value>
   <data name="PlaybackStatus" xml:space="preserve">
     <value>已播放{0}%
 播放位置: {1} - {2}
-笔记: {3} - {4}</value>
+音符数: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | 正在实时播放 {0}...</value>
@@ -528,13 +533,13 @@ BASS 状态: {0}</value>
     <value>有更新, 最新版本:{0} </value>
   </data>
   <data name="UpdaterPageTitle" xml:space="preserve">
-    <value>有更新！</value>
+    <value>检查更新</value>
   </data>
   <data name="UpdatesChecking" xml:space="preserve">
     <value>正在检查可用的更新, 请稍候...</value>
   </data>
   <data name="UpdatesFoundText" xml:space="preserve">
-    <value>有更新。
+    <value>发现新更新。
 点击OK以打开更新页面。</value>
   </data>
   <data name="UpdatesFoundTitle" xml:space="preserve">
@@ -568,7 +573,7 @@ BASS 状态: {0}</value>
     <value>VST 管理</value>
   </data>
   <data name="VSTManagerButtonText" xml:space="preserve">
-    <value>打开VST DSP管理</value>
+    <value>打开VST效果器管理</value>
   </data>
   <data name="VSTUseText" xml:space="preserve">
     <value>我想要添加VST DSP...</value>
@@ -584,13 +589,13 @@ BASS 状态: {0}</value>
     <value>关于</value>
   </data>
   <data name="Volume" xml:space="preserve">
-    <value>体积:</value>
+    <value>音量:</value>
   </data>
   <data name="ZZZTranslators" xml:space="preserve">
     <value>Anti.Cesium.Chloride(SpringSnow)</value>
   </data>
   <data name="OverrideLanguage" xml:space="preserve">
-    <value>覆蓋語言</value>
+    <value>覆盖默认的Windows界面语言</value>
   </data>
   <data name="MIDIFile" xml:space="preserve">
     <value>文件</value>
@@ -605,55 +610,54 @@ BASS 状态: {0}</value>
     <value>姓名排序</value>
   </data>
   <data name="MIDINotes" xml:space="preserve">
-    <value>笔记</value>
+    <value>音符数</value>
   </data>
   <data name="BankNPresetConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>确认</value>
   </data>
   <data name="BankNPresetDesBank" xml:space="preserve">
-    <value>Destination preset:</value>
+    <value>目标预置:</value>
   </data>
   <data name="BankNPresetDesPrst" xml:space="preserve">
-    <value>Destination bank:</value>
+    <value>目标音色库:</value>
   </data>
   <data name="BankNPresetDiscl" xml:space="preserve">
-    <value>Src.: Source of the bank/preset to import
-Des.: Bank/Preset to assign to the imported one.
+    <value>Src.: 要加入的源音色库/预置
+Des.: 分配给源音色库/预置的音色库/预置 
 
-Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
+当你使用SFZ文件时请将Src. Bank与Src. Preset设置成0.</value>
   </data>
   <data name="BankNPresetGuide" xml:space="preserve">
-    <value>Banks/Presets list</value>
+    <value>音色库/预置列表</value>
   </data>
   <data name="BankNPresetIgnore" xml:space="preserve">
-    <value>Ignore</value>
+    <value>忽略</value>
   </data>
   <data name="BankNPresetSelectedSF" xml:space="preserve">
-    <value>Selected soundfont</value>
+    <value>已选择的音色库</value>
   </data>
   <data name="BankNPresetSelectMsg" xml:space="preserve">
-    <value>Please select a bank and a preset, from 0 to 127.
-
-Use "Bank 0" and "Preset 0" for the standard "Acoustic Grand Piano",
-or if you don't know which one you should use.</value>
+    <value>请选择一个音色库和预置,编号从0到127
+。使用"Bank 0"和"Preset 0"来表示一般钢琴"Acoustic Grand Piano",
+或者当你并不知道应该使用什么乐器的时候也可以用它。</value>
   </data>
   <data name="BankNPresetSrcBank" xml:space="preserve">
-    <value>Source preset:</value>
+    <value>预置源:</value>
   </data>
   <data name="BankNPresetSrcPrst" xml:space="preserve">
-    <value>Source bank:</value>
+    <value>音色库源:</value>
   </data>
   <data name="BankNPresetTitle" xml:space="preserve">
-    <value>Select a bank and a preset for the soundfont</value>
+    <value>为音色库选择一个音色库预置</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
-    <value>yes</value>
+    <value>no</value>
   </data>
   <data name="CopyText" xml:space="preserve">
     <value>复制</value>
   </data>
   <data name="Donate" xml:space="preserve">
-    <value>捐贈與貝寶</value>
+    <value>用PayPal捐款</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>改变语言</value>

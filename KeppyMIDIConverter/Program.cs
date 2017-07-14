@@ -35,6 +35,8 @@ namespace KeppyMIDIConverter
         //Take in arguments
         static void Main(String[] args)
         {
+            AppDomain.CurrentDomain.UnhandledException += UnhandledException; 
+
             if (Properties.Settings.Default.MigrateSettings)
             {
                 Properties.Settings.Default.Upgrade();
@@ -198,6 +200,17 @@ namespace KeppyMIDIConverter
                 MessageBox.Show("There was an error while trying to load the languages!\n\nError:" + ex.ToString(), "Keppy's MIDI Converter - Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        static void UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Thread.CurrentThread.IsBackground = true;
+            Thread.CurrentThread.Name = "Dead thread";
+
+            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", ReturnCulture(true)), e.ToString(), 0, 0);
+            errordialog.ShowDialog();
+
+            Process.GetCurrentProcess().Kill();
         }
 
         public static void DeleteOldLanguages()
@@ -379,6 +392,22 @@ namespace KeppyMIDIConverter
             "ภาษาไทย (Thai)",
             "廣東話 (Traditional Chinese, Hong Kong)",
             "台灣 (Traditional Chinese, Taiwan)",
+        };
+
+        public static Bitmap[] LanguagesFlags = new Bitmap[13] {
+            Properties.Resources.Bangladesh,
+            Properties.Resources.United_Kingdom_Great_Britain_,
+            Properties.Resources.Estonia,
+            Properties.Resources.Germany,
+            Properties.Resources.Italy,
+            Properties.Resources.Japan,
+            Properties.Resources.South_Korea,
+            Properties.Resources.Russian_Federation,
+            Properties.Resources.China,
+            Properties.Resources.Spain,
+            Properties.Resources.Thailand,
+            Properties.Resources.China,
+            Properties.Resources.China,
         };
 
         public static String[] LanguagesCodes = new String[13] {

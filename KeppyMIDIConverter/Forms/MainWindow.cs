@@ -123,7 +123,7 @@ namespace KeppyMIDIConverter
         public static class KMCStatus
         {
             public static Int64 PlayedNotes = 0;
-            public static Int64 TotalNotes = 0;
+            public static UInt64 TotalNotes = 0;
             public static DateTime StartTime;
             public static TimeSpan PassedTime;
             public static TimeSpan EstimatedTime;
@@ -1400,7 +1400,7 @@ namespace KeppyMIDIConverter
                                 {
                                     KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
                                     int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
-                                    KMCStatus.TotalNotes = BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, (BASSMIDIEvent)0x20000, null);
+                                    KMCStatus.TotalNotes = (UInt64)BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, (BASSMIDIEvent)0x20000, null);
                                 }
                                 catch (Exception ex)
                                 {
@@ -1591,35 +1591,30 @@ namespace KeppyMIDIConverter
                     else if (length / 1024f >= 1)
                         size = (length / 1024f).ToString("0.0 KB");
                     else
-                        size = (length).ToString("0.0 B");
+                        size = (length).ToString("0 B");
                 }
                 catch { size = "-"; }
 
                 // If the MIDI is too big, skip data parsing
                 if (length / 1024f >= 9860)
                 {
-                    // If the user is holding CTRL, continue the data parsing anyway
-                    if (overridedefault)
-                    {
-
-                    }
-                    // Else, skip
-                    else
+                    // If the user is not holding CTRL, skip the data parsing
+                    if (!overridedefault)
                     {
                         return new string[] { "N/A", "N/A", size, };
                     }
                 }
 
                 Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
-                int time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
-                long pos = Bass.BASS_ChannelGetLength(time);
-                double num9 = Bass.BASS_ChannelBytes2Seconds(time, pos);
+                Int32 time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
+                Int64 pos = Bass.BASS_ChannelGetLength(time);
+                Double num9 = Bass.BASS_ChannelBytes2Seconds(time, pos);
                 TimeSpan span = TimeSpan.FromSeconds(num9);
 
                 // Get length of MIDI
                 string str4 = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
 
-                int count = BassMidi.BASS_MIDI_StreamGetEvents(time, -1, (BASSMIDIEvent)0x20000, null);
+                UInt64 count = (UInt64)BassMidi.BASS_MIDI_StreamGetEvents(time, -1, (BASSMIDIEvent)0x20000, null);
 
                 Bass.BASS_Free();
                 return new string[] { str4, count.ToString("N0"), size, };
