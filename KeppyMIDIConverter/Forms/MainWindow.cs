@@ -25,6 +25,13 @@ namespace KeppyMIDIConverter
 {
     public partial class MainWindow : Form
     {
+        private const int timerAccuracy = 1;
+        [System.Runtime.InteropServices.DllImport("winmm.dll")]
+        private static extern int timeBeginPeriod(int msec);
+        [System.Runtime.InteropServices.DllImport("winmm.dll")]
+        public static extern int timeEndPeriod(int msec);
+
+
         // Delegate for RTF
         public static MainWindow Delegate;
 
@@ -329,6 +336,7 @@ namespace KeppyMIDIConverter
         private void MainWindow_Load(object sender, EventArgs e)
         {
             // Here we go
+            timeBeginPeriod(timerAccuracy);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             this.Menu = DefaultMenu;
             MIDIList.ContextMenu = DefMenu;
@@ -1536,6 +1544,7 @@ namespace KeppyMIDIConverter
 
         private void CloseApp()
         {
+            timeEndPeriod(timerAccuracy);
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
             if (KMCGlobals.DeleteEncoder == true)

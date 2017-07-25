@@ -507,7 +507,7 @@ namespace KeppyMIDIConverter
 
         public static void KMCIdle()
         {
-            Cursor.Current = Cursors.Arrow;
+            if (MainWindow.Delegate.Cursor != Cursors.Arrow) MainWindow.Delegate.Cursor = Cursors.Arrow;
             CurrentTitle(0);
             SetStatus(0);
             CurrentMode(0);
@@ -516,7 +516,7 @@ namespace KeppyMIDIConverter
 
         public static void KMCMemoryAllocation()
         {
-            Cursor.Current = Cursors.WaitCursor;
+            if (MainWindow.Delegate.Cursor != Cursors.WaitCursor) MainWindow.Delegate.Cursor = Cursors.AppStarting;
             CurrentTitle(1);
             SetStatus(1);
             CurrentMode(1);
@@ -525,7 +525,7 @@ namespace KeppyMIDIConverter
 
         public static void KMCBusy()
         {
-            Cursor.Current = Cursors.Arrow;
+            if (MainWindow.Delegate.Cursor != Cursors.Arrow) MainWindow.Delegate.Cursor = Cursors.Arrow;
             CurrentTitle(2);
             SetStatus(2);
             CurrentMode(2);

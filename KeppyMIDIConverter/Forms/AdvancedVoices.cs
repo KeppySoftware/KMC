@@ -98,7 +98,6 @@ namespace KeppyMIDIConverter
             }
             this.ResumeLayout(false);
             this.PerformLayout();
-            System.Threading.Thread.Sleep(1);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

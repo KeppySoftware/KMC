@@ -24,6 +24,8 @@ namespace KeppyMIDIConverter
 {
     static class Program
     {
+        private const int timerAccuracy = 10;
+
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();

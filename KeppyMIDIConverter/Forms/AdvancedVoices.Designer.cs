@@ -83,7 +83,6 @@
             // 
             // CVList
             // 
-            this.CVList.AllowDrop = true;
             this.CVList.BackColor = System.Drawing.Color.White;
             this.CVList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CVList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -111,7 +110,7 @@
             this.CVList.MultiSelect = false;
             this.CVList.Name = "CVList";
             this.CVList.ShowGroups = false;
-            this.CVList.Size = new System.Drawing.Size(381, 300);
+            this.CVList.Size = new System.Drawing.Size(350, 350);
             this.CVList.TabIndex = 1;
             this.CVList.UseCompatibleStateImageBehavior = false;
             this.CVList.View = System.Windows.Forms.View.Details;
@@ -125,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 300);
+            this.ClientSize = new System.Drawing.Size(350, 350);
             this.Controls.Add(this.CVList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
