@@ -15,12 +15,11 @@ Sure you can, but there are a few "rules" you need to follow.
 What you can do:
 - Take parts of the code, and use it on your apps. (As long as you credit me, BASS.NET and Un4seen.)
 - Share the code on websites outside of the GitHub world. (Again, same as before.)
-- Create ports of the converter for other operating systems, such as Linux, Mac OS X, Amiga etc... Any other O.S. other than Windows. (See down below for further explanations.)
+- Create ports of the converter for other operating systems, such as Linux, Mac OS X, Amiga etc... Any other O.S. other than Windows. Mobile ports are allowed too. (See down below for further explanations.)
 
 What you can't do:
 - Clone the source code of the converter, and change its name to "(Your name)'s MIDI Converter". I mean, why would you do that?
 - Create ports of the converter in different programming languages, but with Windows support. There's already a Windows version, which is this one.
-- Create phone ports of the converter. It is a PC-exclusive application.
 
 If you break one of these rules... Well, "rip you".
 
