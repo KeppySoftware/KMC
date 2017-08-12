@@ -27,7 +27,7 @@ namespace KeppyMIDIConverter
             Label5.Text = MainWindow.res_man.GetString("AudioFreq", MainWindow.cul);
             Noteoff1.Text = MainWindow.res_man.GetString("NoteOff1", MainWindow.cul);
             FXDisable.Text = MainWindow.res_man.GetString("DisableFX", MainWindow.cul);
-            label2.Text = MainWindow.res_man.GetString("NewValueTempo", MainWindow.cul);
+            TempoCurrent.Text = MainWindow.res_man.GetString("NewValueTempo", MainWindow.cul);
             checkBox3.Text = MainWindow.res_man.GetString("ConstantBitrateOGG", MainWindow.cul);
         }
 
@@ -42,21 +42,20 @@ namespace KeppyMIDIConverter
                     Label5.Enabled = false;
                     FrequencyBox.Enabled = false;
                     Label6.Enabled = false;
-                    checkBox1.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo2", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
                 }
                 else
                 {
                     Label5.Enabled = true;
                     FrequencyBox.Enabled = true;
                     Label6.Enabled = true;
-                    checkBox1.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo1", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
                 }
                 // K DONE
+                OverrideTempoNow.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo1", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
                 FrequencyBox.Text = Convert.ToString(Properties.Settings.Default.AudioFreq);
                 BitrateBox.Text = Convert.ToString(Properties.Settings.Default.OGGBitrate);
                 RTFPS.Value = Convert.ToDecimal(MainWindow.KMCGlobals.RTFPS);
                 //
-                if (Properties.Settings.Default.NoteOff1)
+                if (Properties.Settings.Default.NoteOff1 == true)
                 {
                     MainWindow.KMCGlobals.NoteOff1Event = true;
                     Noteoff1.Checked = true;
@@ -66,7 +65,7 @@ namespace KeppyMIDIConverter
                     MainWindow.KMCGlobals.NoteOff1Event = false;
                     Noteoff1.Checked = false;
                 }
-                if (Properties.Settings.Default.DisableFX)
+                if (Properties.Settings.Default.DisableFX == true)
                 {
                     MainWindow.KMCGlobals.FXDisabled = true;
                     FXDisable.Checked = true;
@@ -76,7 +75,7 @@ namespace KeppyMIDIConverter
                     MainWindow.KMCGlobals.FXDisabled = false;
                     FXDisable.Checked = false;
                 }
-                if (Properties.Settings.Default.OverrideOGG)
+                if (Properties.Settings.Default.OverrideOGG == true)
                 {
                     checkBox3.Checked = true;
                 }
@@ -84,15 +83,16 @@ namespace KeppyMIDIConverter
                 {
                     checkBox3.Checked = false;
                 }
-                if (Properties.Settings.Default.TempoOverride)
+                if (Properties.Settings.Default.TempoOverride == true)
                 {
-                    label2.Enabled = true;
-                    TempoVal.Enabled = true;
+                    OverrideTempoNow.Checked = true;
+                    TempoValue.Enabled = true;
                 }
                 else
                 {
-                    label2.Enabled = false;
-                    TempoVal.Enabled = false;
+                    OverrideTempoNow.Checked = false;
+                    TempoValue.Enabled = false;
+                    TempoValue.Value = 20;
                 }
             }
             catch (Exception ex)
@@ -154,23 +154,20 @@ namespace KeppyMIDIConverter
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == true)
+            if (OverrideTempoNow.Checked == true)
             {
-                MainWindow.KMCGlobals.TempoOverride = true;
-                label2.Enabled = true;
-                TempoVal.Enabled = true;
+                Properties.Settings.Default.TempoOverride = true;
+                TempoValue.Enabled = true;
             }
             else
             {
-                MainWindow.KMCGlobals.TempoOverride = false;
-                label2.Enabled = false;
-                TempoVal.Enabled = false;
+                Properties.Settings.Default.TempoOverride = false;
+                TempoValue.Enabled = false;
+                TempoValue.Value = 20;
+                MainWindow.KMCGlobals.TempoScale = 1 / ((60 - TempoValue.Value) / 40.0f);
+                MainWindow.SetTempo(false);
             }
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            MainWindow.KMCGlobals.FinalTempo = Convert.ToInt32(TempoVal.Value);
+            Properties.Settings.Default.Save();
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
@@ -238,6 +235,17 @@ namespace KeppyMIDIConverter
             MainWindow.KMCGlobals.RTFPS = Convert.ToDouble(RTFPS.Value);
             Properties.Settings.Default.RTFPS = MainWindow.KMCGlobals.RTFPS;
             Properties.Settings.Default.Save();
+        }
+
+        private void TempoValue_Scroll(object sender, EventArgs e)
+        {
+            MainWindow.KMCGlobals.TempoScale = 1 / ((60 - TempoValue.Value) / 40.0f);
+            MainWindow.SetTempo(false);
+        }
+
+        private void CheckTempo_Tick(object sender, EventArgs e)
+        {
+            TempoCurrent.Text = String.Format("{0}bpm", Convert.ToDouble(60000000 / (MainWindow.KMCGlobals.MIDITempo * MainWindow.KMCGlobals.TempoScale)).ToString("0.0"));
         }
     }
 }

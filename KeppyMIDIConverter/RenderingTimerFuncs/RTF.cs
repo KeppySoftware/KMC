@@ -107,8 +107,8 @@ namespace KeppyMIDIConverter
             String Time = ReturnOutputText(LenDoubleToSpan);
             String TimeExpect = @"hh\:mm\:ss";
 
-            string MIDILengthString = LenDoubleToSpan.ToString(Time);
-            string MIDICurrentString = CurDoubleToSpan.ToString(Time);
+            string MIDILengthString = (LenDoubleToSpan).ToString(Time);
+            string MIDICurrentString = (CurDoubleToSpan).ToString(Time);
             float percentage = RAWConverted / RAWTotal;
             float percentagefinal;
             if (percentage * 100 < 0)

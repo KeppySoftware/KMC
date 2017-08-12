@@ -20,32 +20,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.TempoCurrent = new System.Windows.Forms.Label();
+            this.TempoValue = new System.Windows.Forms.TrackBar();
             this.RTFPS = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.BitrateBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.TempoVal = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.OverrideTempoNow = new System.Windows.Forms.CheckBox();
             this.Label6 = new System.Windows.Forms.Label();
             this.FrequencyBox = new System.Windows.Forms.ComboBox();
             this.Label5 = new System.Windows.Forms.Label();
             this.FXDisable = new System.Windows.Forms.CheckBox();
             this.Noteoff1 = new System.Windows.Forms.CheckBox();
+            this.CheckTempo = new System.Windows.Forms.Timer(this.components);
             this.GroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TempoValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TempoVal)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(315, 161);
+            this.button1.Location = new System.Drawing.Point(315, 187);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 23);
             this.button1.TabIndex = 31;
@@ -58,15 +60,15 @@
             this.GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupBox1.Controls.Add(this.TempoCurrent);
+            this.GroupBox1.Controls.Add(this.TempoValue);
             this.GroupBox1.Controls.Add(this.RTFPS);
             this.GroupBox1.Controls.Add(this.label1);
             this.GroupBox1.Controls.Add(this.label4);
             this.GroupBox1.Controls.Add(this.checkBox3);
             this.GroupBox1.Controls.Add(this.BitrateBox);
             this.GroupBox1.Controls.Add(this.label3);
-            this.GroupBox1.Controls.Add(this.TempoVal);
-            this.GroupBox1.Controls.Add(this.label2);
-            this.GroupBox1.Controls.Add(this.checkBox1);
+            this.GroupBox1.Controls.Add(this.OverrideTempoNow);
             this.GroupBox1.Controls.Add(this.Label6);
             this.GroupBox1.Controls.Add(this.FrequencyBox);
             this.GroupBox1.Controls.Add(this.Label5);
@@ -74,14 +76,38 @@
             this.GroupBox1.Controls.Add(this.Noteoff1);
             this.GroupBox1.Location = new System.Drawing.Point(5, 2);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(396, 152);
+            this.GroupBox1.Size = new System.Drawing.Size(396, 178);
             this.GroupBox1.TabIndex = 29;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
             // 
+            // TempoCurrent
+            // 
+            this.TempoCurrent.Enabled = false;
+            this.TempoCurrent.Location = new System.Drawing.Point(159, 123);
+            this.TempoCurrent.Name = "TempoCurrent";
+            this.TempoCurrent.Size = new System.Drawing.Size(58, 15);
+            this.TempoCurrent.TabIndex = 32;
+            this.TempoCurrent.Text = "999bpm";
+            this.TempoCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // TempoValue
+            // 
+            this.TempoValue.Location = new System.Drawing.Point(213, 109);
+            this.TempoValue.Maximum = 40;
+            this.TempoValue.Name = "TempoValue";
+            this.TempoValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.TempoValue.RightToLeftLayout = true;
+            this.TempoValue.Size = new System.Drawing.Size(180, 45);
+            this.TempoValue.TabIndex = 20;
+            this.TempoValue.TickFrequency = 2;
+            this.TempoValue.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.TempoValue.Value = 20;
+            this.TempoValue.Scroll += new System.EventHandler(this.TempoValue_Scroll);
+            // 
             // RTFPS
             // 
-            this.RTFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RTFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RTFPS.DecimalPlaces = 1;
             this.RTFPS.Location = new System.Drawing.Point(321, 17);
             this.RTFPS.Maximum = new decimal(new int[] {
@@ -116,8 +142,9 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Location = new System.Drawing.Point(365, 134);
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Location = new System.Drawing.Point(365, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 12);
             this.label4.TabIndex = 17;
@@ -125,9 +152,10 @@
             // 
             // checkBox3
             // 
-            this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox3.Location = new System.Drawing.Point(7, 125);
+            this.checkBox3.Location = new System.Drawing.Point(7, 151);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(200, 27);
             this.checkBox3.TabIndex = 16;
@@ -137,7 +165,8 @@
             // 
             // BitrateBox
             // 
-            this.BitrateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BitrateBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BitrateBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BitrateBox.Enabled = false;
             this.BitrateBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -152,7 +181,7 @@
             "128",
             "96",
             "64"});
-            this.BitrateBox.Location = new System.Drawing.Point(299, 129);
+            this.BitrateBox.Location = new System.Drawing.Point(299, 155);
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(66, 21);
             this.BitrateBox.TabIndex = 15;
@@ -160,62 +189,29 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(214, 133);
+            this.label3.Location = new System.Drawing.Point(214, 159);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 14;
             this.label3.Text = "Bitrate:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // TempoVal
+            // OverrideTempoNow
             // 
-            this.TempoVal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TempoVal.Enabled = false;
-            this.TempoVal.Location = new System.Drawing.Point(321, 108);
-            this.TempoVal.Maximum = new decimal(new int[] {
-            2097120,
-            0,
-            0,
-            0});
-            this.TempoVal.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.TempoVal.Name = "TempoVal";
-            this.TempoVal.Size = new System.Drawing.Size(72, 20);
-            this.TempoVal.TabIndex = 13;
-            this.TempoVal.Value = new decimal(new int[] {
-            120,
-            0,
-            0,
-            0});
-            this.TempoVal.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(191, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "New tempo value:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox1.Location = new System.Drawing.Point(7, 102);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(177, 30);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Override MIDI tempo";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.OverrideTempoNow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.OverrideTempoNow.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.OverrideTempoNow.Location = new System.Drawing.Point(7, 102);
+            this.OverrideTempoNow.Name = "OverrideTempoNow";
+            this.OverrideTempoNow.Size = new System.Drawing.Size(146, 56);
+            this.OverrideTempoNow.TabIndex = 11;
+            this.OverrideTempoNow.Text = "Override MIDI tempo";
+            this.OverrideTempoNow.UseVisualStyleBackColor = true;
+            this.OverrideTempoNow.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Label6
             // 
@@ -269,7 +265,8 @@
             // 
             // FXDisable
             // 
-            this.FXDisable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.FXDisable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FXDisable.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.FXDisable.Location = new System.Drawing.Point(7, 85);
             this.FXDisable.Name = "FXDisable";
@@ -281,8 +278,7 @@
             // 
             // Noteoff1
             // 
-            this.Noteoff1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.Noteoff1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Noteoff1.Location = new System.Drawing.Point(7, 42);
@@ -294,12 +290,17 @@
             this.Noteoff1.UseVisualStyleBackColor = true;
             this.Noteoff1.CheckedChanged += new System.EventHandler(this.Noteoff1_CheckedChanged);
             // 
+            // CheckTempo
+            // 
+            this.CheckTempo.Enabled = true;
+            this.CheckTempo.Tick += new System.EventHandler(this.CheckTempo_Tick);
+            // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(406, 194);
+            this.ClientSize = new System.Drawing.Size(406, 220);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.GroupBox1);
@@ -314,8 +315,8 @@
             this.Load += new System.EventHandler(this.AdvancedSettings_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TempoValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TempoVal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,14 +330,15 @@
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.CheckBox FXDisable;
         internal System.Windows.Forms.CheckBox Noteoff1;
-        internal System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.NumericUpDown TempoVal;
-        private System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.CheckBox OverrideTempoNow;
         internal System.Windows.Forms.ComboBox BitrateBox;
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.CheckBox checkBox3;
         internal System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown RTFPS;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TrackBar TempoValue;
+        private System.Windows.Forms.Label TempoCurrent;
+        private System.Windows.Forms.Timer CheckTempo;
     }
 }

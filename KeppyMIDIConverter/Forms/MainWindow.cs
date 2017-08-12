@@ -20,6 +20,7 @@ using System.Resources;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Threading;
 
 namespace KeppyMIDIConverter
 {
@@ -44,6 +45,7 @@ namespace KeppyMIDIConverter
             public static List<string> EncodersPath = new List<string>();
             public static SYNCPROC _mySync;
             public static SYNCPROC _myVSTSync;
+            public static SYNCPROC _myTempoSync;
             public static WASAPIPROC _myWasapi;
             public static UInt32 eventc;
             public static Un4seen.Bass.Misc.DSP_PeakLevelMeter _plm;
@@ -60,7 +62,6 @@ namespace KeppyMIDIConverter
             public static bool QualityOverride = false;
             public static bool RealTime = false;
             public static bool RenderingMode = false;
-            public static bool TempoOverride = false;
             public static bool VSTMode = false;
             public static bool VSTSkipSettings = false;
             public static double RTFPS = 60.0;
@@ -71,7 +72,8 @@ namespace KeppyMIDIConverter
             public static int CurrentEncoder;
             public static int CurrentMode;
             public static int DefaultSoundfont;
-            public static int FinalTempo = 120;
+            public static int MIDITempo = 0;              // MIDI file tempo
+            public static float TempoScale = 1.0f;    // Tempo adjustment
             public static int Frequency = 0xbb80;
             public static int _LoudMaxHan;
             public static int LimitVoicesInt = 0x186a0;
@@ -222,8 +224,8 @@ namespace KeppyMIDIConverter
             //
         }
 
-        Timer t1 = new Timer();
-        Timer t2 = new Timer();
+        System.Windows.Forms.Timer t1 = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer t2 = new System.Windows.Forms.Timer();
 
         public static ResourceManager res_man;    // declare Resource manager to access to specific cultureinfo
         public static CultureInfo cul;            // declare culture info
@@ -771,7 +773,13 @@ namespace KeppyMIDIConverter
                 if (Path.GetFileNameWithoutExtension(str).Length >= 49)
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                 else
-                    KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);             
+                    KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);
+
+                SetTempo(true);
+                KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);
+                Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT | BASSSync.BASS_SYNC_MIXTIME, (long)BASSMIDIEvent.MIDI_EVENT_TEMPO, KMCGlobals._myTempoSync, IntPtr.Zero);
+                Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_SETPOS | BASSSync.BASS_SYNC_MIXTIME, 0, KMCGlobals._myTempoSync, IntPtr.Zero);
+
                 KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
                 KMCGlobals._plm.CalcRMS = true;
                 BassMidi.BASS_MIDI_StreamLoadSamples(KMCGlobals._recHandle);
@@ -816,6 +824,12 @@ namespace KeppyMIDIConverter
                 BassWasapi.BASS_WASAPI_SetVolume(BASSWASAPIVolume.BASS_WASAPI_VOL_SESSION, ((float)KMCGlobals.Volume / 10000.0f));
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
+
+                SetTempo(true);
+                KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);
+                Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT | BASSSync.BASS_SYNC_MIXTIME, (long)BASSMIDIEvent.MIDI_EVENT_TEMPO, KMCGlobals._myTempoSync, IntPtr.Zero);
+                Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_SETPOS | BASSSync.BASS_SYNC_MIXTIME, 0, KMCGlobals._myTempoSync, IntPtr.Zero);
+
                 if (Path.GetFileNameWithoutExtension(str).Length >= 49)
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                 else
@@ -966,8 +980,6 @@ namespace KeppyMIDIConverter
             int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
             KMCGlobals.OriginalTempo = 60000000 / tempo;
 
-            if (MainWindow.KMCGlobals.TempoOverride == true)
-                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, 60000000 / KMCGlobals.FinalTempo);
             if (KMCGlobals.FXDisabled == true)
                 Bass.BASS_ChannelFlags((KMCGlobals.vstIInfo.isInstrument ? KMCGlobals._VSTHandle : KMCGlobals._recHandle), BASSFlag.BASS_MIDI_NOFX, BASSFlag.BASS_MIDI_NOFX);
             else
@@ -993,8 +1005,6 @@ namespace KeppyMIDIConverter
             int tempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
             KMCGlobals.OriginalTempo = 60000000 / tempo;
             byte[] buffer = new byte[length];
-            if (MainWindow.KMCGlobals.TempoOverride)
-                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, 60000000 / KMCGlobals.FinalTempo);
 
             int gotm;
             int got;
@@ -1485,6 +1495,20 @@ namespace KeppyMIDIConverter
             Console.Write("The converter will now try to continue...");
             Console.WriteLine();
             Console.ResetColor();
+        }
+
+        public static void SetTempo(bool reset)
+        {
+            new Thread(() =>
+            {
+                if (reset) KMCGlobals.MIDITempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO); // get the file's tempo
+            BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, Convert.ToInt32(KMCGlobals.MIDITempo * KMCGlobals.TempoScale));   // set tempo
+            }).Start();
+        }
+
+        private void TempoSync(int handle, int channel, int data, IntPtr user)
+        {
+            SetTempo(true);
         }
 
         private void NoteSyncProc(int handle, int channel, int data, IntPtr user)
@@ -2222,8 +2246,8 @@ namespace KeppyMIDIConverter
                         RTF.RAWConverted = ((float)RTF.MIDICurrentPosRAW) / 1048576f;
                         RTF.LenRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDILengthRAW);
                         RTF.CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(KMCGlobals._recHandle, RTF.MIDICurrentPosRAW);
-                        RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble);
-                        RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble);
+                        RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble * MainWindow.KMCGlobals.TempoScale);
+                        RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble * MainWindow.KMCGlobals.TempoScale);
                         Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
                         Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
                         RTF.GetVoices();

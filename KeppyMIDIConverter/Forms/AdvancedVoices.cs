@@ -36,84 +36,43 @@ namespace KeppyMIDIConverter
 
         private void AdvancedVoices_Load(object sender, EventArgs e)
         {
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            CVList.Columns.Add("Channels", 1, HorizontalAlignment.Left);
-            CVList.Columns.Add("Voices", 1, HorizontalAlignment.Left);
-            CVList.Columns[0].Tag = 1;
-            CVList.Columns[1].Tag = 1;
-            CVList_SizeChanged(CVList, new EventArgs());
-        }
-
-        private bool Resizing = false;
-        private void CVList_SizeChanged(object sender, EventArgs e)
-        {
-            if (!Resizing)
-            {
-                Resizing = true;
-                ListView listView = sender as ListView;
-                if (listView != null)
-                {
-                    float totalColumnWidth = 0;
-
-                    for (int i = 0; i < listView.Columns.Count; i++)
-                        totalColumnWidth += Convert.ToInt32(listView.Columns[i].Tag);
-
-                    for (int i = 0; i < listView.Columns.Count; i++)
-                    {
-                        float colPercentage = (Convert.ToInt32(listView.Columns[i].Tag) / totalColumnWidth);
-                        listView.Columns[i].Width = (int)(colPercentage * listView.ClientRectangle.Width);
-                    }
-                }
-            }
-            Resizing = false;
+            CPUUsageChart.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
+            CPUUsageChart.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            CPUUsageChart.ChartAreas[0].AxisX.MinorGrid.LineWidth = 0;
+            CPUUsageChart.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+            CPUUsageChart.ChartAreas[0].AxisY.MinorGrid.LineWidth = 0;
+            CheckCPU.RunWorkerAsync();
         }
 
         private void CheckVoices_Tick(object sender, EventArgs e)
         {
             Text = String.Format("Active voices - Advanced (CPU usage: {0}%)", RTF.CPUUsage.ToString("0.0"));
-            this.SuspendLayout();
-            CVList.BeginUpdate();
             try
             {
-                CVList.Items[0].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch1.ToString();
-                CVList.Items[1].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch2.ToString();
-                CVList.Items[2].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch3.ToString();
-                CVList.Items[3].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch4.ToString();
-                CVList.Items[4].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch5.ToString();
-                CVList.Items[5].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch6.ToString();
-                CVList.Items[6].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch7.ToString();
-                CVList.Items[7].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch8.ToString();
-                CVList.Items[8].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch9.ToString();
-                CVList.Items[9].SubItems[1].Text = MainWindow.KMCChannelsVoices.chD.ToString();
-                CVList.Items[10].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch11.ToString();
-                CVList.Items[11].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch12.ToString();
-                CVList.Items[12].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch13.ToString();
-                CVList.Items[13].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch14.ToString();
-                CVList.Items[14].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch15.ToString();
-                CVList.Items[15].SubItems[1].Text = MainWindow.KMCChannelsVoices.ch16.ToString();
+                CHV1.Text = MainWindow.KMCChannelsVoices.ch1.ToString();
+                CHV2.Text = MainWindow.KMCChannelsVoices.ch2.ToString();
+                CHV3.Text = MainWindow.KMCChannelsVoices.ch3.ToString();
+                CHV4.Text = MainWindow.KMCChannelsVoices.ch4.ToString();
+                CHV5.Text = MainWindow.KMCChannelsVoices.ch5.ToString();
+                CHV6.Text = MainWindow.KMCChannelsVoices.ch6.ToString();
+                CHV7.Text = MainWindow.KMCChannelsVoices.ch7.ToString();
+                CHV8.Text = MainWindow.KMCChannelsVoices.ch8.ToString();
+                CHV9.Text = MainWindow.KMCChannelsVoices.ch9.ToString();
+                CHV10.Text = MainWindow.KMCChannelsVoices.chD.ToString();
+                CHV11.Text = MainWindow.KMCChannelsVoices.ch11.ToString();
+                CHV12.Text = MainWindow.KMCChannelsVoices.ch12.ToString();
+                CHV13.Text = MainWindow.KMCChannelsVoices.ch13.ToString();
+                CHV14.Text = MainWindow.KMCChannelsVoices.ch14.ToString();
+                CHV15.Text = MainWindow.KMCChannelsVoices.ch15.ToString();
+                CHV16.Text = MainWindow.KMCChannelsVoices.ch16.ToString();
             }
-            finally
-            {
-                CVList.EndUpdate();
-            }
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            catch { }
+            System.Threading.Thread.Sleep(1);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             m.Close();
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-
-                return cp;
-            }
         }
 
         // Snap feature
@@ -134,6 +93,41 @@ namespace KeppyMIDIConverter
             if (DoSnap(this.Top, scn.WorkingArea.Top)) this.Top = scn.WorkingArea.Top;
             if (DoSnap(scn.WorkingArea.Right, this.Right)) this.Left = scn.WorkingArea.Right - this.Width;
             if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
+        }
+
+        private void CheckCPU_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                while (true)
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        CPUUsageChart.Series[0].Points.SuspendUpdates();
+                        if (RTF.CPUUsage > 100.0f)
+                        {
+                            CPUUsageChart.ChartAreas[0].AxisY.Maximum = Double.NaN;
+                            CPUUsageChart.ChartAreas[0].RecalculateAxesScale();
+                        }
+                        else
+                        {
+                            try
+                            {
+                                if (CPUUsageChart.Series[0].Points[0].YValues[0] > 100.0) CPUUsageChart.ChartAreas[0].AxisY.Maximum = CPUUsageChart.Series[0].Points[0].YValues[0];
+                                else CPUUsageChart.ChartAreas[0].AxisY.Maximum = 100.0;
+                            }
+                            catch { CPUUsageChart.ChartAreas[0].AxisY.Maximum = 100.0; }
+                        }
+
+                        CPUUsageChart.Series[0].Points.Add(RTF.CPUUsage);
+
+                        while (CPUUsageChart.Series[0].Points.Count > 20) { CPUUsageChart.Series[0].Points.RemoveAt(0); }
+                        CPUUsageChart.Series[0].Points.ResumeUpdates();
+                    }));
+                    System.Threading.Thread.Sleep(500);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
     }
 
