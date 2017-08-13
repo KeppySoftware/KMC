@@ -127,7 +127,7 @@ namespace KeppyMIDIConverter
                     System.Threading.Thread.Sleep(500);
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex) { }
         }
     }
 

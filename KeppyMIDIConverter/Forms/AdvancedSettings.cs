@@ -92,7 +92,7 @@ namespace KeppyMIDIConverter
                 {
                     OverrideTempoNow.Checked = false;
                     TempoValue.Enabled = false;
-                    TempoValue.Value = 20;
+                    TempoValue.Value = 40;
                 }
             }
             catch (Exception ex)
@@ -163,8 +163,8 @@ namespace KeppyMIDIConverter
             {
                 Properties.Settings.Default.TempoOverride = false;
                 TempoValue.Enabled = false;
-                TempoValue.Value = 20;
-                MainWindow.KMCGlobals.TempoScale = 1 / ((60 - TempoValue.Value) / 40.0f);
+                TempoValue.Value = 40;
+                MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
                 MainWindow.SetTempo(false);
             }
             Properties.Settings.Default.Save();
@@ -239,7 +239,7 @@ namespace KeppyMIDIConverter
 
         private void TempoValue_Scroll(object sender, EventArgs e)
         {
-            MainWindow.KMCGlobals.TempoScale = 1 / ((60 - TempoValue.Value) / 40.0f);
+            MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
             MainWindow.SetTempo(false);
         }
 

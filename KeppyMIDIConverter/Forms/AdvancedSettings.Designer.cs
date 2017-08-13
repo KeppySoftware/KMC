@@ -50,7 +50,7 @@
             this.button1.Location = new System.Drawing.Point(315, 187);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 23);
-            this.button1.TabIndex = 31;
+            this.button1.TabIndex = 8;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -77,14 +77,14 @@
             this.GroupBox1.Location = new System.Drawing.Point(5, 2);
             this.GroupBox1.Name = "GroupBox1";
             this.GroupBox1.Size = new System.Drawing.Size(396, 178);
-            this.GroupBox1.TabIndex = 29;
+            this.GroupBox1.TabIndex = 0;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
             // 
             // TempoCurrent
             // 
             this.TempoCurrent.Enabled = false;
-            this.TempoCurrent.Location = new System.Drawing.Point(159, 123);
+            this.TempoCurrent.Location = new System.Drawing.Point(149, 123);
             this.TempoCurrent.Name = "TempoCurrent";
             this.TempoCurrent.Size = new System.Drawing.Size(58, 15);
             this.TempoCurrent.TabIndex = 32;
@@ -94,15 +94,15 @@
             // TempoValue
             // 
             this.TempoValue.Location = new System.Drawing.Point(213, 109);
-            this.TempoValue.Maximum = 40;
+            this.TempoValue.Maximum = 80;
             this.TempoValue.Name = "TempoValue";
             this.TempoValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TempoValue.RightToLeftLayout = true;
             this.TempoValue.Size = new System.Drawing.Size(180, 45);
-            this.TempoValue.TabIndex = 20;
-            this.TempoValue.TickFrequency = 2;
+            this.TempoValue.TabIndex = 5;
+            this.TempoValue.TickFrequency = 8;
             this.TempoValue.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.TempoValue.Value = 20;
+            this.TempoValue.Value = 40;
             this.TempoValue.Scroll += new System.EventHandler(this.TempoValue_Scroll);
             // 
             // RTFPS
@@ -122,7 +122,7 @@
             0});
             this.RTFPS.Name = "RTFPS";
             this.RTFPS.Size = new System.Drawing.Size(72, 20);
-            this.RTFPS.TabIndex = 19;
+            this.RTFPS.TabIndex = 1;
             this.RTFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.RTFPS.Value = new decimal(new int[] {
             60,
@@ -158,7 +158,7 @@
             this.checkBox3.Location = new System.Drawing.Point(7, 151);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(200, 27);
-            this.checkBox3.TabIndex = 16;
+            this.checkBox3.TabIndex = 6;
             this.checkBox3.Text = "Force constant bitrate (OGG Vorbis)";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
@@ -184,7 +184,7 @@
             this.BitrateBox.Location = new System.Drawing.Point(299, 155);
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(66, 21);
-            this.BitrateBox.TabIndex = 15;
+            this.BitrateBox.TabIndex = 7;
             this.BitrateBox.SelectedIndexChanged += new System.EventHandler(this.BitrateBox_SelectedIndexChanged);
             // 
             // label3
@@ -208,7 +208,7 @@
             this.OverrideTempoNow.Location = new System.Drawing.Point(7, 102);
             this.OverrideTempoNow.Name = "OverrideTempoNow";
             this.OverrideTempoNow.Size = new System.Drawing.Size(146, 56);
-            this.OverrideTempoNow.TabIndex = 11;
+            this.OverrideTempoNow.TabIndex = 4;
             this.OverrideTempoNow.Text = "Override MIDI tempo";
             this.OverrideTempoNow.UseVisualStyleBackColor = true;
             this.OverrideTempoNow.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -251,7 +251,7 @@
             this.FrequencyBox.Location = new System.Drawing.Point(104, 16);
             this.FrequencyBox.Name = "FrequencyBox";
             this.FrequencyBox.Size = new System.Drawing.Size(66, 21);
-            this.FrequencyBox.TabIndex = 9;
+            this.FrequencyBox.TabIndex = 0;
             this.FrequencyBox.SelectedIndexChanged += new System.EventHandler(this.FrequencyBox_SelectedIndexChanged);
             // 
             // Label5
@@ -271,7 +271,7 @@
             this.FXDisable.Location = new System.Drawing.Point(7, 85);
             this.FXDisable.Name = "FXDisable";
             this.FXDisable.Size = new System.Drawing.Size(380, 18);
-            this.FXDisable.TabIndex = 7;
+            this.FXDisable.TabIndex = 3;
             this.FXDisable.Text = "Disable sound effects";
             this.FXDisable.UseVisualStyleBackColor = true;
             this.FXDisable.CheckedChanged += new System.EventHandler(this.FXDisable_CheckedChanged);
@@ -284,7 +284,7 @@
             this.Noteoff1.Location = new System.Drawing.Point(7, 42);
             this.Noteoff1.Name = "Noteoff1";
             this.Noteoff1.Size = new System.Drawing.Size(383, 44);
-            this.Noteoff1.TabIndex = 6;
+            this.Noteoff1.TabIndex = 2;
             this.Noteoff1.Text = "Only release the oldest instance upon a note off event when there\r\nare overlappin" +
     "g instances of the note.";
             this.Noteoff1.UseVisualStyleBackColor = true;
