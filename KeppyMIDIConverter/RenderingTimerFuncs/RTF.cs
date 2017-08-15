@@ -367,7 +367,7 @@ namespace KeppyMIDIConverter
                 }
                 if (Mode == 2) // Rendering/Playback
                 {
-                    if (!MainWindow.KMCGlobals.RealTime)
+                    if (MainWindow.KMCGlobals.RealTime == false)
                     {
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
                         TaskbarManager.Instance.SetProgressValue(Convert.ToInt32(CurrentTicks / 120), Convert.ToInt32(TotalTicks / 120));
