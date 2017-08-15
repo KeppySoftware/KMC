@@ -47,7 +47,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(315, 187);
+            this.button1.Location = new System.Drawing.Point(315, 188);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 23);
             this.button1.TabIndex = 8;
@@ -76,7 +76,7 @@
             this.GroupBox1.Controls.Add(this.Noteoff1);
             this.GroupBox1.Location = new System.Drawing.Point(5, 2);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(396, 178);
+            this.GroupBox1.Size = new System.Drawing.Size(396, 180);
             this.GroupBox1.TabIndex = 0;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Settings";
@@ -98,7 +98,7 @@
             this.TempoValue.Name = "TempoValue";
             this.TempoValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TempoValue.RightToLeftLayout = true;
-            this.TempoValue.Size = new System.Drawing.Size(180, 45);
+            this.TempoValue.Size = new System.Drawing.Size(180, 42);
             this.TempoValue.TabIndex = 5;
             this.TempoValue.TickFrequency = 8;
             this.TempoValue.TickStyle = System.Windows.Forms.TickStyle.Both;
@@ -144,7 +144,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Location = new System.Drawing.Point(365, 160);
+            this.label4.Location = new System.Drawing.Point(364, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 12);
             this.label4.TabIndex = 17;
@@ -155,9 +155,9 @@
             this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox3.Location = new System.Drawing.Point(7, 151);
+            this.checkBox3.Location = new System.Drawing.Point(7, 154);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(200, 27);
+            this.checkBox3.Size = new System.Drawing.Size(200, 24);
             this.checkBox3.TabIndex = 6;
             this.checkBox3.Text = "Force constant bitrate (OGG Vorbis)";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -181,7 +181,7 @@
             "128",
             "96",
             "64"});
-            this.BitrateBox.Location = new System.Drawing.Point(299, 155);
+            this.BitrateBox.Location = new System.Drawing.Point(298, 156);
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(66, 21);
             this.BitrateBox.TabIndex = 7;
@@ -192,7 +192,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(214, 159);
+            this.label3.Location = new System.Drawing.Point(213, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 14;
@@ -207,7 +207,7 @@
             this.OverrideTempoNow.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.OverrideTempoNow.Location = new System.Drawing.Point(7, 102);
             this.OverrideTempoNow.Name = "OverrideTempoNow";
-            this.OverrideTempoNow.Size = new System.Drawing.Size(146, 56);
+            this.OverrideTempoNow.Size = new System.Drawing.Size(146, 58);
             this.OverrideTempoNow.TabIndex = 4;
             this.OverrideTempoNow.Text = "Override MIDI tempo";
             this.OverrideTempoNow.UseVisualStyleBackColor = true;
@@ -299,8 +299,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(406, 220);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(406, 221);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.GroupBox1);

@@ -82,6 +82,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.panel7);
@@ -124,7 +125,7 @@
             // 
             this.Load8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Load8.Location = new System.Drawing.Point(427, 5);
+            this.Load8.Location = new System.Drawing.Point(428, 5);
             this.Load8.Name = "Load8";
             this.Load8.Size = new System.Drawing.Size(75, 23);
             this.Load8.TabIndex = 1;
@@ -137,6 +138,7 @@
             this.Desc8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Desc8.BackColor = System.Drawing.Color.White;
             this.Desc8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Desc8.Location = new System.Drawing.Point(0, 0);
             this.Desc8.Name = "Desc8";
@@ -174,7 +176,7 @@
             // 
             this.Load7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load7.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Load7.Location = new System.Drawing.Point(427, 5);
+            this.Load7.Location = new System.Drawing.Point(428, 5);
             this.Load7.Name = "Load7";
             this.Load7.Size = new System.Drawing.Size(75, 23);
             this.Load7.TabIndex = 1;
@@ -187,6 +189,7 @@
             this.Desc7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Desc7.BackColor = System.Drawing.Color.White;
             this.Desc7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Desc7.Location = new System.Drawing.Point(0, 0);
             this.Desc7.Name = "Desc7";
@@ -224,7 +227,7 @@
             // 
             this.Load6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Load6.Location = new System.Drawing.Point(427, 5);
+            this.Load6.Location = new System.Drawing.Point(428, 5);
             this.Load6.Name = "Load6";
             this.Load6.Size = new System.Drawing.Size(75, 23);
             this.Load6.TabIndex = 1;
@@ -237,6 +240,7 @@
             this.Desc6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Desc6.BackColor = System.Drawing.Color.White;
             this.Desc6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Desc6.Location = new System.Drawing.Point(0, 0);
             this.Desc6.Name = "Desc6";
@@ -274,7 +278,7 @@
             // 
             this.Load5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Load5.Location = new System.Drawing.Point(427, 5);
+            this.Load5.Location = new System.Drawing.Point(428, 5);
             this.Load5.Name = "Load5";
             this.Load5.Size = new System.Drawing.Size(75, 23);
             this.Load5.TabIndex = 1;
@@ -287,6 +291,7 @@
             this.Desc5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Desc5.BackColor = System.Drawing.Color.White;
             this.Desc5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Desc5.Location = new System.Drawing.Point(0, 0);
             this.Desc5.Name = "Desc5";
@@ -324,7 +329,7 @@
             // 
             this.Load4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Load4.Location = new System.Drawing.Point(427, 5);
+            this.Load4.Location = new System.Drawing.Point(428, 5);
             this.Load4.Name = "Load4";
             this.Load4.Size = new System.Drawing.Size(75, 23);
             this.Load4.TabIndex = 1;
@@ -337,6 +342,7 @@
             this.Desc4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Desc4.BackColor = System.Drawing.Color.White;
             this.Desc4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Desc4.Location = new System.Drawing.Point(0, 0);
             this.Desc4.Name = "Desc4";
@@ -374,7 +380,7 @@
             // 
             this.Load3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Load3.Location = new System.Drawing.Point(427, 5);
+            this.Load3.Location = new System.Drawing.Point(428, 5);
             this.Load3.Name = "Load3";
             this.Load3.Size = new System.Drawing.Size(75, 23);
             this.Load3.TabIndex = 1;
@@ -387,6 +393,7 @@
             this.Desc3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Desc3.BackColor = System.Drawing.Color.White;
             this.Desc3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Desc3.Location = new System.Drawing.Point(0, 0);
             this.Desc3.Name = "Desc3";
@@ -424,7 +431,7 @@
             // 
             this.Load2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Load2.Location = new System.Drawing.Point(427, 5);
+            this.Load2.Location = new System.Drawing.Point(428, 5);
             this.Load2.Name = "Load2";
             this.Load2.Size = new System.Drawing.Size(75, 23);
             this.Load2.TabIndex = 1;
@@ -437,6 +444,7 @@
             this.Desc2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Desc2.BackColor = System.Drawing.Color.White;
             this.Desc2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Desc2.Location = new System.Drawing.Point(0, 0);
             this.Desc2.Name = "Desc2";
@@ -474,7 +482,7 @@
             // 
             this.Load1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Load1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Load1.Location = new System.Drawing.Point(427, 5);
+            this.Load1.Location = new System.Drawing.Point(428, 5);
             this.Load1.Name = "Load1";
             this.Load1.Size = new System.Drawing.Size(75, 23);
             this.Load1.TabIndex = 1;
@@ -487,6 +495,7 @@
             this.Desc1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Desc1.BackColor = System.Drawing.Color.White;
             this.Desc1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Desc1.Location = new System.Drawing.Point(0, 0);
             this.Desc1.Name = "Desc1";
@@ -501,10 +510,11 @@
             // 
             // Desc
             // 
-            this.Desc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Desc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.Desc.Location = new System.Drawing.Point(9, 317);
             this.Desc.Name = "Desc";
-            this.Desc.Size = new System.Drawing.Size(600, 108);
+            this.Desc.Size = new System.Drawing.Size(600, 100);
             this.Desc.TabIndex = 1;
             this.Desc.Text = "How do they work?\r\n\r\nEffect 1 will apply its effect to the audio, then it\'ll pass" +
     " the modified audio to Effect 2,\r\nthat will then do the same with Effect 3 and s" +
@@ -549,9 +559,9 @@
             // 
             // VSTManagerWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(617, 429);
             this.Controls.Add(this.LoudMaxCheck);
             this.Controls.Add(this.UnloadAllVSTs);

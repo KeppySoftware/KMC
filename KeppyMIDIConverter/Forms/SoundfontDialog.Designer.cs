@@ -57,7 +57,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(494, 395);
+            this.button1.Location = new System.Drawing.Point(504, 435);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -75,14 +75,14 @@
             // 
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(557, 87);
+            this.label1.Size = new System.Drawing.Size(565, 87);
             this.label1.TabIndex = 1;
             this.label1.Text = resources.GetString("label1.Text");
             // 
             // ImportBtn
             // 
             this.ImportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ImportBtn.Location = new System.Drawing.Point(12, 395);
+            this.ImportBtn.Location = new System.Drawing.Point(12, 435);
             this.ImportBtn.Name = "ImportBtn";
             this.ImportBtn.Size = new System.Drawing.Size(145, 23);
             this.ImportBtn.TabIndex = 9;
@@ -93,7 +93,7 @@
             // RemoveBtn
             // 
             this.RemoveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveBtn.Location = new System.Drawing.Point(156, 395);
+            this.RemoveBtn.Location = new System.Drawing.Point(156, 435);
             this.RemoveBtn.Name = "RemoveBtn";
             this.RemoveBtn.Size = new System.Drawing.Size(145, 23);
             this.RemoveBtn.TabIndex = 10;
@@ -104,7 +104,7 @@
             // MvUp
             // 
             this.MvUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MvUp.Location = new System.Drawing.Point(313, 395);
+            this.MvUp.Location = new System.Drawing.Point(323, 435);
             this.MvUp.Name = "MvUp";
             this.MvUp.Size = new System.Drawing.Size(88, 23);
             this.MvUp.TabIndex = 13;
@@ -115,7 +115,7 @@
             // MvDwn
             // 
             this.MvDwn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MvDwn.Location = new System.Drawing.Point(400, 395);
+            this.MvDwn.Location = new System.Drawing.Point(410, 435);
             this.MvDwn.Name = "MvDwn";
             this.MvDwn.Size = new System.Drawing.Size(88, 23);
             this.MvDwn.TabIndex = 14;
@@ -132,9 +132,9 @@
             // VSTUse
             // 
             this.VSTUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.VSTUse.Location = new System.Drawing.Point(12, 361);
+            this.VSTUse.Location = new System.Drawing.Point(12, 401);
             this.VSTUse.Name = "VSTUse";
-            this.VSTUse.Size = new System.Drawing.Size(295, 35);
+            this.VSTUse.Size = new System.Drawing.Size(295, 34);
             this.VSTUse.TabIndex = 16;
             this.VSTUse.Text = "I want to apply a VST DSPs too.";
             this.VSTUse.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             // 
             this.VSTImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VSTImport.Enabled = false;
-            this.VSTImport.Location = new System.Drawing.Point(313, 366);
+            this.VSTImport.Location = new System.Drawing.Point(323, 406);
             this.VSTImport.Name = "VSTImport";
             this.VSTImport.Size = new System.Drawing.Size(256, 23);
             this.VSTImport.TabIndex = 17;
@@ -157,7 +157,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::KeppyMIDIConverter.Properties.Resources.vstlogo;
-            this.pictureBox1.Location = new System.Drawing.Point(471, 57);
+            this.pictureBox1.Location = new System.Drawing.Point(480, 53);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(46, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -170,7 +170,7 @@
             this.SFZCompliant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SFZCompliant.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SFZCompliant.Image = global::KeppyMIDIConverter.Properties.Resources.sfzcomp;
-            this.SFZCompliant.Location = new System.Drawing.Point(523, 57);
+            this.SFZCompliant.Location = new System.Drawing.Point(532, 53);
             this.SFZCompliant.Name = "SFZCompliant";
             this.SFZCompliant.Size = new System.Drawing.Size(46, 37);
             this.SFZCompliant.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -226,7 +226,7 @@
             this.SFList.Location = new System.Drawing.Point(12, 96);
             this.SFList.Name = "SFList";
             this.SFList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.SFList.Size = new System.Drawing.Size(557, 264);
+            this.SFList.Size = new System.Drawing.Size(567, 303);
             this.SFList.TabIndex = 11;
             this.SFList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SFList_DragDrop);
             this.SFList.DragEnter += new System.Windows.Forms.DragEventHandler(this.SFList_DragEnter);
@@ -236,8 +236,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(581, 429);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(589, 470);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.VSTImport);
             this.Controls.Add(this.VSTUse);
@@ -250,6 +250,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(597, 468);
             this.Name = "SoundfontDialog";

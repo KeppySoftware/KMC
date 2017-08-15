@@ -285,7 +285,6 @@ BASS статус: {0}</value>
 от Ian Luck из Un4seen Developments.
 Вы можете перейти на его сайт, нажав кнопку "{1}"
 
-
 Исходный код доступен здесь:</value>
   </data>
   <data name="CurrentVersion" xml:space="preserve">
@@ -547,8 +546,7 @@ BASS статус: {0}</value>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
     <value>Как работает система VST?
 
-Эффекты накладываются друг на друга. Учтите это при их загрузке.
-</value>
+Эффекты накладываются друг на друга. Учтите это при их загрузке.</value>
   </data>
   <data name="VSTInvalidCallError" xml:space="preserve">
     <value>Ошибка при попытке загрузить {0}.

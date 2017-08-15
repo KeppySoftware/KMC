@@ -172,7 +172,7 @@ Copyright ©2006 Steinberg Media Technologies. All Rights Reserved.</value>
     <value>运行时检查更新</value>
   </data>
   <data name="AverageLevel" xml:space="preserve">
-    <value>平均</value>
+    <value>平均电平</value>
   </data>
   <data name="BASSEngineConfiguration" xml:space="preserve">
     <value>BASS配置中.
@@ -180,7 +180,7 @@ Copyright ©2006 Steinberg Media Technologies. All Rights Reserved.</value>
   </data>
   <data name="BASSEngineConfigurationVST" xml:space="preserve">
     <value>初始化BASS中.
-请在出现提示时再修改VST DSP设置。
+请在出现提示时再修改VST效果器设置。
 转换操作即将开始...</value>
   </data>
   <data name="CanNotCheckUpdates" xml:space="preserve">
@@ -291,6 +291,7 @@ CPU使用率: {4}% ({5}x 慢于播放速度)</value>
 本软件基于一个大型 BASS 库
 by Ian Luck from Un4seen Developments.
 点击 "{1}"按钮查看该开发页.
+
 
 软件源码:</value>
   </data>
@@ -439,7 +440,7 @@ by Ian Luck from Un4seen Developments.
     <value>置换播放BPM: (原BPM{0})</value>
   </data>
   <data name="PeakLevel" xml:space="preserve">
-    <value>峰值</value>
+    <value>峰值电平</value>
   </data>
   <data name="PlaybackAborted" xml:space="preserve">
     <value>实时播放已中断</value>
@@ -458,9 +459,7 @@ BASS 状态: {0}</value>
 BASS 状态: {0}</value>
   </data>
   <data name="PlaybackStatus" xml:space="preserve">
-    <value>已播放{0}%
-播放位置: {1} - {2}
-音符数: {3} - {4}</value>
+    <value>已将{0}的MIDI数据渲染为实时音频.播放位置: {1} - {2}音符数: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
     <value>Keppy's MIDI Converter | 正在实时播放 {0}...</value>
@@ -484,7 +483,7 @@ BASS 状态: {0}</value>
     <value>右键点击窗口中的任何位置来复制信息。</value>
   </data>
   <data name="RMS" xml:space="preserve">
-    <value>平方平均数</value>
+    <value>均方电平</value>
   </data>
   <data name="SaveHere" xml:space="preserve">
     <value>保存在这里......</value>
@@ -576,7 +575,7 @@ BASS 状态: {0}</value>
     <value>打开VST效果器管理</value>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>我想要添加VST DSP...</value>
+    <value>我想要添加VST效果器...</value>
   </data>
   <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
     <value>Keppy's MIDI Converter需要Windows XP SP2及以上的操作系统才能运行！
@@ -601,13 +600,13 @@ BASS 状态: {0}</value>
     <value>文件</value>
   </data>
   <data name="MIDISize" xml:space="preserve">
-    <value>尺寸</value>
+    <value>MIDI文件大小</value>
   </data>
   <data name="MIDILength" xml:space="preserve">
-    <value>长度</value>
+    <value>时间长度</value>
   </data>
   <data name="SortByName" xml:space="preserve">
-    <value>姓名排序</value>
+    <value>按照文件名排序</value>
   </data>
   <data name="MIDINotes" xml:space="preserve">
     <value>音符数</value>
@@ -651,13 +650,13 @@ Des.: 分配给源音色库/预置的音色库/预置
     <value>为音色库选择一个音色库预置</value>
   </data>
   <data name="BankNPresetTBT" xml:space="preserve">
-    <value>no</value>
+    <value>是</value>
   </data>
   <data name="CopyText" xml:space="preserve">
     <value>复制</value>
   </data>
   <data name="Donate" xml:space="preserve">
-    <value>用PayPal捐款</value>
+    <value>捐赠(Paypal)</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>改变语言</value>

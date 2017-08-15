@@ -457,6 +457,5 @@ namespace KeppyMIDIConverter
             KeppyMIDIConverter.VSTManagerWindow frm = new KeppyMIDIConverter.VSTManagerWindow();
             frm.ShowDialog();
         }
-
     }
 }

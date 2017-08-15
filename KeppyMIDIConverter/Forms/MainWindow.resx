@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="MIDIImport.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1123, 17</value>
+    <value>1090, 17</value>
   </metadata>
   <metadata name="RenderingTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>984, 17</value>
+    <value>957, 17</value>
   </metadata>
   <metadata name="ExportWhere.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1238, 17</value>
+    <value>1197, 17</value>
   </metadata>
   <metadata name="RealTimePlayBack.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>556, 17</value>
+    <value>545, 17</value>
   </metadata>
   <metadata name="VolumeTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1360, 17</value>
+    <value>1314, 17</value>
   </metadata>
   <metadata name="ConverterProcess.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>242, 17</value>
@@ -138,31 +138,13 @@
   <metadata name="DefaultMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="KaleidonKep99sGitHubPageToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANtJREFUOE/N
-        ks0RgjAQhSmBEkIHFuBgSggd2IGWYAd4SWyDGWU8agfSgXagk3DHvE0QVH70pN/Mm7zN7pKdhOA/YWkV
-        MlkumDIpCd7u+fQwtnjOpMkipW9MlUuIvN1Dzpd1g4JImcoWn5jSZ1pb3uV6PuLGNhl5nIZ4YzipIwf/
-        BBd7xsUhdIIfjn1bQyzyVZzkRxL8SOzbGqZiy2fJroDgx2Lf1uBGyyfQJ/EbrxdF6zeXCB7PqEwRSX3B
-        2vaDz1iDAjpF6mv9I5GnvZHmGhqZGs2aBN839o8Jgjs+bd1itoCV/wAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="KaleidonKep99sYouTubeChannelToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANtJREFUOE/N
-        ks0RgjAQhSmBEkIHFuBgSggd2IGWYAd4SWyDGWU8agfSgXagk3DHvE0QVH70pN/Mm7zN7pKdhOA/YWkV
-        MlkumDIpCd7u+fQwtnjOpMkipW9MlUuIvN1Dzpd1g4JImcoWn5jSZ1pb3uV6PuLGNhl5nIZ4YzipIwf/
-        BBd7xsUhdIIfjn1bQyzyVZzkRxL8SOzbGqZiy2fJroDgx2Lf1uBGyyfQJ/EbrxdF6zeXCB7PqEwRSX3B
-        2vaDz1iDAjpF6mv9I5GnvZHmGhqZGs2aBN839o8Jgjs+bd1itoCV/wAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="VistaMenuSys.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>1419, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>78</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAEBAAAAEAIABoBAAAlgAAABgYAAABACAAiAkAAP4EAAAgIAAAAQAgAKgQAACGDgAAMDAAAAEA
@@ -5735,9 +5717,24 @@
         DIAHDzsYngHw4GEHwzMAHjzsYHgGwIOHHYz/A5XYdSek8w2sAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="VistaMenuSys.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
-  </metadata>
+  <data name="KaleidonKep99sGitHubPageToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANtJREFUOE/N
+        ks0RgjAQhSmBEkIHFuBgSggd2IGWYAd4SWyDGWU8agfSgXagk3DHvE0QVH70pN/Mm7zN7pKdhOA/YWkV
+        MlkumDIpCd7u+fQwtnjOpMkipW9MlUuIvN1Dzpd1g4JImcoWn5jSZ1pb3uV6PuLGNhl5nIZ4YzipIwf/
+        BBd7xsUhdIIfjn1bQyzyVZzkRxL8SOzbGqZiy2fJroDgx2Lf1uBGyyfQJ/EbrxdF6zeXCB7PqEwRSX3B
+        2vaDz1iDAjpF6mv9I5GnvZHmGhqZGs2aBN839o8Jgjs+bd1itoCV/wAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="KaleidonKep99sYouTubeChannelToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANtJREFUOE/N
+        ks0RgjAQhSmBEkIHFuBgSggd2IGWYAd4SWyDGWU8agfSgXagk3DHvE0QVH70pN/Mm7zN7pKdhOA/YWkV
+        MlkumDIpCd7u+fQwtnjOpMkipW9MlUuIvN1Dzpd1g4JImcoWn5jSZ1pb3uV6PuLGNhl5nIZ4YzipIwf/
+        BBd7xsUhdIIfjn1bQyzyVZzkRxL8SOzbGqZiy2fJroDgx2Lf1uBGyyfQJ/EbrxdF6zeXCB7PqEwRSX3B
+        2vaDz1iDAjpF6mv9I5GnvZHmGhqZGs2aBN839o8Jgjs+bd1itoCV/wAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="DefMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>140, 17</value>
   </metadata>
@@ -5745,9 +5742,12 @@
     <value>388, 17</value>
   </metadata>
   <metadata name="GarbageCollector.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>837, 17</value>
+    <value>817, 17</value>
   </metadata>
   <metadata name="GetInfoWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>705, 17</value>
+    <value>692, 17</value>
+  </metadata>
+  <metadata name="ThemeCheck.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 54</value>
   </metadata>
 </root>

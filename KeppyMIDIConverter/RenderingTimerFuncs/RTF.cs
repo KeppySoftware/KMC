@@ -28,6 +28,8 @@ namespace KeppyMIDIConverter
         public static float ActiveVoices = 0.0f;
         public static long MIDILengthRAW;
         public static long MIDICurrentPosRAW;
+        public static long CurrentTicks;
+        public static long TotalTicks;
         public static float RAWTotal;
         public static float RAWConverted;
         public static double LenRAWToDouble;
@@ -143,7 +145,7 @@ namespace KeppyMIDIConverter
             {
                 if (MainWindow.KMCGlobals.pictureset != 2)
                 {
-                    MainWindow.Delegate.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convprwo;
+                    MainWindow.Delegate.StatusPicture.Image = KeppyMIDIConverter.Properties.Resources.convprwo;
                     MainWindow.KMCGlobals.pictureset = 2;
                 }
 
@@ -163,7 +165,7 @@ namespace KeppyMIDIConverter
             {
                 if (MainWindow.KMCGlobals.pictureset != 3)
                 {
-                    MainWindow.Delegate.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convsave;
+                    MainWindow.Delegate.StatusPicture.Image = KeppyMIDIConverter.Properties.Resources.convsave;
                     MainWindow.KMCGlobals.pictureset = 3;
                 }
                 if (CPUUsage < 100f)
@@ -273,6 +275,7 @@ namespace KeppyMIDIConverter
                 MainWindow.Delegate.SettingsBox.Enabled = true;
                 MainWindow.Delegate.VolumeLabel.Enabled = true;
                 MainWindow.Delegate.VolumeBar.Enabled = true;
+                MainWindow.Delegate.RealTimePreviewTrackBar.Enabled = false;
                 MainWindow.Delegate.VoiceLimit.Maximum = 100000;
                 thisProc.PriorityClass = ProcessPriorityClass.Idle;
             }
@@ -284,6 +287,7 @@ namespace KeppyMIDIConverter
                     MainWindow.Delegate.SettingsBox.Enabled = false;
                     MainWindow.Delegate.VolumeLabel.Enabled = false;
                     MainWindow.Delegate.VolumeBar.Enabled = false;
+                    MainWindow.Delegate.RealTimePreviewTrackBar.Enabled = false;
                     MainWindow.Delegate.VoiceLimit.Maximum = 100000;
                 }
                 else
@@ -291,6 +295,7 @@ namespace KeppyMIDIConverter
                     MainWindow.Delegate.SettingsBox.Enabled = false;
                     MainWindow.Delegate.VolumeLabel.Enabled = true;
                     MainWindow.Delegate.VolumeBar.Enabled = true;
+                    MainWindow.Delegate.RealTimePreviewTrackBar.Enabled = false;
                     MainWindow.Delegate.VoiceLimit.Maximum = 2000;
                 }
                 thisProc.PriorityClass = ProcessPriorityClass.AboveNormal;
@@ -303,6 +308,7 @@ namespace KeppyMIDIConverter
                     MainWindow.Delegate.SettingsBox.Enabled = false;
                     MainWindow.Delegate.VolumeLabel.Enabled = false;
                     MainWindow.Delegate.VolumeBar.Enabled = false;
+                    MainWindow.Delegate.RealTimePreviewTrackBar.Enabled = false;
                     MainWindow.Delegate.VoiceLimit.Maximum = 100000;
                 }
                 else
@@ -310,6 +316,7 @@ namespace KeppyMIDIConverter
                     MainWindow.Delegate.SettingsBox.Enabled = true;
                     MainWindow.Delegate.VolumeLabel.Enabled = true;
                     MainWindow.Delegate.VolumeBar.Enabled = true;
+                    MainWindow.Delegate.RealTimePreviewTrackBar.Enabled = true;
                     MainWindow.Delegate.VoiceLimit.Maximum = 2000;
                 }
                 thisProc.PriorityClass = ProcessPriorityClass.Normal;
@@ -351,56 +358,32 @@ namespace KeppyMIDIConverter
             {
                 if (Mode == 0) // Idle
                 {
-                    MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                    MainWindow.Delegate.CurrentStatus.Minimum = 0;
-                    MainWindow.Delegate.CurrentStatus.Maximum = 1;
-                    MainWindow.Delegate.CurrentStatus.Value = 0;
                     TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                    MainWindow.Delegate.RealTimePreviewTrackBar.Value = 0;
                 }
                 if (Mode == 1) // Memory allocation
                 {
-                    MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                    MainWindow.Delegate.CurrentStatus.Maximum = 1;
-                    MainWindow.Delegate.CurrentStatus.Value = 0;
                     TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
                 }
                 if (Mode == 2) // Rendering/Playback
                 {
                     if (!MainWindow.KMCGlobals.RealTime)
                     {
-                        Int32 CurPercentage = (int)((RAWConverted / RAWTotal) * 10000);
-                        if (CurPercentage > 10000) CurPercentage = 10000;
-                        else if (CurPercentage < 0) CurPercentage = 0;
-                        MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                        MainWindow.Delegate.CurrentStatus.Minimum = 0;
-                        MainWindow.Delegate.CurrentStatus.Maximum = 10000;
-                        MainWindow.Delegate.CurrentStatus.Value = CurPercentage;
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
-                        TaskbarManager.Instance.SetProgressValue(CurPercentage, 10000);
+                        TaskbarManager.Instance.SetProgressValue(Convert.ToInt32(CurrentTicks / 120), Convert.ToInt32(TotalTicks / 120));
+                        MainWindow.Delegate.RealTimePreviewTrackBar.Value = Convert.ToInt32(CurrentTicks / 120);
+                        MainWindow.Delegate.RealTimePreviewTrackBar.Maximum = Convert.ToInt32(TotalTicks / 120);
                     }
                     else
                     {
-                        MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Marquee;
-                        MainWindow.Delegate.CurrentStatus.Maximum = 1;
-                        MainWindow.Delegate.CurrentStatus.Value = 0;
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                        TaskbarManager.Instance.SetProgressValue(0, 0);
+                        MainWindow.Delegate.RealTimePreviewTrackBar.Value = 0;
+                        MainWindow.Delegate.RealTimePreviewTrackBar.Maximum = 0;
                     }
                 }
             }
-            catch {
-                if (Mode == 2) // Rendering/Playback 
-                {
-                    if (!MainWindow.KMCGlobals.RealTime)
-                    {
-                        MainWindow.Delegate.CurrentStatus.Style = ProgressBarStyle.Blocks;
-                        MainWindow.Delegate.CurrentStatus.Minimum = 0;
-                        MainWindow.Delegate.CurrentStatus.Maximum = 1;
-                        MainWindow.Delegate.CurrentStatus.Value = 1;
-                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
-                        TaskbarManager.Instance.SetProgressValue(1, 1);
-                    }
-                }
-            }
+            catch { }
         }
 
         private static void SetStatus(Int32 Mode)
@@ -412,7 +395,7 @@ namespace KeppyMIDIConverter
                 MainWindow.Delegate.CurrentStatusText.Text = MainWindow.res_man.GetString("IdleMessage", MainWindow.cul);
                 if (MainWindow.KMCGlobals.pictureset != 1)
                 {
-                    MainWindow.Delegate.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convpause;
+                    MainWindow.Delegate.StatusPicture.Image = KeppyMIDIConverter.Properties.Resources.convpause;
                     MainWindow.KMCGlobals.pictureset = 1;
                 }
                 if (MainWindow.Delegate.MIDIList.Items.Count < 1)
@@ -454,7 +437,7 @@ namespace KeppyMIDIConverter
                 SetProgressBar(1);
                 if (MainWindow.KMCGlobals.pictureset != 0)
                 {
-                    MainWindow.Delegate.loadingpic.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
+                    MainWindow.Delegate.StatusPicture.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
                     MainWindow.KMCGlobals.pictureset = 0;
                 }
                 if (MainWindow.KMCGlobals.RenderingMode)

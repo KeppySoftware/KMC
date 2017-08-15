@@ -29,7 +29,6 @@
             this.AdvSettingsButton = new System.Windows.Forms.Button();
             this.VoiceLimit = new System.Windows.Forms.NumericUpDown();
             this.VoiceLabel = new System.Windows.Forms.Label();
-            this.CurrentStatus = new System.Windows.Forms.ProgressBar();
             this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
             this.labelRMS = new System.Windows.Forms.Label();
             this.CurrentStatusText = new System.Windows.Forms.Label();
@@ -38,7 +37,7 @@
             this.VolumeLabel = new System.Windows.Forms.Label();
             this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.loadingpic = new System.Windows.Forms.PictureBox();
+            this.StatusPicture = new System.Windows.Forms.PictureBox();
             this.ConverterProcess = new System.ComponentModel.BackgroundWorker();
             this.DefaultMenu = new System.Windows.Forms.MainMenu(this.components);
             this.ActionsStrip = new System.Windows.Forms.MenuItem();
@@ -97,12 +96,15 @@
             this.MIDIList = new System.Windows.Forms.ListView();
             this.GarbageCollector = new System.ComponentModel.BackgroundWorker();
             this.GetInfoWorker = new System.ComponentModel.BackgroundWorker();
+            this.ThemeCheck = new System.ComponentModel.BackgroundWorker();
+            this.RealTimePreviewTrackBar = new System.Windows.Forms.TrackBar();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RealTimePreviewTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // MIDIImport
@@ -122,7 +124,7 @@
             this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.UsedVoices.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UsedVoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.UsedVoices.Location = new System.Drawing.Point(12, 319);
+            this.UsedVoices.Location = new System.Drawing.Point(5, 311);
             this.UsedVoices.Name = "UsedVoices";
             this.UsedVoices.Size = new System.Drawing.Size(453, 13);
             this.UsedVoices.TabIndex = 8;
@@ -137,10 +139,9 @@
             this.SettingsBox.Controls.Add(this.AdvSettingsButton);
             this.SettingsBox.Controls.Add(this.VoiceLimit);
             this.SettingsBox.Controls.Add(this.VoiceLabel);
-            this.SettingsBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsBox.Location = new System.Drawing.Point(471, 337);
+            this.SettingsBox.Location = new System.Drawing.Point(475, 333);
             this.SettingsBox.Name = "SettingsBox";
-            this.SettingsBox.Size = new System.Drawing.Size(169, 65);
+            this.SettingsBox.Size = new System.Drawing.Size(181, 62);
             this.SettingsBox.TabIndex = 12;
             this.SettingsBox.TabStop = false;
             this.SettingsBox.Text = "Settings";
@@ -151,9 +152,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AdvSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AdvSettingsButton.Location = new System.Drawing.Point(7, 38);
+            this.AdvSettingsButton.Location = new System.Drawing.Point(7, 35);
             this.AdvSettingsButton.Name = "AdvSettingsButton";
-            this.AdvSettingsButton.Size = new System.Drawing.Size(156, 20);
+            this.AdvSettingsButton.Size = new System.Drawing.Size(168, 19);
             this.AdvSettingsButton.TabIndex = 3;
             this.AdvSettingsButton.Text = "Advanced settings";
             this.AdvSettingsButton.UseVisualStyleBackColor = true;
@@ -164,7 +165,7 @@
             this.VoiceLimit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.VoiceLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VoiceLimit.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VoiceLimit.Location = new System.Drawing.Point(113, 16);
+            this.VoiceLimit.Location = new System.Drawing.Point(125, 14);
             this.VoiceLimit.Margin = new System.Windows.Forms.Padding(0);
             this.VoiceLimit.Maximum = new decimal(new int[] {
             100000,
@@ -192,24 +193,12 @@
             this.VoiceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.VoiceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.VoiceLabel.Location = new System.Drawing.Point(1, 18);
+            this.VoiceLabel.Location = new System.Drawing.Point(1, 16);
             this.VoiceLabel.Name = "VoiceLabel";
-            this.VoiceLabel.Size = new System.Drawing.Size(116, 13);
+            this.VoiceLabel.Size = new System.Drawing.Size(128, 13);
             this.VoiceLabel.TabIndex = 0;
             this.VoiceLabel.Text = "Voice limit:";
             this.VoiceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // CurrentStatus
-            // 
-            this.CurrentStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurrentStatus.BackColor = System.Drawing.SystemColors.Control;
-            this.CurrentStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.CurrentStatus.Location = new System.Drawing.Point(12, 408);
-            this.CurrentStatus.Name = "CurrentStatus";
-            this.CurrentStatus.Size = new System.Drawing.Size(628, 15);
-            this.CurrentStatus.Step = 1;
-            this.CurrentStatus.TabIndex = 14;
             // 
             // ExportWhere
             // 
@@ -224,7 +213,7 @@
             // 
             this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelRMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.labelRMS.Location = new System.Drawing.Point(12, 301);
+            this.labelRMS.Location = new System.Drawing.Point(5, 293);
             this.labelRMS.Name = "labelRMS";
             this.labelRMS.Size = new System.Drawing.Size(453, 13);
             this.labelRMS.TabIndex = 17;
@@ -237,7 +226,7 @@
             this.CurrentStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(390, 60);
+            this.CurrentStatusText.Size = new System.Drawing.Size(345, 60);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -253,10 +242,10 @@
             this.VolumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VolumeBar.AutoSize = false;
             this.VolumeBar.LargeChange = 1;
-            this.VolumeBar.Location = new System.Drawing.Point(471, 315);
+            this.VolumeBar.Location = new System.Drawing.Point(475, 310);
             this.VolumeBar.Maximum = 10000;
             this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(169, 15);
+            this.VolumeBar.Size = new System.Drawing.Size(180, 15);
             this.VolumeBar.TabIndex = 1;
             this.VolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.VolumeBar.Scroll += new System.EventHandler(this.VolumeBar_Scroll);
@@ -264,9 +253,9 @@
             // VolumeLabel
             // 
             this.VolumeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.VolumeLabel.Location = new System.Drawing.Point(471, 299);
+            this.VolumeLabel.Location = new System.Drawing.Point(475, 292);
             this.VolumeLabel.Name = "VolumeLabel";
-            this.VolumeLabel.Size = new System.Drawing.Size(169, 13);
+            this.VolumeLabel.Size = new System.Drawing.Size(180, 13);
             this.VolumeLabel.TabIndex = 19;
             this.VolumeLabel.Text = "Volume:";
             this.VolumeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -281,24 +270,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.loadingpic);
+            this.panel1.Controls.Add(this.StatusPicture);
             this.panel1.Controls.Add(this.CurrentStatusText);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.Location = new System.Drawing.Point(12, 340);
+            this.panel1.Location = new System.Drawing.Point(5, 333);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(453, 62);
+            this.panel1.Size = new System.Drawing.Size(465, 62);
             this.panel1.TabIndex = 13;
             // 
-            // loadingpic
+            // StatusPicture
             // 
-            this.loadingpic.Dock = System.Windows.Forms.DockStyle.Right;
-            this.loadingpic.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
-            this.loadingpic.InitialImage = null;
-            this.loadingpic.Location = new System.Drawing.Point(391, 0);
-            this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(60, 60);
-            this.loadingpic.TabIndex = 8;
-            this.loadingpic.TabStop = false;
+            this.StatusPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.StatusPicture.Dock = System.Windows.Forms.DockStyle.Right;
+            this.StatusPicture.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
+            this.StatusPicture.InitialImage = null;
+            this.StatusPicture.Location = new System.Drawing.Point(403, 0);
+            this.StatusPicture.Name = "StatusPicture";
+            this.StatusPicture.Size = new System.Drawing.Size(60, 60);
+            this.StatusPicture.TabIndex = 8;
+            this.StatusPicture.TabStop = false;
             // 
             // ConverterProcess
             // 
@@ -710,10 +700,10 @@
             this.MIDIList.FullRowSelect = true;
             this.MIDIList.GridLines = true;
             this.MIDIList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.MIDIList.Location = new System.Drawing.Point(12, 12);
+            this.MIDIList.Location = new System.Drawing.Point(0, 0);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.ShowGroups = false;
-            this.MIDIList.Size = new System.Drawing.Size(628, 283);
+            this.MIDIList.Size = new System.Drawing.Size(660, 285);
             this.MIDIList.TabIndex = 0;
             this.MIDIList.UseCompatibleStateImageBehavior = false;
             this.MIDIList.View = System.Windows.Forms.View.Details;
@@ -730,23 +720,39 @@
             // 
             this.GetInfoWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.GetInfoWorker_DoWork);
             // 
+            // ThemeCheck
+            // 
+            this.ThemeCheck.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ThemeCheck_DoWork);
+            // 
+            // RealTimePreviewTrackBar
+            // 
+            this.RealTimePreviewTrackBar.AutoSize = false;
+            this.RealTimePreviewTrackBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.RealTimePreviewTrackBar.Enabled = false;
+            this.RealTimePreviewTrackBar.Location = new System.Drawing.Point(0, 403);
+            this.RealTimePreviewTrackBar.Name = "RealTimePreviewTrackBar";
+            this.RealTimePreviewTrackBar.Size = new System.Drawing.Size(660, 30);
+            this.RealTimePreviewTrackBar.TabIndex = 20;
+            this.RealTimePreviewTrackBar.TickFrequency = 0;
+            this.RealTimePreviewTrackBar.Scroll += new System.EventHandler(this.RealTimePreviewTrackBar_Scroll);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(652, 435);
+            this.ClientSize = new System.Drawing.Size(660, 433);
+            this.Controls.Add(this.RealTimePreviewTrackBar);
             this.Controls.Add(this.MIDIList);
             this.Controls.Add(this.VolumeLabel);
             this.Controls.Add(this.VolumeBar);
             this.Controls.Add(this.UsedVoices);
             this.Controls.Add(this.labelRMS);
             this.Controls.Add(this.SettingsBox);
-            this.Controls.Add(this.CurrentStatus);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(668, 473);
+            this.MinimumSize = new System.Drawing.Size(668, 460);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keppy\'s MIDI Converter";
@@ -755,8 +761,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RealTimePreviewTrackBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -807,7 +814,6 @@
         private System.Windows.Forms.MenuItem menuItem6;
         public System.ComponentModel.BackgroundWorker ConverterProcessRT;
         public System.Windows.Forms.Timer RenderingTimer;
-        public System.Windows.Forms.ProgressBar CurrentStatus;
         public System.Windows.Forms.Label UsedVoices;
         public System.Windows.Forms.Label CurrentStatusText;
         public System.Windows.Forms.GroupBox SettingsBox;
@@ -833,11 +839,13 @@
         public System.Windows.Forms.MenuItem startRenderingMp3ToolStripMenuItem;
         public System.Windows.Forms.TrackBar VolumeBar;
         public System.Windows.Forms.Label VolumeLabel;
-        public System.Windows.Forms.PictureBox loadingpic;
+        public System.Windows.Forms.PictureBox StatusPicture;
         private System.ComponentModel.BackgroundWorker GarbageCollector;
         private System.ComponentModel.BackgroundWorker GetInfoWorker;
         private System.Windows.Forms.MenuItem menuItem8;
         private System.Windows.Forms.MenuItem DiscordHypeSquadRef;
+        private System.ComponentModel.BackgroundWorker ThemeCheck;
+        public System.Windows.Forms.TrackBar RealTimePreviewTrackBar;
     }
 }
 

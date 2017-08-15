@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Threading;
+using System.Windows.Forms.VisualStyles;
 
 namespace KeppyMIDIConverter
 {
@@ -418,6 +419,7 @@ namespace KeppyMIDIConverter
                 }
                 Delegate = this;
                 GarbageCollector.RunWorkerAsync();
+                ThemeCheck.RunWorkerAsync();
                 GetInfoWorker.RunWorkerAsync();
             }
             catch (Exception exception2)
@@ -437,7 +439,7 @@ namespace KeppyMIDIConverter
                 int convmode = 0;
                 KMCGlobals.IsKMCBusy = true;
                 KMCGlobals.RenderingMode = true;
-                loadingpic.Visible = true;
+                StatusPicture.Visible = true;
                 ExportWhere.FileName = res_man.GetString("SaveHere", cul);
                 ExportWhere.Title = res_man.GetString("ExportWhere", cul);
                 ExportWhere.InitialDirectory = Properties.Settings.Default.LastExportFolder;
@@ -469,11 +471,13 @@ namespace KeppyMIDIConverter
                     if (convmode == 1)
                     {
                         KMCGlobals.RealTime = true;
+                        while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy) System.Threading.Thread.Sleep(1); // Wait for the old threads to stop...
                         this.ConverterProcessRT.RunWorkerAsync();
                     }
                     else
                     {
                         KMCGlobals.RealTime = false;
+                        while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy) System.Threading.Thread.Sleep(1); // Wait for the old threads to stop...
                         this.ConverterProcess.RunWorkerAsync();
                     }
                 }
@@ -481,14 +485,14 @@ namespace KeppyMIDIConverter
                 {
                     KMCGlobals.IsKMCBusy = false;
                     KMCGlobals.RenderingMode = false;
-                    this.loadingpic.Visible = false;
+                    this.StatusPicture.Visible = false;
                 }
             }
             catch (Exception ex)
             {
                 KMCGlobals.IsKMCBusy = false;
                 KMCGlobals.RenderingMode = false;
-                this.loadingpic.Visible = false;
+                this.StatusPicture.Visible = false;
                 KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), ex.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
@@ -523,16 +527,17 @@ namespace KeppyMIDIConverter
                 {
                     KMCGlobals.DoNotCountNotes = true;
                 }
-                this.loadingpic.Visible = true;
+                this.StatusPicture.Visible = true;
                 KMCGlobals.RenderingMode = false;
                 KMCGlobals.IsKMCBusy = true;
+                while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy) System.Threading.Thread.Sleep(1); // Wait for the old threads to stop...
                 this.RealTimePlayBack.RunWorkerAsync();
             }
             catch (Exception ex)
             {
                 KMCGlobals.IsKMCBusy = false;
                 KMCGlobals.RenderingMode = false;
-                this.loadingpic.Visible = false;
+                this.StatusPicture.Visible = false;
                 KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), ex.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
@@ -762,6 +767,7 @@ namespace KeppyMIDIConverter
             try
             {
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, 0);
+
                 if (type == 1)
                 {
                     KMCGlobals._myWasapi = new WASAPIPROC(MyWasapiProc);
@@ -795,6 +801,7 @@ namespace KeppyMIDIConverter
             try
             {
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
+
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                 BASS_MIDI_EVENT[] eventChunk;
                 try
@@ -2240,6 +2247,8 @@ namespace KeppyMIDIConverter
                 {
                     if (KMCGlobals.IsKMCBusy || KMCGlobals.IsKMCNowExporting)
                     {
+                        RTF.TotalTicks = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle, BASSMode.BASS_POS_MIDI_TICK);
+                        RTF.CurrentTicks = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle, BASSMode.BASS_POS_MIDI_TICK);
                         RTF.MIDILengthRAW = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
                         RTF.MIDICurrentPosRAW = Bass.BASS_ChannelGetPosition(KMCGlobals._recHandle);
                         RTF.RAWTotal = ((float)RTF.MIDILengthRAW) / 1048576f;
@@ -2261,6 +2270,16 @@ namespace KeppyMIDIConverter
         private void DiscordHypeSquadRef_Click(object sender, EventArgs e)
         {
             new KeppyMIDIConverter.Forms.DiscordHypeSquad().ShowDialog();
+        }
+
+        private void ThemeCheck_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true) Program.ThemeCheckFunction(this);
+        }
+
+        private void RealTimePreviewTrackBar_Scroll(object sender, EventArgs e)
+        {
+            Bass.BASS_ChannelSetPosition(KMCGlobals._recHandle, RealTimePreviewTrackBar.Value * 120, BASSMode.BASS_POS_MIDI_TICK);
         }
     }
 

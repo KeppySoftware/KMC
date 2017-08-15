@@ -19,6 +19,7 @@ using System.Speech.Synthesis;
 using System.Collections.Specialized;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Windows.Forms.VisualStyles;
 
 namespace KeppyMIDIConverter
 {
@@ -375,6 +376,37 @@ namespace KeppyMIDIConverter
                 MessageBox.Show("Oh oh oh, Merry Christmas!", "Happy holidays, and Merry Christmas!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else if (BirthDate.ToString("dd/MM") == "01/01")
                 MessageBox.Show("HAPPY NEW YEAR!", "Finally, " + BirthDate.ToString("yyyy") + " has begun!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static int CurrentTheme = -1;
+        public static void ThemeCheckFunction(Form form)
+        {
+            try
+            {
+                if (VisualStyleInformation.IsEnabledByUser == true)
+                {
+                    if (CurrentTheme != 1)
+                    {
+                        CurrentTheme = 1;
+                        form.Invoke((MethodInvoker)delegate { form.BackColor = Color.White; form.Refresh(); });
+                    }
+                }
+                else
+                {
+                    if (CurrentTheme != 0)
+                    {
+                        CurrentTheme = 0;
+                        form.Invoke((MethodInvoker)delegate { form.BackColor = SystemColors.Control; form.Refresh(); });
+                    }
+                }
+                System.Threading.Thread.Sleep(100);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 
