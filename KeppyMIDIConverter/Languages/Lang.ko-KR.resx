@@ -224,7 +224,7 @@ BASS 상태 : {0}</value>
 BASS 상태 : {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | 변환중 {0}...</value>
+    <value>{0} | 변환중 {1}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>완료</value>

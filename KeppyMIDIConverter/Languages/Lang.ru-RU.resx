@@ -224,7 +224,7 @@ BASS статус: {0}</value>
 BASS статус: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Преобразование {0}...</value>
+    <value>{0} | Преобразование {1}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>Завершено</value>

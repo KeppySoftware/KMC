@@ -218,7 +218,7 @@
 สถานะ BASS: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | กำลังแปลง {0}...</value>
+    <value>{0} | กำลังแปลง {1}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>เสร็จสิ้นแล้ว</value>
@@ -453,7 +453,7 @@
 ตัวโน็ต: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | การเปิดฟังของ {0}...</value>
+    <value>{0} | การเปิดฟังของ {1}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
     <value>เสร็จสิ้นแล้ว</value>

@@ -224,7 +224,7 @@ BASS 狀態: {0}</value>
 BASS 狀態:  {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | 轉換中 {0​​}...</value>
+    <value>{0} | 轉換中 {1​​}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>完成</value>
@@ -457,7 +457,7 @@ BASS 狀態: {0}</value>
 筆錄: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | 正在實時播放 {0}...</value>
+    <value>{0} | 正在實時播放 {1}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
     <value>完成</value>

@@ -224,7 +224,7 @@ BASS 状态: {0}</value>
 BASS 状态: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | 转换中 {0}...</value>
+    <value>{0} | 转换中 {1}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>完成</value>
@@ -462,7 +462,7 @@ BASS 状态: {0}</value>
     <value>已将{0}的MIDI数据渲染为实时音频.播放位置: {1} - {2}音符数: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | 正在实时播放 {0}...</value>
+    <value>{0} | 正在实时播放 {1}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
     <value>完成</value>

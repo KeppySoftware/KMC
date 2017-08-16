@@ -215,7 +215,7 @@ BASS status: {0}</value>
 BASS status: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | {0}を変換中...</value>
+    <value>{0} | {1}を変換中...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>完了</value>

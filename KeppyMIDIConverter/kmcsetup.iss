@@ -5,7 +5,7 @@
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '17.2.2'
+#define MyAppVersion '17.2.3'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -97,6 +97,11 @@ Source: "bin\x86\LoudMax.dll"; DestDir: "{app}\x86";  Flags: ignoreversion repla
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcmp3.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 
+;??
+Source: "EE\EEBD.EVN"; DestDir: "{app}\EE"; Flags: ignoreversion replacesameversion
+Source: "EE\EECH.EVN"; DestDir: "{app}\EE"; Flags: ignoreversion replacesameversion
+Source: "EE\EEHW.EVN"; DestDir: "{app}\EE"; Flags: ignoreversion replacesameversion
+
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -118,15 +123,20 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppSetupName} 
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppSetupName} (x64)"; Filename: "{app}\x64\KeppyMIDIConverter.exe"; IconFilename: "{app}\x64\KeppyMIDIConverter.exe"; Tasks: quicklaunchicon; Check: Is64BitInstallMode
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppSetupName} (x86)"; Filename: "{app}\x86\KeppyMIDIConverter.exe"; IconFilename: "{app}\x86\KeppyMIDIConverter.exe"; Tasks: quicklaunchicon; Check: Is64BitInstallMode
 
+[Dirs]
+Name: "{app}\EE"; Attribs: hidden
+
 [InstallDelete]
 Type: filesandordirs; Name: "{app}\x86"
 Type: filesandordirs; Name: "{app}\x64"
+Type: filesandordirs; Name: "{app}\EE"
 Type: filesandordirs; Name: "{app}"
 Type: filesandordirs; Name: "{group}"
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\x86"
 Type: filesandordirs; Name: "{app}\x64"
+Type: filesandordirs; Name: "{app}\EE"
 Type: filesandordirs; Name: "{app}"
 Type: filesandordirs; Name: "{group}"
 

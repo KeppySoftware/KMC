@@ -225,7 +225,7 @@ BASS seisund: {0}</value>
 BASS seisund: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Muutuv {0}...</value>
+    <value>{0} | Muutuv {1}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>Valminud</value>
@@ -461,7 +461,7 @@ Koht: {1} - {2}
 Noodi: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Mängimine {0}...</value>
+    <value>{0} | Mängimine {1}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
     <value>Valminud</value>

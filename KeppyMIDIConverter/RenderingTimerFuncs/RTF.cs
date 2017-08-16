@@ -329,26 +329,26 @@ namespace KeppyMIDIConverter
             {
                 if (Mode == 0 || Mode == 1) // Idle
                 {
-                    MainWindow.Delegate.Text = "Keppy's MIDI Converter";
+                    MainWindow.Delegate.Text = MainWindow.Title;
                 }
                 else
                 {
                     if (MainWindow.KMCGlobals.IsKMCBusy == false)
                     {
-                        MainWindow.Delegate.Text = "Keppy's MIDI Converter";
+                        MainWindow.Delegate.Text = MainWindow.Title;
                     }
                     else
                     {
                         if (MainWindow.KMCGlobals.RenderingMode == false)
-                            MainWindow.Delegate.Text = String.Format(MainWindow.res_man.GetString("PlaybackText", MainWindow.cul), MainWindow.KMCGlobals.NewWindowName);
+                            MainWindow.Delegate.Text = String.Format(MainWindow.res_man.GetString("PlaybackText", MainWindow.cul), MainWindow.Title, MainWindow.KMCGlobals.NewWindowName);
                         else
-                            MainWindow.Delegate.Text = String.Format(MainWindow.res_man.GetString("ConversionText", MainWindow.cul), MainWindow.KMCGlobals.NewWindowName);
+                            MainWindow.Delegate.Text = String.Format(MainWindow.res_man.GetString("ConversionText", MainWindow.cul), MainWindow.Title, MainWindow.KMCGlobals.NewWindowName);
                     }
                 }
             }
             catch
             {
-                MainWindow.Delegate.Text = "Keppy's MIDI Converter";
+                MainWindow.Delegate.Text = MainWindow.Title;
             }
         }
 

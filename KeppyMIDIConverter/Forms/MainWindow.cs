@@ -36,6 +36,7 @@ namespace KeppyMIDIConverter
 
         // Delegate for RTF
         public static MainWindow Delegate;
+        public static String Title = "";
 
         public static class KMCGlobals
         {
@@ -287,7 +288,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Keppy's MIDI Converter tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Title + " tried to load an invalid language, so English has been loaded automatically.", "Error with the languages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 res_man = new ResourceManager("KeppyMIDIConverter.Languages.Lang", typeof(MainWindow).Assembly);
                 cul = Program.ReturnCulture(true);
                 MIDIList.Columns.Clear();
@@ -340,6 +341,7 @@ namespace KeppyMIDIConverter
         private void MainWindow_Load(object sender, EventArgs e)
         {
             // Here we go
+            Title = String.Format(Program.Title, Program.Who);
             timeBeginPeriod(timerAccuracy);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             this.Menu = DefaultMenu;
@@ -437,6 +439,7 @@ namespace KeppyMIDIConverter
         {
             try
             {
+                EEPlayer.Close();
                 int convmode = 0;
                 KMCGlobals.IsKMCBusy = true;
                 KMCGlobals.RenderingMode = true;
@@ -448,18 +451,18 @@ namespace KeppyMIDIConverter
                 if (ModifierKeys == Keys.Shift)
                 {
                     convmode = 1;
-                    MessageBox.Show("Real-time simulation mode activated.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Real-time simulation mode activated.", Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else if (ModifierKeys == Keys.Control)
                 {
                     KMCGlobals.VSTSkipSettings = true;
-                    MessageBox.Show("Skipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Skipping VST settings.", Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else if (ModifierKeys == (Keys.Shift | Keys.Control))
                 {
                     KMCGlobals.VSTSkipSettings = true;
                     convmode = 1;
-                    MessageBox.Show("Real-time simulation mode activated.\n\nSkipping VST settings.", "Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Real-time simulation mode activated.\n\nSkipping VST settings.", Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 if (ExportWhere.ShowDialog() == DialogResult.OK)
@@ -469,16 +472,22 @@ namespace KeppyMIDIConverter
                     Properties.Settings.Default.LastExportFolder = KMCGlobals.ExportWhereYay;
                     Properties.Settings.Default.Save();
 
+                    while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy)
+                    {
+                        if (!RealTimePlayBack.IsBusy && !ConverterProcess.IsBusy && !ConverterProcessRT.IsBusy)
+                        {
+                            break;
+                        }
+                    }
+
                     if (convmode == 1)
                     {
                         KMCGlobals.RealTime = true;
-                        while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy) System.Threading.Thread.Sleep(1); // Wait for the old threads to stop...
                         this.ConverterProcessRT.RunWorkerAsync();
                     }
                     else
                     {
                         KMCGlobals.RealTime = false;
-                        while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy) System.Threading.Thread.Sleep(1); // Wait for the old threads to stop...
                         this.ConverterProcess.RunWorkerAsync();
                     }
                 }
@@ -524,6 +533,7 @@ namespace KeppyMIDIConverter
         {
             try
             {
+                EEPlayer.Close();
                 if (ModifierKeys == Keys.Shift)
                 {
                     KMCGlobals.DoNotCountNotes = true;
@@ -531,7 +541,13 @@ namespace KeppyMIDIConverter
                 this.StatusPicture.Visible = true;
                 KMCGlobals.RenderingMode = false;
                 KMCGlobals.IsKMCBusy = true;
-                while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy) System.Threading.Thread.Sleep(1); // Wait for the old threads to stop...
+                while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy)
+                {
+                    if (!RealTimePlayBack.IsBusy && !ConverterProcess.IsBusy && !ConverterProcessRT.IsBusy)
+                    {
+                        break;
+                    }
+                }
                 this.RealTimePlayBack.RunWorkerAsync();
             }
             catch (Exception ex)
@@ -607,7 +623,7 @@ namespace KeppyMIDIConverter
                 thread.SetApartmentState(System.Threading.ApartmentState.STA);
                 thread.Start();
                 thread.Join();
-                MessageBox.Show(String.Format(MainWindow.res_man.GetString("VSTInvalidCallError", cul), vstInfo.effectName, ex.ToString()), "Keppy's MIDI Converter - " + res_man.GetString("VSTInvalidCallTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format(MainWindow.res_man.GetString("VSTInvalidCallError", cul), vstInfo.effectName, ex.ToString()), Title + " - " + res_man.GetString("VSTInvalidCallTitle", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
                 BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, whichvst);
             }
@@ -1615,6 +1631,15 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private long GetMIDILength(string str)
+        {
+            Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
+            Int32 time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
+            return Bass.BASS_ChannelGetLength(time);
+            Bass.BASS_StreamFree(time);
+            Bass.BASS_Free();
+        }
+
         private string[] GetMoreInfoMIDI(string str, bool overridedefault)
         {
             try
@@ -1669,14 +1694,8 @@ namespace KeppyMIDIConverter
 
         private void ToAddOrNotToAdd(ListViewItem lvi, string notes, string str)
         {
-            if (notes == "0")
-            {
-                MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MIDIList.Items.Add(lvi); 
-            }
+            if (notes == "0" || GetMIDILength(str) == -1) MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MIDIList.Items.Add(lvi);
         }
 
         private void importMIDIsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1724,7 +1743,7 @@ namespace KeppyMIDIConverter
                     if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi")
                     {
                         Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
-                            String.Format("How many times do you want to add this MIDI?\n{0}", str), "Keppy's MIDI Converter", "1"));
+                            String.Format("How many times do you want to add this MIDI?\n{0}", str), Title, "1"));
 
                         if (UserAnswer == 0 || UserAnswer == null) UserAnswer = 1;
 

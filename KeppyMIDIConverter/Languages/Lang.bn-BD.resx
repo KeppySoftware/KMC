@@ -224,7 +224,7 @@ BASS অবস্থা: {0}</value>
 BASS অবস্থা: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | রূপান্তর {0}...</value>
+    <value>{0}| রূপান্তর {1}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>সম্পন্ন</value>
@@ -458,7 +458,7 @@ BASS অবস্থা: {0}</value>
 সঙ্গীত: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | এর নেপথ্য {0}...</value>
+    <value>{0} | এর নেপথ্য {1}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
     <value>সম্পন্ন</value>

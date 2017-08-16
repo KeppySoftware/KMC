@@ -20,6 +20,7 @@ using System.Collections.Specialized;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms.VisualStyles;
+using WMPLib;
 
 namespace KeppyMIDIConverter
 {
@@ -30,6 +31,9 @@ namespace KeppyMIDIConverter
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
+
+        public static string Who = "Keppy's";
+        public static string Title = "{0} MIDI Converter";
 
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
@@ -135,6 +139,16 @@ namespace KeppyMIDIConverter
                     {
                         Application.SetCompatibleTextRenderingDefault(true);
                         break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/creepy")
+                    {
+                        EEPlay("EEHW", true);
+                        break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/vmsconverter")
+                    {
+                        Process.Start("https://www.youtube.com/watch?v=hR2iRL173KI");
+                        return;
                     }
                     else if (args[i].ToLowerInvariant() == "/restorelanguage")
                     {
@@ -350,8 +364,23 @@ namespace KeppyMIDIConverter
             Process.Start(url);
         }
 
+        public static void EEPlay(string EE, bool loop)
+        {
+            try
+            {
+                DirectoryInfo PathToGenericSF = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                if (Directory.Exists(String.Format("{0}\\EE", PathToGenericSF.Parent.FullName)))
+                {
+                    EEPlayer.Open(String.Format("{0}\\EE\\{1}.EVN", PathToGenericSF.Parent.FullName, EE));
+                    EEPlayer.Play(loop);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString());  }
+        }
+
         public static void TriggerDate()
         {
+            Random Chance = new Random();
             DateTime BirthDate = DateTime.Now;
             int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
             if (BirthDate.ToString("dd") == "01")
@@ -364,18 +393,43 @@ namespace KeppyMIDIConverter
                     frm.ShowDialog();
                 }
             }
-            if (BirthDate.ToString("dd/MM") == "23/04")
-                MessageBox.Show("Today is Frozen's birthday! He turned " + (currentyear - 1996).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Frozen Snow", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (BirthDate.ToString("dd/MM") == "14/01")
+            {
+                EEPlay("EEHW", true);
+                MessageBox.Show("It's been " + (currentyear - 2016).ToString() + " years...\n\nI miss you.", "...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                EEPlayer.Close();
+            }
             else if (BirthDate.ToString("dd/MM") == "17/09")
+            {
+                EEPlay("EEBD", false);
                 MessageBox.Show("Today, KMC turned " + (currentyear - 2015).ToString() + " year(s) old!\n\nHappy birthday, awesome converter!", "Happy birthday to me, Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (BirthDate.ToString("dd/MM") == "26/09")
+            {
+                if (Chance.NextDouble() < 0.05)
+                {
+                    EEPlay("EEBD", false);
+                    Who = "Gingy's";
+                }
+            }
             else if (BirthDate.ToString("dd/MM") == "31/10")
-                MessageBox.Show("Spooky conversions today, huh?", "Happy Halloween!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+                if (Chance.NextDouble() < 0.017)
+                {
+                    EEPlay("EEHW", true);
+                    Who = "Keppy's";
+                }
+            }
             else if (BirthDate.ToString("dd/MM") == "05/12")
+            {
+                EEPlay("EEBD", false);
                 MessageBox.Show("Today is Keppy's birthday! He turned " + (currentyear - 1999).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Kepperino", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else if (BirthDate.ToString("dd/MM") == "25/12")
-                MessageBox.Show("Oh oh oh, Merry Christmas!", "Happy holidays, and Merry Christmas!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else if (BirthDate.ToString("dd/MM") == "01/01")
-                MessageBox.Show("HAPPY NEW YEAR!", "Finally, " + BirthDate.ToString("yyyy") + " has begun!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+                EEPlay("EECH", false);
+            }
         }
 
         public static int CurrentTheme = -1;
@@ -494,5 +548,39 @@ public class AntiDamageCrash : Exception
     public AntiDamageCrash(string message, Exception inner)
         : base(message, inner)
     {
+    }
+}
+
+public class EEPlayer
+{
+    private static string _command;
+    private static bool isOpen;
+    [DllImport("winmm.dll")]
+
+    private static extern long mciSendString(string strCommand, StringBuilder strReturn, int iReturnLength, IntPtr hwndCallback);
+
+    public static void Close()
+    {
+        _command = "close MediaFile";
+        mciSendString(_command, null, 0, IntPtr.Zero);
+        isOpen = false;
+    }
+
+    public static void Open(string sFileName)
+    {
+        _command = "open \"" + sFileName + "\" type mpegvideo alias MediaFile";
+        mciSendString(_command, null, 0, IntPtr.Zero);
+        isOpen = true;
+    }
+
+    public static void Play(bool loop)
+    {
+        if (isOpen)
+        {
+            _command = "play MediaFile";
+            if (loop)
+                _command += " REPEAT";
+            mciSendString(_command, null, 0, IntPtr.Zero);
+        }
     }
 }

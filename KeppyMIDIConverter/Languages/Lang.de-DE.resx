@@ -225,7 +225,7 @@ BASS Status: {0}</value>
 BASS Status: {0}</value>
   </data>
   <data name="ConversionText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Umwandlung erfolgt {0}...</value>
+    <value>{0} | Umwandlung erfolgt {1}...</value>
   </data>
   <data name="ConversionXPTitle" xml:space="preserve">
     <value>Abgeschlossen</value>
@@ -460,7 +460,7 @@ Position: {1} - {2}
 Noten: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Wiedergabe von {0}...</value>
+    <value>{0} | Wiedergabe von {1}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
     <value>Abgeschlossen</value>
