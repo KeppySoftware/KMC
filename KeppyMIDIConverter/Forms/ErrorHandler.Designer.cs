@@ -116,7 +116,7 @@
             this.Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Close.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Close.ForeColor = System.Drawing.Color.White;
-            this.Close.Location = new System.Drawing.Point(381, 16);
+            this.Close.Location = new System.Drawing.Point(389, 16);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(75, 23);
             this.Close.TabIndex = 9;
@@ -131,17 +131,17 @@
             this.panel1.Controls.Add(this.Close);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 176);
+            this.panel1.Location = new System.Drawing.Point(0, 188);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(474, 57);
+            this.panel1.Size = new System.Drawing.Size(482, 57);
             this.panel1.TabIndex = 10;
             // 
             // ErrorHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(474, 233);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(482, 245);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ErrorLab);
             this.Controls.Add(this.pictureBox1);

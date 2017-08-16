@@ -132,8 +132,9 @@ namespace KeppyMIDIConverter
 
         public static class KMCStatus
         {
-            public static Int64 PlayedNotes = 0;
+            public static UInt64 PlayedNotes = 0;
             public static UInt64 TotalNotes = 0;
+            public static UInt64 TotalNotesOrg = 0;
             public static DateTime StartTime;
             public static TimeSpan PassedTime;
             public static TimeSpan EstimatedTime;
@@ -1425,7 +1426,8 @@ namespace KeppyMIDIConverter
                                 {
                                     KMCGlobals._mySync = new SYNCPROC(NoteSyncProc);
                                     int sync = Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, KMCGlobals._mySync, IntPtr.Zero);
-                                    KMCStatus.TotalNotes = (UInt64)BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, (BASSMIDIEvent)0x20000, null);
+                                    KMCStatus.TotalNotesOrg = (UInt64)BassMidi.BASS_MIDI_StreamGetEvents(KMCGlobals._recHandle, -1, (BASSMIDIEvent)0x20000, null);
+                                    KMCStatus.TotalNotes = KMCStatus.TotalNotesOrg;
                                 }
                                 catch (Exception ex)
                                 {
@@ -2279,6 +2281,7 @@ namespace KeppyMIDIConverter
 
         private void RealTimePreviewTrackBar_Scroll(object sender, EventArgs e)
         {
+            KMCStatus.TotalNotes = KMCStatus.TotalNotesOrg + KMCStatus.PlayedNotes;
             Bass.BASS_ChannelSetPosition(KMCGlobals._recHandle, RealTimePreviewTrackBar.Value * 120, BASSMode.BASS_POS_MIDI_TICK);
         }
     }
