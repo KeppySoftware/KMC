@@ -790,6 +790,7 @@ namespace KeppyMIDIConverter
                     KMCGlobals._myWasapi = new WASAPIPROC(MyWasapiProc);
                     BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_EVENT | BASSWASAPIInit.BASS_WASAPI_SHARED, 0, 0, KMCGlobals._myWasapi, IntPtr.Zero);
                 }
+
                 Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
@@ -798,10 +799,7 @@ namespace KeppyMIDIConverter
                 else
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);
 
-                SetTempo(true);
-                KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);
-                Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT | BASSSync.BASS_SYNC_MIXTIME, (long)BASSMIDIEvent.MIDI_EVENT_TEMPO, KMCGlobals._myTempoSync, IntPtr.Zero);
-                Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_SETPOS | BASSSync.BASS_SYNC_MIXTIME, 0, KMCGlobals._myTempoSync, IntPtr.Zero);
+                BASSTempoSetSync();
 
                 KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(KMCGlobals._recHandle, 1);
                 KMCGlobals._plm.CalcRMS = true;
@@ -849,7 +847,7 @@ namespace KeppyMIDIConverter
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
 
-                SetTempo(true);
+                SetTempo(true, true);
                 KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);
                 Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT | BASSSync.BASS_SYNC_MIXTIME, (long)BASSMIDIEvent.MIDI_EVENT_TEMPO, KMCGlobals._myTempoSync, IntPtr.Zero);
                 Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_SETPOS | BASSSync.BASS_SYNC_MIXTIME, 0, KMCGlobals._myTempoSync, IntPtr.Zero);
@@ -865,6 +863,14 @@ namespace KeppyMIDIConverter
             {
                 BASSCloseStreamCrash(ex);
             }
+        }
+
+        private void BASSTempoSetSync()
+        {
+            SetTempo(true, true);
+            KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);
+            Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT | BASSSync.BASS_SYNC_MIXTIME, (long)BASSMIDIEvent.MIDI_EVENT_TEMPO, KMCGlobals._myTempoSync, IntPtr.Zero);
+            Bass.BASS_ChannelSetSync(KMCGlobals._recHandle, BASSSync.BASS_SYNC_SETPOS | BASSSync.BASS_SYNC_MIXTIME, 0, KMCGlobals._myTempoSync, IntPtr.Zero);
         }
 
         private void BASSEffectSettings()
@@ -1128,6 +1134,8 @@ namespace KeppyMIDIConverter
             KMCGlobals.DoNotCountNotes = false;
             KMCGlobals.eventc = 0;
             KMCGlobals.events = null;
+            RTF.CPUUsage = 0.0f;
+            RTF.ActiveVoices = 0.0f;
             if (type == 0)
             {
                 MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1522,18 +1530,26 @@ namespace KeppyMIDIConverter
             Console.ResetColor();
         }
 
-        public static void SetTempo(bool reset)
+        public static void SetTempo(bool reset, bool isitworker)
         {
-            new Thread(() =>
+            if (isitworker)
             {
                 if (reset) KMCGlobals.MIDITempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO); // get the file's tempo
-            BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, Convert.ToInt32(KMCGlobals.MIDITempo * KMCGlobals.TempoScale));   // set tempo
-            }).Start();
+                BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, Convert.ToInt32(KMCGlobals.MIDITempo * KMCGlobals.TempoScale));   // set tempo
+            }
+            else
+            {
+                new Thread(() =>
+                {
+                    if (reset) KMCGlobals.MIDITempo = BassMidi.BASS_MIDI_StreamGetEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO); // get the file's tempo
+                    BassMidi.BASS_MIDI_StreamEvent(KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO, Convert.ToInt32(KMCGlobals.MIDITempo * KMCGlobals.TempoScale));   // set tempo
+                }).Start();
+            }
         }
 
         private void TempoSync(int handle, int channel, int data, IntPtr user)
         {
-            SetTempo(true);
+            SetTempo(true, true);
         }
 
         private void NoteSyncProc(int handle, int channel, int data, IntPtr user)

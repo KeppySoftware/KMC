@@ -165,7 +165,7 @@ namespace KeppyMIDIConverter
                 TempoValue.Enabled = false;
                 TempoValue.Value = 40;
                 MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
-                MainWindow.SetTempo(false);
+                MainWindow.SetTempo(false, false);
             }
             Properties.Settings.Default.Save();
         }
@@ -240,7 +240,7 @@ namespace KeppyMIDIConverter
         private void TempoValue_Scroll(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
-            MainWindow.SetTempo(false);
+            MainWindow.SetTempo(false, false);
         }
 
         private void CheckTempo_Tick(object sender, EventArgs e)
