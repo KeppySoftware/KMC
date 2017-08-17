@@ -501,7 +501,7 @@ Notas: {3} - {4}</value>
 El primer soundfont de la lista siempre anulará los ultimos.
 Comprueba si los soundfonts no están corruptos, antes de añadir a la lista, para evitar crashes/glitches aleatorios.
 
-Los siguientes formatos están soportados: SF2, SF3, SFZ, SFPACK</value>
+Los siguientes formatos están soportados: SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>¡No es un soundfont válido!

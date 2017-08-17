@@ -504,7 +504,7 @@ La prima soundfont sostituirà i preset di quelle precedenti.
 Assicurati di non aggiungere soundfont corrotte, per prevenire crash o perdite di dati.
 
 
-Sono supportati i seguenti formati: SF2, SF3, SFZ, SFPACK</value>
+Sono supportati i seguenti formati: SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>Questa non è una soundfont valida!

@@ -494,7 +494,7 @@ The first soundfont in the list will always override the latest ones.
 Check if the soundfonts are not corrupted, before adding them to the list, to avoid random crashes/glitches.
 
 
-The following formats are supported: SF2, SF3, SFZ, SFPACK</value>
+The following formats are supported: SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>This is not a valid soundfont!

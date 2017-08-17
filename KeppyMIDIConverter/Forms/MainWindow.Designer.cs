@@ -109,7 +109,7 @@
             // 
             // MIDIImport
             // 
-            this.MIDIImport.Filter = "MIDI files|*.mid;*.midi;*.rmi";
+            this.MIDIImport.Filter = "MIDI files|*.mid;*.midi;*.kar;*.rmi;*.riff";
             this.MIDIImport.Multiselect = true;
             this.MIDIImport.RestoreDirectory = true;
             this.MIDIImport.Title = "Import MIDIs to the conversion list..";

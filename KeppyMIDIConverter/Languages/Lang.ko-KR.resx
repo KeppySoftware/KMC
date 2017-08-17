@@ -499,7 +499,7 @@ BASS 상태 : {0}</value>
 튕김 방지를 위해서 추가하기 전에 사운드 폰트가 재대로 된 것인지 확인해주세요.
 
 
-지원되는 포맷 : SF2, SF3, SFZ, SFPACK</value>
+지원되는 포맷 : SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>이것은 올바른 사운드 폰트하지 않습니다!

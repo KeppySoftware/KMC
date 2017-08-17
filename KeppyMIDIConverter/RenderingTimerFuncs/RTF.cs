@@ -360,10 +360,13 @@ namespace KeppyMIDIConverter
                 {
                     TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                     MainWindow.Delegate.RealTimePreviewTrackBar.Value = 0;
+                    MainWindow.Delegate.RealTimePreviewTrackBar.Maximum = 0;
                 }
                 if (Mode == 1) // Memory allocation
                 {
                     TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                    if (MainWindow.KMCGlobals.RealTime == false) MainWindow.Delegate.RealTimePreviewTrackBar.Maximum = Convert.ToInt32(TotalTicks / 120);
+                    else MainWindow.Delegate.RealTimePreviewTrackBar.Maximum = 0;
                 }
                 if (Mode == 2) // Rendering/Playback
                 {
@@ -372,14 +375,12 @@ namespace KeppyMIDIConverter
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
                         TaskbarManager.Instance.SetProgressValue(Convert.ToInt32(CurrentTicks / 120), Convert.ToInt32(TotalTicks / 120));
                         MainWindow.Delegate.RealTimePreviewTrackBar.Value = Convert.ToInt32(CurrentTicks / 120);
-                        MainWindow.Delegate.RealTimePreviewTrackBar.Maximum = Convert.ToInt32(TotalTicks / 120);
                     }
                     else
                     {
                         TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
                         TaskbarManager.Instance.SetProgressValue(0, 0);
                         MainWindow.Delegate.RealTimePreviewTrackBar.Value = 0;
-                        MainWindow.Delegate.RealTimePreviewTrackBar.Maximum = 0;
                     }
                 }
             }

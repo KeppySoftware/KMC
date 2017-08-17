@@ -20,7 +20,6 @@ using System.Collections.Specialized;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms.VisualStyles;
-using WMPLib;
 
 namespace KeppyMIDIConverter
 {
@@ -221,13 +220,10 @@ namespace KeppyMIDIConverter
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Thread.CurrentThread.IsBackground = true;
-            Thread.CurrentThread.Name = "Dead thread";
-
-            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", ReturnCulture(true)), e.ToString(), 0, 0);
-            errordialog.ShowDialog();
-
-            Process.GetCurrentProcess().Kill();
+            ThreadPool.QueueUserWorkItem(new WaitCallback(ignored =>
+            {
+                throw new AntiDamageCrash("The converter has been manually crashed to avoid damages to the computer.");
+            }));
         }
 
         public static void DeleteOldLanguages()

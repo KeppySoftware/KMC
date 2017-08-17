@@ -506,7 +506,7 @@ BASS 状态: {0}</value>
 列表中的第一个音色库会总是会覆盖最后的音色库。
 添加音色库之前请检查音色库是否损坏，以避免意外错误。
 
-支持的音色格式:</value>
+支持的音色格式: SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>这并不是一个有效的音色库！

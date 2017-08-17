@@ -472,14 +472,6 @@ namespace KeppyMIDIConverter
                     Properties.Settings.Default.LastExportFolder = KMCGlobals.ExportWhereYay;
                     Properties.Settings.Default.Save();
 
-                    while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy)
-                    {
-                        if (!RealTimePlayBack.IsBusy && !ConverterProcess.IsBusy && !ConverterProcessRT.IsBusy)
-                        {
-                            break;
-                        }
-                    }
-
                     if (convmode == 1)
                     {
                         KMCGlobals.RealTime = true;
@@ -503,7 +495,7 @@ namespace KeppyMIDIConverter
                 KMCGlobals.IsKMCBusy = false;
                 KMCGlobals.RenderingMode = false;
                 this.StatusPicture.Visible = false;
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), ex.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), "Wait for the previous conversion/preview to finish!!!", 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -541,13 +533,6 @@ namespace KeppyMIDIConverter
                 this.StatusPicture.Visible = true;
                 KMCGlobals.RenderingMode = false;
                 KMCGlobals.IsKMCBusy = true;
-                while (RealTimePlayBack.IsBusy || ConverterProcess.IsBusy || ConverterProcessRT.IsBusy)
-                {
-                    if (!RealTimePlayBack.IsBusy && !ConverterProcess.IsBusy && !ConverterProcessRT.IsBusy)
-                    {
-                        break;
-                    }
-                }
                 this.RealTimePlayBack.RunWorkerAsync();
             }
             catch (Exception ex)
@@ -555,7 +540,7 @@ namespace KeppyMIDIConverter
                 KMCGlobals.IsKMCBusy = false;
                 KMCGlobals.RenderingMode = false;
                 this.StatusPicture.Visible = false;
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), ex.ToString(), 0, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), "Wait for the previous conversion/preview to finish!!!", 0, 0);
                 errordialog.ShowDialog();
             }
         }
@@ -787,8 +772,14 @@ namespace KeppyMIDIConverter
 
                 if (type == 1)
                 {
+                    BASS_WASAPI_INFO infoW = new BASS_WASAPI_INFO();
+
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_BUFFER, 0, 0, null, IntPtr.Zero);
+                    BassWasapi.BASS_WASAPI_GetInfo(infoW);
+                    BassWasapi.BASS_WASAPI_Free();
+
                     KMCGlobals._myWasapi = new WASAPIPROC(MyWasapiProc);
-                    BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_EVENT | BASSWASAPIInit.BASS_WASAPI_SHARED, 0, 0, KMCGlobals._myWasapi, IntPtr.Zero);
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_EVENT, infoW.buflen, 0, KMCGlobals._myWasapi, IntPtr.Zero);
                 }
 
                 Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
@@ -1756,7 +1747,7 @@ namespace KeppyMIDIConverter
             {
                 foreach (string str in filenames)
                 {
-                    if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi")
+                    if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi" || Path.GetExtension(str).ToLower() == ".riff")
                     {
                         Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
                             String.Format("How many times do you want to add this MIDI?\n{0}", str), Title, "1"));

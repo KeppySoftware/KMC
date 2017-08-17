@@ -488,7 +488,7 @@ BASS status: {0}</value>
 SoundFontはリストの下から順に読み込まれ、常に一番上が優先されます。
 突然のアプリのクラッシュ、またグリッチ(不具合)を回避するために、SoundFontがリストに追加される前に壊れていないかどうかを確認してください。 
 
-以下のフォーマットがサポートされています: SF2, SF3, SFZ, SFPACK</value>
+以下のフォーマットがサポートされています: SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>選択したSoundFontは有効ではありません!

@@ -505,7 +505,7 @@ Esimene heli fondi nimekirja laeb enne järgmist helifaile.
 Kontrolli oma heli fondi tahes korruptsiooni enne lisades need seda nimekirja, et vältida vigu.
 
 
-Järgmised formaate ei toetata: SF2, SF3, SFZ, SFPACK</value>
+Järgmised formaate ei toetata: SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>See ei ole kehtiv heli fondi!

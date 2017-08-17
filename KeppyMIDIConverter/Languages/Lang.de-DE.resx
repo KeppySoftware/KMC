@@ -503,7 +503,7 @@ Noten: {3} - {4}</value>
 Das erste Soundfont wird immer der Letzteren vorgezogen.
 Stellen sie sicher, dass die Soundfonts nicht beschädigt sind, bevor Sie sie in die Liste hinzufügen, um Programmabstürze sowie Fehler zu vermeiden.
 
-Folgende Dateienformate werden unterstützt: SF2, SF3, SFZ, SFPACK</value>
+Folgende Dateienformate werden unterstützt: SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>Das ist keine gültige Soundfont!

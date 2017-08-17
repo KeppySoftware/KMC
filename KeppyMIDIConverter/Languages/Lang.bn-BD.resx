@@ -502,7 +502,7 @@ BASS অবস্থা: {0}</value>
 যদি soundfonts নষ্ট না হয় পরীক্ষা করে দেখুন, তাদের তালিকায় যোগ করার আগে, র্যান্ডম বিপর্যের / ত্রুটি এড়াতে.
 
 
-নিম্নলিখিত বিন্যাসে সমর্থিত হবে: SF2, SF3, SFZ, SFPACK</value>
+নিম্নলিখিত বিন্যাসে সমর্থিত হবে: SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>এটিকে একটি বৈধ soundfont নয়!

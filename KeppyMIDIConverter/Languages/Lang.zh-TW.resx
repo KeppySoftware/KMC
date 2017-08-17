@@ -504,7 +504,7 @@ BASS 狀態: {0}</value>
 加到音色庫列表之前，檢查音色庫有無損壞，避免造成錯誤.
 
 
-支援音色的格式： SF2, SF3, SFZ, SFPACK</value>
+支援音色的格式： SF2, SF2PACK, SF3, SFZ</value>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>這不是有效的音色庫
