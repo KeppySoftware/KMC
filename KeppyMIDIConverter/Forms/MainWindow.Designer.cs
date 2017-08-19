@@ -226,7 +226,7 @@
             this.CurrentStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
             this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(345, 60);
+            this.CurrentStatusText.Size = new System.Drawing.Size(403, 60);
             this.CurrentStatusText.TabIndex = 7;
             this.CurrentStatusText.Text = "Loading... Please wait...";
             this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

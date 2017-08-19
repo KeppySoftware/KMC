@@ -109,6 +109,9 @@ namespace KeppyMIDIConverter
                         Console.Title = "Keppy's MIDI Converter Debug Window";
                         Console.BackgroundColor = ConsoleColor.Blue;
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(Properties.Resources.KMCTitle);
+                        Console.WriteLine();
+                        Console.WriteLine();
                         Console.WriteLine("Keppy's MIDI Converter Debug Window - Version " + version);
                         Console.WriteLine("Copyright KaleidonKep99 2013 - " + DateTime.Now.Year.ToString());
                         Console.ResetColor();
@@ -123,6 +126,26 @@ namespace KeppyMIDIConverter
                         Console.WriteLine("Debug started, waiting for errors...");
                         Console.ResetColor();
                         break;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/sacremoo")
+                    {
+                        AllocConsole();
+                        Console.Title = "SACRE MOO!";
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(Properties.Resources.Sacremoo);
+                        Console.ReadKey();
+                        return;
+                    }
+                    else if (args[i].ToLowerInvariant() == "/thinking")
+                    {
+                        AllocConsole();
+                        Console.Title = ":thinking:";
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(Properties.Resources.Thinking);
+                        Console.ReadKey();
+                        return;
                     }
                     else if (args[i].ToLowerInvariant() == "/nothemespartial")
                     {

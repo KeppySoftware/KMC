@@ -19,7 +19,7 @@ namespace KeppyMIDIConverter.Properties {
     // tramite uno strumento quale ResGen o Visual Studio.
     // Per aggiungere o rimuovere un membro, modificare il file con estensione ResX ed eseguire nuovamente ResGen
     // con l'opzione /str oppure ricompilare il progetto VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1480,6 +1480,21 @@ namespace KeppyMIDIConverter.Properties {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a ██╗  ██╗███████╗██████╗ ██████╗ ██╗   ██╗███████╗                            
+        ///██║ ██╔╝██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝██╔════╝                            
+        ///█████╔╝ █████╗  ██████╔╝██████╔╝ ╚████╔╝ ███████╗                            
+        ///██╔═██╗ ██╔══╝  ██╔═══╝ ██╔═══╝   ╚██╔╝  ╚════██║                            
+        ///██║  ██╗███████╗██║     ██║        ██║   ███████║                            
+        ///╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝        ╚═╝   ╚══════╝                            
+        ///███╗   ███╗██╗██████╗ ██╗              [stringa troncata]&quot;;.
+        /// </summary>
+        internal static string KMCTitle {
+            get {
+                return ResourceManager.GetString("KMCTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Kosovo {
@@ -2210,6 +2225,25 @@ namespace KeppyMIDIConverter.Properties {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a                             ..---.
+        ///                           // |\||\
+        ///    \   /                 ///;||\|;\               \   /
+        ///      o               .__// \\____//\_,.             o
+        ///    /   \              Y{_\_/  \&apos;&apos; = __/           /   \
+        ///                       \___   (o) (o)  }       /
+        ///                          /         :--&apos;   SACRE MOO!
+        ///                     .---/ \_    `__\-.
+        ///                    /     `--\___(o&apos;o) \
+        ///             \   / |     \      `====&apos;  |\   /
+        ///               o    `.    `.    [stringa troncata]&quot;;.
+        /// </summary>
+        internal static string Sacremoo {
+            get {
+                return ResourceManager.GetString("Sacremoo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Saint_Lucia {
@@ -2556,6 +2590,27 @@ namespace KeppyMIDIConverter.Properties {
             get {
                 object obj = ResourceManager.GetObject("Thailand", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a ▒▒▒▒▒▒▒▒▄▄▄▄▄▄▄▄▒▒▒▒▒▒▒▒
+        ///▒▒▒▒▒▄█▀▀░░░░░░▀▀█▄▒▒▒▒▒
+        ///▒▒▒▄█▀▄██▄░░░░░░░░▀█▄▒▒▒
+        ///▒▒█▀░▀░░▄▀░░░░▄▀▀▀▀░▀█▒▒
+        ///▒█▀░░░░███░░░░▄█▄░░░░▀█▒
+        ///▒█░░░░░░▀░░░░░▀█▀░░░░░█▒
+        ///▒█░░░░░░░░░░░░░░░░░░░░█▒
+        ///▒█░░██▄░░▀▀▀▀▄▄░░░░░░░█▒
+        ///▒▀█░█░█░░░▄▄▄▄▄░░░░░░█▀▒
+        ///▒▒▀█▀░▀▀▀▀░▄▄▄▀░░░░▄█▀▒▒
+        ///▒▒▒█░░░░░░▀█░░░░░▄█▀▒▒▒▒
+        ///▒▒▒█▄░░░░░▀█▄▄▄█▀▀▒▒▒▒▒▒
+        ///▒▒▒▒▀▀▀▀▀▀▀▒▒▒▒▒▒▒▒▒▒▒▒▒.
+        /// </summary>
+        internal static string Thinking {
+            get {
+                return ResourceManager.GetString("Thinking", resourceCulture);
             }
         }
         

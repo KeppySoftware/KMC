@@ -320,6 +320,8 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Thinking.txt" />
+    <None Include="Resources\Sacremoo.txt" />
     <None Include="Resources\ppdonate.png" />
   </ItemGroup>
   <ItemGroup>
@@ -581,6 +583,7 @@
     <None Include="Resources\dsapply1.png" />
     <None Include="Resources\dsapply2.png" />
     <None Include="Resources\dsagemin.png" />
+    <None Include="Resources\KMCTitle.txt" />
     <Content Include="Resources\mainlogo.ico" />
     <None Include="Resources\hot.png" />
     <None Include="Resources\worldwideweb.png" />
