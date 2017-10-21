@@ -84,7 +84,7 @@
             // TempoCurrent
             // 
             this.TempoCurrent.Enabled = false;
-            this.TempoCurrent.Location = new System.Drawing.Point(149, 123);
+            this.TempoCurrent.Location = new System.Drawing.Point(150, 123);
             this.TempoCurrent.Name = "TempoCurrent";
             this.TempoCurrent.Size = new System.Drawing.Size(58, 15);
             this.TempoCurrent.TabIndex = 32;
@@ -98,7 +98,7 @@
             this.TempoValue.Name = "TempoValue";
             this.TempoValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TempoValue.RightToLeftLayout = true;
-            this.TempoValue.Size = new System.Drawing.Size(180, 42);
+            this.TempoValue.Size = new System.Drawing.Size(180, 45);
             this.TempoValue.TabIndex = 5;
             this.TempoValue.TickFrequency = 8;
             this.TempoValue.TickStyle = System.Windows.Forms.TickStyle.Both;
@@ -134,11 +134,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(274, 20);
+            this.label1.Location = new System.Drawing.Point(217, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "RT FPS:";
+            this.label1.Text = "Real-Time framerate:";
             // 
             // label4
             // 

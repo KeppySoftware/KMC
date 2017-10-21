@@ -262,25 +262,7 @@
     <EmbeddedResource Include="Forms\UpdateDownloader.resx">
       <DependentUpon>UpdateDownloader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Lang.bn-BD.resx" />
-    <EmbeddedResource Include="Languages\Lang.de-DE.resx" />
     <EmbeddedResource Include="Languages\Lang.en-US.resx" />
-    <EmbeddedResource Include="Languages\Lang.es-ES.resx" />
-    <EmbeddedResource Include="Languages\Lang.et-EE.resx" />
-    <EmbeddedResource Include="Languages\Lang.it-IT.resx" />
-    <EmbeddedResource Include="Languages\Lang.ja-JP.resx" />
-    <EmbeddedResource Include="Languages\Lang.ko-KR.resx" />
-    <EmbeddedResource Include="Languages\Lang.ru-RU.resx" />
-    <EmbeddedResource Include="Languages\Lang.th-TH.resx" />
-    <EmbeddedResource Include="Languages\Lang.zh-CN.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Lang.zh-HK.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Lang.zh-TW.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdvancedVoices.resx">
       <DependentUpon>AdvancedVoices.cs</DependentUpon>
     </EmbeddedResource>

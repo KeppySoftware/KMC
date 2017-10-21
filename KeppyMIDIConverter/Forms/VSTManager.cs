@@ -74,51 +74,51 @@ namespace KeppyMIDIConverter
                 bitnow = "32-bit";
                 bitreq = "64-bit";
             }
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc != null)
+            if (KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc != null)
             {
-                Desc1.Text = KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc;
+                Desc1.Text = KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc;
                 Unload1.Enabled = true;
                 Load1.Enabled = false;
             }
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc2 != null)
+            if (KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc2 != null)
             {
-                Desc2.Text = KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc2;
+                Desc2.Text = KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc2;
                 Unload2.Enabled = true;
                 Load2.Enabled = false;
             }
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc3 != null)
+            if (KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc3 != null)
             {
-                Desc3.Text = KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc3;
+                Desc3.Text = KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc3;
                 Unload3.Enabled = true;
                 Load3.Enabled = false;
             }
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc4 != null)
+            if (KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc4 != null)
             {
-                Desc4.Text = KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc4;
+                Desc4.Text = KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc4;
                 Unload4.Enabled = true;
                 Load4.Enabled = false;
             }
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc5 != null)
+            if (KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc5 != null)
             {
-                Desc5.Text = KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc5;
+                Desc5.Text = KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc5;
                 Unload5.Enabled = true;
                 Load5.Enabled = false;
             }
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc6 != null)
+            if (KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc6 != null)
             {
-                Desc6.Text = KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc6;
+                Desc6.Text = KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc6;
                 Unload6.Enabled = true;
                 Load6.Enabled = false;
             }
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc7 != null)
+            if (KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc7 != null)
             {
-                Desc1.Text = KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc7;
+                Desc1.Text = KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc7;
                 Unload7.Enabled = true;
                 Load7.Enabled = false;
             }
-            if (KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc8 != null)
+            if (KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc8 != null)
             {
-                Desc8.Text = KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc8;
+                Desc8.Text = KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc8;
                 Unload8.Enabled = true;
                 Load8.Enabled = false;
             }
@@ -149,42 +149,42 @@ namespace KeppyMIDIConverter
 
         private void Load_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.KMCGlobals.VSTDLL, ref MainWindow.KMCGlobals.VSTDLLDesc, Desc1, Unload1, Load1, 1);
+            LoadVST(ref MainWindow.VSTs.VSTDLL, ref MainWindow.VSTs.VSTDLLDesc, Desc1, Unload1, Load1, 1);
         }
 
         private void Load2_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.KMCGlobals.VSTDLL2, ref MainWindow.KMCGlobals.VSTDLLDesc2, Desc2, Unload2, Load2, 2);
+            LoadVST(ref MainWindow.VSTs.VSTDLL2, ref MainWindow.VSTs.VSTDLLDesc2, Desc2, Unload2, Load2, 2);
         }
 
         private void Load3_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.KMCGlobals.VSTDLL3, ref MainWindow.KMCGlobals.VSTDLLDesc3, Desc3, Unload3, Load3, 3);
+            LoadVST(ref MainWindow.VSTs.VSTDLL3, ref MainWindow.VSTs.VSTDLLDesc3, Desc3, Unload3, Load3, 3);
         }
 
         private void Load4_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.KMCGlobals.VSTDLL4, ref MainWindow.KMCGlobals.VSTDLLDesc4, Desc4, Unload4, Load4, 4);
+            LoadVST(ref MainWindow.VSTs.VSTDLL4, ref MainWindow.VSTs.VSTDLLDesc4, Desc4, Unload4, Load4, 4);
         }
 
         private void Load5_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.KMCGlobals.VSTDLL5, ref MainWindow.KMCGlobals.VSTDLLDesc5, Desc5, Unload5, Load5, 5);
+            LoadVST(ref MainWindow.VSTs.VSTDLL5, ref MainWindow.VSTs.VSTDLLDesc5, Desc5, Unload5, Load5, 5);
         }
 
         private void Load6_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.KMCGlobals.VSTDLL6, ref MainWindow.KMCGlobals.VSTDLLDesc6, Desc6, Unload6, Load6, 6);
+            LoadVST(ref MainWindow.VSTs.VSTDLL6, ref MainWindow.VSTs.VSTDLLDesc6, Desc6, Unload6, Load6, 6);
         }
 
         private void Load7_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.KMCGlobals.VSTDLL7, ref MainWindow.KMCGlobals.VSTDLLDesc7, Desc7, Unload7, Load7, 7);
+            LoadVST(ref MainWindow.VSTs.VSTDLL7, ref MainWindow.VSTs.VSTDLLDesc7, Desc7, Unload7, Load7, 7);
         }
 
         private void Load8_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.KMCGlobals.VSTDLL8, ref MainWindow.KMCGlobals.VSTDLLDesc8, Desc8, Unload8, Load8, 8);
+            LoadVST(ref MainWindow.VSTs.VSTDLL8, ref MainWindow.VSTs.VSTDLLDesc8, Desc8, Unload8, Load8, 8);
         }
 
         private void LoadVST(ref String VSTDLL, ref String VSTDLLDesc, Label Desc, Button Unload, Button Load, Int32 NumVST)
@@ -302,8 +302,8 @@ namespace KeppyMIDIConverter
         private void Unload_Click(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.vstIInfo = new BASS_VST_INFO();
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLL = null;
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLL = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc = null;
             Desc1.Text = MainWindow.res_man.GetString("EmptySlot", MainWindow.cul) + " 1";
             Unload1.Enabled = false;
             Load1.Enabled = true;
@@ -311,8 +311,8 @@ namespace KeppyMIDIConverter
 
         private void Unload2_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLL2 = null;
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc2 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLL2 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc2 = null;
             Desc2.Text = MainWindow.res_man.GetString("EmptySlot", MainWindow.cul) + " 2";
             Unload2.Enabled = false;
             Load2.Enabled = true;
@@ -320,8 +320,8 @@ namespace KeppyMIDIConverter
 
         private void Unload3_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLL3 = null;
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc3 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLL3 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc3 = null;
             Desc3.Text = MainWindow.res_man.GetString("EmptySlot", MainWindow.cul) + " 3";
             Unload3.Enabled = false;
             Load3.Enabled = true;
@@ -329,8 +329,8 @@ namespace KeppyMIDIConverter
 
         private void Unload4_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLL4 = null;
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc4 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLL4 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc4 = null;
             Desc4.Text = MainWindow.res_man.GetString("EmptySlot", MainWindow.cul) + " 4";
             Unload4.Enabled = false;
             Load4.Enabled = true;
@@ -338,8 +338,8 @@ namespace KeppyMIDIConverter
 
         private void Unload5_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLL5 = null;
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc5 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLL5 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc5 = null;
             Desc5.Text = MainWindow.res_man.GetString("EmptySlot", MainWindow.cul) + " 5";
             Unload5.Enabled = false;
             Load5.Enabled = true;
@@ -347,8 +347,8 @@ namespace KeppyMIDIConverter
 
         private void Unload6_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLL6 = null;
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc6 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLL6 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc6 = null;
             Desc6.Text = MainWindow.res_man.GetString("EmptySlot", MainWindow.cul) + " 6";
             Unload6.Enabled = false;
             Load6.Enabled = true;
@@ -356,8 +356,8 @@ namespace KeppyMIDIConverter
 
         private void Unload7_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLL7 = null;
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc7 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLL7 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc7 = null;
             Desc7.Text = MainWindow.res_man.GetString("EmptySlot", MainWindow.cul) + " 7";
             Unload7.Enabled = false;
             Load7.Enabled = true;
@@ -365,8 +365,8 @@ namespace KeppyMIDIConverter
 
         private void Unload8_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLL8 = null;
-            KeppyMIDIConverter.MainWindow.KMCGlobals.VSTDLLDesc8 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLL8 = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDesc8 = null;
             Desc8.Text = MainWindow.res_man.GetString("EmptySlot", MainWindow.cul) + " 8";
             Unload8.Enabled = false;
             Load8.Enabled = true;

@@ -29,7 +29,6 @@
             this.AdvSettingsButton = new System.Windows.Forms.Button();
             this.VoiceLimit = new System.Windows.Forms.NumericUpDown();
             this.VoiceLabel = new System.Windows.Forms.Label();
-            this.ExportWhere = new System.Windows.Forms.SaveFileDialog();
             this.labelRMS = new System.Windows.Forms.Label();
             this.CurrentStatusText = new System.Windows.Forms.Label();
             this.RealTimePlayBack = new System.ComponentModel.BackgroundWorker();
@@ -55,6 +54,8 @@
             this.menuItem12 = new System.Windows.Forms.MenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.OptionsStrip = new System.Windows.Forms.MenuItem();
+            this.RenderModeChanger = new System.Windows.Forms.MenuItem();
+            this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.AutoUpdatesCheckStrip = new System.Windows.Forms.MenuItem();
             this.enabledToolStripMenuItem3 = new System.Windows.Forms.MenuItem();
             this.disabledToolStripMenuItem3 = new System.Windows.Forms.MenuItem();
@@ -98,6 +99,10 @@
             this.GetInfoWorker = new System.ComponentModel.BackgroundWorker();
             this.ThemeCheck = new System.ComponentModel.BackgroundWorker();
             this.RealTimePreviewTrackBar = new System.Windows.Forms.TrackBar();
+            this.RenderModeSimulation = new System.Windows.Forms.MenuItem();
+            this.RenderModeStandard = new System.Windows.Forms.MenuItem();
+            this.menuItem14 = new System.Windows.Forms.MenuItem();
+            this.menuItem15 = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -199,15 +204,6 @@
             this.VoiceLabel.TabIndex = 0;
             this.VoiceLabel.Text = "Voice limit:";
             this.VoiceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ExportWhere
-            // 
-            this.ExportWhere.AddExtension = false;
-            this.ExportWhere.Filter = "Select a folder|*.*";
-            this.ExportWhere.OverwritePrompt = false;
-            this.ExportWhere.RestoreDirectory = true;
-            this.ExportWhere.Title = "Where do you want to export?";
-            this.ExportWhere.ValidateNames = false;
             // 
             // labelRMS
             // 
@@ -419,6 +415,8 @@
             // 
             this.OptionsStrip.Index = 1;
             this.OptionsStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.RenderModeChanger,
+            this.menuItem9,
             this.AutoUpdatesCheckStrip,
             this.AutomaticShutdownStrip,
             this.ClearListAutomaticallyStrip,
@@ -430,9 +428,24 @@
             this.forceCloseTheApplicationToolStripMenuItem});
             this.OptionsStrip.Text = "Options";
             // 
+            // RenderModeChanger
+            // 
+            this.RenderModeChanger.Index = 0;
+            this.RenderModeChanger.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.RenderModeStandard,
+            this.RenderModeSimulation,
+            this.menuItem14,
+            this.menuItem15});
+            this.RenderModeChanger.Text = "Render mode";
+            // 
+            // menuItem9
+            // 
+            this.menuItem9.Index = 1;
+            this.menuItem9.Text = "-";
+            // 
             // AutoUpdatesCheckStrip
             // 
-            this.AutoUpdatesCheckStrip.Index = 0;
+            this.AutoUpdatesCheckStrip.Index = 2;
             this.AutoUpdatesCheckStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem3,
             this.disabledToolStripMenuItem3});
@@ -452,7 +465,7 @@
             // 
             // AutomaticShutdownStrip
             // 
-            this.AutomaticShutdownStrip.Index = 1;
+            this.AutomaticShutdownStrip.Index = 3;
             this.AutomaticShutdownStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem,
             this.disabledToolStripMenuItem});
@@ -472,7 +485,7 @@
             // 
             // ClearListAutomaticallyStrip
             // 
-            this.ClearListAutomaticallyStrip.Index = 2;
+            this.ClearListAutomaticallyStrip.Index = 4;
             this.ClearListAutomaticallyStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem1,
             this.disabledToolStripMenuItem1});
@@ -492,7 +505,7 @@
             // 
             // ConvPosOrTimeLeft
             // 
-            this.ConvPosOrTimeLeft.Index = 3;
+            this.ConvPosOrTimeLeft.Index = 5;
             this.ConvPosOrTimeLeft.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem2,
             this.disabledToolStripMenuItem2});
@@ -512,7 +525,7 @@
             // 
             // AudioEventsStrip
             // 
-            this.AudioEventsStrip.Index = 4;
+            this.AudioEventsStrip.Index = 6;
             this.AudioEventsStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.enabledToolStripMenuItem4,
             this.disabledToolStripMenuItem4});
@@ -532,25 +545,27 @@
             // 
             // menuItem13
             // 
-            this.menuItem13.Index = 5;
+            this.menuItem13.Index = 7;
             this.menuItem13.Text = "-";
+            this.menuItem13.Visible = false;
             // 
             // OverrideStrip
             // 
             this.VistaMenuSys.SetImage(this.OverrideStrip, global::KeppyMIDIConverter.Properties.Resources.configure_icon);
-            this.OverrideStrip.Index = 6;
+            this.OverrideStrip.Index = 8;
             this.OverrideStrip.Text = "Override language";
+            this.OverrideStrip.Visible = false;
             this.OverrideStrip.Click += new System.EventHandler(this.OverrideStrip_Click);
             // 
             // menuItem2
             // 
-            this.menuItem2.Index = 7;
+            this.menuItem2.Index = 9;
             this.menuItem2.Text = "-";
             // 
             // forceCloseTheApplicationToolStripMenuItem
             // 
             this.VistaMenuSys.SetImage(this.forceCloseTheApplicationToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
-            this.forceCloseTheApplicationToolStripMenuItem.Index = 8;
+            this.forceCloseTheApplicationToolStripMenuItem.Index = 10;
             this.forceCloseTheApplicationToolStripMenuItem.Text = "Crash the application";
             this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
             // 
@@ -736,6 +751,29 @@
             this.RealTimePreviewTrackBar.TickFrequency = 0;
             this.RealTimePreviewTrackBar.Scroll += new System.EventHandler(this.RealTimePreviewTrackBar_Scroll);
             // 
+            // RenderModeSimulation
+            // 
+            this.RenderModeSimulation.Index = 1;
+            this.RenderModeSimulation.Text = "Real-Time simulation";
+            this.RenderModeSimulation.Click += new System.EventHandler(this.RenderModeSimulation_Click);
+            // 
+            // RenderModeStandard
+            // 
+            this.RenderModeStandard.Index = 0;
+            this.RenderModeStandard.Text = "Standard";
+            this.RenderModeStandard.Click += new System.EventHandler(this.RenderModeStandard_Click);
+            // 
+            // menuItem14
+            // 
+            this.menuItem14.Index = 2;
+            this.menuItem14.Text = "-";
+            // 
+            // menuItem15
+            // 
+            this.menuItem15.Enabled = false;
+            this.menuItem15.Index = 3;
+            this.menuItem15.Text = "It doesn\'t affect the preview feature";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -771,7 +809,6 @@
         #endregion
 
         private System.Windows.Forms.OpenFileDialog MIDIImport;
-        private System.Windows.Forms.SaveFileDialog ExportWhere;
         public System.ComponentModel.BackgroundWorker RealTimePlayBack;
         private System.Windows.Forms.ToolTip VolumeTip;
         private System.Windows.Forms.Panel panel1;
@@ -846,6 +883,12 @@
         private System.Windows.Forms.MenuItem DiscordHypeSquadRef;
         private System.ComponentModel.BackgroundWorker ThemeCheck;
         public System.Windows.Forms.TrackBar RealTimePreviewTrackBar;
+        private System.Windows.Forms.MenuItem menuItem9;
+        private System.Windows.Forms.MenuItem RenderModeStandard;
+        private System.Windows.Forms.MenuItem RenderModeSimulation;
+        private System.Windows.Forms.MenuItem menuItem14;
+        private System.Windows.Forms.MenuItem menuItem15;
+        public System.Windows.Forms.MenuItem RenderModeChanger;
     }
 }
 

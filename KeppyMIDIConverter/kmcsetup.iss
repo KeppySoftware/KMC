@@ -5,7 +5,7 @@
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '17.2.6'
+#define MyAppVersion '17.3.0'
 
 [Setup]
 AllowCancelDuringInstall=False

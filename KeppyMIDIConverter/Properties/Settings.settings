@@ -77,5 +77,8 @@
     <Setting Name="DonationShownWhen" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">2017-05-31</Value>
     </Setting>
+    <Setting Name="RealTimeSim" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

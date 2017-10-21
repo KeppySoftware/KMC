@@ -62,6 +62,7 @@ namespace KeppyMIDIConverter
 
         private static void DisableImportButtons()
         {
+            MainWindow.Delegate.RenderModeChanger.Enabled = false;
             MainWindow.Delegate.importMIDIsToolStripMenuItem.Enabled = false;
             MainWindow.Delegate.removeSelectedMIDIsToolStripMenuItem.Enabled = false;
             MainWindow.Delegate.clearMIDIsListToolStripMenuItem.Enabled = false;
@@ -70,6 +71,7 @@ namespace KeppyMIDIConverter
 
         private static void EnableImportButtons()
         {
+            MainWindow.Delegate.RenderModeChanger.Enabled = true;
             MainWindow.Delegate.importMIDIsToolStripMenuItem.Enabled = true;
             MainWindow.Delegate.removeSelectedMIDIsToolStripMenuItem.Enabled = true;
             MainWindow.Delegate.clearMIDIsListToolStripMenuItem.Enabled = true;
@@ -406,7 +408,7 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
-                    if (MainWindow.KMCGlobals.Soundfonts.Length == 0)
+                    if (MainWindow.SoundFontSys.Soundfonts.Length == 0)
                     {
                         DirectoryInfo PathToGenericSF = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location);
                         String FullPath = String.Format("{0}\\GMGeneric.sf2", PathToGenericSF.Parent.FullName);
@@ -491,7 +493,6 @@ namespace KeppyMIDIConverter
 
         public static void KMCIdle()
         {
-            if (MainWindow.Delegate.Cursor != Cursors.Arrow) MainWindow.Delegate.Cursor = Cursors.Arrow;
             CurrentTitle(0);
             SetStatus(0);
             CurrentMode(0);
@@ -500,7 +501,6 @@ namespace KeppyMIDIConverter
 
         public static void KMCMemoryAllocation()
         {
-            if (MainWindow.Delegate.Cursor != Cursors.WaitCursor) MainWindow.Delegate.Cursor = Cursors.AppStarting;
             CurrentTitle(1);
             SetStatus(1);
             CurrentMode(1);
@@ -509,7 +509,6 @@ namespace KeppyMIDIConverter
 
         public static void KMCBusy()
         {
-            if (MainWindow.Delegate.Cursor != Cursors.Arrow) MainWindow.Delegate.Cursor = Cursors.Arrow;
             CurrentTitle(2);
             SetStatus(2);
             CurrentMode(2);

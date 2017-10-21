@@ -302,7 +302,7 @@ namespace KeppyMIDIConverter
 
         public static CultureInfo CultureFunc(CultureInfo ci)
         {
-            if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
+            /* if (ci.Name == "it-IT" | ci.Name == "it-CH") // Kep's native language first ;)
                 return CultureInfo.CreateSpecificCulture("it-IT");
             else if (ci.Name == "et-EE")
                 return CultureInfo.CreateSpecificCulture("et-EE");
@@ -333,12 +333,14 @@ namespace KeppyMIDIConverter
             else if (ci.Name == "ja-JP")
                 return CultureInfo.CreateSpecificCulture("ja-JP");
             else // The current language of the UI is not available, fallback to English.
-                return CultureInfo.CreateSpecificCulture("en-US");
+                return CultureInfo.CreateSpecificCulture("en-US"); */
+
+            return CultureInfo.CreateSpecificCulture("en-US");
         }
 
         public static CultureInfo ReturnCulture(Boolean Default)
         {
-            try
+            /* try
             {
                 if (Default)
                 {
@@ -360,7 +362,9 @@ namespace KeppyMIDIConverter
             catch
             {
                 return CultureInfo.CreateSpecificCulture("en-US");
-            }
+            } */
+
+            return CultureInfo.CreateSpecificCulture("en-US");
         }
 
         public static void Donate()

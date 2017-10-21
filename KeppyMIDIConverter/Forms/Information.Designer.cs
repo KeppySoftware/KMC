@@ -153,6 +153,7 @@
             this.TranslationInfo.TabIndex = 1;
             this.TranslationInfo.Text = "Translation by A";
             this.TranslationInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TranslationInfo.Visible = false;
             // 
             // tabControl1
             // 
