@@ -575,7 +575,7 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
-                    BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_BUFFER | BASSWASAPIInit.BASS_WASAPI_SHARED, 0, 0, null, IntPtr.Zero);
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 2, BASSWASAPIInit.BASS_WASAPI_BUFFER, 0, 0, null, IntPtr.Zero);
                     BASS_WASAPI_DEVICEINFO info = new BASS_WASAPI_DEVICEINFO();
                     BassWasapi.BASS_WASAPI_GetDeviceInfo(BassWasapi.BASS_WASAPI_GetDevice(), info);
                     KMCGlobals.RealTimeFreq = info.mixfreq;
@@ -628,15 +628,15 @@ namespace KeppyMIDIConverter
                 {
                     if (KMCGlobals.VSTMode == true)
                     {
-                        int temphandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 1);
-                        VSTs._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 2);
-                        VSTs._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 3);
-                        VSTs._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 4);
-                        VSTs._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 5);
-                        VSTs._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 6);
-                        VSTs._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 7);
-                        VSTs._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 8);
-                        if (KMCGlobals.IsLoudMaxEnabled == true) KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(towhichstream, String.Format("{0}\\LoudMax.dll", Application.StartupPath), BASSVSTDsp.BASS_VST_DEFAULT, 9);
+                        int temphandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL, BASSVSTDsp.BASS_VST_DEFAULT, 0);
+                        VSTs._VSTHandle2 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL2, BASSVSTDsp.BASS_VST_DEFAULT, 1);
+                        VSTs._VSTHandle3 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL3, BASSVSTDsp.BASS_VST_DEFAULT, 2);
+                        VSTs._VSTHandle4 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL4, BASSVSTDsp.BASS_VST_DEFAULT, 3);
+                        VSTs._VSTHandle5 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL5, BASSVSTDsp.BASS_VST_DEFAULT, 4);
+                        VSTs._VSTHandle6 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL6, BASSVSTDsp.BASS_VST_DEFAULT, 5);
+                        VSTs._VSTHandle7 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL7, BASSVSTDsp.BASS_VST_DEFAULT, 6);
+                        VSTs._VSTHandle8 = BassVst.BASS_VST_ChannelSetDSP(towhichstream, VSTs.VSTDLL8, BASSVSTDsp.BASS_VST_DEFAULT, 7);
+                        if (KMCGlobals.IsLoudMaxEnabled == true && KMCGlobals.RenderingMode == true) KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(towhichstream, String.Format("{0}\\LoudMax.dll", AppDomain.CurrentDomain.BaseDirectory), BASSVSTDsp.BASS_VST_KEEP_CHANS, 8);
                         if (KMCGlobals.VSTSkipSettings != true)
                         {
                             BASS_VST_INFO vstInfo = new BASS_VST_INFO();
@@ -782,20 +782,20 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, 
-                    BASSFlag.BASS_STREAM_DECODE | (Properties.Settings.Default.LoudMaxEnabled ? BASSFlag.BASS_DEFAULT : BASSFlag.BASS_SAMPLE_FLOAT) | BASSFlag.BASS_MIDI_DECAYEND,
-                    0);
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND, 0);
 
                 if (type == 1)
                 {
                     BASS_WASAPI_INFO infoW = new BASS_WASAPI_INFO();
 
-                    BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_BUFFER, 0, 0, null, IntPtr.Zero);
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 2, BASSWASAPIInit.BASS_WASAPI_BUFFER, 0, 0, null, IntPtr.Zero);
                     BassWasapi.BASS_WASAPI_GetInfo(infoW);
                     BassWasapi.BASS_WASAPI_Free();
 
                     KMCGlobals._myWasapi = new WASAPIPROC(MyWasapiProc);
-                    BassWasapi.BASS_WASAPI_Init(-1, 0, 0, BASSWASAPIInit.BASS_WASAPI_EVENT, infoW.buflen, 0, KMCGlobals._myWasapi, IntPtr.Zero);
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 2, BASSWASAPIInit.BASS_WASAPI_EVENT, infoW.buflen, 0, KMCGlobals._myWasapi, IntPtr.Zero);
+
+                    if (Bass.BASS_ErrorGetCode() != 0) throw new Exception("Can not initialize WASAPI.");
                 }
 
                 Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
@@ -824,6 +824,7 @@ namespace KeppyMIDIConverter
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
 
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
+
                 BASS_MIDI_EVENT[] eventChunk;
                 try
                 {
@@ -847,6 +848,7 @@ namespace KeppyMIDIConverter
                         "Also, try increasing the size of your paging file, you might not have enough RAM.\n\n" +
                         "Additional info:\n" + ex.ToString());
                 }
+
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
                 KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
                 BassWasapi.BASS_WASAPI_SetVolume(BASSWASAPIVolume.BASS_WASAPI_VOL_SESSION, ((float)KMCGlobals.Volume / 10000.0f));
@@ -985,7 +987,7 @@ namespace KeppyMIDIConverter
                     } while (File.Exists(String.Format("{0}.{1}", temp, ext)));
                     BassEnc.BASS_Encode_Stop(VSTs._VSTHandle);
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
-                    KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((KMCGlobals.vstIInfo.isInstrument ? VSTs._VSTHandle : KMCGlobals._recHandle), EncoderString(enc, temp, ext, args), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
+                    KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((KMCGlobals.vstIInfo.isInstrument ? VSTs._VSTHandle : KMCGlobals._recHandle), EncoderString(enc, temp, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
                     ID3Meta.FileToEdit = EncoderString(enc, temp, ext, args);
                     // MessageBox.Show(EncoderString(enc, temp, ext, args));
                 }
@@ -993,7 +995,7 @@ namespace KeppyMIDIConverter
                 {
                     BassEnc.BASS_Encode_Stop(VSTs._VSTHandle);
                     BassEnc.BASS_Encode_Stop(KMCGlobals._recHandle);
-                    KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((KMCGlobals.vstIInfo.isInstrument ? VSTs._VSTHandle : KMCGlobals._recHandle), EncoderString(enc, pathwithoutext, ext, args), BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
+                    KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((KMCGlobals.vstIInfo.isInstrument ? VSTs._VSTHandle : KMCGlobals._recHandle), EncoderString(enc, pathwithoutext, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
                     ID3Meta.FileToEdit = EncoderString(enc, pathwithoutext, ext, args);
                     // MessageBox.Show(EncoderString(enc, pathwithoutext, ext, args));
                 }

@@ -55,6 +55,10 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.OptionsStrip = new System.Windows.Forms.MenuItem();
             this.RenderModeChanger = new System.Windows.Forms.MenuItem();
+            this.RenderModeStandard = new System.Windows.Forms.MenuItem();
+            this.RenderModeSimulation = new System.Windows.Forms.MenuItem();
+            this.menuItem14 = new System.Windows.Forms.MenuItem();
+            this.menuItem15 = new System.Windows.Forms.MenuItem();
             this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.AutoUpdatesCheckStrip = new System.Windows.Forms.MenuItem();
             this.enabledToolStripMenuItem3 = new System.Windows.Forms.MenuItem();
@@ -99,10 +103,6 @@
             this.GetInfoWorker = new System.ComponentModel.BackgroundWorker();
             this.ThemeCheck = new System.ComponentModel.BackgroundWorker();
             this.RealTimePreviewTrackBar = new System.Windows.Forms.TrackBar();
-            this.RenderModeSimulation = new System.Windows.Forms.MenuItem();
-            this.RenderModeStandard = new System.Windows.Forms.MenuItem();
-            this.menuItem14 = new System.Windows.Forms.MenuItem();
-            this.menuItem15 = new System.Windows.Forms.MenuItem();
             this.SettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -438,6 +438,29 @@
             this.menuItem15});
             this.RenderModeChanger.Text = "Render mode";
             // 
+            // RenderModeStandard
+            // 
+            this.RenderModeStandard.Index = 0;
+            this.RenderModeStandard.Text = "Standard";
+            this.RenderModeStandard.Click += new System.EventHandler(this.RenderModeStandard_Click);
+            // 
+            // RenderModeSimulation
+            // 
+            this.RenderModeSimulation.Index = 1;
+            this.RenderModeSimulation.Text = "Real-Time simulation";
+            this.RenderModeSimulation.Click += new System.EventHandler(this.RenderModeSimulation_Click);
+            // 
+            // menuItem14
+            // 
+            this.menuItem14.Index = 2;
+            this.menuItem14.Text = "-";
+            // 
+            // menuItem15
+            // 
+            this.menuItem15.Enabled = false;
+            this.menuItem15.Index = 3;
+            this.menuItem15.Text = "It doesn\'t affect the preview feature";
+            // 
             // menuItem9
             // 
             this.menuItem9.Index = 1;
@@ -750,29 +773,6 @@
             this.RealTimePreviewTrackBar.TabIndex = 20;
             this.RealTimePreviewTrackBar.TickFrequency = 0;
             this.RealTimePreviewTrackBar.Scroll += new System.EventHandler(this.RealTimePreviewTrackBar_Scroll);
-            // 
-            // RenderModeSimulation
-            // 
-            this.RenderModeSimulation.Index = 1;
-            this.RenderModeSimulation.Text = "Real-Time simulation";
-            this.RenderModeSimulation.Click += new System.EventHandler(this.RenderModeSimulation_Click);
-            // 
-            // RenderModeStandard
-            // 
-            this.RenderModeStandard.Index = 0;
-            this.RenderModeStandard.Text = "Standard";
-            this.RenderModeStandard.Click += new System.EventHandler(this.RenderModeStandard_Click);
-            // 
-            // menuItem14
-            // 
-            this.menuItem14.Index = 2;
-            this.menuItem14.Text = "-";
-            // 
-            // menuItem15
-            // 
-            this.menuItem15.Enabled = false;
-            this.menuItem15.Index = 3;
-            this.menuItem15.Text = "It doesn\'t affect the preview feature";
             // 
             // MainWindow
             // 
