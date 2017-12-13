@@ -2243,7 +2243,7 @@ namespace KeppyMIDIConverter
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomStart ? CustomStartStream : str);
                 player.Play();
                 str.Dispose();
-                CustomStartStream.Dispose();
+                if (File.Exists(CustomStartLnk)) CustomStartStream.Dispose();
             }
         }
 
@@ -2259,7 +2259,7 @@ namespace KeppyMIDIConverter
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomStop ? CustomStopStream : str);
                 player.Play();
                 str.Dispose();
-                CustomStopStream.Dispose();
+                if (File.Exists(CustomStopLnk)) CustomStopStream.Dispose();
             }
         }
 
@@ -2275,7 +2275,7 @@ namespace KeppyMIDIConverter
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomError ? CustomErrorStream : str);
                 player.Play();
                 str.Dispose();
-                CustomErrorStream.Dispose();
+                if (File.Exists(CustomErrorLnk)) CustomErrorStream.Dispose();
             }
         }
 
