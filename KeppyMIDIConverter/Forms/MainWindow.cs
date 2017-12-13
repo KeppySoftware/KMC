@@ -568,7 +568,7 @@ namespace KeppyMIDIConverter
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
                 Bass.BASS_Free();
                 KMCGlobals.vstIInfo = new BASS_VST_INFO();
-                Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
+                Bass.BASS_Init(0, KMCGlobals.Frequency, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
                 if (type == 0)
                 {
                     Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
@@ -821,7 +821,7 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, KMCGlobals.Frequency);
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, 0);
 
                 KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(KMCGlobals._recHandle);
 
@@ -850,7 +850,7 @@ namespace KeppyMIDIConverter
                 }
 
                 Bass.BASS_StreamFree(KMCGlobals._recHandle);
-                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, KMCGlobals.Frequency);
+                KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, 0);
                 BassWasapi.BASS_WASAPI_SetVolume(BASSWASAPIVolume.BASS_WASAPI_VOL_SESSION, ((float)KMCGlobals.Volume / 10000.0f));
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
@@ -2231,33 +2231,51 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private static bool CustomStart = false;
         public static void PlayConversionStart()
         {
+            FileStream CustomStartStream = null;
+            String CustomStartLnk = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "convstart.wav";
             if (Properties.Settings.Default.AudioEvents)
             {
+                if (File.Exists(CustomStartLnk)) { CustomStart = true; CustomStartStream = new FileStream(CustomStartLnk, FileMode.Open); } else { CustomStart = false; }
                 System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convstart;
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
-                player.PlaySync();
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomStart ? CustomStartStream : str);
+                player.Play();
+                str.Dispose();
+                CustomStartStream.Dispose();
             }
         }
 
+        private static bool CustomStop = false;
         public static void PlayConversionStop()
         {
+            FileStream CustomStopStream = null;
+            String CustomStopLnk = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "convfin.wav";
             if (Properties.Settings.Default.AudioEvents)
             {
+                if (File.Exists(CustomStopLnk)) { CustomStop = true; CustomStopStream = new FileStream(CustomStopLnk, FileMode.Open); } else { CustomStop = false; }
                 System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convfin;
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomStop ? CustomStopStream : str);
                 player.Play();
+                str.Dispose();
+                CustomStopStream.Dispose();
             }
         }
 
+        private static bool CustomError = false;
         public static void PlayConverterError()
         {
+            FileStream CustomErrorStream = null;
+            String CustomErrorLnk = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "convfail.wav";
             if (Properties.Settings.Default.AudioEvents)
             {
+                if (File.Exists(CustomErrorLnk)) { CustomError = true; CustomErrorStream = new FileStream(CustomErrorLnk, FileMode.Open); } else { CustomError = false; }
                 System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convfail;
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(str);
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomError ? CustomErrorStream : str);
                 player.Play();
+                str.Dispose();
+                CustomErrorStream.Dispose();
             }
         }
 
