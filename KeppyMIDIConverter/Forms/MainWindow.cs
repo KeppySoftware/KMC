@@ -801,6 +801,7 @@ namespace KeppyMIDIConverter
                 Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_GVOL_STREAM, KMCGlobals.Volume);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, KMCGlobals.LimitVoicesInt);
                 Bass.BASS_ChannelSetAttribute(KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
+
                 if (Path.GetFileNameWithoutExtension(str).Length >= 49)
                     KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                 else
@@ -845,7 +846,8 @@ namespace KeppyMIDIConverter
                 {
                     throw new MIDILoadError("Can not load this MIDI.\n\n" +
                         "Are you sure you're not trying to open it in the 32-bit version of Keppy's MIDI Converter?\n" +
-                        "Also, try increasing the size of your paging file, you might not have enough RAM.\n\n" +
+                        "Also, try increasing the size of your paging file, you might not have enough RAM.\n" +
+                        "The MIDI might also be corrupted.\n\n" +
                         "Additional info:\n" + ex.ToString());
                 }
 
@@ -1767,36 +1769,49 @@ namespace KeppyMIDIConverter
             {
                 foreach (string str in filenames)
                 {
-                    if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi" || Path.GetExtension(str).ToLower() == ".riff")
+                    Stream SM = File.Open(str, FileMode.Open);
+                    StreamReader SMs = new StreamReader(SM);
+                    BinaryReader SMb = new BinaryReader(SMs.BaseStream);
+                    String Header = new String(SMb.ReadChars(4));
+
+                    SMb.Dispose();
+                    SMs.Dispose();
+                    SM.Dispose();
+
+                    if (Header.Contains("MThd") || Header.Contains("RIFF"))
                     {
                         Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
                             String.Format("How many times do you want to add this MIDI?\n{0}", str), Title, "1"));
 
                         if (UserAnswer == 0 || UserAnswer == null) UserAnswer = 1;
 
-                        for (int i = 0; i < UserAnswer; i++)
-                        {
-                            string[] saLvwItem = new string[4];
-                            string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
-                            saLvwItem[0] = str;
-                            saLvwItem[1] = midiinfo[1];
-                            saLvwItem[2] = midiinfo[0];
-                            saLvwItem[3] = midiinfo[2];
-                            ListViewItem lvi = new ListViewItem(saLvwItem);
-                            ToAddOrNotToAdd(lvi, midiinfo[1], filenames[0]);
-                        }
+                        string[] saLvwItem = new string[4];
+                        string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
+                        saLvwItem[0] = str;
+                        saLvwItem[1] = midiinfo[1];
+                        saLvwItem[2] = midiinfo[0];
+                        saLvwItem[3] = midiinfo[2];
+                        ListViewItem lvi = new ListViewItem(saLvwItem);
+
+                        for (int i = 0; i < UserAnswer; i++) ToAddOrNotToAdd(lvi, midiinfo[1], filenames[0]);
                     }
-                    else
-                    {
-                        MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    else MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 foreach (string str in filenames)
                 {
-                    if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi")
+                    Stream SM = File.Open(str, FileMode.Open);
+                    StreamReader SMs = new StreamReader(SM);
+                    BinaryReader SMb = new BinaryReader(SMs.BaseStream);
+                    String Header = new String(SMb.ReadChars(4));
+
+                    SMb.Dispose();
+                    SMs.Dispose();
+                    SM.Dispose();
+
+                    if (Header.Contains("MThd") || Header.Contains("RIFF"))
                     {
                         string[] saLvwItem = new string[4];
                         string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
@@ -1807,11 +1822,9 @@ namespace KeppyMIDIConverter
                         ListViewItem lvi = new ListViewItem(saLvwItem);
                         ToAddOrNotToAdd(lvi, midiinfo[1], str);
                     }
-                    else
-                    {
-                        MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    else MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
                 KMCGlobals.MIDILastDirectory = Path.GetDirectoryName(filenames[0]);
                 Properties.Settings.Default.LastMIDIFolder = KMCGlobals.MIDILastDirectory;
                 Properties.Settings.Default.Save();

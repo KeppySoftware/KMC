@@ -453,7 +453,7 @@ Position: {1} - {2}
 Notes: {3} - {4}</value>
   </data>
   <data name="PlaybackText" xml:space="preserve">
-    <value>Keppy's MIDI Converter | Playback of {0}...</value>
+    <value>{0} | Playback of {1}...</value>
   </data>
   <data name="PlaybackXPTitle" xml:space="preserve">
     <value>Completed</value>
