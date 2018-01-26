@@ -1769,60 +1769,76 @@ namespace KeppyMIDIConverter
             {
                 foreach (string str in filenames)
                 {
-                    Stream SM = File.Open(str, FileMode.Open);
-                    StreamReader SMs = new StreamReader(SM);
-                    BinaryReader SMb = new BinaryReader(SMs.BaseStream);
-                    String Header = new String(SMb.ReadChars(4));
-
-                    SMb.Dispose();
-                    SMs.Dispose();
-                    SM.Dispose();
-
-                    if (Header.Contains("MThd") || Header.Contains("RIFF"))
+                    try
                     {
-                        Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
-                            String.Format("How many times do you want to add this MIDI?\n{0}", str), Title, "1"));
+                        Stream SM = File.Open(str, FileMode.Open);
+                        StreamReader SMs = new StreamReader(SM);
+                        BinaryReader SMb = new BinaryReader(SMs.BaseStream);
+                        String Header = new String(SMb.ReadChars(4));
 
-                        if (UserAnswer == 0 || UserAnswer == null) UserAnswer = 1;
+                        SMb.Dispose();
+                        SMs.Dispose();
+                        SM.Dispose();
 
-                        string[] saLvwItem = new string[4];
-                        string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
-                        saLvwItem[0] = str;
-                        saLvwItem[1] = midiinfo[1];
-                        saLvwItem[2] = midiinfo[0];
-                        saLvwItem[3] = midiinfo[2];
-                        ListViewItem lvi = new ListViewItem(saLvwItem);
+                        if (Header.Contains("MThd") || Header.Contains("RIFF"))
+                        {
+                            Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
+                                String.Format("How many times do you want to add this MIDI?\n{0}", str), Title, "1"));
 
-                        for (int i = 0; i < UserAnswer; i++) ToAddOrNotToAdd(lvi, midiinfo[1], filenames[0]);
+                            if (UserAnswer == 0 || UserAnswer == null) UserAnswer = 1;
+
+                            string[] saLvwItem = new string[4];
+                            string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
+                            saLvwItem[0] = str;
+                            saLvwItem[1] = midiinfo[1];
+                            saLvwItem[2] = midiinfo[0];
+                            saLvwItem[3] = midiinfo[2];
+                            ListViewItem lvi = new ListViewItem(saLvwItem);
+
+                            for (int i = 0; i < UserAnswer; i++) ToAddOrNotToAdd(lvi, midiinfo[1], filenames[0]);
+                        }
+                        else MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception exception)
+                    {
+                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), exception.ToString(), 0, 0);
+                        errordialog.ShowDialog();
+                    }
                 }
             }
             else
             {
                 foreach (string str in filenames)
                 {
-                    Stream SM = File.Open(str, FileMode.Open);
-                    StreamReader SMs = new StreamReader(SM);
-                    BinaryReader SMb = new BinaryReader(SMs.BaseStream);
-                    String Header = new String(SMb.ReadChars(4));
-
-                    SMb.Dispose();
-                    SMs.Dispose();
-                    SM.Dispose();
-
-                    if (Header.Contains("MThd") || Header.Contains("RIFF"))
+                    try
                     {
-                        string[] saLvwItem = new string[4];
-                        string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
-                        saLvwItem[0] = str;
-                        saLvwItem[1] = midiinfo[1];
-                        saLvwItem[2] = midiinfo[0];
-                        saLvwItem[3] = midiinfo[2];
-                        ListViewItem lvi = new ListViewItem(saLvwItem);
-                        ToAddOrNotToAdd(lvi, midiinfo[1], str);
+                        Stream SM = File.Open(str, FileMode.Open);
+                        StreamReader SMs = new StreamReader(SM);
+                        BinaryReader SMb = new BinaryReader(SMs.BaseStream);
+                        String Header = new String(SMb.ReadChars(4));
+
+                        SMb.Dispose();
+                        SMs.Dispose();
+                        SM.Dispose();
+
+                        if (Header.Contains("MThd") || Header.Contains("RIFF"))
+                        {
+                            string[] saLvwItem = new string[4];
+                            string[] midiinfo = GetMoreInfoMIDI(str, GetEntireSize);
+                            saLvwItem[0] = str;
+                            saLvwItem[1] = midiinfo[1];
+                            saLvwItem[2] = midiinfo[0];
+                            saLvwItem[3] = midiinfo[2];
+                            ListViewItem lvi = new ListViewItem(saLvwItem);
+                            ToAddOrNotToAdd(lvi, midiinfo[1], str);
+                        }
+                        else MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else MessageBox.Show(String.Format(MainWindow.res_man.GetString("InvalidMIDIFile", cul), Path.GetFileName(str)), res_man.GetString("Error", cul), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception exception)
+                    {
+                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("Error", cul), exception.ToString(), 0, 0);
+                        errordialog.ShowDialog();
+                    }
                 }
 
                 KMCGlobals.MIDILastDirectory = Path.GetDirectoryName(filenames[0]);

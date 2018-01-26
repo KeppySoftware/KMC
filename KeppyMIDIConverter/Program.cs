@@ -417,13 +417,7 @@ namespace KeppyMIDIConverter
                 }
             }
 
-            if (BirthDate.ToString("dd/MM") == "14/01")
-            {
-                EEPlay("EEHW", true);
-                MessageBox.Show("It's been " + (currentyear - 2016).ToString() + " years...\n\nI miss you.", "...", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                EEPlayer.Close();
-            }
-            else if (BirthDate.ToString("dd/MM") == "17/09")
+            if (BirthDate.ToString("dd/MM") == "17/09")
             {
                 EEPlay("EEBD", false);
                 MessageBox.Show("Today, KMC turned " + (currentyear - 2015).ToString() + " year(s) old!\n\nHappy birthday, awesome converter!", "Happy birthday to me, Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -441,7 +435,7 @@ namespace KeppyMIDIConverter
                 if (Chance.NextDouble() < 0.017)
                 {
                     EEPlay("EEHW", true);
-                    Who = "Keppy's";
+                    Who = "Someone's";
                 }
             }
             else if (BirthDate.ToString("dd/MM") == "05/12")
