@@ -889,4 +889,8 @@ L'avviso legale non verrà più visualizzato.</value>
     <value>Dona</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>Copia</value>
+    <comment>Used when creating a copy of an existing file.</comment>
+  </data>
 </root>

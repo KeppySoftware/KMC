@@ -175,14 +175,7 @@ namespace KeppyMIDIConverter
 
         public static void PerformUpdate()
         {
-            try
-            {
-                if (Properties.Settings.Default.AutoUpdateCheck) BasicFunctions.CheckForUpdates(true);
-            }
-            catch
-            {
-                MessageBox.Show(Languages.Parse("ConnectionError"), String.Format(Languages.Parse("ConnectionErrorTitle"), Program.Who, Program.Title), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            if (Properties.Settings.Default.AutoUpdateCheck) BasicFunctions.CheckForUpdates(true);
         }
     }
 }

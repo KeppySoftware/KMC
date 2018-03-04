@@ -887,4 +887,8 @@ The legal warning will not be displayed anymore.</value>
     <value>Donate</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>Copy</value>
+    <comment>Used when creating a copy of an existing file.</comment>
+  </data>
 </root>

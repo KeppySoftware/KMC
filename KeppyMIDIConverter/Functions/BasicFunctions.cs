@@ -165,34 +165,56 @@ namespace KeppyMIDIConverter
             }
         }
 
+        static Boolean AlreadyChecking = false;
         public static void CheckForUpdates(Boolean Startup)
         {
-            WebClient client = new WebClient();
-            Stream stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppyMIDIConverter/kmcupdate.txt");
-            StreamReader reader = new StreamReader(stream);
-            String newestversion = reader.ReadToEnd();
-            FileVersionInfo Driver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
-            Version x = null;
-            Version.TryParse(newestversion.ToString(), out x);
-            Version y = null;
-            Version.TryParse(Driver.FileVersion.ToString(), out y);
-            Thread.Sleep(50);
-            if (x > y)
+            if (!AlreadyChecking)
             {
-                DialogResult dialogResult = MessageBox.Show(String.Format(Languages.Parse("UpdateFound"), Program.Who, Program.Title), String.Format(Languages.Parse("UpdateFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                new Thread(() =>
                 {
-                    UpdateDownloader frm = new UpdateDownloader(newestversion);
-                    frm.StartPosition = FormStartPosition.CenterScreen;
-                    frm.ShowDialog();
-                }
-            }
-            else
-            {
-                if (!Startup)
-                {
-                    MessageBox.Show(String.Format(Languages.Parse("NoUpdatesFound"), Program.Who, Program.Title), String.Format(Languages.Parse("NoUpdatesFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                    AlreadyChecking = true;
+                    Thread.CurrentThread.IsBackground = true;
+
+                    WebClient client;
+                    Stream stream;
+                    try
+                    {
+                        client = new WebClient();
+                        stream = client.OpenRead("https://raw.githubusercontent.com/KaleidonKep99/Keppys-MIDI-Converter/master/KeppyMIDIConverter/kmcupdate.txt");
+                        StreamReader reader = new StreamReader(stream);
+                        String newestversion = reader.ReadToEnd();
+                        FileVersionInfo Converter = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+                        Version x = null;
+                        Version.TryParse(newestversion, out x);
+                        Version y = null;
+                        Version.TryParse(Converter.FileVersion.ToString(), out y);
+                        if (x > y)
+                        {
+                            DialogResult dialogResult = MessageBox.Show(String.Format(Languages.Parse("UpdateFound"), Program.Who, Program.Title, Converter.FileVersion, newestversion), String.Format(Languages.Parse("UpdateFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                UpdateDownloader frm = new UpdateDownloader(newestversion);
+                                frm.StartPosition = FormStartPosition.CenterScreen;
+                                frm.ShowDialog();
+                            }
+                        }
+                        else
+                        {
+                            if (!Startup)
+                            {
+                                MessageBox.Show(String.Format(Languages.Parse("NoUpdatesFound"), Program.Who, Program.Title), String.Format(Languages.Parse("NoUpdatesFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        if (!Startup)
+                        {
+                            MessageBox.Show(String.Format(Languages.Parse("NoUpdatesFound"), Program.Who, Program.Title), String.Format(Languages.Parse("NoUpdatesFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    AlreadyChecking = false;
+                }).Start();
             }
         }
 
