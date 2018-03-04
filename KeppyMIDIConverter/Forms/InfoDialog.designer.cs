@@ -252,7 +252,7 @@
             this.CFU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CFU.Location = new System.Drawing.Point(120, 266);
             this.CFU.Name = "CFU";
-            this.CFU.Size = new System.Drawing.Size(105, 23);
+            this.CFU.Size = new System.Drawing.Size(138, 23);
             this.CFU.TabIndex = 9;
             this.CFU.Text = "Check for updates";
             this.CFU.UseVisualStyleBackColor = true;

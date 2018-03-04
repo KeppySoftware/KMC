@@ -103,6 +103,10 @@ namespace KeppyMIDIConverter
                         Properties.Settings.Default.LastExportFolder = MainWindow.KMCDialogs.MIDIExport.FileName;
                         Properties.Settings.Default.Save();
 
+                        MainWindow.KMCGlobals.MIDIs = new string[MainWindow.Delegate.MIDIList.Items.Count];
+                        for (int i = 0; i < MainWindow.Delegate.MIDIList.Items.Count; i++)
+                            MainWindow.KMCGlobals.MIDIs[i] += MainWindow.Delegate.MIDIList.Items[i].Text;
+
                         if (Properties.Settings.Default.RealTimeSimulator)
                         {
                             MainWindow.KMCGlobals.RealTime = true;

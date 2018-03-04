@@ -29,9 +29,13 @@ namespace KeppyMIDIConverter
         [STAThread]
         static void Main(String[] args)
         {
-            Properties.Settings.Default.Upgrade();
-            Properties.Settings.Default.Save();
-
+            if (Properties.Settings.Default.UpgradeRequired)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeRequired = false;
+                Properties.Settings.Default.Save();
+            }
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

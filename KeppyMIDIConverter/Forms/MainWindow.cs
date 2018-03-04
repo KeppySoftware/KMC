@@ -287,9 +287,12 @@ namespace KeppyMIDIConverter
             {
                 try
                 {
-                    Properties.Settings.Default.Reload();
-
                     // Generic settings
+                    if (Properties.Settings.Default.Volume > 1.0f)
+                    {
+                        Properties.Settings.Default.Volume = 1.0f;
+                        Properties.Settings.Default.Save();
+                    }
                     VolumeBar.Value = Convert.ToInt32(Properties.Settings.Default.Volume * 10000.0f).LimitToRange(0, 10000);
 
                     // Load settings
@@ -559,8 +562,6 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                Properties.Settings.Default.Volume = VolumeBar.Value;
-                Properties.Settings.Default.Save();
                 Properties.Settings.Default.Volume = (float)Convert.ToDouble((float)this.VolumeBar.Value / 10000.0f);
                 Properties.Settings.Default.Save();
                 KMCDialogs.VolumeTip.SetToolTip(VolumeBar, String.Format("{0} {1}", Languages.Parse("Volume"), ((float)this.VolumeBar.Value / 100).ToString("000.00") + "%"));

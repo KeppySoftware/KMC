@@ -54,6 +54,7 @@ namespace KeppyMIDIConverter
 
             CheckStartUpArguments(args);
             Languages.DC = Languages.ReturnCulture(false);
+            Languages.ChangeLanguage(Languages.ReturnCulture(false).Name);
 
             if (!SkipUpdate) PerformUpdate();
             if (!SkipTrigger) TriggerDate();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -143,6 +144,12 @@ namespace KeppyMIDIConverter
                     {
                         if (i == 0)
                         {
+                            if (Properties.Settings.Default.LoudMaxEnabled == true && MainWindow.KMCStatus.RenderingMode == true)
+                                MainWindow.KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(
+                                    towhichstream, 
+                                    String.Format("{0}\\LoudMax.dll", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)), 
+                                    BASSVSTDsp.BASS_VST_KEEP_CHANS, 8);
+
                             int temphandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, MainWindow.VSTs.VSTDLLs[i], BASSVSTDsp.BASS_VST_DEFAULT, 0);
                             if (BassVst.BASS_VST_GetInfo(temphandle, vstInfo) && vstInfo.hasEditor)
                             {
@@ -155,7 +162,7 @@ namespace KeppyMIDIConverter
                                 }
                             }
                         }
-                        else if (i > 1 && i <= 7)
+                        else if (i > 0 && i <= 7)
                         {
                             if (BassVst.BASS_VST_GetInfo(MainWindow.VSTs._VSTHandles[i], vstInfo) && vstInfo.hasEditor)
                             {

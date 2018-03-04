@@ -35,20 +35,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <Optimize>false</Optimize>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\</OutputPath>
     <DefineConstants>
     </DefineConstants>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -146,10 +148,10 @@
       <DependentUpon>DonateMonthlyDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions\BasicFunctions.cs" />
-    <Compile Include="Functions\Languages\ErrorHandler.cs">
+    <Compile Include="Functions\ErrorHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Functions\Languages\ErrorHandler.designer.cs">
+    <Compile Include="Functions\ErrorHandler.designer.cs">
       <DependentUpon>ErrorHandler.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions\Extensions\DataCheck.cs" />
@@ -167,10 +169,10 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions\Languages\Languages.cs" />
-    <Compile Include="Forms\OverrideLanguage.cs">
+    <Compile Include="Functions\Languages\OverrideLanguage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OverrideLanguage.designer.cs">
+    <Compile Include="Functions\Languages\OverrideLanguage.designer.cs">
       <DependentUpon>OverrideLanguage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\InfoDialog.cs">
@@ -216,7 +218,7 @@
     <EmbeddedResource Include="Forms\SoundfontDialog.resx">
       <DependentUpon>SoundfontDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Functions\Languages\ErrorHandler.resx">
+    <EmbeddedResource Include="Functions\ErrorHandler.resx">
       <DependentUpon>ErrorHandler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindow.resx">
@@ -229,7 +231,7 @@
       <DependentUpon>InfoDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.en-US.resx" />
-    <EmbeddedResource Include="Forms\OverrideLanguage.resx">
+    <EmbeddedResource Include="Functions\Languages\OverrideLanguage.resx">
       <DependentUpon>OverrideLanguage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.it-IT.resx" />
@@ -262,7 +264,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Pictures\clocklater.png" />

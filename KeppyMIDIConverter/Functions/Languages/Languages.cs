@@ -50,7 +50,13 @@ namespace KeppyMIDIConverter
             }
             catch
             {
-                return CultureInfo.CreateSpecificCulture("en-US");
+                try { return CultureInfo.CreateSpecificCulture("en-US"); }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.ToString());
+                    Application.ExitThread();
+                    return null;
+                }
             }
         }
 

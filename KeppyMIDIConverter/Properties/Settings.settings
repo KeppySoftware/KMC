@@ -83,5 +83,8 @@
     <Setting Name="EncoderOGG" Type="System.String" Scope="Application">
       <Value Profile="(Default)">--managed -b {0} -m {0} -M {0} - -o</Value>
     </Setting>
+    <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
