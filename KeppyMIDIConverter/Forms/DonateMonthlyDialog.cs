@@ -13,12 +13,22 @@ namespace KeppyMIDIConverter
 {
     public partial class DonateMonthlyDialog : Form
     {
+        private void InitializeLanguage()
+        {
+            Text = Languages.Parse("KeepAliveProject");
+
+            // Donation text
+            DonateText.Text = Languages.Parse("DonateText");
+            ShowMeNext.Text = Languages.Parse("ShowMeNext");
+            DontShowAnymore.Text = Languages.Parse("DontShowAnymore");
+        }
+
         public DonateMonthlyDialog()
         {
             InitializeComponent();
+            InitializeLanguage();
         }
 
-        
         private void DonateMonthlyDialog_Load(object sender, EventArgs e)
         {
             // Lel
@@ -26,7 +36,7 @@ namespace KeppyMIDIConverter
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Program.Donate();
+            BasicFunctions.Donate();
         }
 
         private void ShowMeNext_Click(object sender, EventArgs e)

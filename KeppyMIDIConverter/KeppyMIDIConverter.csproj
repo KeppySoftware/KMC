@@ -1,20 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{77C1BF6D-BC6D-48B2-9FCB-7A896AFFE179}</ProjectGuid>
+    <ProjectGuid>{1441C6C1-660D-4E7D-A540-C7681E561394}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KeppyMIDIConverter</RootNamespace>
     <AssemblyName>KeppyMIDIConverter</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,234 +25,199 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>0</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <WarningLevel>0</WarningLevel>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Optimize>true</Optimize>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-    <WarningLevel>0</WarningLevel>
-    <LangVersion>default</LangVersion>
-    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <FileAlignment>512</FileAlignment>
-    <DebugSymbols>true</DebugSymbols>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <WarningLevel>0</WarningLevel>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Optimize>true</Optimize>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <WarningLevel>0</WarningLevel>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-    <FileAlignment>512</FileAlignment>
-    <DebugSymbols>true</DebugSymbols>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Resources\mainlogo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mainlogo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bass.Net, Version=2.4.12.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Bass.Net">
       <HintPath>.\Bass.Net.dll</HintPath>
     </Reference>
+    <Reference Include="Costura, Version=1.6.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.1.6.2\lib\dotnet\Costura.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-ExtendedLinguisticServices.1.1.1\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Sensors, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-Sensors.1.1.1\lib\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAPICodePack.Sensors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Speech" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
-    <Reference Include="UltraID3Lib">
-      <HintPath>.\UltraID3Lib.dll</HintPath>
-    </Reference>
     <Reference Include="VistaMenu">
       <HintPath>.\VistaMenu.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\DiscordHypeSquad.cs">
+    <Compile Include="Forms\ChannelsSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DiscordHypeSquad.Designer.cs">
-      <DependentUpon>DiscordHypeSquad.cs</DependentUpon>
+    <Compile Include="Forms\ChannelsSettings.Designer.cs">
+      <DependentUpon>ChannelsSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DonateMonthlyDialog.cs">
+    <Compile Include="Forms\AdvancedVoices.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DonateMonthlyDialog.Designer.cs">
-      <DependentUpon>DonateMonthlyDialog.cs</DependentUpon>
+    <Compile Include="Forms\AdvancedVoices.designer.cs">
+      <DependentUpon>AdvancedVoices.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdvancedSettings.cs">
+    <Compile Include="Forms\BecomeAPatron.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdvancedSettings.Designer.cs">
-      <DependentUpon>AdvancedSettings.cs</DependentUpon>
+    <Compile Include="Forms\BecomeAPatron.designer.cs">
+      <DependentUpon>BecomeAPatron.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BankNPresetSel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BankNPresetSel.Designer.cs">
+    <Compile Include="Forms\BankNPresetSel.designer.cs">
       <DependentUpon>BankNPresetSel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ErrorHandler.cs">
+    <Compile Include="Functions\BASSControl.cs" />
+    <Compile Include="Forms\AdvancedSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ErrorHandler.Designer.cs">
+    <Compile Include="Forms\AdvancedSettings.designer.cs">
+      <DependentUpon>AdvancedSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SoundfontDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SoundfontDialog.designer.cs">
+      <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\ConverterFunctions.cs" />
+    <Compile Include="Forms\DonateMonthlyDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DonateMonthlyDialog.designer.cs">
+      <DependentUpon>DonateMonthlyDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\BasicFunctions.cs" />
+    <Compile Include="Functions\Languages\ErrorHandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Functions\Languages\ErrorHandler.designer.cs">
       <DependentUpon>ErrorHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Information.cs">
+    <Compile Include="Functions\Extensions\DataCheck.cs" />
+    <Compile Include="Forms\UpdateDownloader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Information.Designer.cs">
-      <DependentUpon>Information.cs</DependentUpon>
+    <Compile Include="Forms\UpdateDownloader.designer.cs">
+      <DependentUpon>UpdateDownloader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\BootUp.cs" />
     <Compile Include="Forms\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Languages\OverrideLanguage.cs">
+    <Compile Include="Functions\Languages\Languages.cs" />
+    <Compile Include="Forms\OverrideLanguage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Languages\OverrideLanguage.Designer.cs">
+    <Compile Include="Forms\OverrideLanguage.designer.cs">
       <DependentUpon>OverrideLanguage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InfoDialog.designer.cs">
+      <DependentUpon>InfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\Extensions\OSInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Forms\AdvancedVoices.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AdvancedVoices.Designer.cs">
-      <DependentUpon>AdvancedVoices.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SoundfontDialog.cs">
+    <Compile Include="Forms\TestForms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SoundfontDialog.Designer.cs">
-      <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    <Compile Include="Forms\TestForms.Designer.cs">
+      <DependentUpon>TestForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\Extensions\RTF.cs" />
     <Compile Include="Forms\VSTManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\VSTManager.Designer.cs">
+    <Compile Include="Forms\VSTManager.designer.cs">
       <DependentUpon>VSTManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UpdateDownloader.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UpdateDownloader.Designer.cs">
-      <DependentUpon>UpdateDownloader.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RenderingTimerFuncs\RTF.cs" />
-    <EmbeddedResource Include="Forms\DiscordHypeSquad.resx">
-      <DependentUpon>DiscordHypeSquad.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AdvancedVoices.resx">
+      <DependentUpon>AdvancedVoices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DonateMonthlyDialog.resx">
-      <DependentUpon>DonateMonthlyDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdvancedSettings.resx">
-      <DependentUpon>AdvancedSettings.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BecomeAPatron.resx">
+      <DependentUpon>BecomeAPatron.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BankNPresetSel.resx">
       <DependentUpon>BankNPresetSel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ErrorHandler.resx">
-      <DependentUpon>ErrorHandler.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AdvancedSettings.resx">
+      <DependentUpon>AdvancedSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Information.resx">
-      <DependentUpon>Information.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ChannelsSettings.resx">
+      <DependentUpon>ChannelsSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DonateMonthlyDialog.resx">
+      <DependentUpon>DonateMonthlyDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SoundfontDialog.resx">
+      <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions\Languages\ErrorHandler.resx">
+      <DependentUpon>ErrorHandler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -262,342 +225,321 @@
     <EmbeddedResource Include="Forms\UpdateDownloader.resx">
       <DependentUpon>UpdateDownloader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Lang.en-US.resx" />
-    <EmbeddedResource Include="Forms\AdvancedVoices.resx">
-      <DependentUpon>AdvancedVoices.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\InfoDialog.resx">
+      <DependentUpon>InfoDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Languages\OverrideLanguage.resx">
+    <EmbeddedResource Include="Languages\Lang.en-US.resx" />
+    <EmbeddedResource Include="Forms\OverrideLanguage.resx">
       <DependentUpon>OverrideLanguage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.it-IT.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SoundfontDialog.resx">
-      <DependentUpon>SoundfontDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\TestForms.resx">
+      <DependentUpon>TestForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VSTManager.resx">
       <DependentUpon>VSTManager.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="license.rtf" />
+    <None Include="app.manifest" />
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\RTF.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\mainlogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.config">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="Resources\Thinking.txt" />
-    <None Include="Resources\Sacremoo.txt" />
-    <None Include="Resources\ppdonate.png" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Pictures\clocklater.png" />
+    <Content Include="Resources\Pictures\patronbtn.png" />
     <None Include="FodyWeavers.xml" />
-    <None Include="Resources\remove-icon.png" />
-    <None Include="Resources\warningicon.png" />
-    <None Include="Resources\speaker_icon.png" />
-    <None Include="Resources\gmlist.txt" />
-    <None Include="Resources\donatewin.png" />
-    <None Include="Resources\convprwo.gif" />
-    <None Include="Resources\convsave.gif" />
-    <None Include="LanguagesIcons\Algeria.png" />
-    <None Include="LanguagesIcons\American Samoa.png" />
-    <None Include="LanguagesIcons\Andorra.png" />
-    <None Include="LanguagesIcons\Angola.png" />
-    <None Include="LanguagesIcons\Anguilla.png" />
-    <None Include="LanguagesIcons\Antarctica.png" />
-    <None Include="LanguagesIcons\Antigua &amp; Barbuda.png" />
-    <None Include="LanguagesIcons\Arab League.png" />
-    <None Include="LanguagesIcons\Argentina.png" />
-    <None Include="LanguagesIcons\Armenia.png" />
-    <None Include="LanguagesIcons\Aruba.png" />
-    <None Include="LanguagesIcons\ASEAN.png" />
-    <None Include="LanguagesIcons\Australia.png" />
-    <None Include="LanguagesIcons\Austria.png" />
-    <None Include="LanguagesIcons\Azerbaijan.png" />
-    <None Include="LanguagesIcons\Bahamas.png" />
-    <None Include="LanguagesIcons\Bahrain.png" />
-    <None Include="LanguagesIcons\Bangladesh.png" />
-    <None Include="LanguagesIcons\Barbados.png" />
-    <None Include="LanguagesIcons\Belarus.png" />
-    <None Include="LanguagesIcons\Belgium.png" />
-    <None Include="LanguagesIcons\Belize.png" />
-    <None Include="LanguagesIcons\Benin.png" />
-    <None Include="LanguagesIcons\Bermuda.png" />
-    <None Include="LanguagesIcons\Bhutan.png" />
-    <None Include="LanguagesIcons\Bolivia.png" />
-    <None Include="LanguagesIcons\Bosnia &amp; Herzegovina.png" />
-    <None Include="LanguagesIcons\Botswana.png" />
-    <None Include="LanguagesIcons\Brazil.png" />
-    <None Include="LanguagesIcons\Brunei.png" />
-    <None Include="LanguagesIcons\Bulgaria.png" />
-    <None Include="LanguagesIcons\Burkina Faso.png" />
-    <None Include="LanguagesIcons\Burundi.png" />
-    <None Include="LanguagesIcons\Cambodja.png" />
-    <None Include="LanguagesIcons\Cameroon.png" />
-    <None Include="LanguagesIcons\Canada.png" />
-    <None Include="LanguagesIcons\Cape Verde.png" />
-    <None Include="LanguagesIcons\CARICOM.png" />
-    <None Include="LanguagesIcons\Cayman Islands.png" />
-    <None Include="LanguagesIcons\Central African Republic.png" />
-    <None Include="LanguagesIcons\Chad.png" />
-    <None Include="LanguagesIcons\Chile.png" />
-    <None Include="LanguagesIcons\China.png" />
-    <None Include="LanguagesIcons\CIS.png" />
-    <None Include="LanguagesIcons\Colombia.png" />
-    <None Include="LanguagesIcons\Commonwealth.png" />
-    <None Include="LanguagesIcons\Comoros.png" />
-    <None Include="LanguagesIcons\Congo-Brazzaville.png" />
-    <None Include="LanguagesIcons\Congo-Kinshasa%28Zaire%29.png" />
-    <None Include="LanguagesIcons\Cook Islands.png" />
-    <None Include="LanguagesIcons\Costa Rica.png" />
-    <None Include="LanguagesIcons\Cote d%27Ivoire.png" />
-    <None Include="LanguagesIcons\Croatia.png" />
-    <None Include="LanguagesIcons\Cuba.png" />
-    <None Include="LanguagesIcons\Cyprus.png" />
-    <None Include="LanguagesIcons\Czech Republic.png" />
-    <None Include="LanguagesIcons\Denmark.png" />
-    <None Include="LanguagesIcons\Djibouti.png" />
-    <None Include="LanguagesIcons\Dominica.png" />
-    <None Include="LanguagesIcons\Dominican Republic.png" />
-    <None Include="LanguagesIcons\Ecuador.png" />
-    <None Include="LanguagesIcons\Egypt.png" />
-    <None Include="LanguagesIcons\El Salvador.png" />
-    <None Include="LanguagesIcons\England.png" />
-    <None Include="LanguagesIcons\Equatorial Guinea.png" />
-    <None Include="LanguagesIcons\Eritrea.png" />
-    <None Include="LanguagesIcons\Estonia.png" />
-    <None Include="LanguagesIcons\Ethiopia.png" />
-    <None Include="LanguagesIcons\European Union.png" />
-    <None Include="LanguagesIcons\Faroes.png" />
-    <None Include="LanguagesIcons\Fiji.png" />
-    <None Include="LanguagesIcons\Finland.png" />
-    <None Include="LanguagesIcons\France.png" />
-    <None Include="LanguagesIcons\Gabon.png" />
-    <None Include="LanguagesIcons\Gambia.png" />
-    <None Include="LanguagesIcons\Georgia.png" />
-    <None Include="LanguagesIcons\Germany.png" />
-    <None Include="LanguagesIcons\Ghana.png" />
-    <None Include="LanguagesIcons\Gibraltar.png" />
-    <None Include="LanguagesIcons\Greece.png" />
-    <None Include="LanguagesIcons\Greenland.png" />
-    <None Include="LanguagesIcons\Grenada.png" />
-    <None Include="LanguagesIcons\Guadeloupe.png" />
-    <None Include="LanguagesIcons\Guademala.png" />
-    <None Include="LanguagesIcons\Guam.png" />
-    <None Include="LanguagesIcons\Guernsey.png" />
-    <None Include="LanguagesIcons\Guinea.png" />
-    <None Include="LanguagesIcons\Guinea-Bissau.png" />
-    <None Include="LanguagesIcons\Guyana.png" />
-    <None Include="LanguagesIcons\Haiti.png" />
-    <None Include="LanguagesIcons\Honduras.png" />
-    <None Include="LanguagesIcons\Hong Kong.png" />
-    <None Include="LanguagesIcons\Hungary.png" />
-    <None Include="LanguagesIcons\Iceland.png" />
-    <None Include="LanguagesIcons\India.png" />
-    <None Include="LanguagesIcons\Indonesia.png" />
-    <None Include="LanguagesIcons\Iran.png" />
-    <None Include="LanguagesIcons\Iraq.png" />
-    <None Include="LanguagesIcons\Ireland.png" />
-    <None Include="LanguagesIcons\Islamic Conference.png" />
-    <None Include="LanguagesIcons\Isle of Man.png" />
-    <None Include="LanguagesIcons\Israel.png" />
-    <None Include="LanguagesIcons\Italy.png" />
-    <None Include="LanguagesIcons\Jamaica.png" />
-    <None Include="LanguagesIcons\Japan.png" />
-    <None Include="LanguagesIcons\Jersey.png" />
-    <None Include="LanguagesIcons\Jordan.png" />
-    <None Include="LanguagesIcons\Kazakhstan.png" />
-    <None Include="LanguagesIcons\Kenya.png" />
-    <None Include="LanguagesIcons\Kiribati.png" />
-    <None Include="LanguagesIcons\Kosovo.png" />
-    <None Include="LanguagesIcons\Kuwait.png" />
-    <None Include="LanguagesIcons\Kyrgyzstan.png" />
-    <None Include="LanguagesIcons\Laos.png" />
-    <None Include="LanguagesIcons\Latvia.png" />
-    <None Include="LanguagesIcons\Lebanon.png" />
-    <None Include="LanguagesIcons\Lesotho.png" />
-    <None Include="LanguagesIcons\Liberia.png" />
-    <None Include="LanguagesIcons\Libya.png" />
-    <None Include="LanguagesIcons\Liechtenstein.png" />
-    <None Include="LanguagesIcons\Lithuania.png" />
-    <None Include="LanguagesIcons\Luxembourg.png" />
-    <None Include="LanguagesIcons\Macao.png" />
-    <None Include="LanguagesIcons\Macedonia.png" />
-    <None Include="LanguagesIcons\Madagascar.png" />
-    <None Include="LanguagesIcons\Malawi.png" />
-    <None Include="LanguagesIcons\Malaysia.png" />
-    <None Include="LanguagesIcons\Maldives.png" />
-    <None Include="LanguagesIcons\Mali.png" />
-    <None Include="LanguagesIcons\Malta.png" />
-    <None Include="LanguagesIcons\Marshall Islands.png" />
-    <None Include="LanguagesIcons\Martinique.png" />
-    <None Include="LanguagesIcons\Mauritania.png" />
-    <None Include="LanguagesIcons\Mauritius.png" />
-    <None Include="LanguagesIcons\Mexico.png" />
-    <None Include="LanguagesIcons\Micronesia.png" />
-    <None Include="LanguagesIcons\Moldova.png" />
-    <None Include="LanguagesIcons\Monaco.png" />
-    <None Include="LanguagesIcons\Mongolia.png" />
-    <None Include="LanguagesIcons\Montenegro.png" />
-    <None Include="LanguagesIcons\Montserrat.png" />
-    <None Include="LanguagesIcons\Morocco.png" />
-    <None Include="LanguagesIcons\Mozambique.png" />
-    <None Include="LanguagesIcons\Myanmar%28Burma%29.png" />
-    <None Include="LanguagesIcons\Namibia.png" />
-    <None Include="LanguagesIcons\NATO.png" />
-    <None Include="LanguagesIcons\Nauru.png" />
-    <None Include="LanguagesIcons\Nepal.png" />
-    <None Include="LanguagesIcons\Netherlands Antilles.png" />
-    <None Include="LanguagesIcons\Netherlands.png" />
-    <None Include="LanguagesIcons\New Caledonia.png" />
-    <None Include="LanguagesIcons\New Zealand.png" />
-    <None Include="LanguagesIcons\Nicaragua.png" />
-    <None Include="LanguagesIcons\Niger.png" />
-    <None Include="LanguagesIcons\Nigeria.png" />
-    <None Include="LanguagesIcons\North Korea.png" />
-    <None Include="LanguagesIcons\Northern Cyprus.png" />
-    <None Include="LanguagesIcons\Northern Ireland.png" />
-    <None Include="LanguagesIcons\Norway.png" />
-    <None Include="LanguagesIcons\Olimpic Movement.png" />
-    <None Include="LanguagesIcons\Oman.png" />
-    <None Include="LanguagesIcons\OPEC.png" />
-    <None Include="LanguagesIcons\Pakistan.png" />
-    <None Include="LanguagesIcons\Palau.png" />
-    <None Include="LanguagesIcons\Palestine.png" />
-    <None Include="LanguagesIcons\Panama.png" />
-    <None Include="LanguagesIcons\Papua New Guinea.png" />
-    <None Include="LanguagesIcons\Paraguay.png" />
-    <None Include="LanguagesIcons\Peru.png" />
-    <None Include="LanguagesIcons\Philippines.png" />
-    <None Include="LanguagesIcons\Poland.png" />
-    <None Include="LanguagesIcons\Portugal.png" />
-    <None Include="LanguagesIcons\Puerto Rico.png" />
-    <None Include="LanguagesIcons\Qatar.png" />
-    <None Include="LanguagesIcons\Red Cross.png" />
-    <None Include="LanguagesIcons\Reunion.png" />
-    <None Include="LanguagesIcons\Romania.png" />
-    <None Include="LanguagesIcons\Russian Federation.png" />
-    <None Include="LanguagesIcons\Rwanda.png" />
-    <None Include="LanguagesIcons\Saint Lucia.png" />
-    <None Include="LanguagesIcons\Samoa.png" />
-    <None Include="LanguagesIcons\San Marino.png" />
-    <None Include="LanguagesIcons\Sao Tome &amp; Principe.png" />
-    <None Include="LanguagesIcons\Saudi Arabia.png" />
-    <None Include="LanguagesIcons\Scotland.png" />
-    <None Include="LanguagesIcons\Senegal.png" />
-    <None Include="LanguagesIcons\Serbia.png" />
-    <None Include="LanguagesIcons\Seyshelles.png" />
-    <None Include="LanguagesIcons\Sierra Leone.png" />
-    <None Include="LanguagesIcons\Singapore.png" />
-    <None Include="LanguagesIcons\Slovakia.png" />
-    <None Include="LanguagesIcons\Slovenia.png" />
-    <None Include="LanguagesIcons\Solomon Islands.png" />
-    <None Include="LanguagesIcons\Somalia.png" />
-    <None Include="LanguagesIcons\Somaliland.png" />
-    <None Include="LanguagesIcons\South Afriica.png" />
-    <None Include="LanguagesIcons\South Korea.png" />
-    <None Include="LanguagesIcons\Spain.png" />
-    <None Include="LanguagesIcons\Sri Lanka.png" />
-    <None Include="LanguagesIcons\St Kitts &amp; Nevis.png" />
-    <None Include="LanguagesIcons\St Vincent &amp; the Grenadines.png" />
-    <None Include="LanguagesIcons\Sudan.png" />
-    <None Include="LanguagesIcons\Suriname.png" />
-    <None Include="LanguagesIcons\Swaziland.png" />
-    <None Include="LanguagesIcons\Sweden.png" />
-    <None Include="LanguagesIcons\Switzerland.png" />
-    <None Include="LanguagesIcons\Syria.png" />
-    <None Include="LanguagesIcons\Tahiti%28French Polinesia%29.png" />
-    <None Include="LanguagesIcons\Taiwan.png" />
-    <None Include="LanguagesIcons\Tajikistan.png" />
-    <None Include="LanguagesIcons\Tanzania.png" />
-    <None Include="LanguagesIcons\Thailand.png" />
-    <None Include="LanguagesIcons\Timor-Leste.png" />
-    <None Include="LanguagesIcons\Togo.png" />
-    <None Include="LanguagesIcons\Tonga.png" />
-    <None Include="LanguagesIcons\Trinidad &amp; Tobago.png" />
-    <None Include="LanguagesIcons\Tunisia.png" />
-    <None Include="LanguagesIcons\Turkey.png" />
-    <None Include="LanguagesIcons\Turkmenistan.png" />
-    <None Include="LanguagesIcons\Turks and Caicos Islands.png" />
-    <None Include="LanguagesIcons\Tuvalu.png" />
-    <None Include="LanguagesIcons\Uganda.png" />
-    <None Include="LanguagesIcons\Ukraine.png" />
-    <None Include="LanguagesIcons\United Arab Emirates.png" />
-    <None Include="LanguagesIcons\United Kingdom%28Great Britain%29.png" />
-    <None Include="LanguagesIcons\United Nations.png" />
-    <None Include="LanguagesIcons\United States of America.png" />
-    <None Include="LanguagesIcons\Uruguay.png" />
-    <None Include="LanguagesIcons\Uzbekistan.png" />
-    <None Include="LanguagesIcons\Vanutau.png" />
-    <None Include="LanguagesIcons\Vatican City.png" />
-    <None Include="LanguagesIcons\Venezuela.png" />
-    <None Include="LanguagesIcons\Viet Nam.png" />
-    <None Include="LanguagesIcons\Virgin Islands British.png" />
-    <None Include="LanguagesIcons\Virgin Islands US.png" />
-    <None Include="LanguagesIcons\Wales.png" />
-    <None Include="LanguagesIcons\Western Sahara.png" />
-    <None Include="LanguagesIcons\Yemen.png" />
-    <None Include="LanguagesIcons\Zambia.png" />
-    <None Include="LanguagesIcons\Zimbabwe.png" />
-    <None Include="LanguagesIcons\Afghanistan.png" />
-    <None Include="LanguagesIcons\African Union.png" />
-    <None Include="LanguagesIcons\Albania.png" />
-    <None Include="Resources\hypebadge.png" />
-    <None Include="Resources\dslogo.png" />
-    <None Include="Resources\dsdesc.png" />
-    <None Include="Resources\hypebadgebig.png" />
-    <None Include="Resources\dsapply1.png" />
-    <None Include="Resources\dsapply2.png" />
-    <None Include="Resources\dsagemin.png" />
-    <None Include="Resources\KMCTitle.txt" />
-    <Content Include="Resources\mainlogo.ico" />
-    <None Include="Resources\hot.png" />
-    <None Include="Resources\worldwideweb.png" />
-    <None Include="Resources\convpause.png" />
-    <None Include="Resources\information-icon.png" />
-    <None Include="Resources\edit-icon.png" />
-    <None Include="Resources\up-icon.png" />
-    <None Include="Resources\down-icon.png" />
-    <None Include="Resources\delete-icon.png" />
-    <None Include="Resources\configure-icon.png" />
-    <None Include="Resources\back-icon.png" />
-    <None Include="Resources\audio-icon.png" />
-    <None Include="Resources\add-icon.png" />
-    <None Include="Resources\vstlogo.png" />
-    <None Include="Resources\convstart.wav" />
-    <None Include="Resources\convfin.wav" />
-    <None Include="Resources\convfail.wav" />
-    <None Include="Resources\erroricon.png" />
-    <None Include="Resources\convbusy.gif" />
-    <None Include="Resources\sfzcomp.png" />
-    <None Include="Resources\updatebk.png" />
+    <Content Include="mainlogo.ico" />
+    <Content Include="Resources\Icons\add-icon.png" />
+    <Content Include="Resources\Icons\delete-icon.png" />
+    <Content Include="Resources\Icons\patronsm.png" />
+    <Content Include="Resources\Icons\ppdonate.png" />
+    <None Include="Resources\mainlogo.png" />
+    <Content Include="Resources\Icons\remove-icon.png" />
+    <Content Include="Resources\Icons\sfzcomp.png" />
+    <Content Include="Resources\Icons\up-icon.png" />
+    <Content Include="Resources\Icons\vstlogo.png" />
+    <Content Include="Resources\KMC\convfail.wav" />
+    <Content Include="Resources\KMC\convfin.wav" />
+    <Content Include="Resources\KMC\convpause.png" />
+    <Content Include="Resources\KMC\convstart.wav" />
+    <Content Include="Resources\Pictures\donatewin.png" />
+    <Content Include="Resources\Flags\Afghanistan.png" />
+    <Content Include="Resources\Flags\African Union.png" />
+    <Content Include="Resources\Flags\Albania.png" />
+    <Content Include="Resources\Flags\Algeria.png" />
+    <Content Include="Resources\Flags\American Samoa.png" />
+    <Content Include="Resources\Flags\Andorra.png" />
+    <Content Include="Resources\Flags\Angola.png" />
+    <Content Include="Resources\Flags\Anguilla.png" />
+    <Content Include="Resources\Flags\Antarctica.png" />
+    <Content Include="Resources\Flags\Antigua &amp; Barbuda.png" />
+    <Content Include="Resources\Flags\Arab League.png" />
+    <Content Include="Resources\Flags\Argentina.png" />
+    <Content Include="Resources\Flags\Armenia.png" />
+    <Content Include="Resources\Flags\Aruba.png" />
+    <Content Include="Resources\Flags\ASEAN.png" />
+    <Content Include="Resources\Flags\Australia.png" />
+    <Content Include="Resources\Flags\Austria.png" />
+    <Content Include="Resources\Flags\Azerbaijan.png" />
+    <Content Include="Resources\Flags\Bahamas.png" />
+    <Content Include="Resources\Flags\Bahrain.png" />
+    <Content Include="Resources\Flags\Bangladesh.png" />
+    <Content Include="Resources\Flags\Barbados.png" />
+    <Content Include="Resources\Flags\Belarus.png" />
+    <Content Include="Resources\Flags\Belgium.png" />
+    <Content Include="Resources\Flags\Belize.png" />
+    <Content Include="Resources\Flags\Benin.png" />
+    <Content Include="Resources\Flags\Bermuda.png" />
+    <Content Include="Resources\Flags\Bhutan.png" />
+    <Content Include="Resources\Flags\Bolivia.png" />
+    <Content Include="Resources\Flags\Bosnia &amp; Herzegovina.png" />
+    <Content Include="Resources\Flags\Botswana.png" />
+    <Content Include="Resources\Flags\Brazil.png" />
+    <Content Include="Resources\Flags\Brunei.png" />
+    <Content Include="Resources\Flags\Bulgaria.png" />
+    <Content Include="Resources\Flags\Burkina Faso.png" />
+    <Content Include="Resources\Flags\Burundi.png" />
+    <Content Include="Resources\Flags\Cambodja.png" />
+    <Content Include="Resources\Flags\Cameroon.png" />
+    <Content Include="Resources\Flags\Canada.png" />
+    <Content Include="Resources\Flags\Cape Verde.png" />
+    <Content Include="Resources\Flags\CARICOM.png" />
+    <Content Include="Resources\Flags\Cayman Islands.png" />
+    <Content Include="Resources\Flags\Central African Republic.png" />
+    <Content Include="Resources\Flags\Chad.png" />
+    <Content Include="Resources\Flags\Chile.png" />
+    <Content Include="Resources\Flags\China.png" />
+    <Content Include="Resources\Flags\CIS.png" />
+    <Content Include="Resources\Flags\Colombia.png" />
+    <Content Include="Resources\Flags\Commonwealth.png" />
+    <Content Include="Resources\Flags\Comoros.png" />
+    <Content Include="Resources\Flags\Congo-Brazzaville.png" />
+    <Content Include="Resources\Flags\Congo-Kinshasa%28Zaire%29.png" />
+    <Content Include="Resources\Flags\Cook Islands.png" />
+    <Content Include="Resources\Flags\Costa Rica.png" />
+    <Content Include="Resources\Flags\Cote d%27Ivoire.png" />
+    <Content Include="Resources\Flags\Croatia.png" />
+    <Content Include="Resources\Flags\Cuba.png" />
+    <Content Include="Resources\Flags\Cyprus.png" />
+    <Content Include="Resources\Flags\Czech Republic.png" />
+    <Content Include="Resources\Flags\Denmark.png" />
+    <Content Include="Resources\Flags\Djibouti.png" />
+    <Content Include="Resources\Flags\Dominica.png" />
+    <Content Include="Resources\Flags\Dominican Republic.png" />
+    <Content Include="Resources\Flags\Ecuador.png" />
+    <Content Include="Resources\Flags\Egypt.png" />
+    <Content Include="Resources\Flags\El Salvador.png" />
+    <Content Include="Resources\Flags\England.png" />
+    <Content Include="Resources\Flags\Equatorial Guinea.png" />
+    <Content Include="Resources\Flags\Eritrea.png" />
+    <Content Include="Resources\Flags\Estonia.png" />
+    <Content Include="Resources\Flags\Ethiopia.png" />
+    <Content Include="Resources\Flags\European Union.png" />
+    <Content Include="Resources\Flags\Faroes.png" />
+    <Content Include="Resources\Flags\Fiji.png" />
+    <Content Include="Resources\Flags\Finland.png" />
+    <Content Include="Resources\Flags\France.png" />
+    <Content Include="Resources\Flags\Gabon.png" />
+    <Content Include="Resources\Flags\Gambia.png" />
+    <Content Include="Resources\Flags\Georgia.png" />
+    <Content Include="Resources\Flags\Germany.png" />
+    <Content Include="Resources\Flags\Ghana.png" />
+    <Content Include="Resources\Flags\Gibraltar.png" />
+    <Content Include="Resources\Flags\Greece.png" />
+    <Content Include="Resources\Flags\Greenland.png" />
+    <Content Include="Resources\Flags\Grenada.png" />
+    <Content Include="Resources\Flags\Guadeloupe.png" />
+    <Content Include="Resources\Flags\Guademala.png" />
+    <Content Include="Resources\Flags\Guam.png" />
+    <Content Include="Resources\Flags\Guernsey.png" />
+    <Content Include="Resources\Flags\Guinea-Bissau.png" />
+    <Content Include="Resources\Flags\Guinea.png" />
+    <Content Include="Resources\Flags\Guyana.png" />
+    <Content Include="Resources\Flags\Haiti.png" />
+    <Content Include="Resources\Flags\Honduras.png" />
+    <Content Include="Resources\Flags\Hong Kong.png" />
+    <Content Include="Resources\Flags\Hungary.png" />
+    <Content Include="Resources\Flags\Iceland.png" />
+    <Content Include="Resources\Flags\India.png" />
+    <Content Include="Resources\Flags\Indonesia.png" />
+    <Content Include="Resources\Flags\Iran.png" />
+    <Content Include="Resources\Flags\Iraq.png" />
+    <Content Include="Resources\Flags\Ireland.png" />
+    <Content Include="Resources\Flags\Islamic Conference.png" />
+    <Content Include="Resources\Flags\Isle of Man.png" />
+    <Content Include="Resources\Flags\Israel.png" />
+    <Content Include="Resources\Flags\Italy.png" />
+    <Content Include="Resources\Flags\Jamaica.png" />
+    <Content Include="Resources\Flags\Japan.png" />
+    <Content Include="Resources\Flags\Jersey.png" />
+    <Content Include="Resources\Flags\Jordan.png" />
+    <Content Include="Resources\Flags\Kazakhstan.png" />
+    <Content Include="Resources\Flags\Kenya.png" />
+    <Content Include="Resources\Flags\Kiribati.png" />
+    <Content Include="Resources\Flags\Kosovo.png" />
+    <Content Include="Resources\Flags\Kuwait.png" />
+    <Content Include="Resources\Flags\Kyrgyzstan.png" />
+    <Content Include="Resources\Flags\Laos.png" />
+    <Content Include="Resources\Flags\Latvia.png" />
+    <Content Include="Resources\Flags\Lebanon.png" />
+    <Content Include="Resources\Flags\Lesotho.png" />
+    <Content Include="Resources\Flags\Liberia.png" />
+    <Content Include="Resources\Flags\Libya.png" />
+    <Content Include="Resources\Flags\Liechtenstein.png" />
+    <Content Include="Resources\Flags\Lithuania.png" />
+    <Content Include="Resources\Flags\Luxembourg.png" />
+    <Content Include="Resources\Flags\Macao.png" />
+    <Content Include="Resources\Flags\Macedonia.png" />
+    <Content Include="Resources\Flags\Madagascar.png" />
+    <Content Include="Resources\Flags\Malawi.png" />
+    <Content Include="Resources\Flags\Malaysia.png" />
+    <Content Include="Resources\Flags\Maldives.png" />
+    <Content Include="Resources\Flags\Mali.png" />
+    <Content Include="Resources\Flags\Malta.png" />
+    <Content Include="Resources\Flags\Marshall Islands.png" />
+    <Content Include="Resources\Flags\Martinique.png" />
+    <Content Include="Resources\Flags\Mauritania.png" />
+    <Content Include="Resources\Flags\Mauritius.png" />
+    <Content Include="Resources\Flags\Mexico.png" />
+    <Content Include="Resources\Flags\Micronesia.png" />
+    <Content Include="Resources\Flags\Moldova.png" />
+    <Content Include="Resources\Flags\Monaco.png" />
+    <Content Include="Resources\Flags\Mongolia.png" />
+    <Content Include="Resources\Flags\Montenegro.png" />
+    <Content Include="Resources\Flags\Montserrat.png" />
+    <Content Include="Resources\Flags\Morocco.png" />
+    <Content Include="Resources\Flags\Mozambique.png" />
+    <Content Include="Resources\Flags\Myanmar%28Burma%29.png" />
+    <Content Include="Resources\Flags\Namibia.png" />
+    <Content Include="Resources\Flags\NATO.png" />
+    <Content Include="Resources\Flags\Nauru.png" />
+    <Content Include="Resources\Flags\Nepal.png" />
+    <Content Include="Resources\Flags\Netherlands Antilles.png" />
+    <Content Include="Resources\Flags\Netherlands.png" />
+    <Content Include="Resources\Flags\New Caledonia.png" />
+    <Content Include="Resources\Flags\New Zealand.png" />
+    <Content Include="Resources\Flags\Nicaragua.png" />
+    <Content Include="Resources\Flags\Niger.png" />
+    <Content Include="Resources\Flags\Nigeria.png" />
+    <Content Include="Resources\Flags\North Korea.png" />
+    <Content Include="Resources\Flags\Northern Cyprus.png" />
+    <Content Include="Resources\Flags\Northern Ireland.png" />
+    <Content Include="Resources\Flags\Norway.png" />
+    <Content Include="Resources\Flags\Olimpic Movement.png" />
+    <Content Include="Resources\Flags\Oman.png" />
+    <Content Include="Resources\Flags\OPEC.png" />
+    <Content Include="Resources\Flags\Pakistan.png" />
+    <Content Include="Resources\Flags\Palau.png" />
+    <Content Include="Resources\Flags\Palestine.png" />
+    <Content Include="Resources\Flags\Panama.png" />
+    <Content Include="Resources\Flags\Papua New Guinea.png" />
+    <Content Include="Resources\Flags\Paraguay.png" />
+    <Content Include="Resources\Flags\Peru.png" />
+    <Content Include="Resources\Flags\Philippines.png" />
+    <Content Include="Resources\Flags\Poland.png" />
+    <Content Include="Resources\Flags\Portugal.png" />
+    <Content Include="Resources\Flags\Puerto Rico.png" />
+    <Content Include="Resources\Flags\Qatar.png" />
+    <Content Include="Resources\Flags\Red Cross.png" />
+    <Content Include="Resources\Flags\Reunion.png" />
+    <Content Include="Resources\Flags\Romania.png" />
+    <Content Include="Resources\Flags\Russian Federation.png" />
+    <Content Include="Resources\Flags\Rwanda.png" />
+    <Content Include="Resources\Flags\Saint Lucia.png" />
+    <Content Include="Resources\Flags\Samoa.png" />
+    <Content Include="Resources\Flags\San Marino.png" />
+    <Content Include="Resources\Flags\Sao Tome &amp; Principe.png" />
+    <Content Include="Resources\Flags\Saudi Arabia.png" />
+    <Content Include="Resources\Flags\Scotland.png" />
+    <Content Include="Resources\Flags\Senegal.png" />
+    <Content Include="Resources\Flags\Serbia.png" />
+    <Content Include="Resources\Flags\Seyshelles.png" />
+    <Content Include="Resources\Flags\Sierra Leone.png" />
+    <Content Include="Resources\Flags\Singapore.png" />
+    <Content Include="Resources\Flags\Slovakia.png" />
+    <Content Include="Resources\Flags\Slovenia.png" />
+    <Content Include="Resources\Flags\Solomon Islands.png" />
+    <Content Include="Resources\Flags\Somalia.png" />
+    <Content Include="Resources\Flags\Somaliland.png" />
+    <Content Include="Resources\Flags\South Afriica.png" />
+    <Content Include="Resources\Flags\South Korea.png" />
+    <Content Include="Resources\Flags\Spain.png" />
+    <Content Include="Resources\Flags\Sri Lanka.png" />
+    <Content Include="Resources\Flags\St Kitts &amp; Nevis.png" />
+    <Content Include="Resources\Flags\St Vincent &amp; the Grenadines.png" />
+    <Content Include="Resources\Flags\Sudan.png" />
+    <Content Include="Resources\Flags\Suriname.png" />
+    <Content Include="Resources\Flags\Swaziland.png" />
+    <Content Include="Resources\Flags\Sweden.png" />
+    <Content Include="Resources\Flags\Switzerland.png" />
+    <Content Include="Resources\Flags\Syria.png" />
+    <Content Include="Resources\Flags\Tahiti%28French Polinesia%29.png" />
+    <Content Include="Resources\Flags\Taiwan.png" />
+    <Content Include="Resources\Flags\Tajikistan.png" />
+    <Content Include="Resources\Flags\Tanzania.png" />
+    <Content Include="Resources\Flags\Thailand.png" />
+    <Content Include="Resources\Flags\Timor-Leste.png" />
+    <Content Include="Resources\Flags\Togo.png" />
+    <Content Include="Resources\Flags\Tonga.png" />
+    <Content Include="Resources\Flags\Trinidad &amp; Tobago.png" />
+    <Content Include="Resources\Flags\Tunisia.png" />
+    <Content Include="Resources\Flags\Turkey.png" />
+    <Content Include="Resources\Flags\Turkmenistan.png" />
+    <Content Include="Resources\Flags\Turks and Caicos Islands.png" />
+    <Content Include="Resources\Flags\Tuvalu.png" />
+    <Content Include="Resources\Flags\Uganda.png" />
+    <Content Include="Resources\Flags\Ukraine.png" />
+    <Content Include="Resources\Flags\United Arab Emirates.png" />
+    <Content Include="Resources\Flags\United Kingdom%28Great Britain%29.png" />
+    <Content Include="Resources\Flags\United Nations.png" />
+    <Content Include="Resources\Flags\United States of America.png" />
+    <Content Include="Resources\Flags\Uruguay.png" />
+    <Content Include="Resources\Flags\Uzbekistan.png" />
+    <Content Include="Resources\Flags\Vanutau.png" />
+    <Content Include="Resources\Flags\Vatican City.png" />
+    <Content Include="Resources\Flags\Venezuela.png" />
+    <Content Include="Resources\Flags\Viet Nam.png" />
+    <Content Include="Resources\Flags\Virgin Islands British.png" />
+    <Content Include="Resources\Flags\Virgin Islands US.png" />
+    <Content Include="Resources\Flags\Wales.png" />
+    <Content Include="Resources\Flags\Western Sahara.png" />
+    <Content Include="Resources\Flags\Yemen.png" />
+    <Content Include="Resources\Flags\Zambia.png" />
+    <Content Include="Resources\Flags\Zimbabwe.png" />
+    <Content Include="Resources\Icons\down-icon.png" />
+    <Content Include="Resources\Icons\worldwideweb.png" />
+    <Content Include="Resources\KMC\convbusy.gif" />
+    <Content Include="Resources\KMC\convprwo.gif" />
+    <Content Include="Resources\KMC\convsave.gif" />
+    <Content Include="Resources\KMC\KMCTitle.txt" />
+    <Content Include="Resources\Icons\erroricon.png" />
+    <Content Include="Resources\Icons\warningicon.png" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 e x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 e x64%29</ProductName>
       <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
@@ -605,40 +547,16 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="stdole">
-      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>if $(PlatformName) == x86 call "$(DevEnvDir)..\tools\vsdevcmd.bat"
-if $(PlatformName) == x86 editbin /LARGEADDRESSAWARE "$(TargetPath)"</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
-  <Import Project="..\packages\Resource.Embedder.1.2.2\build\Resource.Embedder.targets" Condition="Exists('..\packages\Resource.Embedder.1.2.2\build\Resource.Embedder.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Resource.Embedder.1.2.2\build\Resource.Embedder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Resource.Embedder.1.2.2\build\Resource.Embedder.targets'))" />
-    <Error Condition="!Exists('..\packages\Fody.2.0.8\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.0.8\build\dotnet\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.2.4.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.4.4\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets'))" />
   </Target>
-  <Import Project="..\packages\Fody.2.0.8\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.8\build\dotnet\Fody.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" />
+  <Import Project="..\packages\Fody.2.4.4\build\Fody.targets" Condition="Exists('..\packages\Fody.2.4.4\build\Fody.targets')" />
+  <Import Project="..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets" Condition="Exists('..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets')" />
 </Project>

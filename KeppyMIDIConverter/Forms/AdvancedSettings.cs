@@ -11,79 +11,76 @@ using System.Resources;
 namespace KeppyMIDIConverter
 {
     public partial class AdvancedSettings : Form
-    {
+    { 
+        public static AdvancedSettings Delegate;
+
+        public static void InitializeLanguage()
+        {
+            // Translate system
+            Delegate.Text = Languages.Parse("AdvSettingsTitle");
+
+            Delegate.AudioSettings.Text = Languages.Parse("AudioSettings");
+            Delegate.MaxVoicesLabel.Text = Languages.Parse("MaxVoices");
+            Delegate.AudioFreqLabel.Text = Languages.Parse("AudioFreq");
+
+            Delegate.ChannelsSettings.Text = Languages.Parse("ChannelsSettings");
+            Delegate.StreamSettings.Text = Languages.Parse("StreamSettings");
+            Delegate.RTFPSLabel.Text = Languages.Parse("RealTimeFramerate");
+            Delegate.BitrateLabel.Text = String.Format("{0}:", Languages.Parse("Bitrate"));
+            Delegate.Noteoff1.Text = Languages.Parse("NoteOff1");
+            Delegate.FXDisable.Text = Languages.Parse("DisableEffects");
+            Delegate.OverrideTempoNow.Text = Languages.Parse("OverrideTempo");
+            Delegate.ConstantBitrate.Text = String.Format("{0}:", Languages.Parse("ConstantBitrate"));
+            Delegate.OKBtn.Text = Languages.Parse("OKBtn");
+        }
+
         public AdvancedSettings()
         {
             InitializeComponent();
-        }
-
-        public static Action NonStaticDelegate;
-
-        public void InitializeLanguage()
-        {
-            // Translate system
-            GroupBox1.Text = MainWindow.res_man.GetString("Settings", MainWindow.cul);
-            Text = MainWindow.res_man.GetString("AdvSettingsTitle", MainWindow.cul);
-            Label5.Text = MainWindow.res_man.GetString("AudioFreq", MainWindow.cul);
-            Noteoff1.Text = MainWindow.res_man.GetString("NoteOff1", MainWindow.cul);
-            FXDisable.Text = MainWindow.res_man.GetString("DisableFX", MainWindow.cul);
-            TempoCurrent.Text = MainWindow.res_man.GetString("NewValueTempo", MainWindow.cul);
-            checkBox3.Text = MainWindow.res_man.GetString("ConstantBitrateOGG", MainWindow.cul);
+            Delegate = this;
+            InitializeLanguage();
         }
 
         private void AdvancedSettings_Load(object sender, EventArgs e)
         {
             try
             {
-                InitializeLanguage();
                 // W8
-                if (MainWindow.KMCGlobals.IsKMCBusy == true && MainWindow.KMCGlobals.RenderingMode == false)
+                if (MainWindow.KMCStatus.IsKMCBusy == true && MainWindow.KMCStatus.RenderingMode == false)
                 {
-                    Label5.Enabled = false;
+                    AudioFreqLabel.Enabled = false;
                     FrequencyBox.Enabled = false;
                     Label6.Enabled = false;
                 }
                 else
                 {
-                    Label5.Enabled = true;
+                    AudioFreqLabel.Enabled = true;
                     FrequencyBox.Enabled = true;
                     Label6.Enabled = true;
                 }
                 // K DONE
-                OverrideTempoNow.Text = String.Format(MainWindow.res_man.GetString("OverrideTempo1", MainWindow.cul), MainWindow.KMCGlobals.OriginalTempo.ToString());
+                MaxVoices.Value = Properties.Settings.Default.Voices.LimitToRange(0, (Int32)MaxVoices.Maximum);
+                OverrideTempoNow.Text = String.Format(Languages.Parse("OverrideTempo"), MainWindow.KMCGlobals.OriginalTempo.ToString());
                 FrequencyBox.Text = Convert.ToString(Properties.Settings.Default.AudioFreq);
-                BitrateBox.Text = Convert.ToString(Properties.Settings.Default.OGGBitrate);
-                RTFPS.Value = Convert.ToDecimal(MainWindow.KMCGlobals.RTFPS);
+                BitrateBox.Text = Convert.ToString(Properties.Settings.Default.Bitrate);
+                RTFPS.Value = Convert.ToDecimal(Properties.Settings.Default.RealTimeFPS);
                 //
                 if (Properties.Settings.Default.NoteOff1 == true)
-                {
-                    MainWindow.KMCGlobals.NoteOff1Event = true;
                     Noteoff1.Checked = true;
-                }
                 else
-                {
-                    MainWindow.KMCGlobals.NoteOff1Event = false;
                     Noteoff1.Checked = false;
-                }
-                if (Properties.Settings.Default.DisableFX == true)
-                {
-                    MainWindow.KMCGlobals.FXDisabled = true;
+
+                if (Properties.Settings.Default.DisableEffects == true)
                     FXDisable.Checked = true;
-                }
                 else
-                {
-                    MainWindow.KMCGlobals.FXDisabled = false;
                     FXDisable.Checked = false;
-                }
-                if (Properties.Settings.Default.OverrideOGG == true)
-                {
-                    checkBox3.Checked = true;
-                }
+
+                if (Properties.Settings.Default.OverrideBitrate == true)
+                    ConstantBitrate.Checked = true;
                 else
-                {
-                    checkBox3.Checked = false;
-                }
-                if (Properties.Settings.Default.TempoOverride == true)
+                    ConstantBitrate.Checked = false;
+
+                if (Properties.Settings.Default.OverrideTempo == true)
                 {
                     OverrideTempoNow.Checked = true;
                     TempoValue.Enabled = true;
@@ -97,117 +94,73 @@ namespace KeppyMIDIConverter
             }
             catch (Exception ex)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(MainWindow.res_man.GetString("FatalError", MainWindow.cul), ex.ToString(), 1, 0);
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("FatalError"), ex.ToString(), 1, 0);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            base.Close();
+            Hide();
         }
 
         private void FrequencyBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MainWindow.KMCGlobals.Frequency = Convert.ToInt32(this.FrequencyBox.Text);
-            Properties.Settings.Default.AudioFreq = MainWindow.KMCGlobals.Frequency;
+            Properties.Settings.Default.AudioFreq = Convert.ToInt32(this.FrequencyBox.Text);
             Properties.Settings.Default.Save();
         }
 
         private void BitrateBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MainWindow.KMCGlobals.Bitrate = Convert.ToInt32(this.BitrateBox.Text);
-            Properties.Settings.Default.OGGBitrate = MainWindow.KMCGlobals.Bitrate;
+            Properties.Settings.Default.Bitrate = Convert.ToInt32(this.BitrateBox.Text);
             Properties.Settings.Default.Save();
         }
 
         private void FXDisable_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.FXDisable.Checked)
-            {
-                MainWindow.KMCGlobals.FXDisabled = true;
-                Properties.Settings.Default.DisableFX = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                MainWindow.KMCGlobals.FXDisabled = false;
-                Properties.Settings.Default.DisableFX = false;
-                Properties.Settings.Default.Save();
-            }
+            Properties.Settings.Default.DisableEffects = FXDisable.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void Noteoff1_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.Noteoff1.Checked)
-            {
-                MainWindow.KMCGlobals.NoteOff1Event = true;
-                Properties.Settings.Default.NoteOff1 = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                MainWindow.KMCGlobals.NoteOff1Event = false;
-                Properties.Settings.Default.NoteOff1 = false;
-                Properties.Settings.Default.Save();
-            }
+            Properties.Settings.Default.NoteOff1 = Noteoff1.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (OverrideTempoNow.Checked == true)
             {
-                Properties.Settings.Default.TempoOverride = true;
+                Properties.Settings.Default.OverrideTempo = true;
                 TempoValue.Enabled = true;
             }
             else
             {
-                Properties.Settings.Default.TempoOverride = false;
+                Properties.Settings.Default.OverrideTempo = false;
                 TempoValue.Enabled = false;
                 TempoValue.Value = 40;
                 MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
-                MainWindow.SetTempo(false, false);
+                BASSControl.SetTempo(false, false);
             }
             Properties.Settings.Default.Save();
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked == true)
+            if (ConstantBitrate.Checked == true)
             {
-                Properties.Settings.Default.OverrideOGG = true;
+                Properties.Settings.Default.OverrideBitrate = true;
                 Properties.Settings.Default.Save();
-                label3.Enabled = true;
+                BitrateLabel.Enabled = true;
                 BitrateBox.Enabled = true;
-                MainWindow.KMCGlobals.QualityOverride = true;
             }
             else
             {
-                Properties.Settings.Default.OverrideOGG = false;
+                Properties.Settings.Default.OverrideBitrate = false;
                 Properties.Settings.Default.Save();
-                label3.Enabled = false;
+                BitrateLabel.Enabled = false;
                 BitrateBox.Enabled = false;
-                MainWindow.KMCGlobals.QualityOverride = false;
             }
-        }
-
-        // Overrides
-
-        protected override void OnShown(EventArgs e)
-        {
-
-            if (Properties.Settings.Default.SettLocation.X == 0 || Properties.Settings.Default.SettLocation.Y == 0)
-                this.CenterToScreen();
-            else
-                Location = Properties.Settings.Default.SettLocation;
-            base.OnShown(e);
-        }
-
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-            Properties.Settings.Default.SettLocation = Location;
-            Properties.Settings.Default.Save();
-            Hide();
         }
 
         // Snap feature
@@ -232,20 +185,38 @@ namespace KeppyMIDIConverter
 
         private void RTFPS_ValueChanged(object sender, EventArgs e)
         {
-            MainWindow.KMCGlobals.RTFPS = Convert.ToDouble(RTFPS.Value);
-            Properties.Settings.Default.RTFPS = MainWindow.KMCGlobals.RTFPS;
+            Properties.Settings.Default.RealTimeFPS = Convert.ToDouble(RTFPS.Value);
             Properties.Settings.Default.Save();
         }
 
         private void TempoValue_Scroll(object sender, EventArgs e)
         {
             MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
-            MainWindow.SetTempo(false, false);
+            BASSControl.SetTempo(false, false);
         }
 
         private void CheckTempo_Tick(object sender, EventArgs e)
         {
             TempoCurrent.Text = String.Format("{0}bpm", Convert.ToDouble(60000000 / (MainWindow.KMCGlobals.MIDITempo * MainWindow.KMCGlobals.TempoScale)).ToString("0.0"));
+        }
+
+        private void MaxVoices_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.Voices = (int)MaxVoices.Value;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("Error"), ex.ToString(), 0, 0);
+                errordialog.ShowDialog();
+            }
+        }
+
+        private void ChannelsSettings_Click(object sender, EventArgs e)
+        {
+            new ChannelsSettings().ShowDialog();
         }
     }
 }

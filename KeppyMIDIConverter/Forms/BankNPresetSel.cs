@@ -3,82 +3,71 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Threading;
+using System.Text;
 using System.IO;
 using System.Diagnostics;
-using System.Text;
 using System.Windows.Forms;
-using System.Globalization;
-using System.Resources;
-using Microsoft.Win32;
 
-namespace KeppyMIDIConverter.Forms
+namespace KeppyMIDIConverter
 {
     public partial class BankNPresetSel : Form
     {
-        public int BankValueReturn { get; set; }
-        public int PresetValueReturn { get; set; }
-        public int DesBankValueReturn { get; set; }
-        public int DesPresetValueReturn { get; set; }
+        public string DesBankValueReturn { get; set; }
+        public string DesPresetValueReturn { get; set; }
+        public string SrcBankValueReturn { get; set; }
+        public string SrcPresetValueReturn { get; set; }
         public string SelectedSF { get; set; }
-        public int typeofsfhehe { get; set; }
         public int WindowView { get; set; }
 
-        public BankNPresetSel(String Target, int WindowMode, int typeofsf)
+        private void InitializeLanguage()
+        {
+            Text = Languages.Parse("BankNPresetSelTitle");
+
+            BNPSelDesc.Text = Languages.Parse("BNPSelDesc");
+            BNPSelHelp.Text = Languages.Parse("BNPSelHelp");
+            BNPSelWiki.Text = Languages.Parse("BNPSelWiki");
+            ConfirmBtn.Text = Languages.Parse("ConfirmBtn");
+            CancelBtn.Text = Languages.Parse("CancelBtn");
+
+            SrcBankLabel.Text = Languages.Parse("SrcBank");
+            SrcPresetLabel.Text = Languages.Parse("SrcPreset");
+            DesBankLabel.Text = Languages.Parse("DesBank");
+            DesPresetLabel.Text = Languages.Parse("DesPreset");
+        }
+
+        public BankNPresetSel(String Target, Boolean ParsePreset)
         {
             InitializeComponent();
             InitializeLanguage();
             SelectedSF = Target;
-            SelectedSFLabel.Text = String.Format("{0}:\n{1}", MainWindow.res_man.GetString("BankNPresetSelectedSF", MainWindow.cul), Path.GetFileNameWithoutExtension(SelectedSF));
-            DesBankVal.Value = 0;
-            DesPresetVal.Value = 0;
-            if (Path.GetExtension(Target).ToLower() == ".sfz")
+            SelectedSFLabel.Text = String.Format(Languages.Parse("SelectedSF"), SelectedSF);
+            SrcBankVal.Value = 0;
+            SrcPresetVal.Value = 0;
+            if (!ParsePreset)
             {
-                SrcBankLab.Enabled = false;
-                SrcPresetLab.Enabled = false;
-                SrcBankVal.Enabled = false;
-                SrcPresetVal.Enabled = false;
-            }
-            if (WindowMode == 1)
-            {
-                this.StartPosition = FormStartPosition.CenterScreen;
+                SrcBankVal.Minimum = -1;
+                SrcPresetVal.Minimum = 0;
             }
             else
             {
-                this.StartPosition = FormStartPosition.CenterParent;
-            }
-        }
-
-        private void InitializeLanguage()
-        {
-            Text = MainWindow.res_man.GetString("BankNPresetTitle", MainWindow.cul);
-            SrcBankLab.Text = MainWindow.res_man.GetString("BankNPresetSrcBank", MainWindow.cul);
-            SrcPresetLab.Text = MainWindow.res_man.GetString("BankNPresetSrcPrst", MainWindow.cul);
-            DesBankLab.Text = MainWindow.res_man.GetString("BankNPresetDesBank", MainWindow.cul);
-            DesPresetLab.Text = MainWindow.res_man.GetString("BankNPresetDesPrst", MainWindow.cul);
-            label1.Text = MainWindow.res_man.GetString("BankNPresetSelectMsg", MainWindow.cul);
-            label6.Text = MainWindow.res_man.GetString("BankNPresetDiscl", MainWindow.cul);
-            WikipediaLink.Text = MainWindow.res_man.GetString("BankNPresetGuide", MainWindow.cul);
-            IgnoreBtn.Text = MainWindow.res_man.GetString("BankNPresetIgnore", MainWindow.cul);
-            ConfirmBut.Text = MainWindow.res_man.GetString("BankNPresetConfirm", MainWindow.cul);
-            if (MainWindow.res_man.GetString("BankNPresetTBT", MainWindow.cul) == "yes")
-            {
-                ToBeTranslated.Visible = true;
+                SrcBankVal.Enabled = false;
+                SrcPresetVal.Enabled = false;
+                SrcBankVal.Value = 0;
+                SrcPresetVal.Value = 0;
             }
         }
 
         private void ConfirmBut_Click(object sender, EventArgs e)
         {
-            BankValueReturn = Convert.ToInt32(DesBankVal.Value);
-            PresetValueReturn = Convert.ToInt32(DesPresetVal.Value);
-            DesBankValueReturn = Convert.ToInt32(SrcBankVal.Value);
-            DesPresetValueReturn = Convert.ToInt32(SrcPresetVal.Value);
+            SrcBankValueReturn = SrcBankVal.Value.ToString();
+            SrcPresetValueReturn = SrcPresetVal.Value.ToString();
+            DesBankValueReturn = DesBankVal.Value.ToString();
+            DesPresetValueReturn = DesPresetVal.Value.ToString();
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void IgnoreBtn_Click(object sender, EventArgs e)
+        private void CancelBtn_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -86,17 +75,8 @@ namespace KeppyMIDIConverter.Forms
         private void WikipediaLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var helpFile = Path.Combine(Path.GetTempPath(), "help.txt");
-            File.WriteAllText(helpFile, KeppyMIDIConverter.Properties.Resources.gmlist);
+            // File.WriteAllText(helpFile, KeppyMIDIConverter.Properties.Resources.gmlist);
             Process.Start(helpFile);
-        }
-
-        private void ToBeTranslated_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show(String.Format("This window is not available in your native language: {0}\n\nDo you want to help the translation?", Program.ReturnCulture(false).EnglishName.ToString()), "Keppy's MIDI Converter - Error", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Process.Start("https://github.com/kaleidonKep99/Keppys-MIDI-Converter#main-languages-available");
-            }
         }
 
         private void BankNPresetSel_Load(object sender, EventArgs e)

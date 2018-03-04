@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoundfontDialog));
-            this.button1 = new System.Windows.Forms.Button();
+            this.OKBtn = new System.Windows.Forms.Button();
             this.SoundfontImportDialog = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.ImportBtn = new System.Windows.Forms.Button();
@@ -54,16 +54,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // OKBtn
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(504, 435);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OKBtn.Location = new System.Drawing.Point(504, 435);
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.Size = new System.Drawing.Size(75, 23);
+            this.OKBtn.TabIndex = 8;
+            this.OKBtn.Text = "OK";
+            this.OKBtn.UseVisualStyleBackColor = true;
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // SoundfontImportDialog
             // 
@@ -247,7 +247,7 @@
             this.Controls.Add(this.SFList);
             this.Controls.Add(this.RemoveBtn);
             this.Controls.Add(this.ImportBtn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.OKBtn);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -269,7 +269,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OKBtn;
         private System.Windows.Forms.OpenFileDialog SoundfontImportDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ImportBtn;

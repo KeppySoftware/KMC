@@ -11,6 +11,14 @@
         /// Pulire le risorse in uso.
         /// </summary>
         /// <param name="disposing">ha valore true se le risorse gestite devono essere eliminate, false in caso contrario.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         #region Codice generato da Progettazione Windows Form
 
@@ -22,279 +30,78 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.MIDIImport = new System.Windows.Forms.OpenFileDialog();
-            this.RenderingTimer = new System.Windows.Forms.Timer(this.components);
-            this.UsedVoices = new System.Windows.Forms.Label();
-            this.SettingsBox = new System.Windows.Forms.GroupBox();
-            this.AdvSettingsButton = new System.Windows.Forms.Button();
-            this.VoiceLimit = new System.Windows.Forms.NumericUpDown();
-            this.VoiceLabel = new System.Windows.Forms.Label();
-            this.labelRMS = new System.Windows.Forms.Label();
-            this.CurrentStatusText = new System.Windows.Forms.Label();
-            this.RealTimePlayBack = new System.ComponentModel.BackgroundWorker();
+            this.ConverterMenu = new System.Windows.Forms.MainMenu(this.components);
+            this.ActionsStrip = new System.Windows.Forms.MenuItem();
+            this.ImportMIDIs = new System.Windows.Forms.MenuItem();
+            this.RemoveMIDIs = new System.Windows.Forms.MenuItem();
+            this.ClearList = new System.Windows.Forms.MenuItem();
+            this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.OpenSFVSTManager = new System.Windows.Forms.MenuItem();
+            this.menuItem7 = new System.Windows.Forms.MenuItem();
+            this.RenderToWAV = new System.Windows.Forms.MenuItem();
+            this.RenderToOGG = new System.Windows.Forms.MenuItem();
+            this.RenderToLAME = new System.Windows.Forms.MenuItem();
+            this.PreviewFiles = new System.Windows.Forms.MenuItem();
+            this.AbortConversion = new System.Windows.Forms.MenuItem();
+            this.menuItem13 = new System.Windows.Forms.MenuItem();
+            this.Exit = new System.Windows.Forms.MenuItem();
+            this.OptionsStrip = new System.Windows.Forms.MenuItem();
+            this.RenderMode = new System.Windows.Forms.MenuItem();
+            this.RenderStandard = new System.Windows.Forms.MenuItem();
+            this.RenderRTS = new System.Windows.Forms.MenuItem();
+            this.menuItem42 = new System.Windows.Forms.MenuItem();
+            this.NoAffectPreview = new System.Windows.Forms.MenuItem();
+            this.menuItem17 = new System.Windows.Forms.MenuItem();
+            this.ACFUWSTC = new System.Windows.Forms.MenuItem();
+            this.ASAR = new System.Windows.Forms.MenuItem();
+            this.CMLAR = new System.Windows.Forms.MenuItem();
+            this.SCPIOTL = new System.Windows.Forms.MenuItem();
+            this.CSFFS = new System.Windows.Forms.MenuItem();
+            this.menuItem23 = new System.Windows.Forms.MenuItem();
+            this.ChangeLanguage = new System.Windows.Forms.MenuItem();
+            this.HelpStrip = new System.Windows.Forms.MenuItem();
+            this.IATP = new System.Windows.Forms.MenuItem();
+            this.menuItem32 = new System.Windows.Forms.MenuItem();
+            this.STDWD = new System.Windows.Forms.MenuItem();
+            this.KK99GP = new System.Windows.Forms.MenuItem();
+            this.KK99YTC = new System.Windows.Forms.MenuItem();
+            this.menuItem30 = new System.Windows.Forms.MenuItem();
+            this.JKSUS = new System.Windows.Forms.MenuItem();
+            this.PreviewTrackBar = new System.Windows.Forms.TrackBar();
+            this.MIDIList = new System.Windows.Forms.ListView();
+            this.MIDIFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.MIDILength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.MIDINotes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.MIDISize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.VolumeBar = new System.Windows.Forms.TrackBar();
-            this.VolumeLabel = new System.Windows.Forms.Label();
-            this.VolumeTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AVSLabel = new System.Windows.Forms.Label();
+            this.RMSLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.StatusPicture = new System.Windows.Forms.PictureBox();
-            this.ConverterProcess = new System.ComponentModel.BackgroundWorker();
-            this.DefaultMenu = new System.Windows.Forms.MainMenu(this.components);
-            this.ActionsStrip = new System.Windows.Forms.MenuItem();
-            this.importMIDIsToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.removeSelectedMIDIsToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.clearMIDIsListToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem5 = new System.Windows.Forms.MenuItem();
-            this.openTheSoundfontsManagerToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem7 = new System.Windows.Forms.MenuItem();
-            this.startRenderingWAVToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.startRenderingOGGToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.startRenderingMp3ToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.playInRealtimeBetaToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.abortRenderingToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem12 = new System.Windows.Forms.MenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.OptionsStrip = new System.Windows.Forms.MenuItem();
-            this.RenderModeChanger = new System.Windows.Forms.MenuItem();
-            this.RenderModeStandard = new System.Windows.Forms.MenuItem();
-            this.RenderModeSimulation = new System.Windows.Forms.MenuItem();
-            this.menuItem14 = new System.Windows.Forms.MenuItem();
-            this.menuItem15 = new System.Windows.Forms.MenuItem();
-            this.menuItem9 = new System.Windows.Forms.MenuItem();
-            this.AutoUpdatesCheckStrip = new System.Windows.Forms.MenuItem();
-            this.enabledToolStripMenuItem3 = new System.Windows.Forms.MenuItem();
-            this.disabledToolStripMenuItem3 = new System.Windows.Forms.MenuItem();
-            this.AutomaticShutdownStrip = new System.Windows.Forms.MenuItem();
-            this.enabledToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.disabledToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.ClearListAutomaticallyStrip = new System.Windows.Forms.MenuItem();
-            this.enabledToolStripMenuItem1 = new System.Windows.Forms.MenuItem();
-            this.disabledToolStripMenuItem1 = new System.Windows.Forms.MenuItem();
-            this.ConvPosOrTimeLeft = new System.Windows.Forms.MenuItem();
-            this.enabledToolStripMenuItem2 = new System.Windows.Forms.MenuItem();
-            this.disabledToolStripMenuItem2 = new System.Windows.Forms.MenuItem();
-            this.AudioEventsStrip = new System.Windows.Forms.MenuItem();
-            this.enabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
-            this.disabledToolStripMenuItem4 = new System.Windows.Forms.MenuItem();
-            this.menuItem13 = new System.Windows.Forms.MenuItem();
-            this.OverrideStrip = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
-            this.forceCloseTheApplicationToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.HelpStrip = new System.Windows.Forms.MenuItem();
-            this.informationAboutTheProgramToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.supportTheDeveloperWithADonationToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem3 = new System.Windows.Forms.MenuItem();
-            this.KaleidonKep99sGitHubPageToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem = new System.Windows.Forms.MenuItem();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
-            this.DiscordHypeSquadRef = new System.Windows.Forms.MenuItem();
-            this.DefMenu = new System.Windows.Forms.ContextMenu();
-            this.ImportMIDIsRightClick = new System.Windows.Forms.MenuItem();
-            this.RemoveMIDIsRightClick = new System.Windows.Forms.MenuItem();
-            this.ClearMIDIsListRightClick = new System.Windows.Forms.MenuItem();
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.SortByName = new System.Windows.Forms.MenuItem();
-            this.menuItem6 = new System.Windows.Forms.MenuItem();
-            this.MoveUpItem = new System.Windows.Forms.MenuItem();
-            this.MoveDownItem = new System.Windows.Forms.MenuItem();
+            this.StatusMsg = new System.Windows.Forms.Label();
+            this.OpenSettings = new System.Windows.Forms.Button();
+            this.VolumeLabel = new System.Windows.Forms.Label();
+            this.ListMenu = new System.Windows.Forms.ContextMenu();
+            this.ImportMIDIsC = new System.Windows.Forms.MenuItem();
+            this.RemoveMIDIsC = new System.Windows.Forms.MenuItem();
+            this.ClearListC = new System.Windows.Forms.MenuItem();
+            this.menuItem4 = new System.Windows.Forms.MenuItem();
+            this.SortName = new System.Windows.Forms.MenuItem();
+            this.menuItem10 = new System.Windows.Forms.MenuItem();
+            this.MoveUp = new System.Windows.Forms.MenuItem();
+            this.MoveDown = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.ConverterProcessRT = new System.ComponentModel.BackgroundWorker();
-            this.MIDIList = new System.Windows.Forms.ListView();
-            this.GarbageCollector = new System.ComponentModel.BackgroundWorker();
-            this.GetInfoWorker = new System.ComponentModel.BackgroundWorker();
-            this.ThemeCheck = new System.ComponentModel.BackgroundWorker();
-            this.RealTimePreviewTrackBar = new System.Windows.Forms.TrackBar();
-            this.SettingsBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).BeginInit();
+            this.AutoResizeColumns = new System.Windows.Forms.MenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StatusPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RealTimePreviewTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
-            // MIDIImport
+            // ConverterMenu
             // 
-            this.MIDIImport.Filter = "MIDI files|*.mid;*.midi;*.kar;*.rmi;*.riff";
-            this.MIDIImport.Multiselect = true;
-            this.MIDIImport.RestoreDirectory = true;
-            this.MIDIImport.Title = "Import MIDIs to the conversion list..";
-            // 
-            // RenderingTimer
-            // 
-            this.RenderingTimer.Interval = 10;
-            this.RenderingTimer.Tick += new System.EventHandler(this.RenderingTimer_Tick);
-            // 
-            // UsedVoices
-            // 
-            this.UsedVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.UsedVoices.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UsedVoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.UsedVoices.Location = new System.Drawing.Point(5, 311);
-            this.UsedVoices.Name = "UsedVoices";
-            this.UsedVoices.Size = new System.Drawing.Size(453, 13);
-            this.UsedVoices.TabIndex = 8;
-            this.UsedVoices.Text = "Active voices sign";
-            this.UsedVoices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.UsedVoices.Click += new System.EventHandler(this.UsedVoices_Click);
-            // 
-            // SettingsBox
-            // 
-            this.SettingsBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SettingsBox.BackColor = System.Drawing.Color.Transparent;
-            this.SettingsBox.Controls.Add(this.AdvSettingsButton);
-            this.SettingsBox.Controls.Add(this.VoiceLimit);
-            this.SettingsBox.Controls.Add(this.VoiceLabel);
-            this.SettingsBox.Location = new System.Drawing.Point(475, 333);
-            this.SettingsBox.Name = "SettingsBox";
-            this.SettingsBox.Size = new System.Drawing.Size(181, 62);
-            this.SettingsBox.TabIndex = 12;
-            this.SettingsBox.TabStop = false;
-            this.SettingsBox.Text = "Settings";
-            // 
-            // AdvSettingsButton
-            // 
-            this.AdvSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AdvSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AdvSettingsButton.Location = new System.Drawing.Point(7, 35);
-            this.AdvSettingsButton.Name = "AdvSettingsButton";
-            this.AdvSettingsButton.Size = new System.Drawing.Size(168, 19);
-            this.AdvSettingsButton.TabIndex = 3;
-            this.AdvSettingsButton.Text = "Advanced settings";
-            this.AdvSettingsButton.UseVisualStyleBackColor = true;
-            this.AdvSettingsButton.Click += new System.EventHandler(this.AdvSettingsButton_Click);
-            // 
-            // VoiceLimit
-            // 
-            this.VoiceLimit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.VoiceLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VoiceLimit.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VoiceLimit.Location = new System.Drawing.Point(125, 14);
-            this.VoiceLimit.Margin = new System.Windows.Forms.Padding(0);
-            this.VoiceLimit.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.VoiceLimit.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.VoiceLimit.Name = "VoiceLimit";
-            this.VoiceLimit.Size = new System.Drawing.Size(50, 18);
-            this.VoiceLimit.TabIndex = 2;
-            this.VoiceLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.VoiceLimit.Value = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.VoiceLimit.ValueChanged += new System.EventHandler(this.VoiceLimit_ValueChanged);
-            // 
-            // VoiceLabel
-            // 
-            this.VoiceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.VoiceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.VoiceLabel.Location = new System.Drawing.Point(1, 16);
-            this.VoiceLabel.Name = "VoiceLabel";
-            this.VoiceLabel.Size = new System.Drawing.Size(128, 13);
-            this.VoiceLabel.TabIndex = 0;
-            this.VoiceLabel.Text = "Voice limit:";
-            this.VoiceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelRMS
-            // 
-            this.labelRMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelRMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.labelRMS.Location = new System.Drawing.Point(5, 293);
-            this.labelRMS.Name = "labelRMS";
-            this.labelRMS.Size = new System.Drawing.Size(453, 13);
-            this.labelRMS.TabIndex = 17;
-            this.labelRMS.Text = "RMS sign";
-            // 
-            // CurrentStatusText
-            // 
-            this.CurrentStatusText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurrentStatusText.BackColor = System.Drawing.Color.Transparent;
-            this.CurrentStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CurrentStatusText.Location = new System.Drawing.Point(0, 0);
-            this.CurrentStatusText.Name = "CurrentStatusText";
-            this.CurrentStatusText.Size = new System.Drawing.Size(403, 60);
-            this.CurrentStatusText.TabIndex = 7;
-            this.CurrentStatusText.Text = "Loading... Please wait...";
-            this.CurrentStatusText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // RealTimePlayBack
-            // 
-            this.RealTimePlayBack.WorkerReportsProgress = true;
-            this.RealTimePlayBack.WorkerSupportsCancellation = true;
-            this.RealTimePlayBack.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RealTimePlayBack_DoWork);
-            // 
-            // VolumeBar
-            // 
-            this.VolumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.VolumeBar.AutoSize = false;
-            this.VolumeBar.LargeChange = 1;
-            this.VolumeBar.Location = new System.Drawing.Point(475, 310);
-            this.VolumeBar.Maximum = 10000;
-            this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(180, 15);
-            this.VolumeBar.TabIndex = 1;
-            this.VolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.VolumeBar.Scroll += new System.EventHandler(this.VolumeBar_Scroll);
-            // 
-            // VolumeLabel
-            // 
-            this.VolumeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.VolumeLabel.Location = new System.Drawing.Point(475, 292);
-            this.VolumeLabel.Name = "VolumeLabel";
-            this.VolumeLabel.Size = new System.Drawing.Size(180, 13);
-            this.VolumeLabel.TabIndex = 19;
-            this.VolumeLabel.Text = "Volume:";
-            this.VolumeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // VolumeTip
-            // 
-            this.VolumeTip.AutomaticDelay = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.StatusPicture);
-            this.panel1.Controls.Add(this.CurrentStatusText);
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.Location = new System.Drawing.Point(5, 333);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(465, 62);
-            this.panel1.TabIndex = 13;
-            // 
-            // StatusPicture
-            // 
-            this.StatusPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.StatusPicture.Dock = System.Windows.Forms.DockStyle.Right;
-            this.StatusPicture.Image = global::KeppyMIDIConverter.Properties.Resources.convpause;
-            this.StatusPicture.InitialImage = null;
-            this.StatusPicture.Location = new System.Drawing.Point(403, 0);
-            this.StatusPicture.Name = "StatusPicture";
-            this.StatusPicture.Size = new System.Drawing.Size(60, 60);
-            this.StatusPicture.TabIndex = 8;
-            this.StatusPicture.TabStop = false;
-            // 
-            // ConverterProcess
-            // 
-            this.ConverterProcess.WorkerReportsProgress = true;
-            this.ConverterProcess.WorkerSupportsCancellation = true;
-            this.ConverterProcess.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConverterProcess_DoWork);
-            // 
-            // DefaultMenu
-            // 
-            this.DefaultMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.ConverterMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.ActionsStrip,
             this.OptionsStrip,
             this.HelpStrip});
@@ -303,428 +110,265 @@
             // 
             this.ActionsStrip.Index = 0;
             this.ActionsStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.importMIDIsToolStripMenuItem,
-            this.removeSelectedMIDIsToolStripMenuItem,
-            this.clearMIDIsListToolStripMenuItem,
+            this.ImportMIDIs,
+            this.RemoveMIDIs,
+            this.ClearList,
             this.menuItem5,
-            this.openTheSoundfontsManagerToolStripMenuItem,
+            this.OpenSFVSTManager,
             this.menuItem7,
-            this.startRenderingWAVToolStripMenuItem,
-            this.startRenderingOGGToolStripMenuItem,
-            this.startRenderingMp3ToolStripMenuItem,
-            this.playInRealtimeBetaToolStripMenuItem,
-            this.abortRenderingToolStripMenuItem,
-            this.menuItem12,
-            this.exitToolStripMenuItem});
-            this.ActionsStrip.Text = "Actions";
+            this.RenderToWAV,
+            this.RenderToOGG,
+            this.RenderToLAME,
+            this.PreviewFiles,
+            this.AbortConversion,
+            this.menuItem13,
+            this.Exit});
+            this.ActionsStrip.Text = "{Actions}";
             // 
-            // importMIDIsToolStripMenuItem
+            // ImportMIDIs
             // 
-            this.importMIDIsToolStripMenuItem.DefaultItem = true;
-            this.VistaMenuSys.SetImage(this.importMIDIsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.add_icon);
-            this.importMIDIsToolStripMenuItem.Index = 0;
-            this.importMIDIsToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
-            this.importMIDIsToolStripMenuItem.Text = "Import MIDIs";
-            this.importMIDIsToolStripMenuItem.Click += new System.EventHandler(this.importMIDIsToolStripMenuItem_Click);
+            this.ImportMIDIs.DefaultItem = true;
+            this.ImportMIDIs.Index = 0;
+            this.ImportMIDIs.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
+            this.ImportMIDIs.Text = "{ImportMIDIs}";
+            this.ImportMIDIs.Click += new System.EventHandler(this.ImportMIDIs_Click);
             // 
-            // removeSelectedMIDIsToolStripMenuItem
+            // RemoveMIDIs
             // 
-            this.VistaMenuSys.SetImage(this.removeSelectedMIDIsToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.remove_icon);
-            this.removeSelectedMIDIsToolStripMenuItem.Index = 1;
-            this.removeSelectedMIDIsToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.Del;
-            this.removeSelectedMIDIsToolStripMenuItem.Text = "Remove selected MIDIs";
-            this.removeSelectedMIDIsToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedMIDIsToolStripMenuItem_Click);
+            this.RemoveMIDIs.Index = 1;
+            this.RemoveMIDIs.Shortcut = System.Windows.Forms.Shortcut.Del;
+            this.RemoveMIDIs.Text = "{RemoveSelectedMIDIs}";
+            this.RemoveMIDIs.Click += new System.EventHandler(this.RemoveMIDIs_Click);
             // 
-            // clearMIDIsListToolStripMenuItem
+            // ClearList
             // 
-            this.clearMIDIsListToolStripMenuItem.Index = 2;
-            this.clearMIDIsListToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.ShiftDel;
-            this.clearMIDIsListToolStripMenuItem.Text = "Clear MIDIs list";
-            this.clearMIDIsListToolStripMenuItem.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem_Click);
+            this.ClearList.Index = 2;
+            this.ClearList.Shortcut = System.Windows.Forms.Shortcut.ShiftDel;
+            this.ClearList.Text = "{ClearList}";
+            this.ClearList.Click += new System.EventHandler(this.ClearList_Click);
             // 
             // menuItem5
             // 
             this.menuItem5.Index = 3;
             this.menuItem5.Text = "-";
             // 
-            // openTheSoundfontsManagerToolStripMenuItem
+            // OpenSFVSTManager
             // 
-            this.VistaMenuSys.SetImage(this.openTheSoundfontsManagerToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.configure_icon);
-            this.openTheSoundfontsManagerToolStripMenuItem.Index = 4;
-            this.openTheSoundfontsManagerToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
-            this.openTheSoundfontsManagerToolStripMenuItem.Text = "Open the soundfonts/VST DSP manager";
-            this.openTheSoundfontsManagerToolStripMenuItem.Click += new System.EventHandler(this.openTheSoundfontsManagerToolStripMenuItem_Click);
+            this.OpenSFVSTManager.Index = 4;
+            this.OpenSFVSTManager.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
+            this.OpenSFVSTManager.Text = "{OpenSFVSTManager}";
+            this.OpenSFVSTManager.Click += new System.EventHandler(this.OpenSFVSTManager_Click);
             // 
             // menuItem7
             // 
             this.menuItem7.Index = 5;
             this.menuItem7.Text = "-";
             // 
-            // startRenderingWAVToolStripMenuItem
+            // RenderToWAV
             // 
-            this.VistaMenuSys.SetImage(this.startRenderingWAVToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
-            this.startRenderingWAVToolStripMenuItem.Index = 6;
-            this.startRenderingWAVToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlW;
-            this.startRenderingWAVToolStripMenuItem.Text = "Render files to Wave (.WAV)";
-            this.startRenderingWAVToolStripMenuItem.Click += new System.EventHandler(this.startRenderingWAVToolStripMenuItem_Click);
+            this.RenderToWAV.Index = 6;
+            this.RenderToWAV.Shortcut = System.Windows.Forms.Shortcut.CtrlW;
+            this.RenderToWAV.Text = "{RenderToWAV}";
+            this.RenderToWAV.Click += new System.EventHandler(this.RenderToWAV_Click);
             // 
-            // startRenderingOGGToolStripMenuItem
+            // RenderToOGG
             // 
-            this.VistaMenuSys.SetImage(this.startRenderingOGGToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
-            this.startRenderingOGGToolStripMenuItem.Index = 7;
-            this.startRenderingOGGToolStripMenuItem.Text = "Render files to Vorbis (.OGG)";
-            this.startRenderingOGGToolStripMenuItem.Click += new System.EventHandler(this.startRenderingOGGToolStripMenuItem_Click);
+            this.RenderToOGG.Index = 7;
+            this.RenderToOGG.Text = "{RenderToOGG}";
+            this.RenderToOGG.Click += new System.EventHandler(this.RenderToOGG_Click);
             // 
-            // startRenderingMp3ToolStripMenuItem
+            // RenderToLAME
             // 
-            this.VistaMenuSys.SetImage(this.startRenderingMp3ToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.audio_icon);
-            this.startRenderingMp3ToolStripMenuItem.Index = 8;
-            this.startRenderingMp3ToolStripMenuItem.Text = "Render files to LAME (.MP3)";
-            this.startRenderingMp3ToolStripMenuItem.Click += new System.EventHandler(this.startRenderingMp3ToolStripMenuItem_Click);
+            this.RenderToLAME.Index = 8;
+            this.RenderToLAME.Text = "{RenderToLAME}";
+            this.RenderToLAME.Click += new System.EventHandler(this.RenderToLAME_Click);
             // 
-            // playInRealtimeBetaToolStripMenuItem
+            // PreviewFiles
             // 
-            this.VistaMenuSys.SetImage(this.playInRealtimeBetaToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.speaker_icon);
-            this.playInRealtimeBetaToolStripMenuItem.Index = 9;
-            this.playInRealtimeBetaToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
-            this.playInRealtimeBetaToolStripMenuItem.Text = "Preview files (Real-time playback)";
-            this.playInRealtimeBetaToolStripMenuItem.Click += new System.EventHandler(this.playInRealtimeBetaToolStripMenuItem_Click);
+            this.PreviewFiles.Index = 9;
+            this.PreviewFiles.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
+            this.PreviewFiles.Text = "{PreviewFiles}";
+            this.PreviewFiles.Click += new System.EventHandler(this.PreviewFiles_Click);
             // 
-            // abortRenderingToolStripMenuItem
+            // AbortConversion
             // 
-            this.VistaMenuSys.SetImage(this.abortRenderingToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
-            this.abortRenderingToolStripMenuItem.Index = 10;
-            this.abortRenderingToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlDel;
-            this.abortRenderingToolStripMenuItem.Text = "Abort rendering/preview";
-            this.abortRenderingToolStripMenuItem.Click += new System.EventHandler(this.abortRenderingToolStripMenuItem_Click);
+            this.AbortConversion.Index = 10;
+            this.AbortConversion.Shortcut = System.Windows.Forms.Shortcut.CtrlDel;
+            this.AbortConversion.Text = "{AbortConversion}";
+            this.AbortConversion.Click += new System.EventHandler(this.AbortConversion_Click);
             // 
-            // menuItem12
+            // menuItem13
             // 
-            this.menuItem12.Index = 11;
-            this.menuItem12.Text = "-";
+            this.menuItem13.Index = 11;
+            this.menuItem13.Text = "-";
             // 
-            // exitToolStripMenuItem
+            // Exit
             // 
-            this.VistaMenuSys.SetImage(this.exitToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.back_icon);
-            this.exitToolStripMenuItem.Index = 12;
-            this.exitToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.AltF4;
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.Exit.Index = 12;
+            this.Exit.Shortcut = System.Windows.Forms.Shortcut.AltF4;
+            this.Exit.Text = "{Exit}";
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // OptionsStrip
             // 
             this.OptionsStrip.Index = 1;
             this.OptionsStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.RenderModeChanger,
-            this.menuItem9,
-            this.AutoUpdatesCheckStrip,
-            this.AutomaticShutdownStrip,
-            this.ClearListAutomaticallyStrip,
-            this.ConvPosOrTimeLeft,
-            this.AudioEventsStrip,
-            this.menuItem13,
-            this.OverrideStrip,
-            this.menuItem2,
-            this.forceCloseTheApplicationToolStripMenuItem});
-            this.OptionsStrip.Text = "Options";
+            this.RenderMode,
+            this.menuItem17,
+            this.ACFUWSTC,
+            this.ASAR,
+            this.CMLAR,
+            this.SCPIOTL,
+            this.CSFFS,
+            this.menuItem23,
+            this.ChangeLanguage});
+            this.OptionsStrip.Text = "{Options}";
             // 
-            // RenderModeChanger
+            // RenderMode
             // 
-            this.RenderModeChanger.Index = 0;
-            this.RenderModeChanger.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.RenderModeStandard,
-            this.RenderModeSimulation,
-            this.menuItem14,
-            this.menuItem15});
-            this.RenderModeChanger.Text = "Render mode";
+            this.RenderMode.Index = 0;
+            this.RenderMode.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.RenderStandard,
+            this.RenderRTS,
+            this.menuItem42,
+            this.NoAffectPreview});
+            this.RenderMode.Text = "{RenderMode}";
             // 
-            // RenderModeStandard
+            // RenderStandard
             // 
-            this.RenderModeStandard.Index = 0;
-            this.RenderModeStandard.Text = "Standard";
-            this.RenderModeStandard.Click += new System.EventHandler(this.RenderModeStandard_Click);
+            this.RenderStandard.Index = 0;
+            this.RenderStandard.Text = "{Standard}";
+            this.RenderStandard.Click += new System.EventHandler(this.RenderStandard_Click);
             // 
-            // RenderModeSimulation
+            // RenderRTS
             // 
-            this.RenderModeSimulation.Index = 1;
-            this.RenderModeSimulation.Text = "Real-Time simulation";
-            this.RenderModeSimulation.Click += new System.EventHandler(this.RenderModeSimulation_Click);
+            this.RenderRTS.Index = 1;
+            this.RenderRTS.Text = "{RealTimeSim}";
+            this.RenderRTS.Click += new System.EventHandler(this.RenderRTS_Click);
             // 
-            // menuItem14
+            // menuItem42
             // 
-            this.menuItem14.Index = 2;
-            this.menuItem14.Text = "-";
+            this.menuItem42.Index = 2;
+            this.menuItem42.Text = "-";
             // 
-            // menuItem15
+            // NoAffectPreview
             // 
-            this.menuItem15.Enabled = false;
-            this.menuItem15.Index = 3;
-            this.menuItem15.Text = "It doesn\'t affect the preview feature";
+            this.NoAffectPreview.Enabled = false;
+            this.NoAffectPreview.Index = 3;
+            this.NoAffectPreview.Text = "{NoAffectPreview}";
             // 
-            // menuItem9
+            // menuItem17
             // 
-            this.menuItem9.Index = 1;
-            this.menuItem9.Text = "-";
+            this.menuItem17.Index = 1;
+            this.menuItem17.Text = "-";
             // 
-            // AutoUpdatesCheckStrip
+            // ACFUWSTC
             // 
-            this.AutoUpdatesCheckStrip.Index = 2;
-            this.AutoUpdatesCheckStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.enabledToolStripMenuItem3,
-            this.disabledToolStripMenuItem3});
-            this.AutoUpdatesCheckStrip.Text = "Automatically check for updates when starting the converter";
+            this.ACFUWSTC.Index = 2;
+            this.ACFUWSTC.Text = "{ACFUWSTC}";
+            this.ACFUWSTC.Click += new System.EventHandler(this.ACFUWSTC_Click);
             // 
-            // enabledToolStripMenuItem3
+            // ASAR
             // 
-            this.enabledToolStripMenuItem3.Index = 0;
-            this.enabledToolStripMenuItem3.Text = "Enabled";
-            this.enabledToolStripMenuItem3.Click += new System.EventHandler(this.enabledToolStripMenuItem3_Click);
+            this.ASAR.Index = 3;
+            this.ASAR.Text = "{ASAR}";
+            this.ASAR.Click += new System.EventHandler(this.ASAR_Click);
             // 
-            // disabledToolStripMenuItem3
+            // CMLAR
             // 
-            this.disabledToolStripMenuItem3.Index = 1;
-            this.disabledToolStripMenuItem3.Text = "Disabled";
-            this.disabledToolStripMenuItem3.Click += new System.EventHandler(this.disabledToolStripMenuItem3_Click);
+            this.CMLAR.Index = 4;
+            this.CMLAR.Text = "{CMLAR}";
+            this.CMLAR.Click += new System.EventHandler(this.CMLAR_Click);
             // 
-            // AutomaticShutdownStrip
+            // SCPIOTL
             // 
-            this.AutomaticShutdownStrip.Index = 3;
-            this.AutomaticShutdownStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.enabledToolStripMenuItem,
-            this.disabledToolStripMenuItem});
-            this.AutomaticShutdownStrip.Text = "Automatic shutdown after rendering";
+            this.SCPIOTL.Index = 5;
+            this.SCPIOTL.Text = "{SCPIOTL}";
+            this.SCPIOTL.Click += new System.EventHandler(this.SCPIOTL_Click);
             // 
-            // enabledToolStripMenuItem
+            // CSFFS
             // 
-            this.enabledToolStripMenuItem.Index = 0;
-            this.enabledToolStripMenuItem.Text = "Enabled";
-            this.enabledToolStripMenuItem.Click += new System.EventHandler(this.enabledToolStripMenuItem_Click);
+            this.CSFFS.Index = 6;
+            this.CSFFS.Text = "{CSFFS}";
+            this.CSFFS.Click += new System.EventHandler(this.CSFFS_Click);
             // 
-            // disabledToolStripMenuItem
+            // menuItem23
             // 
-            this.disabledToolStripMenuItem.Index = 1;
-            this.disabledToolStripMenuItem.Text = "Disabled";
-            this.disabledToolStripMenuItem.Click += new System.EventHandler(this.disabledToolStripMenuItem_Click);
+            this.menuItem23.Index = 7;
+            this.menuItem23.Text = "-";
             // 
-            // ClearListAutomaticallyStrip
+            // ChangeLanguage
             // 
-            this.ClearListAutomaticallyStrip.Index = 4;
-            this.ClearListAutomaticallyStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.enabledToolStripMenuItem1,
-            this.disabledToolStripMenuItem1});
-            this.ClearListAutomaticallyStrip.Text = "Clear MIDIs list after rendering";
-            // 
-            // enabledToolStripMenuItem1
-            // 
-            this.enabledToolStripMenuItem1.Index = 0;
-            this.enabledToolStripMenuItem1.Text = "Enabled";
-            this.enabledToolStripMenuItem1.Click += new System.EventHandler(this.enabledToolStripMenuItem1_Click);
-            // 
-            // disabledToolStripMenuItem1
-            // 
-            this.disabledToolStripMenuItem1.Index = 1;
-            this.disabledToolStripMenuItem1.Text = "Disabled";
-            this.disabledToolStripMenuItem1.Click += new System.EventHandler(this.disabledToolStripMenuItem1_Click);
-            // 
-            // ConvPosOrTimeLeft
-            // 
-            this.ConvPosOrTimeLeft.Index = 5;
-            this.ConvPosOrTimeLeft.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.enabledToolStripMenuItem2,
-            this.disabledToolStripMenuItem2});
-            this.ConvPosOrTimeLeft.Text = "Show conversion position instead of time left";
-            // 
-            // enabledToolStripMenuItem2
-            // 
-            this.enabledToolStripMenuItem2.Index = 0;
-            this.enabledToolStripMenuItem2.Text = "Enabled";
-            this.enabledToolStripMenuItem2.Click += new System.EventHandler(this.enabledToolStripMenuItem2_Click);
-            // 
-            // disabledToolStripMenuItem2
-            // 
-            this.disabledToolStripMenuItem2.Index = 1;
-            this.disabledToolStripMenuItem2.Text = "Disabled";
-            this.disabledToolStripMenuItem2.Click += new System.EventHandler(this.disabledToolStripMenuItem2_Click);
-            // 
-            // AudioEventsStrip
-            // 
-            this.AudioEventsStrip.Index = 6;
-            this.AudioEventsStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.enabledToolStripMenuItem4,
-            this.disabledToolStripMenuItem4});
-            this.AudioEventsStrip.Text = "Conversion started/finished/failed sounds";
-            // 
-            // enabledToolStripMenuItem4
-            // 
-            this.enabledToolStripMenuItem4.Index = 0;
-            this.enabledToolStripMenuItem4.Text = "Enabled";
-            this.enabledToolStripMenuItem4.Click += new System.EventHandler(this.enabledToolStripMenuItem4_Click);
-            // 
-            // disabledToolStripMenuItem4
-            // 
-            this.disabledToolStripMenuItem4.Index = 1;
-            this.disabledToolStripMenuItem4.Text = "Disabled";
-            this.disabledToolStripMenuItem4.Click += new System.EventHandler(this.disabledToolStripMenuItem4_Click);
-            // 
-            // menuItem13
-            // 
-            this.menuItem13.Index = 7;
-            this.menuItem13.Text = "-";
-            this.menuItem13.Visible = false;
-            // 
-            // OverrideStrip
-            // 
-            this.VistaMenuSys.SetImage(this.OverrideStrip, global::KeppyMIDIConverter.Properties.Resources.configure_icon);
-            this.OverrideStrip.Index = 8;
-            this.OverrideStrip.Text = "Override language";
-            this.OverrideStrip.Visible = false;
-            this.OverrideStrip.Click += new System.EventHandler(this.OverrideStrip_Click);
-            // 
-            // menuItem2
-            // 
-            this.menuItem2.Index = 9;
-            this.menuItem2.Text = "-";
-            // 
-            // forceCloseTheApplicationToolStripMenuItem
-            // 
-            this.VistaMenuSys.SetImage(this.forceCloseTheApplicationToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
-            this.forceCloseTheApplicationToolStripMenuItem.Index = 10;
-            this.forceCloseTheApplicationToolStripMenuItem.Text = "Crash the application";
-            this.forceCloseTheApplicationToolStripMenuItem.Click += new System.EventHandler(this.forceCloseTheApplicationToolStripMenuItem_Click);
+            this.ChangeLanguage.Index = 8;
+            this.ChangeLanguage.Text = "{ChangeLanguage}";
+            this.ChangeLanguage.Click += new System.EventHandler(this.ChangeLanguage_Click);
             // 
             // HelpStrip
             // 
             this.HelpStrip.Index = 2;
             this.HelpStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.informationAboutTheProgramToolStripMenuItem,
-            this.supportTheDeveloperWithADonationToolStripMenuItem,
-            this.menuItem3,
-            this.KaleidonKep99sGitHubPageToolStripMenuItem,
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem,
-            this.menuItem8,
-            this.DiscordHypeSquadRef});
-            this.HelpStrip.Text = "Help";
+            this.IATP,
+            this.menuItem32,
+            this.STDWD,
+            this.KK99GP,
+            this.KK99YTC,
+            this.menuItem30,
+            this.JKSUS});
+            this.HelpStrip.Text = "{Help}";
             // 
-            // informationAboutTheProgramToolStripMenuItem
+            // IATP
             // 
-            this.VistaMenuSys.SetImage(this.informationAboutTheProgramToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.information_icon);
-            this.informationAboutTheProgramToolStripMenuItem.Index = 0;
-            this.informationAboutTheProgramToolStripMenuItem.Shortcut = System.Windows.Forms.Shortcut.F1;
-            this.informationAboutTheProgramToolStripMenuItem.Text = "Information about the program";
-            this.informationAboutTheProgramToolStripMenuItem.Click += new System.EventHandler(this.informationsToolStripMenuItem_Click);
+            this.IATP.Index = 0;
+            this.IATP.Shortcut = System.Windows.Forms.Shortcut.F1;
+            this.IATP.Text = "{IATP}";
+            this.IATP.Click += new System.EventHandler(this.IATP_Click);
             // 
-            // supportTheDeveloperWithADonationToolStripMenuItem
+            // menuItem32
             // 
-            this.VistaMenuSys.SetImage(this.supportTheDeveloperWithADonationToolStripMenuItem, global::KeppyMIDIConverter.Properties.Resources.edit_icon);
-            this.supportTheDeveloperWithADonationToolStripMenuItem.Index = 1;
-            this.supportTheDeveloperWithADonationToolStripMenuItem.Text = "Support the developer with a donation";
-            this.supportTheDeveloperWithADonationToolStripMenuItem.Click += new System.EventHandler(this.makeADonationToSupportTheDeveloperToolStripMenuItem_Click);
+            this.menuItem32.Index = 1;
+            this.menuItem32.Text = "-";
             // 
-            // menuItem3
+            // STDWD
             // 
-            this.menuItem3.Index = 2;
-            this.menuItem3.Text = "-";
+            this.STDWD.Index = 2;
+            this.STDWD.Text = "{STDWD}";
+            this.STDWD.Click += new System.EventHandler(this.STDWD_Click);
             // 
-            // KaleidonKep99sGitHubPageToolStripMenuItem
+            // KK99GP
             // 
-            this.VistaMenuSys.SetImage(this.KaleidonKep99sGitHubPageToolStripMenuItem, ((System.Drawing.Image)(resources.GetObject("KaleidonKep99sGitHubPageToolStripMenuItem.Image"))));
-            this.KaleidonKep99sGitHubPageToolStripMenuItem.Index = 3;
-            this.KaleidonKep99sGitHubPageToolStripMenuItem.Text = "KaleidonKep99\'s GitHub Page";
-            this.KaleidonKep99sGitHubPageToolStripMenuItem.Click += new System.EventHandler(this.KaleidonKep99sGitHubPageToolStripMenuItem_Click);
+            this.KK99GP.Index = 3;
+            this.KK99GP.Text = "{KK99GP}";
+            this.KK99GP.Click += new System.EventHandler(this.KK99GP_Click);
             // 
-            // KaleidonKep99sYouTubeChannelToolStripMenuItem
+            // KK99YTC
             // 
-            this.VistaMenuSys.SetImage(this.KaleidonKep99sYouTubeChannelToolStripMenuItem, ((System.Drawing.Image)(resources.GetObject("KaleidonKep99sYouTubeChannelToolStripMenuItem.Image"))));
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Index = 4;
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Text = "KaleidonKep99\'s YouTube Channel";
-            this.KaleidonKep99sYouTubeChannelToolStripMenuItem.Click += new System.EventHandler(this.kaleidonKep99sYouTubeChannelToolStripMenuItem_Click);
+            this.KK99YTC.Index = 4;
+            this.KK99YTC.Text = "{KK99YTC}";
+            this.KK99YTC.Click += new System.EventHandler(this.KK99YTC_Click);
             // 
-            // menuItem8
+            // menuItem30
             // 
-            this.menuItem8.Index = 5;
-            this.menuItem8.Text = "-";
+            this.menuItem30.Index = 5;
+            this.menuItem30.Text = "-";
             // 
-            // DiscordHypeSquadRef
+            // JKSUS
             // 
-            this.VistaMenuSys.SetImage(this.DiscordHypeSquadRef, global::KeppyMIDIConverter.Properties.Resources.hypebadge);
-            this.DiscordHypeSquadRef.Index = 6;
-            this.DiscordHypeSquadRef.Text = "Join the Discord HypeSquad!";
-            this.DiscordHypeSquadRef.Click += new System.EventHandler(this.DiscordHypeSquadRef_Click);
+            this.JKSUS.Index = 6;
+            this.JKSUS.Text = "{JKSUS}";
+            this.JKSUS.Click += new System.EventHandler(this.JKSUS_Click);
             // 
-            // DefMenu
+            // PreviewTrackBar
             // 
-            this.DefMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.ImportMIDIsRightClick,
-            this.RemoveMIDIsRightClick,
-            this.ClearMIDIsListRightClick,
-            this.menuItem1,
-            this.SortByName,
-            this.menuItem6,
-            this.MoveUpItem,
-            this.MoveDownItem});
-            this.DefMenu.Popup += new System.EventHandler(this.DefMenu_Popup);
-            // 
-            // ImportMIDIsRightClick
-            // 
-            this.VistaMenuSys.SetImage(this.ImportMIDIsRightClick, global::KeppyMIDIConverter.Properties.Resources.add_icon);
-            this.ImportMIDIsRightClick.Index = 0;
-            this.ImportMIDIsRightClick.Text = "Import MIDIs";
-            this.ImportMIDIsRightClick.Click += new System.EventHandler(this.importMIDIsToolStripMenuItem_Click);
-            // 
-            // RemoveMIDIsRightClick
-            // 
-            this.VistaMenuSys.SetImage(this.RemoveMIDIsRightClick, global::KeppyMIDIConverter.Properties.Resources.remove_icon);
-            this.RemoveMIDIsRightClick.Index = 1;
-            this.RemoveMIDIsRightClick.Text = "Remove selected MIDIs";
-            this.RemoveMIDIsRightClick.Click += new System.EventHandler(this.removeSelectedMIDIsToolStripMenuItem_Click);
-            // 
-            // ClearMIDIsListRightClick
-            // 
-            this.ClearMIDIsListRightClick.Index = 2;
-            this.ClearMIDIsListRightClick.Text = "Clear MIDIs list";
-            this.ClearMIDIsListRightClick.Click += new System.EventHandler(this.clearMIDIsListToolStripMenuItem_Click);
-            // 
-            // menuItem1
-            // 
-            this.menuItem1.Index = 3;
-            this.menuItem1.Text = "-";
-            // 
-            // SortByName
-            // 
-            this.SortByName.Index = 4;
-            this.SortByName.Text = "Sort by name";
-            this.SortByName.Click += new System.EventHandler(this.SortByName_Click);
-            // 
-            // menuItem6
-            // 
-            this.menuItem6.Index = 5;
-            this.menuItem6.Text = "-";
-            // 
-            // MoveUpItem
-            // 
-            this.MoveUpItem.Enabled = false;
-            this.VistaMenuSys.SetImage(this.MoveUpItem, global::KeppyMIDIConverter.Properties.Resources.up_icon);
-            this.MoveUpItem.Index = 6;
-            this.MoveUpItem.Text = "Move up (One item)";
-            this.MoveUpItem.Click += new System.EventHandler(this.MoveUpItem_Click);
-            // 
-            // MoveDownItem
-            // 
-            this.MoveDownItem.Enabled = false;
-            this.VistaMenuSys.SetImage(this.MoveDownItem, global::KeppyMIDIConverter.Properties.Resources.down_icon);
-            this.MoveDownItem.Index = 7;
-            this.MoveDownItem.Text = "Move down (One item)";
-            this.MoveDownItem.Click += new System.EventHandler(this.MoveDownItem_Click);
-            // 
-            // VistaMenuSys
-            // 
-            this.VistaMenuSys.ContainerControl = this;
-            // 
-            // ConverterProcessRT
-            // 
-            this.ConverterProcessRT.WorkerReportsProgress = true;
-            this.ConverterProcessRT.WorkerSupportsCancellation = true;
-            this.ConverterProcessRT.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConverterProcessRT_DoWork);
+            this.PreviewTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PreviewTrackBar.AutoSize = false;
+            this.PreviewTrackBar.Enabled = false;
+            this.PreviewTrackBar.Location = new System.Drawing.Point(4, 444);
+            this.PreviewTrackBar.Name = "PreviewTrackBar";
+            this.PreviewTrackBar.Size = new System.Drawing.Size(718, 30);
+            this.PreviewTrackBar.TabIndex = 28;
+            this.PreviewTrackBar.TickFrequency = 0;
+            this.PreviewTrackBar.Scroll += new System.EventHandler(this.PreviewTrackBar_Scroll);
             // 
             // MIDIList
             // 
@@ -735,160 +379,299 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MIDIList.BackColor = System.Drawing.Color.White;
             this.MIDIList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MIDIList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.MIDIFile,
+            this.MIDILength,
+            this.MIDINotes,
+            this.MIDISize});
             this.MIDIList.FullRowSelect = true;
             this.MIDIList.GridLines = true;
             this.MIDIList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.MIDIList.Location = new System.Drawing.Point(0, 0);
+            this.MIDIList.Location = new System.Drawing.Point(12, 12);
             this.MIDIList.Name = "MIDIList";
             this.MIDIList.ShowGroups = false;
-            this.MIDIList.Size = new System.Drawing.Size(660, 285);
-            this.MIDIList.TabIndex = 0;
+            this.MIDIList.Size = new System.Drawing.Size(702, 315);
+            this.MIDIList.TabIndex = 21;
             this.MIDIList.UseCompatibleStateImageBehavior = false;
             this.MIDIList.View = System.Windows.Forms.View.Details;
-            this.MIDIList.SizeChanged += new System.EventHandler(this.MIDIList_SizeChanged);
             this.MIDIList.DragDrop += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragDrop);
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
-            this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyPress);
+            this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyDown);
             // 
-            // GarbageCollector
+            // MIDIFile
             // 
-            this.GarbageCollector.DoWork += new System.ComponentModel.DoWorkEventHandler(this.GarbageCollector_DoWork);
+            this.MIDIFile.Text = "A";
             // 
-            // GetInfoWorker
+            // MIDILength
             // 
-            this.GetInfoWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.GetInfoWorker_DoWork);
+            this.MIDILength.Text = "A";
             // 
-            // ThemeCheck
+            // MIDINotes
             // 
-            this.ThemeCheck.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ThemeCheck_DoWork);
+            this.MIDINotes.Text = "A";
             // 
-            // RealTimePreviewTrackBar
+            // MIDISize
             // 
-            this.RealTimePreviewTrackBar.AutoSize = false;
-            this.RealTimePreviewTrackBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.RealTimePreviewTrackBar.Enabled = false;
-            this.RealTimePreviewTrackBar.Location = new System.Drawing.Point(0, 403);
-            this.RealTimePreviewTrackBar.Name = "RealTimePreviewTrackBar";
-            this.RealTimePreviewTrackBar.Size = new System.Drawing.Size(660, 30);
-            this.RealTimePreviewTrackBar.TabIndex = 20;
-            this.RealTimePreviewTrackBar.TickFrequency = 0;
-            this.RealTimePreviewTrackBar.Scroll += new System.EventHandler(this.RealTimePreviewTrackBar_Scroll);
+            this.MIDISize.Text = "A";
+            // 
+            // VolumeBar
+            // 
+            this.VolumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.VolumeBar.AutoSize = false;
+            this.VolumeBar.LargeChange = 1;
+            this.VolumeBar.Location = new System.Drawing.Point(589, 356);
+            this.VolumeBar.Maximum = 10000;
+            this.VolumeBar.Name = "VolumeBar";
+            this.VolumeBar.Size = new System.Drawing.Size(131, 15);
+            this.VolumeBar.TabIndex = 22;
+            this.VolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.VolumeBar.Value = 10000;
+            this.VolumeBar.Scroll += new System.EventHandler(this.VolumeBar_Scroll);
+            // 
+            // AVSLabel
+            // 
+            this.AVSLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AVSLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AVSLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.AVSLabel.Location = new System.Drawing.Point(9, 353);
+            this.AVSLabel.Name = "AVSLabel";
+            this.AVSLabel.Size = new System.Drawing.Size(397, 13);
+            this.AVSLabel.TabIndex = 23;
+            this.AVSLabel.Text = "{AVS}";
+            this.AVSLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AVSLabel.Click += new System.EventHandler(this.AVSLabel_Click);
+            // 
+            // RMSLabel
+            // 
+            this.RMSLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RMSLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.RMSLabel.Location = new System.Drawing.Point(9, 334);
+            this.RMSLabel.Name = "RMSLabel";
+            this.RMSLabel.Size = new System.Drawing.Size(528, 13);
+            this.RMSLabel.TabIndex = 26;
+            this.RMSLabel.Text = "{RMS}";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.StatusPicture);
+            this.panel1.Controls.Add(this.StatusMsg);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panel1.Location = new System.Drawing.Point(12, 374);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(702, 62);
+            this.panel1.TabIndex = 25;
+            // 
+            // StatusPicture
+            // 
+            this.StatusPicture.BackColor = System.Drawing.Color.Transparent;
+            this.StatusPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.StatusPicture.Dock = System.Windows.Forms.DockStyle.Right;
+            this.StatusPicture.InitialImage = null;
+            this.StatusPicture.Location = new System.Drawing.Point(640, 0);
+            this.StatusPicture.Name = "StatusPicture";
+            this.StatusPicture.Size = new System.Drawing.Size(60, 60);
+            this.StatusPicture.TabIndex = 8;
+            this.StatusPicture.TabStop = false;
+            // 
+            // StatusMsg
+            // 
+            this.StatusMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatusMsg.BackColor = System.Drawing.Color.Transparent;
+            this.StatusMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.StatusMsg.Location = new System.Drawing.Point(0, 0);
+            this.StatusMsg.Name = "StatusMsg";
+            this.StatusMsg.Size = new System.Drawing.Size(640, 60);
+            this.StatusMsg.TabIndex = 7;
+            this.StatusMsg.Text = "{StatusMsg}";
+            this.StatusMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // OpenSettings
+            // 
+            this.OpenSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OpenSettings.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.OpenSettings.Location = new System.Drawing.Point(549, 331);
+            this.OpenSettings.Name = "OpenSettings";
+            this.OpenSettings.Size = new System.Drawing.Size(166, 23);
+            this.OpenSettings.TabIndex = 29;
+            this.OpenSettings.Text = "{OpenSettings}";
+            this.OpenSettings.UseVisualStyleBackColor = true;
+            this.OpenSettings.Click += new System.EventHandler(this.OpenSettings_Click);
+            // 
+            // VolumeLabel
+            // 
+            this.VolumeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.VolumeLabel.Location = new System.Drawing.Point(418, 356);
+            this.VolumeLabel.Name = "VolumeLabel";
+            this.VolumeLabel.Size = new System.Drawing.Size(174, 13);
+            this.VolumeLabel.TabIndex = 9;
+            this.VolumeLabel.Text = "{Volume}";
+            this.VolumeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ListMenu
+            // 
+            this.ListMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.ImportMIDIsC,
+            this.RemoveMIDIsC,
+            this.ClearListC,
+            this.menuItem4,
+            this.AutoResizeColumns,
+            this.SortName,
+            this.menuItem10,
+            this.MoveUp,
+            this.MoveDown});
+            // 
+            // ImportMIDIsC
+            // 
+            this.ImportMIDIsC.Index = 0;
+            this.ImportMIDIsC.Text = "{ImportMIDIs}";
+            this.ImportMIDIsC.Click += new System.EventHandler(this.ImportMIDIs_Click);
+            // 
+            // RemoveMIDIsC
+            // 
+            this.RemoveMIDIsC.Index = 1;
+            this.RemoveMIDIsC.Text = "{RemoveMIDIs}";
+            this.RemoveMIDIsC.Click += new System.EventHandler(this.RemoveMIDIs_Click);
+            // 
+            // ClearListC
+            // 
+            this.ClearListC.Index = 2;
+            this.ClearListC.Text = "{ClearList}";
+            this.ClearListC.Click += new System.EventHandler(this.ClearList_Click);
+            // 
+            // menuItem4
+            // 
+            this.menuItem4.Index = 3;
+            this.menuItem4.Text = "-";
+            // 
+            // SortName
+            // 
+            this.SortName.Index = 5;
+            this.SortName.Text = "{SortName}";
+            this.SortName.Click += new System.EventHandler(this.SortName_Click);
+            // 
+            // menuItem10
+            // 
+            this.menuItem10.Index = 6;
+            this.menuItem10.Text = "-";
+            // 
+            // MoveUp
+            // 
+            this.MoveUp.Index = 7;
+            this.MoveUp.Text = "{MoveUp}";
+            this.MoveUp.Click += new System.EventHandler(this.MoveUp_Click);
+            // 
+            // MoveDown
+            // 
+            this.MoveDown.Index = 8;
+            this.MoveDown.Text = "{MoveDown}";
+            this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
+            // 
+            // VistaMenuSys
+            // 
+            this.VistaMenuSys.ContainerControl = this;
+            // 
+            // AutoResizeColumns
+            // 
+            this.AutoResizeColumns.Index = 4;
+            this.AutoResizeColumns.Text = "{AutoResizeColumns}";
+            this.AutoResizeColumns.Click += new System.EventHandler(this.AutoResizeColumns_Click);
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(660, 433);
-            this.Controls.Add(this.RealTimePreviewTrackBar);
-            this.Controls.Add(this.MIDIList);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(726, 481);
             this.Controls.Add(this.VolumeLabel);
+            this.Controls.Add(this.OpenSettings);
+            this.Controls.Add(this.PreviewTrackBar);
+            this.Controls.Add(this.MIDIList);
             this.Controls.Add(this.VolumeBar);
-            this.Controls.Add(this.UsedVoices);
-            this.Controls.Add(this.labelRMS);
-            this.Controls.Add(this.SettingsBox);
+            this.Controls.Add(this.AVSLabel);
+            this.Controls.Add(this.RMSLabel);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(668, 460);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Keppy\'s MIDI Converter";
+            this.Text = "{0} {1}";
             this.Load += new System.EventHandler(this.MainWindow_Load);
-            this.SettingsBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.VoiceLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.StatusPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RealTimePreviewTrackBar)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.OpenFileDialog MIDIImport;
-        public System.ComponentModel.BackgroundWorker RealTimePlayBack;
-        private System.Windows.Forms.ToolTip VolumeTip;
-        private System.Windows.Forms.Panel panel1;
-        public System.ComponentModel.BackgroundWorker ConverterProcess;
-        private System.Windows.Forms.MainMenu DefaultMenu;
         private System.Windows.Forms.MenuItem ActionsStrip;
         private System.Windows.Forms.MenuItem menuItem5;
         private System.Windows.Forms.MenuItem menuItem7;
-        private System.Windows.Forms.MenuItem menuItem12;
-        private System.Windows.Forms.MenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.MenuItem OptionsStrip;
-        private System.Windows.Forms.MenuItem AutoUpdatesCheckStrip;
-        private System.Windows.Forms.MenuItem AutomaticShutdownStrip;
-        private System.Windows.Forms.MenuItem ClearListAutomaticallyStrip;
-        private System.Windows.Forms.MenuItem ConvPosOrTimeLeft;
-        private System.Windows.Forms.MenuItem AudioEventsStrip;
-        private System.Windows.Forms.MenuItem forceCloseTheApplicationToolStripMenuItem;
-        private System.Windows.Forms.MenuItem enabledToolStripMenuItem;
-        private System.Windows.Forms.MenuItem disabledToolStripMenuItem;
-        private System.Windows.Forms.MenuItem enabledToolStripMenuItem1;
-        private System.Windows.Forms.MenuItem disabledToolStripMenuItem1;
-        private System.Windows.Forms.MenuItem enabledToolStripMenuItem2;
-        private System.Windows.Forms.MenuItem disabledToolStripMenuItem2;
-        private System.Windows.Forms.MenuItem enabledToolStripMenuItem4;
-        private System.Windows.Forms.MenuItem disabledToolStripMenuItem4;
-        private System.Windows.Forms.MenuItem enabledToolStripMenuItem3;
-        private System.Windows.Forms.MenuItem disabledToolStripMenuItem3;
-        private System.Windows.Forms.MenuItem HelpStrip;
-        private System.Windows.Forms.MenuItem informationAboutTheProgramToolStripMenuItem;
-        private System.Windows.Forms.MenuItem supportTheDeveloperWithADonationToolStripMenuItem;
-        private System.Windows.Forms.MenuItem KaleidonKep99sYouTubeChannelToolStripMenuItem;
-        private System.Windows.Forms.ContextMenu DefMenu;
-        private wyDay.Controls.VistaMenu VistaMenuSys;
         private System.Windows.Forms.MenuItem menuItem13;
-        private System.Windows.Forms.MenuItem KaleidonKep99sGitHubPageToolStripMenuItem;
-        private System.Windows.Forms.MenuItem OverrideStrip;
-        private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.MenuItem menuItem3;
-        private System.Windows.Forms.MenuItem menuItem1;
-        private System.Windows.Forms.MenuItem menuItem6;
-        public System.ComponentModel.BackgroundWorker ConverterProcessRT;
-        public System.Windows.Forms.Timer RenderingTimer;
-        public System.Windows.Forms.Label UsedVoices;
-        public System.Windows.Forms.Label CurrentStatusText;
-        public System.Windows.Forms.GroupBox SettingsBox;
-        public System.Windows.Forms.Button AdvSettingsButton;
-        public System.Windows.Forms.NumericUpDown VoiceLimit;
-        public System.Windows.Forms.Label VoiceLabel;
-        public System.Windows.Forms.Label labelRMS;
-        public System.Windows.Forms.MenuItem importMIDIsToolStripMenuItem;
-        public System.Windows.Forms.MenuItem removeSelectedMIDIsToolStripMenuItem;
-        public System.Windows.Forms.MenuItem clearMIDIsListToolStripMenuItem;
-        public System.Windows.Forms.MenuItem openTheSoundfontsManagerToolStripMenuItem;
-        public System.Windows.Forms.MenuItem startRenderingWAVToolStripMenuItem;
-        public System.Windows.Forms.MenuItem startRenderingOGGToolStripMenuItem;
-        public System.Windows.Forms.MenuItem playInRealtimeBetaToolStripMenuItem;
-        public System.Windows.Forms.MenuItem abortRenderingToolStripMenuItem;
-        public System.Windows.Forms.MenuItem ImportMIDIsRightClick;
-        public System.Windows.Forms.MenuItem RemoveMIDIsRightClick;
-        public System.Windows.Forms.MenuItem ClearMIDIsListRightClick;
-        public System.Windows.Forms.MenuItem MoveUpItem;
-        public System.Windows.Forms.MenuItem MoveDownItem;
-        public System.Windows.Forms.MenuItem SortByName;
+        private System.Windows.Forms.MenuItem OptionsStrip;
+        private System.Windows.Forms.MenuItem menuItem42;
+        private System.Windows.Forms.MenuItem menuItem17;
+        private System.Windows.Forms.MenuItem menuItem23;
+        private System.Windows.Forms.MenuItem HelpStrip;
+        private System.Windows.Forms.MenuItem menuItem32;
+        private System.Windows.Forms.MenuItem menuItem30;
+        public System.Windows.Forms.TrackBar PreviewTrackBar;
         public System.Windows.Forms.ListView MIDIList;
-        public System.Windows.Forms.MenuItem startRenderingMp3ToolStripMenuItem;
         public System.Windows.Forms.TrackBar VolumeBar;
-        public System.Windows.Forms.Label VolumeLabel;
+        public System.Windows.Forms.Label AVSLabel;
+        public System.Windows.Forms.Label RMSLabel;
+        private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.PictureBox StatusPicture;
-        private System.ComponentModel.BackgroundWorker GarbageCollector;
-        private System.ComponentModel.BackgroundWorker GetInfoWorker;
-        private System.Windows.Forms.MenuItem menuItem8;
-        private System.Windows.Forms.MenuItem DiscordHypeSquadRef;
-        private System.ComponentModel.BackgroundWorker ThemeCheck;
-        public System.Windows.Forms.TrackBar RealTimePreviewTrackBar;
-        private System.Windows.Forms.MenuItem menuItem9;
-        private System.Windows.Forms.MenuItem RenderModeStandard;
-        private System.Windows.Forms.MenuItem RenderModeSimulation;
-        private System.Windows.Forms.MenuItem menuItem14;
-        private System.Windows.Forms.MenuItem menuItem15;
-        public System.Windows.Forms.MenuItem RenderModeChanger;
+        public System.Windows.Forms.Label StatusMsg;
+        public System.Windows.Forms.Button OpenSettings;
+        private System.Windows.Forms.ContextMenu ListMenu;
+        private System.Windows.Forms.MenuItem menuItem4;
+        private System.Windows.Forms.MenuItem menuItem10;
+        public System.Windows.Forms.MainMenu ConverterMenu;
+        public System.Windows.Forms.MenuItem ImportMIDIs;
+        public System.Windows.Forms.MenuItem RemoveMIDIs;
+        public System.Windows.Forms.MenuItem ClearList;
+        public System.Windows.Forms.MenuItem OpenSFVSTManager;
+        public System.Windows.Forms.MenuItem RenderToWAV;
+        public System.Windows.Forms.MenuItem RenderToOGG;
+        public System.Windows.Forms.MenuItem RenderToLAME;
+        public System.Windows.Forms.MenuItem PreviewFiles;
+        public System.Windows.Forms.MenuItem AbortConversion;
+        public System.Windows.Forms.MenuItem Exit;
+        public System.Windows.Forms.MenuItem RenderMode;
+        public System.Windows.Forms.MenuItem RenderStandard;
+        public System.Windows.Forms.MenuItem RenderRTS;
+        public System.Windows.Forms.MenuItem NoAffectPreview;
+        public System.Windows.Forms.MenuItem ACFUWSTC;
+        public System.Windows.Forms.MenuItem CMLAR;
+        public System.Windows.Forms.MenuItem SCPIOTL;
+        public System.Windows.Forms.MenuItem CSFFS;
+        public System.Windows.Forms.MenuItem ChangeLanguage;
+        public System.Windows.Forms.MenuItem IATP;
+        public System.Windows.Forms.MenuItem STDWD;
+        public System.Windows.Forms.MenuItem KK99GP;
+        public System.Windows.Forms.MenuItem KK99YTC;
+        public System.Windows.Forms.MenuItem JKSUS;
+        public System.Windows.Forms.MenuItem ASAR;
+        public System.Windows.Forms.Label VolumeLabel;
+        private wyDay.Controls.VistaMenu VistaMenuSys;
+        private System.Windows.Forms.ColumnHeader MIDIFile;
+        private System.Windows.Forms.ColumnHeader MIDILength;
+        private System.Windows.Forms.ColumnHeader MIDINotes;
+        private System.Windows.Forms.ColumnHeader MIDISize;
+        public System.Windows.Forms.MenuItem ImportMIDIsC;
+        public System.Windows.Forms.MenuItem RemoveMIDIsC;
+        public System.Windows.Forms.MenuItem ClearListC;
+        public System.Windows.Forms.MenuItem SortName;
+        public System.Windows.Forms.MenuItem MoveUp;
+        public System.Windows.Forms.MenuItem MoveDown;
+        public System.Windows.Forms.MenuItem AutoResizeColumns;
     }
 }
 

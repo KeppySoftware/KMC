@@ -63,7 +63,7 @@
             this.Desc1 = new System.Windows.Forms.Label();
             this.VSTImportDialog = new System.Windows.Forms.OpenFileDialog();
             this.Desc = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.OKBtn = new System.Windows.Forms.Button();
             this.UnloadAllVSTs = new System.Windows.Forms.Button();
             this.LoudMaxCheck = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
@@ -144,7 +144,7 @@
             this.Desc8.Name = "Desc8";
             this.Desc8.Size = new System.Drawing.Size(421, 33);
             this.Desc8.TabIndex = 0;
-            this.Desc8.Text = "Empty slot 8";
+            this.Desc8.Text = "EmptySlot";
             this.Desc8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel8
@@ -195,7 +195,7 @@
             this.Desc7.Name = "Desc7";
             this.Desc7.Size = new System.Drawing.Size(421, 33);
             this.Desc7.TabIndex = 0;
-            this.Desc7.Text = "Empty slot 7";
+            this.Desc7.Text = "EmptySlot";
             this.Desc7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
@@ -246,7 +246,7 @@
             this.Desc6.Name = "Desc6";
             this.Desc6.Size = new System.Drawing.Size(421, 33);
             this.Desc6.TabIndex = 0;
-            this.Desc6.Text = "Empty slot 6";
+            this.Desc6.Text = "EmptySlot";
             this.Desc6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel6
@@ -297,7 +297,7 @@
             this.Desc5.Name = "Desc5";
             this.Desc5.Size = new System.Drawing.Size(421, 33);
             this.Desc5.TabIndex = 0;
-            this.Desc5.Text = "Empty slot 5";
+            this.Desc5.Text = "EmptySlot";
             this.Desc5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel5
@@ -348,7 +348,7 @@
             this.Desc4.Name = "Desc4";
             this.Desc4.Size = new System.Drawing.Size(421, 33);
             this.Desc4.TabIndex = 0;
-            this.Desc4.Text = "Empty slot 4";
+            this.Desc4.Text = "EmptySlot";
             this.Desc4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
@@ -399,7 +399,7 @@
             this.Desc3.Name = "Desc3";
             this.Desc3.Size = new System.Drawing.Size(421, 33);
             this.Desc3.TabIndex = 0;
-            this.Desc3.Text = "Empty slot 3";
+            this.Desc3.Text = "EmptySlot";
             this.Desc3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
@@ -450,7 +450,7 @@
             this.Desc2.Name = "Desc2";
             this.Desc2.Size = new System.Drawing.Size(421, 33);
             this.Desc2.TabIndex = 0;
-            this.Desc2.Text = "Empty slot 2";
+            this.Desc2.Text = "EmptySlot";
             this.Desc2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -501,7 +501,7 @@
             this.Desc1.Name = "Desc1";
             this.Desc1.Size = new System.Drawing.Size(421, 33);
             this.Desc1.TabIndex = 0;
-            this.Desc1.Text = "Empty slot 1";
+            this.Desc1.Text = "EmptySlot";
             this.Desc1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // VSTImportDialog
@@ -516,21 +516,19 @@
             this.Desc.Name = "Desc";
             this.Desc.Size = new System.Drawing.Size(600, 100);
             this.Desc.TabIndex = 1;
-            this.Desc.Text = "How do they work?\r\n\r\nEffect 1 will apply its effect to the audio, then it\'ll pass" +
-    " the modified audio to Effect 2,\r\nthat will then do the same with Effect 3 and s" +
-    "o on.\r\n\r\nIt\'s a chain-like system.";
+            this.Desc.Text = "Desc";
             this.Desc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // OKBtn
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(530, 394);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OKBtn.Location = new System.Drawing.Point(530, 394);
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.Size = new System.Drawing.Size(75, 23);
+            this.OKBtn.TabIndex = 2;
+            this.OKBtn.Text = "OK";
+            this.OKBtn.UseVisualStyleBackColor = true;
+            this.OKBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // UnloadAllVSTs
             // 
@@ -539,7 +537,7 @@
             this.UnloadAllVSTs.Name = "UnloadAllVSTs";
             this.UnloadAllVSTs.Size = new System.Drawing.Size(102, 23);
             this.UnloadAllVSTs.TabIndex = 3;
-            this.UnloadAllVSTs.Text = "Unload all VSTs";
+            this.UnloadAllVSTs.Text = "UnloadAllVSTs";
             this.UnloadAllVSTs.UseVisualStyleBackColor = true;
             this.UnloadAllVSTs.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -565,7 +563,7 @@
             this.ClientSize = new System.Drawing.Size(617, 429);
             this.Controls.Add(this.LoudMaxCheck);
             this.Controls.Add(this.UnloadAllVSTs);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.OKBtn);
             this.Controls.Add(this.Desc);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -628,7 +626,7 @@
         private System.Windows.Forms.Label Desc1;
         private System.Windows.Forms.OpenFileDialog VSTImportDialog;
         private System.Windows.Forms.Label Desc;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OKBtn;
         private System.Windows.Forms.Button UnloadAllVSTs;
         private System.Windows.Forms.CheckBox LoudMaxCheck;
     }

@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KeppyMIDIConverter.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SettLocation" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
-    </Setting>
     <Setting Name="AudioEvents" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -14,7 +11,7 @@
     <Setting Name="AutoUpdateCheck" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="DisableFX" Type="System.Boolean" Scope="User">
+    <Setting Name="DisableEffects" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LastExportFolder" Type="System.String" Scope="User">
@@ -23,7 +20,7 @@
     <Setting Name="LastMIDIFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="LastSFFolder" Type="System.String" Scope="User">
+    <Setting Name="LastSoundFontFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LoudMaxEnabled" Type="System.Boolean" Scope="User">
@@ -32,20 +29,20 @@
     <Setting Name="NoteOff1" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="OGGBitrate" Type="System.Int32" Scope="User">
+    <Setting Name="Bitrate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">192</Value>
     </Setting>
     <Setting Name="ShowOldTimeInfo" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="OverrideOGG" Type="System.Boolean" Scope="User">
+    <Setting Name="OverrideBitrate" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Voices" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">500</Value>
     </Setting>
-    <Setting Name="Volume" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10000</Value>
+    <Setting Name="Volume" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="LangOverride" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -53,7 +50,7 @@
     <Setting Name="SelectedLang" Type="System.String" Scope="User">
       <Value Profile="(Default)">en-US</Value>
     </Setting>
-    <Setting Name="RTFPS" Type="System.Double" Scope="User">
+    <Setting Name="RealTimeFPS" Type="System.Double" Scope="User">
       <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="LastVSTFolder" Type="System.String" Scope="User">
@@ -62,23 +59,29 @@
     <Setting Name="NoMoreDonation" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="TempoOverride" Type="System.Boolean" Scope="User">
+    <Setting Name="OverrideTempo" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="MigrateSettings" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="VSTiDisclaimer" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="DonationAlreadyShown" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="DonationShownWhen" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">2017-05-31</Value>
+      <Value Profile="(Default)">1970-01-01</Value>
     </Setting>
-    <Setting Name="RealTimeSim" Type="System.Boolean" Scope="User">
+    <Setting Name="RealTimeSimulator" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IsItPreRelease" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="EncoderMP3" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">-m j -b {0} - </Value>
+    </Setting>
+    <Setting Name="EncoderOGG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">--managed -b {0} -m {0} -M {0} - -o</Value>
     </Setting>
   </Settings>
 </SettingsFile>

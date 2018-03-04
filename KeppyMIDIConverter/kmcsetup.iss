@@ -5,7 +5,7 @@
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '17.4.1'
+#define MyAppVersion '18.0.0'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -96,11 +96,6 @@ Source: "bin\x86\basswv.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replac
 Source: "bin\x86\LoudMax.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 Source: "bin\x86\kmcmp3.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
-
-;??
-Source: "EE\EEBD.EVN"; DestDir: "{app}\EE"; Flags: ignoreversion replacesameversion
-Source: "EE\EECH.EVN"; DestDir: "{app}\EE"; Flags: ignoreversion replacesameversion
-Source: "EE\EEHW.EVN"; DestDir: "{app}\EE"; Flags: ignoreversion replacesameversion
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"

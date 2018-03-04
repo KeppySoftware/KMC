@@ -12,7 +12,7 @@ namespace KeppyMIDIConverter.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,18 +20,6 @@ namespace KeppyMIDIConverter.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Point SettLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["SettLocation"]));
-            }
-            set {
-                this["SettLocation"] = value;
             }
         }
         
@@ -74,12 +62,12 @@ namespace KeppyMIDIConverter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DisableFX {
+        public bool DisableEffects {
             get {
-                return ((bool)(this["DisableFX"]));
+                return ((bool)(this["DisableEffects"]));
             }
             set {
-                this["DisableFX"] = value;
+                this["DisableEffects"] = value;
             }
         }
         
@@ -110,12 +98,12 @@ namespace KeppyMIDIConverter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastSFFolder {
+        public string LastSoundFontFolder {
             get {
-                return ((string)(this["LastSFFolder"]));
+                return ((string)(this["LastSoundFontFolder"]));
             }
             set {
-                this["LastSFFolder"] = value;
+                this["LastSoundFontFolder"] = value;
             }
         }
         
@@ -146,18 +134,18 @@ namespace KeppyMIDIConverter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("192")]
-        public int OGGBitrate {
+        public int Bitrate {
             get {
-                return ((int)(this["OGGBitrate"]));
+                return ((int)(this["Bitrate"]));
             }
             set {
-                this["OGGBitrate"] = value;
+                this["Bitrate"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ShowOldTimeInfo {
             get {
                 return ((bool)(this["ShowOldTimeInfo"]));
@@ -170,12 +158,12 @@ namespace KeppyMIDIConverter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool OverrideOGG {
+        public bool OverrideBitrate {
             get {
-                return ((bool)(this["OverrideOGG"]));
+                return ((bool)(this["OverrideBitrate"]));
             }
             set {
-                this["OverrideOGG"] = value;
+                this["OverrideBitrate"] = value;
             }
         }
         
@@ -193,10 +181,10 @@ namespace KeppyMIDIConverter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
-        public int Volume {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public float Volume {
             get {
-                return ((int)(this["Volume"]));
+                return ((float)(this["Volume"]));
             }
             set {
                 this["Volume"] = value;
@@ -230,12 +218,12 @@ namespace KeppyMIDIConverter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("60")]
-        public double RTFPS {
+        public double RealTimeFPS {
             get {
-                return ((double)(this["RTFPS"]));
+                return ((double)(this["RealTimeFPS"]));
             }
             set {
-                this["RTFPS"] = value;
+                this["RealTimeFPS"] = value;
             }
         }
         
@@ -266,24 +254,12 @@ namespace KeppyMIDIConverter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool TempoOverride {
+        public bool OverrideTempo {
             get {
-                return ((bool)(this["TempoOverride"]));
+                return ((bool)(this["OverrideTempo"]));
             }
             set {
-                this["TempoOverride"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool MigrateSettings {
-            get {
-                return ((bool)(this["MigrateSettings"]));
-            }
-            set {
-                this["MigrateSettings"] = value;
+                this["OverrideTempo"] = value;
             }
         }
         
@@ -301,7 +277,7 @@ namespace KeppyMIDIConverter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool DonationAlreadyShown {
             get {
                 return ((bool)(this["DonationAlreadyShown"]));
@@ -313,7 +289,7 @@ namespace KeppyMIDIConverter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2017-05-31")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1970-01-01")]
         public global::System.DateTime DonationShownWhen {
             get {
                 return ((global::System.DateTime)(this["DonationShownWhen"]));
@@ -326,12 +302,39 @@ namespace KeppyMIDIConverter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool RealTimeSim {
+        public bool RealTimeSimulator {
             get {
-                return ((bool)(this["RealTimeSim"]));
+                return ((bool)(this["RealTimeSimulator"]));
             }
             set {
-                this["RealTimeSim"] = value;
+                this["RealTimeSimulator"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsItPreRelease {
+            get {
+                return ((bool)(this["IsItPreRelease"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-m j -b {0} - ")]
+        public string EncoderMP3 {
+            get {
+                return ((string)(this["EncoderMP3"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("--managed -b {0} -m {0} -M {0} - -o")]
+        public string EncoderOGG {
+            get {
+                return ((string)(this["EncoderOGG"]));
             }
         }
     }

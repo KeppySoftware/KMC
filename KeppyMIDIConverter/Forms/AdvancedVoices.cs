@@ -18,6 +18,26 @@ namespace KeppyMIDIConverter
         public static Mutex m;
         const int WM_SETREDRAW = 0x0b;
 
+        private void InitializeLanguage()
+        {
+            CHV1L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 1);
+            CHV2L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 2);
+            CHV3L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 3);
+            CHV4L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 4);
+            CHV5L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 5);
+            CHV6L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 6);
+            CHV7L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 7);
+            CHV8L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 8);
+            CHV9L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 9);
+            CHV10L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 10);
+            CHV11L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 11);
+            CHV12L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 12);
+            CHV13L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 13);
+            CHV14L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 14);
+            CHV15L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 15);
+            CHV16L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 16);
+        }
+
         public AdvancedVoices()
         {
             bool ok;
@@ -31,6 +51,7 @@ namespace KeppyMIDIConverter
             }
 
             InitializeComponent();
+            InitializeLanguage();
             GC.KeepAlive(m);
         }
 
@@ -46,25 +67,25 @@ namespace KeppyMIDIConverter
 
         private void CheckVoices_Tick(object sender, EventArgs e)
         {
-            Text = String.Format("Active voices - Advanced (CPU usage: {0}%)", RTF.CPUUsage.ToString("0.0"));
+            Text = String.Format(Languages.Parse("AdvancedVoicesTitle"), RTF.CPUUsage.ToString("0.0"));
             try
             {
-                CHV1.Text = MainWindow.KMCChannelsVoices.ch1.ToString();
-                CHV2.Text = MainWindow.KMCChannelsVoices.ch2.ToString();
-                CHV3.Text = MainWindow.KMCChannelsVoices.ch3.ToString();
-                CHV4.Text = MainWindow.KMCChannelsVoices.ch4.ToString();
-                CHV5.Text = MainWindow.KMCChannelsVoices.ch5.ToString();
-                CHV6.Text = MainWindow.KMCChannelsVoices.ch6.ToString();
-                CHV7.Text = MainWindow.KMCChannelsVoices.ch7.ToString();
-                CHV8.Text = MainWindow.KMCChannelsVoices.ch8.ToString();
-                CHV9.Text = MainWindow.KMCChannelsVoices.ch9.ToString();
-                CHV10.Text = MainWindow.KMCChannelsVoices.chD.ToString();
-                CHV11.Text = MainWindow.KMCChannelsVoices.ch11.ToString();
-                CHV12.Text = MainWindow.KMCChannelsVoices.ch12.ToString();
-                CHV13.Text = MainWindow.KMCChannelsVoices.ch13.ToString();
-                CHV14.Text = MainWindow.KMCChannelsVoices.ch14.ToString();
-                CHV15.Text = MainWindow.KMCChannelsVoices.ch15.ToString();
-                CHV16.Text = MainWindow.KMCChannelsVoices.ch16.ToString();
+                CHV1.Text = MainWindow.KMCStatus.ChannelsVoices[0].ToString();
+                CHV2.Text = MainWindow.KMCStatus.ChannelsVoices[1].ToString();
+                CHV3.Text = MainWindow.KMCStatus.ChannelsVoices[2].ToString();
+                CHV4.Text = MainWindow.KMCStatus.ChannelsVoices[3].ToString();
+                CHV5.Text = MainWindow.KMCStatus.ChannelsVoices[4].ToString();
+                CHV6.Text = MainWindow.KMCStatus.ChannelsVoices[5].ToString();
+                CHV7.Text = MainWindow.KMCStatus.ChannelsVoices[6].ToString();
+                CHV8.Text = MainWindow.KMCStatus.ChannelsVoices[7].ToString();
+                CHV9.Text = MainWindow.KMCStatus.ChannelsVoices[8].ToString();
+                CHV10.Text = MainWindow.KMCStatus.ChannelsVoices[9].ToString();
+                CHV11.Text = MainWindow.KMCStatus.ChannelsVoices[10].ToString();
+                CHV12.Text = MainWindow.KMCStatus.ChannelsVoices[11].ToString();
+                CHV13.Text = MainWindow.KMCStatus.ChannelsVoices[12].ToString();
+                CHV14.Text = MainWindow.KMCStatus.ChannelsVoices[13].ToString();
+                CHV15.Text = MainWindow.KMCStatus.ChannelsVoices[14].ToString();
+                CHV16.Text = MainWindow.KMCStatus.ChannelsVoices[15].ToString();
             }
             catch { }
             System.Threading.Thread.Sleep(1);
@@ -113,7 +134,7 @@ namespace KeppyMIDIConverter
                         {
                             try
                             {
-                                if (CPUUsageChart.Series[0].Points[0].YValues[0] > 100.0) CPUUsageChart.ChartAreas[0].AxisY.Maximum = CPUUsageChart.Series[0].Points[0].YValues[0];
+                                if (CPUUsageChart.Series[0].Points.FindMaxByValue().YValues[0] > 100.0) CPUUsageChart.ChartAreas[0].AxisY.Maximum = CPUUsageChart.Series[0].Points.FindMaxByValue().YValues[0];
                                 else CPUUsageChart.ChartAreas[0].AxisY.Maximum = 100.0;
                             }
                             catch { CPUUsageChart.ChartAreas[0].AxisY.Maximum = 100.0; }
@@ -127,7 +148,7 @@ namespace KeppyMIDIConverter
                     System.Threading.Thread.Sleep(500);
                 }
             }
-            catch (Exception ex) { }
+            catch { }
         }
     }
 

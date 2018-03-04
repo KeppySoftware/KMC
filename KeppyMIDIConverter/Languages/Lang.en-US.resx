@@ -117,426 +117,498 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AbortConvPlayback" xml:space="preserve">
-    <value>Abort conversion/preview</value>
+  <data name="AbortConversion" xml:space="preserve">
+    <value>Abort preview/conversion</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="AboutSFZFormatText" xml:space="preserve">
-    <value>This program is compliant to the "SFZ 1.0 format", and partially with the "SFZ 2.0 format".
-
-Do you want to visit the "Unofficial SFZ format information" website?</value>
-  </data>
-  <data name="AboutSFZFormatTitle" xml:space="preserve">
-    <value>About the SFZ format</value>
-  </data>
-  <data name="AboutVSTSupportTitle" xml:space="preserve">
-    <value>About the Virtual Studio Technology interface</value>
+  <data name="ACFUWSTC" xml:space="preserve">
+    <value>Automatically check for updates when starting the converter</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="ActionsStrip" xml:space="preserve">
     <value>Actions</value>
+    <comment>The "Actions" menu.</comment>
+  </data>
+  <data name="ASAR" xml:space="preserve">
+    <value>Shut off the computer after rendering</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Change language</value>
+    <comment>Change the UI language.</comment>
+  </data>
+  <data name="ClearList" xml:space="preserve">
+    <value>Clear MIDIs list</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CMLAR" xml:space="preserve">
+    <value>Clear MIDIs list after rendering</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CSFFS" xml:space="preserve">
+    <value>Enable sound notifications for the conversion status</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
+    <comment>Well, close KMC?</comment>
+  </data>
+  <data name="HelpStrip" xml:space="preserve">
+    <value>Help</value>
+    <comment>The "Help" menu.</comment>
+  </data>
+  <data name="IATP" xml:space="preserve">
+    <value>Information about the program</value>
+    <comment>Shows the information about KMC.</comment>
+  </data>
+  <data name="ImportMIDIs" xml:space="preserve">
+    <value>Import MIDIs</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="JKSUS" xml:space="preserve">
+    <value>Join the Kep's Software Updates Server</value>
+    <comment>It lets you join KSUS on Discord.</comment>
+  </data>
+  <data name="KK99GP" xml:space="preserve">
+    <value>KaleidonKep99's GitHub page</value>
+    <comment>Shows the user my official GitHub page!</comment>
+  </data>
+  <data name="KK99YTC" xml:space="preserve">
+    <value>KaleidonKep99's YouTube channel</value>
+    <comment>Shows the user my official YouTube page!</comment>
+  </data>
+  <data name="OpenSettings" xml:space="preserve">
+    <value>Open settings</value>
+    <comment>Open the preview/conversion settings.</comment>
+  </data>
+  <data name="OpenSFVSTManager" xml:space="preserve">
+    <value>Open SoundFonts/VSTs manager</value>
+    <comment>Open the SoundFonts and VST effects manager.</comment>
+  </data>
+  <data name="OptionsStrip" xml:space="preserve">
+    <value>Options</value>
+    <comment>The "Options" menu.</comment>
+  </data>
+  <data name="PreviewFiles" xml:space="preserve">
+    <value>Preview MIDIs</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RemoveMIDIs" xml:space="preserve">
+    <value>Remove MIDIs</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RenderMode" xml:space="preserve">
+    <value>Render mode</value>
+    <comment>The "Render mode" menu.</comment>
+  </data>
+  <data name="RenderTo" xml:space="preserve">
+    <value>Render to</value>
+    <comment>Render to what? WAV? OGG? Your choice..</comment>
+  </data>
+  <data name="SCPIOTL" xml:space="preserve">
+    <value>Show conversion position instead of time left</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="STDWD" xml:space="preserve">
+    <value>Support the developer with a donation</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volume</value>
+    <comment>The volume label on the main window.</comment>
   </data>
   <data name="ActiveVoices" xml:space="preserve">
     <value>Voices</value>
-  </data>
-  <data name="AddOneMIDI" xml:space="preserve">
-    <value>Please add at least one MIDI to the conversion list.</value>
-  </data>
-  <data name="AdvSettingsButton" xml:space="preserve">
-    <value>Advanced settings</value>
-  </data>
-  <data name="AdvSettingsTitle" xml:space="preserve">
-    <value>Advanced settings</value>
-  </data>
-  <data name="AlreadyUpdatedText" xml:space="preserve">
-    <value>This version of Keppy's MIDI Converter is already up-to-date.</value>
-  </data>
-  <data name="AppBusy" xml:space="preserve">
-    <value>The app is not done converting/playing MIDIs!
-Are you sure you want to exit?</value>
-  </data>
-  <data name="AudioEventsStrip" xml:space="preserve">
-    <value>Enable audio events (Conversion finished, failed etc.)</value>
-  </data>
-  <data name="AudioFreq" xml:space="preserve">
-    <value>Audio frequency:</value>
-  </data>
-  <data name="AutomaticShutdownStrip" xml:space="preserve">
-    <value>Turn the PC off after the conversion process is completed</value>
-  </data>
-  <data name="AutoUpdatesCheckStrip" xml:space="preserve">
-    <value>Check for updates when starting the application</value>
+    <comment>The amount of voices that are current active in the stream.</comment>
   </data>
   <data name="AverageLevel" xml:space="preserve">
     <value>Average</value>
+    <comment>The average level of the current stream.</comment>
   </data>
-  <data name="BASSEngineConfiguration" xml:space="preserve">
-    <value>Configuring BASS.
-The conversion process will start soon...</value>
-  </data>
-  <data name="BASSEngineConfigurationVST" xml:space="preserve">
-    <value>Configuring BASS.
-Edit the VST DSPs settings when asked.
-The conversion process will start soon...</value>
-  </data>
-  <data name="CanNotCheckUpdates" xml:space="preserve">
-    <value>Can not check for updates! You're offline, or the website is currently down.</value>
-  </data>
-  <data name="CanNotCheckUpdatesMsg" xml:space="preserve">
-    <value>Can not check for updates!
+  <data name="ConnectionError" xml:space="preserve">
+    <value>The converter can not connect to the GitHub servers.
 
-Error:
-{0}</value>
-  </data>
-  <data name="CheckForUpdatesBtn" xml:space="preserve">
-    <value>Check for updates</value>
-  </data>
-  <data name="ClearListAutomaticallyStrip" xml:space="preserve">
-    <value>Clean MIDIs list automatically after the conversion</value>
-  </data>
-  <data name="ClearMIDIsList" xml:space="preserve">
-    <value>Clean MIDIs list</value>
-  </data>
-  <data name="ClearSoundfontList" xml:space="preserve">
-    <value>Clean soundfonts list</value>
-  </data>
-  <data name="ConstantBitrateOGG" xml:space="preserve">
-    <value>Force constant bitrate (OGG/MP3):</value>
-  </data>
-  <data name="ConversionAborted" xml:space="preserve">
-    <value>Conversion aborted.</value>
-  </data>
-  <data name="ConversionAbortedXPMessage" xml:space="preserve">
-    <value>Conversion aborted.
+Check your network connection, or contact your system administrator or network service provider.
 
-BASS status: {0}</value>
+Press OK to continue and open the converter's window.</value>
+    <comment>GitHub did a goof.</comment>
   </data>
-  <data name="ConversionCompleted" xml:space="preserve">
-    <value>Conversion completed.</value>
+  <data name="ConnectionErrorTitle" xml:space="preserve">
+    <value>Connection error</value>
+    <comment>Error 404.</comment>
   </data>
-  <data name="ConversionCompletedXPMessage" xml:space="preserve">
-    <value>Conversion completed.
+  <data name="DonateText" xml:space="preserve">
+    <value>This project can not maintain itself by downloads only.
 
-BASS status: {0}</value>
-  </data>
-  <data name="ConversionText" xml:space="preserve">
-    <value>{0} | Converting {1}...</value>
-  </data>
-  <data name="ConversionXPTitle" xml:space="preserve">
-    <value>Completed</value>
-  </data>
-  <data name="ConvPosOrTimeLeft" xml:space="preserve">
-    <value>Show conversion position instead of time left</value>
-  </data>
-  <data name="ConvStatusFasterNew" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Approximate time left: {2} - Elapsed time: {3}
-Rendering time: {4}% ({5}x~ faster)</value>
-  </data>
-  <data name="ConvStatusFasterOld" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Current position: {2} - {3}
-Rendering time: {4}% ({5}x~ faster)</value>
-  </data>
-  <data name="ConvStatusNormalNew" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Approximate time left: {2} - Elapsed time: {3}
-Rendering time: {4}%</value>
-  </data>
-  <data name="ConvStatusNormalOld" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Current position: {2} - {3}
-Rendering time: {4}%</value>
-  </data>
-  <data name="ConvStatusSlowerNew" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Approximate time left: {2} - Elapsed time: {3}
-Rendering time: {4}% ({5}x~ slower)</value>
-  </data>
-  <data name="ConvStatusSlowerOld" xml:space="preserve">
-    <value>{0}MBs of RAW data converted. ({1})
-Current position: {2} - {3}
-Rendering time: {4}% ({5}x~ slower)</value>
-  </data>
-  <data name="CopiedToClipboardNotice" xml:space="preserve">
-    <value>The error has been copied to clipboard.
+I will not be able to keep this program updated forever, that's why a small donation from you could help me improve its features, and also help me improve the equipment that I work with.
 
-Error:
-{0}</value>
-  </data>
-  <data name="CopyErrorMessage" xml:space="preserve">
-    <value>Copy error to clipboard</value>
-  </data>
-  <data name="CrashQuestion" xml:space="preserve">
-    <value>Are you sure you want to crash the application?
+Donations are optional, and if you don't want to see this dialog anymore, just click on "Do not show this ever again". You can still donate by navigating to "Help &gt; Help the developer with a donation".
 
-All non-saved conversions will be lost!</value>
+Thank you in advance.</value>
+    <comment>Donation text.</comment>
   </data>
-  <data name="CrashTriggeredByUser" xml:space="preserve">
-    <value>Crash caused by the user.</value>
-  </data>
-  <data name="Credits" xml:space="preserve">
-    <value>Copyright(C) 2013 KaleidonKep99
-
-This program is based around the great BASS libraries
-by Ian Luck from Un4seen Developments.
-Take a look at his site by clicking the "{1}"
-button.
-
-Source code available here:</value>
-  </data>
-  <data name="CurrentVersion" xml:space="preserve">
-    <value>The current version of the converter, installed on your system, is: {0}</value>
-  </data>
-  <data name="DisabledText" xml:space="preserve">
-    <value>Disabled</value>
-  </data>
-  <data name="DisableFX" xml:space="preserve">
-    <value>Disable audio effects</value>
-  </data>
-  <data name="DSPSettings" xml:space="preserve">
-    <value>DSP settings:</value>
-  </data>
-  <data name="EmptySlot" xml:space="preserve">
-    <value>Empty slot</value>
-  </data>
-  <data name="EnabledText" xml:space="preserve">
-    <value>Enabled</value>
-  </data>
-  <data name="Error" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="ExitStrip" xml:space="preserve">
-    <value>Exit</value>
-  </data>
-  <data name="ExportWhere" xml:space="preserve">
-    <value>Where do you want to export?</value>
+  <data name="DontShowAnymore" xml:space="preserve">
+    <value>I am not interested</value>
+    <comment>You're not interested. You're a bad person.</comment>
   </data>
   <data name="FatalError" xml:space="preserve">
     <value>Fatal error</value>
+    <comment>Heart attack.</comment>
   </data>
   <data name="FatalErrorHandler" xml:space="preserve">
     <value>Fatal error during the execution of Keppy's MIDI Converter!
 The application needs to be closed.
 Additional informations:</value>
-  </data>
-  <data name="forceCloseTheApplicationStrip" xml:space="preserve">
-    <value>Crash the application</value>
-  </data>
-  <data name="HelpStrip" xml:space="preserve">
-    <value>Help</value>
+    <comment>The text of the error handler, after a fatal error.</comment>
   </data>
   <data name="IdleMessage" xml:space="preserve">
     <value>Waiting for user commands.
 Select a MIDI, load some soundfonts, and start the conversion/playback process!</value>
+    <comment>Idle message.</comment>
   </data>
-  <data name="ImportMIDI" xml:space="preserve">
-    <value>Import MIDIs...</value>
+  <data name="KeepAliveProject" xml:space="preserve">
+    <value>Donate to keep the project alive</value>
+    <comment>Please do... :(</comment>
   </data>
-  <data name="ImportMIDIWindow" xml:space="preserve">
-    <value>Select the MIDIs to import...</value>
-  </data>
-  <data name="ImportSoundfontBtn" xml:space="preserve">
-    <value>Import soundfont(s)</value>
-  </data>
-  <data name="InfoPageTitle" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="informationAboutTheProgramStrip" xml:space="preserve">
-    <value>Information about the application...</value>
-  </data>
-  <data name="InvalidMIDIFile" xml:space="preserve">
-    <value>{0} is not a valid MIDI file!
-
-Please select a valid MIDI file, and retry.</value>
-  </data>
-  <data name="InvalidVSTLoaded" xml:space="preserve">
-    <value>{0} is not a valid VST effect!
-Be sure to load a VST effect and NOT a VST instrument.
-
-If you're trying to use a {1} VST, you need to use a {1} version of Keppy's MIDI Converter too.
-The {2} version of Keppy's MIDI Converter does NOT support {1} VSTs and viceversa.</value>
-  </data>
-  <data name="KaleidonKep99sGitHubPage" xml:space="preserve">
-    <value>KaleidonKep99's GitHub Page</value>
-  </data>
-  <data name="KaleidonKep99sYouTubeChannel" xml:space="preserve">
-    <value>KaleidonKep99's YouTube Channel</value>
-  </data>
-  <data name="LatestVersionIdle" xml:space="preserve">
-    <value>Click on "Check for updates" to check if there are any updates available.</value>
-  </data>
-  <data name="LibraryVersion" xml:space="preserve">
-    <value>{0} version: {1}.{2}</value>
-  </data>
-  <data name="License" xml:space="preserve">
-    <value>License</value>
-  </data>
-  <data name="LoadVST" xml:space="preserve">
-    <value>Load</value>
-  </data>
-  <data name="MemoryAllocationConversion" xml:space="preserve">
-    <value>The application is allocating memory for the conversion process.
-Please wait...</value>
-  </data>
-  <data name="MemoryAllocationPlayback" xml:space="preserve">
-    <value>The application is allocating memory for the preview.
-Please wait...</value>
-  </data>
-  <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
-    <value>The application is allocating memory for the preview.
-Edit the VST DSPs settings when asked.
-Please wait...</value>
-  </data>
-  <data name="MoveDOWN" xml:space="preserve">
+  <data name="MoveDown" xml:space="preserve">
     <value>Move down (One item)</value>
+    <comment>Move one item down at the time.</comment>
   </data>
-  <data name="MoveDOWNSF" xml:space="preserve">
-    <value>Move down ▼</value>
-  </data>
-  <data name="MoveUP" xml:space="preserve">
+  <data name="MoveUp" xml:space="preserve">
     <value>Move up (One item)</value>
-  </data>
-  <data name="MoveUPSF" xml:space="preserve">
-    <value>Move up ▲</value>
-  </data>
-  <data name="NewValueTempo" xml:space="preserve">
-    <value>New tempo value:</value>
+    <comment>Move one item up at the time.</comment>
   </data>
   <data name="NonFatalErrorHandler" xml:space="preserve">
     <value>Something went wrong during the execution of the application.
 
 Additional informations:</value>
+    <comment>The text of the error handler, after a non fatal error.</comment>
   </data>
-  <data name="NoteOff1" xml:space="preserve">
-    <value>Only release the oldest instance upon a note off even when there are overlapping instances of the note.</value>
+  <data name="NoUpdatesFound" xml:space="preserve">
+    <value>{0} {1} is already up to date.
+
+Click "OK" to close this dialog.</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="NoUpdatesText" xml:space="preserve">
-    <value>No updates have been found.
-Please try later.</value>
+  <data name="NoUpdatesFoundTitle" xml:space="preserve">
+    <value>No updates for {0} {1} found</value>
+    <comment>Title for NoUpdatesFound.</comment>
   </data>
-  <data name="NoUpdatesTitle" xml:space="preserve">
-    <value>No updates found.</value>
-  </data>
-  <data name="OnlyOneItemMsg" xml:space="preserve">
-    <value>You can only move one item!</value>
-  </data>
-  <data name="OptionsStrip" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="OverrideTempo1" xml:space="preserve">
-    <value>Override tempo:</value>
-  </data>
-  <data name="OverrideTempo2" xml:space="preserve">
-    <value>Override tempo: (Orig. {0}bpm)</value>
+  <data name="OKBtn" xml:space="preserve">
+    <value>OK</value>
+    <comment>k.</comment>
   </data>
   <data name="PeakLevel" xml:space="preserve">
     <value>Peak</value>
-  </data>
-  <data name="PlaybackAborted" xml:space="preserve">
-    <value>Playback aborted.</value>
-  </data>
-  <data name="PlaybackAbortedXPMessage" xml:space="preserve">
-    <value>Playback aborted.
-
-BASS status: {0}</value>
-  </data>
-  <data name="PlaybackCompleted" xml:space="preserve">
-    <value>Playback completed.</value>
-  </data>
-  <data name="PlaybackCompletedXPMessage" xml:space="preserve">
-    <value>Playback completed.
-
-BASS status: {0}</value>
-  </data>
-  <data name="PlaybackStatus" xml:space="preserve">
-    <value>{0} of the MIDI played.
-Position: {1} - {2}
-Notes: {3} - {4}</value>
-  </data>
-  <data name="PlaybackText" xml:space="preserve">
-    <value>{0} | Playback of {1}...</value>
-  </data>
-  <data name="PlaybackXPTitle" xml:space="preserve">
-    <value>Completed</value>
-  </data>
-  <data name="RemoveMIDI" xml:space="preserve">
-    <value>Remove selected MIDIs</value>
-  </data>
-  <data name="RemoveSoundfontBtn" xml:space="preserve">
-    <value>Remove soundfont(s)</value>
-  </data>
-  <data name="RenderToSpeakers" xml:space="preserve">
-    <value>Preview files (Real-time playback)</value>
+    <comment>The peak level of the current stream.</comment>
   </data>
   <data name="RightClickCopyNotice" xml:space="preserve">
     <value>Right-click anywhere in the window to copy the message.</value>
+    <comment>UNDERSTAND?</comment>
   </data>
   <data name="RMS" xml:space="preserve">
     <value>Root mean square</value>
+    <comment>The root mean square of the current stream.</comment>
   </data>
-  <data name="SaveHere" xml:space="preserve">
-    <value>Save here...</value>
+  <data name="ShowMeNext" xml:space="preserve">
+    <value>Remind me in one month</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="SelectOneSF" xml:space="preserve">
-    <value>Please select at least one soundfont.</value>
+  <data name="SortName" xml:space="preserve">
+    <value>Sort by name</value>
+    <comment>Sort all the MIDIs by name.</comment>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+  <data name="UpdateFound" xml:space="preserve">
+    <value>A new update for {0} {1} has been found.
+
+Version installed: {0}
+Version available online: {1}
+
+Would you like to update now?
+If you choose "Yes", the converter will be automatically closed.
+
+You can disable the automatic update check through "Options &gt; Automatically check for updates when starting the converter".)</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="SettingsBox" xml:space="preserve">
-    <value>Settings</value>
+  <data name="UpdateFoundTitle" xml:space="preserve">
+    <value>New version of {0} {1} found</value>
+    <comment>Title for the UpdateFound translation.</comment>
   </data>
-  <data name="SFVSTManager" xml:space="preserve">
-    <value>Open the soundfonts/VST manager</value>
+  <data name="NoAffectPreview" xml:space="preserve">
+    <value>It doesn't affect previews</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RealTimeSim" xml:space="preserve">
+    <value>Real-time simulation</value>
+    <comment>Simulates a real-time playback, when rendering.</comment>
+  </data>
+  <data name="RenderStandard" xml:space="preserve">
+    <value>Standard</value>
+    <comment>Uses the standard rendering method.</comment>
+  </data>
+  <data name="CFU" xml:space="preserve">
+    <value>Check for updates</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CompilerDate" xml:space="preserve">
+    <value>Compiled on:</value>
+    <comment>It shows when this release got compiled.</comment>
+  </data>
+  <data name="ConverterInfo" xml:space="preserve">
+    <value>Information about this build</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CTC" xml:space="preserve">
+    <value>Copy to clipboard</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="HowManyTimesAdd" xml:space="preserve">
+    <value>How many times do you want to add this MIDI?
+
+{0}</value>
+    <comment>How many times you want to add {0}, where {0} is the MIDI.</comment>
+  </data>
+  <data name="IgnoreSize" xml:space="preserve">
+    <value>The converter will ignore the size of the MIDIs, and get their full info anyway.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+    <comment>Information?</comment>
+  </data>
+  <data name="InvalidMIDIFile" xml:space="preserve">
+    <value>{0} is not a valid MIDI file!
+
+Please select a valid MIDI file, and retry.</value>
+    <comment>The MIDI is invalid.</comment>
+  </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>File</value>
+    <comment>The full path of the MIDI.</comment>
+  </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>Length</value>
+    <comment>The length (Time) of the MIDI.</comment>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>Notes</value>
+    <comment>How many notes are present in the MIDI.</comment>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>Size</value>
+    <comment>Size of the MIDI.</comment>
+  </data>
+  <data name="RevisionLabel" xml:space="preserve">
+    <value>{0} (Revision {1})</value>
+    <comment>{0} is the version of the library, {1} is the revision number.</comment>
+  </data>
+  <data name="SourceCodeText" xml:space="preserve">
+    <value>Click here to open the official GitHub repository</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="TaCI" xml:space="preserve">
+    <value>Keppy's MIDI Converter {0}
+Copyright Ⓒ Riccardo Loi 2013-{1}
+
+Translation by {2}</value>
+    <comment>Information text in the "Information about the converter" window.</comment>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>{0} version:</value>
+    <comment>Version number of {0}, where {0} stands for the item. (E.g. "BASSMIDI version")</comment>
+  </data>
+  <data name="VersionConverter" xml:space="preserve">
+    <value>Converter</value>
+    <comment>To be used with "Version".</comment>
+  </data>
+  <data name="W10VerRev" xml:space="preserve">
+    <value>Version {0} (Revision {1})</value>
+    <comment>Windows 10's version and revision format</comment>
+  </data>
+  <data name="WindowsBuild" xml:space="preserve">
+    <value>Release build:</value>
+    <comment>Shows the user the build number of his Windows installation.</comment>
+  </data>
+  <data name="WindowsInstallInfo" xml:space="preserve">
+    <value>Information about Windows</value>
+    <comment>Title of the groupbox.</comment>
+  </data>
+  <data name="WindowsName" xml:space="preserve">
+    <value>Release name:</value>
+    <comment>Shows the user the release name of his Windows installation.</comment>
+  </data>
+  <data name="NoEnoughMemoryMIDIInfo" xml:space="preserve">
+    <value>There's no enough memory to get the info for this MIDI:
+{0}</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutSFZFormatText" xml:space="preserve">
+    <value>This program is compliant to the "SFZ 1.0 format", and partially with the "SFZ 2.0 format".
+
+Do you want to visit the "Unofficial SFZ format information" website?</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutSFZFormatTitle" xml:space="preserve">
+    <value>About the SFZ format</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutVSTSupportText" xml:space="preserve">
+    <value>This program supports VST DSPs.
+
+Virtual Studio Technology (VST) is a software interface and technology by Steinberg Media Technologies.
+Copyright ©2006 Steinberg Media Technologies.
+All Rights Reserved.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutVSTSupportTitle" xml:space="preserve">
+    <value>About the Virtual Studio Technology interface</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AdvSettingsTitle" xml:space="preserve">
+    <value>Advanced settings</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AudioFreq" xml:space="preserve">
+    <value>Audio frequency:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Bitrate" xml:space="preserve">
+    <value>Bitrate</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ClearSoundfontList" xml:space="preserve">
+    <value>Clean soundfonts list</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConstantBitrate" xml:space="preserve">
+    <value>Force constant bitrate</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConverterIsBusyAlready" xml:space="preserve">
+    <value>Wait for the previous conversion/preview to finish!</value>
+    <comment>The thread is already busy previewing/converting another MIDI.</comment>
+  </data>
+  <data name="ConvStatusFasterNew" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}% ({5}x~ faster)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusFasterOld" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}% ({5}x~ faster)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusNormalNew" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}%</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusNormalOld" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}%</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusSlowerNew" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Approximate time left: {2} - Elapsed time: {3}
+Rendering time: {4}% ({5}x~ slower)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusSlowerOld" xml:space="preserve">
+    <value>{0}MBs of RAW data converted. ({1})
+Current position: {2} - {3}
+Rendering time: {4}% ({5}x~ slower)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DisableEffects" xml:space="preserve">
+    <value>Disable sound effects</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DSPSettings" xml:space="preserve">
+    <value>DSP settings:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ExportMIDIWindow" xml:space="preserve">
+    <value>Select a folder for the conversion process</value>
+    <comment>Where do you want to export the files?</comment>
+  </data>
+  <data name="ImportMIDIWindow" xml:space="preserve">
+    <value>Select the MIDIs to import...</value>
+    <comment>Which files do you want to import?</comment>
+  </data>
+  <data name="ImportSoundfontBtn" xml:space="preserve">
+    <value>Import soundfont(s)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MIDIFiles" xml:space="preserve">
+    <value>MIDI files</value>
+    <comment>Used for the "MIDIImport" OpenFileDialog function.</comment>
+  </data>
+  <data name="MoveDownSF" xml:space="preserve">
+    <value>Move down ▼</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MoveUpSF" xml:space="preserve">
+    <value>Move up ▲</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NoteOff1" xml:space="preserve">
+    <value>Only release the oldest instance of a note upon note-off event.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="OverrideTempo" xml:space="preserve">
+    <value>Override MIDI tempo</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackStatusNormal" xml:space="preserve">
+    <value>{0} of the MIDI played.
+Position: {1} - {2}
+Notes: {3} - {4}
+Playback speed: Normal</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackText" xml:space="preserve">
+    <value>{0} | Playback of {1}...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RealTimeFramerate" xml:space="preserve">
+    <value>Real-Time framerate:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RemoveSoundfontBtn" xml:space="preserve">
+    <value>Remove soundfont(s)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="StreamSettings" xml:space="preserve">
+    <value>Stream settings</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SkipVSTSettings" xml:space="preserve">
+    <value>The converter will not show you the VST settings.</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
     <value>Use up to 1.000 soundfonts at once, to convert your MIDIs.
-The first soundfont in the list will always override the latest ones.
+The first soundfont in the list will always override the last ones.
 Check if the soundfonts are not corrupted, before adding them to the list, to avoid random crashes/glitches.
 
 
 The following formats are supported: SF2, SF2PACK, SF3, SFZ</value>
+    <comment>The description in the SoundFont list editor.</comment>
   </data>
   <data name="SoundfontImportError" xml:space="preserve">
     <value>This is not a valid soundfont!
 
 Select a soundfont and try again.</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="SoundfontManagerTitle" xml:space="preserve">
     <value>Soundfonts/VST manager</value>
-  </data>
-  <data name="supportTheDeveloperWithADonation" xml:space="preserve">
-    <value>Help the developer with a donation</value>
-  </data>
-  <data name="Un4seenWebsite" xml:space="preserve">
-    <value>Un4seen site</value>
-  </data>
-  <data name="UnloadAllVSTs" xml:space="preserve">
-    <value>Remove all</value>
-  </data>
-  <data name="UnloadVST" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="UpdateFoundVer" xml:space="preserve">
-    <value>Update found, {0} is online.</value>
-  </data>
-  <data name="UpdaterPageTitle" xml:space="preserve">
-    <value>Updates</value>
-  </data>
-  <data name="UpdatesChecking" xml:space="preserve">
-    <value>Checking for available updates, please wait...</value>
-  </data>
-  <data name="UpdatesFoundText" xml:space="preserve">
-    <value>A new update has been found!
-Click OK to open the download page.</value>
-  </data>
-  <data name="UpdatesFoundTitle" xml:space="preserve">
-    <value>Update available</value>
-  </data>
-  <data name="VersionLabel" xml:space="preserve">
-    <value>{0} version, optimized for {1} processors</value>
-  </data>
-  <data name="VoiceLabel" xml:space="preserve">
-    <value>Voice limiter:</value>
+    <comment>Title of the SoundFont list editor.</comment>
   </data>
   <data name="VSTHowDoTheyWork" xml:space="preserve">
     <value>How do they work?
@@ -545,122 +617,261 @@ Effect 1 will apply its effect to the audio, then it'll pass the modified audio 
 that will then do the same with Effect 3 and so on.
 
 It's a chain-like system.</value>
+    <comment>The description in the VST effects picker.</comment>
   </data>
   <data name="VSTInvalidCallError" xml:space="preserve">
     <value>There was an error while trying to load {0}.
 The VST can not be loaded.
 
-Errore:
+Error:
 {1} 
 
 The VST is probably not compatible with the native Windows forms system.
 Error copied to clipboard.</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="VSTInvalidCallTitle" xml:space="preserve">
     <value>Invalid VST call</value>
+    <comment>Title for "VSTInvalidCallError"</comment>
   </data>
   <data name="VSTManager" xml:space="preserve">
     <value>VST manager</value>
+    <comment>Title of the VST effects picker.</comment>
   </data>
   <data name="VSTManagerButtonText" xml:space="preserve">
     <value>Open the VST DSP manager</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>I want to apply a VST DSP too...</value>
+    <value>Enable VST effects</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="WinXPSP1NotSupportedMessage" xml:space="preserve">
-    <value>Windows XP SP2 or newer is required to run Keppy's MIDI Converter.
-Click OK to exit.</value>
+  <data name="BNPSel" xml:space="preserve">
+    <value>Selected a bank and a preset for the SoundFont</value>
+    <comment>Title for "BankNPresetSel".</comment>
   </data>
-  <data name="WinXPSP1NotSupportedTitle" xml:space="preserve">
-    <value>Windows XP SP1 and older are not supported.</value>
-  </data>
-  <data name="InfoWindowTitle" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="ZZZTranslators" xml:space="preserve">
-    <value>KaleidonKep99</value>
-  </data>
-  <data name="OverrideLanguage" xml:space="preserve">
-    <value>Ignore system language</value>
-  </data>
-  <data name="MIDIFile" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="MIDISize" xml:space="preserve">
-    <value>Size</value>
-  </data>
-  <data name="MIDILength" xml:space="preserve">
-    <value>Length</value>
-  </data>
-  <data name="SortByName" xml:space="preserve">
-    <value>Sort by name</value>
-  </data>
-  <data name="MIDINotes" xml:space="preserve">
-    <value>Notes</value>
-  </data>
-  <data name="AboutVSTSupportText" xml:space="preserve">
-    <value>This program supports VST DSPs.
-
-Virtual Studio Technology (VST) is a software interface and technology by Steinberg Media Technologies.
-Copyright ©2006 Steinberg Media Technologies.
-All Rights Reserved.</value>
-  </data>
-  <data name="Volume" xml:space="preserve">
-    <value>Volume:</value>
-  </data>
-  <data name="BankNPresetIgnore" xml:space="preserve">
-    <value>Ignore</value>
-  </data>
-  <data name="BankNPresetConfirm" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="BankNPresetDesBank" xml:space="preserve">
-    <value>Destination preset:</value>
-  </data>
-  <data name="BankNPresetDesPrst" xml:space="preserve">
-    <value>Destination bank:</value>
-  </data>
-  <data name="BankNPresetDiscl" xml:space="preserve">
-    <value>Src.: Source of the bank/preset to import
-Des.: Bank/Preset to assign to the imported one.
-
-Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
-  </data>
-  <data name="BankNPresetGuide" xml:space="preserve">
-    <value>Banks/Presets list</value>
-  </data>
-  <data name="BankNPresetSelectedSF" xml:space="preserve">
-    <value>Selected soundfont</value>
-  </data>
-  <data name="BankNPresetSelectMsg" xml:space="preserve">
+  <data name="BNPSelDesc" xml:space="preserve">
     <value>Please select a bank and a preset, from 0 to 127.
 
 Use "Bank 0" and "Preset 0" for the standard "Acoustic Grand Piano",
 or if you don't know which one you should use.</value>
+    <comment>Description for "BankNPresetSel".</comment>
   </data>
-  <data name="BankNPresetSrcBank" xml:space="preserve">
-    <value>Source preset:</value>
+  <data name="BNPSelHelp" xml:space="preserve">
+    <value>Src.: Source of the bank/preset to import
+Des.: Bank/Preset to assign to the imported one.
+
+Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
+    <comment>Help text for "BankNPresetSel".</comment>
   </data>
-  <data name="BankNPresetSrcPrst" xml:space="preserve">
-    <value>Source bank:</value>
+  <data name="BNPSelWiki" xml:space="preserve">
+    <value>Banks/Presets list</value>
+    <comment>List of banks and presets from text file.</comment>
   </data>
-  <data name="BankNPresetTitle" xml:space="preserve">
-    <value>Select a bank and a preset for the soundfont</value>
+  <data name="CancelBtn" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="BankNPresetTBT" xml:space="preserve">
-    <value>no</value>
+  <data name="ConfirmBtn" xml:space="preserve">
+    <value>Confirm</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="RenderTo" xml:space="preserve">
-    <value>Render files to {0} (.{1})</value>
+  <data name="DesBank" xml:space="preserve">
+    <value>Destination ID of the imported bank:</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="CopyText" xml:space="preserve">
-    <value>Copy</value>
+  <data name="DesPreset" xml:space="preserve">
+    <value>Destination ID of the imported preset:</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="Donate" xml:space="preserve">
-    <value>Donate with PayPal</value>
+  <data name="SrcBank" xml:space="preserve">
+    <value>Source ID of the bank to import:</value>
+    <comment>Self-explanatory.</comment>
   </data>
-  <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change language</value>
+  <data name="SrcPreset" xml:space="preserve">
+    <value>Source ID of the preset to import:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="0Translators0" xml:space="preserve">
+    <value>KaleidonKep99</value>
+    <comment>You translated it! I think... If it says "KaleidonKep99", then you didn't.</comment>
+  </data>
+  <data name="AdvancedVoicesChannel" xml:space="preserve">
+    <value>Channel {0}:</value>
+  </data>
+  <data name="AdvancedVoicesTitle" xml:space="preserve">
+    <value>Active voices - Advanced (CPU usage: {0}%)</value>
+  </data>
+  <data name="AppBusy" xml:space="preserve">
+    <value>The app is not done converting/playing MIDIs!
+Are you sure you want to exit?</value>
+  </data>
+  <data name="AudioSettings" xml:space="preserve">
+    <value>Audio settings</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AutoResizeColumns" xml:space="preserve">
+    <value>Resize the columns</value>
+    <comment>Let the converter automatically resize the columns.</comment>
+  </data>
+  <data name="BecomeAPatronTitle" xml:space="preserve">
+    <value>Become a patron to keep the project alive</value>
+    <comment>Title for "BecomeAPatron"</comment>
+  </data>
+  <data name="ChannelsSettings" xml:space="preserve">
+    <value>Channels settings</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ChannelsSettingsAll" xml:space="preserve">
+    <value>All</value>
+    <comment>The "All" name for the Channels Settings.</comment>
+  </data>
+  <data name="ChannelsSettingsChan" xml:space="preserve">
+    <value>Channel {0}</value>
+    <comment>The "Channel" name for the Channels Settings.</comment>
+  </data>
+  <data name="ConversionAborted" xml:space="preserve">
+    <value>Conversion aborted.</value>
+  </data>
+  <data name="ConversionCompleted" xml:space="preserve">
+    <value>Conversion completed.</value>
+  </data>
+  <data name="CopiedToClipboardNotice" xml:space="preserve">
+    <value>The error has been copied to clipboard.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CopyErrorMessage" xml:space="preserve">
+    <value>Copy error message to clipboard</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="EmptySlot" xml:space="preserve">
+    <value>Empty slot</value>
+    <comment>No VST currently loaded here.</comment>
+  </data>
+  <data name="HeyYou" xml:space="preserve">
+    <value>Hey!</value>
+    <comment>Oh!</comment>
+  </data>
+  <data name="InvalidVSTLoaded" xml:space="preserve">
+    <value>{0} is not a valid VST effect!
+Be sure to load a VST effect and NOT a VST instrument.
+
+If you're trying to use a {1} VST, you need to use a {1} version of Keppy's MIDI Converter too.
+The {2} version of Keppy's MIDI Converter does NOT support {1} VSTs and viceversa.</value>
+    <comment>The VST is invalid.</comment>
+  </data>
+  <data name="LegalWarningVSTi" xml:space="preserve">
+    <value>By clicking 'Yes', you agree not to abuse the 'VST instrument' feature to create, disseminate, or make accessible anything exploiting the copyrighted/protected samples or files included within a VST ("Visual Studio Technology" plugin).
+
+Such resultant files could include (but are not limited to):
+SoundFonts, VSTs, or any other usable tool that commits copyright infringement.
+
+Simply put it, you may not use this tool to commit piracy on a copyrighted/trademarked/protected VST, free or paid, unless you have permission from the developer.
+You may create audio at will from the VST, but DO NOT use this export feature to extract/"rip" samples from the VST.
+
+The author assumes no legal responsibility from the use of this tool.</value>
+    <comment>This is to prevent people from blaming me for violating the copyright, by allowing people to sample VSTs.
+I'm not responsible of what people do with the converter.</comment>
+  </data>
+  <data name="LoadVST" xml:space="preserve">
+    <value>Load</value>
+    <comment>Loads the VST.</comment>
+  </data>
+  <data name="MaxVoices" xml:space="preserve">
+    <value>Maximum voices:</value>
+    <comment>The amount of voices allowed to be played at once.</comment>
+  </data>
+  <data name="MemoryAllocationConversion" xml:space="preserve">
+    <value>The application is allocating memory for the conversion process.
+Please wait...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationConversionVST" xml:space="preserve">
+    <value>The application is allocating memory for the conversion process.
+Edit the VST DSPs settings when asked.
+Please wait...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationPlayback" xml:space="preserve">
+    <value>The application is allocating memory for the preview.
+Please wait...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
+    <value>The application is allocating memory for the preview.
+Edit the VST DSPs settings when asked.
+Please wait...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MIDITracks" xml:space="preserve">
+    <value>Tracks</value>
+    <comment>How many tracks are present in the MIDI.</comment>
+  </data>
+  <data name="NotVerified" xml:space="preserve">
+    <value>Not verified</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>Override default UI language</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonBecomeOne" xml:space="preserve">
+    <value>Become a patron</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonDesc" xml:space="preserve">
+    <value>This project can not maintain itself by downloads only.
+
+I will not be able to keep this program updated forever, that's why becoming a patron could help me improve its features, and also help me improve the equipment that I work with.
+
+Becoming one is completely optional, and if you don't want to see this dialog anymore, just click on "Do not show this ever again". You can still become one by navigating to
+"Help &gt; Become a patron".
+
+Thank you in advance.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonMaybeLater" xml:space="preserve">
+    <value>Maybe later</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackAborted" xml:space="preserve">
+    <value>Playback aborted.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackCompleted" xml:space="preserve">
+    <value>Playback completed.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackStatusSlower" xml:space="preserve">
+    <value>{0} of the MIDI played.
+Position: {1} - {2}
+Notes: {3} - {4}
+Playback speed: ({5}x~ slower)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="UnloadAllVSTs" xml:space="preserve">
+    <value>Remove all</value>
+    <comment>Unloads all the VSTs.</comment>
+  </data>
+  <data name="UnloadVST" xml:space="preserve">
+    <value>Unload</value>
+    <comment>Unloads the VST.</comment>
+  </data>
+  <data name="VSTiModeOn" xml:space="preserve">
+    <value>VSTi mode activated.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTiModeOnLegal" xml:space="preserve">
+    <value>VSTi mode activated.
+The legal warning will not be displayed anymore.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTNameAndVersion" xml:space="preserve">
+    <value>{0} by {1} (Version number: {2})</value>
+    <comment>Shows you the name of the VST, the creator, and its version number.</comment>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+    <comment>Warning!</comment>
   </data>
 </root>

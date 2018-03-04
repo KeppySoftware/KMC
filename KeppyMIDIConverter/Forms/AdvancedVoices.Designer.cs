@@ -79,7 +79,7 @@
             // 
             this.CHV16.AutoSize = true;
             this.CHV16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV16.Location = new System.Drawing.Point(80, 279);
+            this.CHV16.Location = new System.Drawing.Point(89, 279);
             this.CHV16.Name = "CHV16";
             this.CHV16.Size = new System.Drawing.Size(43, 13);
             this.CHV16.TabIndex = 79;
@@ -101,7 +101,7 @@
             // 
             this.CHV15.AutoSize = true;
             this.CHV15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV15.Location = new System.Drawing.Point(80, 261);
+            this.CHV15.Location = new System.Drawing.Point(89, 261);
             this.CHV15.Name = "CHV15";
             this.CHV15.Size = new System.Drawing.Size(43, 13);
             this.CHV15.TabIndex = 77;
@@ -123,7 +123,7 @@
             // 
             this.CHV14.AutoSize = true;
             this.CHV14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV14.Location = new System.Drawing.Point(80, 243);
+            this.CHV14.Location = new System.Drawing.Point(89, 243);
             this.CHV14.Name = "CHV14";
             this.CHV14.Size = new System.Drawing.Size(43, 13);
             this.CHV14.TabIndex = 75;
@@ -145,7 +145,7 @@
             // 
             this.CHV13.AutoSize = true;
             this.CHV13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV13.Location = new System.Drawing.Point(80, 225);
+            this.CHV13.Location = new System.Drawing.Point(89, 225);
             this.CHV13.Name = "CHV13";
             this.CHV13.Size = new System.Drawing.Size(43, 13);
             this.CHV13.TabIndex = 73;
@@ -167,7 +167,7 @@
             // 
             this.CHV12.AutoSize = true;
             this.CHV12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV12.Location = new System.Drawing.Point(80, 207);
+            this.CHV12.Location = new System.Drawing.Point(89, 207);
             this.CHV12.Name = "CHV12";
             this.CHV12.Size = new System.Drawing.Size(43, 13);
             this.CHV12.TabIndex = 71;
@@ -189,7 +189,7 @@
             // 
             this.CHV11.AutoSize = true;
             this.CHV11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV11.Location = new System.Drawing.Point(80, 189);
+            this.CHV11.Location = new System.Drawing.Point(89, 189);
             this.CHV11.Name = "CHV11";
             this.CHV11.Size = new System.Drawing.Size(43, 13);
             this.CHV11.TabIndex = 69;
@@ -211,7 +211,7 @@
             // 
             this.CHV10.AutoSize = true;
             this.CHV10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV10.Location = new System.Drawing.Point(80, 171);
+            this.CHV10.Location = new System.Drawing.Point(89, 171);
             this.CHV10.Name = "CHV10";
             this.CHV10.Size = new System.Drawing.Size(43, 13);
             this.CHV10.TabIndex = 67;
@@ -233,7 +233,7 @@
             // 
             this.CHV9.AutoSize = true;
             this.CHV9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV9.Location = new System.Drawing.Point(80, 153);
+            this.CHV9.Location = new System.Drawing.Point(89, 153);
             this.CHV9.Name = "CHV9";
             this.CHV9.Size = new System.Drawing.Size(43, 13);
             this.CHV9.TabIndex = 65;
@@ -244,7 +244,7 @@
             // 
             this.CHV9L.AutoSize = true;
             this.CHV9L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV9L.Location = new System.Drawing.Point(12, 153);
+            this.CHV9L.Location = new System.Drawing.Point(5, 153);
             this.CHV9L.Name = "CHV9L";
             this.CHV9L.Size = new System.Drawing.Size(68, 13);
             this.CHV9L.TabIndex = 64;
@@ -255,7 +255,7 @@
             // 
             this.CHV8.AutoSize = true;
             this.CHV8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV8.Location = new System.Drawing.Point(80, 135);
+            this.CHV8.Location = new System.Drawing.Point(89, 135);
             this.CHV8.Name = "CHV8";
             this.CHV8.Size = new System.Drawing.Size(43, 13);
             this.CHV8.TabIndex = 63;
@@ -266,7 +266,7 @@
             // 
             this.CHV8L.AutoSize = true;
             this.CHV8L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV8L.Location = new System.Drawing.Point(12, 135);
+            this.CHV8L.Location = new System.Drawing.Point(5, 135);
             this.CHV8L.Name = "CHV8L";
             this.CHV8L.Size = new System.Drawing.Size(68, 13);
             this.CHV8L.TabIndex = 62;
@@ -277,7 +277,7 @@
             // 
             this.CHV7.AutoSize = true;
             this.CHV7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV7.Location = new System.Drawing.Point(80, 117);
+            this.CHV7.Location = new System.Drawing.Point(89, 117);
             this.CHV7.Name = "CHV7";
             this.CHV7.Size = new System.Drawing.Size(43, 13);
             this.CHV7.TabIndex = 61;
@@ -288,7 +288,7 @@
             // 
             this.CHV7L.AutoSize = true;
             this.CHV7L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV7L.Location = new System.Drawing.Point(12, 117);
+            this.CHV7L.Location = new System.Drawing.Point(5, 117);
             this.CHV7L.Name = "CHV7L";
             this.CHV7L.Size = new System.Drawing.Size(68, 13);
             this.CHV7L.TabIndex = 60;
@@ -299,7 +299,7 @@
             // 
             this.CHV6.AutoSize = true;
             this.CHV6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV6.Location = new System.Drawing.Point(80, 99);
+            this.CHV6.Location = new System.Drawing.Point(89, 99);
             this.CHV6.Name = "CHV6";
             this.CHV6.Size = new System.Drawing.Size(43, 13);
             this.CHV6.TabIndex = 59;
@@ -310,7 +310,7 @@
             // 
             this.CHV6L.AutoSize = true;
             this.CHV6L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV6L.Location = new System.Drawing.Point(12, 99);
+            this.CHV6L.Location = new System.Drawing.Point(5, 99);
             this.CHV6L.Name = "CHV6L";
             this.CHV6L.Size = new System.Drawing.Size(68, 13);
             this.CHV6L.TabIndex = 58;
@@ -321,7 +321,7 @@
             // 
             this.CHV5.AutoSize = true;
             this.CHV5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV5.Location = new System.Drawing.Point(80, 81);
+            this.CHV5.Location = new System.Drawing.Point(89, 81);
             this.CHV5.Name = "CHV5";
             this.CHV5.Size = new System.Drawing.Size(43, 13);
             this.CHV5.TabIndex = 57;
@@ -332,7 +332,7 @@
             // 
             this.CHV5L.AutoSize = true;
             this.CHV5L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV5L.Location = new System.Drawing.Point(12, 81);
+            this.CHV5L.Location = new System.Drawing.Point(5, 81);
             this.CHV5L.Name = "CHV5L";
             this.CHV5L.Size = new System.Drawing.Size(68, 13);
             this.CHV5L.TabIndex = 56;
@@ -343,7 +343,7 @@
             // 
             this.CHV4.AutoSize = true;
             this.CHV4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV4.Location = new System.Drawing.Point(80, 63);
+            this.CHV4.Location = new System.Drawing.Point(89, 63);
             this.CHV4.Name = "CHV4";
             this.CHV4.Size = new System.Drawing.Size(43, 13);
             this.CHV4.TabIndex = 55;
@@ -354,7 +354,7 @@
             // 
             this.CHV4L.AutoSize = true;
             this.CHV4L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV4L.Location = new System.Drawing.Point(12, 63);
+            this.CHV4L.Location = new System.Drawing.Point(5, 63);
             this.CHV4L.Name = "CHV4L";
             this.CHV4L.Size = new System.Drawing.Size(68, 13);
             this.CHV4L.TabIndex = 54;
@@ -365,7 +365,7 @@
             // 
             this.CHV3.AutoSize = true;
             this.CHV3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV3.Location = new System.Drawing.Point(80, 45);
+            this.CHV3.Location = new System.Drawing.Point(89, 45);
             this.CHV3.Name = "CHV3";
             this.CHV3.Size = new System.Drawing.Size(43, 13);
             this.CHV3.TabIndex = 53;
@@ -376,7 +376,7 @@
             // 
             this.CHV3L.AutoSize = true;
             this.CHV3L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV3L.Location = new System.Drawing.Point(12, 45);
+            this.CHV3L.Location = new System.Drawing.Point(5, 45);
             this.CHV3L.Name = "CHV3L";
             this.CHV3L.Size = new System.Drawing.Size(68, 13);
             this.CHV3L.TabIndex = 52;
@@ -387,7 +387,7 @@
             // 
             this.CHV2.AutoSize = true;
             this.CHV2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV2.Location = new System.Drawing.Point(80, 27);
+            this.CHV2.Location = new System.Drawing.Point(89, 27);
             this.CHV2.Name = "CHV2";
             this.CHV2.Size = new System.Drawing.Size(43, 13);
             this.CHV2.TabIndex = 51;
@@ -398,7 +398,7 @@
             // 
             this.CHV2L.AutoSize = true;
             this.CHV2L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV2L.Location = new System.Drawing.Point(12, 27);
+            this.CHV2L.Location = new System.Drawing.Point(5, 27);
             this.CHV2L.Name = "CHV2L";
             this.CHV2L.Size = new System.Drawing.Size(68, 13);
             this.CHV2L.TabIndex = 50;
@@ -409,7 +409,7 @@
             // 
             this.CHV1.AutoSize = true;
             this.CHV1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV1.Location = new System.Drawing.Point(80, 9);
+            this.CHV1.Location = new System.Drawing.Point(89, 9);
             this.CHV1.Name = "CHV1";
             this.CHV1.Size = new System.Drawing.Size(43, 13);
             this.CHV1.TabIndex = 49;
@@ -420,7 +420,7 @@
             // 
             this.CHV1L.AutoSize = true;
             this.CHV1L.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHV1L.Location = new System.Drawing.Point(12, 9);
+            this.CHV1L.Location = new System.Drawing.Point(5, 9);
             this.CHV1L.Name = "CHV1L";
             this.CHV1L.Size = new System.Drawing.Size(68, 13);
             this.CHV1L.TabIndex = 48;
