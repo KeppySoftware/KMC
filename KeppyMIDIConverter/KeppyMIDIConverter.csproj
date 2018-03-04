@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>KeppyMIDIConverter</RootNamespace>
     <AssemblyName>KeppyMIDIConverter</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
@@ -28,6 +28,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -35,8 +36,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <Optimize>false</Optimize>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -48,8 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <Optimize>false</Optimize>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -563,4 +562,8 @@
   <Import Project="..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" />
   <Import Project="..\packages\Fody.2.4.4\build\Fody.targets" Condition="Exists('..\packages\Fody.2.4.4\build\Fody.targets')" />
   <Import Project="..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets" Condition="Exists('..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(PlatformName) == x86 call "$(DevEnvDir)..\tools\vsdevcmd.bat"
+if $(PlatformName) == x86 editbin /LARGEADDRESSAWARE "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

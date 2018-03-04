@@ -348,8 +348,6 @@ namespace KeppyMIDIConverter
             {
                 MainWindow.KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, 0);
 
-                MainWindow.KMCGlobals.StreamSizeFLAC = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
-
                 BASS_MIDI_EVENT[] eventChunk;
                 try
                 {

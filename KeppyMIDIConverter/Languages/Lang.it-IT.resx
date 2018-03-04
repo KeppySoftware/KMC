@@ -322,8 +322,8 @@ Premi "OK" per chiudere il dialogo.</value>
   <data name="UpdateFound" xml:space="preserve">
     <value>Una nuova versione del software è stata trovata.
 
-Versione installata: {0}
-Versione disponibile online: {1}
+Versione installata: {2}
+Versione disponibile online: {3}
 
 Vuoi aggiornare ora?
 Confermando, il programma verrà chiuso automaticamente.
@@ -725,9 +725,11 @@ Sei sicuro di voler uscire?</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
     <value>Conversione annullata.</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="ConversionCompleted" xml:space="preserve">
     <value>Conversione completata.</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="EmptySlot" xml:space="preserve">
     <value>Slot vuoto</value>
@@ -877,6 +879,14 @@ L'avviso legale non verrà più visualizzato.</value>
   </data>
   <data name="CopyErrorMessage" xml:space="preserve">
     <value>Copia messaggio di errore sugli appunti</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConversionText" xml:space="preserve">
+    <value>{0} | Conversione di {1}...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Donate" xml:space="preserve">
+    <value>Dona</value>
     <comment>Self-explanatory.</comment>
   </data>
 </root>

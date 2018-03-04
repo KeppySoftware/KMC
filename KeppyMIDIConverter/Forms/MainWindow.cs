@@ -90,7 +90,6 @@ namespace KeppyMIDIConverter
             public static int _VolFX;
             public static BASS_FX_VOLUME_PARAM _VolFXParam = new BASS_FX_VOLUME_PARAM();
             public static int pictureset = 0;
-            public static long StreamSizeFLAC;
             public static string BenchmarkTime;
             public static string CurrentStatusTextString;
             public static string DisabledOr;

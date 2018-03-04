@@ -321,8 +321,8 @@ Click "OK" to close this dialog.</value>
   <data name="UpdateFound" xml:space="preserve">
     <value>A new update for {0} {1} has been found.
 
-Version installed: {0}
-Version available online: {1}
+Version installed: {2}
+Version available online: {3}
 
 Would you like to update now?
 If you choose "Yes", the converter will be automatically closed.
@@ -698,13 +698,16 @@ Leave Src. Bank and Src. Preset to 0 for SFZ files.</value>
   </data>
   <data name="AdvancedVoicesChannel" xml:space="preserve">
     <value>Channel {0}:</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="AdvancedVoicesTitle" xml:space="preserve">
     <value>Active voices - Advanced (CPU usage: {0}%)</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="AppBusy" xml:space="preserve">
     <value>The app is not done converting/playing MIDIs!
 Are you sure you want to exit?</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="AudioSettings" xml:space="preserve">
     <value>Audio settings</value>
@@ -732,9 +735,11 @@ Are you sure you want to exit?</value>
   </data>
   <data name="ConversionAborted" xml:space="preserve">
     <value>Conversion aborted.</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="ConversionCompleted" xml:space="preserve">
     <value>Conversion completed.</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="CopiedToClipboardNotice" xml:space="preserve">
     <value>The error has been copied to clipboard.</value>
@@ -873,5 +878,13 @@ The legal warning will not be displayed anymore.</value>
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>
     <comment>Warning!</comment>
+  </data>
+  <data name="ConversionText" xml:space="preserve">
+    <value>{0} | Conversion of {1}...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Donate" xml:space="preserve">
+    <value>Donate</value>
+    <comment>Self-explanatory.</comment>
   </data>
 </root>

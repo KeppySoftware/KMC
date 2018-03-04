@@ -30,6 +30,7 @@ namespace KeppyMIDIConverter
         {
             Text = Languages.Parse("IATP");
             GitHubLink.Text = Languages.Parse("SourceCodeText");
+            DonateBtn.Text = Languages.Parse("Donate");
 
             ConverterInfo.Text = Languages.Parse("ConverterInfo");
             WindowsInstallInfo.Text = Languages.Parse("WindowsInstallInfo");
