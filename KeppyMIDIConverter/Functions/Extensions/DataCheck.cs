@@ -23,7 +23,7 @@ namespace KeppyMIDIConverter
             return Bass.BASS_ChannelGetLength(time);
         }
 
-        public static string[] GetMoreInfoMIDI(string str, bool overridedefault)
+        public static string[] GetMoreInfoMIDI(string str)
         {
             try
             {
@@ -45,18 +45,8 @@ namespace KeppyMIDIConverter
                 }
                 catch { size = "-"; }
 
-                // If the MIDI is too big, skip data parsing
-                if (length / 1024f >= 9860)
-                {
-                    // If the user is not holding CTRL, skip the data parsing
-                    if (!overridedefault)
-                    {
-                        return new string[] { Languages.Parse("NA"), Languages.Parse("NA"), Languages.Parse("NA"), size, };
-                    }
-                }
-
                 Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
-                Int32 time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
+                Int32 time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);  
                 Int64 pos = Bass.BASS_ChannelGetLength(time);
                 Double num9 = Bass.BASS_ChannelBytes2Seconds(time, pos);
                 TimeSpan span = TimeSpan.FromSeconds(num9);

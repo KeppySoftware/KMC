@@ -93,8 +93,6 @@ namespace KeppyMIDIConverter
             public static string BenchmarkTime;
             public static string CurrentStatusTextString;
             public static string DisabledOr;
-            public static string ExportLastDirectory;
-            public static string MIDILastDirectory;
             public static string MIDIName;
             public static string NewWindowName = null;
             public static string PercentageProgress = "0";
@@ -143,6 +141,7 @@ namespace KeppyMIDIConverter
             // Dialogs
             KMCDialogs.MIDIImport.Title = Languages.Parse("ImportMIDIWindow");
             KMCDialogs.MIDIImport.Filter = String.Format("{0}|*.mid;*.midi;*.kar;*.rmi;*.riff", Languages.Parse("MIDIFiles"));
+            KMCDialogs.MIDIImport.Multiselect = true;
             KMCDialogs.MIDIExport.Title = Languages.Parse("ExportMIDIWindow");
             KMCDialogs.MIDIExport.IsFolderPicker = true;
 
@@ -235,7 +234,7 @@ namespace KeppyMIDIConverter
                     {
                         //Add MIDI to midi list
                         string[] saLvwItem = new string[4];
-                        string[] midiinfo = DataCheck.GetMoreInfoMIDI(s, false);
+                        string[] midiinfo = DataCheck.GetMoreInfoMIDI(s);
                         saLvwItem[0] = s;
                         saLvwItem[1] = midiinfo[0];
                         saLvwItem[2] = midiinfo[1];
@@ -300,10 +299,6 @@ namespace KeppyMIDIConverter
                     Properties.Settings.Default.ShowOldTimeInfo = SCPIOTL.Checked = true;
                     RenderStandard.Checked = !Properties.Settings.Default.RealTimeSimulator;
                     RenderRTS.Checked = Properties.Settings.Default.RealTimeSimulator;
-
-                    // Folders
-                    KMCGlobals.MIDILastDirectory = Properties.Settings.Default.LastMIDIFolder;
-                    KMCGlobals.ExportLastDirectory = Properties.Settings.Default.LastExportFolder;
                 }
                 catch (Exception exception)
                 {
@@ -333,13 +328,11 @@ namespace KeppyMIDIConverter
         {
             KMCDialogs.MIDIImport.InitialDirectory = Properties.Settings.Default.LastMIDIFolder;
 
-            Boolean overridedefault = BasicFunctions.CheckSizeOverride();
-
             if (KMCDialogs.MIDIImport.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.LastMIDIFolder = Path.GetDirectoryName(KMCDialogs.MIDIImport.FileName);
                 Properties.Settings.Default.Save();
-                BasicFunctions.AddFilesToList(KMCDialogs.MIDIImport.FileNames, true, overridedefault);
+                new AddingMIDIs(KMCDialogs.MIDIImport.FileNames, true).ShowDialog();
             }
         }
 
@@ -485,10 +478,7 @@ namespace KeppyMIDIConverter
 
         private void MIDIList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
-            Boolean overridedefault = BasicFunctions.CheckSizeOverride();
-
-            string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            BasicFunctions.AddFilesToList(s, false, overridedefault);
+            new AddingMIDIs((string[])e.Data.GetData(DataFormats.FileDrop, false), false).ShowDialog();
         }
 
         private void MIDIList_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)

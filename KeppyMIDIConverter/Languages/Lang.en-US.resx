@@ -891,4 +891,13 @@ The legal warning will not be displayed anymore.</value>
     <value>Copy</value>
     <comment>Used when creating a copy of an existing file.</comment>
   </data>
+  <data name="ParsingMIDIInfo" xml:space="preserve">
+    <value>Parsing information about MIDIs...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ParsingMIDIInfoStatus" xml:space="preserve">
+    <value>Parsed {0} MIDI(s) out of {1}.
+Please wait...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

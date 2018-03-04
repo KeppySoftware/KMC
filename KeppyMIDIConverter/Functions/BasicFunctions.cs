@@ -218,16 +218,6 @@ namespace KeppyMIDIConverter
             }
         }
 
-        public static bool CheckSizeOverride()
-        {
-            if (MainWindow.ModifierKeys == Keys.Control)
-            {
-                MessageBox.Show(Languages.Parse("IgnoreSize"), Languages.Parse("Information"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            return false;
-        }
-
         public static long GetMIDILength(string str)
         {
             Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
@@ -241,55 +231,10 @@ namespace KeppyMIDIConverter
 
         public static void ToAddOrNotToAdd(ListViewItem lvi, string notes, string str)
         {
-            if (notes == "0" || GetMIDILength(str) == -1) MessageBox.Show(String.Format(Languages.Parse("InvalidMIDIFile"), Path.GetFileName(str)), Languages.Parse("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else MainWindow.Delegate.MIDIList.Items.Add(lvi);
-        }
-
-        public static void AddFilesToList(String[] filenames, Boolean IsImportDialog, Boolean GetEntireSize)
-        {
-            foreach (string str in filenames)
-            {
-                try
-                {
-                    Stream SM = File.Open(str, FileMode.Open);
-                    StreamReader SMs = new StreamReader(SM);
-                    BinaryReader SMb = new BinaryReader(SMs.BaseStream);
-                    String Header = new String(SMb.ReadChars(4));
-
-                    SMb.Dispose();
-                    SMs.Dispose();
-                    SM.Dispose();
-
-                    if (Header.Contains("MThd") || Header.Contains("RIFF"))
-                    {
-                        if (MainWindow.ModifierKeys == Keys.Shift)
-                        {
-                            Int32 UserAnswer = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
-                                String.Format(Languages.Parse("HowManyTimesAdd"), str), MainWindow.Title, "1"));
-
-                            if (UserAnswer == 0) UserAnswer = 1;
-
-                            string[] midiinfo = DataCheck.GetMoreInfoMIDI(str, GetEntireSize);
-                            ListViewItem lvi = new ListViewItem(new string[] { str, midiinfo[2], midiinfo[1], midiinfo[0], midiinfo[3] });
-
-                            for (int i = 0; i < UserAnswer; i++) ToAddOrNotToAdd(lvi, midiinfo[1], str);
-                        }
-                        else
-                        {
-                            string[] midiinfo = DataCheck.GetMoreInfoMIDI(str, GetEntireSize);
-                            ListViewItem lvi = new ListViewItem(new string[] { str, midiinfo[2], midiinfo[1], midiinfo[0], midiinfo[3] } );
-                            ToAddOrNotToAdd(lvi, midiinfo[1], str);
-                        }
-
-                    }
-                    else MessageBox.Show(String.Format(Languages.Parse("InvalidMIDIFile"), Path.GetFileName(str)), Languages.Parse("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception exception)
-                {
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("Error"), exception.ToString(), 0, 0);
-                    errordialog.ShowDialog();
-                }
-            }
+            if (notes == "0" || GetMIDILength(str) == -1)
+                MainWindow.Delegate.Invoke((MethodInvoker)delegate { MessageBox.Show(String.Format(Languages.Parse("InvalidMIDIFile"), Path.GetFileName(str)), Languages.Parse("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error); });
+            else
+                MainWindow.Delegate.Invoke((MethodInvoker)delegate { MainWindow.Delegate.MIDIList.Items.Add(lvi); });
         }
     }
 

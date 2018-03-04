@@ -893,4 +893,13 @@ L'avviso legale non verrà più visualizzato.</value>
     <value>Copia</value>
     <comment>Used when creating a copy of an existing file.</comment>
   </data>
+  <data name="ParsingMIDIInfo" xml:space="preserve">
+    <value>Controllo validità dei MIDI...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ParsingMIDIInfoStatus" xml:space="preserve">
+    <value>Analizzato/i {0} MIDI dei {1} totali.
+Attendere prego...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>
