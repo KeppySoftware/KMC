@@ -390,6 +390,7 @@ namespace KeppyMIDIConverter
             LoudMaxCheck.ForeColor = Properties.Settings.Default.LoudMaxEnabled ? Color.Green : Color.DarkRed;
             LoudMaxCheck.Text = Properties.Settings.Default.LoudMaxEnabled ? "LoudMax on" : "LoudMax off";
             LoudMaxCheck.Checked = Properties.Settings.Default.LoudMaxEnabled;
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -75,7 +75,11 @@ namespace KeppyMIDIConverter
             InitializeLanguage();
             SFList.ContextMenu = SFMenu;
             SoundfontImportDialog.InitialDirectory = Properties.Settings.Default.LastSoundFontFolder;
-            if (KeppyMIDIConverter.MainWindow.KMCStatus.VSTMode == true)
+
+            if (Properties.Settings.Default.LoudMaxEnabled)
+                MainWindow.KMCStatus.VSTMode = true;
+
+            if (MainWindow.KMCStatus.VSTMode == true)
             {
                 VSTImport.Enabled = true;
                 VSTUse.Checked = true;
