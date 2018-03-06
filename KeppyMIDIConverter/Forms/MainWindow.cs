@@ -186,6 +186,7 @@ namespace KeppyMIDIConverter
             Delegate.CMLAR.Text = Languages.Parse("CMLAR");
             Delegate.SCPIOTL.Text = Languages.Parse("SCPIOTL");
             Delegate.CSFFS.Text = Languages.Parse("CSFFS");
+            Delegate.SVDS.Text = Languages.Parse("SVDS");
             Delegate.ChangeLanguage.Text = Languages.Parse("ChangeLanguage");
 
             // Help strip
@@ -595,6 +596,12 @@ namespace KeppyMIDIConverter
             CSFFS.Checked = !CSFFS.Checked;
             Properties.Settings.Default.AudioEvents = CSFFS.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void SVS_Click(object sender, EventArgs e)
+        {
+            SVDS.Checked = !SVDS.Checked;
+            KMCGlobals.VSTSkipSettings = SVDS.Checked;
         }
 
         private void RenderStandard_Click(object sender, EventArgs e)

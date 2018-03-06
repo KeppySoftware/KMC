@@ -593,9 +593,9 @@ Playback speed: Normal</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
     <value>Use up to 1.000 soundfonts at once, to convert your MIDIs.
-The first soundfont in the list will always override the last ones.
-Check if the soundfonts are not corrupted, before adding them to the list, to avoid random crashes/glitches.
-
+The last SoundFont will override the ones above it, loading order is from top to bottom.
+Check if the SoundFonts are not corrupted, before adding them to the list,
+to avoid random crashes/glitches.
 
 The following formats are supported: SF2, SF2PACK, SF3, SFZ</value>
     <comment>The description in the SoundFont list editor.</comment>
@@ -898,6 +898,10 @@ The legal warning will not be displayed anymore.</value>
   <data name="ParsingMIDIInfoStatus" xml:space="preserve">
     <value>Parsed {0} MIDI(s) out of {1}.
 Please wait...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SVDS" xml:space="preserve">
+    <value>Skip VST DSPs settings</value>
     <comment>Self-explanatory.</comment>
   </data>
 </root>

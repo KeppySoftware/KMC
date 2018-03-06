@@ -57,6 +57,7 @@
             this.CMLAR = new System.Windows.Forms.MenuItem();
             this.SCPIOTL = new System.Windows.Forms.MenuItem();
             this.CSFFS = new System.Windows.Forms.MenuItem();
+            this.SVDS = new System.Windows.Forms.MenuItem();
             this.menuItem23 = new System.Windows.Forms.MenuItem();
             this.ChangeLanguage = new System.Windows.Forms.MenuItem();
             this.HelpStrip = new System.Windows.Forms.MenuItem();
@@ -86,12 +87,12 @@
             this.RemoveMIDIsC = new System.Windows.Forms.MenuItem();
             this.ClearListC = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
+            this.AutoResizeColumns = new System.Windows.Forms.MenuItem();
             this.SortName = new System.Windows.Forms.MenuItem();
             this.menuItem10 = new System.Windows.Forms.MenuItem();
             this.MoveUp = new System.Windows.Forms.MenuItem();
             this.MoveDown = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.AutoResizeColumns = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -128,6 +129,7 @@
             // ImportMIDIs
             // 
             this.ImportMIDIs.DefaultItem = true;
+            this.VistaMenuSys.SetImage(this.ImportMIDIs, global::KeppyMIDIConverter.Properties.Resources.add_icon);
             this.ImportMIDIs.Index = 0;
             this.ImportMIDIs.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
             this.ImportMIDIs.Text = "{ImportMIDIs}";
@@ -135,6 +137,7 @@
             // 
             // RemoveMIDIs
             // 
+            this.VistaMenuSys.SetImage(this.RemoveMIDIs, global::KeppyMIDIConverter.Properties.Resources.remove_icon);
             this.RemoveMIDIs.Index = 1;
             this.RemoveMIDIs.Shortcut = System.Windows.Forms.Shortcut.Del;
             this.RemoveMIDIs.Text = "{RemoveSelectedMIDIs}";
@@ -142,6 +145,7 @@
             // 
             // ClearList
             // 
+            this.VistaMenuSys.SetImage(this.ClearList, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.ClearList.Index = 2;
             this.ClearList.Shortcut = System.Windows.Forms.Shortcut.ShiftDel;
             this.ClearList.Text = "{ClearList}";
@@ -154,6 +158,7 @@
             // 
             // OpenSFVSTManager
             // 
+            this.VistaMenuSys.SetImage(this.OpenSFVSTManager, global::KeppyMIDIConverter.Properties.Resources.gear_icon);
             this.OpenSFVSTManager.Index = 4;
             this.OpenSFVSTManager.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
             this.OpenSFVSTManager.Text = "{OpenSFVSTManager}";
@@ -166,6 +171,7 @@
             // 
             // RenderToWAV
             // 
+            this.VistaMenuSys.SetImage(this.RenderToWAV, ((System.Drawing.Image)(resources.GetObject("RenderToWAV.Image"))));
             this.RenderToWAV.Index = 6;
             this.RenderToWAV.Shortcut = System.Windows.Forms.Shortcut.CtrlW;
             this.RenderToWAV.Text = "{RenderToWAV}";
@@ -185,6 +191,7 @@
             // 
             // PreviewFiles
             // 
+            this.VistaMenuSys.SetImage(this.PreviewFiles, global::KeppyMIDIConverter.Properties.Resources.play_icon);
             this.PreviewFiles.Index = 9;
             this.PreviewFiles.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
             this.PreviewFiles.Text = "{PreviewFiles}";
@@ -192,6 +199,7 @@
             // 
             // AbortConversion
             // 
+            this.VistaMenuSys.SetImage(this.AbortConversion, global::KeppyMIDIConverter.Properties.Resources.stop_icon);
             this.AbortConversion.Index = 10;
             this.AbortConversion.Shortcut = System.Windows.Forms.Shortcut.CtrlDel;
             this.AbortConversion.Text = "{AbortConversion}";
@@ -204,6 +212,7 @@
             // 
             // Exit
             // 
+            this.VistaMenuSys.SetImage(this.Exit, global::KeppyMIDIConverter.Properties.Resources.exit_icon);
             this.Exit.Index = 12;
             this.Exit.Shortcut = System.Windows.Forms.Shortcut.AltF4;
             this.Exit.Text = "{Exit}";
@@ -220,12 +229,14 @@
             this.CMLAR,
             this.SCPIOTL,
             this.CSFFS,
+            this.SVDS,
             this.menuItem23,
             this.ChangeLanguage});
             this.OptionsStrip.Text = "{Options}";
             // 
             // RenderMode
             // 
+            this.VistaMenuSys.SetImage(this.RenderMode, global::KeppyMIDIConverter.Properties.Resources.gear_icon);
             this.RenderMode.Index = 0;
             this.RenderMode.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.RenderStandard,
@@ -292,14 +303,21 @@
             this.CSFFS.Text = "{CSFFS}";
             this.CSFFS.Click += new System.EventHandler(this.CSFFS_Click);
             // 
+            // SVDS
+            // 
+            this.SVDS.Index = 7;
+            this.SVDS.Text = "{SVDS}";
+            this.SVDS.Click += new System.EventHandler(this.SVS_Click);
+            // 
             // menuItem23
             // 
-            this.menuItem23.Index = 7;
+            this.menuItem23.Index = 8;
             this.menuItem23.Text = "-";
             // 
             // ChangeLanguage
             // 
-            this.ChangeLanguage.Index = 8;
+            this.VistaMenuSys.SetImage(this.ChangeLanguage, global::KeppyMIDIConverter.Properties.Resources.lang_icon);
+            this.ChangeLanguage.Index = 9;
             this.ChangeLanguage.Text = "{ChangeLanguage}";
             this.ChangeLanguage.Click += new System.EventHandler(this.ChangeLanguage_Click);
             // 
@@ -318,6 +336,7 @@
             // 
             // IATP
             // 
+            this.VistaMenuSys.SetImage(this.IATP, global::KeppyMIDIConverter.Properties.Resources.info_icon);
             this.IATP.Index = 0;
             this.IATP.Shortcut = System.Windows.Forms.Shortcut.F1;
             this.IATP.Text = "{IATP}";
@@ -330,18 +349,21 @@
             // 
             // STDWD
             // 
+            this.VistaMenuSys.SetImage(this.STDWD, global::KeppyMIDIConverter.Properties.Resources.ppdonate);
             this.STDWD.Index = 2;
             this.STDWD.Text = "{STDWD}";
             this.STDWD.Click += new System.EventHandler(this.STDWD_Click);
             // 
             // KK99GP
             // 
+            this.VistaMenuSys.SetImage(this.KK99GP, global::KeppyMIDIConverter.Properties.Resources.github_icon);
             this.KK99GP.Index = 3;
             this.KK99GP.Text = "{KK99GP}";
             this.KK99GP.Click += new System.EventHandler(this.KK99GP_Click);
             // 
             // KK99YTC
             // 
+            this.VistaMenuSys.SetImage(this.KK99YTC, global::KeppyMIDIConverter.Properties.Resources.youtube_icon);
             this.KK99YTC.Index = 4;
             this.KK99YTC.Text = "{KK99YTC}";
             this.KK99YTC.Click += new System.EventHandler(this.KK99YTC_Click);
@@ -353,6 +375,7 @@
             // 
             // JKSUS
             // 
+            this.VistaMenuSys.SetImage(this.JKSUS, global::KeppyMIDIConverter.Properties.Resources.discord_icon);
             this.JKSUS.Index = 6;
             this.JKSUS.Text = "{JKSUS}";
             this.JKSUS.Click += new System.EventHandler(this.JKSUS_Click);
@@ -528,18 +551,21 @@
             // 
             // ImportMIDIsC
             // 
+            this.VistaMenuSys.SetImage(this.ImportMIDIsC, global::KeppyMIDIConverter.Properties.Resources.add_icon);
             this.ImportMIDIsC.Index = 0;
             this.ImportMIDIsC.Text = "{ImportMIDIs}";
             this.ImportMIDIsC.Click += new System.EventHandler(this.ImportMIDIs_Click);
             // 
             // RemoveMIDIsC
             // 
+            this.VistaMenuSys.SetImage(this.RemoveMIDIsC, global::KeppyMIDIConverter.Properties.Resources.remove_icon);
             this.RemoveMIDIsC.Index = 1;
             this.RemoveMIDIsC.Text = "{RemoveMIDIs}";
             this.RemoveMIDIsC.Click += new System.EventHandler(this.RemoveMIDIs_Click);
             // 
             // ClearListC
             // 
+            this.VistaMenuSys.SetImage(this.ClearListC, global::KeppyMIDIConverter.Properties.Resources.delete_icon);
             this.ClearListC.Index = 2;
             this.ClearListC.Text = "{ClearList}";
             this.ClearListC.Click += new System.EventHandler(this.ClearList_Click);
@@ -548,6 +574,12 @@
             // 
             this.menuItem4.Index = 3;
             this.menuItem4.Text = "-";
+            // 
+            // AutoResizeColumns
+            // 
+            this.AutoResizeColumns.Index = 4;
+            this.AutoResizeColumns.Text = "{AutoResizeColumns}";
+            this.AutoResizeColumns.Click += new System.EventHandler(this.AutoResizeColumns_Click);
             // 
             // SortName
             // 
@@ -562,12 +594,14 @@
             // 
             // MoveUp
             // 
+            this.VistaMenuSys.SetImage(this.MoveUp, global::KeppyMIDIConverter.Properties.Resources.up_icon);
             this.MoveUp.Index = 7;
             this.MoveUp.Text = "{MoveUp}";
             this.MoveUp.Click += new System.EventHandler(this.MoveUp_Click);
             // 
             // MoveDown
             // 
+            this.VistaMenuSys.SetImage(this.MoveDown, global::KeppyMIDIConverter.Properties.Resources.down_icon);
             this.MoveDown.Index = 8;
             this.MoveDown.Text = "{MoveDown}";
             this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
@@ -575,12 +609,6 @@
             // VistaMenuSys
             // 
             this.VistaMenuSys.ContainerControl = this;
-            // 
-            // AutoResizeColumns
-            // 
-            this.AutoResizeColumns.Index = 4;
-            this.AutoResizeColumns.Text = "{AutoResizeColumns}";
-            this.AutoResizeColumns.Click += new System.EventHandler(this.AutoResizeColumns_Click);
             // 
             // MainWindow
             // 
@@ -672,6 +700,7 @@
         public System.Windows.Forms.MenuItem MoveUp;
         public System.Windows.Forms.MenuItem MoveDown;
         public System.Windows.Forms.MenuItem AutoResizeColumns;
+        public System.Windows.Forms.MenuItem SVDS;
     }
 }
 

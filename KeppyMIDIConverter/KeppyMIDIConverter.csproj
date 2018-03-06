@@ -277,6 +277,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Icons\discord-icon.png" />
+    <Content Include="Resources\Icons\exit-icon.png" />
+    <Content Include="Resources\Icons\export-icon.png" />
+    <Content Include="Resources\Icons\gear-icon.png" />
+    <Content Include="Resources\Icons\github-icon.png" />
+    <Content Include="Resources\Icons\info-icon.png" />
+    <Content Include="Resources\Icons\lang-icon.png" />
+    <Content Include="Resources\Icons\play-icon.png" />
+    <Content Include="Resources\Icons\stop-icon.png" />
+    <Content Include="Resources\Icons\youtube-icon.png" />
+    <Content Include="Resources\Misc\gmlist.txt" />
     <Content Include="Resources\Pictures\clocklater.png" />
     <Content Include="Resources\Pictures\patronbtn.png" />
     <None Include="FodyWeavers.xml" />
@@ -285,7 +296,7 @@
     <Content Include="Resources\Icons\delete-icon.png" />
     <Content Include="Resources\Icons\patronsm.png" />
     <Content Include="Resources\Icons\ppdonate.png" />
-    <None Include="Resources\mainlogo.png" />
+    <None Include="Resources\Misc\mainlogo.png" />
     <Content Include="Resources\Icons\remove-icon.png" />
     <Content Include="Resources\Icons\sfzcomp.png" />
     <Content Include="Resources\Icons\up-icon.png" />

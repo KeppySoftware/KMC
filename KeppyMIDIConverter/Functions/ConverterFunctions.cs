@@ -77,12 +77,6 @@ namespace KeppyMIDIConverter
                 MainWindow.KMCStatus.IsKMCBusy = true;
                 MainWindow.KMCStatus.RenderingMode = true;
 
-                if (MainWindow.ModifierKeys == Keys.Control)
-                {
-                    MainWindow.KMCGlobals.VSTSkipSettings = true;
-                    MessageBox.Show(Languages.Parse("SkipVSTSettings"), MainWindow.Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
                 if (PreviewMode)
                 {
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -132,6 +126,11 @@ namespace KeppyMIDIConverter
                 ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), Languages.Parse("ConverterIsBusyAlready"), 0, 0);
                 errordialog.ShowDialog();
             }
+        }
+
+        private static BASSActive CheckStreamStatus()
+        {
+            return Bass.BASS_ChannelIsActive((MainWindow.KMCGlobals.vstIInfo.isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
         }
 
         public static void CPWork(object sender, DoWorkEventArgs e)
@@ -285,16 +284,12 @@ namespace KeppyMIDIConverter
                             }
                             if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
                             {
-                                MainWindow.KMCGlobals.events = null;
-                                MainWindow.KMCStatus.RenderingMode = false;
-                                MainWindow.KMCStatus.IsKMCBusy = false;
-                                MainWindow.KMCStatus.IsKMCNowExporting = false;
-                                MainWindow.KMCGlobals.VSTSkipSettings = false;
+                                BASSControl.ReleaseResources(false);
                                 break;
                             }
                             else
                             {
-                                MainWindow.KMCGlobals.events = null;
+                                BASSControl.ReleaseResources(true);
                                 continue;
                             }
                         }
@@ -302,24 +297,12 @@ namespace KeppyMIDIConverter
                         {
                             BASSControl.BASSCloseStream(Languages.Parse("ConversionAborted"), Languages.Parse("ConversionAborted"), 0);
                             KeepLooping = false;
-                            MainWindow.KMCStatus.IsKMCBusy = false;
-                            MainWindow.KMCStatus.IsKMCNowExporting = false;
-                            MainWindow.KMCStatus.RenderingMode = false;
-                            MainWindow.KMCGlobals.VSTSkipSettings = false;
-                            MainWindow.KMCGlobals.eventc = 0;
-                            MainWindow.KMCGlobals.events = null;
                             BasicFunctions.PlayConversionStop();
                         }
                         else
                         {
                             BASSControl.BASSCloseStream(Languages.Parse("ConversionCompleted"), Languages.Parse("ConversionCompleted"), 1);
-                            MainWindow.KMCStatus.IsKMCBusy = false;
-                            MainWindow.KMCStatus.IsKMCNowExporting = false;
-                            MainWindow.KMCStatus.RenderingMode = false;
-                            MainWindow.KMCGlobals.VSTSkipSettings = false;
                             KeepLooping = false;
-                            MainWindow.KMCGlobals.eventc = 0;
-                            MainWindow.KMCGlobals.events = null;
                             if (MainWindow.KMCGlobals.AutoShutDownEnabled == true)
                             {
                                 var psi = new ProcessStartInfo("shutdown", "/s /t 0");
@@ -329,16 +312,10 @@ namespace KeppyMIDIConverter
                             }
                             if (MainWindow.KMCGlobals.AutoClearMIDIListEnabled == true)
                             {
-                                MainWindow.Delegate.Invoke((MethodInvoker)delegate
-                                {
-                                    MainWindow.Delegate.MIDIList.Items.Clear();
-                                });
+                                MainWindow.Delegate.Invoke((MethodInvoker) delegate { MainWindow.Delegate.MIDIList.Items.Clear(); });
                                 BasicFunctions.PlayConversionStop();
                             }
-                            else
-                            {
-                                BasicFunctions.PlayConversionStop();
-                            }
+                            else BasicFunctions.PlayConversionStop();
                         }
                     }
                 }
@@ -395,21 +372,15 @@ namespace KeppyMIDIConverter
                             MainWindow.KMCStatus.IsKMCNowExporting = true;
                             int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, 1.0));
                             BassWasapi.BASS_WASAPI_Start();
-                            while (Bass.BASS_ChannelIsActive((MainWindow.KMCGlobals.vstIInfo.isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle)) == BASSActive.BASS_ACTIVE_PLAYING)
+                            while (CheckStreamStatus() != BASSActive.BASS_ACTIVE_STOPPED)
                             {
                                 if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
-                                {
                                     notes = BASSControl.BASSPlayBackEngine(notes, length, pos);
-                                }
-                                else if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
-                                {
-                                    break;
-                                }
+                                else if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
                             }
                             if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
                             {
                                 BASSControl.BASSCloseStream(Languages.Parse("PlaybackAborted"), Languages.Parse("PlaybackAborted"), 0);
-                                BASSControl.ReleaseResources(false);
                                 KeepLooping = false;
                                 break;
                             }
@@ -427,7 +398,7 @@ namespace KeppyMIDIConverter
                         }
                         else
                         {
-                            BASSControl.BASSCloseStream("null", "null", 1);
+                            BASSControl.ReleaseResources(false);
                             break;
                         }
                     }

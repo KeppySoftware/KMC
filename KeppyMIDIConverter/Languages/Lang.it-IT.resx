@@ -595,9 +595,9 @@ Velocità di riproduzione: Normale</value>
   </data>
   <data name="SoundfontDialogMessage" xml:space="preserve">
     <value>Usa fino a 1.000 banchi di suoni simultaneamente, per convertire i tuoi MIDI.
-Il primo banco di suoni sovrascriverà sempre quelli in basso. (Sistema di caricamento dall'alto verso il basso)
-Controlla che i banchi di suoni non siano corrotti, prima di aggiungerli alla lista, per evitare crash/glitch.
-
+L'ultimo banco di suoni sovrascriverà i preset di quelli precedenti. (Sistema di caricamento dall'alto verso il basso)
+Controlla che i banchi di suoni non siano corrotti, prima di aggiungerli alla lista,
+per evitare crash/glitch.
 
 I seguenti formati sono supportati: SF2, SF2PACK, SF3, SFZ</value>
     <comment>The description in the SoundFont list editor.</comment>
@@ -900,6 +900,10 @@ L'avviso legale non verrà più visualizzato.</value>
   <data name="ParsingMIDIInfoStatus" xml:space="preserve">
     <value>Analizzato/i {0} MIDI dei {1} totali.
 Attendere prego...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SVDS" xml:space="preserve">
+    <value>Salta impostazioni DSP</value>
     <comment>Self-explanatory.</comment>
   </data>
 </root>

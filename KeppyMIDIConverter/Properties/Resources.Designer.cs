@@ -760,6 +760,16 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap discord_icon {
+            get {
+                object obj = ResourceManager.GetObject("discord_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Djibouti {
             get {
                 object obj = ResourceManager.GetObject("Djibouti", resourceCulture);
@@ -910,6 +920,26 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exit_icon {
+            get {
+                object obj = ResourceManager.GetObject("exit_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap export_icon {
+            get {
+                object obj = ResourceManager.GetObject("export_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Faroes {
             get {
                 object obj = ResourceManager.GetObject("Faroes", resourceCulture);
@@ -970,6 +1000,16 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gear_icon {
+            get {
+                object obj = ResourceManager.GetObject("gear_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Georgia {
             get {
                 object obj = ResourceManager.GetObject("Georgia", resourceCulture);
@@ -1004,6 +1044,58 @@ namespace KeppyMIDIConverter.Properties {
             get {
                 object obj = ResourceManager.GetObject("Gibraltar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap github_icon {
+            get {
+                object obj = ResourceManager.GetObject("github_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a The bank ID is 0.
+        ///For the presets, here&apos;s the list:
+        ///
+        ///Piano
+        ///0 Acoustic Grand Piano
+        ///1 Bright Acoustic Piano
+        ///2 Electric Grand Piano
+        ///3 Honky-tonk Piano
+        ///4 Electric Piano 1
+        ///5 Electric Piano 2
+        ///6 Harpsichord
+        ///7 Clavinet
+        ///
+        ///Chromatic Percussion
+        ///8 Celesta
+        ///9 Glockenspiel
+        ///10 Music Box
+        ///11 Vibraphone
+        ///12 Marimba
+        ///13 Xylophone
+        ///14 Tubular Bells
+        ///15 Dulcimer
+        ///
+        ///Organ
+        ///16 Drawbar Organ
+        ///17 Percussive Organ
+        ///18 Rock Organ
+        ///19 Church Organ
+        ///20 Reed Organ
+        ///21 Accordion
+        ///22 Harmonica
+        ///23 Tango Accordion
+        ///
+        ///Guitar        /// [stringa troncata]&quot;;.
+        /// </summary>
+        internal static string gmlist {
+            get {
+                return ResourceManager.GetString("gmlist", resourceCulture);
             }
         }
         
@@ -1173,6 +1265,16 @@ namespace KeppyMIDIConverter.Properties {
         internal static System.Drawing.Bitmap Indonesia {
             get {
                 object obj = ResourceManager.GetObject("Indonesia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap info_icon {
+            get {
+                object obj = ResourceManager.GetObject("info_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1359,6 +1461,16 @@ namespace KeppyMIDIConverter.Properties {
         internal static System.Drawing.Bitmap Kyrgyzstan {
             get {
                 object obj = ResourceManager.GetObject("Kyrgyzstan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lang_icon {
+            get {
+                object obj = ResourceManager.GetObject("lang_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1966,6 +2078,16 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap play_icon {
+            get {
+                object obj = ResourceManager.GetObject("play_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Poland {
             get {
                 object obj = ResourceManager.GetObject("Poland", resourceCulture);
@@ -2299,6 +2421,16 @@ namespace KeppyMIDIConverter.Properties {
         internal static System.Drawing.Bitmap St_Vincent___the_Grenadines {
             get {
                 object obj = ResourceManager.GetObject("St_Vincent___the_Grenadines", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stop_icon {
+            get {
+                object obj = ResourceManager.GetObject("stop_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2709,6 +2841,16 @@ namespace KeppyMIDIConverter.Properties {
         internal static System.Drawing.Bitmap Yemen {
             get {
                 object obj = ResourceManager.GetObject("Yemen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap youtube_icon {
+            get {
+                object obj = ResourceManager.GetObject("youtube_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

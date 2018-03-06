@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -103,33 +104,36 @@ namespace KeppyMIDIConverter
             }
         }
 
-        public static void BASSVSTShowDialog(int towhichstream, int whichvst, BASS_VST_INFO vstInfo)
+        public static void BASSVSTShowDialog(bool vsti, int towhichstream, int whichvst, BASS_VST_INFO vstInfo)
         {
-            Form f = new Form();
-            f.Width = vstInfo.editorWidth + 4;
-            f.Height = vstInfo.editorHeight + 34;
-            f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            f.Text = String.Format("{0} {1}", Languages.Parse("DSPSettings"), vstInfo.effectName);
-            try
+            if (!vsti && !MainWindow.KMCGlobals.VSTSkipSettings)
             {
-                BassVst.BASS_VST_EmbedEditor(whichvst, f.Handle);
-                f.ShowDialog();
-                BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
-            }
-            catch (Exception ex)
-            {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.AppendLine("==== Start of Keppy's MIDI Converter Error ====");
-                sb.AppendLine(ex.ToString());
-                sb.AppendLine("====  End of Keppy's MIDI Converter Error  ====");
-                System.Threading.Thread thread = new System.Threading.Thread(() => Clipboard.SetText(sb.ToString()));
-                thread.SetApartmentState(System.Threading.ApartmentState.STA);
-                thread.Start();
-                thread.Join();
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("VSTInvalidCallTitle"), Languages.Parse("VSTInvalidCallError"), 0, 0);
-                errordialog.ShowDialog();
-                BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
-                BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, whichvst);
+                Form f = new Form();
+                f.Width = vstInfo.editorWidth + 4;
+                f.Height = vstInfo.editorHeight + 34;
+                f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                f.Text = String.Format("{0} {1}", Languages.Parse("DSPSettings"), vstInfo.effectName);
+                try
+                {
+                    BassVst.BASS_VST_EmbedEditor(whichvst, f.Handle);
+                    f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
+                }
+                catch (Exception ex)
+                {
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    sb.AppendLine("==== Start of Keppy's MIDI Converter Error ====");
+                    sb.AppendLine(ex.ToString());
+                    sb.AppendLine("====  End of Keppy's MIDI Converter Error  ====");
+                    System.Threading.Thread thread = new System.Threading.Thread(() => Clipboard.SetText(sb.ToString()));
+                    thread.SetApartmentState(System.Threading.ApartmentState.STA);
+                    thread.Start();
+                    thread.Join();
+                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("VSTInvalidCallTitle"), Languages.Parse("VSTInvalidCallError"), 0, 0);
+                    errordialog.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
+                    BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, whichvst);
+                }
             }
         }
 
@@ -145,10 +149,15 @@ namespace KeppyMIDIConverter
                         if (i == 0)
                         {
                             if (Properties.Settings.Default.LoudMaxEnabled == true && MainWindow.KMCStatus.RenderingMode == true)
+                            {
                                 MainWindow.KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(
-                                    towhichstream, 
-                                    String.Format("{0}\\LoudMax.dll", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)), 
+                                    towhichstream,
+                                    String.Format("{0}\\LoudMax.dll", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)),
                                     BASSVSTDsp.BASS_VST_KEEP_CHANS, 8);
+
+                                if (BassVst.BASS_VST_GetInfo(MainWindow.KMCGlobals._LoudMaxHan, vstInfo) && vstInfo.hasEditor)
+                                    BASSVSTShowDialog(false, towhichstream, MainWindow.KMCGlobals._LoudMaxHan, vstInfo);
+                            }
 
                             int temphandle = BassVst.BASS_VST_ChannelSetDSP(towhichstream, MainWindow.VSTs.VSTDLLs[i], BASSVSTDsp.BASS_VST_DEFAULT, 0);
                             if (BassVst.BASS_VST_GetInfo(temphandle, vstInfo) && vstInfo.hasEditor)
@@ -156,18 +165,14 @@ namespace KeppyMIDIConverter
                                 if (MainWindow.VSTs._VSTHandles[i] == 0) // VSTi check
                                 {
                                     if (BassVst.BASS_VST_GetInfo(MainWindow.VSTs._VSTHandles[i], vstInfo) && vstInfo.hasEditor)
-                                    {
-                                        BASSVSTShowDialog(towhichstream, MainWindow.VSTs._VSTHandles[i], vstInfo);
-                                    }
+                                        BASSVSTShowDialog(false, towhichstream, MainWindow.VSTs._VSTHandles[i], vstInfo);
                                 }
                             }
                         }
                         else if (i > 0 && i <= 7)
                         {
                             if (BassVst.BASS_VST_GetInfo(MainWindow.VSTs._VSTHandles[i], vstInfo) && vstInfo.hasEditor)
-                            {
-                                BASSVSTShowDialog(towhichstream, MainWindow.VSTs._VSTHandles[i], vstInfo);
-                            }
+                                BASSVSTShowDialog(false, towhichstream, MainWindow.VSTs._VSTHandles[i], vstInfo);
                         }
                     }
                 }
@@ -187,7 +192,7 @@ namespace KeppyMIDIConverter
                 {
                     MainWindow.KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(MainWindow.VSTs._VSTHandles[0], 0);
                     MainWindow.KMCGlobals._plm.CalcRMS = true;
-                    BASSVSTShowDialog(MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.KMCGlobals.vstIInfo);
+                    BASSVSTShowDialog(false, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.KMCGlobals.vstIInfo);
                 }
                 MainWindow.KMCGlobals._myVSTSync = new SYNCPROC(VSTProc);
                 int sync = Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, 0, MainWindow.KMCGlobals._myVSTSync, IntPtr.Zero);
@@ -252,11 +257,15 @@ namespace KeppyMIDIConverter
                 }
                 else
                 {
-                    Presets = new BASS_MIDI_FONTEX[MainWindow.SoundFontChain.SoundFonts.Length];
+                    // Prepare SoundFonts list
+                    String[] TempHold = MainWindow.SoundFontChain.SoundFonts;
+                    Array.Reverse(MainWindow.SoundFontChain.SoundFonts);
+
+                    Presets = new BASS_MIDI_FONTEX[TempHold.Length];
                     int sfnum = 0;
                     try
                     {
-                        foreach (string s in MainWindow.SoundFontChain.SoundFonts)
+                        foreach (string s in TempHold)
                         {
                             if (s.ToLower().IndexOf('=') != -1)
                             {
@@ -289,7 +298,7 @@ namespace KeppyMIDIConverter
                     catch (Exception ex)
                     {
                         BASSCloseStreamCrash(ex);
-                    }              
+                    }
                 }
             }
         }

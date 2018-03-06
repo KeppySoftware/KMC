@@ -88,7 +88,7 @@
             this.DesPresetLabel.Name = "DesPresetLabel";
             this.DesPresetLabel.Size = new System.Drawing.Size(286, 13);
             this.DesPresetLabel.TabIndex = 3;
-            this.DesPresetLabel.Text = "SrcPresetLabel";
+            this.DesPresetLabel.Text = "DesPresetLabel";
             this.DesPresetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DesBankVal
@@ -96,7 +96,7 @@
             this.DesBankVal.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.DesBankVal.Location = new System.Drawing.Point(301, 113);
             this.DesBankVal.Maximum = new decimal(new int[] {
-            0,
+            127,
             0,
             0,
             0});
@@ -110,7 +110,7 @@
             this.DesPresetVal.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.DesPresetVal.Location = new System.Drawing.Point(301, 136);
             this.DesPresetVal.Maximum = new decimal(new int[] {
-            0,
+            127,
             0,
             0,
             0});
@@ -158,7 +158,7 @@
             this.SrcBankVal.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.SrcBankVal.Location = new System.Drawing.Point(301, 67);
             this.SrcBankVal.Maximum = new decimal(new int[] {
-            0,
+            127,
             0,
             0,
             0});
@@ -194,7 +194,7 @@
             this.SrcPresetVal.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.SrcPresetVal.Location = new System.Drawing.Point(301, 90);
             this.SrcPresetVal.Maximum = new decimal(new int[] {
-            0,
+            127,
             0,
             0,
             0});
@@ -240,7 +240,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BNPSel";
-            this.Load += new System.EventHandler(this.BankNPresetSel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DesBankVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DesPresetVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SrcBankVal)).EndInit();

@@ -75,13 +75,8 @@ namespace KeppyMIDIConverter
         private void WikipediaLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var helpFile = Path.Combine(Path.GetTempPath(), "help.txt");
-            // File.WriteAllText(helpFile, KeppyMIDIConverter.Properties.Resources.gmlist);
+            File.WriteAllText(helpFile, Properties.Resources.gmlist);
             Process.Start(helpFile);
-        }
-
-        private void BankNPresetSel_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

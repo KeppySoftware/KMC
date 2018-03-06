@@ -98,7 +98,7 @@ namespace KeppyMIDIConverter
                 var result = form.ShowDialog();
 
                 if (result == DialogResult.OK)
-                    return String.Format("p{0},{1}={2},{3}|{4}", form.SrcBankValueReturn, form.SrcPresetValueReturn, form.DesBankValueReturn, form.DesPresetValueReturn, file);
+                    return String.Format("p{0},{1}={2},{3}|{4}", form.DesBankValueReturn, form.DesPresetValueReturn, form.SrcBankValueReturn, form.SrcPresetValueReturn, file);
                 else
                     return String.Format("p{0},{1}={2},{3}|{4}", 0, 0, 0, 0, file);
             }

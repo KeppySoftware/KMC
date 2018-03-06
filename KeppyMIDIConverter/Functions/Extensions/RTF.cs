@@ -67,6 +67,7 @@ namespace KeppyMIDIConverter
             MainWindow.Delegate.RemoveMIDIs.Enabled = false;
             MainWindow.Delegate.ClearList.Enabled = false;
             MainWindow.Delegate.OpenSFVSTManager.Enabled = false;
+            MainWindow.Delegate.SVDS.Enabled = false;
 
             // Right-click Context Menu
             MainWindow.Delegate.ImportMIDIsC.Enabled = false;
@@ -85,6 +86,7 @@ namespace KeppyMIDIConverter
             MainWindow.Delegate.RemoveMIDIs.Enabled = true;
             MainWindow.Delegate.ClearList.Enabled = true;
             MainWindow.Delegate.OpenSFVSTManager.Enabled = true;
+            MainWindow.Delegate.SVDS.Enabled = true;
 
             // Right-click Context Menu
             MainWindow.Delegate.ImportMIDIsC.Enabled = true;
