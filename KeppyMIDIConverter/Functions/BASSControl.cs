@@ -233,19 +233,19 @@ namespace KeppyMIDIConverter
 
         // SF system
         static BASS_MIDI_FONTEX[] Presets;
-        private static bool LoadDefaultSoundFont()
+        private static bool LoadDefaultSoundFont(ref int sfnum)
         {
             DirectoryInfo PathToGenericSF = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location);
             String FullPath = String.Format("{0}\\GMGeneric.sf2", PathToGenericSF.Parent.FullName);
             if (File.Exists(FullPath))
             {
-                int font = BassMidi.BASS_MIDI_FontInit(FullPath);
-                Presets[0].font = font;
-                Presets[0].dpreset = -1;
-                Presets[0].dbank = 0;
-                Presets[0].spreset = -1;
-                Presets[0].sbank = -1;
-                Presets[0].dbanklsb = 0;
+                Presets[sfnum].font = BassMidi.BASS_MIDI_FontInit(FullPath);
+                Presets[sfnum].dpreset = -1;
+                Presets[sfnum].dbank = 0;
+                Presets[sfnum].spreset = -1;
+                Presets[sfnum].sbank = -1;
+                Presets[sfnum].dbanklsb = 0;
+                sfnum++;
                 return true;
             }
             else return false;
@@ -255,29 +255,30 @@ namespace KeppyMIDIConverter
         {           
             if (MainWindow.VSTs.VSTInfo[0].isInstrument == false)
             {
+                int sfnum = 0;
+
                 if (MainWindow.SoundFontChain.SoundFonts.Length == 0)
                 {
                     Presets = new BASS_MIDI_FONTEX[1];
-                    if (LoadDefaultSoundFont() != true) throw new Exception("No SoundFont available.");
-                    BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, Presets, 1);
+                    if (LoadDefaultSoundFont(ref sfnum) != true) throw new Exception("No SoundFont available.");
+                    BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, Presets, sfnum);
                     BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
                 }
                 else
                 {
                     // Prepare SoundFonts list
                     Presets = new BASS_MIDI_FONTEX[MainWindow.SoundFontChain.SoundFonts.Length + 1];
-                    int sfnum = 1;
+                    String[] SoundFontsReverse = MainWindow.SoundFontChain.SoundFonts.Reverse().ToArray();
+
                     try
                     {
                         // Then load all the other SFs
-                        foreach (string s in MainWindow.SoundFontChain.SoundFonts)
+                        foreach (string s in SoundFontsReverse)
                         {
                             if (s.ToLower().IndexOf('=') != -1)
                             {
-
                                 var matches = System.Text.RegularExpressions.Regex.Matches(s, "[0-9]+");
-                                int font = BassMidi.BASS_MIDI_FontInit(s.Substring(s.LastIndexOf('|') + 1));
-                                Presets[sfnum].font = font;
+                                Presets[sfnum].font = BassMidi.BASS_MIDI_FontInit(s.Substring(s.LastIndexOf('|') + 1));
                                 Presets[sfnum].dbank = Convert.ToInt32(matches[0].ToString());
                                 Presets[sfnum].dpreset = Convert.ToInt32(matches[1].ToString());
                                 Presets[sfnum].sbank = Convert.ToInt32(matches[2].ToString());
@@ -287,8 +288,7 @@ namespace KeppyMIDIConverter
                             }
                             else
                             {
-                                int font = BassMidi.BASS_MIDI_FontInit(s);
-                                Presets[sfnum].font = font;
+                                Presets[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
                                 Presets[sfnum].dpreset = -1;
                                 Presets[sfnum].dbank = 0;
                                 Presets[sfnum].spreset = -1;
@@ -298,8 +298,8 @@ namespace KeppyMIDIConverter
                             }
                         }
 
-                        // Always preload the default SoundFont
-                        LoadDefaultSoundFont();
+                        // Always preload default SoundFont
+                        LoadDefaultSoundFont(ref sfnum);
 
                         BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, Presets, sfnum);
                         BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
