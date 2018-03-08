@@ -60,7 +60,7 @@ namespace KeppyMIDIConverter
                         RTF.CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(MainWindow.KMCGlobals._recHandle, RTF.MIDICurrentPosRAW);
                         RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble * MainWindow.KMCGlobals.TempoScale);
                         RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble * MainWindow.KMCGlobals.TempoScale);
-                        Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
+                        Bass.BASS_ChannelGetAttribute((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
                         Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
                         RTF.GetVoices();
                     }
@@ -130,7 +130,7 @@ namespace KeppyMIDIConverter
 
         private static BASSActive CheckStreamStatus()
         {
-            return Bass.BASS_ChannelIsActive((MainWindow.KMCGlobals.vstIInfo.isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+            return Bass.BASS_ChannelIsActive(MainWindow.KMCGlobals._recHandle);
         }
 
         public static void CPWork(object sender, DoWorkEventArgs e)
@@ -150,11 +150,12 @@ namespace KeppyMIDIConverter
                             BASSControl.BASSStreamSystem(str, false);
                             BASSControl.BASSLoadSoundFonts();
                             BASSControl.BASSInitVSTiIfNeeded(false);
-                            BASSControl.BASSVSTInit((MainWindow.KMCGlobals.vstIInfo.isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                            BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
                             BASSControl.BASSEffectSettings();
+                            BASSControl.BASSVolumeSlideInit();
                             BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
                             long pos = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
-                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, 0.03));
+                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, (float)1.0));
                             MainWindow.KMCStatus.IsKMCNowExporting = true;
                             bool DoINeedToContinue;
                             while (true)
@@ -253,8 +254,9 @@ namespace KeppyMIDIConverter
                             BASSControl.BASSStreamSystemRT(str, false);
                             BASSControl.BASSLoadSoundFonts();
                             BASSControl.BASSInitVSTiIfNeeded(false);
-                            BASSControl.BASSVSTInit((MainWindow.KMCGlobals.vstIInfo.isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                            BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
                             BASSControl.BASSEffectSettings();
+                            BASSControl.BASSVolumeSlideInit();
                             BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
                             int pos = 0;
                             uint es = 0;
@@ -347,10 +349,11 @@ namespace KeppyMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             BASSControl.BASSInitSystem(true);
                             BASSControl.BASSStreamSystem(str, true);
-                            BASSControl.BASSInitVSTiIfNeeded(true);
                             BASSControl.BASSLoadSoundFonts();
-                            BASSControl.BASSVSTInit((MainWindow.KMCGlobals.vstIInfo.isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                            BASSControl.BASSInitVSTiIfNeeded(true);
+                            BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
                             BASSControl.BASSEffectSettings();
+                            BASSControl.BASSVolumeSlideInit();
                             long pos = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
                             // cac
                             int notes = 0;
@@ -370,7 +373,7 @@ namespace KeppyMIDIConverter
                                 }
                             }
                             MainWindow.KMCStatus.IsKMCNowExporting = true;
-                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, 1.0));
+                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, (float)1.0));
                             BassWasapi.BASS_WASAPI_Start();
                             while (CheckStreamStatus() != BASSActive.BASS_ACTIVE_STOPPED)
                             {

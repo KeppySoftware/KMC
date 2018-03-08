@@ -225,7 +225,7 @@
     <value>Average</value>
     <comment>The average level of the current stream.</comment>
   </data>
-  <data name="ConnectionError" xml:space="preserve">
+  <data name="ConnectionErrorDesc" xml:space="preserve">
     <value>The converter can not connect to the GitHub servers.
 
 Check your network connection, or contact your system administrator or network service provider.
@@ -903,5 +903,25 @@ Please wait...</value>
   <data name="SVDS" xml:space="preserve">
     <value>Skip VST DSPs settings</value>
     <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Unvailable</value>
+  </data>
+  <data name="VSTiSettings" xml:space="preserve">
+    <value>VSTi settings</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CorruptedSetupDesc" xml:space="preserve">
+    <value>The updated setup for the converter is corrupted.
+Can not install update!
+
+Press OK to continue.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CorruptedSetupTitle" xml:space="preserve">
+    <value>Corrupted setup</value>
   </data>
 </root>

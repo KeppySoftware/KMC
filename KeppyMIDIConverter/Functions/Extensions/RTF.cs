@@ -295,39 +295,47 @@ namespace KeppyMIDIConverter
                 MainWindow.Delegate.VolumeLabel.Enabled = true;
                 MainWindow.Delegate.PreviewTrackBar.Enabled = false;
                 MainWindow.Delegate.VolumeBar.Enabled = true;
+                MainWindow.Delegate.VSTiSeparator.Visible = false;
+                MainWindow.Delegate.VSTiSettings.Visible = false;
                 MainWindow.KMCDialogs.AdvSett.MaxVoices.Maximum = 100000;
                 thisProc.PriorityClass = ProcessPriorityClass.Idle;
             }
             else if (Mode == 1) // Memory allocation
             {
                 MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: 0/{2}", Languages.Parse("ActiveVoices"), 0, MainWindow.KMCDialogs.AdvSett.MaxVoices.Value);
+                MainWindow.Delegate.OpenSettings.Enabled = false;
+                MainWindow.Delegate.PreviewTrackBar.Enabled = false;
+                MainWindow.Delegate.VSTiSeparator.Visible = false;
+                MainWindow.Delegate.VSTiSettings.Visible = false;
+
                 if (MainWindow.KMCStatus.RenderingMode)
                 {
-                    MainWindow.Delegate.OpenSettings.Enabled = false;
                     MainWindow.Delegate.VolumeLabel.Enabled = false;
                     MainWindow.Delegate.VolumeBar.Enabled = false;
-                    MainWindow.Delegate.PreviewTrackBar.Enabled = false;
                     MainWindow.KMCDialogs.AdvSett.MaxVoices.Maximum = 100000;
                 }
                 else
                 {
-                    MainWindow.Delegate.OpenSettings.Enabled = false;
                     MainWindow.Delegate.VolumeLabel.Enabled = true;
                     MainWindow.Delegate.VolumeBar.Enabled = true;
-                    MainWindow.Delegate.PreviewTrackBar.Enabled = false;
                     MainWindow.KMCDialogs.AdvSett.MaxVoices.Maximum = 2000;
                 }
+
                 thisProc.PriorityClass = ProcessPriorityClass.AboveNormal;
             }
             else if (Mode == 2) // Rendering/Playback
             {
-                MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: {1}/{2}", Languages.Parse("ActiveVoices"), Convert.ToInt32(ActiveVoices), MainWindow.KMCDialogs.AdvSett.MaxVoices.Value);
+                if (MainWindow.VSTs.VSTInfo[0].isInstrument) MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: {1}", Languages.Parse("ActiveVoices"), Languages.Parse("Unavailable"));
+                else MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: {1}/{2}", Languages.Parse("ActiveVoices"), Convert.ToInt32(ActiveVoices), MainWindow.KMCDialogs.AdvSett.MaxVoices.Value);
+
                 if (MainWindow.KMCStatus.RenderingMode)
                 {
                     MainWindow.Delegate.OpenSettings.Enabled = false;
                     MainWindow.Delegate.VolumeLabel.Enabled = false;
                     MainWindow.Delegate.VolumeBar.Enabled = false;
                     MainWindow.Delegate.PreviewTrackBar.Enabled = false;
+                    MainWindow.Delegate.VSTiSeparator.Visible = false;
+                    MainWindow.Delegate.VSTiSettings.Visible = false;
                     MainWindow.KMCDialogs.AdvSett.MaxVoices.Maximum = 100000;
                 }
                 else
@@ -336,8 +344,21 @@ namespace KeppyMIDIConverter
                     MainWindow.Delegate.VolumeLabel.Enabled = true;
                     MainWindow.Delegate.VolumeBar.Enabled = true;
                     MainWindow.Delegate.PreviewTrackBar.Enabled = true;
+
+                    if (MainWindow.VSTs.VSTInfo[0].isInstrument)
+                    {
+                        MainWindow.Delegate.VSTiSeparator.Visible = true;
+                        MainWindow.Delegate.VSTiSettings.Visible = true;
+                    }
+                    else
+                    {
+                        MainWindow.Delegate.VSTiSeparator.Visible = false;
+                        MainWindow.Delegate.VSTiSettings.Visible = false;
+                    }
+
                     MainWindow.KMCDialogs.AdvSett.MaxVoices.Maximum = 2000;
                 }
+
                 thisProc.PriorityClass = ProcessPriorityClass.Normal;
             }
         }

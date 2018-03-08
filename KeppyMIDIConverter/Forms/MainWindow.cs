@@ -58,7 +58,6 @@ namespace KeppyMIDIConverter
             public static string[] MIDIs = null;
 
             public static BASS_MIDI_EVENT[] events;
-            public static BASS_VST_INFO vstIInfo = new BASS_VST_INFO();
             public static DSPPROC _myDSP;
             public static SYNCPROC _mySync;
             public static SYNCPROC _myVSTSync;
@@ -125,6 +124,7 @@ namespace KeppyMIDIConverter
         public static class VSTs
         {
             public static int[] _VSTHandles = new int[8];
+            public static BASS_VST_INFO[] VSTInfo = new BASS_VST_INFO[8];
             public static string[] VSTDLLs = new string[8];
             public static string[] VSTDLLDescs = new string[8];
         }
@@ -195,6 +195,9 @@ namespace KeppyMIDIConverter
             Delegate.KK99GP.Text = Languages.Parse("KK99GP");
             Delegate.KK99YTC.Text = Languages.Parse("KK99YTC");
             Delegate.JKSUS.Text = Languages.Parse("JKSUS");
+
+            // VSTi strip
+            Delegate.VSTiSettings.Text = Languages.Parse("VSTiSettings");
 
             // MIDIs list context strip
             Delegate.AutoResizeColumns.Text = Languages.Parse("AutoResizeColumns");
@@ -281,6 +284,9 @@ namespace KeppyMIDIConverter
             KMCThreads.ConversionProcess.DoWork += ConverterFunctions.CPWork;
             KMCThreads.ConversionProcessRT.DoWork += ConverterFunctions.CPRWork;
             KMCThreads.PlaybackProcess.DoWork += ConverterFunctions.PBWork;
+
+            // Initialize values
+            for (int i = 0; i < 8; i++) MainWindow.VSTs.VSTInfo[i] = new BASS_VST_INFO();
 
             try
             {
@@ -643,6 +649,11 @@ namespace KeppyMIDIConverter
         private void ChangeLanguage_Click(object sender, EventArgs e)
         {
             new OverrideLanguage().ShowDialog();
+        }
+
+        private void VSTiSettings_Click(object sender, EventArgs e)
+        {
+            BASSControl.BASSVSTShowDialog(false, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
         }
     }
 }

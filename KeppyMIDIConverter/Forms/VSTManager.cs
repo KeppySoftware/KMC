@@ -144,45 +144,45 @@ namespace KeppyMIDIConverter
 
         private void Load_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.VSTs.VSTDLLs[0], ref MainWindow.VSTs.VSTDLLDescs[0], Desc1, Unload1, Load1, 1);
+            LoadVST(ref MainWindow.VSTs.VSTDLLs[0], ref MainWindow.VSTs.VSTDLLDescs[0], ref Desc1, ref Unload1, ref Load1, 1);
         }
 
         private void Load2_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.VSTs.VSTDLLs[1], ref MainWindow.VSTs.VSTDLLDescs[1], Desc2, Unload2, Load2, 2);
+            LoadVST(ref MainWindow.VSTs.VSTDLLs[1], ref MainWindow.VSTs.VSTDLLDescs[1], ref Desc2, ref Unload2, ref Load2, 2);
         }
 
         private void Load3_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.VSTs.VSTDLLs[2], ref MainWindow.VSTs.VSTDLLDescs[2], Desc3, Unload3, Load3, 3);
+            LoadVST(ref MainWindow.VSTs.VSTDLLs[2], ref MainWindow.VSTs.VSTDLLDescs[2], ref Desc3, ref Unload3, ref Load3, 3);
         }
 
         private void Load4_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.VSTs.VSTDLLs[3], ref MainWindow.VSTs.VSTDLLDescs[3], Desc4, Unload4, Load4, 4);
+            LoadVST(ref MainWindow.VSTs.VSTDLLs[3], ref MainWindow.VSTs.VSTDLLDescs[3], ref Desc4, ref Unload4, ref Load4, 4);
         }
 
         private void Load5_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.VSTs.VSTDLLs[4], ref MainWindow.VSTs.VSTDLLDescs[4], Desc5, Unload5, Load5, 5);
+            LoadVST(ref MainWindow.VSTs.VSTDLLs[4], ref MainWindow.VSTs.VSTDLLDescs[4], ref Desc5, ref Unload5, ref Load5, 5);
         }
 
         private void Load6_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.VSTs.VSTDLLs[5], ref MainWindow.VSTs.VSTDLLDescs[5], Desc6, Unload6, Load6, 6);
+            LoadVST(ref MainWindow.VSTs.VSTDLLs[5], ref MainWindow.VSTs.VSTDLLDescs[5], ref Desc6, ref Unload6, ref Load6, 6);
         }
 
         private void Load7_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.VSTs.VSTDLLs[6], ref MainWindow.VSTs.VSTDLLDescs[6], Desc7, Unload7, Load7, 7);
+            LoadVST(ref MainWindow.VSTs.VSTDLLs[6], ref MainWindow.VSTs.VSTDLLDescs[6], ref Desc7, ref Unload7, ref Load7, 7);
         }
 
         private void Load8_Click(object sender, EventArgs e)
         {
-            LoadVST(ref MainWindow.VSTs.VSTDLLs[7], ref MainWindow.VSTs.VSTDLLDescs[7], Desc8, Unload8, Load8, 8);
+            LoadVST(ref MainWindow.VSTs.VSTDLLs[7], ref MainWindow.VSTs.VSTDLLDescs[7], ref Desc8, ref Unload8, ref Load8, 8);
         }
 
-        private void LoadVST(ref String VSTDLL, ref String VSTDLLDesc, Label Desc, Button Unload, Button Load, Int32 NumVST)
+        private void LoadVST(ref String VSTDLL, ref String VSTDLLDesc, ref Label Desc, ref Button Unload, ref Button Load, Int32 NumVST)
         {
             try
             {
@@ -221,8 +221,7 @@ namespace KeppyMIDIConverter
 
                 InitStartDirectory();
                 if (VSTImportDialog.ShowDialog() == DialogResult.OK)
-                {
-                    BASS_VST_INFO VSTInfo = new BASS_VST_INFO();
+                { 
                     if (status == 1)
                     {
                         VSTDLL = VSTImportDialog.FileName;
@@ -235,27 +234,25 @@ namespace KeppyMIDIConverter
                     }
                     else if (status == 2)
                     {
-                        Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
-                        int VSTiTester = BassVst.BASS_VST_ChannelCreate(44100, 2, VSTImportDialog.FileName, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT);
-                        MainWindow.KMCGlobals.vstIInfo = new BASS_VST_INFO();
-                        bool Success = BassVst.BASS_VST_GetInfo(VSTiTester, MainWindow.KMCGlobals.vstIInfo);
+                        Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
+                        int VSTiTester = BassVst.BASS_VST_ChannelCreate(44100, 2, VSTImportDialog.FileName, BASSFlag.BASS_STREAM_DECODE);
+                        MainWindow.VSTs.VSTInfo[NumVST - 1] = new BASS_VST_INFO();
+                        bool Success = BassVst.BASS_VST_GetInfo(VSTiTester, MainWindow.VSTs.VSTInfo[NumVST - 1]);
+                        BassVst.BASS_VST_ChannelFree(VSTiTester);
+                        Bass.BASS_Free();
                         if (Success)
                         {
-                            String Lab = String.Format(Languages.Parse("VSTNameAndVersion"), MainWindow.KMCGlobals.vstIInfo.productName, MainWindow.KMCGlobals.vstIInfo.vendorName, MainWindow.KMCGlobals.vstIInfo.vendorVersion);
+                            String Lab = String.Format(Languages.Parse("VSTNameAndVersion"), MainWindow.VSTs.VSTInfo[NumVST - 1].productName, MainWindow.VSTs.VSTInfo[NumVST - 1].vendorName, MainWindow.VSTs.VSTInfo[NumVST - 1].vendorVersion);
                             VSTDLL = VSTImportDialog.FileName;
                             VSTDLLDesc = Lab;
                             Desc.Text = Lab;
                             Unload.Enabled = true;
                             Load.Enabled = false;
                             SaveDirectory(VSTImportDialog.FileName);
-                            BassVst.BASS_VST_ChannelFree(VSTiTester);
-                            Bass.BASS_Free();
                         }
                         else
                         {
                             MessageBox.Show(String.Format(Languages.Parse("InvalidVSTLoaded"), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                            BassVst.BASS_VST_ChannelFree(VSTiTester);
-                            Bass.BASS_Free();
                         }
                     }
                     else
@@ -263,27 +260,25 @@ namespace KeppyMIDIConverter
                         Un4seen.Bass.Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
                         int Test = Bass.BASS_StreamCreateDummy(44100, 2, BASSFlag.BASS_STREAM_DECODE, IntPtr.Zero);
                         int VSTTester = BassVst.BASS_VST_ChannelSetDSP(Test, VSTImportDialog.FileName, BASSVSTDsp.BASS_VST_DEFAULT, 1);
-                        bool Success = BassVst.BASS_VST_GetInfo(VSTTester, VSTInfo);
+                        bool Success = BassVst.BASS_VST_GetInfo(VSTTester, MainWindow.VSTs.VSTInfo[NumVST - 1]);
                         if (Success)
                         {
                             VSTDLL = VSTImportDialog.FileName;
-                            VSTDLLDesc = String.Format(Languages.Parse("VSTNameAndVersion"), VSTInfo.productName, VSTInfo.vendorName, VSTInfo.vendorVersion);
-                            Desc.Text = String.Format(Languages.Parse("VSTNameAndVersion"), VSTInfo.productName, VSTInfo.vendorName, VSTInfo.vendorVersion);
+                            VSTDLLDesc = String.Format(Languages.Parse("VSTNameAndVersion"), MainWindow.VSTs.VSTInfo[NumVST - 1].productName, MainWindow.VSTs.VSTInfo[NumVST - 1].vendorName, MainWindow.VSTs.VSTInfo[NumVST - 1].vendorVersion);
+                            Desc.Text = String.Format(Languages.Parse("VSTNameAndVersion"), MainWindow.VSTs.VSTInfo[NumVST - 1].productName, MainWindow.VSTs.VSTInfo[NumVST - 1].vendorName, MainWindow.VSTs.VSTInfo[NumVST - 1].vendorVersion);
                             Bass.BASS_Free();
                             Unload.Enabled = true;
                             Load.Enabled = false;
                             SaveDirectory(VSTImportDialog.FileName);
-                            BassVst.BASS_VST_ChannelRemoveDSP(Test, VSTTester);
-                            Bass.BASS_StreamFree(Test);
-                            Bass.BASS_Free();
                         }
                         else
                         {
                             MessageBox.Show(String.Format(Languages.Parse("InvalidVSTLoaded"), Path.GetFileNameWithoutExtension(VSTImportDialog.FileName), bitreq, bitnow), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                            BassVst.BASS_VST_ChannelRemoveDSP(Test, VSTTester);
-                            Bass.BASS_StreamFree(Test);
-                            Bass.BASS_Free();
+                    
                         }
+                        BassVst.BASS_VST_ChannelRemoveDSP(Test, VSTTester);
+                        Bass.BASS_StreamFree(Test);
+                        Bass.BASS_Free();
                     }
                 }
             }
@@ -296,75 +291,52 @@ namespace KeppyMIDIConverter
 
         private void Unload_Click(object sender, EventArgs e)
         {
-            MainWindow.KMCGlobals.vstIInfo = new BASS_VST_INFO();
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[0] = null;
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[0] = null;
-            Desc1.Text = Languages.Parse("EmptySlot") + " 1";
-            Unload1.Enabled = false;
-            Load1.Enabled = true;
+            UnloadVST(0, ref Desc1, ref Unload1, ref Load1);
         }
 
         private void Unload2_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[1] = null;
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[1] = null;
-            Desc2.Text = Languages.Parse("EmptySlot") + " 2";
-            Unload2.Enabled = false;
-            Load2.Enabled = true;
+            UnloadVST(1, ref Desc2, ref Unload2, ref Load2);
         }
 
         private void Unload3_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[2] = null;
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[2] = null;
-            Desc3.Text = Languages.Parse("EmptySlot") + " 3";
-            Unload3.Enabled = false;
-            Load3.Enabled = true;
+            UnloadVST(2, ref Desc3, ref Unload3, ref Load3);
         }
 
         private void Unload4_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[3] = null;
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[3] = null;
-            Desc4.Text = Languages.Parse("EmptySlot") + " 4";
-            Unload4.Enabled = false;
-            Load4.Enabled = true;
+            UnloadVST(3, ref Desc4, ref Unload4, ref Load4);
         }
 
         private void Unload5_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[4] = null;
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[4] = null;
-            Desc5.Text = Languages.Parse("EmptySlot") + " 5";
-            Unload5.Enabled = false;
-            Load5.Enabled = true;
+            UnloadVST(4, ref Desc5, ref Unload5, ref Load5);
         }
 
         private void Unload6_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[5] = null;
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[5] = null;
-            Desc6.Text = Languages.Parse("EmptySlot") + " 6";
-            Unload6.Enabled = false;
-            Load6.Enabled = true;
+            UnloadVST(5, ref Desc6, ref Unload6, ref Load6);
         }
 
         private void Unload7_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[6] = null;
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[6] = null;
-            Desc7.Text = Languages.Parse("EmptySlot") + " 7";
-            Unload7.Enabled = false;
-            Load7.Enabled = true;
+            UnloadVST(6, ref Desc7, ref Unload7, ref Load7);
         }
 
         private void Unload8_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[7] = null;
-            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[7] = null;
-            Desc8.Text = Languages.Parse("EmptySlot") + " 8";
-            Unload8.Enabled = false;
-            Load8.Enabled = true;
+            UnloadVST(7, ref Desc8, ref Unload8, ref Load8);
+        }
+
+        private void UnloadVST(int num, ref Label desc, ref Button unload, ref Button load)
+        {
+            MainWindow.VSTs.VSTInfo[num] = new BASS_VST_INFO();
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLs[num] = null;
+            KeppyMIDIConverter.MainWindow.VSTs.VSTDLLDescs[num] = null;
+            desc.Text = String.Format("{0}: {1}", Languages.Parse("EmptySlot"), num + 1);
+            unload.Enabled = false;
+            load.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)

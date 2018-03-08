@@ -93,6 +93,8 @@
             this.MoveUp = new System.Windows.Forms.MenuItem();
             this.MoveDown = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
+            this.VSTiSeparator = new System.Windows.Forms.MenuItem();
+            this.VSTiSettings = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -105,7 +107,9 @@
             this.ConverterMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.ActionsStrip,
             this.OptionsStrip,
-            this.HelpStrip});
+            this.HelpStrip,
+            this.VSTiSeparator,
+            this.VSTiSettings});
             // 
             // ActionsStrip
             // 
@@ -610,6 +614,20 @@
             // 
             this.VistaMenuSys.ContainerControl = this;
             // 
+            // VSTiSeparator
+            // 
+            this.VSTiSeparator.Enabled = false;
+            this.VSTiSeparator.Index = 3;
+            this.VSTiSeparator.Text = "|";
+            this.VSTiSeparator.Visible = false;
+            // 
+            // VSTiSettings
+            // 
+            this.VSTiSettings.Index = 4;
+            this.VSTiSettings.Text = "{VSTiSettings}";
+            this.VSTiSettings.Visible = false;
+            this.VSTiSettings.Click += new System.EventHandler(this.VSTiSettings_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -701,6 +719,8 @@
         public System.Windows.Forms.MenuItem MoveDown;
         public System.Windows.Forms.MenuItem AutoResizeColumns;
         public System.Windows.Forms.MenuItem SVDS;
+        public System.Windows.Forms.MenuItem VSTiSeparator;
+        public System.Windows.Forms.MenuItem VSTiSettings;
     }
 }
 

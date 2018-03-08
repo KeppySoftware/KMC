@@ -225,7 +225,7 @@
     <value>Media</value>
     <comment>The average level of the current stream.</comment>
   </data>
-  <data name="ConnectionError" xml:space="preserve">
+  <data name="ConnectionErrorDesc" xml:space="preserve">
     <value>Impossibile connettersi ai server GitHub.
 
 Controlla la tua connessione Internet, contatta l'amministratore del sistema o il tuo provider della banda larga.
@@ -905,5 +905,25 @@ Attendere prego...</value>
   <data name="SVDS" xml:space="preserve">
     <value>Salta impostazioni DSP</value>
     <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NA" xml:space="preserve">
+    <value>N/D</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Non disponibile</value>
+  </data>
+  <data name="VSTiSettings" xml:space="preserve">
+    <value>Impostazioni VSTi</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CorruptedSetupDesc" xml:space="preserve">
+    <value>Il setup aggiornato del convertitore è corrotto.
+Impossibile eseguire l'installazione!
+
+Premere OK per chiudere questa finestra.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CorruptedSetupTitle" xml:space="preserve">
+    <value>Setup corrotto</value>
   </data>
 </root>

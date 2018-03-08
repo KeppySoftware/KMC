@@ -123,33 +123,10 @@
   <metadata name="VistaMenuSys.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>255, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="RenderToWAV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAAntJREFUOE+dkt9rUmEYx9/3PUc7m3mOsDZZc2w03XRsuxIlNy+mTlO76mKX+w8W
-        xa666SKii+jHqNbFGFEM2oVREXiONBtEULTdRARjBZ0ZEyLmycykmvr2vMepo6JBBz7v9xzfx48v3yOi
-        lKJKpULK5TK3D2gv7HuMxs3/oi+rq2tDsvzseDq9Fl5eXo3sgT3HUqm0X5aTRJZlnEwmkaIoqFQq1QSF
-        QpaMjc2/cTieU4cjUXE4HkI+0LHb71GX6wnt70/AJBrCGEMgA1wok8nUBLncexKNPv7Y1nZiCfZ7DYaD
-        Xp5vcfN8q5cQzmky9U77fE+pwdDiIQS3I4Q5QWjl9gpwOKxsi2LkOtNjzPEs4SL6Qowui8V3C24li+Xo
-        fUE4cpLjEFLVDN8QTEykcqJ4TBcQIkQIORAF6hkEiQe2fH19Z9b8/iw1mXpOq+oGOwGpCzRJil9lgpGR
-        RCEcpnR8/Fs1EPhOGcHgz3pWYzH6w+1W6czM5fO/nSA6ywTd3dOvhofvqi7X/NvBwYV3AOTtdadzbsPj
-        eVmIxymUekdbXEzAzzQF25IUm2MCjHkzRMsuAmCGzzohUU/PqRWnc0GDDgZ2SyRI01RW4idRDF9jQ80S
-        MVSFEM+bx+32czvQw4AgWM/CWxwyGo1Q4majRD4UUj50dV1YN5v9Fy2W+E1Jit5gJxLF0JX29qlHHs8L
-        CmK37kWIg/8BabzGnZ2vaHJydml0NPUlGFQ+BwJKvkkyHwqt5LzeS6+t1kO2zs7DqKPDytlsNrS1tVUT
-        sKVYzBE4Cadpm/hPVJLPZ7lisQhzTarValMAD5jlP2D7f53RF2Zjkn2oz+nUBBT9Atxa73TkEkluAAAA
-        AElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="ListMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>154, 17</value>
-  </metadata>
-  <metadata name="VistaMenuSys.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>255, 17</value>
-  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>59</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAEBAAAAEAIABoBAAAhgAAABgYAAABACAAiAkAAO4EAAAgIAAAAQAgAKgQAAB2DgAAMDAAAAEA
@@ -5027,4 +5004,24 @@
         ////////
 </value>
   </data>
+  <data name="RenderToWAV.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EgAACxIB0t1+/AAAAntJREFUOE+dkt9rUmEYx9/3PUc7m3mOsDZZc2w03XRsuxIlNy+mTlO76mKX+w8W
+        xa666SKii+jHqNbFGFEM2oVREXiONBtEULTdRARjBZ0ZEyLmycykmvr2vMepo6JBBz7v9xzfx48v3yOi
+        lKJKpULK5TK3D2gv7HuMxs3/oi+rq2tDsvzseDq9Fl5eXo3sgT3HUqm0X5aTRJZlnEwmkaIoqFQq1QSF
+        QpaMjc2/cTieU4cjUXE4HkI+0LHb71GX6wnt70/AJBrCGEMgA1wok8nUBLncexKNPv7Y1nZiCfZ7DYaD
+        Xp5vcfN8q5cQzmky9U77fE+pwdDiIQS3I4Q5QWjl9gpwOKxsi2LkOtNjzPEs4SL6Qowui8V3C24li+Xo
+        fUE4cpLjEFLVDN8QTEykcqJ4TBcQIkQIORAF6hkEiQe2fH19Z9b8/iw1mXpOq+oGOwGpCzRJil9lgpGR
+        RCEcpnR8/Fs1EPhOGcHgz3pWYzH6w+1W6czM5fO/nSA6ywTd3dOvhofvqi7X/NvBwYV3AOTtdadzbsPj
+        eVmIxymUekdbXEzAzzQF25IUm2MCjHkzRMsuAmCGzzohUU/PqRWnc0GDDgZ2SyRI01RW4idRDF9jQ80S
+        MVSFEM+bx+32czvQw4AgWM/CWxwyGo1Q4majRD4UUj50dV1YN5v9Fy2W+E1Jit5gJxLF0JX29qlHHs8L
+        CmK37kWIg/8BabzGnZ2vaHJydml0NPUlGFQ+BwJKvkkyHwqt5LzeS6+t1kO2zs7DqKPDytlsNrS1tVUT
+        sKVYzBE4Cadpm/hPVJLPZ7lisQhzTarValMAD5jlP2D7f53RF2Zjkn2oz+nUBBT9Atxa73TkEkluAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="ListMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
+  </metadata>
 </root>
