@@ -155,7 +155,7 @@ namespace KeppyMIDIConverter
                             BASSControl.BASSVolumeSlideInit();
                             BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
                             long pos = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
-                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, (float)1.0));
+                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, 0.0275));
                             MainWindow.KMCStatus.IsKMCNowExporting = true;
                             bool DoINeedToContinue;
                             while (true)

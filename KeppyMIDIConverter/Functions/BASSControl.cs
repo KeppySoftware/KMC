@@ -531,16 +531,9 @@ namespace KeppyMIDIConverter
             for (int i = 0; i <= 15; i++)
                 BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, i, BASSMIDIEvent.MIDI_EVENT_MIXLEVEL, MainWindow.KMCStatus.ChannelsVolume[i]);
 
-            int got;
-            if (MainWindow.VSTs.VSTInfo[0].isInstrument)
-            {
-                got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
-                Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
-            }
-            else
-            {
-                got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
-            }
+            if (MainWindow.VSTs.VSTInfo[0].isInstrument) Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
+            int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
+
             if (got < 0)
             {
                 MainWindow.KMCGlobals.CancellationPendingValue = 2;
@@ -565,16 +558,9 @@ namespace KeppyMIDIConverter
                 es++;
             }
 
-            int got;
-            if (MainWindow.VSTs.VSTInfo[0].isInstrument)
-            {
-                got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
-                Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
-            }
-            else
-            {
-                got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
-            }
+            if (MainWindow.VSTs.VSTInfo[0].isInstrument) Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
+            int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
+
             if (got < 0)
             {
                 MainWindow.KMCGlobals.CancellationPendingValue = 2;
@@ -582,10 +568,7 @@ namespace KeppyMIDIConverter
             }
 
             pos += got;
-            if (es == MainWindow.KMCGlobals.eventc)
-            {
-                BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_END, 0);
-            }
+            if (es == MainWindow.KMCGlobals.eventc) BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_END, 0);
 
             float fpsstring = 1 / (float)fpssim;
 
@@ -620,6 +603,7 @@ namespace KeppyMIDIConverter
 
             if (MainWindow.Seeking)
             {
+                BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTESOFF, 0);
                 Bass.BASS_ChannelSetPosition(MainWindow.KMCGlobals._recHandle, MainWindow.CurrentSeek, BASSMode.BASS_POS_MIDI_TICK);
                 MainWindow.Seeking = false;
             }

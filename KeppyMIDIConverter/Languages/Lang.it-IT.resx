@@ -926,4 +926,8 @@ Premere OK per chiudere questa finestra.</value>
   <data name="CorruptedSetupTitle" xml:space="preserve">
     <value>Setup corrotto</value>
   </data>
+  <data name="MissingTranslations" xml:space="preserve">
+    <value>Alcune traduzioni potrebbero non essere ancora disponibili.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

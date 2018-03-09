@@ -19,6 +19,7 @@ namespace KeppyMIDIConverter
         {
             Text = Languages.Parse("ChangeLanguage");
             OverrideLanguageCheck.Text = Languages.Parse("OverrideLanguage");
+            MissingTranslations.Text = Languages.Parse("MissingTranslations");
         }
 
         public OverrideLanguage()

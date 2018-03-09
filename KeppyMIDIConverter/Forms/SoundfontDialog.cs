@@ -355,6 +355,12 @@ namespace KeppyMIDIConverter
         {
             VSTImport.Enabled = VSTUse.Checked;
             KeppyMIDIConverter.MainWindow.KMCStatus.VSTMode = VSTUse.Checked;
+
+            if (VSTUse.Checked != true)
+            {
+                Properties.Settings.Default.LoudMaxEnabled = false;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void VSTImport_Click(object sender, EventArgs e)

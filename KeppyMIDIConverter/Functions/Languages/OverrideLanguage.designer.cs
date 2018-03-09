@@ -32,6 +32,7 @@
             this.LangSel = new System.Windows.Forms.ComboBox();
             this.OK = new System.Windows.Forms.Button();
             this.Flag = new System.Windows.Forms.PictureBox();
+            this.MissingTranslations = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Flag)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,12 +79,23 @@
             this.Flag.TabIndex = 3;
             this.Flag.TabStop = false;
             // 
+            // MissingTranslations
+            // 
+            this.MissingTranslations.Enabled = false;
+            this.MissingTranslations.Location = new System.Drawing.Point(12, 61);
+            this.MissingTranslations.Name = "MissingTranslations";
+            this.MissingTranslations.Size = new System.Drawing.Size(243, 34);
+            this.MissingTranslations.TabIndex = 4;
+            this.MissingTranslations.Text = "MissingTranslations";
+            this.MissingTranslations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // OverrideLanguage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.OK;
             this.ClientSize = new System.Drawing.Size(354, 102);
+            this.Controls.Add(this.MissingTranslations);
             this.Controls.Add(this.Flag);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.LangSel);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.ComboBox LangSel;
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.PictureBox Flag;
+        private System.Windows.Forms.Label MissingTranslations;
     }
 }

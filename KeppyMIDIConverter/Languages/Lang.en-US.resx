@@ -924,4 +924,8 @@ Press OK to continue.</value>
   <data name="CorruptedSetupTitle" xml:space="preserve">
     <value>Corrupted setup</value>
   </data>
+  <data name="MissingTranslations" xml:space="preserve">
+    <value>Some languages might not be available yet.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>
