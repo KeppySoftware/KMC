@@ -567,7 +567,7 @@ All Rights Reserved.</value>
   <data name="PlaybackStatusNormal" xml:space="preserve">
     <value>MIDIの {0} を再生しました。
 再生位置: {1} - {2}
-Notes: {3} - {4}
+ノート: {3} - {4}
 再生速度: 通常</value>
     <comment>Self-explanatory.</comment>
   </data>
@@ -833,7 +833,7 @@ VST DSP のウィンドウの表示中は設定することができます。し
   <data name="PlaybackStatusSlower" xml:space="preserve">
     <value>MIDIの {0} を再生しました。
 再生位置: {1} - {2}
-Notes: {3} - {4}再生速度: (遅延, x{5}~)</value>
+ノート: {3} - {4}再生速度: (遅延, x{5}~)</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="UnloadAllVSTs" xml:space="preserve">
@@ -878,7 +878,7 @@ Notes: {3} - {4}再生速度: (遅延, x{5}~)</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="ParsingMIDIInfoStatus" xml:space="preserve">
-    <value>{1}つ中{}つ目のMIDIを解析しました。
+    <value>{1}つ中{0}つ目のMIDIを解析しました。
 しばらくお待ちください...</value>
     <comment>Self-explanatory.</comment>
   </data>
