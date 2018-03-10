@@ -68,6 +68,8 @@
             this.KK99YTC = new System.Windows.Forms.MenuItem();
             this.menuItem30 = new System.Windows.Forms.MenuItem();
             this.JKSUS = new System.Windows.Forms.MenuItem();
+            this.VSTiSeparator = new System.Windows.Forms.MenuItem();
+            this.VSTiSettings = new System.Windows.Forms.MenuItem();
             this.PreviewTrackBar = new System.Windows.Forms.TrackBar();
             this.MIDIList = new System.Windows.Forms.ListView();
             this.MIDIFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -93,8 +95,6 @@
             this.MoveUp = new System.Windows.Forms.MenuItem();
             this.MoveDown = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.VSTiSeparator = new System.Windows.Forms.MenuItem();
-            this.VSTiSettings = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -384,6 +384,20 @@
             this.JKSUS.Text = "{JKSUS}";
             this.JKSUS.Click += new System.EventHandler(this.JKSUS_Click);
             // 
+            // VSTiSeparator
+            // 
+            this.VSTiSeparator.Enabled = false;
+            this.VSTiSeparator.Index = 3;
+            this.VSTiSeparator.Text = "|";
+            this.VSTiSeparator.Visible = false;
+            // 
+            // VSTiSettings
+            // 
+            this.VSTiSettings.Index = 4;
+            this.VSTiSettings.Text = "{VSTiSettings}";
+            this.VSTiSettings.Visible = false;
+            this.VSTiSettings.Click += new System.EventHandler(this.VSTiSettings_Click);
+            // 
             // PreviewTrackBar
             // 
             this.PreviewTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -613,20 +627,6 @@
             // VistaMenuSys
             // 
             this.VistaMenuSys.ContainerControl = this;
-            // 
-            // VSTiSeparator
-            // 
-            this.VSTiSeparator.Enabled = false;
-            this.VSTiSeparator.Index = 3;
-            this.VSTiSeparator.Text = "|";
-            this.VSTiSeparator.Visible = false;
-            // 
-            // VSTiSettings
-            // 
-            this.VSTiSettings.Index = 4;
-            this.VSTiSettings.Text = "{VSTiSettings}";
-            this.VSTiSettings.Visible = false;
-            this.VSTiSettings.Click += new System.EventHandler(this.VSTiSettings_Click);
             // 
             // MainWindow
             // 

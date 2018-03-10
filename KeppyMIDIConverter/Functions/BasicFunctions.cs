@@ -137,22 +137,7 @@ namespace KeppyMIDIConverter
 
         public static void Donate()
         {
-            string url = "";
-
-            string business = "prapapappo1999@gmail.com";
-            string description = Languages.Parse("STDWD");
-            string country = "US";
-            string currency = "USD";
-
-            url += "https://www.paypal.com/cgi-bin/webscr" +
-                "?cmd=" + "_donations" +
-                "&business=" + business +
-                "&lc=" + country +
-                "&item_name=" + description +
-                "&currency_code=" + currency +
-                "&bn=" + "PP%2dDonationsBF";
-
-            Process.Start(url);
+            Process.Start("https://paypal.me/KaleidonKep99");
         }
 
         public static void GCWork(object sender, DoWorkEventArgs e)

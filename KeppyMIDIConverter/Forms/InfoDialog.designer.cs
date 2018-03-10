@@ -62,9 +62,9 @@
             // CurrentLogo
             // 
             this.CurrentLogo.Image = global::KeppyMIDIConverter.Properties.Resources.mainlogo;
-            this.CurrentLogo.Location = new System.Drawing.Point(12, 12);
+            this.CurrentLogo.Location = new System.Drawing.Point(11, 11);
             this.CurrentLogo.Name = "CurrentLogo";
-            this.CurrentLogo.Size = new System.Drawing.Size(79, 80);
+            this.CurrentLogo.Size = new System.Drawing.Size(80, 80);
             this.CurrentLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.CurrentLogo.TabIndex = 0;
             this.CurrentLogo.TabStop = false;
