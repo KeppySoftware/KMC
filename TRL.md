@@ -32,7 +32,7 @@ Follow these easy steps:
 
 3. Download the language you want to update [from there](https://github.com/KaleidonKep99/Keppys-MIDI-Converter/tree/master/KeppyMIDIConverter/Languages). As before, right-click "Raw" and select "Save as > .resx file". **(IT NEEDS TO BE IN THE SAME FOLDER AS LANG.RESX)**
 
-4. *(If you don't have it)* Download and install ResEx [from there] (https://resex.codeplex.com/).
+4. *(If you don't have it)* Download and install ResEx [from there](https://resex.codeplex.com/).
 5. Open the "Lang.resx" file.
 6. Start translating it to your language.
 
