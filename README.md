@@ -9,6 +9,9 @@
 I also post my updates on Discord, to keep everyone up-to-date 24/7!
 Join now here: https://discord.gg/jUaHPrP
 
+## I want to contribute with a translation!
+Click [this link](TRL.md) and follow the guide.
+
 ## Can I use your program's source code for my program?
 Sure you can, but there are a few "rules" you need to follow.
 
@@ -18,7 +21,7 @@ What you can do:
 - Create ports of the converter for other operating systems, such as Linux, Mac OS X, Amiga etc... Any other O.S. other than Windows. Mobile ports are allowed too. (See down below for further explanations.)
 
 What you can't do:
-- Clone the source code of the converter, and change its name to "(Your name)'s MIDI Converter". I mean, why would you do that?
+- Clone the source code of the converter, and change its name to "*(Your name)*'s MIDI Converter". I mean, why would you do that?
 - Create ports of the converter in different programming languages, but with Windows support. There's already a Windows version, which is this one.
 
 If you break one of these rules... Well, "rip you".

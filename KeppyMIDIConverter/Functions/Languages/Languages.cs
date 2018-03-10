@@ -110,52 +110,54 @@ namespace KeppyMIDIConverter
             }
         }
 
-        public static String[] LanguagesAvailable = new String[13] {
-            "বাঙালি (Bengali)",
+        const int LangNum = 3;
+
+        public static String[] LanguagesAvailable = new String[LangNum] {
+            // "বাঙালি (Bengali)",
             "English (English)",
-            "Eesti (Estonian)",
-            "Deutsch (German)",
+            // "Eesti (Estonian)",
+            // "Deutsch (German)",
             "Italiano (Italian)",
             "日本語 (Japanese)",
-            "한국어 (Korean)",
-            "Pу́сский (Russian)",
-            "简化字 (Simplified Chinese, PRC)",
-            "Español (Spanish)",
-            "ภาษาไทย (Thai)",
-            "廣東話 (Traditional Chinese, Hong Kong)",
-            "台灣 (Traditional Chinese, Taiwan)",
+            // "한국어 (Korean)",
+            // "Pу́сский (Russian)",
+            // "简化字 (Simplified Chinese, PRC)",
+            // "Español (Spanish)",
+            // "ภาษาไทย (Thai)",
+            // "廣東話 (Traditional Chinese, Hong Kong)",
+            // "台灣 (Traditional Chinese, Taiwan)",
         };
 
-        public static Bitmap[] LanguagesFlags = new Bitmap[13] {
-            Properties.Resources.Bangladesh,
+        public static Bitmap[] LanguagesFlags = new Bitmap[LangNum] {
+            // Properties.Resources.Bangladesh,
             Properties.Resources.United_Kingdom_Great_Britain_,
-            Properties.Resources.Estonia,
-            Properties.Resources.Germany,
+            // Properties.Resources.Estonia,
+            // Properties.Resources.Germany,
             Properties.Resources.Italy,
             Properties.Resources.Japan,
-            Properties.Resources.South_Korea,
-            Properties.Resources.Russian_Federation,
-            Properties.Resources.China,
-            Properties.Resources.Spain,
-            Properties.Resources.Thailand,
-            Properties.Resources.China,
-            Properties.Resources.China,
+            // Properties.Resources.South_Korea,
+            // Properties.Resources.Russian_Federation,
+            // Properties.Resources.China,
+            // Properties.Resources.Spain,
+            // Properties.Resources.Thailand,
+            // Properties.Resources.China,
+            // Properties.Resources.China,
         };
 
-        public static String[] LanguagesCodes = new String[13] {
-            "bn-BD",
+        public static String[] LanguagesCodes = new String[LangNum] {
+            // "bn-BD",
             "en-US",
-            "et-EE",
-            "de-DE",
+            // "et-EE",
+            // "de-DE",
             "it-IT",
             "ja-JP",
-            "ko-KR",
-            "ru-RU",
-            "zh-CN",
-            "es-ES",
-            "th-TH",
-            "zh-HK",
-            "zh-TW",
+            // "ko-KR",
+            // "ru-RU",
+            // "zh-CN",
+            // "es-ES",
+            // "th-TH",
+            // "zh-HK",
+            // "zh-TW",
         };
     }
 }

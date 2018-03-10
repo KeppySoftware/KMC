@@ -243,6 +243,7 @@
       <DependentUpon>OverrideLanguage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.it-IT.resx" />
+    <EmbeddedResource Include="Languages\Lang.ja-JP.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

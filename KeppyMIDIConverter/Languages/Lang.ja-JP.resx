@@ -1,0 +1,913 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbortConversion" xml:space="preserve">
+    <value>変換/プレビューを中断</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ACFUWSTC" xml:space="preserve">
+    <value>起動時に自動的にアップデートを確認</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ActionsStrip" xml:space="preserve">
+    <value>アクション</value>
+    <comment>The "Actions" menu.</comment>
+  </data>
+  <data name="ASAR" xml:space="preserve">
+    <value>変換終了後にPCをシャットダウン</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>言語を変更</value>
+    <comment>Change the UI language.</comment>
+  </data>
+  <data name="ClearList" xml:space="preserve">
+    <value>MIDIリストをクリア</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CMLAR" xml:space="preserve">
+    <value>変換終了後にMIDIリストをクリア</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CSFFS" xml:space="preserve">
+    <value>変換時の効果音</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>終了</value>
+    <comment>Well, close KMC?</comment>
+  </data>
+  <data name="HelpStrip" xml:space="preserve">
+    <value>ヘルプ</value>
+    <comment>The "Help" menu.</comment>
+  </data>
+  <data name="IATP" xml:space="preserve">
+    <value>アプリケーションについて</value>
+    <comment>Shows the information about KMC.</comment>
+  </data>
+  <data name="ImportMIDIs" xml:space="preserve">
+    <value>MIDIを追加する</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="JKSUS" xml:space="preserve">
+    <value>Keppy's Software Updates Server に参加する</value>
+    <comment>It lets you join KSUS on Discord.</comment>
+  </data>
+  <data name="KK99GP" xml:space="preserve">
+    <value>KaleidonKep99のGitHubページ</value>
+    <comment>Shows the user my official GitHub page!</comment>
+  </data>
+  <data name="KK99YTC" xml:space="preserve">
+    <value>KaleidonKep99のYouTubeチャンネル</value>
+    <comment>Shows the user my official YouTube page!</comment>
+  </data>
+  <data name="OpenSettings" xml:space="preserve">
+    <value>設定を開く</value>
+    <comment>Open the preview/conversion settings.</comment>
+  </data>
+  <data name="OpenSFVSTManager" xml:space="preserve">
+    <value>SoundFont/VSTマネージャーを開く</value>
+    <comment>Open the SoundFonts and VST effects manager.</comment>
+  </data>
+  <data name="OptionsStrip" xml:space="preserve">
+    <value>オプション</value>
+    <comment>The "Options" menu.</comment>
+  </data>
+  <data name="PreviewFiles" xml:space="preserve">
+    <value>MIDIをプレビュー</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RemoveMIDIs" xml:space="preserve">
+    <value>MIDIを取り除く</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RenderMode" xml:space="preserve">
+    <value>レンダリングモードの変更</value>
+    <comment>The "Render mode" menu.</comment>
+  </data>
+  <data name="RenderTo" xml:space="preserve">
+    <value>次の形式で変換</value>
+    <comment>Render to what? WAV? OGG? Your choice..</comment>
+  </data>
+  <data name="SCPIOTL" xml:space="preserve">
+    <value>残り時間表示→変換位置表示</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="STDWD" xml:space="preserve">
+    <value>開発者に寄付する</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>音量</value>
+    <comment>The volume label on the main window.</comment>
+  </data>
+  <data name="ActiveVoices" xml:space="preserve">
+    <value>発音数</value>
+    <comment>The amount of voices that are current active in the stream.</comment>
+  </data>
+  <data name="AverageLevel" xml:space="preserve">
+    <value>平均</value>
+    <comment>The average level of the current stream.</comment>
+  </data>
+  <data name="ConnectionErrorDesc" xml:space="preserve">
+    <value>GitHubサーバーに接続できませんでした。
+
+インターネット接続を確認するか、システム管理者、またはプロバイダー管理会社に連絡してください。
+
+OKを押してウィンドウを開きます。</value>
+    <comment>GitHub did a goof.</comment>
+  </data>
+  <data name="ConnectionErrorTitle" xml:space="preserve">
+    <value>インターネット接続に失敗しました。</value>
+    <comment>Error 404.</comment>
+  </data>
+  <data name="DonateText" xml:space="preserve">
+    <value>このプロジェクトは心優しいユーザー様のダウンロードだけによっては支えきれません。
+
+そこでアップデートを末永く保ち続けたいがために、また開発にかける環境を保つために、選ばれしあなたの寄付であれば少しでもいただけると思っています。
+
+寄付はオプションです。このダイアログをもう表示したくない場合は、「これをもう一度表示しない」をクリックしてください。 「ヘルプ」から「開発者に寄付」に移動しても寄付することができます。
+
+どうかよろしくお願い致します。</value>
+    <comment>Donation text.</comment>
+  </data>
+  <data name="DontShowAnymore" xml:space="preserve">
+    <value>興味ありません</value>
+    <comment>You're not interested. You're a bad person.</comment>
+  </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>致命的なエラー</value>
+    <comment>Heart attack.</comment>
+  </data>
+  <data name="FatalErrorHandler" xml:space="preserve">
+    <value>アプリケーションの実行中に致命的なエラーが発生しました。
+アプリケーションは閉じられます。
+追加の情報:</value>
+    <comment>The text of the error handler, after a fatal error.</comment>
+  </data>
+  <data name="IdleMessage" xml:space="preserve">
+    <value>Keppy's MIDI Converterは待機状態です。
+MIDIを選択して、SoundFontを選択して、変換/再生を開始してください。</value>
+    <comment>Idle message.</comment>
+  </data>
+  <data name="KeepAliveProject" xml:space="preserve">
+    <value>寄付してプロジェクトを救う</value>
+    <comment>Please do... :(</comment>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>下へ移動 (1項目)</value>
+    <comment>Move one item down at the time.</comment>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>上へ移動 (1項目)</value>
+    <comment>Move one item up at the time.</comment>
+  </data>
+  <data name="NonFatalErrorHandler" xml:space="preserve">
+    <value>アプリケーションの実行中にエラーが発生しました。
+
+追加の情報:</value>
+    <comment>The text of the error handler, after a non fatal error.</comment>
+  </data>
+  <data name="NoUpdatesFound" xml:space="preserve">
+    <value>{0} {1} はすでに最新版です。
+
+"OK"をクリックしてダイアログを閉じます。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NoUpdatesFoundTitle" xml:space="preserve">
+    <value>{0} {1} のアップデートは見つかりませんでした</value>
+    <comment>Title for NoUpdatesFound.</comment>
+  </data>
+  <data name="OKBtn" xml:space="preserve">
+    <value>OK</value>
+    <comment>k.</comment>
+  </data>
+  <data name="PeakLevel" xml:space="preserve">
+    <value>ピーク</value>
+    <comment>The peak level of the current stream.</comment>
+  </data>
+  <data name="RightClickCopyNotice" xml:space="preserve">
+    <value>ウィンドウ内を右クリックしてメッセージをコピーします。</value>
+    <comment>UNDERSTAND?</comment>
+  </data>
+  <data name="RMS" xml:space="preserve">
+    <value>RMS</value>
+    <comment>The root mean square of the current stream.</comment>
+  </data>
+  <data name="ShowMeNext" xml:space="preserve">
+    <value>1か月で知らせる</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SortName" xml:space="preserve">
+    <value>名前順に並べ替え</value>
+    <comment>Sort all the MIDIs by name.</comment>
+  </data>
+  <data name="UpdateFound" xml:space="preserve">
+    <value>{0} {1} のアップデートが見つかりました。
+
+利用中のバージョン: {2}
+利用可能なバージョン: {3}
+
+今すぐアップデートしますか。
+"はい"をクリックするとアプリケーションは自動的に閉じられます。
+
+(自動更新チェックは、"オプション &gt; 起動時に自動的にアップデートを確認"を無効にすることで無効化できます。)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="UpdateFoundTitle" xml:space="preserve">
+    <value>{0} {1} の新しいバージョンが見つかりました</value>
+    <comment>Title for the UpdateFound translation.</comment>
+  </data>
+  <data name="NoAffectPreview" xml:space="preserve">
+    <value>プレビューには影響しません</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RealTimeSim" xml:space="preserve">
+    <value>Real-time simulation</value>
+    <comment>Simulates a real-time playback, when rendering.</comment>
+  </data>
+  <data name="RenderStandard" xml:space="preserve">
+    <value>通常</value>
+    <comment>Uses the standard rendering method.</comment>
+  </data>
+  <data name="CFU" xml:space="preserve">
+    <value>アップデートを確認</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CompilerDate" xml:space="preserve">
+    <value>コンパイル日時:</value>
+    <comment>It shows when this release got compiled.</comment>
+  </data>
+  <data name="ConverterInfo" xml:space="preserve">
+    <value>このビルドに関する情報</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CTC" xml:space="preserve">
+    <value>クリップボードにコピー</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="HowManyTimesAdd" xml:space="preserve">
+    <value>このMIDIを何回追加しますか。
+
+{0}</value>
+    <comment>How many times you want to add {0}, where {0} is the MIDI.</comment>
+  </data>
+  <data name="IgnoreSize" xml:space="preserve">
+    <value>アプリケーションはMIDIのサイズを無視して、MIDIの全情報を表示します。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>情報</value>
+    <comment>Information?</comment>
+  </data>
+  <data name="InvalidMIDIFile" xml:space="preserve">
+    <value>{0} は正しいMIDIファイルではありません。
+
+正しいMIDIファイルを再選択してください。</value>
+    <comment>The MIDI is invalid.</comment>
+  </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>ファイル</value>
+    <comment>The full path of the MIDI.</comment>
+  </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>長さ</value>
+    <comment>The length (Time) of the MIDI.</comment>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>ノート数</value>
+    <comment>How many notes are present in the MIDI.</comment>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>サイズ</value>
+    <comment>Size of the MIDI.</comment>
+  </data>
+  <data name="RevisionLabel" xml:space="preserve">
+    <value>{0} (Revision {1})</value>
+    <comment>{0} is the version of the library, {1} is the revision number.</comment>
+  </data>
+  <data name="SourceCodeText" xml:space="preserve">
+    <value>ここをクリックして公式GitHubリポジトリを開きます</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="TaCI" xml:space="preserve">
+    <value>Keppy's MIDI Converter {0}
+Copyright Ⓒ Riccardo Loi 2013-{1}
+
+{2} によって翻訳されました。</value>
+    <comment>Information text in the "Information about the converter" window.</comment>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>{0} バージョン:</value>
+    <comment>Version number of {0}, where {0} stands for the item. (E.g. "BASSMIDI version")</comment>
+  </data>
+  <data name="VersionConverter" xml:space="preserve">
+    <value>KMC</value>
+    <comment>To be used with "Version".</comment>
+  </data>
+  <data name="W10VerRev" xml:space="preserve">
+    <value>ビルド {0} (Revision {1})</value>
+    <comment>Windows 10's version and revision format</comment>
+  </data>
+  <data name="WindowsBuild" xml:space="preserve">
+    <value>リリースのビルド番号:</value>
+    <comment>Shows the user the build number of his Windows installation.</comment>
+  </data>
+  <data name="WindowsInstallInfo" xml:space="preserve">
+    <value>お使いのWindowsの情報</value>
+    <comment>Title of the groupbox.</comment>
+  </data>
+  <data name="WindowsName" xml:space="preserve">
+    <value>リリースの名前:</value>
+    <comment>Shows the user the release name of his Windows installation.</comment>
+  </data>
+  <data name="NoEnoughMemoryMIDIInfo" xml:space="preserve">
+    <value>このMIDIの情報を取得するために必要なメモリがありません。:
+{0}</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutSFZFormatText" xml:space="preserve">
+    <value>このアプリケーションは "SFZ 1.0 format"に準拠しています。また "SFZ 2.0 format"も部分的に対応しています。
+
+"Unofficial SFZ format information" のウェブサイトを閲覧しますか。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutSFZFormatTitle" xml:space="preserve">
+    <value>SFZフォーマットについて</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutVSTSupportText" xml:space="preserve">
+    <value>このアプリケーションは VST DSP をサポートしています。
+
+Virtual Studio Technology (VST) は、Steinberg Media Technologies によるソフトウェアインターフェイス/技術です。
+Copyright ©2006 Steinberg Media Technologies.
+All Rights Reserved.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutVSTSupportTitle" xml:space="preserve">
+    <value>Virtual Studio Technologyインターフェイスについて</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AdvSettingsTitle" xml:space="preserve">
+    <value>詳細設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AudioFreq" xml:space="preserve">
+    <value>サンプリング周波数:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Bitrate" xml:space="preserve">
+    <value>ビットレート</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ClearSoundfontList" xml:space="preserve">
+    <value>SoundFontリストをクリア</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConstantBitrate" xml:space="preserve">
+    <value>固定ビットレートを設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConverterIsBusyAlready" xml:space="preserve">
+    <value>変換/プレビューの終了を待ってください。</value>
+    <comment>The thread is already busy previewing/converting another MIDI.</comment>
+  </data>
+  <data name="ConvStatusFasterNew" xml:space="preserve">
+    <value>{0}MBのRAWデータを出力しました。 ({1})
+残り時間: {2} - 経過時間: {3}
+レンダリング時間: {4}% (倍速 x{5})</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusFasterOld" xml:space="preserve">
+    <value>{0}MBのRAWデータを出力しました。 ({1})
+現在位置: {2} - {3}
+レンダリング時間: {4}% (倍速 x{5})</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusNormalNew" xml:space="preserve">
+    <value>{0}MBのRAWデータを出力しました。 ({1})
+残り時間: {2} - 経過時間: {3}
+レンダリング時間: {4}%</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusNormalOld" xml:space="preserve">
+    <value>{0}MBのRAWデータを出力しました。 ({1})
+現在位置: {2} - {3}
+レンダリング時間: {4}%</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusSlowerNew" xml:space="preserve">
+    <value>{0}MBのRAWデータを出力しました。 ({1})
+残り時間: {2} - 経過時間: {3}
+レンダリング時間: {4}% (遅延 x{5})</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusSlowerOld" xml:space="preserve">
+    <value>{0}MBのRAWデータを出力しました。 ({1})
+現在位置: {2} - {3}
+レンダリング時間: {4}% (遅延 x{5})</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DisableEffects" xml:space="preserve">
+    <value>エフェクトを無効</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DSPSettings" xml:space="preserve">
+    <value>DSPの設定:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ExportMIDIWindow" xml:space="preserve">
+    <value>変換先のフォルダーを選択してください</value>
+    <comment>Where do you want to export the files?</comment>
+  </data>
+  <data name="ImportMIDIWindow" xml:space="preserve">
+    <value>インポートするMIDIを選択してください...</value>
+    <comment>Which files do you want to import?</comment>
+  </data>
+  <data name="ImportSoundfontBtn" xml:space="preserve">
+    <value>SoundFontを追加</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MIDIFiles" xml:space="preserve">
+    <value>MIDIファイル</value>
+    <comment>Used for the "MIDIImport" OpenFileDialog function.</comment>
+  </data>
+  <data name="MoveDownSF" xml:space="preserve">
+    <value>下へ移動 ▼</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MoveUpSF" xml:space="preserve">
+    <value>上へ移動 ▲</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NoteOff1" xml:space="preserve">
+    <value>ノートの重複時は新しいノートを受け付けない</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="OverrideTempo" xml:space="preserve">
+    <value>MIDIのテンポを上書き</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackStatusNormal" xml:space="preserve">
+    <value>MIDIの {0} を再生しました。
+再生位置: {1} - {2}
+Notes: {3} - {4}
+再生速度: 通常</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackText" xml:space="preserve">
+    <value>{0} | {1} を再生中...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RealTimeFramerate" xml:space="preserve">
+    <value>Real-Time フレームレート:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RemoveSoundfontBtn" xml:space="preserve">
+    <value>SoundFontを取り除く</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="StreamSettings" xml:space="preserve">
+    <value>変換設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SkipVSTSettings" xml:space="preserve">
+    <value>VSTの設定をスキップする</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SoundfontDialogMessage" xml:space="preserve">
+    <value>一度に1,000個のSoundFontを使用することができます。
+SoundFontはリストの下から順に読み込まれます。
+アプリケーションの予期せぬ不具合を回避するために、SoundFontがリストに追加される前に破損していないかどうかを確認してください。 
+
+
+以下のフォーマットがサポートされています: SF2, SF3, SFZ, SF2PACK</value>
+    <comment>The description in the SoundFont list editor.</comment>
+  </data>
+  <data name="SoundfontImportError" xml:space="preserve">
+    <value>正しいSoundFontではありません。
+
+正しいSoundFontを再選択してください。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SoundfontManagerTitle" xml:space="preserve">
+    <value>SoundFont/VSTマネージャー</value>
+    <comment>Title of the SoundFont list editor.</comment>
+  </data>
+  <data name="VSTHowDoTheyWork" xml:space="preserve">
+    <value>使い方
+
+適用したいエフェクトをスロット1から順に選択してください。エフェクトは上からかかっていきます。
+
+鎖状の仕組みです。</value>
+    <comment>The description in the VST effects picker.</comment>
+  </data>
+  <data name="VSTInvalidCallError" xml:space="preserve">
+    <value>{0}の読み込み中にエラーが発生しました。
+VSTプラグインを読み込むことができませんでした。
+
+エラー:
+{1} 
+
+このVSTプラグインは現在のシステムと互換性がありません。
+エラーをクリップボードにコピーしました。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTInvalidCallTitle" xml:space="preserve">
+    <value>無効なVST呼び出し</value>
+    <comment>Title for "VSTInvalidCallError"</comment>
+  </data>
+  <data name="VSTManager" xml:space="preserve">
+    <value>VSTマネージャー</value>
+    <comment>Title of the VST effects picker.</comment>
+  </data>
+  <data name="VSTManagerButtonText" xml:space="preserve">
+    <value>VST DSPマネージャーを開く</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTUseText" xml:space="preserve">
+    <value>VSTエフェクトを有効化</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="BNPSel" xml:space="preserve">
+    <value>SoundFontのバンクとプリセットの設定をしました</value>
+    <comment>Title for "BankNPresetSel".</comment>
+  </data>
+  <data name="BNPSelDesc" xml:space="preserve">
+    <value>バンクとプリセットを0から127までで指定してください。
+標準の "Acoustic Grand Piano"には "Bank 0"と "Preset 0"を使用するか、どちらを使用するかわからない場合にもこの設定を利用できます。</value>
+    <comment>Description for "BankNPresetSel".</comment>
+  </data>
+  <data name="BNPSelHelp" xml:space="preserve">
+    <value>"インポート元…" では、追加したMIDIの既定のBank/PresetのIDが表示されています。
+"‌インポート先…" で、Bank/PresetのIDを別に指定した場合、既定のBank/PresetのIDはここで指定したものに再指定されます。
+
+選択したSoundFontがSFZの場合、Bank/PresetのIDは自動的に0に指定されます。</value>
+    <comment>Help text for "BankNPresetSel".</comment>
+  </data>
+  <data name="BNPSelWiki" xml:space="preserve">
+    <value>バンク/プリセットのリスト</value>
+    <comment>List of banks and presets from text file.</comment>
+  </data>
+  <data name="CancelBtn" xml:space="preserve">
+    <value>キャンセル</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConfirmBtn" xml:space="preserve">
+    <value>確認</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DesBank" xml:space="preserve">
+    <value>インポート先のBankのID:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DesPreset" xml:space="preserve">
+    <value>インポート先のPresetのID:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SrcBank" xml:space="preserve">
+    <value>インポート元のBankのID:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SrcPreset" xml:space="preserve">
+    <value>インポート元のPresetのID:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="0Translators0" xml:space="preserve">
+    <value>Yokkin</value>
+    <comment>You translated it! I think... If it says "KaleidonKep99", then you didn't.</comment>
+  </data>
+  <data name="AdvancedVoicesChannel" xml:space="preserve">
+    <value>チャンネル {0}:</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AdvancedVoicesTitle" xml:space="preserve">
+    <value>アクティブな発音数 - 詳細 (CPU使用率: {0}%)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AppBusy" xml:space="preserve">
+    <value>アプリケーションはMIDIを変換/再生を終えていません。
+終了してもよろしいですか。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AudioSettings" xml:space="preserve">
+    <value>オーディオ設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AutoResizeColumns" xml:space="preserve">
+    <value>コラムをリサイズ</value>
+    <comment>Let the converter automatically resize the columns.</comment>
+  </data>
+  <data name="BecomeAPatronTitle" xml:space="preserve">
+    <value>パトロンになってプロジェクトを救う</value>
+    <comment>Title for "BecomeAPatron"</comment>
+  </data>
+  <data name="ChannelsSettings" xml:space="preserve">
+    <value>チャンネル設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ChannelsSettingsAll" xml:space="preserve">
+    <value>All</value>
+    <comment>The "All" name for the Channels Settings.</comment>
+  </data>
+  <data name="ChannelsSettingsChan" xml:space="preserve">
+    <value>チャンネル {0}</value>
+    <comment>The "Channel" name for the Channels Settings.</comment>
+  </data>
+  <data name="ConversionAborted" xml:space="preserve">
+    <value>変換を中断しました。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConversionCompleted" xml:space="preserve">
+    <value>変換が完了しました。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CopiedToClipboardNotice" xml:space="preserve">
+    <value>エラーはクリップボードにコピーされました。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CopyErrorMessage" xml:space="preserve">
+    <value>エラーメッセージをクリップボードにコピー</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="EmptySlot" xml:space="preserve">
+    <value>空スロット</value>
+    <comment>No VST currently loaded here.</comment>
+  </data>
+  <data name="HeyYou" xml:space="preserve">
+    <value>やあ！</value>
+    <comment>Oh!</comment>
+  </data>
+  <data name="InvalidVSTLoaded" xml:space="preserve">
+    <value>{0} は正しいVSTエフェクトではありません。
+読み込むことができるのはVSTエフェクトのみで、VSTiではありません。もし、{1}のVSTプラグインを利用する場合は, {1}版の Keppy's MIDI Converterも利用する必要があります。また、{2}版のKeppy's MIDI Converterは{1} VSTを同様に利用できません。</value>
+    <comment>The VST is invalid.</comment>
+  </data>
+  <data name="LegalWarningVSTi" xml:space="preserve">
+    <value>この機能を、無料/有料のVSTプラグインのいかんを問わず、著作権で保護されたVSTiのサンプルを書き出し(リッピングし)て、それらの著作権で保護された新たなサンプルを作成することや、再配布、アクセスをする目的で使用することはできません。各VSTの作者の許可を得ない限り、そのような行為はすべて著作権侵害に当たります。作者は、「はい」をクリックしたことであなたに発生する全責任を負いません。自己責任の上でご使用ください。</value>
+    <comment>This is to prevent people from blaming me for violating the copyright, by allowing people to sample VSTs.
+I'm not responsible of what people do with the converter.</comment>
+  </data>
+  <data name="LoadVST" xml:space="preserve">
+    <value>追加</value>
+    <comment>Loads the VST.</comment>
+  </data>
+  <data name="MaxVoices" xml:space="preserve">
+    <value>最大同時発音数:</value>
+    <comment>The amount of voices allowed to be played at once.</comment>
+  </data>
+  <data name="MemoryAllocationConversion" xml:space="preserve">
+    <value>変換用のメモリを確保しています。
+しばらくお待ちください...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationConversionVST" xml:space="preserve">
+    <value>変換用のメモリを確保しています。
+VST DSP のウィンドウの表示中は設定することができます。しばらくお待ちください...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationPlayback" xml:space="preserve">
+    <value>プレビュー用のメモリを確保しています。
+しばらくお待ちください...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
+    <value>プレビュー用のメモリを確保しています。
+VST DSP のウィンドウの表示中は設定することができます。しばらくお待ちください...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MIDITracks" xml:space="preserve">
+    <value>トラック数</value>
+    <comment>How many tracks are present in the MIDI.</comment>
+  </data>
+  <data name="NotVerified" xml:space="preserve">
+    <value>検証されていません</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>既定のUIの言語を無視</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonBecomeOne" xml:space="preserve">
+    <value>パトロンになる</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonDesc" xml:space="preserve">
+    <value>このプロジェクトは心優しいユーザー様のダウンロードだけによっては支えきれません。
+
+そこでアップデートを末永く保ち続けたいがために、また開発にかける環境を保つために、選ばれしあなたの寄付であれば少しでもいただけると思っています。
+
+寄付はオプションです。このダイアログをもう表示したくない場合は、「これをもう一度表示しない」をクリックしてください。 「ヘルプ」から「パトロンになる」に移動しても寄付することができます。
+
+どうかよろしくお願い致します。 </value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonMaybeLater" xml:space="preserve">
+    <value>後で</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackAborted" xml:space="preserve">
+    <value>再生を中断しました。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackCompleted" xml:space="preserve">
+    <value>再生が終了しました。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackStatusSlower" xml:space="preserve">
+    <value>MIDIの {0} を再生しました。
+再生位置: {1} - {2}
+Notes: {3} - {4}再生速度: (遅延, x{5}~)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="UnloadAllVSTs" xml:space="preserve">
+    <value>すべて取り除く</value>
+    <comment>Unloads all the VSTs.</comment>
+  </data>
+  <data name="UnloadVST" xml:space="preserve">
+    <value>取り除く</value>
+    <comment>Unloads the VST.</comment>
+  </data>
+  <data name="VSTiModeOn" xml:space="preserve">
+    <value>VSTiモードが有効化されました</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTiModeOnLegal" xml:space="preserve">
+    <value>VSTiモードが有効化されました。
+形式に関する警告は以後表示されません。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTNameAndVersion" xml:space="preserve">
+    <value>{0} by {1} (バージョン番号: {2})</value>
+    <comment>Shows you the name of the VST, the creator, and its version number.</comment>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>注意</value>
+    <comment>Warning!</comment>
+  </data>
+  <data name="ConversionText" xml:space="preserve">
+    <value>{0} | {1} の変換中...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Donate" xml:space="preserve">
+    <value>寄付</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>Copy</value>
+    <comment>Used when creating a copy of an existing file.</comment>
+  </data>
+  <data name="ParsingMIDIInfo" xml:space="preserve">
+    <value>MIDIの情報の解析中...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ParsingMIDIInfoStatus" xml:space="preserve">
+    <value>{1}つ中{}つ目のMIDIを解析しました。
+しばらくお待ちください...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SVDS" xml:space="preserve">
+    <value>VST DSP設定をスキップ</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>利用できません</value>
+  </data>
+  <data name="VSTiSettings" xml:space="preserve">
+    <value>VSTiの設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CorruptedSetupDesc" xml:space="preserve">
+    <value>セットアップファイルが破損しています。
+アップデートをインストールできません。
+
+OKをクリックしてウィンドウを閉じます。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CorruptedSetupTitle" xml:space="preserve">
+    <value>破損したセットアップ</value>
+  </data>
+  <data name="MissingTranslations" xml:space="preserve">
+    <value>いくつかの言語はまだ利用できないかもしれません。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+</root>
