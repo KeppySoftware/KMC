@@ -41,52 +41,37 @@ namespace KeppyMIDIConverter
             fpsarr = new double[2] { (1.0 / Properties.Settings.Default.RealTimeFPS) - 0.00005556, (1.0 / Properties.Settings.Default.RealTimeFPS) + 0.00005556 };
         }
 
+        static void PlayKMCSound(String CustomSound, ref Boolean CustomSoundBool, Stream DefaultSound)
+        {
+            FileStream CustomStream = null;
+            String CustomLnk = String.Format("{0}\\CustomSounds\\{1}.wav", Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).Parent.FullName, CustomSound);
+            if (Properties.Settings.Default.AudioEvents)
+            {
+                if (File.Exists(CustomLnk)) { CustomSoundBool = true; CustomStream = new FileStream(CustomLnk, FileMode.Open); } else { CustomSoundBool = false; }
+                Stream str = DefaultSound;
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomSoundBool ? CustomStream : str);
+                player.Play();
+                str.Dispose();
+                if (File.Exists(CustomLnk)) CustomStream.Dispose();
+            }
+        }
+
         private static bool CustomStart = false;
         public static void PlayConversionStart()
         {
-            FileStream CustomStartStream = null;
-            String CustomStartLnk = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "convstart.wav";
-            if (Properties.Settings.Default.AudioEvents)
-            {
-                if (File.Exists(CustomStartLnk)) { CustomStart = true; CustomStartStream = new FileStream(CustomStartLnk, FileMode.Open); } else { CustomStart = false; }
-                System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convstart;
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomStart ? CustomStartStream : str);
-                player.Play();
-                str.Dispose();
-                if (File.Exists(CustomStartLnk)) CustomStartStream.Dispose();
-            }
+            PlayKMCSound("convstart", ref CustomStart, Properties.Resources.convstart);
         }
 
         private static bool CustomStop = false;
         public static void PlayConversionStop()
         {
-            FileStream CustomStopStream = null;
-            String CustomStopLnk = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "convfin.wav";
-            if (Properties.Settings.Default.AudioEvents)
-            {
-                if (File.Exists(CustomStopLnk)) { CustomStop = true; CustomStopStream = new FileStream(CustomStopLnk, FileMode.Open); } else { CustomStop = false; }
-                System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convfin;
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomStop ? CustomStopStream : str);
-                player.Play();
-                str.Dispose();
-                if (File.Exists(CustomStopLnk)) CustomStopStream.Dispose();
-            }
+            PlayKMCSound("convfin", ref CustomStop, Properties.Resources.convfin);
         }
 
         private static bool CustomError = false;
         public static void PlayConverterError()
         {
-            FileStream CustomErrorStream = null;
-            String CustomErrorLnk = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "convfail.wav";
-            if (Properties.Settings.Default.AudioEvents)
-            {
-                if (File.Exists(CustomErrorLnk)) { CustomError = true; CustomErrorStream = new FileStream(CustomErrorLnk, FileMode.Open); } else { CustomError = false; }
-                System.IO.Stream str = KeppyMIDIConverter.Properties.Resources.convfail;
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(CustomError ? CustomErrorStream : str);
-                player.Play();
-                str.Dispose();
-                if (File.Exists(CustomErrorLnk)) CustomErrorStream.Dispose();
-            }
+            PlayKMCSound("convfail", ref CustomError, Properties.Resources.convfail);
         }
 
         public enum MoveDirection { Up = -1, Down = 1 };
@@ -175,19 +160,23 @@ namespace KeppyMIDIConverter
                         Version.TryParse(Converter.FileVersion.ToString(), out y);
                         if (x > y)
                         {
-                            DialogResult dialogResult = MessageBox.Show(String.Format(Languages.Parse("UpdateFound"), Program.Who, Program.Title, Converter.FileVersion, newestversion), String.Format(Languages.Parse("UpdateFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                UpdateDownloader frm = new UpdateDownloader(newestversion);
-                                frm.StartPosition = FormStartPosition.CenterScreen;
-                                frm.ShowDialog();
-                            }
+                            MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                                DialogResult dialogResult = MessageBox.Show(String.Format(Languages.Parse("UpdateFound"), Program.Who, Program.Title, Converter.FileVersion, newestversion), String.Format(Languages.Parse("UpdateFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    UpdateDownloader frm = new UpdateDownloader(newestversion);
+                                    frm.StartPosition = FormStartPosition.CenterScreen;
+                                    frm.ShowDialog();
+                                }
+                            });
                         }
                         else
                         {
                             if (!Startup)
                             {
-                                MessageBox.Show(String.Format(Languages.Parse("NoUpdatesFound"), Program.Who, Program.Title), String.Format(Languages.Parse("NoUpdatesFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                                    MessageBox.Show(String.Format(Languages.Parse("NoUpdatesFound"), Program.Who, Program.Title), String.Format(Languages.Parse("NoUpdatesFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                });      
                             }
                         }
                     }
@@ -195,7 +184,9 @@ namespace KeppyMIDIConverter
                     {
                         if (!Startup)
                         {
-                            MessageBox.Show(String.Format(Languages.Parse("NoUpdatesFound"), Program.Who, Program.Title), String.Format(Languages.Parse("NoUpdatesFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                                MessageBox.Show(String.Format(Languages.Parse("NoUpdatesFound"), Program.Who, Program.Title), String.Format(Languages.Parse("NoUpdatesFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            });
                         }
                     }
                     AlreadyChecking = false;

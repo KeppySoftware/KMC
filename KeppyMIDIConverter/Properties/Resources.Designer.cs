@@ -611,11 +611,31 @@ namespace KeppyMIDIConverter.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap convbusy1 {
+            get {
+                object obj = ResourceManager.GetObject("convbusy1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.IO.UnmanagedMemoryStream simile a System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream convfail {
             get {
                 return ResourceManager.GetStream("convfail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap convfiles {
+            get {
+                object obj = ResourceManager.GetObject("convfiles", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -641,9 +661,9 @@ namespace KeppyMIDIConverter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap convprwo {
+        internal static System.Drawing.Bitmap convprvw {
             get {
-                object obj = ResourceManager.GetObject("convprwo", resourceCulture);
+                object obj = ResourceManager.GetObject("convprvw", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

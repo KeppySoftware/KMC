@@ -52,7 +52,9 @@ namespace KeppyMIDIConverter
             RTF.ActiveVoices = 0.0f;
             if (type == 0)
             {
-                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                    MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                });
             }
             MainWindow.KMCGlobals.CancellationPendingValue = 0;
             MainWindow.KMCGlobals.CurrentStatusTextString = null;
@@ -69,8 +71,10 @@ namespace KeppyMIDIConverter
             MainWindow.KMCGlobals.DoNotCountNotes = false;
             MainWindow.KMCGlobals.eventc = 0;
             MainWindow.KMCGlobals.events = null;
-            KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("Error"), ex.ToString(), 0, 1);
-            errordialog.ShowDialog();
+            MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("Error"), ex.ToString(), 0, 1);
+                errordialog.ShowDialog();
+            });
         }
 
         public static void BASSInitSystem(Boolean PreviewMode)
@@ -706,23 +710,6 @@ public class MIDILoadError : Exception
     }
 
     public MIDILoadError(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
-}
-
-public class InvalidSoundFont : Exception
-{
-    public InvalidSoundFont()
-    {
-    }
-
-    public InvalidSoundFont(string message)
-        : base(message)
-    {
-    }
-
-    public InvalidSoundFont(string message, Exception inner)
         : base(message, inner)
     {
     }

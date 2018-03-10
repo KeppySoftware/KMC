@@ -202,9 +202,6 @@
   <data name="United_Kingdom_Great_Britain_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\flags\united kingdom(great britain).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="convprwo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\kmc\convprwo.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Germany" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\flags\germany.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -745,9 +742,6 @@
   <data name="Sweden" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\flags\sweden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="convsave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\kmc\convsave.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Luxembourg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\flags\luxembourg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -951,5 +945,17 @@
   </data>
   <data name="youtube_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons\youtube-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="convbusy1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\kmc\convbusy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="convfiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\kmc\convfiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="convprvw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\kmc\convprvw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="convsave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\kmc\convsave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -163,12 +163,6 @@ namespace KeppyMIDIConverter
 
             if (!MainWindow.KMCStatus.RenderingMode)
             {
-                if (MainWindow.KMCGlobals.pictureset != 2)
-                {
-                    MainWindow.Delegate.StatusPicture.Image = KeppyMIDIConverter.Properties.Resources.convprwo;
-                    MainWindow.KMCGlobals.pictureset = 2;
-                }
-
                 if (CPUUsage < 100f || CPUUsage == 100f)
                 {
                     MainWindow.Delegate.StatusMsg.Text = String.Format(Languages.Parse("PlaybackStatusNormal"),
@@ -190,11 +184,6 @@ namespace KeppyMIDIConverter
             }
             else
             {
-                if (MainWindow.KMCGlobals.pictureset != 3)
-                {
-                    MainWindow.Delegate.StatusPicture.Image = KeppyMIDIConverter.Properties.Resources.convsave;
-                    MainWindow.KMCGlobals.pictureset = 3;
-                }
                 if (CPUUsage < 100f)
                 {
                     if (MainWindow.KMCGlobals.RealTime)
@@ -428,17 +417,26 @@ namespace KeppyMIDIConverter
             catch { }
         }
 
+        static bool Busy = true;
+        static int PictureSet = 0;
         private static void SetStatus(Int32 Mode)
         {
             if (Mode == 0) // Idle
             {
                 SetProgressBar(0);
                 MainWindow.Delegate.StatusMsg.Text = Languages.Parse("IdleMessage");
-                if (MainWindow.KMCGlobals.pictureset != 1)
+
+                if (Busy)
                 {
-                    MainWindow.Delegate.StatusPicture.Image = KeppyMIDIConverter.Properties.Resources.convpause;
-                    MainWindow.KMCGlobals.pictureset = 1;
+                    MainWindow.Delegate.StatusPicture.Image = Properties.Resources.convpause;
+                    Busy = false;
                 }
+                if (PictureSet != 1)
+                {
+                    MainWindow.Delegate.StatusPicture.BackgroundImage = null;
+                    PictureSet = 1;
+                }
+
                 if (MainWindow.Delegate.MIDIList.Items.Count < 1)
                 {
                     EnableImportButtons();
@@ -475,11 +473,18 @@ namespace KeppyMIDIConverter
             else if (Mode == 1) // Memory allocation
             {
                 SetProgressBar(1);
-                if (MainWindow.KMCGlobals.pictureset != 0)
+
+                if (!Busy)
                 {
-                    MainWindow.Delegate.StatusPicture.Image = KeppyMIDIConverter.Properties.Resources.convbusy;
-                    MainWindow.KMCGlobals.pictureset = 0;
+                    MainWindow.Delegate.StatusPicture.Image = Properties.Resources.convbusy;
+                    Busy = true;
                 }
+                if (PictureSet != 0)
+                {
+                    MainWindow.Delegate.StatusPicture.BackgroundImage = Properties.Resources.convfiles;
+                    PictureSet = 0;
+                }
+
                 if (MainWindow.KMCStatus.RenderingMode)
                 {
                     if (MainWindow.KMCStatus.VSTMode == false)
@@ -501,6 +506,29 @@ namespace KeppyMIDIConverter
             else if (Mode == 2) // Rendering/Playback
             {
                 SetProgressBar(2);
+
+                if (!Busy)
+                {
+                    MainWindow.Delegate.StatusPicture.Image = Properties.Resources.convbusy;
+                    Busy = true;
+                }
+                if (!MainWindow.KMCStatus.RenderingMode)
+                {
+                    if (PictureSet != 2)
+                    {
+                        MainWindow.Delegate.StatusPicture.BackgroundImage = Properties.Resources.convprvw;
+                        PictureSet = 2;
+                    }
+                }
+                else
+                {
+                    if (PictureSet != 3)
+                    {
+                        MainWindow.Delegate.StatusPicture.BackgroundImage = Properties.Resources.convsave;
+                        PictureSet = 3;
+                    }
+                }
+
                 DisableImportButtons();
                 DisableEncoderButtons();
                 UpdateText();

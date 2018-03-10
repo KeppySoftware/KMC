@@ -288,6 +288,10 @@
     <Content Include="Resources\Icons\play-icon.png" />
     <Content Include="Resources\Icons\stop-icon.png" />
     <Content Include="Resources\Icons\youtube-icon.png" />
+    <Content Include="Resources\KMC\convbusy.gif" />
+    <Content Include="Resources\KMC\convfiles.png" />
+    <Content Include="Resources\KMC\convprvw.png" />
+    <Content Include="Resources\KMC\convsave.png" />
     <Content Include="Resources\Misc\gmlist.txt" />
     <Content Include="Resources\Pictures\clocklater.png" />
     <Content Include="Resources\Pictures\patronbtn.png" />
@@ -552,9 +556,6 @@
     <Content Include="Resources\Flags\Zimbabwe.png" />
     <Content Include="Resources\Icons\down-icon.png" />
     <Content Include="Resources\Icons\worldwideweb.png" />
-    <Content Include="Resources\KMC\convbusy.gif" />
-    <Content Include="Resources\KMC\convprwo.gif" />
-    <Content Include="Resources\KMC\convsave.gif" />
     <Content Include="Resources\KMC\KMCTitle.txt" />
     <Content Include="Resources\Icons\erroricon.png" />
     <Content Include="Resources\Icons\warningicon.png" />

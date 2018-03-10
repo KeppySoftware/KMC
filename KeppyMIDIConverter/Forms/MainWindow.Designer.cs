@@ -72,10 +72,6 @@
             this.VSTiSettings = new System.Windows.Forms.MenuItem();
             this.PreviewTrackBar = new System.Windows.Forms.TrackBar();
             this.MIDIList = new System.Windows.Forms.ListView();
-            this.MIDIFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MIDILength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MIDINotes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MIDISize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.VolumeBar = new System.Windows.Forms.TrackBar();
             this.AVSLabel = new System.Windows.Forms.Label();
             this.RMSLabel = new System.Windows.Forms.Label();
@@ -420,11 +416,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MIDIList.BackColor = System.Drawing.Color.White;
             this.MIDIList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MIDIList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.MIDIFile,
-            this.MIDILength,
-            this.MIDINotes,
-            this.MIDISize});
             this.MIDIList.FullRowSelect = true;
             this.MIDIList.GridLines = true;
             this.MIDIList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -438,22 +429,6 @@
             this.MIDIList.DragDrop += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragDrop);
             this.MIDIList.DragEnter += new System.Windows.Forms.DragEventHandler(this.MIDIList_DragEnter);
             this.MIDIList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MIDIList_KeyDown);
-            // 
-            // MIDIFile
-            // 
-            this.MIDIFile.Text = "A";
-            // 
-            // MIDILength
-            // 
-            this.MIDILength.Text = "A";
-            // 
-            // MIDINotes
-            // 
-            this.MIDINotes.Text = "A";
-            // 
-            // MIDISize
-            // 
-            this.MIDISize.Text = "A";
             // 
             // VolumeBar
             // 
@@ -707,10 +682,6 @@
         public System.Windows.Forms.MenuItem ASAR;
         public System.Windows.Forms.Label VolumeLabel;
         private wyDay.Controls.VistaMenu VistaMenuSys;
-        private System.Windows.Forms.ColumnHeader MIDIFile;
-        private System.Windows.Forms.ColumnHeader MIDILength;
-        private System.Windows.Forms.ColumnHeader MIDINotes;
-        private System.Windows.Forms.ColumnHeader MIDISize;
         public System.Windows.Forms.MenuItem ImportMIDIsC;
         public System.Windows.Forms.MenuItem RemoveMIDIsC;
         public System.Windows.Forms.MenuItem ClearListC;

@@ -123,8 +123,10 @@ namespace KeppyMIDIConverter
             {
                 MainWindow.KMCStatus.IsKMCBusy = false;
                 MainWindow.KMCStatus.RenderingMode = false;
-                ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), Languages.Parse("ConverterIsBusyAlready"), 0, 0);
-                errordialog.ShowDialog();
+                MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                    ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), Languages.Parse("ConverterIsBusyAlready"), 0, 0);
+                    errordialog.ShowDialog();
+                });
             }
         }
 
