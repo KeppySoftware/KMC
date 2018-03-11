@@ -27,7 +27,7 @@ namespace KeppyMIDIConverter
 
         // Language overrides
 
-        public static CultureInfo ReturnCulture(Boolean Default)
+        public static CultureInfo ReturnCulture(Boolean Default, string Custom)
         {
             try
             {
@@ -39,7 +39,8 @@ namespace KeppyMIDIConverter
                 {
                     if (Properties.Settings.Default.LangOverride)
                     {
-                        return CultureInfo.CreateSpecificCulture(Properties.Settings.Default.SelectedLang);
+                        if (Custom != null) return CultureInfo.CreateSpecificCulture(Custom);
+                        else return CultureInfo.CreateSpecificCulture(Properties.Settings.Default.SelectedLang);
                     }
                     else
                     {

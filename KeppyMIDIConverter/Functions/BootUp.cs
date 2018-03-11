@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -52,9 +53,9 @@ namespace KeppyMIDIConverter
                 catch { Program.DeleteEncoder = false; }
             }
 
+            Languages.DC = Languages.ReturnCulture(false, null);
+            Languages.ChangeLanguage(Languages.ReturnCulture(false, null).Name);
             CheckStartUpArguments(args);
-            Languages.DC = Languages.ReturnCulture(false);
-            Languages.ChangeLanguage(Languages.ReturnCulture(false).Name);
 
             if (!SkipUpdate) PerformUpdate();
             if (!SkipTrigger) TriggerDate();

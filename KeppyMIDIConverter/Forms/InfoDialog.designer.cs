@@ -241,7 +241,7 @@
             this.CTC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CTC.Location = new System.Drawing.Point(9, 266);
             this.CTC.Name = "CTC";
-            this.CTC.Size = new System.Drawing.Size(105, 23);
+            this.CTC.Size = new System.Drawing.Size(118, 23);
             this.CTC.TabIndex = 8;
             this.CTC.Text = "Copy to clipboard";
             this.CTC.UseVisualStyleBackColor = true;
@@ -250,7 +250,7 @@
             // CFU
             // 
             this.CFU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CFU.Location = new System.Drawing.Point(120, 266);
+            this.CFU.Location = new System.Drawing.Point(133, 266);
             this.CFU.Name = "CFU";
             this.CFU.Size = new System.Drawing.Size(138, 23);
             this.CFU.TabIndex = 9;
@@ -262,9 +262,9 @@
             // 
             this.DonateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DonateBtn.Image = global::KeppyMIDIConverter.Properties.Resources.ppdonate;
-            this.DonateBtn.Location = new System.Drawing.Point(286, 12);
+            this.DonateBtn.Location = new System.Drawing.Point(296, 12);
             this.DonateBtn.Name = "DonateBtn";
-            this.DonateBtn.Size = new System.Drawing.Size(87, 23);
+            this.DonateBtn.Size = new System.Drawing.Size(77, 23);
             this.DonateBtn.TabIndex = 11;
             this.DonateBtn.Text = "Donate";
             this.DonateBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -298,9 +298,9 @@
             // 
             this.PatreonBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PatreonBtn.Image = global::KeppyMIDIConverter.Properties.Resources.patronsm;
-            this.PatreonBtn.Location = new System.Drawing.Point(286, 41);
+            this.PatreonBtn.Location = new System.Drawing.Point(296, 41);
             this.PatreonBtn.Name = "PatreonBtn";
-            this.PatreonBtn.Size = new System.Drawing.Size(87, 23);
+            this.PatreonBtn.Size = new System.Drawing.Size(77, 23);
             this.PatreonBtn.TabIndex = 13;
             this.PatreonBtn.Text = "Patreon";
             this.PatreonBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

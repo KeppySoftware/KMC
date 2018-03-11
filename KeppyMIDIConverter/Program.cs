@@ -14,6 +14,7 @@ namespace KeppyMIDIConverter
     {
         private const int timerAccuracy = 10;
 
+        public static bool DebugLang = false;
         public static bool DebugMode = false;
         public static string Who = "Keppy's";
         public static string Title = "MIDI Converter";
@@ -29,19 +30,27 @@ namespace KeppyMIDIConverter
         [STAThread]
         static void Main(String[] args)
         {
-            if (Properties.Settings.Default.UpgradeRequired)
+            try
             {
-                Properties.Settings.Default.Upgrade();
-                Properties.Settings.Default.UpgradeRequired = false;
-                Properties.Settings.Default.Save();
+                if (Properties.Settings.Default.UpgradeRequired)
+                {
+                    Properties.Settings.Default.Upgrade();
+                    Properties.Settings.Default.UpgradeRequired = false;
+                    Properties.Settings.Default.Save();
+                }
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+
+                BootUp.CheckUp(args);
+
+                Application.Run(new MainWindow(args));
             }
-            
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            BootUp.CheckUp(args);
-
-            Application.Run(new MainWindow(args));
+            catch (Exception exception)
+            {
+                ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("FatalError"), exception.ToString(), 1, 0);
+                errordialog.ShowDialog();
+            }
         }
     }
 }

@@ -399,7 +399,7 @@ MIDIを選択して、SoundFontを選択して、変換/再生を開始してく
     <comment>Size of the MIDI.</comment>
   </data>
   <data name="RevisionLabel" xml:space="preserve">
-    <value>{0} (Revision {1})</value>
+    <value>{0} (リビジョン {1})</value>
     <comment>{0} is the version of the library, {1} is the revision number.</comment>
   </data>
   <data name="SourceCodeText" xml:space="preserve">
@@ -422,7 +422,7 @@ Copyright Ⓒ Riccardo Loi 2013-{1}
     <comment>To be used with "Version".</comment>
   </data>
   <data name="W10VerRev" xml:space="preserve">
-    <value>ビルド {0} (Revision {1})</value>
+    <value>ビルド {0} (リビジョン {1})</value>
     <comment>Windows 10's version and revision format</comment>
   </data>
   <data name="WindowsBuild" xml:space="preserve">
@@ -595,7 +595,6 @@ All Rights Reserved.</value>
     <value>一度に1,000個のSoundFontを使用することができます。
 SoundFontはリストの下から順に読み込まれます。
 アプリケーションの予期せぬ不具合を回避するために、SoundFontがリストに追加される前に破損していないかどうかを確認してください。 
-
 
 以下のフォーマットがサポートされています: SF2, SF3, SFZ, SF2PACK</value>
     <comment>The description in the SoundFont list editor.</comment>
@@ -833,7 +832,8 @@ VST DSP のウィンドウの表示中は設定することができます。し
   <data name="PlaybackStatusSlower" xml:space="preserve">
     <value>MIDIの {0} を再生しました。
 再生位置: {1} - {2}
-ノート: {3} - {4}再生速度: (遅延, x{5}~)</value>
+ノート: {3} - {4}再生
+速度: (遅延, x{5}~)</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="UnloadAllVSTs" xml:space="preserve">

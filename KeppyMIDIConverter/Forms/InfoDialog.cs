@@ -75,10 +75,10 @@ namespace KeppyMIDIConverter
 
             String Version = String.Format("{0}.{1}.{2}", Converter.FileMajorPart, Converter.FileMinorPart, Converter.FileBuildPart);
             TaCI.Text = String.Format(Languages.Parse("TaCI"), Converter.FileMajorPart, DateTime.Now.Year, Languages.Parse("0Translators0"));
-            ConverterVer.Text = Version;
+            ConverterVer.Text = String.Format("{0} ({1})", Version, (Environment.Is64BitProcess ? "x64, SSE2" : "x86, SSE"));
             BASSVer.Text = ReturnBASSAssemblyVersion(BASS.FileVersion, BASS.FilePrivatePart);
             BASSMIDIVer.Text = ReturnBASSAssemblyVersion(BASSMIDI.FileVersion, BASSMIDI.FilePrivatePart);
-            CompilerDate.Text = BasicFunctions.GetLinkerTime(Assembly.GetExecutingAssembly(), TimeZoneInfo.Utc).ToString();
+            CompilerDate.Text = BasicFunctions.GetLinkerTime(Assembly.GetExecutingAssembly(), TimeZoneInfo.Utc).ToString(Languages.ReturnCulture(false, null));
 
             OSInfo.OSVERSIONINFOEX osVersionInfo = new OSInfo.OSVERSIONINFOEX();
             osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSInfo.OSVERSIONINFOEX));

@@ -139,7 +139,7 @@
             // 
             this.RTFPSLabel.Location = new System.Drawing.Point(7, 22);
             this.RTFPSLabel.Name = "RTFPSLabel";
-            this.RTFPSLabel.Size = new System.Drawing.Size(105, 13);
+            this.RTFPSLabel.Size = new System.Drawing.Size(287, 13);
             this.RTFPSLabel.TabIndex = 18;
             this.RTFPSLabel.Text = "RTFPS";
             this.RTFPSLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

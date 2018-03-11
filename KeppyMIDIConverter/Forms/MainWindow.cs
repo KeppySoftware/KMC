@@ -151,11 +151,11 @@ namespace KeppyMIDIConverter
             Delegate.MIDIList.Columns.Add(Languages.Parse("MIDITracks"), 1, HorizontalAlignment.Left);
             Delegate.MIDIList.Columns.Add(Languages.Parse("MIDILength"), 1, HorizontalAlignment.Left);
             Delegate.MIDIList.Columns.Add(Languages.Parse("MIDISize"), 1, HorizontalAlignment.Left);
-            Delegate.MIDIList.Columns[0].Tag = 6;
-            Delegate.MIDIList.Columns[1].Tag = 1;
-            Delegate.MIDIList.Columns[2].Tag = 0.75;
-            Delegate.MIDIList.Columns[3].Tag = 1;
-            Delegate.MIDIList.Columns[4].Tag = 1;
+            Delegate.MIDIList.Columns[0].Tag = 5.9;
+            Delegate.MIDIList.Columns[1].Tag = 1.0;
+            Delegate.MIDIList.Columns[2].Tag = 0.80;
+            Delegate.MIDIList.Columns[3].Tag = 1.0;
+            Delegate.MIDIList.Columns[4].Tag = 1.0;
             Delegate.MIDIList_SizeChanged(Delegate.MIDIList, new EventArgs());
 
             // Strips
@@ -305,6 +305,7 @@ namespace KeppyMIDIConverter
                     Properties.Settings.Default.ShowOldTimeInfo = SCPIOTL.Checked = true;
                     RenderStandard.Checked = !Properties.Settings.Default.RealTimeSimulator;
                     RenderRTS.Checked = Properties.Settings.Default.RealTimeSimulator;
+                    ChangeLanguage.Enabled = !Program.DebugLang;
                 }
                 catch (Exception exception)
                 {

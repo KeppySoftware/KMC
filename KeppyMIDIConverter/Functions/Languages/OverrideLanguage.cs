@@ -61,7 +61,7 @@ namespace KeppyMIDIConverter
             LangSel.Enabled = OverrideLanguageCheck.Checked;
             Properties.Settings.Default.LangOverride = OverrideLanguageCheck.Checked;
             Properties.Settings.Default.Save();
-            Languages.ChangeLanguage(OverrideLanguageCheck.Checked ? Languages.LanguagesCodes[LangSel.SelectedIndex] : Languages.ReturnCulture(false).Name);
+            Languages.ChangeLanguage(OverrideLanguageCheck.Checked ? Languages.LanguagesCodes[LangSel.SelectedIndex] : Languages.ReturnCulture(false, null).Name);
             InitializeLanguage();
             MainWindow.InitializeLanguage();
             AdvancedSettings.InitializeLanguage();

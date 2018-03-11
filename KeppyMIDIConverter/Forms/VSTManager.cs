@@ -195,13 +195,13 @@ namespace KeppyMIDIConverter
                     {
                         if (Properties.Settings.Default.VSTiDisclaimer)
                         {
-                            DialogResult dialogResult = MessageBox.Show(Languages.Parse("LegalWarningVSTi"), String.Format("{0}{1} - {2}", Program.Who, Program.Title, Languages.Parse("Warning")), MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            DialogResult dialogResult = MessageBox.Show(Languages.Parse("LegalWarningVSTi"), String.Format("{0} {1} - {2}", Program.Who, Program.Title, Languages.Parse("Warning")), MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if (dialogResult == DialogResult.Yes)
                             {
                                 Properties.Settings.Default.VSTiDisclaimer = false;
                                 Properties.Settings.Default.Save();
                                 status = 2;
-                                MessageBox.Show(Languages.Parse("VSTiModeOnLegal"), String.Format("{0}{1} - {2}", Program.Who, Program.Title, Languages.Parse("Warning")), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show(Languages.Parse("VSTiModeOnLegal"), String.Format("{0} {1} - {2}", Program.Who, Program.Title, Languages.Parse("Warning")), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             else if (dialogResult == DialogResult.No)
                             {
@@ -213,7 +213,7 @@ namespace KeppyMIDIConverter
                         else
                         {
                             status = 2;
-                            MessageBox.Show(Languages.Parse("VSTiModeOn"), String.Format("{0}{1} - {2}", Program.Who, Program.Title, Languages.Parse("Warning")), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show(Languages.Parse("VSTiModeOn"), String.Format("{0} {1} - {2}", Program.Who, Program.Title, Languages.Parse("Warning")), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else status = 0;
