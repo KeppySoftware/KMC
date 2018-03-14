@@ -22,6 +22,7 @@ namespace KeppyMIDIConverter
             Delegate.AudioSettings.Text = Languages.Parse("AudioSettings");
             Delegate.MaxVoicesLabel.Text = Languages.Parse("MaxVoices");
             Delegate.AudioFreqLabel.Text = Languages.Parse("AudioFreq");
+            Delegate.SincInter.Text = Languages.Parse("SincInter");
 
             Delegate.ChannelsSettings.Text = Languages.Parse("ChannelsSettings");
             Delegate.StreamSettings.Text = Languages.Parse("StreamSettings");
@@ -62,6 +63,7 @@ namespace KeppyMIDIConverter
                 MaxVoices.Value = Properties.Settings.Default.Voices.LimitToRange(0, (Int32)MaxVoices.Maximum);
                 OverrideTempoNow.Text = String.Format(Languages.Parse("OverrideTempo"), MainWindow.KMCGlobals.OriginalTempo.ToString());
                 FrequencyBox.Text = Convert.ToString(Properties.Settings.Default.AudioFreq);
+                SincInter.Checked = Properties.Settings.Default.SincInter;
                 BitrateBox.Text = Convert.ToString(Properties.Settings.Default.Bitrate);
                 RTFPS.Value = Convert.ToDecimal(Properties.Settings.Default.RealTimeFPS);
                 //
@@ -186,6 +188,12 @@ namespace KeppyMIDIConverter
         private void RTFPS_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.RealTimeFPS = Convert.ToDouble(RTFPS.Value);
+            Properties.Settings.Default.Save();
+        }
+
+        private void SincInter_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SincInter = SincInter.Checked;
             Properties.Settings.Default.Save();
         }
 

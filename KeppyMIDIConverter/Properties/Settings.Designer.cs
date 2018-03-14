@@ -385,5 +385,17 @@ namespace KeppyMIDIConverter.Properties {
                 this["FirstTimeTray"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SincInter {
+            get {
+                return ((bool)(this["SincInter"]));
+            }
+            set {
+                this["SincInter"] = value;
+            }
+        }
     }
 }

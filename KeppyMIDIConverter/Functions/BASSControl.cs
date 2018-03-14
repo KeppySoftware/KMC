@@ -335,6 +335,13 @@ namespace KeppyMIDIConverter
         }
         // SF system
 
+        private static void BASSInitializeChanAttributes()
+        {
+            Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Properties.Settings.Default.Voices);
+            Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
+            if (Properties.Settings.Default.SincInter) Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_SRC, 3);
+        }
+
         public static void BASSVolumeSlideInit()
         {
             MainWindow.KMCGlobals._VolFX = Bass.BASS_ChannelSetFX((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), BASSFXType.BASS_FX_VOLUME, 1);
@@ -349,9 +356,12 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                MainWindow.KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, 
-                    BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_MIDI_DECAYEND | (PreviewMode ? 0 : BASSFlag.BASS_MIDI_SINCINTER)
-                    , 0);
+                MainWindow.KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L,
+                    BASSFlag.BASS_STREAM_DECODE |
+                    (PreviewMode ? 0 : (Properties.Settings.Default.SincInter ? BASSFlag.BASS_MIDI_SINCINTER : 0)) |
+                    BASSFlag.BASS_SAMPLE_FLOAT |
+                    BASSFlag.BASS_SAMPLE_SOFTWARE,
+                    0);
 
                 if (PreviewMode)
                 {
@@ -367,8 +377,7 @@ namespace KeppyMIDIConverter
                     if (Bass.BASS_ErrorGetCode() != 0) throw new Exception("Can not initialize WASAPI.");
                 }
 
-                Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Properties.Settings.Default.Voices);
-                Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
+                BASSInitializeChanAttributes();
 
                 if (Path.GetFileNameWithoutExtension(str).Length >= 49)
                     MainWindow.KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
@@ -418,9 +427,14 @@ namespace KeppyMIDIConverter
                 }
 
                 Bass.BASS_StreamFree(MainWindow.KMCGlobals._recHandle);
-                MainWindow.KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, (PreviewMode ? 0 : BASSFlag.BASS_STREAM_DECODE) | BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_SAMPLE_SOFTWARE, 0);
-                Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Properties.Settings.Default.Voices);
-                Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_CPU, 0);
+                MainWindow.KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreate(16, 
+                    BASSFlag.BASS_STREAM_DECODE | 
+                    (PreviewMode ? 0 : (Properties.Settings.Default.SincInter ? BASSFlag.BASS_MIDI_SINCINTER : 0)) |
+                    BASSFlag.BASS_SAMPLE_FLOAT | 
+                    BASSFlag.BASS_SAMPLE_SOFTWARE,
+                    0);
+
+                BASSInitializeChanAttributes();
 
                 SetTempo(true, true);
                 MainWindow.KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);

@@ -946,4 +946,8 @@ Clicca sull'icona nel vassoio per ripristinare la finestra.</value>
     <value>Visualizza palloncini/notifiche toast invece di finestre dei messaggi</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="SincInter" xml:space="preserve">
+    <value>Abilita interpolazione Sinc a 32 punti</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

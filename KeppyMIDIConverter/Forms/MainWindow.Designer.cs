@@ -57,6 +57,8 @@
             this.CMLAR = new System.Windows.Forms.MenuItem();
             this.SCPIOTL = new System.Windows.Forms.MenuItem();
             this.CSFFS = new System.Windows.Forms.MenuItem();
+            this.SBIOMB = new System.Windows.Forms.MenuItem();
+            this.MTT = new System.Windows.Forms.MenuItem();
             this.SVDS = new System.Windows.Forms.MenuItem();
             this.menuItem23 = new System.Windows.Forms.MenuItem();
             this.ChangeLanguage = new System.Windows.Forms.MenuItem();
@@ -91,8 +93,6 @@
             this.MoveUp = new System.Windows.Forms.MenuItem();
             this.MoveDown = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.SBIOMB = new System.Windows.Forms.MenuItem();
-            this.MTT = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -306,6 +306,18 @@
             this.CSFFS.Index = 6;
             this.CSFFS.Text = "{CSFFS}";
             this.CSFFS.Click += new System.EventHandler(this.CSFFS_Click);
+            // 
+            // SBIOMB
+            // 
+            this.SBIOMB.Index = 7;
+            this.SBIOMB.Text = "{SBIOMB}";
+            this.SBIOMB.Click += new System.EventHandler(this.SBIOMB_Click);
+            // 
+            // MTT
+            // 
+            this.MTT.Index = 8;
+            this.MTT.Text = "{MTT}";
+            this.MTT.Click += new System.EventHandler(this.MTT_Click);
             // 
             // SVDS
             // 
@@ -606,16 +618,6 @@
             // VistaMenuSys
             // 
             this.VistaMenuSys.ContainerControl = this;
-            // 
-            // SBIOMB
-            // 
-            this.SBIOMB.Index = 7;
-            this.SBIOMB.Text = "{SBIOMB}";
-            // 
-            // MTT
-            // 
-            this.MTT.Index = 8;
-            this.MTT.Text = "{MTT}";
             // 
             // MainWindow
             // 

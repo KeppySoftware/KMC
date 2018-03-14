@@ -42,6 +42,7 @@
             this.MaxVoicesLabel = new System.Windows.Forms.Label();
             this.MaxVoices = new System.Windows.Forms.NumericUpDown();
             this.ChannelsSettings = new System.Windows.Forms.Button();
+            this.SincInter = new System.Windows.Forms.CheckBox();
             this.StreamSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempoValue)).BeginInit();
@@ -53,7 +54,7 @@
             // 
             this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKBtn.Location = new System.Drawing.Point(315, 281);
+            this.OKBtn.Location = new System.Drawing.Point(315, 315);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(79, 23);
             this.OKBtn.TabIndex = 8;
@@ -76,7 +77,7 @@
             this.StreamSettings.Controls.Add(this.OverrideTempoNow);
             this.StreamSettings.Controls.Add(this.FXDisable);
             this.StreamSettings.Controls.Add(this.Noteoff1);
-            this.StreamSettings.Location = new System.Drawing.Point(12, 95);
+            this.StreamSettings.Location = new System.Drawing.Point(12, 129);
             this.StreamSettings.Name = "StreamSettings";
             this.StreamSettings.Size = new System.Drawing.Size(382, 180);
             this.StreamSettings.TabIndex = 0;
@@ -237,7 +238,6 @@
             // 
             // Label6
             // 
-            this.Label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Label6.AutoSize = true;
             this.Label6.Location = new System.Drawing.Point(356, 51);
             this.Label6.Name = "Label6";
@@ -247,7 +247,6 @@
             // 
             // FrequencyBox
             // 
-            this.FrequencyBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.FrequencyBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FrequencyBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.FrequencyBox.FormattingEnabled = true;
@@ -280,7 +279,6 @@
             // 
             // AudioFreqLabel
             // 
-            this.AudioFreqLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AudioFreqLabel.AutoSize = true;
             this.AudioFreqLabel.Location = new System.Drawing.Point(6, 51);
             this.AudioFreqLabel.Name = "AudioFreqLabel";
@@ -298,6 +296,7 @@
             this.AudioSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.AudioSettings.Controls.Add(this.SincInter);
             this.AudioSettings.Controls.Add(this.MaxVoicesLabel);
             this.AudioSettings.Controls.Add(this.MaxVoices);
             this.AudioSettings.Controls.Add(this.AudioFreqLabel);
@@ -305,14 +304,13 @@
             this.AudioSettings.Controls.Add(this.Label6);
             this.AudioSettings.Location = new System.Drawing.Point(12, 12);
             this.AudioSettings.Name = "AudioSettings";
-            this.AudioSettings.Size = new System.Drawing.Size(382, 77);
+            this.AudioSettings.Size = new System.Drawing.Size(382, 111);
             this.AudioSettings.TabIndex = 9;
             this.AudioSettings.TabStop = false;
             this.AudioSettings.Text = "AudioSettings";
             // 
             // MaxVoicesLabel
             // 
-            this.MaxVoicesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MaxVoicesLabel.AutoSize = true;
             this.MaxVoicesLabel.Location = new System.Drawing.Point(6, 21);
             this.MaxVoicesLabel.Name = "MaxVoicesLabel";
@@ -322,7 +320,6 @@
             // 
             // MaxVoices
             // 
-            this.MaxVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MaxVoices.Location = new System.Drawing.Point(291, 19);
             this.MaxVoices.Maximum = new decimal(new int[] {
             100000,
@@ -347,7 +344,8 @@
             // 
             // ChannelsSettings
             // 
-            this.ChannelsSettings.Location = new System.Drawing.Point(12, 281);
+            this.ChannelsSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ChannelsSettings.Location = new System.Drawing.Point(12, 315);
             this.ChannelsSettings.Name = "ChannelsSettings";
             this.ChannelsSettings.Size = new System.Drawing.Size(140, 23);
             this.ChannelsSettings.TabIndex = 10;
@@ -355,12 +353,24 @@
             this.ChannelsSettings.UseVisualStyleBackColor = true;
             this.ChannelsSettings.Click += new System.EventHandler(this.ChannelsSettings_Click);
             // 
+            // SincInter
+            // 
+            this.SincInter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SincInter.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SincInter.Location = new System.Drawing.Point(9, 80);
+            this.SincInter.Name = "SincInter";
+            this.SincInter.Size = new System.Drawing.Size(361, 18);
+            this.SincInter.TabIndex = 35;
+            this.SincInter.Text = "SincInter";
+            this.SincInter.UseVisualStyleBackColor = true;
+            this.SincInter.CheckedChanged += new System.EventHandler(this.SincInter_CheckedChanged);
+            // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(406, 316);
+            this.ClientSize = new System.Drawing.Size(406, 350);
             this.ControlBox = false;
             this.Controls.Add(this.ChannelsSettings);
             this.Controls.Add(this.AudioSettings);
@@ -409,5 +419,6 @@
         internal System.Windows.Forms.Label MaxVoicesLabel;
         public System.Windows.Forms.NumericUpDown MaxVoices;
         private System.Windows.Forms.Button ChannelsSettings;
+        internal System.Windows.Forms.CheckBox SincInter;
     }
 }

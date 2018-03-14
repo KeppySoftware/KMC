@@ -65,7 +65,7 @@ namespace KeppyMIDIConverter
         private static bool CustomStop = false;
         public static void PlayConversionStop()
         {
-            if (!Properties.Settings.Default.ShowBalloon) PlayKMCSound("convfin", ref CustomStop, Properties.Resources.convfin);
+            PlayKMCSound("convfin", ref CustomStop, Properties.Resources.convfin);
         }
 
         private static bool CustomError = false;

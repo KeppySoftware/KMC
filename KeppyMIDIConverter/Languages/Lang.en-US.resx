@@ -942,4 +942,8 @@ Press OK to continue.</value>
 Click the icon on the system tray to restore it.</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="SincInter" xml:space="preserve">
+    <value>Enable 32 point sinc interpolation</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

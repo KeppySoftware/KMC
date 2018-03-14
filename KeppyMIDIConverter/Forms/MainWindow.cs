@@ -463,7 +463,7 @@ namespace KeppyMIDIConverter
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
-            if (this.WindowState.Equals(FormWindowState.Minimized))
+            if (this.WindowState.Equals(FormWindowState.Minimized) && Properties.Settings.Default.MinimizeToTray)
             {
                 this.Hide();
                 if (Properties.Settings.Default.FirstTimeTray != false)
@@ -621,6 +621,20 @@ namespace KeppyMIDIConverter
         {
             CSFFS.Checked = !CSFFS.Checked;
             Properties.Settings.Default.AudioEvents = CSFFS.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void SBIOMB_Click(object sender, EventArgs e)
+        {
+            SBIOMB.Checked = !SBIOMB.Checked;
+            Properties.Settings.Default.ShowBalloon = SBIOMB.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void MTT_Click(object sender, EventArgs e)
+        {
+            MTT.Checked = !MTT.Checked;
+            Properties.Settings.Default.MinimizeToTray = MTT.Checked;
             Properties.Settings.Default.Save();
         }
 
