@@ -185,6 +185,8 @@ namespace KeppyMIDIConverter
             Delegate.CMLAR.Text = Languages.Parse("CMLAR");
             Delegate.SCPIOTL.Text = Languages.Parse("SCPIOTL");
             Delegate.CSFFS.Text = Languages.Parse("CSFFS");
+            Delegate.SBIOMB.Text = Languages.Parse("SBIOMB");
+            Delegate.MTT.Text = Languages.Parse("MTT");
             Delegate.SVDS.Text = Languages.Parse("SVDS");
             Delegate.ChangeLanguage.Text = Languages.Parse("ChangeLanguage");
 
@@ -284,8 +286,11 @@ namespace KeppyMIDIConverter
             KMCThreads.ConversionProcessRT.DoWork += ConverterFunctions.CPRWork;
             KMCThreads.PlaybackProcess.DoWork += ConverterFunctions.PBWork;
 
+            // Notification icon in the system tray
+            NotifyArea.ShowIconTray();
+
             // Initialize values
-            for (int i = 0; i < 8; i++) MainWindow.VSTs.VSTInfo[i] = new BASS_VST_INFO();
+            for (int i = 0; i < 8; i++) VSTs.VSTInfo[i] = new BASS_VST_INFO();
 
             try
             {
@@ -302,14 +307,16 @@ namespace KeppyMIDIConverter
                     // Load settings
                     CSFFS.Checked = Properties.Settings.Default.AudioEvents;
                     ACFUWSTC.Checked = Properties.Settings.Default.AutoUpdateCheck;
-                    Properties.Settings.Default.ShowOldTimeInfo = SCPIOTL.Checked = true;
+                    SCPIOTL.Checked = Properties.Settings.Default.ShowOldTimeInfo;
                     RenderStandard.Checked = !Properties.Settings.Default.RealTimeSimulator;
                     RenderRTS.Checked = Properties.Settings.Default.RealTimeSimulator;
+                    SBIOMB.Checked = Properties.Settings.Default.ShowBalloon;
+                    MTT.Checked = Properties.Settings.Default.MinimizeToTray;
                     ChangeLanguage.Enabled = !Program.DebugLang;
                 }
                 catch (Exception exception)
                 {
-                    KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("Error"), exception.ToString(), 0, 0);
+                    ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), exception.ToString(), 0, 0);
                     errordialog.ShowDialog();
                 }
 
@@ -410,7 +417,7 @@ namespace KeppyMIDIConverter
             BasicFunctions.MoveListViewItems(MIDIList, BasicFunctions.MoveDirection.Down);
         }
 
-        private bool ConfirmExit()
+        public static bool ConfirmExit()
         {
             // Confirm user wants to close
             if (Bass.BASS_ChannelIsActive(KMCGlobals._recHandle) == BASSActive.BASS_ACTIVE_PLAYING)
@@ -428,7 +435,7 @@ namespace KeppyMIDIConverter
                 return true;
         }
 
-        private void CloseApp()
+        public static void CloseApp()
         {
             timeEndPeriod(timerAccuracy);
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
@@ -438,20 +445,34 @@ namespace KeppyMIDIConverter
                 File.Delete(Program.OGGEnc);
                 File.Delete(Program.MP3Enc);
             }
-            Process.GetCurrentProcess().Kill();
+            NotifyArea.HideIconTray();
+            Properties.Settings.Default.Save();
+            Application.Exit();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
 
-            if (e.CloseReason == CloseReason.WindowsShutDown) {
-                CloseApp();
-                Process.GetCurrentProcess().Kill();
-            }
+            if (e.CloseReason == CloseReason.WindowsShutDown) CloseApp();
 
-            if (!ConfirmExit()) e.Cancel = true;
-            else CloseApp();
+            if (ConfirmExit()) CloseApp();
+            else e.Cancel = true;
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            if (this.WindowState.Equals(FormWindowState.Minimized))
+            {
+                this.Hide();
+                if (Properties.Settings.Default.FirstTimeTray != false)
+                {
+                    NotifyArea.ShowStatusTray(Languages.Parse("Information"), Languages.Parse("MinimizedToTray"), ToolTipIcon.Info);
+                    Properties.Settings.Default.FirstTimeTray = false;
+                    Properties.Settings.Default.Save();
+                }
+            }
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -465,8 +486,7 @@ namespace KeppyMIDIConverter
             if (!Resizing)
             {
                 Resizing = true;
-                ListView listView = sender as ListView;
-                if (listView != null)
+                if (sender is ListView listView)
                 {
                     float totalColumnWidth = 0;
 

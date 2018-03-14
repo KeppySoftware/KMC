@@ -906,6 +906,7 @@ Please wait...</value>
   </data>
   <data name="NA" xml:space="preserve">
     <value>N/A</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Unvailable</value>
@@ -923,9 +924,22 @@ Press OK to continue.</value>
   </data>
   <data name="CorruptedSetupTitle" xml:space="preserve">
     <value>Corrupted setup</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="MissingTranslations" xml:space="preserve">
     <value>Some languages might not be available yet.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MTT" xml:space="preserve">
+    <value>Minimize to tray</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SBIOMB" xml:space="preserve">
+    <value>Show balloons/toast notifications instead of message boxes</value>
+  </data>
+  <data name="MinimizedToTray" xml:space="preserve">
+    <value>The converter has been minimized to tray.
+Click the icon on the system tray to restore it.</value>
     <comment>Self-explanatory.</comment>
   </data>
 </root>

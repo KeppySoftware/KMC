@@ -403,7 +403,7 @@ namespace KeppyMIDIConverter
                         }
                         else
                         {
-                            BASSControl.ReleaseResources(false);
+                            BASSControl.BASSCloseStream(Languages.Parse("PlaybackCompleted"), Languages.Parse("PlaybackCompleted"), 1);
                             break;
                         }
                     }

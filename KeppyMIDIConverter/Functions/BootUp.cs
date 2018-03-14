@@ -20,18 +20,30 @@ namespace KeppyMIDIConverter
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
 
+        static EventWaitHandle m;
+
         public static string OGGEnc = "kmcogg.exe";
         public static string MP3Enc = "kmcmp3.exe";
 
         public static bool SkipUpdate = false;
         public static bool SkipTrigger = false;
         public static bool CloseApp = false;
+        public static int Session = 1;
 
         public static void CheckUp(String[] args)
         {
-            bool ok;
-            Mutex m = new Mutex(true, "KepMIDIConv", out ok);
-            if (!ok)
+            bool FailedOnce = false;
+            bool Okay;
+            ReTest:
+            m = new EventWaitHandle(false, EventResetMode.ManualReset, String.Format("KepMIDIConv{0}", Session), out Okay);
+            if (!Okay)
+            {
+                Session++;
+                FailedOnce = true;
+                goto ReTest;
+            }
+
+            if (FailedOnce)
             {
                 try
                 {
@@ -117,8 +129,10 @@ namespace KeppyMIDIConverter
                 {
                     Properties.Settings.Default.NoMoreDonation = false;
                     Properties.Settings.Default.Save();
-                    Form frm = new DonateMonthlyDialog();
-                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    Form frm = new DonateMonthlyDialog
+                    {
+                        StartPosition = FormStartPosition.CenterScreen
+                    };
                     frm.ShowDialog();
                 }
                 else if (args[i].ToLowerInvariant().Contains("/"))
@@ -140,8 +154,10 @@ namespace KeppyMIDIConverter
                 double days = (DateTime.Now.Date - Properties.Settings.Default.DonationShownWhen).TotalDays;
                 if (days > 30 && Properties.Settings.Default.NoMoreDonation == false)
                 {
-                    Form frm = new DonateMonthlyDialog();
-                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    Form frm = new DonateMonthlyDialog
+                    {
+                        StartPosition = FormStartPosition.CenterScreen
+                    };
                     frm.ShowDialog();
                 }
             }

@@ -65,7 +65,7 @@ namespace KeppyMIDIConverter
         private static bool CustomStop = false;
         public static void PlayConversionStop()
         {
-            PlayKMCSound("convfin", ref CustomStop, Properties.Resources.convfin);
+            if (!Properties.Settings.Default.ShowBalloon) PlayKMCSound("convfin", ref CustomStop, Properties.Resources.convfin);
         }
 
         private static bool CustomError = false;
@@ -154,18 +154,18 @@ namespace KeppyMIDIConverter
                         StreamReader reader = new StreamReader(stream);
                         String newestversion = reader.ReadToEnd();
                         FileVersionInfo Converter = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
-                        Version x = null;
-                        Version.TryParse(newestversion, out x);
-                        Version y = null;
-                        Version.TryParse(Converter.FileVersion.ToString(), out y);
+                        Version.TryParse(newestversion, out Version x);
+                        Version.TryParse(Converter.FileVersion.ToString(), out Version y);
                         if (x > y)
                         {
                             MainWindow.Delegate.Invoke((MethodInvoker)delegate {
                                 DialogResult dialogResult = MessageBox.Show(String.Format(Languages.Parse("UpdateFound"), Program.Who, Program.Title, Converter.FileVersion, newestversion), String.Format(Languages.Parse("UpdateFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                                 if (dialogResult == DialogResult.Yes)
                                 {
-                                    UpdateDownloader frm = new UpdateDownloader(newestversion);
-                                    frm.StartPosition = FormStartPosition.CenterScreen;
+                                    UpdateDownloader frm = new UpdateDownloader(newestversion)
+                                    {
+                                        StartPosition = FormStartPosition.CenterScreen
+                                    };
                                     frm.ShowDialog();
                                 }
                             });

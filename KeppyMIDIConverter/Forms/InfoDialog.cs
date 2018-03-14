@@ -22,9 +22,9 @@ namespace KeppyMIDIConverter
         // Funcs
 
         private RegistryKey CurrentVerKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", false);
-        private FileVersionInfo Converter = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
-        private FileVersionInfo BASS = FileVersionInfo.GetVersionInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\bass.dll");
-        private FileVersionInfo BASSMIDI = FileVersionInfo.GetVersionInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\bassmidi.dll");
+        public static FileVersionInfo Converter = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+        private static FileVersionInfo BASS = FileVersionInfo.GetVersionInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\bass.dll");
+        private static FileVersionInfo BASSMIDI = FileVersionInfo.GetVersionInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\bassmidi.dll");
 
         private void InitializeLanguage()
         {
@@ -80,8 +80,10 @@ namespace KeppyMIDIConverter
             BASSMIDIVer.Text = ReturnBASSAssemblyVersion(BASSMIDI.FileVersion, BASSMIDI.FilePrivatePart);
             CompilerDate.Text = BasicFunctions.GetLinkerTime(Assembly.GetExecutingAssembly(), TimeZoneInfo.Utc).ToString(Languages.ReturnCulture(false, null));
 
-            OSInfo.OSVERSIONINFOEX osVersionInfo = new OSInfo.OSVERSIONINFOEX();
-            osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSInfo.OSVERSIONINFOEX));
+            OSInfo.OSVERSIONINFOEX osVersionInfo = new OSInfo.OSVERSIONINFOEX
+            {
+                dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSInfo.OSVERSIONINFOEX))
+            };
 
             if (Properties.Settings.Default.IsItPreRelease) ConverterVer.Text += " (PRERELEASE)";
 

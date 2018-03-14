@@ -908,9 +908,11 @@ Attendere prego...</value>
   </data>
   <data name="NA" xml:space="preserve">
     <value>N/D</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Non disponibile</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="VSTiSettings" xml:space="preserve">
     <value>Impostazioni VSTi</value>
@@ -925,9 +927,23 @@ Premere OK per chiudere questa finestra.</value>
   </data>
   <data name="CorruptedSetupTitle" xml:space="preserve">
     <value>Setup corrotto</value>
+    <comment>Self-explanatory.</comment>
   </data>
   <data name="MissingTranslations" xml:space="preserve">
     <value>Alcune traduzioni potrebbero non essere ancora disponibili.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MinimizedToTray" xml:space="preserve">
+    <value>Il convertitore è stato ridotto ad icona nel vassoio di sistema.
+Clicca sull'icona nel vassoio per ripristinare la finestra.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MTT" xml:space="preserve">
+    <value>Riduci ad icona nel vassoio di sistema</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SBIOMB" xml:space="preserve">
+    <value>Visualizza palloncini/notifiche toast invece di finestre dei messaggi</value>
     <comment>Self-explanatory.</comment>
   </data>
 </root>

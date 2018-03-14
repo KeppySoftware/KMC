@@ -52,9 +52,27 @@ namespace KeppyMIDIConverter
             RTF.ActiveVoices = 0.0f;
             if (type == 0)
             {
-                MainWindow.Delegate.Invoke((MethodInvoker)delegate {
-                    MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                });
+                if (Properties.Settings.Default.ShowBalloon)
+                {
+                    MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                        NotifyArea.ShowStatusTray(title, message, ToolTipIcon.Info);
+                    });
+                }
+                else
+                {
+                    MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                        MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    });
+                }
+            }
+            else
+            {
+                if (Properties.Settings.Default.ShowBalloon)
+                {
+                    MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                        NotifyArea.ShowStatusTray(title, message, ToolTipIcon.Info);
+                    });
+                }
             }
             MainWindow.KMCGlobals.CancellationPendingValue = 0;
             MainWindow.KMCGlobals.CurrentStatusTextString = null;
@@ -72,7 +90,7 @@ namespace KeppyMIDIConverter
             MainWindow.KMCGlobals.eventc = 0;
             MainWindow.KMCGlobals.events = null;
             MainWindow.Delegate.Invoke((MethodInvoker)delegate {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("Error"), ex.ToString(), 0, 1);
+                ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), ex.ToString(), 0, 1);
                 errordialog.ShowDialog();
             });
         }

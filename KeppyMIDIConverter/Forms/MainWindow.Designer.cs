@@ -91,6 +91,8 @@
             this.MoveUp = new System.Windows.Forms.MenuItem();
             this.MoveDown = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
+            this.SBIOMB = new System.Windows.Forms.MenuItem();
+            this.MTT = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -229,6 +231,8 @@
             this.CMLAR,
             this.SCPIOTL,
             this.CSFFS,
+            this.SBIOMB,
+            this.MTT,
             this.SVDS,
             this.menuItem23,
             this.ChangeLanguage});
@@ -305,19 +309,19 @@
             // 
             // SVDS
             // 
-            this.SVDS.Index = 7;
+            this.SVDS.Index = 9;
             this.SVDS.Text = "{SVDS}";
             this.SVDS.Click += new System.EventHandler(this.SVS_Click);
             // 
             // menuItem23
             // 
-            this.menuItem23.Index = 8;
+            this.menuItem23.Index = 10;
             this.menuItem23.Text = "-";
             // 
             // ChangeLanguage
             // 
             this.VistaMenuSys.SetImage(this.ChangeLanguage, global::KeppyMIDIConverter.Properties.Resources.lang_icon);
-            this.ChangeLanguage.Index = 9;
+            this.ChangeLanguage.Index = 11;
             this.ChangeLanguage.Text = "{ChangeLanguage}";
             this.ChangeLanguage.Click += new System.EventHandler(this.ChangeLanguage_Click);
             // 
@@ -603,6 +607,16 @@
             // 
             this.VistaMenuSys.ContainerControl = this;
             // 
+            // SBIOMB
+            // 
+            this.SBIOMB.Index = 7;
+            this.SBIOMB.Text = "{SBIOMB}";
+            // 
+            // MTT
+            // 
+            this.MTT.Index = 8;
+            this.MTT.Text = "{MTT}";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -681,7 +695,6 @@
         public System.Windows.Forms.MenuItem JKSUS;
         public System.Windows.Forms.MenuItem ASAR;
         public System.Windows.Forms.Label VolumeLabel;
-        private wyDay.Controls.VistaMenu VistaMenuSys;
         public System.Windows.Forms.MenuItem ImportMIDIsC;
         public System.Windows.Forms.MenuItem RemoveMIDIsC;
         public System.Windows.Forms.MenuItem ClearListC;
@@ -692,6 +705,9 @@
         public System.Windows.Forms.MenuItem SVDS;
         public System.Windows.Forms.MenuItem VSTiSeparator;
         public System.Windows.Forms.MenuItem VSTiSettings;
+        private System.Windows.Forms.MenuItem SBIOMB;
+        private System.Windows.Forms.MenuItem MTT;
+        private wyDay.Controls.VistaMenu VistaMenuSys;
     }
 }
 
