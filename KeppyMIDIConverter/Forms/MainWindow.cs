@@ -36,6 +36,7 @@ namespace KeppyMIDIConverter
 
         public static class KMCDialogs
         {
+            public static AdvancedVoices AdvVoices = new AdvancedVoices();
             public static AdvancedSettings AdvSett = new AdvancedSettings();
             public static SoundfontDialog SFDialog = new SoundfontDialog();
             public static OpenFileDialog MIDIImport = new OpenFileDialog();
@@ -287,7 +288,7 @@ namespace KeppyMIDIConverter
             KMCThreads.PlaybackProcess.DoWork += ConverterFunctions.PBWork;
 
             // Notification icon in the system tray
-            NotifyArea.ShowIconTray();
+            if (Properties.Settings.Default.MinimizeToTray || Properties.Settings.Default.ShowBalloon) NotifyArea.ShowIconTray();
 
             // Initialize values
             for (int i = 0; i < 8; i++) VSTs.VSTInfo[i] = new BASS_VST_INFO();
@@ -548,6 +549,7 @@ namespace KeppyMIDIConverter
         private void OpenSettings_Click(object sender, EventArgs e)
         {
             KMCDialogs.AdvSett.Show();
+            KMCDialogs.AdvSett.Focus();
         }
 
         private void IATP_Click(object sender, EventArgs e)
@@ -557,12 +559,8 @@ namespace KeppyMIDIConverter
 
         private void AVSLabel_Click(object sender, EventArgs e)
         {
-            try
-            {
-                AdvancedVoices vfrm = new AdvancedVoices();
-                vfrm.Show();
-            }
-            catch { }
+            KMCDialogs.AdvVoices.Show();
+            KMCDialogs.AdvVoices.Focus();
         }
 
         public static Boolean Seeking = false;
@@ -629,6 +627,9 @@ namespace KeppyMIDIConverter
             SBIOMB.Checked = !SBIOMB.Checked;
             Properties.Settings.Default.ShowBalloon = SBIOMB.Checked;
             Properties.Settings.Default.Save();
+
+            if (Properties.Settings.Default.MinimizeToTray || Properties.Settings.Default.ShowBalloon) NotifyArea.ShowIconTray();
+            else NotifyArea.HideIconTray();
         }
 
         private void MTT_Click(object sender, EventArgs e)
@@ -636,6 +637,9 @@ namespace KeppyMIDIConverter
             MTT.Checked = !MTT.Checked;
             Properties.Settings.Default.MinimizeToTray = MTT.Checked;
             Properties.Settings.Default.Save();
+
+            if (Properties.Settings.Default.MinimizeToTray || Properties.Settings.Default.ShowBalloon) NotifyArea.ShowIconTray();
+            else NotifyArea.HideIconTray();
         }
 
         private void SVS_Click(object sender, EventArgs e)

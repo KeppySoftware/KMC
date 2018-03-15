@@ -12,7 +12,7 @@ namespace KeppyMIDIConverter
         static ContextMenu NotifyMenu = new ContextMenu();
         static MenuItem KMCVersion = new MenuItem();
         static MenuItem Separator = new MenuItem();
-        static MenuItem ExitItem = new MenuItem();
+        public static MenuItem ExitItem = new MenuItem();
         static NotifyIcon NotifyTray = new NotifyIcon();
 
         public static void ShowIconTray()

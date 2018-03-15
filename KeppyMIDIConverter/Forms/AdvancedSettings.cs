@@ -40,10 +40,7 @@ namespace KeppyMIDIConverter
             InitializeComponent();
             Delegate = this;
             InitializeLanguage();
-        }
 
-        private void AdvancedSettings_Load(object sender, EventArgs e)
-        {
             try
             {
                 // W8
@@ -96,12 +93,18 @@ namespace KeppyMIDIConverter
             }
             catch (Exception ex)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("FatalError"), ex.ToString(), 1, 0);
+                ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("FatalError"), ex.ToString(), 1, 0);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Hide();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            e.Cancel = true;
             Hide();
         }
 
@@ -149,20 +152,10 @@ namespace KeppyMIDIConverter
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (ConstantBitrate.Checked == true)
-            {
-                Properties.Settings.Default.OverrideBitrate = true;
-                Properties.Settings.Default.Save();
-                BitrateLabel.Enabled = true;
-                BitrateBox.Enabled = true;
-            }
-            else
-            {
-                Properties.Settings.Default.OverrideBitrate = false;
-                Properties.Settings.Default.Save();
-                BitrateLabel.Enabled = false;
-                BitrateBox.Enabled = false;
-            }
+            Properties.Settings.Default.OverrideBitrate = ConstantBitrate.Checked;
+            Properties.Settings.Default.Save();
+            BitrateLabel.Enabled = ConstantBitrate.Checked;
+            BitrateBox.Enabled = ConstantBitrate.Checked;
         }
 
         // Snap feature
@@ -210,16 +203,8 @@ namespace KeppyMIDIConverter
 
         private void MaxVoices_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                Properties.Settings.Default.Voices = (int)MaxVoices.Value;
-                Properties.Settings.Default.Save();
-            }
-            catch (Exception ex)
-            {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("Error"), ex.ToString(), 0, 0);
-                errordialog.ShowDialog();
-            }
+            Properties.Settings.Default.Voices = (int)MaxVoices.Value;
+            Properties.Settings.Default.Save();
         }
 
         private void ChannelsSettings_Click(object sender, EventArgs e)

@@ -24,6 +24,23 @@ namespace KeppyMIDIConverter
             InitializeComponent();
             Delegate = this;
             InitializeLanguage();
+
+            SFList.ContextMenu = SFMenu;
+            SoundfontImportDialog.InitialDirectory = Properties.Settings.Default.LastSoundFontFolder;
+
+            if (Properties.Settings.Default.LoudMaxEnabled)
+                MainWindow.KMCStatus.VSTMode = true;
+
+            if (MainWindow.KMCStatus.VSTMode == true)
+            {
+                VSTImport.Enabled = true;
+                VSTUse.Checked = true;
+            }
+            else
+            {
+                VSTImport.Enabled = false;
+                VSTUse.Checked = false;
+            }
         }
 
         public static void InitializeLanguage()
@@ -68,27 +85,6 @@ namespace KeppyMIDIConverter
             SFList.Items.Clear();
             Array.Clear(KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts, 0, KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts.Length);
             KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts = new string[0];
-        }
-
-        private void SoundfontDialog_Load(object sender, EventArgs e)
-        {
-            InitializeLanguage();
-            SFList.ContextMenu = SFMenu;
-            SoundfontImportDialog.InitialDirectory = Properties.Settings.Default.LastSoundFontFolder;
-
-            if (Properties.Settings.Default.LoudMaxEnabled)
-                MainWindow.KMCStatus.VSTMode = true;
-
-            if (MainWindow.KMCStatus.VSTMode == true)
-            {
-                VSTImport.Enabled = true;
-                VSTUse.Checked = true;
-            }
-            else
-            {
-                VSTImport.Enabled = false;
-                VSTUse.Checked = false;
-            }
         }
 
         private string ImportMePlease(string file)

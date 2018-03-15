@@ -950,4 +950,13 @@ Clicca sull'icona nel vassoio per ripristinare la finestra.</value>
     <value>Abilita interpolazione Sinc a 32 punti</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="ArgumentError" xml:space="preserve">
+    <value>Comando non valido</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="InvalidArg" xml:space="preserve">
+    <value>{0} non è una comando valido!
+Clicca OK per continuare.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

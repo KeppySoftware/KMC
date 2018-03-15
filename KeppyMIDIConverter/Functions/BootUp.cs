@@ -115,7 +115,7 @@ namespace KeppyMIDIConverter
                     Console.BackgroundColor = ConsoleColor.Green;
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.WriteLine("Debug started, waiting for errors...");
-                    Console.ResetColor();
+                    Console.ResetColor();              
                 }
                 else if (args[i].ToLowerInvariant() == "/restorelanguage")
                 {
@@ -149,6 +149,7 @@ namespace KeppyMIDIConverter
             Random Chance = new Random();
             DateTime BirthDate = DateTime.Now;
             int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
+
             if (BirthDate.ToString("dd") == "01")
             {
                 double days = (DateTime.Now.Date - Properties.Settings.Default.DonationShownWhen).TotalDays;
@@ -166,27 +167,9 @@ namespace KeppyMIDIConverter
             {
                 MessageBox.Show("Today, KMC turned " + (currentyear - 2015).ToString() + " year(s) old!\n\nHappy birthday, awesome converter!", "Happy birthday to me, Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (BirthDate.ToString("dd/MM") == "26/09")
-            {
-                if (Chance.NextDouble() < 0.05)
-                {
-                    Program.Who = "Gingy's";
-                }
-            }
-            else if (BirthDate.ToString("dd/MM") == "31/10")
-            {
-                if (Chance.NextDouble() < 0.017)
-                {
-                    Program.Who = "Someone's";
-                }
-            }
             else if (BirthDate.ToString("dd/MM") == "05/12")
             {
                 MessageBox.Show("Today is Keppy's birthday! He turned " + (currentyear - 1999).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Kepperino", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (BirthDate.ToString("dd/MM") == "25/12")
-            {
-                Program.Who = "Santa's";
             }
         }
 

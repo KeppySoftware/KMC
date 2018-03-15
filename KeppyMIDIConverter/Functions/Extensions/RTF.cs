@@ -279,7 +279,7 @@ namespace KeppyMIDIConverter
         {
             if (Mode == 0) // Idle
             {
-                MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: 0/{2}", Languages.Parse("ActiveVoices"), 0, MainWindow.KMCDialogs.AdvSett.MaxVoices.Value);
+                MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: 0/{2}", Languages.Parse("ActiveVoices"), 0, Properties.Settings.Default.Voices);
                 MainWindow.Delegate.OpenSettings.Enabled = true;
                 MainWindow.Delegate.VolumeLabel.Enabled = true;
                 MainWindow.Delegate.PreviewTrackBar.Enabled = false;
@@ -291,7 +291,7 @@ namespace KeppyMIDIConverter
             }
             else if (Mode == 1) // Memory allocation
             {
-                MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: 0/{2}", Languages.Parse("ActiveVoices"), 0, MainWindow.KMCDialogs.AdvSett.MaxVoices.Value);
+                MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: 0/{2}", Languages.Parse("ActiveVoices"), 0, Properties.Settings.Default.Voices);
                 MainWindow.Delegate.OpenSettings.Enabled = false;
                 MainWindow.Delegate.PreviewTrackBar.Enabled = false;
                 MainWindow.Delegate.VSTiSeparator.Visible = false;
@@ -315,7 +315,7 @@ namespace KeppyMIDIConverter
             else if (Mode == 2) // Rendering/Playback
             {
                 if (MainWindow.VSTs.VSTInfo[0].isInstrument) MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: {1}", Languages.Parse("ActiveVoices"), Languages.Parse("Unavailable"));
-                else MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: {1}/{2}", Languages.Parse("ActiveVoices"), Convert.ToInt32(ActiveVoices), MainWindow.KMCDialogs.AdvSett.MaxVoices.Value);
+                else MainWindow.Delegate.AVSLabel.Text = String.Format("{0}: {1}/{2}", Languages.Parse("ActiveVoices"), Convert.ToInt32(ActiveVoices), Properties.Settings.Default.Voices);
 
                 if (MainWindow.KMCStatus.RenderingMode)
                 {

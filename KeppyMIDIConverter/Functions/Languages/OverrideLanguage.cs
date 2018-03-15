@@ -62,10 +62,7 @@ namespace KeppyMIDIConverter
             Properties.Settings.Default.LangOverride = OverrideLanguageCheck.Checked;
             Properties.Settings.Default.Save();
             Languages.ChangeLanguage(OverrideLanguageCheck.Checked ? Languages.LanguagesCodes[LangSel.SelectedIndex] : Languages.ReturnCulture(false, null).Name);
-            InitializeLanguage();
-            MainWindow.InitializeLanguage();
-            AdvancedSettings.InitializeLanguage();
-            SoundfontDialog.InitializeLanguage();
+            InitializeAllLanguages();
         }
 
         private void LangSel_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,16 +71,18 @@ namespace KeppyMIDIConverter
             if (LangSel.Enabled)
             {
                 Languages.ChangeLanguage(Languages.LanguagesCodes[LangSel.SelectedIndex]);
-                InitializeLanguage();
-                MainWindow.InitializeLanguage();
-                AdvancedSettings.InitializeLanguage();
-                SoundfontDialog.InitializeLanguage();
+                InitializeAllLanguages();
             }
         }
 
-        private void OK_Click(object sender, EventArgs e)
+        private void InitializeAllLanguages()
         {
-
+            InitializeLanguage();
+            MainWindow.InitializeLanguage();
+            AdvancedSettings.InitializeLanguage();
+            SoundfontDialog.InitializeLanguage();
+            AdvancedVoices.InitializeLanguage();
+            NotifyArea.ExitItem.Text = Languages.Parse("Exit");
         }
     }
 }

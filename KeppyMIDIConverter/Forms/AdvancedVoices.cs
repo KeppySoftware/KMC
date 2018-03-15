@@ -14,45 +14,34 @@ namespace KeppyMIDIConverter
 {
     public partial class AdvancedVoices : Form
     {
-        public static uint BringToFrontMessage;
-        public static Mutex m;
-        const int WM_SETREDRAW = 0x0b;
+        public static AdvancedVoices Delegate;
 
-        private void InitializeLanguage()
+        public static void InitializeLanguage()
         {
-            CHV1L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 1);
-            CHV2L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 2);
-            CHV3L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 3);
-            CHV4L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 4);
-            CHV5L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 5);
-            CHV6L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 6);
-            CHV7L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 7);
-            CHV8L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 8);
-            CHV9L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 9);
-            CHV10L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 10);
-            CHV11L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 11);
-            CHV12L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 12);
-            CHV13L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 13);
-            CHV14L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 14);
-            CHV15L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 15);
-            CHV16L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 16);
+            Delegate.CHV1L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 1);
+            Delegate.CHV2L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 2);
+            Delegate.CHV3L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 3);
+            Delegate.CHV4L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 4);
+            Delegate.CHV5L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 5);
+            Delegate.CHV6L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 6);
+            Delegate.CHV7L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 7);
+            Delegate.CHV8L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 8);
+            Delegate.CHV9L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 9);
+            Delegate.CHV10L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 10);
+            Delegate.CHV11L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 11);
+            Delegate.CHV12L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 12);
+            Delegate.CHV13L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 13);
+            Delegate.CHV14L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 14);
+            Delegate.CHV15L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 15);
+            Delegate.CHV16L.Text = String.Format(Languages.Parse("AdvancedVoicesChannel"), 16);
         }
 
         public AdvancedVoices()
         {
-            bool ok;
-            m = new Mutex(true, "KepMIDIConvAV", out ok);
-
-            if (!ok)
-            {
-                WinAPI.PostMessage((IntPtr)WinAPI.HWND_BROADCAST, BringToFrontMessage, IntPtr.Zero, IntPtr.Zero);
-                System.Media.SystemSounds.Asterisk.Play();
-                Close();
-            }
+            Delegate = this;
 
             InitializeComponent();
             InitializeLanguage();
-            GC.KeepAlive(m);
         }
 
         private void AdvancedVoices_Load(object sender, EventArgs e)
@@ -93,7 +82,8 @@ namespace KeppyMIDIConverter
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            m.Close();
+            e.Cancel = true;
+            Hide();
         }
 
         // Snap feature

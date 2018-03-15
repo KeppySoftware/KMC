@@ -282,7 +282,7 @@ namespace KeppyMIDIConverter
                 if (MainWindow.SoundFontChain.SoundFonts.Length == 0)
                 {
                     Presets = new BASS_MIDI_FONTEX[1];
-                    if (LoadDefaultSoundFont(ref sfnum) != true) throw new Exception("No SoundFont available.");
+                    if (LoadDefaultSoundFont(ref sfnum) != true) BASSCloseStreamCrash(new InvalidSoundFont("Invalid SoundFont chain."));
                     BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, Presets, sfnum);
                     BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
                 }
@@ -328,7 +328,7 @@ namespace KeppyMIDIConverter
                     }
                     catch (Exception ex)
                     {
-                        BASSCloseStreamCrash(ex);
+                        BASSCloseStreamCrash(new InvalidSoundFont("Invalid SoundFont chain."));
                     }
                 }
             }
@@ -417,13 +417,9 @@ namespace KeppyMIDIConverter
                     }
                     eventChunk = null;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    throw new MIDILoadError("Can not load this MIDI.\n\n" +
-                        "Are you sure you're not trying to open it in the 32-bit version of Keppy's MIDI Converter?\n" +
-                        "Also, try increasing the size of your paging file, you might not have enough RAM.\n" +
-                        "The MIDI might also be corrupted.\n\n" +
-                        "Additional info:\n" + ex.ToString());
+                    BASSCloseStreamCrash(new MIDILoadError("This MIDI is too big for the real-time conversion process.\n\nMake sure you're using the 64-bit version of the converter."));
                 }
 
                 Bass.BASS_StreamFree(MainWindow.KMCGlobals._recHandle);
@@ -644,7 +640,7 @@ namespace KeppyMIDIConverter
                 MainWindow.Seeking = false;
             }
 
-            System.Threading.Thread.Sleep(1);
+            Thread.Sleep(1);
 
             if (!MainWindow.KMCGlobals.DoNotCountNotes)
                 return pnotes;
@@ -667,8 +663,6 @@ namespace KeppyMIDIConverter
             MainWindow.KMCGlobals._VolFXParam.fTime = 0.0f;
             MainWindow.KMCGlobals._VolFXParam.lCurve = 0;
             Bass.BASS_FXSetParameters(MainWindow.KMCGlobals._VolFX, MainWindow.KMCGlobals._VolFXParam);
-
-            Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Properties.Settings.Default.Voices);
 
             if (MainWindow.Seeking)
             {
@@ -742,6 +736,23 @@ public class MIDILoadError : Exception
     }
 
     public MIDILoadError(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
+public class InvalidSoundFont : Exception
+{
+    public InvalidSoundFont()
+    {
+    }
+
+    public InvalidSoundFont(string message)
+        : base(message)
+    {
+    }
+
+    public InvalidSoundFont(string message, Exception inner)
         : base(message, inner)
     {
     }

@@ -259,7 +259,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Soundfonts/VST DSP manager";
-            this.Load += new System.EventHandler(this.SoundfontDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).EndInit();

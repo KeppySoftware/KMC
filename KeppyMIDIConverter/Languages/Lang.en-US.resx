@@ -946,4 +946,13 @@ Click the icon on the system tray to restore it.</value>
     <value>Enable 32 point sinc interpolation</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="ArgumentError" xml:space="preserve">
+    <value>Invalid argument</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="InvalidArg" xml:space="preserve">
+    <value>{0} is not a valid command line argument!
+Click OK to continue.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

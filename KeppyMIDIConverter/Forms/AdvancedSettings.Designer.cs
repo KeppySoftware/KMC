@@ -39,10 +39,10 @@
             this.AudioFreqLabel = new System.Windows.Forms.Label();
             this.CheckTempo = new System.Windows.Forms.Timer(this.components);
             this.AudioSettings = new System.Windows.Forms.GroupBox();
+            this.SincInter = new System.Windows.Forms.CheckBox();
             this.MaxVoicesLabel = new System.Windows.Forms.Label();
             this.MaxVoices = new System.Windows.Forms.NumericUpDown();
             this.ChannelsSettings = new System.Windows.Forms.Button();
-            this.SincInter = new System.Windows.Forms.CheckBox();
             this.StreamSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempoValue)).BeginInit();
@@ -309,6 +309,18 @@
             this.AudioSettings.TabStop = false;
             this.AudioSettings.Text = "AudioSettings";
             // 
+            // SincInter
+            // 
+            this.SincInter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SincInter.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SincInter.Location = new System.Drawing.Point(9, 80);
+            this.SincInter.Name = "SincInter";
+            this.SincInter.Size = new System.Drawing.Size(361, 18);
+            this.SincInter.TabIndex = 35;
+            this.SincInter.Text = "SincInter";
+            this.SincInter.UseVisualStyleBackColor = true;
+            this.SincInter.CheckedChanged += new System.EventHandler(this.SincInter_CheckedChanged);
+            // 
             // MaxVoicesLabel
             // 
             this.MaxVoicesLabel.AutoSize = true;
@@ -353,18 +365,6 @@
             this.ChannelsSettings.UseVisualStyleBackColor = true;
             this.ChannelsSettings.Click += new System.EventHandler(this.ChannelsSettings_Click);
             // 
-            // SincInter
-            // 
-            this.SincInter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SincInter.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SincInter.Location = new System.Drawing.Point(9, 80);
-            this.SincInter.Name = "SincInter";
-            this.SincInter.Size = new System.Drawing.Size(361, 18);
-            this.SincInter.TabIndex = 35;
-            this.SincInter.Text = "SincInter";
-            this.SincInter.UseVisualStyleBackColor = true;
-            this.SincInter.CheckedChanged += new System.EventHandler(this.SincInter_CheckedChanged);
-            // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -384,7 +384,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdvancedSettings";
-            this.Load += new System.EventHandler(this.AdvancedSettings_Load);
             this.StreamSettings.ResumeLayout(false);
             this.StreamSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).EndInit();
