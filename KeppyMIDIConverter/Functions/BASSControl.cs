@@ -482,6 +482,17 @@ namespace KeppyMIDIConverter
             }
         }
 
+        public static BASSEncode IsWav(int format)
+        {
+            switch (format)
+            {
+                case 0:
+                    return BASSEncode.BASS_ENCODE_RF64;
+                default:
+                    return (BASSEncode)0;
+            }
+        }
+
         public static string EncoderString(String encpath, String str, String ext, String argstoadd)
         {
             if (ext == "wav")
@@ -539,13 +550,13 @@ namespace KeppyMIDIConverter
                     } while (File.Exists(String.Format("{0}.{1}", temp, ext)));
                     BassEnc.BASS_Encode_Stop(MainWindow.VSTs._VSTHandles[0]);
                     BassEnc.BASS_Encode_Stop(MainWindow.KMCGlobals._recHandle);
-                    MainWindow.KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), EncoderString(enc, temp, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
+                    MainWindow.KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), EncoderString(enc, temp, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format) | IsWav(format), null, IntPtr.Zero);
                 }
                 else
                 {
                     BassEnc.BASS_Encode_Stop(MainWindow.VSTs._VSTHandles[0]);
                     BassEnc.BASS_Encode_Stop(MainWindow.KMCGlobals._recHandle);
-                    MainWindow.KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), EncoderString(enc, pathwithoutext, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format), null, IntPtr.Zero);
+                    MainWindow.KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), EncoderString(enc, pathwithoutext, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format) | IsWav(format), null, IntPtr.Zero);
                 }
             }
             catch (Exception ex)

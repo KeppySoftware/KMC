@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
@@ -84,6 +79,11 @@ namespace KeppyMIDIConverter
                 MessageBox.Show(Languages.Parse("ConnectionErrorDesc"), String.Format("{0} {1} - {2}", Program.Who, Program.Title, Languages.Parse("ConnectionErrorTitle")), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Close();
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
