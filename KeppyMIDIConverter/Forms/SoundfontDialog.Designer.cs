@@ -49,6 +49,7 @@
             this.clearSoundfontListToolStripMenuItem = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.SFList = new System.Windows.Forms.ListBox();
+            this.PreloadDefaultSF = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
@@ -132,9 +133,9 @@
             // VSTUse
             // 
             this.VSTUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.VSTUse.Location = new System.Drawing.Point(12, 401);
+            this.VSTUse.Location = new System.Drawing.Point(12, 412);
             this.VSTUse.Name = "VSTUse";
-            this.VSTUse.Size = new System.Drawing.Size(295, 34);
+            this.VSTUse.Size = new System.Drawing.Size(392, 19);
             this.VSTUse.TabIndex = 16;
             this.VSTUse.Text = "I want to apply a VST DSPs too.";
             this.VSTUse.UseVisualStyleBackColor = true;
@@ -144,9 +145,9 @@
             // 
             this.VSTImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VSTImport.Enabled = false;
-            this.VSTImport.Location = new System.Drawing.Point(323, 406);
+            this.VSTImport.Location = new System.Drawing.Point(410, 390);
             this.VSTImport.Name = "VSTImport";
-            this.VSTImport.Size = new System.Drawing.Size(256, 23);
+            this.VSTImport.Size = new System.Drawing.Size(169, 38);
             this.VSTImport.TabIndex = 17;
             this.VSTImport.Text = "Open the VST DSP manager...";
             this.VSTImport.UseVisualStyleBackColor = true;
@@ -157,9 +158,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::KeppyMIDIConverter.Properties.Resources.vstlogo;
-            this.pictureBox1.Location = new System.Drawing.Point(480, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(468, 53);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(64, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
@@ -170,9 +171,9 @@
             this.SFZCompliant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SFZCompliant.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SFZCompliant.Image = global::KeppyMIDIConverter.Properties.Resources.sfzcomp;
-            this.SFZCompliant.Location = new System.Drawing.Point(532, 53);
+            this.SFZCompliant.Location = new System.Drawing.Point(538, 53);
             this.SFZCompliant.Name = "SFZCompliant";
-            this.SFZCompliant.Size = new System.Drawing.Size(46, 37);
+            this.SFZCompliant.Size = new System.Drawing.Size(41, 37);
             this.SFZCompliant.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SFZCompliant.TabIndex = 15;
             this.SFZCompliant.TabStop = false;
@@ -226,11 +227,22 @@
             this.SFList.Location = new System.Drawing.Point(12, 96);
             this.SFList.Name = "SFList";
             this.SFList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.SFList.Size = new System.Drawing.Size(567, 303);
+            this.SFList.Size = new System.Drawing.Size(567, 286);
             this.SFList.TabIndex = 11;
             this.SFList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SFList_DragDrop);
             this.SFList.DragEnter += new System.Windows.Forms.DragEventHandler(this.SFList_DragEnter);
             this.SFList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SFList_KeyPress);
+            // 
+            // PreloadDefaultSF
+            // 
+            this.PreloadDefaultSF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PreloadDefaultSF.Location = new System.Drawing.Point(12, 389);
+            this.PreloadDefaultSF.Name = "PreloadDefaultSF";
+            this.PreloadDefaultSF.Size = new System.Drawing.Size(392, 19);
+            this.PreloadDefaultSF.TabIndex = 19;
+            this.PreloadDefaultSF.Text = "Always preload the default SoundFont, if present.";
+            this.PreloadDefaultSF.UseVisualStyleBackColor = true;
+            this.PreloadDefaultSF.CheckedChanged += new System.EventHandler(this.PreloadDefaultSF_CheckedChanged);
             // 
             // SoundfontDialog
             // 
@@ -238,6 +250,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(589, 470);
+            this.Controls.Add(this.PreloadDefaultSF);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.VSTImport);
             this.Controls.Add(this.VSTUse);
@@ -259,6 +272,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Soundfonts/VST DSP manager";
+            this.Load += new System.EventHandler(this.SoundfontDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).EndInit();
@@ -287,5 +301,6 @@
         private System.Windows.Forms.MenuItem clearSoundfontListToolStripMenuItem;
         private wyDay.Controls.VistaMenu VistaMenuSys;
         public System.Windows.Forms.ListBox SFList;
+        private System.Windows.Forms.CheckBox PreloadDefaultSF;
     }
 }

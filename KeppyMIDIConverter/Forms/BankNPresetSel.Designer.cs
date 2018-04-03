@@ -240,6 +240,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BNPSel";
+            this.Load += new System.EventHandler(this.BankNPresetSel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DesBankVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DesPresetVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SrcBankVal)).EndInit();

@@ -23,12 +23,6 @@ namespace KeppyMIDIConverter
 {
     public partial class MainWindow : Form
     {
-        private const int timerAccuracy = 1;
-        [System.Runtime.InteropServices.DllImport("winmm.dll")]
-        private static extern int timeBeginPeriod(int msec);
-        [System.Runtime.InteropServices.DllImport("winmm.dll")]
-        public static extern int timeEndPeriod(int msec);
-
         // Delegate for RTF
         public static string Title = "";
         public static MainWindow Delegate;
@@ -279,7 +273,6 @@ namespace KeppyMIDIConverter
             Menu = ConverterMenu;
 
             Title = Text;
-            timeBeginPeriod(timerAccuracy);
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
 
             // Initialize threads
@@ -295,31 +288,18 @@ namespace KeppyMIDIConverter
 
             try
             {
-                try
-                {
-                    // Generic settings
-                    if (Properties.Settings.Default.Volume > 1.0f)
-                    {
-                        Properties.Settings.Default.Volume = 1.0f;
-                        Properties.Settings.Default.Save();
-                    }
-                    VolumeBar.Value = Convert.ToInt32(Properties.Settings.Default.Volume * 10000.0f).LimitToRange(0, 10000);
+                // Generic settings
+                VolumeBar.Value = Convert.ToInt32(Properties.Settings.Default.Volume * 10000.0f).LimitToRange(0, 10000);
 
-                    // Load settings
-                    CSFFS.Checked = Properties.Settings.Default.AudioEvents;
-                    ACFUWSTC.Checked = Properties.Settings.Default.AutoUpdateCheck;
-                    SCPIOTL.Checked = Properties.Settings.Default.ShowOldTimeInfo;
-                    RenderStandard.Checked = !Properties.Settings.Default.RealTimeSimulator;
-                    RenderRTS.Checked = Properties.Settings.Default.RealTimeSimulator;
-                    SBIOMB.Checked = Properties.Settings.Default.ShowBalloon;
-                    MTT.Checked = Properties.Settings.Default.MinimizeToTray;
-                    ChangeLanguage.Enabled = !Program.DebugLang;
-                }
-                catch (Exception exception)
-                {
-                    ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), exception.ToString(), 0, 0);
-                    errordialog.ShowDialog();
-                }
+                // Load settings
+                CSFFS.Checked = Properties.Settings.Default.AudioEvents;
+                ACFUWSTC.Checked = Properties.Settings.Default.AutoUpdateCheck;
+                SCPIOTL.Checked = Properties.Settings.Default.ShowOldTimeInfo;
+                RenderStandard.Checked = !Properties.Settings.Default.RealTimeSimulator;
+                RenderRTS.Checked = Properties.Settings.Default.RealTimeSimulator;
+                SBIOMB.Checked = Properties.Settings.Default.ShowBalloon;
+                MTT.Checked = Properties.Settings.Default.MinimizeToTray;
+                ChangeLanguage.Enabled = !Program.DebugLang;
 
                 KMCThreads.GarbageCollector.DoWork += BasicFunctions.GCWork;
                 KMCThreads.GarbageCollector.RunWorkerAsync();
@@ -438,7 +418,6 @@ namespace KeppyMIDIConverter
 
         public static void CloseApp()
         {
-            timeEndPeriod(timerAccuracy);
             Bass.BASS_StreamFree(KMCGlobals._recHandle);
             Bass.BASS_Free();
             if (Program.DeleteEncoder == true)
@@ -461,6 +440,11 @@ namespace KeppyMIDIConverter
             else e.Cancel = true;
         }
 
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            if (ConfirmExit()) CloseApp();
+        }
+
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
@@ -474,11 +458,6 @@ namespace KeppyMIDIConverter
                     Properties.Settings.Default.Save();
                 }
             }
-        }
-
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            if (ConfirmExit()) CloseApp();
         }
 
         private bool Resizing = false;

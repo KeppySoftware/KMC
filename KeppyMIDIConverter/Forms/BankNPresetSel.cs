@@ -78,5 +78,10 @@ namespace KeppyMIDIConverter
             File.WriteAllText(helpFile, Properties.Resources.gmlist);
             Process.Start(helpFile);
         }
+
+        private void BankNPresetSel_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

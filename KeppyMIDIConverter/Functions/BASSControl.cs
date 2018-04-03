@@ -257,18 +257,22 @@ namespace KeppyMIDIConverter
         static BASS_MIDI_FONTEX[] Presets;
         private static bool LoadDefaultSoundFont(ref int sfnum)
         {
-            DirectoryInfo PathToGenericSF = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            String FullPath = String.Format("{0}\\GMGeneric.sf2", PathToGenericSF.Parent.FullName);
-            if (File.Exists(FullPath))
+            if (Properties.Settings.Default.PreloadDefaultSF)
             {
-                Presets[sfnum].font = BassMidi.BASS_MIDI_FontInit(FullPath);
-                Presets[sfnum].dpreset = -1;
-                Presets[sfnum].dbank = 0;
-                Presets[sfnum].spreset = -1;
-                Presets[sfnum].sbank = -1;
-                Presets[sfnum].dbanklsb = 0;
-                sfnum++;
-                return true;
+                DirectoryInfo PathToGenericSF = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                String FullPath = String.Format("{0}\\GMGeneric.sf2", PathToGenericSF.Parent.FullName);
+                if (File.Exists(FullPath))
+                {
+                    Presets[sfnum].font = BassMidi.BASS_MIDI_FontInit(FullPath);
+                    Presets[sfnum].dpreset = -1;
+                    Presets[sfnum].dbank = 0;
+                    Presets[sfnum].spreset = -1;
+                    Presets[sfnum].sbank = -1;
+                    Presets[sfnum].dbanklsb = 0;
+                    sfnum++;
+                    return true;
+                }
+                else return false;
             }
             else return false;
         }
@@ -319,16 +323,15 @@ namespace KeppyMIDIConverter
                                 sfnum++;
                             }
                         }
-
+                    }
+                    catch { BASSCloseStreamCrash(new InvalidSoundFont("Invalid SoundFont chain.")); }
+                    finally
+                    {
                         // Always preload default SoundFont
                         LoadDefaultSoundFont(ref sfnum);
 
                         BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, Presets, sfnum);
                         BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
-                    }
-                    catch (Exception ex)
-                    {
-                        BASSCloseStreamCrash(new InvalidSoundFont("Invalid SoundFont chain."));
                     }
                 }
             }

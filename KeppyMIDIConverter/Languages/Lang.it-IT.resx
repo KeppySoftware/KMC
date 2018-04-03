@@ -645,7 +645,7 @@ Errore copiato sugli appunti.</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="VSTUseText" xml:space="preserve">
-    <value>Abilita gli effetti VST</value>
+    <value>Abilita gli effetti VST.</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="BNPSel" xml:space="preserve">
@@ -958,5 +958,14 @@ Clicca sull'icona nel vassoio per ripristinare la finestra.</value>
     <value>{0} non è una comando valido!
 Clicca OK per continuare.</value>
     <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PreloadDefaultSF" xml:space="preserve">
+    <value>Carica sempre la SoundFont predefinita, se presente.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SelectedSF" xml:space="preserve">
+    <value>SoundFont selezionata:
+{0}</value>
+    <comment>Selected SoundFont, in the BankNPresetSel window.</comment>
   </data>
 </root>

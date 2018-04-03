@@ -24,9 +24,30 @@ namespace KeppyMIDIConverter
             InitializeComponent();
             Delegate = this;
             InitializeLanguage();
+        }
 
+        public static void InitializeLanguage()
+        {
+            Delegate.PreloadDefaultSF.Text = Languages.Parse("PreloadDefaultSF");
+            Delegate.VSTUse.Text = Languages.Parse("VSTUseText");
+            Delegate.VSTImport.Text = Languages.Parse("VSTManagerButtonText");
+            Delegate.label1.Text = Languages.Parse("SoundfontDialogMessage");
+            Delegate.importSoundfontsToolStripMenuItem.Text = Languages.Parse("ImportSoundfontBtn");
+            Delegate.removeSoundfontsToolStripMenuItem.Text = Languages.Parse("RemoveSoundfontBtn");
+            Delegate.clearSoundfontListToolStripMenuItem.Text = Languages.Parse("ClearSoundfontList");
+            Delegate.ImportBtn.Text = Languages.Parse("ImportSoundfontBtn");
+            Delegate.RemoveBtn.Text = Languages.Parse("RemoveSoundfontBtn");
+            Delegate.MvUp.Text = Languages.Parse("MoveUpSF");
+            Delegate.MvDwn.Text = Languages.Parse("MoveDownSF");
+            Delegate.Text = Languages.Parse("SoundfontManagerTitle");
+        }
+
+        private void SoundfontDialog_Load(object sender, EventArgs e)
+        {
             SFList.ContextMenu = SFMenu;
             SoundfontImportDialog.InitialDirectory = Properties.Settings.Default.LastSoundFontFolder;
+
+            PreloadDefaultSF.Checked = Properties.Settings.Default.PreloadDefaultSF;
 
             if (Properties.Settings.Default.LoudMaxEnabled)
                 MainWindow.KMCStatus.VSTMode = true;
@@ -41,21 +62,6 @@ namespace KeppyMIDIConverter
                 VSTImport.Enabled = false;
                 VSTUse.Checked = false;
             }
-        }
-
-        public static void InitializeLanguage()
-        {
-            Delegate.VSTUse.Text = Languages.Parse("VSTUseText");
-            Delegate.VSTImport.Text = Languages.Parse("VSTManagerButtonText");
-            Delegate.label1.Text = Languages.Parse("SoundfontDialogMessage");
-            Delegate.importSoundfontsToolStripMenuItem.Text = Languages.Parse("ImportSoundfontBtn");
-            Delegate.removeSoundfontsToolStripMenuItem.Text = Languages.Parse("RemoveSoundfontBtn");
-            Delegate.clearSoundfontListToolStripMenuItem.Text = Languages.Parse("ClearSoundfontList");
-            Delegate.ImportBtn.Text = Languages.Parse("ImportSoundfontBtn");
-            Delegate.RemoveBtn.Text = Languages.Parse("RemoveSoundfontBtn");
-            Delegate.MvUp.Text = Languages.Parse("MoveUpSF");
-            Delegate.MvDwn.Text = Languages.Parse("MoveDownSF");
-            Delegate.Text = Languages.Parse("SoundfontManagerTitle");
         }
 
         private void removeSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -355,6 +361,15 @@ namespace KeppyMIDIConverter
             if (VSTUse.Checked != true)
             {
                 Properties.Settings.Default.LoudMaxEnabled = false;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void PreloadDefaultSF_CheckedChanged(object sender, EventArgs e)
+        {
+            if (PreloadDefaultSF.Checked != true)
+            {
+                Properties.Settings.Default.PreloadDefaultSF = false;
                 Properties.Settings.Default.Save();
             }
         }

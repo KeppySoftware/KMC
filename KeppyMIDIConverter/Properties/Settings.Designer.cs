@@ -397,5 +397,17 @@ namespace KeppyMIDIConverter.Properties {
                 this["SincInter"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PreloadDefaultSF {
+            get {
+                return ((bool)(this["PreloadDefaultSF"]));
+            }
+            set {
+                this["PreloadDefaultSF"] = value;
+            }
+        }
     }
 }
