@@ -670,7 +670,7 @@ namespace KeppyMIDIConverter
 
         private void VSTiSettings_Click(object sender, EventArgs e)
         {
-            BASSControl.BASSVSTShowDialog(false, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
+            BASSControl.BASSVSTShowDialog(true, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
         }
     }
 }

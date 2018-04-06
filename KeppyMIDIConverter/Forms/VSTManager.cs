@@ -238,7 +238,6 @@ namespace KeppyMIDIConverter
                         int VSTiTester = BassVst.BASS_VST_ChannelCreate(44100, 2, VSTImportDialog.FileName, BASSFlag.BASS_STREAM_DECODE);
                         MainWindow.VSTs.VSTInfo[NumVST - 1] = new BASS_VST_INFO();
                         bool Success = BassVst.BASS_VST_GetInfo(VSTiTester, MainWindow.VSTs.VSTInfo[NumVST - 1]);
-                        BassVst.BASS_VST_ChannelFree(VSTiTester);
                         Bass.BASS_Free();
                         if (Success)
                         {

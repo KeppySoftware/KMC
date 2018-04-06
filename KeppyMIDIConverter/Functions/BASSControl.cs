@@ -127,19 +127,14 @@ namespace KeppyMIDIConverter
         public static void BASSVSTShowDialog(bool vsti, int towhichstream, int whichvst, BASS_VST_INFO vstInfo)
         {
             MainWindow.Delegate.Invoke((MethodInvoker)delegate {
-                if (!vsti && !MainWindow.KMCGlobals.VSTSkipSettings)
+                if (vsti || !MainWindow.KMCGlobals.VSTSkipSettings)
                 {
-                    Form f = new Form();
-                    f.Width = vstInfo.editorWidth + 4;
-                    f.Height = vstInfo.editorHeight + 34;
-                    f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                    f.StartPosition = FormStartPosition.CenterParent;
-                    f.Text = String.Format("{0} {1}", Languages.Parse("DSPSettings"), vstInfo.effectName);
                     try
                     {
-                        BassVst.BASS_VST_EmbedEditor(whichvst, f.Handle);
-                        f.ShowDialog();
-                        BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
+                        VSTEditor VF = new VSTEditor(whichvst, vstInfo);
+                        VF.ShowDialog();
+                        BassVst.BASS_VST_EmbedEditor(MainWindow.VSTs._VSTHandles[0], IntPtr.Zero);
+                        VF.Dispose();
                     }
                     catch (Exception ex)
                     {
@@ -153,8 +148,7 @@ namespace KeppyMIDIConverter
                         thread.Join();
                         KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("VSTInvalidCallTitle"), Languages.Parse("VSTInvalidCallError"), 0, 0);
                         errordialog.ShowDialog();
-                        BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
-                        BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, whichvst);
+                        if (!vsti) BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, MainWindow.VSTs._VSTHandles[whichvst]);
                     }
                 }
             });
@@ -212,7 +206,7 @@ namespace KeppyMIDIConverter
                     {
                         MainWindow.KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(MainWindow.VSTs._VSTHandles[0], 0);
                         MainWindow.KMCGlobals._plm.CalcRMS = true;
-                        BASSVSTShowDialog(false, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
+                        BASSVSTShowDialog(true, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
                     }
                     MainWindow.KMCGlobals._myVSTSync = new SYNCPROC(VSTProc);
                     int sync = Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, 0, MainWindow.KMCGlobals._myVSTSync, IntPtr.Zero);
