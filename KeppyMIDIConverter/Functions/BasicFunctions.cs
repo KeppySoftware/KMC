@@ -212,6 +212,13 @@ namespace KeppyMIDIConverter
             else
                 MainWindow.Delegate.Invoke((MethodInvoker)delegate { MainWindow.Delegate.MIDIList.Items.Add(lvi); });
         }
+
+        public static void AddMIDIToListWithInfo(string MIDI)
+        {
+            string[] midiinfo = DataCheck.GetMoreInfoMIDI(MIDI);
+            ListViewItem lvi = new ListViewItem(new string[] { MIDI, midiinfo[2], midiinfo[1], midiinfo[0], midiinfo[3] });
+            BasicFunctions.ToAddOrNotToAdd(lvi, midiinfo[1], MIDI);
+        }
     }
 
     public static class StringExt

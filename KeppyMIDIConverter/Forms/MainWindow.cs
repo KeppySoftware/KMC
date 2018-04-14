@@ -231,38 +231,24 @@ namespace KeppyMIDIConverter
                 {
                     //Find out it the current file is a MIDI
                     if (s.ToLower().EndsWith(".mid") | s.ToLower().EndsWith(".midi") | s.ToLower().EndsWith(".kar") | s.ToLower().EndsWith(".rmi"))
-                    {
-                        //Add MIDI to midi list
-                        string[] saLvwItem = new string[4];
-                        string[] midiinfo = DataCheck.GetMoreInfoMIDI(s);
-                        saLvwItem[0] = s;
-                        saLvwItem[1] = midiinfo[0];
-                        saLvwItem[2] = midiinfo[1];
-                        saLvwItem[3] = midiinfo[2];
-                        saLvwItem[4] = midiinfo[3];
-                        ListViewItem lvi = new ListViewItem(saLvwItem);
-                        this.MIDIList.Items.Add(lvi);
-                    }
+                        BasicFunctions.AddMIDIToListWithInfo(s);
+
                     //If the file isnt a MIDI, check if its a soundfont
                     if (s.ToLower().EndsWith(".sf2") | s.ToLower().EndsWith(".sf3") | s.ToLower().EndsWith(".sfpack") | s.ToLower().EndsWith(".sfz"))
                     {
                         //There are soundfonts beeing added to the application so create the list
-                        if (soundfonts == null)
-                        {
-                            soundfonts = new List<String>();
-                        }
+                        if (soundfonts == null) soundfonts = new List<String>();
                         soundfonts.Add(s);
                     }
                 }
+
                 //Check if there are soundfonts
                 if (soundfonts != null)
                 {
                     SoundFontChain.SoundFonts = new string[soundfonts.Count];
                     soundfonts.CopyTo(SoundFontChain.SoundFonts, 0);
-                    foreach (String SF in soundfonts)
-                    {
-                        KMCDialogs.SFDialog.SFList.Items.Add(s);
-                    }
+
+                    foreach (String SF in soundfonts) KMCDialogs.SFDialog.SFList.Items.Add(s);
                 }
             }
         }

@@ -44,6 +44,7 @@ namespace KeppyMIDIConverter
             MainWindow.KMCGlobals.ActiveVoicesInt = 0;
             MainWindow.KMCGlobals.NewWindowName = null;
             MainWindow.KMCStatus.IsKMCBusy = false;
+            MainWindow.KMCStatus.IsKMCNowExporting = false;
             MainWindow.KMCStatus.RenderingMode = false;
             MainWindow.KMCGlobals.DoNotCountNotes = false;
             MainWindow.KMCGlobals.eventc = 0;
@@ -85,6 +86,7 @@ namespace KeppyMIDIConverter
             Bass.BASS_Free();
             MainWindow.KMCGlobals.NewWindowName = null;
             MainWindow.KMCStatus.IsKMCBusy = false;
+            MainWindow.KMCStatus.IsKMCNowExporting = false;
             MainWindow.KMCStatus.RenderingMode = false;
             MainWindow.KMCGlobals.DoNotCountNotes = false;
             MainWindow.KMCGlobals.eventc = 0;
@@ -263,6 +265,7 @@ namespace KeppyMIDIConverter
                     Presets[sfnum].spreset = -1;
                     Presets[sfnum].sbank = -1;
                     Presets[sfnum].dbanklsb = 0;
+                    BassMidi.BASS_MIDI_FontLoad(Presets[sfnum].font, -1, -1);
                     sfnum++;
                     return true;
                 }
@@ -280,7 +283,7 @@ namespace KeppyMIDIConverter
                 if (MainWindow.SoundFontChain.SoundFonts.Length == 0)
                 {
                     Presets = new BASS_MIDI_FONTEX[1];
-                    if (LoadDefaultSoundFont(ref sfnum) != true) BASSCloseStreamCrash(new InvalidSoundFont("Invalid SoundFont chain."));
+                    if (LoadDefaultSoundFont(ref sfnum) != true) BASSCloseStreamCrash(new InvalidSoundFont("No SoundFonts available!"));
                     BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, Presets, sfnum);
                     BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
                 }
@@ -304,6 +307,7 @@ namespace KeppyMIDIConverter
                                 Presets[sfnum].sbank = Convert.ToInt32(matches[2].ToString());
                                 Presets[sfnum].spreset = Convert.ToInt32(matches[3].ToString());
                                 Presets[sfnum].dbanklsb = 0;
+                                BassMidi.BASS_MIDI_FontLoad(Presets[sfnum].font, Presets[sfnum].spreset, Presets[sfnum].sbank);
                                 sfnum++;
                             }
                             else
@@ -314,6 +318,7 @@ namespace KeppyMIDIConverter
                                 Presets[sfnum].spreset = -1;
                                 Presets[sfnum].sbank = -1;
                                 Presets[sfnum].dbanklsb = 0;
+                                BassMidi.BASS_MIDI_FontLoad(Presets[sfnum].font, Presets[sfnum].spreset, Presets[sfnum].sbank);
                                 sfnum++;
                             }
                         }

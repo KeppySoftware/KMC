@@ -28,7 +28,9 @@ namespace KeppyMIDIConverter
         public static bool SkipUpdate = false;
         public static bool SkipTrigger = false;
         public static bool CloseApp = false;
-        public static int Session = 1;
+        public static string Session = "000000000000000000000";
+
+        private static Random rnd = new Random();
 
         public static void CheckUp(String[] args)
         {
@@ -38,8 +40,14 @@ namespace KeppyMIDIConverter
             m = new EventWaitHandle(false, EventResetMode.ManualReset, String.Format("KepMIDIConv{0}", Session), out Okay);
             if (!Okay)
             {
-                Session++;
-                FailedOnce = true;
+                if (!FailedOnce) FailedOnce = true;
+
+                var bytes = new byte[16];
+                rnd.NextBytes(bytes);
+                Session = Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString();
+
+                MessageBox.Show(Session.Length.ToString());
+
                 goto ReTest;
             }
 
@@ -48,15 +56,9 @@ namespace KeppyMIDIConverter
                 try
                 {
                     string OriginalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    var bytes = new byte[16];
-                    var rnd = new Random();
-                    rnd.NextBytes(bytes);
 
-                    string OGGFile = String.Format("kmcogg{0}.exe", Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
-                    string MP3File = String.Format("kmcmp3{0}.exe", Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
-
-                    Program.OGGEnc = String.Format("{0}kmcogg{1}.exe", Path.GetTempPath(), Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
-                    Program.MP3Enc = String.Format("{0}kmcmp3{1}.exe", Path.GetTempPath(), Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString());
+                    Program.OGGEnc = String.Format("{0}kmcogg{1}.exe", Path.GetTempPath(), Session);
+                    Program.MP3Enc = String.Format("{0}kmcmp3{1}.exe", Path.GetTempPath(), Session);
                     File.Copy(String.Format("{0}\\{1}", OriginalPath, "kmcogg.exe"), Program.OGGEnc);
                     File.Copy(String.Format("{0}\\{1}", OriginalPath, "kmcmp3.exe"), Program.MP3Enc);
 

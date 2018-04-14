@@ -48,12 +48,9 @@ namespace KeppyMIDIConverter
                 try
                 {
                     if (Path.GetExtension(str).ToLower() == ".mid" || Path.GetExtension(str).ToLower() == ".midi" || Path.GetExtension(str).ToLower() == ".kar" || Path.GetExtension(str).ToLower() == ".rmi")
-                    {
-                        string[] midiinfo = DataCheck.GetMoreInfoMIDI(str);
-                        ListViewItem lvi = new ListViewItem(new string[] { str, midiinfo[2], midiinfo[1], midiinfo[0], midiinfo[3] });
-                        BasicFunctions.ToAddOrNotToAdd(lvi, midiinfo[1], str);
-                    }
-                    else MessageBox.Show(String.Format(Languages.Parse("InvalidMIDIFile"), Path.GetFileName(str)), Languages.Parse("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        BasicFunctions.AddMIDIToListWithInfo(str);
+                    else
+                        MessageBox.Show(String.Format(Languages.Parse("InvalidMIDIFile"), Path.GetFileName(str)), Languages.Parse("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception exception)
                 {

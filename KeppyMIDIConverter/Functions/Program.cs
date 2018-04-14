@@ -44,7 +44,7 @@ namespace KeppyMIDIConverter
 
                 BootUp.CheckUp(args);
 
-                Application.Run(new MainWindow(args));
+                Application.Run(new MainWindow(Environment.GetCommandLineArgs()));
             }
             catch (Exception exception)
             {
