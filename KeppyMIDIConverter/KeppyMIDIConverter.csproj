@@ -199,12 +199,6 @@
     <Compile Include="Forms\VSTManager.designer.cs">
       <DependentUpon>VSTManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\VSTEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\VSTEditor.Designer.cs">
-      <DependentUpon>VSTEditor.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\AddingMIDIs.resx">
       <DependentUpon>AddingMIDIs.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,9 +251,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VSTManager.resx">
       <DependentUpon>VSTManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\VSTEditor.resx">
-      <DependentUpon>VSTEditor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -128,32 +129,37 @@ namespace KeppyMIDIConverter
 
         public static void BASSVSTShowDialog(bool vsti, int towhichstream, int whichvst, BASS_VST_INFO vstInfo)
         {
-            MainWindow.Delegate.Invoke((MethodInvoker)delegate {
-                if (vsti || !MainWindow.KMCGlobals.VSTSkipSettings)
+            try
+            {
+                if (vstInfo.hasEditor)
                 {
-                    try
+                    MainWindow.Delegate.Invoke((MethodInvoker)delegate
                     {
-                        VSTEditor VF = new VSTEditor(whichvst, vstInfo);
-                        VF.ShowDialog();
-                        BassVst.BASS_VST_EmbedEditor(MainWindow.VSTs._VSTHandles[0], IntPtr.Zero);
-                        VF.Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                        sb.AppendLine("==== Start of Keppy's MIDI Converter Error ====");
-                        sb.AppendLine(ex.ToString());
-                        sb.AppendLine("====  End of Keppy's MIDI Converter Error  ====");
-                        System.Threading.Thread thread = new System.Threading.Thread(() => Clipboard.SetText(sb.ToString()));
-                        thread.SetApartmentState(System.Threading.ApartmentState.STA);
-                        thread.Start();
-                        thread.Join();
-                        KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("VSTInvalidCallTitle"), Languages.Parse("VSTInvalidCallError"), 0, 0);
-                        errordialog.ShowDialog();
-                        if (!vsti) BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, MainWindow.VSTs._VSTHandles[whichvst]);
-                    }
+                        Form f = new Form();
+                        f.ClientSize = new Size(vstInfo.editorWidth, vstInfo.editorHeight);
+                        f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                        f.StartPosition = FormStartPosition.CenterParent;
+                        f.Text = String.Format("{0} {1}", Languages.Parse("DSPSettings"), vstInfo.effectName);
+                        BassVst.BASS_VST_EmbedEditor(whichvst, f.Handle);
+                        f.ShowDialog();
+                        BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
+                    });
                 }
-            });
+            }
+            catch (Exception ex)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("==== Start of Keppy's MIDI Converter Error ====");
+                sb.AppendLine(ex.ToString());
+                sb.AppendLine("====  End of Keppy's MIDI Converter Error  ====");
+                Thread thread = new Thread(() => Clipboard.SetText(sb.ToString()));
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+                thread.Join();
+                ErrorHandler errordialog = new ErrorHandler(Languages.Parse("VSTInvalidCallTitle"), Languages.Parse("VSTInvalidCallError"), 0, 0);
+                errordialog.ShowDialog();
+                if (!vsti) BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, whichvst);
+            }
         }
 
         public static void BASSVSTInit(int towhichstream)
@@ -169,7 +175,7 @@ namespace KeppyMIDIConverter
                         MainWindow.KMCGlobals._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(
                             towhichstream,
                             String.Format("{0}\\LoudMax.dll", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)),
-                            BASSVSTDsp.BASS_VST_KEEP_CHANS, 8);
+                            BASSVSTDsp.BASS_VST_KEEP_CHANS, 9);
 
                         if (BassVst.BASS_VST_GetInfo(MainWindow.KMCGlobals._LoudMaxHan, LMInfo) && LMInfo.hasEditor)
                             BASSVSTShowDialog(false, towhichstream, MainWindow.KMCGlobals._LoudMaxHan, LMInfo);
@@ -182,8 +188,10 @@ namespace KeppyMIDIConverter
                         if (!MainWindow.VSTs.VSTInfo[i].isInstrument) // VSTi check
                         {
                             MainWindow.VSTs._VSTHandles[i] = BassVst.BASS_VST_ChannelSetDSP(towhichstream, MainWindow.VSTs.VSTDLLs[i], BASSVSTDsp.BASS_VST_DEFAULT, i);
-                            if (MainWindow.VSTs.VSTInfo[i].hasEditor)
+                            if (BassVst.BASS_VST_GetInfo(MainWindow.VSTs._VSTHandles[i], MainWindow.VSTs.VSTInfo[i]) && MainWindow.VSTs.VSTInfo[i].hasEditor)
+                            {
                                 BASSVSTShowDialog(false, towhichstream, MainWindow.VSTs._VSTHandles[i], MainWindow.VSTs.VSTInfo[i]);
+                            }
                         }
                     }
                 }
