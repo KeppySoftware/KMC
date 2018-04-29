@@ -133,17 +133,16 @@ namespace KeppyMIDIConverter
             {
                 if (vstInfo.hasEditor)
                 {
-                    MainWindow.Delegate.Invoke((MethodInvoker)delegate
-                    {
-                        Form f = new Form();
-                        f.ClientSize = new Size(vstInfo.editorWidth, vstInfo.editorHeight);
-                        f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                        f.StartPosition = FormStartPosition.CenterParent;
-                        f.Text = String.Format("{0} {1}", Languages.Parse("DSPSettings"), vstInfo.effectName);
-                        BassVst.BASS_VST_EmbedEditor(whichvst, f.Handle);
-                        f.ShowDialog();
-                        BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
-                    });
+                    Form f = new Form();
+                    f.Width = vstInfo.editorWidth + 4;
+                    f.Height = vstInfo.editorHeight + 34;
+                    f.ClientSize = new Size(vstInfo.editorWidth, vstInfo.editorHeight);
+                    f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                    f.StartPosition = FormStartPosition.CenterParent;
+                    f.Text = String.Format("{0} {1}", Languages.Parse("DSPSettings"), vstInfo.effectName);
+                    BassVst.BASS_VST_EmbedEditor(whichvst, f.Handle);
+                    f.ShowDialog();
+                    BassVst.BASS_VST_EmbedEditor(whichvst, IntPtr.Zero);
                 }
             }
             catch (Exception ex)
