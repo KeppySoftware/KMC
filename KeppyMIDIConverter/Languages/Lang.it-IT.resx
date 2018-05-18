@@ -968,4 +968,32 @@ Clicca OK per continuare.</value>
 {0}</value>
     <comment>Selected SoundFont, in the BankNPresetSel window.</comment>
   </data>
+  <data name="HighestVel" xml:space="preserve">
+    <value>Più alto:</value>
+    <comment>Range of IgnoreNotes1.</comment>
+  </data>
+  <data name="IgnoreNotes1" xml:space="preserve">
+    <value>Ignora le note tra questi due valori di volume</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Limit88" xml:space="preserve">
+    <value>Limita portata delle note a 88 tasti</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="LowestVel" xml:space="preserve">
+    <value>Più basso:</value>
+    <comment>Range of IgnoreNotes1.</comment>
+  </data>
+  <data name="MIDIEventsSettings" xml:space="preserve">
+    <value>Impostazioni eventi MIDI</value>
+    <comment>Title of the groupbox.</comment>
+  </data>
+  <data name="AFIT" xml:space="preserve">
+    <value>Visualizza finestra per ignorare tracce all'inizio</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="TracksToIgnoreTitle" xml:space="preserve">
+    <value>Quali tracce vuoi ignorare?</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

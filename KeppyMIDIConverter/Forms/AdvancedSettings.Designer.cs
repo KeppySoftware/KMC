@@ -43,18 +43,28 @@
             this.MaxVoicesLabel = new System.Windows.Forms.Label();
             this.MaxVoices = new System.Windows.Forms.NumericUpDown();
             this.ChannelsSettings = new System.Windows.Forms.Button();
+            this.MIDIEventsSettings = new System.Windows.Forms.GroupBox();
+            this.Limit88 = new System.Windows.Forms.CheckBox();
+            this.IgnoreNotes1 = new System.Windows.Forms.CheckBox();
+            this.LoVel = new System.Windows.Forms.NumericUpDown();
+            this.HiVel = new System.Windows.Forms.NumericUpDown();
+            this.HighestVel = new System.Windows.Forms.Label();
+            this.LowestVel = new System.Windows.Forms.Label();
             this.StreamSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempoValue)).BeginInit();
             this.AudioSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxVoices)).BeginInit();
+            this.MIDIEventsSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoVel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HiVel)).BeginInit();
             this.SuspendLayout();
             // 
             // OKBtn
             // 
             this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKBtn.Location = new System.Drawing.Point(315, 315);
+            this.OKBtn.Location = new System.Drawing.Point(315, 415);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(79, 23);
             this.OKBtn.TabIndex = 8;
@@ -76,10 +86,9 @@
             this.StreamSettings.Controls.Add(this.BitrateLabel);
             this.StreamSettings.Controls.Add(this.OverrideTempoNow);
             this.StreamSettings.Controls.Add(this.FXDisable);
-            this.StreamSettings.Controls.Add(this.Noteoff1);
-            this.StreamSettings.Location = new System.Drawing.Point(12, 129);
+            this.StreamSettings.Location = new System.Drawing.Point(12, 264);
             this.StreamSettings.Name = "StreamSettings";
-            this.StreamSettings.Size = new System.Drawing.Size(382, 180);
+            this.StreamSettings.Size = new System.Drawing.Size(382, 145);
             this.StreamSettings.TabIndex = 0;
             this.StreamSettings.TabStop = false;
             this.StreamSettings.Text = "StreamSettings";
@@ -114,7 +123,7 @@
             // 
             this.TempoCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TempoCurrent.Enabled = false;
-            this.TempoCurrent.Location = new System.Drawing.Point(160, 118);
+            this.TempoCurrent.Location = new System.Drawing.Point(160, 83);
             this.TempoCurrent.Name = "TempoCurrent";
             this.TempoCurrent.Size = new System.Drawing.Size(58, 15);
             this.TempoCurrent.TabIndex = 32;
@@ -124,7 +133,7 @@
             // TempoValue
             // 
             this.TempoValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TempoValue.Location = new System.Drawing.Point(213, 104);
+            this.TempoValue.Location = new System.Drawing.Point(213, 69);
             this.TempoValue.Maximum = 80;
             this.TempoValue.Name = "TempoValue";
             this.TempoValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -148,7 +157,7 @@
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.Location = new System.Drawing.Point(346, 154);
+            this.label4.Location = new System.Drawing.Point(346, 119);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 12);
             this.label4.TabIndex = 17;
@@ -158,7 +167,7 @@
             // 
             this.ConstantBitrate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ConstantBitrate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ConstantBitrate.Location = new System.Drawing.Point(9, 148);
+            this.ConstantBitrate.Location = new System.Drawing.Point(9, 113);
             this.ConstantBitrate.Name = "ConstantBitrate";
             this.ConstantBitrate.Size = new System.Drawing.Size(200, 24);
             this.ConstantBitrate.TabIndex = 6;
@@ -183,7 +192,7 @@
             "128",
             "96",
             "64"});
-            this.BitrateBox.Location = new System.Drawing.Point(291, 150);
+            this.BitrateBox.Location = new System.Drawing.Point(291, 115);
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(55, 21);
             this.BitrateBox.TabIndex = 7;
@@ -193,7 +202,7 @@
             // 
             this.BitrateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BitrateLabel.Enabled = false;
-            this.BitrateLabel.Location = new System.Drawing.Point(213, 131);
+            this.BitrateLabel.Location = new System.Drawing.Point(213, 96);
             this.BitrateLabel.Name = "BitrateLabel";
             this.BitrateLabel.Size = new System.Drawing.Size(86, 13);
             this.BitrateLabel.TabIndex = 14;
@@ -204,7 +213,7 @@
             // 
             this.OverrideTempoNow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OverrideTempoNow.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OverrideTempoNow.Location = new System.Drawing.Point(9, 111);
+            this.OverrideTempoNow.Location = new System.Drawing.Point(9, 76);
             this.OverrideTempoNow.Name = "OverrideTempoNow";
             this.OverrideTempoNow.Size = new System.Drawing.Size(146, 28);
             this.OverrideTempoNow.TabIndex = 4;
@@ -216,7 +225,7 @@
             // 
             this.FXDisable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.FXDisable.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.FXDisable.Location = new System.Drawing.Point(9, 83);
+            this.FXDisable.Location = new System.Drawing.Point(9, 47);
             this.FXDisable.Name = "FXDisable";
             this.FXDisable.Size = new System.Drawing.Size(361, 18);
             this.FXDisable.TabIndex = 3;
@@ -228,7 +237,7 @@
             // 
             this.Noteoff1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Noteoff1.Location = new System.Drawing.Point(9, 40);
+            this.Noteoff1.Location = new System.Drawing.Point(9, 84);
             this.Noteoff1.Name = "Noteoff1";
             this.Noteoff1.Size = new System.Drawing.Size(364, 37);
             this.Noteoff1.TabIndex = 2;
@@ -293,8 +302,7 @@
             // 
             // AudioSettings
             // 
-            this.AudioSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.AudioSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AudioSettings.Controls.Add(this.SincInter);
             this.AudioSettings.Controls.Add(this.MaxVoicesLabel);
@@ -357,7 +365,7 @@
             // ChannelsSettings
             // 
             this.ChannelsSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ChannelsSettings.Location = new System.Drawing.Point(12, 315);
+            this.ChannelsSettings.Location = new System.Drawing.Point(12, 415);
             this.ChannelsSettings.Name = "ChannelsSettings";
             this.ChannelsSettings.Size = new System.Drawing.Size(140, 23);
             this.ChannelsSettings.TabIndex = 10;
@@ -365,13 +373,117 @@
             this.ChannelsSettings.UseVisualStyleBackColor = true;
             this.ChannelsSettings.Click += new System.EventHandler(this.ChannelsSettings_Click);
             // 
+            // MIDIEventsSettings
+            // 
+            this.MIDIEventsSettings.Controls.Add(this.LoVel);
+            this.MIDIEventsSettings.Controls.Add(this.HiVel);
+            this.MIDIEventsSettings.Controls.Add(this.HighestVel);
+            this.MIDIEventsSettings.Controls.Add(this.LowestVel);
+            this.MIDIEventsSettings.Controls.Add(this.Limit88);
+            this.MIDIEventsSettings.Controls.Add(this.IgnoreNotes1);
+            this.MIDIEventsSettings.Controls.Add(this.Noteoff1);
+            this.MIDIEventsSettings.Location = new System.Drawing.Point(12, 129);
+            this.MIDIEventsSettings.Name = "MIDIEventsSettings";
+            this.MIDIEventsSettings.Size = new System.Drawing.Size(382, 129);
+            this.MIDIEventsSettings.TabIndex = 11;
+            this.MIDIEventsSettings.TabStop = false;
+            this.MIDIEventsSettings.Text = "MIDIEventsSettings";
+            // 
+            // Limit88
+            // 
+            this.Limit88.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Limit88.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Limit88.Location = new System.Drawing.Point(9, 58);
+            this.Limit88.Name = "Limit88";
+            this.Limit88.Size = new System.Drawing.Size(364, 20);
+            this.Limit88.TabIndex = 4;
+            this.Limit88.Text = "Limit88";
+            this.Limit88.UseVisualStyleBackColor = true;
+            this.Limit88.CheckedChanged += new System.EventHandler(this.Limit88_CheckedChanged);
+            // 
+            // IgnoreNotes1
+            // 
+            this.IgnoreNotes1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.IgnoreNotes1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.IgnoreNotes1.Location = new System.Drawing.Point(9, 19);
+            this.IgnoreNotes1.Name = "IgnoreNotes1";
+            this.IgnoreNotes1.Size = new System.Drawing.Size(231, 27);
+            this.IgnoreNotes1.TabIndex = 3;
+            this.IgnoreNotes1.Text = "IgnoreNotes1";
+            this.IgnoreNotes1.UseVisualStyleBackColor = true;
+            this.IgnoreNotes1.CheckedChanged += new System.EventHandler(this.IgnoreNotes1_CheckedChanged);
+            // 
+            // LoVel
+            // 
+            this.LoVel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LoVel.Location = new System.Drawing.Point(332, 15);
+            this.LoVel.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.LoVel.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.LoVel.Name = "LoVel";
+            this.LoVel.Size = new System.Drawing.Size(42, 20);
+            this.LoVel.TabIndex = 12;
+            this.LoVel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LoVel.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.LoVel.ValueChanged += new System.EventHandler(this.LoVel_ValueChanged);
+            // 
+            // HiVel
+            // 
+            this.HiVel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.HiVel.Location = new System.Drawing.Point(332, 35);
+            this.HiVel.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.HiVel.Name = "HiVel";
+            this.HiVel.Size = new System.Drawing.Size(42, 20);
+            this.HiVel.TabIndex = 11;
+            this.HiVel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HiVel.Value = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.HiVel.ValueChanged += new System.EventHandler(this.HiVel_ValueChanged);
+            // 
+            // HighestVel
+            // 
+            this.HighestVel.Location = new System.Drawing.Point(267, 37);
+            this.HighestVel.Name = "HighestVel";
+            this.HighestVel.Size = new System.Drawing.Size(65, 13);
+            this.HighestVel.TabIndex = 10;
+            this.HighestVel.Text = "HighestVel";
+            this.HighestVel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // LowestVel
+            // 
+            this.LowestVel.Location = new System.Drawing.Point(269, 17);
+            this.LowestVel.Name = "LowestVel";
+            this.LowestVel.Size = new System.Drawing.Size(63, 13);
+            this.LowestVel.TabIndex = 9;
+            this.LowestVel.Text = "LowestVel";
+            this.LowestVel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(406, 350);
+            this.ClientSize = new System.Drawing.Size(406, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.MIDIEventsSettings);
             this.Controls.Add(this.ChannelsSettings);
             this.Controls.Add(this.AudioSettings);
             this.Controls.Add(this.OKBtn);
@@ -391,6 +503,9 @@
             this.AudioSettings.ResumeLayout(false);
             this.AudioSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxVoices)).EndInit();
+            this.MIDIEventsSettings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LoVel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HiVel)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -419,5 +534,12 @@
         public System.Windows.Forms.NumericUpDown MaxVoices;
         private System.Windows.Forms.Button ChannelsSettings;
         internal System.Windows.Forms.CheckBox SincInter;
+        private System.Windows.Forms.GroupBox MIDIEventsSettings;
+        internal System.Windows.Forms.CheckBox Limit88;
+        internal System.Windows.Forms.CheckBox IgnoreNotes1;
+        private System.Windows.Forms.NumericUpDown LoVel;
+        private System.Windows.Forms.NumericUpDown HiVel;
+        private System.Windows.Forms.Label HighestVel;
+        private System.Windows.Forms.Label LowestVel;
     }
 }

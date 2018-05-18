@@ -57,6 +57,7 @@ namespace KeppyMIDIConverter
             public static SYNCPROC _mySync;
             public static SYNCPROC _myVSTSync;
             public static SYNCPROC _myTempoSync;
+            public static MIDIFILTERPROC _FilterProc;
             public static WASAPIPROC _myWasapi;
             public static UInt32 eventc;
             public static DSP_PeakLevelMeter _plm;
@@ -183,6 +184,7 @@ namespace KeppyMIDIConverter
             Delegate.SBIOMB.Text = Languages.Parse("SBIOMB");
             Delegate.MTT.Text = Languages.Parse("MTT");
             Delegate.SVDS.Text = Languages.Parse("SVDS");
+            Delegate.AFIT.Text = Languages.Parse("AFIT");
             Delegate.ChangeLanguage.Text = Languages.Parse("ChangeLanguage");
 
             // Help strip
@@ -284,6 +286,7 @@ namespace KeppyMIDIConverter
                 RenderStandard.Checked = !Properties.Settings.Default.RealTimeSimulator;
                 RenderRTS.Checked = Properties.Settings.Default.RealTimeSimulator;
                 SBIOMB.Checked = Properties.Settings.Default.ShowBalloon;
+                AFIT.Checked = Properties.Settings.Default.AskForIgnoreTracks;
                 MTT.Checked = Properties.Settings.Default.MinimizeToTray;
                 ChangeLanguage.Enabled = !Program.DebugLang;
 
@@ -584,6 +587,13 @@ namespace KeppyMIDIConverter
         {
             CSFFS.Checked = !CSFFS.Checked;
             Properties.Settings.Default.AudioEvents = CSFFS.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void AFIT_Click(object sender, EventArgs e)
+        {
+            AFIT.Checked = !AFIT.Checked;
+            Properties.Settings.Default.AskForIgnoreTracks = AFIT.Checked;
             Properties.Settings.Default.Save();
         }
 

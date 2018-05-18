@@ -131,7 +131,7 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                if (vstInfo.hasEditor)
+                if (vstInfo.hasEditor && !MainWindow.KMCGlobals.VSTSkipSettings)
                 {
                     Form f = new Form();
                     f.Width = vstInfo.editorWidth + 4;
@@ -234,10 +234,7 @@ namespace KeppyMIDIConverter
 
         public static void NoteSyncProc(int handle, int channel, int data, IntPtr user)
         {
-            if ((data & 0xff00) != 0)
-            {
-                ++MainWindow.KMCStatus.PlayedNotes;
-            }
+            if ((data & 0xFF00) != 0) MainWindow.KMCStatus.PlayedNotes += 1;
         }
 
         public static int MyWasapiProc(IntPtr buffer, Int32 length, IntPtr user)
@@ -254,6 +251,37 @@ namespace KeppyMIDIConverter
             int midichan = (data >> 16) & 0xff;
             int param = (data & 0xffff);
             BassVst.BASS_VST_ProcessEvent(MainWindow.VSTs._VSTHandles[0], midichan, (BASSMIDIEvent)evento, param);
+        }
+
+        public class MidiFilterProcAnalytic
+        {
+            public string TrackName { get; set; }
+            public bool ToIgnore { get; set; }
+        }
+
+        public static Boolean[] TracksList;
+        public static bool MidiFilterProc(int handle, int track, BASS_MIDI_EVENT midievent, bool seeking, IntPtr user)
+        {
+            if (TracksList[track]) return false;
+
+            if (midievent.eventtype == BASSMIDIEvent.MIDI_EVENT_NOTE)
+            {
+                int vel = (midievent.param >> 8) & 0xFF;
+                int note = midievent.param & 0xFF;
+
+                // First check
+                if (Properties.Settings.Default.IgnoreNotes1 && vel > 0)
+                {
+                    if (vel >= Properties.Settings.Default.IgnoreNotesLow && vel <= Properties.Settings.Default.IgnoreNotesHigh) return false;
+                }
+
+                // Second
+                if (Properties.Settings.Default.Limit88)
+                {
+                    if (midievent.chan != 9 && !(note >= 21 && note <= 108)) return false;
+                }
+            }
+            return true; // process the event
         }
 
         // SF system
@@ -387,13 +415,12 @@ namespace KeppyMIDIConverter
                 }
 
                 BASSInitializeChanAttributes();
+                BASSTempoAndFilter();
 
                 if (Path.GetFileNameWithoutExtension(str).Length >= 49)
                     MainWindow.KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
                 else
                     MainWindow.KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str);
-
-                BASSTempoSetSync();
 
                 MainWindow.KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(MainWindow.KMCGlobals._recHandle, 1);
                 MainWindow.KMCGlobals._plm.CalcRMS = true;
@@ -440,11 +467,7 @@ namespace KeppyMIDIConverter
                     0);
 
                 BASSInitializeChanAttributes();
-
-                SetTempo(true, true);
-                MainWindow.KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);
-                Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT | BASSSync.BASS_SYNC_MIXTIME, (long)BASSMIDIEvent.MIDI_EVENT_TEMPO, MainWindow.KMCGlobals._myTempoSync, IntPtr.Zero);
-                Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_SETPOS | BASSSync.BASS_SYNC_MIXTIME, 0, MainWindow.KMCGlobals._myTempoSync, IntPtr.Zero);
+                BASSTempoAndFilter();
 
                 if (Path.GetFileNameWithoutExtension(str).Length >= 49)
                     MainWindow.KMCGlobals.NewWindowName = Path.GetFileNameWithoutExtension(str).Truncate(45);
@@ -459,12 +482,19 @@ namespace KeppyMIDIConverter
             }
         }
 
-        public static void BASSTempoSetSync()
+        public static void BASSTempoAndFilter()
         {
             SetTempo(true, true);
             MainWindow.KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);
+            MainWindow.KMCGlobals._FilterProc = new MIDIFILTERPROC(MidiFilterProc);
             Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT | BASSSync.BASS_SYNC_MIXTIME, (long)BASSMIDIEvent.MIDI_EVENT_TEMPO, MainWindow.KMCGlobals._myTempoSync, IntPtr.Zero);
             Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_SETPOS | BASSSync.BASS_SYNC_MIXTIME, 0, MainWindow.KMCGlobals._myTempoSync, IntPtr.Zero);
+            if (Properties.Settings.Default.IgnoreNotes1 || Properties.Settings.Default.AskForIgnoreTracks || Properties.Settings.Default.AskForIgnoreTracks)
+            {
+                BassMidi.BASS_MIDI_StreamSetFilter(MainWindow.KMCGlobals._recHandle, true, MainWindow.KMCGlobals._FilterProc, IntPtr.Zero);
+                if (Properties.Settings.Default.AskForIgnoreTracks)
+                    new TracksToIgnore().ShowDialog();
+            }
         }
 
         public static void BASSEffectSettings()

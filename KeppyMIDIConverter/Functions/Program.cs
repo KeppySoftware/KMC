@@ -30,27 +30,19 @@ namespace KeppyMIDIConverter
         [STAThread]
         static void Main(String[] args)
         {
-            try
+            if (Properties.Settings.Default.UpgradeRequired)
             {
-                if (Properties.Settings.Default.UpgradeRequired)
-                {
-                    Properties.Settings.Default.Upgrade();
-                    Properties.Settings.Default.UpgradeRequired = false;
-                    Properties.Settings.Default.Save();
-                }
-
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-
-                BootUp.CheckUp(args);
-
-                Application.Run(new MainWindow(Environment.GetCommandLineArgs()));
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeRequired = false;
+                Properties.Settings.Default.Save();
             }
-            catch (Exception exception)
-            {
-                ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("FatalError"), exception.ToString(), 1, 0);
-                errordialog.ShowDialog();
-            }
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            BootUp.CheckUp(args);
+
+            Application.Run(new MainWindow(Environment.GetCommandLineArgs()));
         }
     }
 }

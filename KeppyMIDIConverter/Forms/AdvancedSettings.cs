@@ -24,11 +24,17 @@ namespace KeppyMIDIConverter
             Delegate.AudioFreqLabel.Text = Languages.Parse("AudioFreq");
             Delegate.SincInter.Text = Languages.Parse("SincInter");
 
-            Delegate.ChannelsSettings.Text = Languages.Parse("ChannelsSettings");
+            Delegate.MIDIEventsSettings.Text = Languages.Parse("MIDIEventsSettings");
+            Delegate.IgnoreNotes1.Text = Languages.Parse("IgnoreNotes1");
+            Delegate.HighestVel.Text = Languages.Parse("HighestVel");
+            Delegate.LowestVel.Text = Languages.Parse("LowestVel");
+            Delegate.Limit88.Text = Languages.Parse("Limit88");
+            Delegate.Noteoff1.Text = Languages.Parse("NoteOff1");
+
             Delegate.StreamSettings.Text = Languages.Parse("StreamSettings");
+            Delegate.ChannelsSettings.Text = Languages.Parse("ChannelsSettings");
             Delegate.RTFPSLabel.Text = Languages.Parse("RealTimeFramerate");
             Delegate.BitrateLabel.Text = String.Format("{0}:", Languages.Parse("Bitrate"));
-            Delegate.Noteoff1.Text = Languages.Parse("NoteOff1");
             Delegate.FXDisable.Text = Languages.Parse("DisableEffects");
             Delegate.OverrideTempoNow.Text = Languages.Parse("OverrideTempo");
             Delegate.ConstantBitrate.Text = String.Format("{0}:", Languages.Parse("ConstantBitrate"));
@@ -63,33 +69,15 @@ namespace KeppyMIDIConverter
                 SincInter.Checked = Properties.Settings.Default.SincInter;
                 BitrateBox.Text = Convert.ToString(Properties.Settings.Default.Bitrate);
                 RTFPS.Value = Convert.ToDecimal(Properties.Settings.Default.RealTimeFPS);
+                IgnoreNotes1.Checked = Properties.Settings.Default.IgnoreNotes1;
+                LoVel.Value = Properties.Settings.Default.IgnoreNotesLow;
+                HiVel.Value = Properties.Settings.Default.IgnoreNotesHigh;
+                Limit88.Checked = Properties.Settings.Default.Limit88;
+                Noteoff1.Checked = Properties.Settings.Default.NoteOff1;
+                FXDisable.Checked = Properties.Settings.Default.DisableEffects;
+                ConstantBitrate.Checked = Properties.Settings.Default.OverrideBitrate;
+                TempoValue.Enabled = OverrideTempoNow.Checked = Properties.Settings.Default.OverrideTempo;
                 //
-                if (Properties.Settings.Default.NoteOff1 == true)
-                    Noteoff1.Checked = true;
-                else
-                    Noteoff1.Checked = false;
-
-                if (Properties.Settings.Default.DisableEffects == true)
-                    FXDisable.Checked = true;
-                else
-                    FXDisable.Checked = false;
-
-                if (Properties.Settings.Default.OverrideBitrate == true)
-                    ConstantBitrate.Checked = true;
-                else
-                    ConstantBitrate.Checked = false;
-
-                if (Properties.Settings.Default.OverrideTempo == true)
-                {
-                    OverrideTempoNow.Checked = true;
-                    TempoValue.Enabled = true;
-                }
-                else
-                {
-                    OverrideTempoNow.Checked = false;
-                    TempoValue.Enabled = false;
-                    TempoValue.Value = 40;
-                }
             }
             catch (Exception ex)
             {
@@ -129,6 +117,47 @@ namespace KeppyMIDIConverter
         private void Noteoff1_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.NoteOff1 = Noteoff1.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void Limit88_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Limit88 = Limit88.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void IgnoreNotes1_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IgnoreNotes1 = IgnoreNotes1.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void RTFPS_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.RealTimeFPS = Convert.ToDouble(RTFPS.Value);
+            Properties.Settings.Default.Save();
+        }
+
+        private void SincInter_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SincInter = SincInter.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void TempoValue_Scroll(object sender, EventArgs e)
+        {
+            MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
+            BASSControl.SetTempo(false, false);
+        }
+
+        private void CheckTempo_Tick(object sender, EventArgs e)
+        {
+            TempoCurrent.Text = String.Format("{0}bpm", Convert.ToDouble(60000000 / (MainWindow.KMCGlobals.MIDITempo * MainWindow.KMCGlobals.TempoScale)).ToString("0.0"));
+        }
+
+        private void MaxVoices_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Voices = (int)MaxVoices.Value;
             Properties.Settings.Default.Save();
         }
 
@@ -178,38 +207,19 @@ namespace KeppyMIDIConverter
             if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
         }
 
-        private void RTFPS_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.RealTimeFPS = Convert.ToDouble(RTFPS.Value);
-            Properties.Settings.Default.Save();
-        }
-
-        private void SincInter_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.SincInter = SincInter.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void TempoValue_Scroll(object sender, EventArgs e)
-        {
-            MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
-            BASSControl.SetTempo(false, false);
-        }
-
-        private void CheckTempo_Tick(object sender, EventArgs e)
-        {
-            TempoCurrent.Text = String.Format("{0}bpm", Convert.ToDouble(60000000 / (MainWindow.KMCGlobals.MIDITempo * MainWindow.KMCGlobals.TempoScale)).ToString("0.0"));
-        }
-
-        private void MaxVoices_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Voices = (int)MaxVoices.Value;
-            Properties.Settings.Default.Save();
-        }
-
         private void ChannelsSettings_Click(object sender, EventArgs e)
         {
             new ChannelsSettings().ShowDialog();
+        }
+
+        private void LoVel_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IgnoreNotesLow = (int)LoVel.Value;
+        }
+
+        private void HiVel_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IgnoreNotesHigh = (int)HiVel.Value;
         }
     }
 }

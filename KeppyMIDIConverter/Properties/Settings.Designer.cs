@@ -409,5 +409,65 @@ namespace KeppyMIDIConverter.Properties {
                 this["PreloadDefaultSF"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IgnoreNotes1 {
+            get {
+                return ((bool)(this["IgnoreNotes1"]));
+            }
+            set {
+                this["IgnoreNotes1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Limit88 {
+            get {
+                return ((bool)(this["Limit88"]));
+            }
+            set {
+                this["Limit88"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int IgnoreNotesLow {
+            get {
+                return ((int)(this["IgnoreNotesLow"]));
+            }
+            set {
+                this["IgnoreNotesLow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127")]
+        public int IgnoreNotesHigh {
+            get {
+                return ((int)(this["IgnoreNotesHigh"]));
+            }
+            set {
+                this["IgnoreNotesHigh"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AskForIgnoreTracks {
+            get {
+                return ((bool)(this["AskForIgnoreTracks"]));
+            }
+            set {
+                this["AskForIgnoreTracks"] = value;
+            }
+        }
     }
 }

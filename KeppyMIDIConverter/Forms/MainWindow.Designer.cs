@@ -93,6 +93,7 @@
             this.MoveUp = new System.Windows.Forms.MenuItem();
             this.MoveDown = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
+            this.AFIT = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -233,6 +234,7 @@
             this.CSFFS,
             this.SBIOMB,
             this.MTT,
+            this.AFIT,
             this.SVDS,
             this.menuItem23,
             this.ChangeLanguage});
@@ -321,19 +323,19 @@
             // 
             // SVDS
             // 
-            this.SVDS.Index = 9;
+            this.SVDS.Index = 10;
             this.SVDS.Text = "{SVDS}";
             this.SVDS.Click += new System.EventHandler(this.SVS_Click);
             // 
             // menuItem23
             // 
-            this.menuItem23.Index = 10;
+            this.menuItem23.Index = 11;
             this.menuItem23.Text = "-";
             // 
             // ChangeLanguage
             // 
             this.VistaMenuSys.SetImage(this.ChangeLanguage, global::KeppyMIDIConverter.Properties.Resources.lang_icon);
-            this.ChangeLanguage.Index = 11;
+            this.ChangeLanguage.Index = 12;
             this.ChangeLanguage.Text = "{ChangeLanguage}";
             this.ChangeLanguage.Click += new System.EventHandler(this.ChangeLanguage_Click);
             // 
@@ -619,6 +621,12 @@
             // 
             this.VistaMenuSys.ContainerControl = this;
             // 
+            // AFIT
+            // 
+            this.AFIT.Index = 9;
+            this.AFIT.Text = "{AFIT}";
+            this.AFIT.Click += new System.EventHandler(this.AFIT_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,6 +718,7 @@
         private System.Windows.Forms.MenuItem SBIOMB;
         private System.Windows.Forms.MenuItem MTT;
         private wyDay.Controls.VistaMenu VistaMenuSys;
+        private System.Windows.Forms.MenuItem AFIT;
     }
 }
 

@@ -964,4 +964,32 @@ Click OK to continue.</value>
     <value>Always preload the default SoundFont, if present.</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="AFIT" xml:space="preserve">
+    <value>Show ignore tracks dialog before export</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="HighestVel" xml:space="preserve">
+    <value>Highest:</value>
+    <comment>Range of IgnoreNotes1.</comment>
+  </data>
+  <data name="IgnoreNotes1" xml:space="preserve">
+    <value>Ignore notes in between two velocity values</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Limit88" xml:space="preserve">
+    <value>Liimt key range to 88 keys (Excluding drums channel)</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="LowestVel" xml:space="preserve">
+    <value>Lowest:</value>
+    <comment>Range of IgnoreNotes1.</comment>
+  </data>
+  <data name="MIDIEventsSettings" xml:space="preserve">
+    <value>MIDI events settings</value>
+    <comment>Title of the groupbox.</comment>
+  </data>
+  <data name="TracksToIgnoreTitle" xml:space="preserve">
+    <value>Which tracks do you want to ignore?</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>
