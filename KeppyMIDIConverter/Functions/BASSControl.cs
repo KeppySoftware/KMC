@@ -323,10 +323,7 @@ namespace KeppyMIDIConverter
 
         public static void VSTProc(int handle, int channel, int data, IntPtr user)
         {
-            int evento = (data >> 0x18);
-            int midichan = (data >> 0x10) & 0xFF;
-            int param = (data & 0xFFFF);
-            BassVst.BASS_VST_ProcessEvent(MainWindow.VSTs._VSTHandles[0], midichan, (BASSMIDIEvent)evento, param);
+            BassVst.BASS_VST_ProcessEvent(MainWindow.VSTs._VSTHandles[0], (data >> 16) & 255, (BASSMIDIEvent)(data >> 24), (data & 65535));
         }
 
         public class MidiFilterProcAnalytic
