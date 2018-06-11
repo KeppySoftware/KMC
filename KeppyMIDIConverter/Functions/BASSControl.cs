@@ -265,15 +265,33 @@ namespace KeppyMIDIConverter
                 if (MainWindow.VSTs.VSTInfo[0].isInstrument)
                 {
                     MainWindow.VSTs._VSTHandles[0] = BassVst.BASS_VST_ChannelCreate((MainWindow.KMCStatus.RenderingMode ? Properties.Settings.Default.AudioFreq : MainWindow.KMCGlobals.RealTimeFreq), 2, MainWindow.VSTs.VSTDLLs[0], BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | (PreviewMode ? 0 : BASSFlag.BASS_MIDI_SINCINTER));
+                    int vstParams = BassVst.BASS_VST_GetParamCount(MainWindow.VSTs._VSTHandles[0]);
+                    BASS_VST_PARAM_INFO paramInfo = new BASS_VST_PARAM_INFO();
 
                     if (Bass.BASS_ErrorGetCode() != BASSError.BASS_OK) throw new Exception(String.Format("{0} is not a valid VST instrument!", MainWindow.VSTs.VSTDLLs[0]));
 
-                    if (MainWindow.VSTs.VSTInfo[0].hasEditor)
+                    MainWindow.KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(MainWindow.VSTs._VSTHandles[0], 0);
+                    MainWindow.KMCGlobals._plm.CalcRMS = true;
+
+                    if (vstParams > 0 && (BassVst.BASS_VST_GetInfo(MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]) && MainWindow.VSTs.VSTInfo[0].hasEditor))
                     {
-                        MainWindow.KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(MainWindow.VSTs._VSTHandles[0], 0);
-                        MainWindow.KMCGlobals._plm.CalcRMS = true;
-                        BASSVSTShowDialog(true, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
+                        if (MainWindow.VSTs.VSTParams[0] == null)
+                        {
+                            BASSVSTShowDialog(true, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
+
+                            // Store the values
+                            MainWindow.VSTs.VSTParams[0] = new float?[vstParams];
+                            for (int e = 0; e < vstParams; e++)
+                                MainWindow.VSTs.VSTParams[0].SetValue(BassVst.BASS_VST_GetParam(MainWindow.VSTs._VSTHandles[0], e), e);
+                        }
+                        else
+                        {
+                            // Restore the values
+                            for (int e = 0; e < vstParams; e++)
+                                BassVst.BASS_VST_SetParam(MainWindow.VSTs._VSTHandles[0], e, (float)MainWindow.VSTs.VSTParams[0].GetValue(e));
+                        }
                     }
+
                     MainWindow.KMCGlobals._myVSTSync = new SYNCPROC(VSTProc);
                     int sync = Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, 0, MainWindow.KMCGlobals._myVSTSync, IntPtr.Zero);
                 }
@@ -296,11 +314,11 @@ namespace KeppyMIDIConverter
 
         public static int MyWasapiProc(IntPtr buffer, Int32 length, IntPtr user)
         {
-            int data = Bass.BASS_ChannelGetData(
-                MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle,
-                buffer, length);
-            if (data < 0) MainWindow.KMCGlobals.CancellationPendingValue = 2;
-            return data;
+            int d1 = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
+            int d2 = 0;
+            if (MainWindow.VSTs.VSTInfo[0].isInstrument) d2 = Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
+            if (d1 < 0) MainWindow.KMCGlobals.CancellationPendingValue = 2;
+            return (MainWindow.VSTs.VSTInfo[0].isInstrument ? d2 : d1);
         }
 
         public static void VSTProc(int handle, int channel, int data, IntPtr user)
