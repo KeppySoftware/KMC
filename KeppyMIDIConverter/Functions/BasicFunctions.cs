@@ -17,6 +17,18 @@ namespace KeppyMIDIConverter
 {
     class BasicFunctions
     {
+        public static void WriteCurrentActionToConsole(Boolean IsError, String CurrentAction)
+        {
+            if (Program.DebugMode)
+            {
+                Console.BackgroundColor = IsError ? ConsoleColor.Red : ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine();
+                Console.Write(String.Format("{0} - {1}", DateTime.Now.ToString(), CurrentAction));
+                Console.ResetColor();
+            }
+        }
+
         public static void WriteToConsole(Exception exception)
         {
             if (Program.DebugMode)
@@ -158,6 +170,9 @@ namespace KeppyMIDIConverter
                         Version.TryParse(Converter.FileVersion.ToString(), out Version y);
                         if (x > y)
                         {
+                            while (Application.OpenForms.OfType<MainWindow>().Count() != 1)
+                                Thread.Sleep(1);
+
                             MainWindow.Delegate.Invoke((MethodInvoker)delegate {
                                 DialogResult dialogResult = MessageBox.Show(String.Format(Languages.Parse("UpdateFound"), Program.Who, Program.Title, Converter.FileVersion, newestversion), String.Format(Languages.Parse("UpdateFoundTitle"), Program.Who, Program.Title), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                                 if (dialogResult == DialogResult.Yes)

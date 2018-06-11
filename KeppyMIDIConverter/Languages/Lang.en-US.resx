@@ -992,4 +992,17 @@ Click OK to continue.</value>
     <value>Which tracks do you want to ignore?</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="PreloadSamplesNotSF" xml:space="preserve">
+    <value>Preload the required samples, rather than the entire SoundFonts.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PreloadSamplesNotSFWarn" xml:space="preserve">
+    <value>Preloading the samples will force the converter to scan the entire MIDI, to check which samples need to be preloaded.
+This behavior might make the converter stall in the check for minutes, even hours, depending on how big both the MIDI and the SoundFonts are.
+For Black MIDI playback/conversion, it is highly suggested to leave this option unchecked.</value>
+  </data>
+  <data name="PreloadSFOfMIDI" xml:space="preserve">
+    <value>Preloads SoundFonts with the same name and path as the MIDI.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

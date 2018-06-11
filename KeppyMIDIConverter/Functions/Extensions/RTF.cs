@@ -68,6 +68,7 @@ namespace KeppyMIDIConverter
             MainWindow.Delegate.ClearList.Enabled = false;
             MainWindow.Delegate.OpenSFVSTManager.Enabled = false;
             MainWindow.Delegate.SVDS.Enabled = false;
+            MainWindow.Delegate.AFIT.Enabled = false;
 
             // Right-click Context Menu
             MainWindow.Delegate.ImportMIDIsC.Enabled = false;
@@ -87,6 +88,7 @@ namespace KeppyMIDIConverter
             MainWindow.Delegate.ClearList.Enabled = true;
             MainWindow.Delegate.OpenSFVSTManager.Enabled = true;
             MainWindow.Delegate.SVDS.Enabled = true;
+            MainWindow.Delegate.AFIT.Enabled = true;
 
             // Right-click Context Menu
             MainWindow.Delegate.ImportMIDIsC.Enabled = true;
@@ -355,16 +357,9 @@ namespace KeppyMIDIConverter
                 else
                 {
                     if (MainWindow.KMCStatus.IsKMCBusy == false)
-                    {
                         MainWindow.Delegate.Text = MainWindow.Title;
-                    }
                     else
-                    {
-                        if (MainWindow.KMCStatus.RenderingMode == false)
-                            MainWindow.Delegate.Text = String.Format(Languages.Parse("PlaybackText"), MainWindow.Title, MainWindow.KMCGlobals.NewWindowName);
-                        else
-                            MainWindow.Delegate.Text = String.Format(Languages.Parse("ConversionText"), MainWindow.Title, MainWindow.KMCGlobals.NewWindowName);
-                    }
+                        MainWindow.Delegate.Text = String.Format(MainWindow.KMCStatus.RenderingMode ? Languages.Parse("ConversionText") : Languages.Parse("PlaybackText"), MainWindow.Title, MainWindow.KMCGlobals.NewWindowName);
                 }
             }
             catch

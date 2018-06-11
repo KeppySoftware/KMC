@@ -59,6 +59,7 @@
             this.CSFFS = new System.Windows.Forms.MenuItem();
             this.SBIOMB = new System.Windows.Forms.MenuItem();
             this.MTT = new System.Windows.Forms.MenuItem();
+            this.AFIT = new System.Windows.Forms.MenuItem();
             this.SVDS = new System.Windows.Forms.MenuItem();
             this.menuItem23 = new System.Windows.Forms.MenuItem();
             this.ChangeLanguage = new System.Windows.Forms.MenuItem();
@@ -93,7 +94,6 @@
             this.MoveUp = new System.Windows.Forms.MenuItem();
             this.MoveDown = new System.Windows.Forms.MenuItem();
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
-            this.AFIT = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.panel1.SuspendLayout();
@@ -320,6 +320,12 @@
             this.MTT.Index = 8;
             this.MTT.Text = "{MTT}";
             this.MTT.Click += new System.EventHandler(this.MTT_Click);
+            // 
+            // AFIT
+            // 
+            this.AFIT.Index = 9;
+            this.AFIT.Text = "{AFIT}";
+            this.AFIT.Click += new System.EventHandler(this.AFIT_Click);
             // 
             // SVDS
             // 
@@ -621,12 +627,6 @@
             // 
             this.VistaMenuSys.ContainerControl = this;
             // 
-            // AFIT
-            // 
-            this.AFIT.Index = 9;
-            this.AFIT.Text = "{AFIT}";
-            this.AFIT.Click += new System.EventHandler(this.AFIT_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,7 +718,7 @@
         private System.Windows.Forms.MenuItem SBIOMB;
         private System.Windows.Forms.MenuItem MTT;
         private wyDay.Controls.VistaMenu VistaMenuSys;
-        private System.Windows.Forms.MenuItem AFIT;
+        public System.Windows.Forms.MenuItem AFIT;
     }
 }
 

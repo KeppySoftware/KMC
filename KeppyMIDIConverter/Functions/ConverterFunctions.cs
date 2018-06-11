@@ -150,7 +150,7 @@ namespace KeppyMIDIConverter
                             BASSControl.BASSInitSystem(false);
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             BASSControl.BASSStreamSystem(str, false);
-                            BASSControl.BASSLoadSoundFonts();
+                            BASSControl.BASSLoadSoundFonts(str);
                             BASSControl.BASSInitVSTiIfNeeded(false);
                             BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
                             BASSControl.BASSEffectSettings();
@@ -254,7 +254,7 @@ namespace KeppyMIDIConverter
                             BasicFunctions.ReturnCustomFramerate(out CustomFramerates);
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             BASSControl.BASSStreamSystemRT(str, false);
-                            BASSControl.BASSLoadSoundFonts();
+                            BASSControl.BASSLoadSoundFonts(str);
                             BASSControl.BASSInitVSTiIfNeeded(false);
                             BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
                             BASSControl.BASSEffectSettings();
@@ -351,7 +351,7 @@ namespace KeppyMIDIConverter
                             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
                             BASSControl.BASSInitSystem(true);
                             BASSControl.BASSStreamSystem(str, true);
-                            BASSControl.BASSLoadSoundFonts();
+                            BASSControl.BASSLoadSoundFonts(str);
                             BASSControl.BASSInitVSTiIfNeeded(true);
                             BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
                             BASSControl.BASSEffectSettings();

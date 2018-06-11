@@ -996,4 +996,17 @@ Clicca OK per continuare.</value>
     <value>Quali tracce vuoi ignorare?</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="PreloadSamplesNotSF" xml:space="preserve">
+    <value>Precarica i campioni audio richiesti, invece dei SoundFont interi.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PreloadSamplesNotSFWarn" xml:space="preserve">
+    <value>Precaricare i campioni audio richiesti forzerà il convertitore a scansionare l'intero file MIDI, per controllare quali campioni specifici devono essere precaricati.
+Questa funzione può bloccare il convertitore durante la fase di controllo per minuti, o addirittura ore, secondo la dimensione del MIDI o dei banchi di suoni.
+Per la riproduzione/conversione di Black MIDI, è caldamente suggerito lasciare questa opzione disattivata.</value>
+  </data>
+  <data name="PreloadSFOfMIDI" xml:space="preserve">
+    <value>Precarica il SoundFont con la stessa directory e nome del MIDI.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

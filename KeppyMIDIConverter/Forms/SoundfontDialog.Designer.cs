@@ -50,6 +50,8 @@
             this.VistaMenuSys = new wyDay.Controls.VistaMenu(this.components);
             this.SFList = new System.Windows.Forms.ListBox();
             this.PreloadDefaultSF = new System.Windows.Forms.CheckBox();
+            this.PreloadSamplesNotSF = new System.Windows.Forms.CheckBox();
+            this.PreloadSFOfMIDI = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SFZCompliant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VistaMenuSys)).BeginInit();
@@ -58,7 +60,7 @@
             // OKBtn
             // 
             this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKBtn.Location = new System.Drawing.Point(504, 435);
+            this.OKBtn.Location = new System.Drawing.Point(504, 482);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(75, 23);
             this.OKBtn.TabIndex = 8;
@@ -83,7 +85,7 @@
             // ImportBtn
             // 
             this.ImportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ImportBtn.Location = new System.Drawing.Point(12, 435);
+            this.ImportBtn.Location = new System.Drawing.Point(11, 482);
             this.ImportBtn.Name = "ImportBtn";
             this.ImportBtn.Size = new System.Drawing.Size(145, 23);
             this.ImportBtn.TabIndex = 9;
@@ -94,7 +96,7 @@
             // RemoveBtn
             // 
             this.RemoveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveBtn.Location = new System.Drawing.Point(156, 435);
+            this.RemoveBtn.Location = new System.Drawing.Point(155, 482);
             this.RemoveBtn.Name = "RemoveBtn";
             this.RemoveBtn.Size = new System.Drawing.Size(145, 23);
             this.RemoveBtn.TabIndex = 10;
@@ -105,7 +107,7 @@
             // MvUp
             // 
             this.MvUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MvUp.Location = new System.Drawing.Point(323, 435);
+            this.MvUp.Location = new System.Drawing.Point(323, 482);
             this.MvUp.Name = "MvUp";
             this.MvUp.Size = new System.Drawing.Size(88, 23);
             this.MvUp.TabIndex = 13;
@@ -116,7 +118,7 @@
             // MvDwn
             // 
             this.MvDwn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MvDwn.Location = new System.Drawing.Point(410, 435);
+            this.MvDwn.Location = new System.Drawing.Point(410, 482);
             this.MvDwn.Name = "MvDwn";
             this.MvDwn.Size = new System.Drawing.Size(88, 23);
             this.MvDwn.TabIndex = 14;
@@ -133,9 +135,9 @@
             // VSTUse
             // 
             this.VSTUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.VSTUse.Location = new System.Drawing.Point(12, 412);
+            this.VSTUse.Location = new System.Drawing.Point(12, 461);
             this.VSTUse.Name = "VSTUse";
-            this.VSTUse.Size = new System.Drawing.Size(392, 19);
+            this.VSTUse.Size = new System.Drawing.Size(430, 19);
             this.VSTUse.TabIndex = 16;
             this.VSTUse.Text = "I want to apply a VST DSPs too.";
             this.VSTUse.UseVisualStyleBackColor = true;
@@ -145,9 +147,9 @@
             // 
             this.VSTImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VSTImport.Enabled = false;
-            this.VSTImport.Location = new System.Drawing.Point(410, 390);
+            this.VSTImport.Location = new System.Drawing.Point(448, 410);
             this.VSTImport.Name = "VSTImport";
-            this.VSTImport.Size = new System.Drawing.Size(169, 38);
+            this.VSTImport.Size = new System.Drawing.Size(131, 65);
             this.VSTImport.TabIndex = 17;
             this.VSTImport.Text = "Open the VST DSP manager...";
             this.VSTImport.UseVisualStyleBackColor = true;
@@ -227,7 +229,7 @@
             this.SFList.Location = new System.Drawing.Point(12, 96);
             this.SFList.Name = "SFList";
             this.SFList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.SFList.Size = new System.Drawing.Size(567, 286);
+            this.SFList.Size = new System.Drawing.Size(567, 306);
             this.SFList.TabIndex = 11;
             this.SFList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SFList_DragDrop);
             this.SFList.DragEnter += new System.Windows.Forms.DragEventHandler(this.SFList_DragEnter);
@@ -236,20 +238,44 @@
             // PreloadDefaultSF
             // 
             this.PreloadDefaultSF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PreloadDefaultSF.Location = new System.Drawing.Point(12, 389);
+            this.PreloadDefaultSF.Location = new System.Drawing.Point(12, 443);
             this.PreloadDefaultSF.Name = "PreloadDefaultSF";
-            this.PreloadDefaultSF.Size = new System.Drawing.Size(392, 19);
+            this.PreloadDefaultSF.Size = new System.Drawing.Size(430, 19);
             this.PreloadDefaultSF.TabIndex = 19;
             this.PreloadDefaultSF.Text = "Always preload the default SoundFont, if present.";
             this.PreloadDefaultSF.UseVisualStyleBackColor = true;
             this.PreloadDefaultSF.CheckedChanged += new System.EventHandler(this.PreloadDefaultSF_CheckedChanged);
+            // 
+            // PreloadSamplesNotSF
+            // 
+            this.PreloadSamplesNotSF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PreloadSamplesNotSF.Location = new System.Drawing.Point(12, 425);
+            this.PreloadSamplesNotSF.Name = "PreloadSamplesNotSF";
+            this.PreloadSamplesNotSF.Size = new System.Drawing.Size(430, 19);
+            this.PreloadSamplesNotSF.TabIndex = 20;
+            this.PreloadSamplesNotSF.Text = "Preload the required samples, rather than the entire SoundFonts.";
+            this.PreloadSamplesNotSF.UseVisualStyleBackColor = true;
+            this.PreloadSamplesNotSF.CheckedChanged += new System.EventHandler(this.PreloadSamplesNotSF_CheckedChanged);
+            // 
+            // PreloadSFOfMIDI
+            // 
+            this.PreloadSFOfMIDI.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PreloadSFOfMIDI.Location = new System.Drawing.Point(12, 407);
+            this.PreloadSFOfMIDI.Name = "PreloadSFOfMIDI";
+            this.PreloadSFOfMIDI.Size = new System.Drawing.Size(430, 19);
+            this.PreloadSFOfMIDI.TabIndex = 21;
+            this.PreloadSFOfMIDI.Text = "Preloads SoundFonts with the same name and path as the MIDI.";
+            this.PreloadSFOfMIDI.UseVisualStyleBackColor = true;
+            this.PreloadSFOfMIDI.CheckedChanged += new System.EventHandler(this.PreloadSFOfMIDI_CheckedChanged);
             // 
             // SoundfontDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(589, 470);
+            this.ClientSize = new System.Drawing.Size(589, 517);
+            this.Controls.Add(this.PreloadSFOfMIDI);
+            this.Controls.Add(this.PreloadSamplesNotSF);
             this.Controls.Add(this.PreloadDefaultSF);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.VSTImport);
@@ -302,5 +328,7 @@
         private wyDay.Controls.VistaMenu VistaMenuSys;
         public System.Windows.Forms.ListBox SFList;
         private System.Windows.Forms.CheckBox PreloadDefaultSF;
+        private System.Windows.Forms.CheckBox PreloadSamplesNotSF;
+        private System.Windows.Forms.CheckBox PreloadSFOfMIDI;
     }
 }

@@ -34,17 +34,21 @@
             // 
             // TracksCheckboxes
             // 
+            this.TracksCheckboxes.BackColor = System.Drawing.Color.Black;
+            this.TracksCheckboxes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TracksCheckboxes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TracksCheckboxes.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TracksCheckboxes.ForeColor = System.Drawing.Color.White;
             this.TracksCheckboxes.FormattingEnabled = true;
             this.TracksCheckboxes.Location = new System.Drawing.Point(0, 0);
             this.TracksCheckboxes.Name = "TracksCheckboxes";
-            this.TracksCheckboxes.Size = new System.Drawing.Size(354, 244);
+            this.TracksCheckboxes.Size = new System.Drawing.Size(508, 240);
             this.TracksCheckboxes.TabIndex = 0;
             // 
             // OK
             // 
             this.OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OK.Location = new System.Drawing.Point(267, 257);
+            this.OK.Location = new System.Drawing.Point(418, 254);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(75, 23);
             this.OK.TabIndex = 1;
@@ -56,7 +60,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 292);
+            this.ClientSize = new System.Drawing.Size(508, 292);
             this.ControlBox = false;
             this.Controls.Add(this.OK);
             this.Controls.Add(this.TracksCheckboxes);

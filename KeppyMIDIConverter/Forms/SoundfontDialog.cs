@@ -28,6 +28,8 @@ namespace KeppyMIDIConverter
 
         public static void InitializeLanguage()
         {
+            Delegate.PreloadSFOfMIDI.Text = Languages.Parse("PreloadSFOfMIDI");
+            Delegate.PreloadSamplesNotSF.Text = Languages.Parse("PreloadSamplesNotSF");
             Delegate.PreloadDefaultSF.Text = Languages.Parse("PreloadDefaultSF");
             Delegate.VSTUse.Text = Languages.Parse("VSTUseText");
             Delegate.VSTImport.Text = Languages.Parse("VSTManagerButtonText");
@@ -47,21 +49,15 @@ namespace KeppyMIDIConverter
             SFList.ContextMenu = SFMenu;
             SoundfontImportDialog.InitialDirectory = Properties.Settings.Default.LastSoundFontFolder;
 
+            PreloadSFOfMIDI.Checked = Properties.Settings.Default.PreloadSFOfMIDI;
             PreloadDefaultSF.Checked = Properties.Settings.Default.PreloadDefaultSF;
+            PreloadSamplesNotSF.Checked = Properties.Settings.Default.PreloadSamplesNotSF;
 
             if (Properties.Settings.Default.LoudMaxEnabled)
                 MainWindow.KMCStatus.VSTMode = true;
 
-            if (MainWindow.KMCStatus.VSTMode == true)
-            {
-                VSTImport.Enabled = true;
-                VSTUse.Checked = true;
-            }
-            else
-            {
-                VSTImport.Enabled = false;
-                VSTUse.Checked = false;
-            }
+            VSTImport.Enabled = MainWindow.KMCStatus.VSTMode;
+            VSTUse.Checked = MainWindow.KMCStatus.VSTMode;
         }
 
         private void removeSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,13 +70,13 @@ namespace KeppyMIDIConverter
                 }
                 if (SFList.Items.Count == 0)
                 {
-                    Array.Clear(KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts, 0, KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts.Length);
-                    KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts = new string[] { null };
+                    Array.Clear(MainWindow.SoundFontChain.SoundFonts, 0, KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts.Length);
+                    MainWindow.SoundFontChain.SoundFonts = new string[] { null };
                 }
                 else
                 {
-                    KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts = new string[SFList.Items.Count];
-                    SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts, 0);
+                    MainWindow.SoundFontChain.SoundFonts = new string[SFList.Items.Count];
+                    SFList.Items.CopyTo(MainWindow.SoundFontChain.SoundFonts, 0);
                 }
             }
             catch { }
@@ -136,8 +132,8 @@ namespace KeppyMIDIConverter
                 if (this.SoundfontImportDialog.ShowDialog() == DialogResult.OK)
                 {
                     AddSoundFontsToList(SoundfontImportDialog.FileNames, ImportPresetFromSF2);
-                    KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts = new string[SFList.Items.Count];
-                    SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts, 0);
+                    MainWindow.SoundFontChain.SoundFonts = new string[SFList.Items.Count];
+                    SFList.Items.CopyTo(MainWindow.SoundFontChain.SoundFonts, 0);
                 }
             }
             catch (Exception ex)
@@ -150,7 +146,7 @@ namespace KeppyMIDIConverter
         {
             foreach (String file in SFs)
             {
-                if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sfpack" | Path.GetExtension(file).ToLower() == ".sfz")
+                if (Path.GetExtension(file).ToLower() == ".sf2" | Path.GetExtension(file).ToLower() == ".sf3" | Path.GetExtension(file).ToLower() == ".sf2pack" | Path.GetExtension(file).ToLower() == ".sfz")
                 {
                     if (SFList.Items.Count == 1000) SFList.Items.RemoveAt(1000);
 
@@ -199,8 +195,8 @@ namespace KeppyMIDIConverter
                     MessageBox.Show(Languages.Parse("SoundfontImportError"), Languages.Parse("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts = new string[SFList.Items.Count];
-            SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts, 0);
+            MainWindow.SoundFontChain.SoundFonts = new string[SFList.Items.Count];
+            SFList.Items.CopyTo(MainWindow.SoundFontChain.SoundFonts, 0);
         }
 
         private void importSoundfontsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -217,9 +213,9 @@ namespace KeppyMIDIConverter
         {
             try
             {
-                for (int i = this.SFList.SelectedIndices.Count - 1; i >= 0; i--)
+                for (int i = SFList.SelectedIndices.Count - 1; i >= 0; i--)
                 {
-                    this.SFList.Items.RemoveAt(this.SFList.SelectedIndices[i]);
+                    SFList.Items.RemoveAt(SFList.SelectedIndices[i]);
                 }
                 if (SFList.Items.Count == 0)
                 {
@@ -356,7 +352,7 @@ namespace KeppyMIDIConverter
         private void VSTUse_CheckedChanged(object sender, EventArgs e)
         {
             VSTImport.Enabled = VSTUse.Checked;
-            KeppyMIDIConverter.MainWindow.KMCStatus.VSTMode = VSTUse.Checked;
+            MainWindow.KMCStatus.VSTMode = VSTUse.Checked;
 
             if (VSTUse.Checked != true)
             {
@@ -365,25 +361,40 @@ namespace KeppyMIDIConverter
             }
         }
 
+        private void PreloadSFOfMIDI_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.PreloadSFOfMIDI = PreloadSFOfMIDI.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private Boolean PreloadSamplesNotSFCheck = false;
+        private void PreloadSamplesNotSF_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!PreloadSamplesNotSFCheck && PreloadSamplesNotSF.Checked)
+            {
+                MessageBox.Show(Languages.Parse("PreloadSamplesNotSFWarn"), String.Format("{0} {1} - {2}", Program.Who, Program.Title, Languages.Parse("Warning")), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                PreloadSamplesNotSFCheck = true;
+            }
+            Properties.Settings.Default.PreloadSamplesNotSF = PreloadSamplesNotSF.Checked;
+            Properties.Settings.Default.Save();
+        }
+
         private void PreloadDefaultSF_CheckedChanged(object sender, EventArgs e)
         {
-            if (PreloadDefaultSF.Checked != true)
-            {
-                Properties.Settings.Default.PreloadDefaultSF = false;
-                Properties.Settings.Default.Save();
-            }
+            Properties.Settings.Default.PreloadDefaultSF = PreloadDefaultSF.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void VSTImport_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.VSTManagerWindow frm = new KeppyMIDIConverter.VSTManagerWindow();
+            VSTManagerWindow frm = new VSTManagerWindow();
             frm.ShowDialog();
         }
 
         private void OKBtn_Click(object sender, EventArgs e)
         {
-            KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts = new string[SFList.Items.Count];
-            SFList.Items.CopyTo(KeppyMIDIConverter.MainWindow.SoundFontChain.SoundFonts, 0);
+            MainWindow.SoundFontChain.SoundFonts = new string[SFList.Items.Count];
+            SFList.Items.CopyTo(MainWindow.SoundFontChain.SoundFonts, 0);
             this.Close();
         }
     }

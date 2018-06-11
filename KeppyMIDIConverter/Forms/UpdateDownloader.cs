@@ -31,11 +31,6 @@ namespace KeppyMIDIConverter
             {
                 using (webClient = new WebClient())
                 {
-                    ServicePointManager.Expect100Continue = true;
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-
                     webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
                     webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
 

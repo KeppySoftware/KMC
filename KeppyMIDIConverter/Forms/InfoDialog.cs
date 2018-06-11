@@ -187,7 +187,7 @@ namespace KeppyMIDIConverter
 
                 // Ok, print everything to the string builder
                 StringBuilder sb = new StringBuilder();
-                sb.Append(String.Format("Keppy's Synthesizer Information Dialog\n\n", ConverterVer.Text));
+                sb.Append(String.Format("Keppy's MIDI Converter Information Dialog\n\n", ConverterVer.Text));
                 sb.Append("== Driver info =================================================\n");
                 sb.Append(String.Format("Driver version: {0}\n", ConverterVer.Text));
                 sb.Append(String.Format("BASS version: {0}\n", BASSVer.Text));

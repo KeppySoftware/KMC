@@ -75,6 +75,7 @@ namespace KeppyMIDIConverter
             public static int MIDITempo = 0;            // MIDI file tempo
             public static float TempoScale = 1.0f;      // Tempo adjustment
             public static int _LoudMaxHan;
+            public static float?[] _LoudMaxHanParams = null;
             public static int OriginalTempo;
             public static int SoundFont;
             public static int Time = 0;
@@ -120,6 +121,7 @@ namespace KeppyMIDIConverter
         {
             public static int[] _VSTHandles = new int[8];
             public static BASS_VST_INFO[] VSTInfo = new BASS_VST_INFO[8];
+            public static float?[][] VSTParams = new float?[8][] { null, null, null, null, null, null, null, null };
             public static string[] VSTDLLs = new string[8];
             public static string[] VSTDLLDescs = new string[8];
         }
@@ -550,7 +552,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("Error"), exception.ToString(), 0, 0);
+                ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), exception.ToString(), 0, 0);
                 errordialog.ShowDialog();
             }
         }
