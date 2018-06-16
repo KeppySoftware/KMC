@@ -142,88 +142,53 @@ namespace KeppyMIDIConverter
                 try
                 {
                     BasicFunctions.PlayConversionStart();
-                    bool KeepLooping = true;
-                    while (KeepLooping)
+
+                    // First of all, initialize BASS itself
+                    BASSControl.BASSInitSystem(false);
+                    BASSControl.InitializeDummyVSTs();
+                    foreach (String str in MainWindow.KMCGlobals.MIDIs)
                     {
-                        foreach (String str in MainWindow.KMCGlobals.MIDIs)
+                        // Initialize BASS stream
+                        BASSControl.BASSStreamSystem(str, false);
+                        BASSControl.BASSLoadSoundFonts(str);
+                        BASSControl.BASSInitVSTiIfNeeded(false);
+                        BASSControl.InitializeVSTsForStream((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                        BASSControl.BASSEffectSettings();
+                        BASSControl.BASSVolumeSlideInit();
+                        BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
+
+                        // Get length of the stream
+                        Int64 pos = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
+                        Int64 length = Convert.ToInt64(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, 0.0275));
+
+                        // KMC is now busy
+                        MainWindow.KMCStatus.IsKMCNowExporting = true;
+                        while (BASSControl.BASSEncodingEngine(pos, length))
                         {
-                            BASSControl.BASSInitSystem(false);
-                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
-                            BASSControl.BASSStreamSystem(str, false);
-                            BASSControl.BASSLoadSoundFonts(str);
-                            BASSControl.BASSInitVSTiIfNeeded(false);
-                            BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
-                            BASSControl.BASSEffectSettings();
-                            BASSControl.BASSVolumeSlideInit();
-                            BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
-                            long pos = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
-                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, 0.0275));
-                            MainWindow.KMCStatus.IsKMCNowExporting = true;
-                            bool DoINeedToContinue;
-                            while (true)
-                            {
-                                if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
-                                {
-                                    DoINeedToContinue = BASSControl.BASSEncodingEngine(pos, length);
-                                    if (DoINeedToContinue == false) break;
-                                }
-                                else if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
-                                {
-                                    BASSControl.BASSCloseStream(Languages.Parse("ConversionAborted"), Languages.Parse("ConversionAborted"), 0);
-                                    KeepLooping = false;
-                                    break;
-                                }
-                            }
                             if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
-                            {
-                                BASSControl.ReleaseResources(false);
-                                KeepLooping = false;
                                 break;
-                            }
-                            else
-                            {
-                                BASSControl.ReleaseResources(true);
-                                KeepLooping = false;
-                                continue;
-                            }
                         }
-                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
-                        {
-                            BASSControl.BASSCloseStream(Languages.Parse("ConversionAborted"), Languages.Parse("ConversionAborted"), 0);
-                            KeepLooping = false;
-                            MainWindow.KMCStatus.RenderingMode = false;
-                            MainWindow.KMCStatus.IsKMCBusy = false;
-                            MainWindow.KMCStatus.IsKMCNowExporting = false;
-                            MainWindow.KMCGlobals.VSTSkipSettings = false;
-                            BasicFunctions.PlayConversionStop();
-                        }
-                        else
-                        {
-                            BASSControl.BASSCloseStream(Languages.Parse("ConversionCompleted"), Languages.Parse("ConversionCompleted"), 1);
-                            MainWindow.KMCStatus.RenderingMode = false;
-                            MainWindow.KMCStatus.IsKMCBusy = false;
-                            MainWindow.KMCStatus.IsKMCNowExporting = false;
-                            MainWindow.KMCGlobals.VSTSkipSettings = false;
-
-                            if (MainWindow.KMCGlobals.AutoShutDownEnabled == true)
-                            {
-                                var psi = new ProcessStartInfo("shutdown", "/s /t 0");
-                                psi.CreateNoWindow = true;
-                                psi.UseShellExecute = false;
-                                Process.Start(psi);
-                            }
-
-                            if (MainWindow.KMCGlobals.AutoClearMIDIListEnabled == true)
-                            {
-                                MainWindow.Delegate.Invoke((MethodInvoker)delegate { MainWindow.Delegate.MIDIList.Items.Clear(); });
-                                BasicFunctions.PlayConversionStop();
-                            }
-                            else
-                            {
-                                BasicFunctions.PlayConversionStop();
-                            }
-                        }
+                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1));
                     }
+
+                    MainWindow.KMCStatus.RenderingMode = false;
+                    MainWindow.KMCStatus.IsKMCBusy = false;
+                    MainWindow.KMCStatus.IsKMCNowExporting = false;
+                    MainWindow.KMCGlobals.VSTSkipSettings = false;
+
+                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == 1) ? "ConversionAborted" : "ConversionCompleted";
+                    BASSControl.BASSCloseStream(Languages.Parse(Msg), Languages.Parse(Msg), 0);
+
+                    if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
+                    {
+                        if (MainWindow.KMCGlobals.AutoShutDownEnabled == true)
+                            Process.Start(new ProcessStartInfo("shutdown", "/s /t 0") { CreateNoWindow = true, UseShellExecute = false });
+
+                        if (MainWindow.KMCGlobals.AutoClearMIDIListEnabled)
+                            MainWindow.Delegate.Invoke((MethodInvoker)delegate { MainWindow.Delegate.MIDIList.Items.Clear(); });
+                    }
+
+                    BasicFunctions.PlayConversionStop();
                 }
                 catch (Exception exception)
                 {
@@ -244,84 +209,60 @@ namespace KeppyMIDIConverter
                 try
                 {
                     BasicFunctions.PlayConversionStart();
-                    bool KeepLooping = true;
-                    while (KeepLooping)
+
+                    // First of all, initialize BASS itself
+                    BASSControl.BASSInitSystem(false);
+                    BASSControl.InitializeDummyVSTs();
+                    foreach (String str in MainWindow.KMCGlobals.MIDIs)
                     {
-                        foreach (String str in MainWindow.KMCGlobals.MIDIs)
+                        // Initialize RT stuff
+                        Double[] CustomFramerates;
+                        BasicFunctions.ReturnCustomFramerate(out CustomFramerates);
+                        MainWindow.FPSSimulator.NextDouble();
+
+                        // Initialize BASS stream
+                        BASSControl.BASSStreamSystemRT(str, false);
+                        BASSControl.BASSLoadSoundFonts(str);
+                        BASSControl.BASSInitVSTiIfNeeded(false);
+                        BASSControl.InitializeVSTsForStream((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                        BASSControl.BASSEffectSettings();
+                        BASSControl.BASSVolumeSlideInit();
+                        BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
+
+                        // Get length of the stream
+                        Int64 pos = 0, es = 0;
+
+                        // KMC is now busy
+                        MainWindow.KMCStatus.IsKMCNowExporting = true;
+                        for (pos = 0, es = 0; ;)
                         {
-                            BASSControl.BASSInitSystem(false);
-                            double[] CustomFramerates;
-                            BasicFunctions.ReturnCustomFramerate(out CustomFramerates);
-                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
-                            BASSControl.BASSStreamSystemRT(str, false);
-                            BASSControl.BASSLoadSoundFonts(str);
-                            BASSControl.BASSInitVSTiIfNeeded(false);
-                            BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
-                            BASSControl.BASSEffectSettings();
-                            BASSControl.BASSVolumeSlideInit();
-                            BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
-                            int pos = 0;
-                            uint es = 0;
-                            MainWindow.FPSSimulator.NextDouble();
-                            MainWindow.KMCStatus.IsKMCNowExporting = true;
-                            bool DoINeedToContinue;
-                            for (pos = 0, es = 0; ;)
+                            if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
                             {
-                                if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
-                                {
-                                    DoINeedToContinue = BASSControl.BASSEncodingEngineRT(CustomFramerates, ref pos, ref es);
-                                    if (DoINeedToContinue == false) break;
-                                }
-                                else if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
-                                {
-                                    BASSControl.BASSCloseStream(Languages.Parse("ConversionAborted"), Languages.Parse("ConversionAborted"), 0);
-                                    BASSControl.ReleaseResources(false);
-                                    KeepLooping = false;
-                                    break;
-                                }
-                                else if (MainWindow.KMCGlobals.CancellationPendingValue == 2)
-                                {
-                                    BASSControl.ReleaseResources(true);
-                                    KeepLooping = false;
-                                    continue;
-                                }
+                                if (!BASSControl.BASSEncodingEngineRT(CustomFramerates, ref pos, ref es)) break;
                             }
-                            if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
-                            {
-                                BASSControl.ReleaseResources(false);
-                                break;
-                            }
-                            else
-                            {
-                                BASSControl.ReleaseResources(true);
-                                continue;
-                            }
+                            else break;
                         }
-                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
-                        {
-                            BASSControl.BASSCloseStream(Languages.Parse("ConversionAborted"), Languages.Parse("ConversionAborted"), 0);
-                            KeepLooping = false;
-                            BasicFunctions.PlayConversionStop();
-                        }
-                        else
-                        {
-                            BASSControl.BASSCloseStream(Languages.Parse("ConversionCompleted"), Languages.Parse("ConversionCompleted"), 1);
-                            KeepLooping = false;
-                            if (MainWindow.KMCGlobals.AutoShutDownEnabled == true)
-                            {
-                                var psi = new ProcessStartInfo("shutdown", "/s /t 0");
-                                psi.CreateNoWindow = true;
-                                psi.UseShellExecute = false;
-                                Process.Start(psi);
-                            }
-                            if (MainWindow.KMCGlobals.AutoClearMIDIListEnabled == true)
-                            {
-                                MainWindow.Delegate.Invoke((MethodInvoker) delegate { MainWindow.Delegate.MIDIList.Items.Clear(); });
-                                BasicFunctions.PlayConversionStop();
-                            }
-                            else BasicFunctions.PlayConversionStop();
-                        }
+                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1));
                     }
+
+                    MainWindow.KMCStatus.RenderingMode = false;
+                    MainWindow.KMCStatus.IsKMCBusy = false;
+                    MainWindow.KMCStatus.IsKMCNowExporting = false;
+                    MainWindow.KMCGlobals.VSTSkipSettings = false;
+
+                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == 1) ? "ConversionAborted" : "ConversionCompleted";
+                    BASSControl.BASSCloseStream(Languages.Parse(Msg), Languages.Parse(Msg), 0);
+
+                    if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
+                    {
+                        if (MainWindow.KMCGlobals.AutoShutDownEnabled == true)
+                            Process.Start(new ProcessStartInfo("shutdown", "/s /t 0") { CreateNoWindow = true, UseShellExecute = false });
+
+                        if (MainWindow.KMCGlobals.AutoClearMIDIListEnabled)
+                            MainWindow.Delegate.Invoke((MethodInvoker)delegate { MainWindow.Delegate.MIDIList.Items.Clear(); });
+                    }
+
+                    BasicFunctions.PlayConversionStop();
                 }
                 catch (Exception exception)
                 {
@@ -342,71 +283,65 @@ namespace KeppyMIDIConverter
                 try
                 {
                     BasicFunctions.PlayConversionStart();
-                    bool KeepLooping = true;
-                    while (KeepLooping)
+
+                    // First of all, initialize BASS itself
+                    BASSControl.BASSInitSystem(true);
+                    BASSControl.InitializeDummyVSTs();
+                    foreach (String str in MainWindow.KMCGlobals.MIDIs)
                     {
-                        foreach (String str in MainWindow.KMCGlobals.MIDIs)
+                        // Initialize BASS stream
+                        BASSControl.BASSStreamSystem(str, true);
+                        BASSControl.BASSLoadSoundFonts(str);
+                        BASSControl.BASSInitVSTiIfNeeded(true);
+                        BASSControl.InitializeVSTsForStream((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                        BASSControl.BASSEffectSettings();
+                        BASSControl.BASSVolumeSlideInit();
+                        BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
+
+                        // Get length of the stream
+                        Int64 Position = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
+                        Int64 Length = Convert.ToInt64(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, 0.0275));
+
+                        // Notes stuff
+                        if (!MainWindow.KMCGlobals.DoNotCountNotes)
                         {
-                            MainWindow.KMCStatus.PlayedNotes = 0;
-                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(str);
-                            BASSControl.BASSInitSystem(true);
-                            BASSControl.BASSStreamSystem(str, true);
-                            BASSControl.BASSLoadSoundFonts(str);
-                            BASSControl.BASSInitVSTiIfNeeded(true);
-                            BASSControl.BASSVSTInit((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
-                            BASSControl.BASSEffectSettings();
-                            BASSControl.BASSVolumeSlideInit();
-                            long pos = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);
-                            // cac
-                            int notes = 0;
-                            if (!MainWindow.KMCGlobals.DoNotCountNotes)
+                            try
                             {
-                                try
-                                {
-                                    MainWindow.KMCGlobals._mySync = new SYNCPROC(BASSControl.NoteSyncProc);
-                                    int sync = Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (long)BASSMIDIEvent.MIDI_EVENT_NOTE, MainWindow.KMCGlobals._mySync, IntPtr.Zero);
-                                    MainWindow.KMCStatus.TotalNotesOrg = (UInt64)BassMidi.BASS_MIDI_StreamGetEvents(MainWindow.KMCGlobals._recHandle, -1, (BASSMIDIEvent)0x20000, null);
-                                    MainWindow.KMCStatus.TotalNotes = MainWindow.KMCStatus.TotalNotesOrg;
-                                }
-                                catch (Exception ex)
-                                {
-                                    BasicFunctions.WriteToConsole(ex);
-                                    MainWindow.KMCGlobals.DoNotCountNotes = true;
-                                }
+                                MainWindow.KMCGlobals._mySync = new SYNCPROC(BASSControl.NoteSyncProc);
+                                Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT, (Int64)BASSMIDIEvent.MIDI_EVENT_NOTE, MainWindow.KMCGlobals._mySync, IntPtr.Zero);
+                                MainWindow.KMCStatus.TotalNotesOrg = (UInt64)BassMidi.BASS_MIDI_StreamGetEvents(MainWindow.KMCGlobals._recHandle, -1, (BASSMIDIEvent)0x20000, null);
+                                MainWindow.KMCStatus.TotalNotes = MainWindow.KMCStatus.TotalNotesOrg;
                             }
-                            MainWindow.KMCStatus.IsKMCNowExporting = true;
-                            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, (float)1.0));
-                            BassWasapi.BASS_WASAPI_Start();
-                            while (CheckStreamStatus() != BASSActive.BASS_ACTIVE_STOPPED)
+                            catch (Exception ex)
                             {
-                                if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
-                                    notes = BASSControl.BASSPlayBackEngine(notes, length, pos);
-                                else if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
-                            }
-                            if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
-                            {
-                                BASSControl.BASSCloseStream(Languages.Parse("PlaybackAborted"), Languages.Parse("PlaybackAborted"), 0);
-                                KeepLooping = false;
-                                break;
-                            }
-                            else
-                            {
-                                BASSControl.ReleaseResources(true);
-                                KeepLooping = false;
-                                continue;
+                                BasicFunctions.WriteToConsole(ex);
+                                MainWindow.KMCGlobals.DoNotCountNotes = true;
                             }
                         }
-                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
+
+                        // KMC is now busy
+                        MainWindow.KMCStatus.IsKMCNowExporting = true;
+                        BassWasapi.BASS_WASAPI_Start();
+                        while (CheckStreamStatus() != BASSActive.BASS_ACTIVE_STOPPED)
                         {
-                            BASSControl.BASSCloseStream(Languages.Parse("PlaybackAborted"), Languages.Parse("PlaybackAborted"), 1);
-                            KeepLooping = false;
+                            if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
+                                BASSControl.BASSPlayBackEngine(Length, Position);
+                            else break;
+
+                            TimerFuncs.MicroSleep(-1);
                         }
-                        else
-                        {
-                            BASSControl.BASSCloseStream(Languages.Parse("PlaybackCompleted"), Languages.Parse("PlaybackCompleted"), 1);
-                            break;
-                        }
+                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1));
                     }
+
+                    MainWindow.KMCStatus.RenderingMode = false;
+                    MainWindow.KMCStatus.IsKMCBusy = false;
+                    MainWindow.KMCStatus.IsKMCNowExporting = false;
+                    MainWindow.KMCGlobals.VSTSkipSettings = false;
+
+                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == 1) ? "PlaybackAborted" : "PlaybackCompleted";
+                    BASSControl.BASSCloseStream(Languages.Parse(Msg), Languages.Parse(Msg), 0);
+
+                    BasicFunctions.PlayConversionStop();
                 }
                 catch (Exception exception)
                 {

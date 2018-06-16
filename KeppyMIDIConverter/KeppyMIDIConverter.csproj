@@ -205,6 +205,7 @@
     <Compile Include="Forms\TracksToIgnore.Designer.cs">
       <DependentUpon>TracksToIgnore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\Extensions\TimerFuncs.cs" />
     <EmbeddedResource Include="Forms\AddingMIDIs.resx">
       <DependentUpon>AddingMIDIs.cs</DependentUpon>
     </EmbeddedResource>

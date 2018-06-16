@@ -41,3 +41,6 @@ rem These are the 64-bit ones
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x64\basswv.dll
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x64\LoudMax.dll
 7za a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on bin\KeppyMIDIConverterPortable.7z bin\x64\portable
+
+rem Compile setup
+"C:\Program Files (x86)\Inno Setup 5\Compil32.exe" /cc "kmcsetup.iss"

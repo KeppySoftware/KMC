@@ -74,8 +74,6 @@ namespace KeppyMIDIConverter
             public static int DefaultSoundfont;
             public static int MIDITempo = 0;            // MIDI file tempo
             public static float TempoScale = 1.0f;      // Tempo adjustment
-            public static int _LoudMaxHan;
-            public static float?[] _LoudMaxHanParams = null;
             public static int OriginalTempo;
             public static int SoundFont;
             public static int Time = 0;
@@ -119,16 +117,20 @@ namespace KeppyMIDIConverter
 
         public static class VSTs
         {
-            public static int[] _VSTHandles = new int[8];
+            public static Int32[] _DummyVSTHandles = new Int32[8];
+            public static Int32[] _VSTHandles = new Int32[8];
+
+            public static Int32 _DummyLoudMaxHan;
+            public static Int32 _LoudMaxHan;
             public static BASS_VST_INFO[] VSTInfo = new BASS_VST_INFO[8];
-            public static float?[][] VSTParams = new float?[8][] { null, null, null, null, null, null, null, null };
-            public static string[] VSTDLLs = new string[8];
-            public static string[] VSTDLLDescs = new string[8];
+
+            public static String[] VSTDLLs = new String[8];
+            public static String[] VSTDLLDescs = new String[8];
         }
 
         public static class SoundFontChain
         {
-            public static string[] SoundFonts = new string[0];
+            public static String[] SoundFonts = new String[0];
         }
 
         public static void InitializeLanguage()
