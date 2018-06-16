@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Keppy's MIDI Converter")]
 [assembly: AssemblyDescription("Convert your favorite MIDIs to audio files!")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("KaleidonKep99")]
+[assembly: AssemblyCompany("Riccardo Loi")]
 [assembly: AssemblyProduct("KeppyMIDIConverter")]
-[assembly: AssemblyCopyright("Copyright © KaleidonKep99 2013")]
+[assembly: AssemblyCopyright("Copyright © Riccardo Loi 2013")]
 [assembly: AssemblyTrademark("KMC")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build
 // usando l'asterisco '*' come illustrato di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("18.2.2")]
-[assembly: AssemblyFileVersion("18.2.2")]
+[assembly: AssemblyVersion("18.2.3")]
+[assembly: AssemblyFileVersion("18.2.3")]

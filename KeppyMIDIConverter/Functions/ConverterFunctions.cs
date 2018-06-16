@@ -181,7 +181,9 @@ namespace KeppyMIDIConverter
                             if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
                                 break;
                         }
-                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1));
+
+                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1), (MainWindow.KMCGlobals.CancellationPendingValue == 1));
+                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
                     }
 
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -206,7 +208,7 @@ namespace KeppyMIDIConverter
                 catch (Exception exception)
                 {
                     BasicFunctions.WriteToConsole(exception);
-                    BASSControl.ReleaseResources(false);
+                    BASSControl.ReleaseResources(false, true);
                 }
             }
             catch (Exception exception2)
@@ -255,7 +257,9 @@ namespace KeppyMIDIConverter
                             }
                             else break;
                         }
-                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1));
+
+                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1), (MainWindow.KMCGlobals.CancellationPendingValue == 1));
+                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
                     }
 
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -266,7 +270,7 @@ namespace KeppyMIDIConverter
                     String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == 1) ? "ConversionAborted" : "ConversionCompleted";
                     BASSControl.BASSCloseStream(Languages.Parse(Msg), Languages.Parse(Msg), 0);
 
-                    if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
+                    if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
                     {
                         if (MainWindow.KMCGlobals.AutoShutDownEnabled == true)
                             Process.Start(new ProcessStartInfo("shutdown", "/s /t 0") { CreateNoWindow = true, UseShellExecute = false });
@@ -280,7 +284,7 @@ namespace KeppyMIDIConverter
                 catch (Exception exception)
                 {
                     BasicFunctions.WriteToConsole(exception);
-                    BASSControl.ReleaseResources(false);
+                    BASSControl.ReleaseResources(false, true);
                 }
             }
             catch (Exception exception2)
@@ -343,7 +347,9 @@ namespace KeppyMIDIConverter
 
                             TimerFuncs.MicroSleep(-1);
                         }
-                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1));
+
+                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1), (MainWindow.KMCGlobals.CancellationPendingValue == 1));
+                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
                     }
 
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -359,7 +365,7 @@ namespace KeppyMIDIConverter
                 catch (Exception exception)
                 {
                     BasicFunctions.WriteToConsole(exception);
-                    BASSControl.ReleaseResources(false);
+                    BASSControl.ReleaseResources(false, true);
                 }
             }
             catch (Exception exception2)
@@ -426,7 +432,9 @@ namespace KeppyMIDIConverter
 
                             TimerFuncs.MicroSleep(-1);
                         }
-                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1));
+
+                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1), (MainWindow.KMCGlobals.CancellationPendingValue == 1));
+                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
                     }
 
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -442,7 +450,7 @@ namespace KeppyMIDIConverter
                 catch (Exception exception)
                 {
                     BasicFunctions.WriteToConsole(exception);
-                    BASSControl.ReleaseResources(false);
+                    BASSControl.ReleaseResources(false, true);
                 }
             }
             catch (Exception exception2)

@@ -143,13 +143,15 @@ namespace KeppyMIDIConverter
         {
             if (InvalidFiles > 0 && !IgnoreInvalid)
             {
-                AnalyzerProgress.Enabled = false;
-                AnalyzerProgressBar.Value = 100;
-                CancelBtn.Text = Languages.Parse("ConfirmBtn");
-                ParsingMIDIInfoStatus.Text = String.Format(Languages.Parse("ParsingMIDIInfoInvalidOutcome"),
-                    (ValidFiles + InvalidFiles).ToString("N0", new CultureInfo("is-IS")),
-                    ValidFiles.ToString("N0", new CultureInfo("is-IS")),
-                    InvalidFiles.ToString("N0", new CultureInfo("is-IS")));
+                MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                    AnalyzerProgress.Enabled = false;
+                    AnalyzerProgressBar.Value = 100;
+                    CancelBtn.Text = Languages.Parse("ConfirmBtn");
+                    ParsingMIDIInfoStatus.Text = String.Format(Languages.Parse("ParsingMIDIInfoInvalidOutcome"),
+                        (ValidFiles + InvalidFiles).ToString("N0", new CultureInfo("is-IS")),
+                        ValidFiles.ToString("N0", new CultureInfo("is-IS")),
+                        InvalidFiles.ToString("N0", new CultureInfo("is-IS")));
+                });
             }
             else MainWindow.Delegate.Invoke((MethodInvoker)delegate { Close(); });
         }

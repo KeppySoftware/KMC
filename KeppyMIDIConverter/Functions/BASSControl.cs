@@ -22,40 +22,34 @@ namespace KeppyMIDIConverter
 {
     class BASSControl
     {
-        public static void ReleaseResources(bool stillrendering)
+        public static void ReleaseResources(bool StillRendering, bool Closing)
         {
+            foreach (Int32 Stream in MainWindow.VSTs._DummyVSTHandles) BassVst.BASS_VST_ChannelRemoveDSP(0, Stream);
+            BassVst.BASS_VST_ChannelRemoveDSP(0, MainWindow.VSTs._DummyLoudMaxHan);
             MainWindow.KMCGlobals.DoNotCountNotes = false;
             BassWasapi.BASS_WASAPI_Stop(true);
             BassWasapi.BASS_WASAPI_Free();
             Bass.BASS_StreamFree(MainWindow.KMCGlobals._recHandle);
-            MainWindow.KMCStatus.IsKMCBusy = stillrendering;
+            MainWindow.KMCStatus.IsKMCBusy = StillRendering;
             MainWindow.KMCStatus.IsKMCNowExporting = false;
             MainWindow.KMCGlobals.eventc = 0;
             MainWindow.KMCGlobals.events = null;
+
+            if (Closing)
+            {
+                MainWindow.KMCGlobals.ActiveVoicesInt = 0;
+                MainWindow.KMCGlobals.NewWindowName = null;
+                MainWindow.KMCStatus.RenderingMode = false;
+                RTF.CPUUsage = 0.0f;
+                RTF.ActiveVoices = 0.0f;
+            }
         }
 
         public static void BASSCloseStream(string message, string title, int type)
         {
-            // Free streams
-            BassWasapi.BASS_WASAPI_Stop(true);
-            BassWasapi.BASS_WASAPI_Free();
-            Bass.BASS_StreamFree(MainWindow.KMCGlobals._recHandle);
-            Bass.BASS_Free();
-
             // Reset
-            MainWindow.KMCGlobals.DoNotCountNotes = false;
-            MainWindow.KMCGlobals.CurrentStatusTextString = message;
-            MainWindow.KMCGlobals.ActiveVoicesInt = 0;
-            MainWindow.KMCGlobals.NewWindowName = null;
-            MainWindow.KMCStatus.IsKMCBusy = false;
-            MainWindow.KMCStatus.IsKMCNowExporting = false;
-            MainWindow.KMCStatus.RenderingMode = false;
-            MainWindow.KMCGlobals.DoNotCountNotes = false;
-            MainWindow.KMCGlobals.eventc = 0;
-            MainWindow.KMCGlobals.events = null;
-            RTF.CPUUsage = 0.0f;
-            RTF.ActiveVoices = 0.0f;
-
+            ReleaseResources(false, true);
+            
             // Show message
             if (type == 0)
             {
@@ -90,15 +84,9 @@ namespace KeppyMIDIConverter
 
         public static void BASSCloseStreamCrash(Exception ex)
         {
-            Bass.BASS_StreamFree(MainWindow.KMCGlobals._recHandle);
-            Bass.BASS_Free();
-            MainWindow.KMCGlobals.NewWindowName = null;
-            MainWindow.KMCStatus.IsKMCBusy = false;
-            MainWindow.KMCStatus.IsKMCNowExporting = false;
-            MainWindow.KMCStatus.RenderingMode = false;
-            MainWindow.KMCGlobals.DoNotCountNotes = false;
-            MainWindow.KMCGlobals.eventc = 0;
-            MainWindow.KMCGlobals.events = null;
+            // Reset
+            ReleaseResources(false, true);
+
             MainWindow.Delegate.Invoke((MethodInvoker)delegate {
                 ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), ex.ToString(), 0, 1);
                 errordialog.ShowDialog();

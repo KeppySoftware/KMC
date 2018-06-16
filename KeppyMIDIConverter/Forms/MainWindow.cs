@@ -229,7 +229,7 @@ namespace KeppyMIDIConverter
             InitializeLanguage();
 
             //Parse through arguments
-            foreach (String s in args)
+            foreach (String s in args.Skip(1).ToArray())
             {
                 //Find out it the current file is a MIDI
                 if (MIDIs == null) MIDIs = new List<String>();
@@ -304,7 +304,7 @@ namespace KeppyMIDIConverter
             //Check if there are soundfonts
             if (SoundFonts != null)
             {
-                SoundFontChain.SoundFonts = new string[SoundFonts.Count];
+                SoundFontChain.SoundFonts = new String[SoundFonts.Count];
                 SoundFonts.CopyTo(SoundFontChain.SoundFonts, 0);
 
                 foreach (String SF in SoundFonts) KMCDialogs.SFDialog.SFList.Items.Add(SF);
