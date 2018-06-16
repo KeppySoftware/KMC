@@ -54,6 +54,7 @@ namespace KeppyMIDIConverter
             public static string[] MIDIs = null;
 
             public static BASS_MIDI_EVENT[] events;
+            public static BASS_MIDI_FONTEX[] SoundFonts;
             public static DSPPROC _myDSP;
             public static SYNCPROC _mySync;
             public static SYNCPROC _myVSTSync;
