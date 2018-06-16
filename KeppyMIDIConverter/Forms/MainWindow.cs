@@ -478,7 +478,7 @@ namespace KeppyMIDIConverter
 
         private void MIDIList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
-            new AddingMIDIs((string[])e.Data.GetData(DataFormats.FileDrop, false), false).ShowDialog();
+            try { new AddingMIDIs((string[])e.Data.GetData(DataFormats.FileDrop, false), false).ShowDialog(); } catch { }
         }
 
         private void MIDIList_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)

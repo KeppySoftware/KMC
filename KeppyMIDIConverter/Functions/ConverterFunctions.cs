@@ -296,7 +296,6 @@ namespace KeppyMIDIConverter
                         BASSControl.InitializeVSTsForStream((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
                         BASSControl.BASSEffectSettings();
                         BASSControl.BASSVolumeSlideInit();
-                        BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
 
                         // Get length of the stream
                         Int64 Position = Bass.BASS_ChannelGetLength(MainWindow.KMCGlobals._recHandle);

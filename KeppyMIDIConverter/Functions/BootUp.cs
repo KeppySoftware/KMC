@@ -46,8 +46,6 @@ namespace KeppyMIDIConverter
                 rnd.NextBytes(bytes);
                 Session = Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "").ToString();
 
-                MessageBox.Show(Session.Length.ToString());
-
                 goto ReTest;
             }
 

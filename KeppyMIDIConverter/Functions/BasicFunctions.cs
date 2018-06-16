@@ -232,7 +232,7 @@ namespace KeppyMIDIConverter
         {
             string[] midiinfo = DataCheck.GetMoreInfoMIDI(MIDI);
             ListViewItem lvi = new ListViewItem(new string[] { MIDI, midiinfo[2], midiinfo[1], midiinfo[0], midiinfo[3] });
-            BasicFunctions.ToAddOrNotToAdd(lvi, midiinfo[1], MIDI);
+            ToAddOrNotToAdd(lvi, midiinfo[1], MIDI);
         }
     }
 

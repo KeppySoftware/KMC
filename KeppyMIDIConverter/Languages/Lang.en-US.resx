@@ -896,7 +896,7 @@ The legal warning will not be displayed anymore.</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="ParsingMIDIInfoStatus" xml:space="preserve">
-    <value>Parsed {0} MIDI(s) out of {1}.
+    <value>Parsed {0} file(s) out of {1}.
 Please wait...</value>
     <comment>Self-explanatory.</comment>
   </data>
@@ -1003,6 +1003,10 @@ For Black MIDI playback/conversion, it is highly suggested to leave this option 
   </data>
   <data name="PreloadSFOfMIDI" xml:space="preserve">
     <value>Preloads SoundFonts with the same name and path as the MIDI.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ParsingMIDIInfoInvalidOutcome" xml:space="preserve">
+    <value>Out of {0} files, {1} were valid and {2} were invalid.</value>
     <comment>Self-explanatory.</comment>
   </data>
 </root>

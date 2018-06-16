@@ -898,7 +898,7 @@ L'avviso legale non verrà più visualizzato.</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="ParsingMIDIInfoStatus" xml:space="preserve">
-    <value>Analizzato/i {0} MIDI dei {1} totali.
+    <value>Analizzato/i {0} file di {1} totale/i.
 Attendere prego...</value>
     <comment>Self-explanatory.</comment>
   </data>
@@ -1007,6 +1007,10 @@ Per la riproduzione/conversione di Black MIDI, è caldamente suggerito lasciare 
   </data>
   <data name="PreloadSFOfMIDI" xml:space="preserve">
     <value>Precarica il SoundFont con la stessa directory e nome del MIDI.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ParsingMIDIInfoInvalidOutcome" xml:space="preserve">
+    <value>Dei {0} file analizzati, {1} erano validi e {2} erano invalidi.</value>
     <comment>Self-explanatory.</comment>
   </data>
 </root>

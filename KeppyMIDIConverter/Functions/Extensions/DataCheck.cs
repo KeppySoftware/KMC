@@ -46,7 +46,10 @@ namespace KeppyMIDIConverter
                 catch { size = "-"; }
 
                 Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
-                Int32 time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);  
+                Int32 time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
+
+                if (time == 0) return null;
+
                 Int64 pos = Bass.BASS_ChannelGetLength(time);
                 Double num9 = Bass.BASS_ChannelBytes2Seconds(time, pos);
                 TimeSpan span = TimeSpan.FromSeconds(num9);

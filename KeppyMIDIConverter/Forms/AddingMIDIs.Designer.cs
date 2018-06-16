@@ -33,15 +33,16 @@
             this.ParsingMIDIInfoStatus = new System.Windows.Forms.Label();
             this.AnalyzeMIDIs = new System.ComponentModel.BackgroundWorker();
             this.AnalyzerProgress = new System.Windows.Forms.Timer(this.components);
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AnalyzerProgressBar
             // 
             this.AnalyzerProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalyzerProgressBar.Location = new System.Drawing.Point(12, 69);
+            this.AnalyzerProgressBar.Location = new System.Drawing.Point(12, 70);
             this.AnalyzerProgressBar.Name = "AnalyzerProgressBar";
-            this.AnalyzerProgressBar.Size = new System.Drawing.Size(332, 23);
+            this.AnalyzerProgressBar.Size = new System.Drawing.Size(251, 21);
             this.AnalyzerProgressBar.TabIndex = 0;
             // 
             // ParsingMIDIInfoStatus
@@ -59,6 +60,7 @@
             // AnalyzeMIDIs
             // 
             this.AnalyzeMIDIs.WorkerReportsProgress = true;
+            this.AnalyzeMIDIs.WorkerSupportsCancellation = true;
             this.AnalyzeMIDIs.DoWork += new System.ComponentModel.DoWorkEventHandler(this.AnalyzeMIDIs_DoWork);
             this.AnalyzeMIDIs.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.AnalyzeMIDIs_RunWorkerCompleted);
             // 
@@ -68,12 +70,23 @@
             this.AnalyzerProgress.Interval = 1;
             this.AnalyzerProgress.Tick += new System.EventHandler(this.AnalyzerProgress_Tick);
             // 
+            // CancelBtn
+            // 
+            this.CancelBtn.Location = new System.Drawing.Point(269, 69);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.CancelBtn.TabIndex = 2;
+            this.CancelBtn.Text = "CancelBtn";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            // 
             // AddingMIDIs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 104);
             this.ControlBox = false;
+            this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.ParsingMIDIInfoStatus);
             this.Controls.Add(this.AnalyzerProgressBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -93,5 +106,6 @@
         private System.Windows.Forms.Label ParsingMIDIInfoStatus;
         private System.ComponentModel.BackgroundWorker AnalyzeMIDIs;
         private System.Windows.Forms.Timer AnalyzerProgress;
+        private System.Windows.Forms.Button CancelBtn;
     }
 }
