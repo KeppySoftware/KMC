@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -532,6 +533,21 @@ namespace KeppyMIDIConverter
                     BASSFlag.BASS_SAMPLE_SOFTWARE,
                     0);
 
+                if (PreviewMode)
+                {
+                    BASS_WASAPI_DEVICEINFO infoDW = new BASS_WASAPI_DEVICEINFO();
+
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 2, BASSWASAPIInit.BASS_WASAPI_BUFFER, 0, 0, null, IntPtr.Zero);
+                    BassWasapi.BASS_WASAPI_GetDevice();
+                    BassWasapi.BASS_WASAPI_GetDeviceInfo(BassWasapi.BASS_WASAPI_GetDevice(), infoDW);
+                    BassWasapi.BASS_WASAPI_Free();
+
+                    BassWasapi.BASS_WASAPI_Init(-1, infoDW.mixfreq, 2, BASSWASAPIInit.BASS_WASAPI_SHARED, infoDW.minperiod, 0, null, IntPtr.Zero);
+
+                    BASSError WasapiError = Bass.BASS_ErrorGetCode();
+                    if (WasapiError != 0) throw new Exception(String.Format("Can not initialize WASAPI.\n\nError: {0}", WasapiError.ToString()));
+                }
+
                 BASSInitializeChanAttributes();
                 BASSTempoAndFilter();
 
@@ -747,33 +763,14 @@ namespace KeppyMIDIConverter
             Bass.BASS_ChannelSetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES, Properties.Settings.Default.Voices);
         }
 
-        public static bool BASSPlayBackEngineRT(double[] CustomFramerates, ref int pos, ref uint es)
+        public static bool BASSPlayBackEngineRT(Double[] CustomFramerates, ref Int64 pos, ref Int64 es)
         {
-            int tempo = BassMidi.BASS_MIDI_StreamGetEvent(MainWindow.KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_TEMPO);
-            MainWindow.KMCGlobals.OriginalTempo = 60000000 / tempo;
-
-            BASSEffectSettings();
+            double fpssim = MainWindow.FPSSimulator.NextDouble() * (CustomFramerates[0] - CustomFramerates[1]) + CustomFramerates[1];
+            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes(MainWindow.KMCGlobals._recHandle, fpssim));
+            byte[] buffer = new byte[length];
 
             for (int i = 0; i <= 15; i++)
                 BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, i, BASSMIDIEvent.MIDI_EVENT_MIXLEVEL, MainWindow.KMCStatus.ChannelsVolume[i]);
-
-            MainWindow.KMCGlobals._VolFXParam.fCurrent = 1.0f;
-            MainWindow.KMCGlobals._VolFXParam.fTarget = Properties.Settings.Default.Volume;
-            MainWindow.KMCGlobals._VolFXParam.fTime = 0.0f;
-            MainWindow.KMCGlobals._VolFXParam.lCurve = 0;
-            Bass.BASS_FXSetParameters(MainWindow.KMCGlobals._VolFX, MainWindow.KMCGlobals._VolFXParam);
-
-            if (MainWindow.Seeking)
-            {
-                Bass.BASS_ChannelSetPosition(MainWindow.KMCGlobals._recHandle, MainWindow.CurrentSeek, BASSMode.BASS_POS_MIDI_TICK);
-                MainWindow.Seeking = false;
-            }
-
-            double fpssim = MainWindow.FPSSimulator.NextDouble() * (CustomFramerates[0] - CustomFramerates[1]) + CustomFramerates[1];
-            int length = Convert.ToInt32(Bass.BASS_ChannelSeconds2Bytes((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), fpssim));
-            byte[] buffer = new byte[length];
-
-            for (int i = 0; i <= 15; i++) BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, i, BASSMIDIEvent.MIDI_EVENT_MIXLEVEL, MainWindow.KMCStatus.ChannelsVolume[i]);
 
             while (es < MainWindow.KMCGlobals.eventc && MainWindow.KMCGlobals.events[es].pos < pos + length)
             {
@@ -781,24 +778,24 @@ namespace KeppyMIDIConverter
                 es++;
             }
 
-            int got;
-            if (MainWindow.VSTs.VSTInfo[0].isInstrument)
-            {
-                got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
-                Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
-            }
-            else got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
+            if (MainWindow.VSTs.VSTInfo[0].isInstrument) Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
+            int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
 
             if (got < 0)
             {
                 MainWindow.KMCGlobals.CancellationPendingValue = 2;
                 return false;
             }
-            pos += got;
 
+            pos += got;
             if (es == MainWindow.KMCGlobals.eventc) BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_END, 0);
 
             float fpsstring = 1 / (float)fpssim;
+
+            IntPtr UnmanagedBuffer = Marshal.AllocHGlobal(buffer.Length);
+            Marshal.Copy(buffer, 0, UnmanagedBuffer, buffer.Length);
+            BassWasapi.BASS_WASAPI_PutData(UnmanagedBuffer, length);
+            Marshal.FreeHGlobal(UnmanagedBuffer);
 
             return true;
         }

@@ -45,6 +45,7 @@ namespace KeppyMIDIConverter
             public static BackgroundWorker ConversionProcess = new BackgroundWorker();
             public static BackgroundWorker ConversionProcessRT = new BackgroundWorker();
             public static BackgroundWorker PlaybackProcess = new BackgroundWorker();
+            public static BackgroundWorker PlaybackProcessRT = new BackgroundWorker();
             public static BackgroundWorker GetInfoWorker = new BackgroundWorker();
         }
 
@@ -216,6 +217,9 @@ namespace KeppyMIDIConverter
         }
 
         // Window functions
+        List<String> SoundFonts = null;
+        List<String> MIDIs = null;
+
         public MainWindow(String[] args)
         {
             InitializeComponent();
@@ -224,37 +228,19 @@ namespace KeppyMIDIConverter
             // Initialize UI language
             InitializeLanguage();
 
-            // Initialize context menu for MIDIs list
-            MIDIList.ContextMenu = ListMenu;
-
             //Parse through arguments
             foreach (String s in args)
             {
-                //To store all the soundfonts that where opened with the application
-                List<String> soundfonts = null;
-                //Find out is the current argument is a file path/name
-                if (File.Exists(s))
+                //Find out it the current file is a MIDI
+                if (MIDIs == null) MIDIs = new List<String>();
+                MIDIs.Add(s);
+
+                //If the file isnt a MIDI, check if its a soundfont
+                if (s.ToLower().EndsWith(".sf2") | s.ToLower().EndsWith(".sf3") | s.ToLower().EndsWith(".sfpack") | s.ToLower().EndsWith(".sfz"))
                 {
-                    //Find out it the current file is a MIDI
-                    if (s.ToLower().EndsWith(".mid") | s.ToLower().EndsWith(".midi") | s.ToLower().EndsWith(".kar") | s.ToLower().EndsWith(".rmi"))
-                        BasicFunctions.AddMIDIToListWithInfo(s);
-
-                    //If the file isnt a MIDI, check if its a soundfont
-                    if (s.ToLower().EndsWith(".sf2") | s.ToLower().EndsWith(".sf3") | s.ToLower().EndsWith(".sfpack") | s.ToLower().EndsWith(".sfz"))
-                    {
-                        //There are soundfonts beeing added to the application so create the list
-                        if (soundfonts == null) soundfonts = new List<String>();
-                        soundfonts.Add(s);
-                    }
-                }
-
-                //Check if there are soundfonts
-                if (soundfonts != null)
-                {
-                    SoundFontChain.SoundFonts = new string[soundfonts.Count];
-                    soundfonts.CopyTo(SoundFontChain.SoundFonts, 0);
-
-                    foreach (String SF in soundfonts) KMCDialogs.SFDialog.SFList.Items.Add(s);
+                    //There are soundfonts being added to the application so create the list
+                    if (SoundFonts == null) SoundFonts = new List<String>();
+                    SoundFonts.Add(s);
                 }
             }
         }
@@ -264,6 +250,9 @@ namespace KeppyMIDIConverter
             // Initialize the menu
             Menu = ConverterMenu;
 
+            // Initialize context menu for MIDIs list
+            MIDIList.ContextMenu = ListMenu;
+
             Title = Text;
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
 
@@ -271,6 +260,7 @@ namespace KeppyMIDIConverter
             KMCThreads.ConversionProcess.DoWork += ConverterFunctions.CPWork;
             KMCThreads.ConversionProcessRT.DoWork += ConverterFunctions.CPRWork;
             KMCThreads.PlaybackProcess.DoWork += ConverterFunctions.PBWork;
+            KMCThreads.PlaybackProcessRT.DoWork += ConverterFunctions.PBRWork;
 
             // Notification icon in the system tray
             if (Properties.Settings.Default.MinimizeToTray || Properties.Settings.Default.ShowBalloon) NotifyArea.ShowIconTray();
@@ -307,9 +297,21 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception2)
             {
-                KeppyMIDIConverter.ErrorHandler errordialog = new KeppyMIDIConverter.ErrorHandler(Languages.Parse("FatalError"), exception2.ToString(), 1, 0);
+                ErrorHandler errordialog = new ErrorHandler(Languages.Parse("FatalError"), exception2.ToString(), 1, 0);
                 errordialog.ShowDialog();
             }
+
+            //Check if there are soundfonts
+            if (SoundFonts != null)
+            {
+                SoundFontChain.SoundFonts = new string[SoundFonts.Count];
+                SoundFonts.CopyTo(SoundFontChain.SoundFonts, 0);
+
+                foreach (String SF in SoundFonts) KMCDialogs.SFDialog.SFList.Items.Add(SF);
+            }
+
+            // Check if there are MIDIs
+            if (MIDIs != null) new AddingMIDIs(MIDIs.ToArray(), true).ShowDialog();
         }
 
         private void ImportMIDIs_Click(object sender, EventArgs e)
@@ -320,7 +322,7 @@ namespace KeppyMIDIConverter
             {
                 Properties.Settings.Default.LastMIDIFolder = Path.GetDirectoryName(KMCDialogs.MIDIImport.FileName);
                 Properties.Settings.Default.Save();
-                new AddingMIDIs(KMCDialogs.MIDIImport.FileNames, true).ShowDialog();
+                new AddingMIDIs(KMCDialogs.MIDIImport.FileNames, false).ShowDialog();
             }
         }
 

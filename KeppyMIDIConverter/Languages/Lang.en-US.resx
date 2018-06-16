@@ -1009,4 +1009,9 @@ For Black MIDI playback/conversion, it is highly suggested to leave this option 
     <value>Out of {0} files, {1} were valid and {2} were invalid.</value>
     <comment>Self-explanatory.</comment>
   </data>
+  <data name="ParsingMIDIInfoPrepare" xml:space="preserve">
+    <value>Preparing.
+Please wait...</value>
+    <comment>It's preparing the AddingMIDIs window for the process.</comment>
+  </data>
 </root>

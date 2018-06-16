@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace KeppyMIDIConverter
@@ -10,6 +11,11 @@ namespace KeppyMIDIConverter
     public partial class AddingMIDIs : Form
     {
         private static AddingMIDIs Delegate;
+
+        private Thread CheckStartUp;
+        private static Boolean CheckStop;
+
+        private Boolean IgnoreInvalid = false;
         private UInt64 ValidFiles = 0;
         private UInt64 InvalidFiles = 0;
         private Int64 TotalFiles = 0;
@@ -19,19 +25,36 @@ namespace KeppyMIDIConverter
         {
             Text = Languages.Parse("ParsingMIDIInfo");
             CancelBtn.Text = Languages.Parse("CancelBtn");
-            ParsingMIDIInfoStatus.Text = String.Format("ParsingMIDIInfoStatus", ValidFiles + InvalidFiles, TotalFiles);
+            ParsingMIDIInfoStatus.Text = Languages.Parse("ParsingMIDIInfoPrepare");
         }
 
-        public AddingMIDIs(String[] MIDIs, Boolean IsImportDialog)
+        public AddingMIDIs(String[] MIDIs, Boolean StartUpForm)
         {
             InitializeComponent();
             Delegate = this;
 
+            CheckStop = false;
             MIDIsToLoad = MIDIs;
-            foreach (string str in MIDIsToLoad)
-                CheckCount(str);
+
+            IgnoreInvalid = StartUpForm;
 
             InitializeLanguage();
+        }
+
+        private void AddingMIDIs_Load(object sender, EventArgs e)
+        {
+            CheckStartUp = new Thread(() =>
+            {
+                foreach (string str in MIDIsToLoad)
+                {
+                    if (CheckStop) break;
+                    CheckCount(str);
+                }
+
+                if (!CheckStop) AnalyzeMIDIs.RunWorkerAsync();
+            });
+
+            CheckStartUp.Start();
         }
 
         // CheckDirectory, but it counts files instead
@@ -84,15 +107,11 @@ namespace KeppyMIDIConverter
             InvalidFiles++;
         }
 
-        private void AddingMIDIs_Load(object sender, EventArgs e)
-        {
-            AnalyzeMIDIs.RunWorkerAsync();
-        }
-
         private void AnalyzerProgress_Tick(object sender, EventArgs e)
         {
             try
             {
+                AnalyzerProgressBar.Value = Convert.ToInt32(Math.Round((ValidFiles + InvalidFiles) * 100.0 / TotalFiles));
                 ParsingMIDIInfoStatus.Text = String.Format(Languages.Parse("ParsingMIDIInfoStatus"),
                     (ValidFiles + InvalidFiles).ToString("N0", new CultureInfo("is-IS")),
                     TotalFiles.ToString("N0", new CultureInfo("is-IS")));
@@ -122,7 +141,7 @@ namespace KeppyMIDIConverter
 
         private void AnalyzeMIDIs_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (InvalidFiles > 0)
+            if (InvalidFiles > 0 && !IgnoreInvalid)
             {
                 AnalyzerProgress.Enabled = false;
                 AnalyzerProgressBar.Value = 100;
@@ -132,14 +151,18 @@ namespace KeppyMIDIConverter
                     ValidFiles.ToString("N0", new CultureInfo("is-IS")),
                     InvalidFiles.ToString("N0", new CultureInfo("is-IS")));
             }
-            else Close();
+            else MainWindow.Delegate.Invoke((MethodInvoker)delegate { Close(); });
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             if (AnalyzeMIDIs.IsBusy)
                 try { AnalyzeMIDIs.CancelAsync(); } catch { }
-            else Close();
+            else
+            {
+                CheckStop = true;
+                Close();
+            }
         }
 
         // Code by Mac Gravell, edited by Keppy
@@ -160,7 +183,12 @@ namespace KeppyMIDIConverter
                 try
                 {
                     // Add each subdir to the queue
-                    foreach (string subDir in Directory.GetDirectories(Target)) AnalyzeQueue.Enqueue(subDir);
+                    if (CheckStop) break;
+                    foreach (string subDir in Directory.GetDirectories(Target))
+                    {
+                        if (CheckStop) break;
+                        AnalyzeQueue.Enqueue(subDir);
+                    }
                 }
                 catch (Exception ex) { BasicFunctions.WriteToConsole(ex); }
            
@@ -175,7 +203,11 @@ namespace KeppyMIDIConverter
                 // If the function detected items, return them to the calling foreach loop
                 if (Files != null)
                 {
-                    for (int i = 0; i < Files.Length; i++) yield return Files[i];
+                    for (int i = 0; i < Files.Length; i++)
+                    {
+                        if (CheckStop) break;
+                        yield return Files[i];
+                    }
                 }
 
                 // If the queued item is actually a direct path to the file, return it to the foreach loop
