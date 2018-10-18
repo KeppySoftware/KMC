@@ -57,7 +57,6 @@ namespace KeppyMIDIConverter
             public static BASS_MIDI_FONTEX[] SoundFonts;
             public static DSPPROC _myDSP;
             public static SYNCPROC _mySync;
-            public static SYNCPROC _myVSTSync;
             public static SYNCPROC _myTempoSync;
             public static MIDIFILTERPROC _FilterProc;
             public static WASAPIPROC _myWasapi;
@@ -121,6 +120,7 @@ namespace KeppyMIDIConverter
         {
             public static Int32[] _DummyVSTHandles = new Int32[8];
             public static Int32[] _VSTHandles = new Int32[8];
+            public static Int32 _VSTiHandle = 0;
 
             public static Int32 _DummyLoudMaxHan;
             public static Int32 _LoudMaxHan;
@@ -329,15 +329,15 @@ namespace KeppyMIDIConverter
 
         private void RemoveMIDIs_Click(object sender, EventArgs e)
         {
-            for (int i = this.MIDIList.SelectedIndices.Count - 1; i >= 0; i--)
+            for (int i = MIDIList.SelectedIndices.Count - 1; i >= 0; i--)
             {
-                this.MIDIList.Items.RemoveAt(this.MIDIList.SelectedIndices[i]);
+                MIDIList.Items.RemoveAt(MIDIList.SelectedIndices[i]);
             }
         }
 
         private void ClearList_Click(object sender, EventArgs e)
         {
-            this.MIDIList.Items.Clear();
+            MIDIList.Items.Clear();
         }
 
         private void OpenSFVSTManager_Click(object sender, EventArgs e)
@@ -444,9 +444,9 @@ namespace KeppyMIDIConverter
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
-            if (this.WindowState.Equals(FormWindowState.Minimized) && Properties.Settings.Default.MinimizeToTray)
+            if (WindowState.Equals(FormWindowState.Minimized) && Properties.Settings.Default.MinimizeToTray)
             {
-                this.Hide();
+                Hide();
                 if (Properties.Settings.Default.FirstTimeTray != false)
                 {
                     NotifyArea.ShowStatusTray(Languages.Parse("Information"), Languages.Parse("MinimizedToTray"), ToolTipIcon.Info);
@@ -479,12 +479,12 @@ namespace KeppyMIDIConverter
             Resizing = false;
         }
 
-        private void MIDIList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+        private void MIDIList_DragDrop(object sender, DragEventArgs e)
         {
             try { new AddingMIDIs((string[])e.Data.GetData(DataFormats.FileDrop, false), false).ShowDialog(); } catch { }
         }
 
-        private void MIDIList_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+        private void MIDIList_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.All;
@@ -500,17 +500,13 @@ namespace KeppyMIDIConverter
                 {
                     if (e.KeyValue == (char)Keys.Delete)
                     {
-                        for (int i = this.MIDIList.SelectedIndices.Count - 1; i >= 0; i--)
-                        {
-                            this.MIDIList.Items.RemoveAt(this.MIDIList.SelectedIndices[i]);
-                        }
+                        for (int i = MIDIList.SelectedIndices.Count - 1; i >= 0; i--)
+                            MIDIList.Items.RemoveAt(MIDIList.SelectedIndices[i]);
                     }
                     else if (e.KeyCode == Keys.A && e.Control)
                     {
                         foreach (ListViewItem item in MIDIList.Items)
-                        {
                             item.Selected = true;
-                        }
                     }
                 }
             } catch { }
@@ -673,7 +669,7 @@ namespace KeppyMIDIConverter
 
         private void VSTiSettings_Click(object sender, EventArgs e)
         {
-            BASSControl.BASSVSTShowDialog(true, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
+            BASSControl.BASSVSTShowDialog(true, KMCGlobals._recHandle, VSTs._VSTiHandle, VSTs.VSTInfo[0]);
         }
     }
 }

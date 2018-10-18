@@ -60,7 +60,7 @@ namespace KeppyMIDIConverter
                         RTF.CurRAWToDouble = Bass.BASS_ChannelBytes2Seconds(MainWindow.KMCGlobals._recHandle, RTF.MIDICurrentPosRAW);
                         RTF.LenDoubleToSpan = TimeSpan.FromSeconds(RTF.LenRAWToDouble * MainWindow.KMCGlobals.TempoScale);
                         RTF.CurDoubleToSpan = TimeSpan.FromSeconds(RTF.CurRAWToDouble * MainWindow.KMCGlobals.TempoScale);
-                        Bass.BASS_ChannelGetAttribute((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
+                        Bass.BASS_ChannelGetAttribute((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTiHandle : MainWindow.KMCGlobals._recHandle), BASSAttribute.BASS_ATTRIB_CPU, ref RTF.CPUUsage);
                         Bass.BASS_ChannelGetAttribute(MainWindow.KMCGlobals._recHandle, BASSAttribute.BASS_ATTRIB_MIDI_VOICES_ACTIVE, ref RTF.ActiveVoices);
                         RTF.GetVoices();
                     }
@@ -165,7 +165,7 @@ namespace KeppyMIDIConverter
                         BASSControl.BASSStreamSystem(str, false);
                         BASSControl.BASSLoadSoundFonts(str);
                         BASSControl.BASSInitVSTiIfNeeded(false);
-                        BASSControl.InitializeVSTsForStream((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                        BASSControl.InitializeVSTsForStream();
                         BASSControl.BASSEffectSettings();
                         BASSControl.BASSVolumeSlideInit();
                         BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
@@ -213,7 +213,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception2)
             {
-                BASSControl.BASSCloseStreamCrash(exception2);
+                BASSControl.BASSCloseStreamException(exception2);
             }
         }
 
@@ -239,7 +239,7 @@ namespace KeppyMIDIConverter
                         BASSControl.BASSStreamSystemRT(str, false);
                         BASSControl.BASSLoadSoundFonts(str);
                         BASSControl.BASSInitVSTiIfNeeded(false);
-                        BASSControl.InitializeVSTsForStream((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                        BASSControl.InitializeVSTsForStream();
                         BASSControl.BASSEffectSettings();
                         BASSControl.BASSVolumeSlideInit();
                         BASSControl.BASSEncoderInit(MainWindow.KMCGlobals.CurrentEncoder, str);
@@ -289,7 +289,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception2)
             {
-                BASSControl.BASSCloseStreamCrash(exception2);
+                BASSControl.BASSCloseStreamException(exception2);
             }
         }
 
@@ -304,13 +304,13 @@ namespace KeppyMIDIConverter
                     // First of all, initialize BASS itself
                     BASSControl.BASSInitSystem(true);
                     BASSControl.InitializeDummyVSTs();
-                    foreach (String str in MainWindow.KMCGlobals.MIDIs)
+                    foreach (String MIDI in MainWindow.KMCGlobals.MIDIs)
                     {
                         // Initialize BASS stream
-                        BASSControl.BASSStreamSystem(str, true);
-                        BASSControl.BASSLoadSoundFonts(str);
+                        BASSControl.BASSStreamSystem(MIDI, true);
+                        BASSControl.BASSLoadSoundFonts(MIDI);
                         BASSControl.BASSInitVSTiIfNeeded(true);
-                        BASSControl.InitializeVSTsForStream((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                        BASSControl.InitializeVSTsForStream();
                         BASSControl.BASSEffectSettings();
                         BASSControl.BASSVolumeSlideInit();
 
@@ -370,7 +370,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception2)
             {
-                BASSControl.BASSCloseStreamCrash(exception2);
+                BASSControl.BASSCloseStreamException(exception2);
             }
         }
 
@@ -396,7 +396,7 @@ namespace KeppyMIDIConverter
                         BASSControl.BASSStreamSystemRT(str, true);
                         BASSControl.BASSLoadSoundFonts(str);
                         BASSControl.BASSInitVSTiIfNeeded(true);
-                        BASSControl.InitializeVSTsForStream((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle));
+                        BASSControl.InitializeVSTsForStream();
                         BASSControl.BASSEffectSettings();
                         BASSControl.BASSVolumeSlideInit();
 
@@ -455,7 +455,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception exception2)
             {
-                BASSControl.BASSCloseStreamCrash(exception2);
+                BASSControl.BASSCloseStreamException(exception2);
             }
         }
     }

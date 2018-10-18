@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -27,15 +28,18 @@ namespace KeppyMIDIConverter
             foreach (Int32 Stream in MainWindow.VSTs._DummyVSTHandles)
                 BassVst.BASS_VST_ChannelRemoveDSP(0, Stream);
 
-            foreach (BASS_MIDI_FONTEX pr in MainWindow.KMCGlobals.SoundFonts)
-                BassMidi.BASS_MIDI_FontFree(pr.font);
+            if (MainWindow.KMCGlobals.SoundFonts != null)
+            {
+                foreach (BASS_MIDI_FONTEX pr in MainWindow.KMCGlobals.SoundFonts)
+                    BassMidi.BASS_MIDI_FontFree(pr.font);
+            }
 
             BassVst.BASS_VST_ChannelRemoveDSP(0, MainWindow.VSTs._DummyLoudMaxHan);
             MainWindow.KMCGlobals.DoNotCountNotes = false;
             BassWasapi.BASS_WASAPI_Stop(true);
             BassWasapi.BASS_WASAPI_Free();
             Bass.BASS_StreamFree(MainWindow.KMCGlobals._recHandle);
-            BassVst.BASS_VST_ChannelFree(MainWindow.VSTs._VSTHandles[0]);
+            BassVst.BASS_VST_ChannelFree(MainWindow.VSTs._VSTiHandle);
             MainWindow.KMCStatus.IsKMCBusy = StillRendering;
             MainWindow.KMCStatus.IsKMCNowExporting = false;
             MainWindow.KMCGlobals.eventc = 0;
@@ -90,19 +94,34 @@ namespace KeppyMIDIConverter
             BasicFunctions.PlayConversionStop();
         }
 
-        public static void BASSCloseStreamCrash(Exception ex)
+        public static void BASSCloseStreamException(Exception ex)
         {
-            // Reset
-            ReleaseResources(false, true);
+            BASSException BASSException = new BASSException(
+                String.Format("{0}\n\n{1}", Bass.BASS_ErrorGetCode().ToString(), ex.ToString())
+                );
 
             MainWindow.Delegate.Invoke((MethodInvoker)delegate {
-                ErrorHandler errordialog = new ErrorHandler(Languages.Parse("Error"), ex.ToString(), 0, 1);
-                errordialog.ShowDialog();
+                new ErrorHandler(Languages.Parse("Error"), BASSException.ToString(), 0, 1).ShowDialog();
             });
+
+            // Reset
+            ReleaseResources(false, true);
         }
 
-        /* 
-       
+        public static void BASSCloseStreamCrash(Exception ex)
+        {
+            BASSException BASSException = new BASSException(
+                String.Format("{0}\n\n{1}", Bass.BASS_ErrorGetCode().ToString(), ex.ToString())
+                );
+
+            MainWindow.Delegate.Invoke((MethodInvoker)delegate {
+                new ErrorHandler(Languages.Parse("FatalError"), BASSException.ToString(), 1, 1).ShowDialog();
+            });
+
+            // Reset
+            ReleaseResources(false, true);
+        }
+
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void BASSCheckError()
         {
@@ -110,11 +129,9 @@ namespace KeppyMIDIConverter
             if (Error != 0)
             {
                 MethodBase SFError = new StackFrame(1, true).GetMethod();
-                throw new Exception(String.Format("Calling method: {0} ({1})\nBASS Error: {2}", SFError.Name, SFError.ToString(), Error.ToString()));
+                throw new BASSException(String.Format("BASS Error: {0}\n\nCalling method: {1} ({2})", Error.ToString(), SFError.Name, SFError.ToString()));
             }
         }
-             
-        */
 
         public static void BASSInitSystem(Boolean PreviewMode)
         {
@@ -123,10 +140,8 @@ namespace KeppyMIDIConverter
                 Bass.BASS_StreamFree(MainWindow.KMCGlobals._recHandle);
                 Bass.BASS_Free();
                 Bass.BASS_Init(0, Properties.Settings.Default.AudioFreq, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
-                if (!PreviewMode)
-                {
-                    Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
-                }
+
+                if (!PreviewMode) Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_MIDI_VOICES, 100000);
                 else
                 {
                     BassWasapi.BASS_WASAPI_Init(-1, 0, 2, BASSWASAPIInit.BASS_WASAPI_BUFFER, 0, 0, null, IntPtr.Zero);
@@ -156,7 +171,7 @@ namespace KeppyMIDIConverter
                     f.Height = vstInfo.editorHeight + 34;
                     f.ClientSize = new Size(vstInfo.editorWidth, vstInfo.editorHeight);
                     f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                    f.StartPosition = FormStartPosition.CenterParent;
+                    f.StartPosition = FormStartPosition.CenterScreen;
                     f.Text = String.Format("{0} {1}", Languages.Parse("DSPSettings"), vstInfo.effectName);
                     BassVst.BASS_VST_EmbedEditor(whichvst, f.Handle);
                     f.ShowDialog();
@@ -176,6 +191,7 @@ namespace KeppyMIDIConverter
                 ErrorHandler errordialog = new ErrorHandler(Languages.Parse("VSTInvalidCallTitle"), Languages.Parse("VSTInvalidCallError"), 0, 0);
                 errordialog.ShowDialog();
                 if (!vsti) BassVst.BASS_VST_ChannelRemoveDSP(towhichstream, whichvst);
+                else BassVst.BASS_VST_ChannelFree(MainWindow.VSTs._VSTiHandle);
             }
         }
 
@@ -202,10 +218,14 @@ namespace KeppyMIDIConverter
                         if (!MainWindow.VSTs.VSTInfo[i].isInstrument) // VSTi check
                         {
                             MainWindow.VSTs._DummyVSTHandles[i] = BassVst.BASS_VST_ChannelSetDSP(0, MainWindow.VSTs.VSTDLLs[i], BASSVSTDsp.BASS_VST_DEFAULT, 0);
-                            int vstParams = BassVst.BASS_VST_GetParamCount(MainWindow.VSTs._DummyVSTHandles[i]);
 
-                            if (BassVst.BASS_VST_GetInfo(MainWindow.VSTs._LoudMaxHan, MainWindow.VSTs.VSTInfo[i]) && MainWindow.VSTs.VSTInfo[i].hasEditor)
-                                BASSVSTShowDialog(false, 0, MainWindow.VSTs._DummyVSTHandles[i], MainWindow.VSTs.VSTInfo[i]);
+                            if (MainWindow.VSTs._DummyVSTHandles[i] != 0)
+                            {
+                                int vstParams = BassVst.BASS_VST_GetParamCount(MainWindow.VSTs._DummyVSTHandles[i]);
+
+                                if (BassVst.BASS_VST_GetInfo(MainWindow.VSTs._DummyVSTHandles[i], MainWindow.VSTs.VSTInfo[i]) && MainWindow.VSTs.VSTInfo[i].hasEditor)
+                                    BASSVSTShowDialog(false, 0, MainWindow.VSTs._DummyVSTHandles[i], MainWindow.VSTs.VSTInfo[i]);
+                            }
                         }
                     }
                 }
@@ -216,23 +236,26 @@ namespace KeppyMIDIConverter
             }
         }
 
-        public static void InitializeVSTsForStream(int towhichstream)
+        public static void InitializeVSTsForStream()
         {
             try
             {
                 if (MainWindow.KMCStatus.VSTMode == true)
                 {
-                    MainWindow.VSTs._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP(towhichstream,
+                    MainWindow.VSTs._LoudMaxHan = BassVst.BASS_VST_ChannelSetDSP((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTiHandle : MainWindow.KMCGlobals._recHandle),
                         String.Format("{0}\\LoudMax.dll", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)),
                         BASSVSTDsp.BASS_VST_KEEP_CHANS, 9);
                     BassVst.BASS_VST_SetParamCopyParams(MainWindow.VSTs._DummyLoudMaxHan, MainWindow.VSTs._LoudMaxHan);
 
                     for (int i = 0; i <= 7; i++)
                     {
-                        if (!MainWindow.VSTs.VSTInfo[i].isInstrument) // VSTi check
+                        if (MainWindow.VSTs._DummyVSTHandles[i] != 0)
                         {
-                            MainWindow.VSTs._VSTHandles[i] = BassVst.BASS_VST_ChannelSetDSP(towhichstream, MainWindow.VSTs.VSTDLLs[i], BASSVSTDsp.BASS_VST_DEFAULT, i);
-                            BassVst.BASS_VST_SetParamCopyParams(MainWindow.VSTs._DummyVSTHandles[i], MainWindow.VSTs._VSTHandles[i]);
+                            MainWindow.VSTs._VSTHandles[i] = BassVst.BASS_VST_ChannelSetDSP((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTiHandle : MainWindow.KMCGlobals._recHandle), MainWindow.VSTs.VSTDLLs[i], BASSVSTDsp.BASS_VST_DEFAULT, i);
+
+                            if (MainWindow.VSTs._VSTHandles[i] != 0)
+                                BassVst.BASS_VST_SetParamCopyParams(MainWindow.VSTs._DummyVSTHandles[i], MainWindow.VSTs._VSTHandles[i]);
+
                         }
                     }
                 }
@@ -249,15 +272,16 @@ namespace KeppyMIDIConverter
             {
                 if (MainWindow.VSTs.VSTInfo[0].isInstrument)
                 {
-                    MainWindow.VSTs._VSTHandles[0] = BassVst.BASS_VST_ChannelCreate((MainWindow.KMCStatus.RenderingMode ? Properties.Settings.Default.AudioFreq : MainWindow.KMCGlobals.RealTimeFreq), 2, MainWindow.VSTs.VSTDLLs[0], BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | (PreviewMode ? 0 : BASSFlag.BASS_MIDI_SINCINTER));
-                    if (Bass.BASS_ErrorGetCode() != BASSError.BASS_OK) throw new Exception(String.Format("{0} is not a valid VST instrument!", MainWindow.VSTs.VSTDLLs[0]));
+                    MainWindow.VSTs._VSTiHandle = BassVst.BASS_VST_ChannelCreate((MainWindow.KMCStatus.RenderingMode ? Properties.Settings.Default.AudioFreq : MainWindow.KMCGlobals.RealTimeFreq), 2, MainWindow.VSTs.VSTDLLs[0], BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT | (PreviewMode ? 0 : BASSFlag.BASS_MIDI_SINCINTER));
+                    BASSCheckError();
 
-                    MainWindow.KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(MainWindow.VSTs._VSTHandles[0], 0);
+                    MainWindow.KMCGlobals._plm = new Un4seen.Bass.Misc.DSP_PeakLevelMeter(MainWindow.VSTs._VSTiHandle, 0);
                     MainWindow.KMCGlobals._plm.CalcRMS = true;
 
-                    if (MainWindow.VSTs.VSTInfo[0].hasEditor)
+                    if (BassVst.BASS_VST_GetInfo(MainWindow.VSTs._VSTiHandle, MainWindow.VSTs.VSTInfo[0]) && MainWindow.VSTs.VSTInfo[0].hasEditor)
                     {
-                        BASSVSTShowDialog(true, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTHandles[0], MainWindow.VSTs.VSTInfo[0]);
+                        BASSVSTShowDialog(true, MainWindow.KMCGlobals._recHandle, MainWindow.VSTs._VSTiHandle, MainWindow.VSTs.VSTInfo[0]);
+                        BASSCheckError();
                     }
                 }
             }
@@ -279,11 +303,21 @@ namespace KeppyMIDIConverter
 
         public static int MyWasapiProc(IntPtr buffer, Int32 length, IntPtr user)
         {
-            int d1 = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
-            int d2 = 0;
-            if (MainWindow.VSTs.VSTInfo[0].isInstrument) d2 = Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
-            if (d1 < 0) MainWindow.KMCGlobals.CancellationPendingValue = 2;
-            return (MainWindow.VSTs.VSTInfo[0].isInstrument ? d2 : d1);
+            try
+            {
+                Int32 Data1 = 0, Data2 = 0;
+
+                if (MainWindow.VSTs.VSTInfo[0].isInstrument)
+                {
+                    Data1 = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
+                    Data2 = Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTiHandle, buffer, length);
+                }
+                else Data1 = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
+
+                if (Data1 < 0) MainWindow.KMCGlobals.CancellationPendingValue = 2;
+                return (MainWindow.VSTs.VSTInfo[0].isInstrument) ? Data2 : Data1;
+            }
+            catch { return 0; }
         }
 
         public class MidiFilterProcAnalytic
@@ -293,27 +327,32 @@ namespace KeppyMIDIConverter
         }
 
         public static Boolean[] TracksList;
-        public static bool MidiFilterProc(int handle, int track, BASS_MIDI_EVENT midievent, bool seeking, IntPtr user)
+        public static Boolean MidiFilterProc(int handle, int track, BASS_MIDI_EVENT midievent, bool seeking, IntPtr user)
         {
             try
             {
-                if (midievent.eventtype == BASSMIDIEvent.MIDI_EVENT_NOTE)
-                {
-                    if (TracksList[track]) return false;
+                Int32 Track = track;
+                BASS_MIDI_EVENT temp = midievent;
 
-                    int vel = (midievent.param >> 0x08) & 0xFF;
-                    int note = midievent.param & 0xFF;
+                if (temp.eventtype == BASSMIDIEvent.MIDI_EVENT_NOTE && (Properties.Settings.Default.IgnoreNotes1 || Properties.Settings.Default.AskForIgnoreTracks))
+                {
+                    if (TracksList[Track]) return false;
+
+                    int vel = (temp.param >> 0x08) & 0xFF;
+                    int note = temp.param & 0xFF;
 
                     // First check
                     if ((Properties.Settings.Default.IgnoreNotes1 && vel > 0) && (vel >= Properties.Settings.Default.IgnoreNotesLow && vel <= Properties.Settings.Default.IgnoreNotesHigh))
                         return false;
 
                     // Second
-                    if (Properties.Settings.Default.Limit88 && (midievent.chan != 9 && !(note >= 21 && note <= 108)))
+                    if (Properties.Settings.Default.Limit88 && (temp.chan != 9 && !(note >= 21 && note <= 108)))
                         return false;
                 }
 
-                BassVst.BASS_VST_ProcessEvent(MainWindow.VSTs._VSTHandles[0], midievent.chan, midievent.eventtype, midievent.param);
+                if (MainWindow.VSTs.VSTInfo[0].isInstrument)
+                    BassVst.BASS_VST_ProcessEvent(MainWindow.VSTs._VSTiHandle, temp.chan, temp.eventtype, temp.param);
+
                 return true; // process the event
             }
             catch (Exception ex)
@@ -334,10 +373,12 @@ namespace KeppyMIDIConverter
                 MainWindow.KMCGlobals.SoundFonts[sfnum].spreset = -1;
                 MainWindow.KMCGlobals.SoundFonts[sfnum].sbank = -1;
                 MainWindow.KMCGlobals.SoundFonts[sfnum].dbanklsb = 0;
+                BASSCheckError();
 
                 if (!Properties.Settings.Default.PreloadSamplesNotSF)
                     BassMidi.BASS_MIDI_FontLoad(MainWindow.KMCGlobals.SoundFonts[sfnum].font, -1, -1);
 
+                BASSCheckError();
                 sfnum++;
                 return true;
             }
@@ -346,7 +387,7 @@ namespace KeppyMIDIConverter
 
         public static void BASSLoadSoundFonts(String str)
         {           
-            if (MainWindow.VSTs.VSTInfo[0].isInstrument == false)
+            if (!MainWindow.VSTs.VSTInfo[0].isInstrument)
             {
                 int sfnum = 0;
 
@@ -356,9 +397,14 @@ namespace KeppyMIDIConverter
                     String FullPath = String.Format("{0}\\GMGeneric.sf2", PathToGenericSF.Parent.FullName);
 
                     MainWindow.KMCGlobals.SoundFonts = new BASS_MIDI_FONTEX[1];
+
                     if (LoadSpecificSoundFont(FullPath, ref sfnum) != true) BASSCloseStreamCrash(new InvalidSoundFont("No SoundFonts available!"));
                     BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, MainWindow.KMCGlobals.SoundFonts, sfnum);
-                    if (Properties.Settings.Default.PreloadSamplesNotSF) BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
+                    BASSCheckError();
+
+                    if (Properties.Settings.Default.PreloadSamplesNotSF)
+                        BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
+                    BASSCheckError();
                 }
                 else
                 {
@@ -369,13 +415,18 @@ namespace KeppyMIDIConverter
                         if (LoadSpecificSoundFont(SFToLoad, ref sfnum))
                         {
                             BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, MainWindow.KMCGlobals.SoundFonts, sfnum);
-                            if (Properties.Settings.Default.PreloadSamplesNotSF) BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
+                            BASSCheckError();
+
+                            if (Properties.Settings.Default.PreloadSamplesNotSF)
+                                BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
+                            BASSCheckError();
                         }
                         else BASSLoadSoundFonts2(ref sfnum);
                     }
                     else BASSLoadSoundFonts2(ref sfnum);
                 }
             }
+            else MainWindow.KMCGlobals.SoundFonts = null;
         }
 
         public static void BASSLoadSoundFonts2(ref int sfnum)
@@ -398,6 +449,7 @@ namespace KeppyMIDIConverter
                         MainWindow.KMCGlobals.SoundFonts[sfnum].sbank = Convert.ToInt32(matches[2].ToString());
                         MainWindow.KMCGlobals.SoundFonts[sfnum].spreset = Convert.ToInt32(matches[3].ToString());
                         MainWindow.KMCGlobals.SoundFonts[sfnum].dbanklsb = 0;
+                        BASSCheckError();
                     }
                     else
                     {
@@ -407,15 +459,17 @@ namespace KeppyMIDIConverter
                         MainWindow.KMCGlobals.SoundFonts[sfnum].spreset = -1;
                         MainWindow.KMCGlobals.SoundFonts[sfnum].sbank = -1;
                         MainWindow.KMCGlobals.SoundFonts[sfnum].dbanklsb = 0;
+                        BASSCheckError();
                     }
 
                     if (!Properties.Settings.Default.PreloadSamplesNotSF)
                         BassMidi.BASS_MIDI_FontLoad(MainWindow.KMCGlobals.SoundFonts[sfnum].font, MainWindow.KMCGlobals.SoundFonts[sfnum].spreset, MainWindow.KMCGlobals.SoundFonts[sfnum].sbank);
 
+                    BASSCheckError();
                     sfnum++;
                 }
             }
-            catch { BASSCloseStreamCrash(new InvalidSoundFont("Invalid SoundFont chain.")); }
+            catch { BASSCloseStreamException(new InvalidSoundFont("Invalid SoundFont chain.")); }
             finally
             {
                 // Always preload default SoundFont
@@ -428,8 +482,11 @@ namespace KeppyMIDIConverter
                 }
 
                 BassMidi.BASS_MIDI_StreamSetFonts(MainWindow.KMCGlobals._recHandle, MainWindow.KMCGlobals.SoundFonts, sfnum);
+                BASSCheckError();
+
                 if (Properties.Settings.Default.PreloadSamplesNotSF)
                     BassMidi.BASS_MIDI_StreamLoadSamples(MainWindow.KMCGlobals._recHandle);
+                BASSCheckError();
             }
         }
 
@@ -444,7 +501,7 @@ namespace KeppyMIDIConverter
 
         public static void BASSVolumeSlideInit()
         {
-            MainWindow.KMCGlobals._VolFX = Bass.BASS_ChannelSetFX((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), BASSFXType.BASS_FX_VOLUME, 1);
+            MainWindow.KMCGlobals._VolFX = Bass.BASS_ChannelSetFX((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTiHandle : MainWindow.KMCGlobals._recHandle), BASSFXType.BASS_FX_VOLUME, 1);
             MainWindow.KMCGlobals._VolFXParam.fCurrent = 1.0f;
             MainWindow.KMCGlobals._VolFXParam.fTarget = Properties.Settings.Default.Volume;
             MainWindow.KMCGlobals._VolFXParam.fTime = 0.0f;
@@ -463,19 +520,13 @@ namespace KeppyMIDIConverter
                     BASSFlag.BASS_SAMPLE_SOFTWARE |
                     BASSFlag.BASS_MIDI_DECAYEND,
                     0);
+                BASSCheckError();
 
                 if (PreviewMode)
                 {
-                    BASS_WASAPI_INFO infoW = new BASS_WASAPI_INFO();
-
-                    BassWasapi.BASS_WASAPI_Init(-1, 0, 2, BASSWASAPIInit.BASS_WASAPI_BUFFER, 0, 0, null, IntPtr.Zero);
-                    BassWasapi.BASS_WASAPI_GetInfo(infoW);
-                    BassWasapi.BASS_WASAPI_Free();
-
                     MainWindow.KMCGlobals._myWasapi = new WASAPIPROC(MyWasapiProc);
-                    BassWasapi.BASS_WASAPI_Init(-1, 0, 2, BASSWASAPIInit.BASS_WASAPI_EVENT, infoW.buflen, 0, MainWindow.KMCGlobals._myWasapi, IntPtr.Zero);
-
-                    if (Bass.BASS_ErrorGetCode() != 0) throw new Exception("Can not initialize WASAPI.");
+                    BassWasapi.BASS_WASAPI_Init(-1, 0, 2, BASSWASAPIInit.BASS_WASAPI_EVENT, 0, 0, MainWindow.KMCGlobals._myWasapi, IntPtr.Zero);
+                    BASSCheckError();
                 }
 
                 BASSInitializeChanAttributes();
@@ -491,7 +542,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception ex)
             {
-                BASSCloseStreamCrash(ex);
+                BASSCloseStreamException(ex);
             }
         }
 
@@ -500,6 +551,7 @@ namespace KeppyMIDIConverter
             try
             {
                 MainWindow.KMCGlobals._recHandle = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_SAMPLE_FLOAT, 0);
+                BASSCheckError();
 
                 BASS_MIDI_EVENT[] eventChunk;
                 try
@@ -519,7 +571,7 @@ namespace KeppyMIDIConverter
                 }
                 catch
                 {
-                    BASSCloseStreamCrash(new MIDILoadError("This MIDI is too big for the real-time conversion process.\n\nMake sure you're using the 64-bit version of the converter."));
+                    BASSCloseStreamException(new MIDILoadError("This MIDI is too big for the real-time conversion process.\n\nMake sure you're using the 64-bit version of the converter."));
                 }
 
                 Bass.BASS_StreamFree(MainWindow.KMCGlobals._recHandle);
@@ -529,6 +581,7 @@ namespace KeppyMIDIConverter
                     BASSFlag.BASS_SAMPLE_FLOAT | 
                     BASSFlag.BASS_SAMPLE_SOFTWARE,
                     0);
+                BASSCheckError();
 
                 if (PreviewMode)
                 {
@@ -540,9 +593,7 @@ namespace KeppyMIDIConverter
                     BassWasapi.BASS_WASAPI_Free();
 
                     BassWasapi.BASS_WASAPI_Init(-1, infoDW.mixfreq, 2, BASSWASAPIInit.BASS_WASAPI_SHARED, infoDW.minperiod, 0, null, IntPtr.Zero);
-
-                    BASSError WasapiError = Bass.BASS_ErrorGetCode();
-                    if (WasapiError != 0) throw new Exception(String.Format("Can not initialize WASAPI.\n\nError: {0}", WasapiError.ToString()));
+                    BASSCheckError();
                 }
 
                 BASSInitializeChanAttributes();
@@ -557,7 +608,7 @@ namespace KeppyMIDIConverter
             }
             catch (Exception ex)
             {
-                BASSCloseStreamCrash(ex);
+                BASSCloseStreamException(ex);
             }
         }
 
@@ -565,8 +616,12 @@ namespace KeppyMIDIConverter
         {
             SetTempo(true, true);
             MainWindow.KMCGlobals._myTempoSync = new SYNCPROC(TempoSync);
+
             Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_MIDI_EVENT | BASSSync.BASS_SYNC_MIXTIME, (long)BASSMIDIEvent.MIDI_EVENT_TEMPO, MainWindow.KMCGlobals._myTempoSync, IntPtr.Zero);
+            BASSCheckError();
             Bass.BASS_ChannelSetSync(MainWindow.KMCGlobals._recHandle, BASSSync.BASS_SYNC_SETPOS | BASSSync.BASS_SYNC_MIXTIME, 0, MainWindow.KMCGlobals._myTempoSync, IntPtr.Zero);
+            BASSCheckError();
+
             if (Properties.Settings.Default.IgnoreNotes1 || Properties.Settings.Default.AskForIgnoreTracks || MainWindow.VSTs.VSTInfo[0].isInstrument)
             {
                 Int32 TracksCount = BassMidi.BASS_MIDI_StreamGetTrackCount(MainWindow.KMCGlobals._recHandle);
@@ -574,15 +629,20 @@ namespace KeppyMIDIConverter
                 if (Properties.Settings.Default.AskForIgnoreTracks) new TracksToIgnore(TracksCount).ShowDialog();
                 else TracksList = new bool[TracksCount];
 
+                GC.KeepAlive(MainWindow.KMCGlobals._FilterProc);
                 MainWindow.KMCGlobals._FilterProc = new MIDIFILTERPROC(MidiFilterProc);
-                BassMidi.BASS_MIDI_StreamSetFilter(MainWindow.KMCGlobals._recHandle, true, MainWindow.KMCGlobals._FilterProc, IntPtr.Zero);
+                BassMidi.BASS_MIDI_StreamSetFilter(MainWindow.KMCGlobals._recHandle, false, MainWindow.KMCGlobals._FilterProc, IntPtr.Zero);
+                BASSCheckError();
             }
         }
 
         public static void BASSEffectSettings()
         {
-            Bass.BASS_ChannelFlags((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), Properties.Settings.Default.DisableEffects ? BASSFlag.BASS_MIDI_NOFX : 0, BASSFlag.BASS_MIDI_NOFX);
-            Bass.BASS_ChannelFlags((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), Properties.Settings.Default.NoteOff1 ? BASSFlag.BASS_MIDI_NOTEOFF1 : 0, BASSFlag.BASS_MIDI_NOTEOFF1);
+            Bass.BASS_ChannelFlags((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTiHandle : MainWindow.KMCGlobals._recHandle), Properties.Settings.Default.DisableEffects ? BASSFlag.BASS_MIDI_NOFX : 0, BASSFlag.BASS_MIDI_NOFX);
+            BASSCheckError();
+
+            Bass.BASS_ChannelFlags((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTiHandle : MainWindow.KMCGlobals._recHandle), Properties.Settings.Default.NoteOff1 ? BASSFlag.BASS_MIDI_NOTEOFF1 : 0, BASSFlag.BASS_MIDI_NOTEOFF1);
+            BASSCheckError();
         }
 
         public static BASSEncode IsOgg(int format)
@@ -592,7 +652,7 @@ namespace KeppyMIDIConverter
                 case 0:
                     return BASSEncode.BASS_ENCODE_PCM;
                 default:
-                    return (BASSEncode)0;
+                    return 0;
             }
         }
 
@@ -603,7 +663,7 @@ namespace KeppyMIDIConverter
                 case 0:
                     return BASSEncode.BASS_ENCODE_RF64;
                 default:
-                    return (BASSEncode)0;
+                    return 0;
             }
         }
 
@@ -662,20 +722,22 @@ namespace KeppyMIDIConverter
                         temp = String.Format("{0} ({1} {2})", pathwithoutext, Languages.Parse("CopyText"), copynum);
                         ++copynum;
                     } while (File.Exists(String.Format("{0}.{1}", temp, ext)));
-                    BassEnc.BASS_Encode_Stop(MainWindow.VSTs._VSTHandles[0]);
+                    BassEnc.BASS_Encode_Stop(MainWindow.VSTs._VSTiHandle);
                     BassEnc.BASS_Encode_Stop(MainWindow.KMCGlobals._recHandle);
-                    MainWindow.KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), EncoderString(enc, temp, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format) | IsWav(format), null, IntPtr.Zero);
+                    MainWindow.KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTiHandle : MainWindow.KMCGlobals._recHandle), EncoderString(enc, temp, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format) | IsWav(format), null, IntPtr.Zero);
+                    BASSCheckError();
                 }
                 else
                 {
-                    BassEnc.BASS_Encode_Stop(MainWindow.VSTs._VSTHandles[0]);
+                    BassEnc.BASS_Encode_Stop(MainWindow.VSTs._VSTiHandle);
                     BassEnc.BASS_Encode_Stop(MainWindow.KMCGlobals._recHandle);
-                    MainWindow.KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), EncoderString(enc, pathwithoutext, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format) | IsWav(format), null, IntPtr.Zero);
+                    MainWindow.KMCGlobals._Encoder = BassEnc.BASS_Encode_Start((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTiHandle : MainWindow.KMCGlobals._recHandle), EncoderString(enc, pathwithoutext, ext, args), (Properties.Settings.Default.LoudMaxEnabled ? BASSEncode.BASS_ENCODE_FP_16BIT : BASSEncode.BASS_ENCODE_DEFAULT) | BASSEncode.BASS_ENCODE_AUTOFREE | IsOgg(format) | IsWav(format), null, IntPtr.Zero);
+                    BASSCheckError();
                 }
             }
             catch (Exception ex)
             {
-                BASSCloseStreamCrash(ex);
+                BASSCloseStreamException(ex);
             }
         }
 
@@ -688,8 +750,13 @@ namespace KeppyMIDIConverter
             for (int i = 0; i <= 15; i++)
                 BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, i, BASSMIDIEvent.MIDI_EVENT_MIXLEVEL, MainWindow.KMCStatus.ChannelsVolume[i]);
 
-            if (MainWindow.VSTs.VSTInfo[0].isInstrument) Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, (Int32)length);
+            if (MainWindow.VSTs.VSTInfo[0].isInstrument)
+            {
+                Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTiHandle, buffer, (Int32)length);
+                BASSCheckError();
+            }   
             int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, (Int32)length);
+            BASSCheckError();
 
             if (got < 0)
             {
@@ -715,8 +782,13 @@ namespace KeppyMIDIConverter
                 es++;
             }
 
-            if (MainWindow.VSTs.VSTInfo[0].isInstrument) Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
-            int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
+            if (MainWindow.VSTs.VSTInfo[0].isInstrument)
+            {
+                Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTiHandle, buffer, (Int32)length);
+                BASSCheckError();
+            }
+            int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, (Int32)length);
+            BASSCheckError();
 
             if (got < 0)
             {
@@ -737,6 +809,8 @@ namespace KeppyMIDIConverter
             if (MainWindow.Seeking)
             {
                 BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTESOFF, 0);
+                BassVst.BASS_VST_ProcessEvent(MainWindow.VSTs._VSTiHandle, 0, BASSMIDIEvent.MIDI_EVENT_NOTESOFF, 0);
+
                 Bass.BASS_ChannelSetPosition(MainWindow.KMCGlobals._recHandle, MainWindow.CurrentSeek, BASSMode.BASS_POS_MIDI_TICK);
                 MainWindow.Seeking = false;
                 return;
@@ -749,7 +823,7 @@ namespace KeppyMIDIConverter
             Bass.BASS_ChannelFlags(MainWindow.KMCGlobals._recHandle, Properties.Settings.Default.NoteOff1 ? BASSFlag.BASS_MIDI_NOTEOFF1 : 0, BASSFlag.BASS_MIDI_NOTEOFF1);
 
             for (Int32 i = 0; i <= 15; i++)
-                BassMidi.BASS_MIDI_StreamEvent((MainWindow.VSTs.VSTInfo[0].isInstrument ? MainWindow.VSTs._VSTHandles[0] : MainWindow.KMCGlobals._recHandle), i, BASSMIDIEvent.MIDI_EVENT_MIXLEVEL, MainWindow.KMCStatus.ChannelsVolume[i]);
+                BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, i, BASSMIDIEvent.MIDI_EVENT_MIXLEVEL, MainWindow.KMCStatus.ChannelsVolume[i]);
 
             MainWindow.KMCGlobals._VolFXParam.fCurrent = 1.0f;
             MainWindow.KMCGlobals._VolFXParam.fTarget = Properties.Settings.Default.Volume;
@@ -775,7 +849,7 @@ namespace KeppyMIDIConverter
                 es++;
             }
 
-            if (MainWindow.VSTs.VSTInfo[0].isInstrument) Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTHandles[0], buffer, length);
+            if (MainWindow.VSTs.VSTInfo[0].isInstrument) Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTiHandle, buffer, length);
             int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
 
             if (got < 0)
@@ -846,6 +920,23 @@ public class InvalidSoundFont : Exception
     }
 
     public InvalidSoundFont(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
+public class BASSException : Exception
+{
+    public BASSException()
+    {
+    }
+
+    public BASSException(string message)
+        : base(message)
+    {
+    }
+
+    public BASSException(string message, Exception inner)
         : base(message, inner)
     {
     }
