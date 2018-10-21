@@ -89,7 +89,7 @@ namespace KeppyMIDIConverter
             }
 
             // Last stuff then BOOPERS
-            MainWindow.KMCGlobals.CancellationPendingValue = 0;
+            MainWindow.KMCGlobals.CancellationPendingValue = MainWindow.KMCConstants.IDLE;
             MainWindow.KMCGlobals.CurrentStatusTextString = null;
             BasicFunctions.PlayConversionStop();
         }
@@ -314,7 +314,7 @@ namespace KeppyMIDIConverter
                 }
                 else Data1 = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, length);
 
-                if (Data1 < 0) MainWindow.KMCGlobals.CancellationPendingValue = 2;
+                if (Data1 < 0) MainWindow.KMCGlobals.CancellationPendingValue = MainWindow.KMCConstants.CONVERSION_ENDED;
                 return (MainWindow.VSTs.VSTInfo[0].isInstrument) ? Data2 : Data1;
             }
             catch { return 0; }
@@ -751,16 +751,13 @@ namespace KeppyMIDIConverter
                 BassMidi.BASS_MIDI_StreamEvent(MainWindow.KMCGlobals._recHandle, i, BASSMIDIEvent.MIDI_EVENT_MIXLEVEL, MainWindow.KMCStatus.ChannelsVolume[i]);
 
             if (MainWindow.VSTs.VSTInfo[0].isInstrument)
-            {
                 Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTiHandle, buffer, (Int32)length);
-                BASSCheckError();
-            }   
+
             int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, (Int32)length);
-            BASSCheckError();
 
             if (got < 0)
             {
-                MainWindow.KMCGlobals.CancellationPendingValue = 2;
+                MainWindow.KMCGlobals.CancellationPendingValue = MainWindow.KMCConstants.CONVERSION_ENDED;
                 return false;
             }
 
@@ -783,16 +780,12 @@ namespace KeppyMIDIConverter
             }
 
             if (MainWindow.VSTs.VSTInfo[0].isInstrument)
-            {
                 Bass.BASS_ChannelGetData(MainWindow.VSTs._VSTiHandle, buffer, (Int32)length);
-                BASSCheckError();
-            }
             int got = Bass.BASS_ChannelGetData(MainWindow.KMCGlobals._recHandle, buffer, (Int32)length);
-            BASSCheckError();
 
             if (got < 0)
             {
-                MainWindow.KMCGlobals.CancellationPendingValue = 2;
+                MainWindow.KMCGlobals.CancellationPendingValue = MainWindow.KMCConstants.CONVERSION_ENDED;
                 return false;
             }
 
@@ -854,7 +847,7 @@ namespace KeppyMIDIConverter
 
             if (got < 0)
             {
-                MainWindow.KMCGlobals.CancellationPendingValue = 2;
+                MainWindow.KMCGlobals.CancellationPendingValue = MainWindow.KMCConstants.CONVERSION_ENDED;
                 return false;
             }
 

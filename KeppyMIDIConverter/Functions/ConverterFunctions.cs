@@ -178,12 +178,15 @@ namespace KeppyMIDIConverter
                         MainWindow.KMCStatus.IsKMCNowExporting = true;
                         while (BASSControl.BASSEncodingEngine(pos, length))
                         {
-                            if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
+                            if (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER)
                                 break;
                         }
 
-                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1), (MainWindow.KMCGlobals.CancellationPendingValue == 1));
-                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
+                        BASSControl.ReleaseResources(
+                            (MainWindow.KMCGlobals.CancellationPendingValue != MainWindow.KMCConstants.CANCELLED_BY_USER), 
+                            (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER)
+                            );
+                        if (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER) break;
                     }
 
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -191,10 +194,10 @@ namespace KeppyMIDIConverter
                     MainWindow.KMCStatus.IsKMCNowExporting = false;
                     MainWindow.KMCGlobals.VSTSkipSettings = false;
 
-                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == 1) ? "ConversionAborted" : "ConversionCompleted";
+                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER) ? "ConversionAborted" : "ConversionCompleted";
                     BASSControl.BASSCloseStream(Languages.Parse(Msg), Languages.Parse(Msg), 0);
 
-                    if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
+                    if (MainWindow.KMCGlobals.CancellationPendingValue != MainWindow.KMCConstants.CANCELLED_BY_USER)
                     {
                         if (MainWindow.KMCGlobals.AutoShutDownEnabled == true)
                             Process.Start(new ProcessStartInfo("shutdown", "/s /t 0") { CreateNoWindow = true, UseShellExecute = false });
@@ -207,8 +210,7 @@ namespace KeppyMIDIConverter
                 }
                 catch (Exception exception)
                 {
-                    BasicFunctions.WriteToConsole(exception);
-                    BASSControl.ReleaseResources(false, true);
+                    BASSControl.BASSCloseStreamException(exception);
                 }
             }
             catch (Exception exception2)
@@ -251,15 +253,18 @@ namespace KeppyMIDIConverter
                         MainWindow.KMCStatus.IsKMCNowExporting = true;
                         for (pos = 0, es = 0; ;)
                         {
-                            if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
+                            if (MainWindow.KMCGlobals.CancellationPendingValue != MainWindow.KMCConstants.CANCELLED_BY_USER)
                             {
                                 if (!BASSControl.BASSEncodingEngineRT(CustomFramerates, ref pos, ref es)) break;
                             }
                             else break;
                         }
 
-                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1), (MainWindow.KMCGlobals.CancellationPendingValue == 1));
-                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
+                        BASSControl.ReleaseResources(
+                            (MainWindow.KMCGlobals.CancellationPendingValue != MainWindow.KMCConstants.CANCELLED_BY_USER), 
+                            (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER)
+                            );
+                        if (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER) break;
                     }
 
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -267,10 +272,10 @@ namespace KeppyMIDIConverter
                     MainWindow.KMCStatus.IsKMCNowExporting = false;
                     MainWindow.KMCGlobals.VSTSkipSettings = false;
 
-                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == 1) ? "ConversionAborted" : "ConversionCompleted";
+                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER) ? "ConversionAborted" : "ConversionCompleted";
                     BASSControl.BASSCloseStream(Languages.Parse(Msg), Languages.Parse(Msg), 0);
 
-                    if (MainWindow.KMCGlobals.CancellationPendingValue == 1)
+                    if (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER)
                     {
                         if (MainWindow.KMCGlobals.AutoShutDownEnabled == true)
                             Process.Start(new ProcessStartInfo("shutdown", "/s /t 0") { CreateNoWindow = true, UseShellExecute = false });
@@ -341,15 +346,18 @@ namespace KeppyMIDIConverter
                         BassWasapi.BASS_WASAPI_Start();
                         while (CheckStreamStatus() != BASSActive.BASS_ACTIVE_STOPPED)
                         {
-                            if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
+                            if (MainWindow.KMCGlobals.CancellationPendingValue != MainWindow.KMCConstants.CANCELLED_BY_USER)
                                 BASSControl.BASSPlayBackEngine(Length, Position);
                             else break;
 
                             TimerFuncs.MicroSleep(-1);
                         }
 
-                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1), (MainWindow.KMCGlobals.CancellationPendingValue == 1));
-                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
+                        BASSControl.ReleaseResources(
+                            (MainWindow.KMCGlobals.CancellationPendingValue != MainWindow.KMCConstants.CANCELLED_BY_USER), 
+                            (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER)
+                            );
+                        if (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER) break;
                     }
 
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -357,7 +365,7 @@ namespace KeppyMIDIConverter
                     MainWindow.KMCStatus.IsKMCNowExporting = false;
                     MainWindow.KMCGlobals.VSTSkipSettings = false;
 
-                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == 1) ? "PlaybackAborted" : "PlaybackCompleted";
+                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER) ? "PlaybackAborted" : "PlaybackCompleted";
                     BASSControl.BASSCloseStream(Languages.Parse(Msg), Languages.Parse(Msg), 0);
 
                     BasicFunctions.PlayConversionStop();
@@ -426,15 +434,18 @@ namespace KeppyMIDIConverter
                         BassWasapi.BASS_WASAPI_Start();
                         while (CheckStreamStatus() != BASSActive.BASS_ACTIVE_STOPPED)
                         {
-                            if (MainWindow.KMCGlobals.CancellationPendingValue != 1)
+                            if (MainWindow.KMCGlobals.CancellationPendingValue != MainWindow.KMCConstants.CANCELLED_BY_USER)
                                 BASSControl.BASSPlayBackEngineRT(CustomFramerates, ref pos, ref es);
                             else break;
 
                             TimerFuncs.MicroSleep(-1);
                         }
 
-                        BASSControl.ReleaseResources((MainWindow.KMCGlobals.CancellationPendingValue != 1), (MainWindow.KMCGlobals.CancellationPendingValue == 1));
-                        if (MainWindow.KMCGlobals.CancellationPendingValue == 1) break;
+                        BASSControl.ReleaseResources(
+                            (MainWindow.KMCGlobals.CancellationPendingValue != MainWindow.KMCConstants.CANCELLED_BY_USER), 
+                            (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER)
+                            );
+                        if (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER) break;
                     }
 
                     MainWindow.KMCStatus.RenderingMode = false;
@@ -442,7 +453,7 @@ namespace KeppyMIDIConverter
                     MainWindow.KMCStatus.IsKMCNowExporting = false;
                     MainWindow.KMCGlobals.VSTSkipSettings = false;
 
-                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == 1) ? "PlaybackAborted" : "PlaybackCompleted";
+                    String Msg = (MainWindow.KMCGlobals.CancellationPendingValue == MainWindow.KMCConstants.CANCELLED_BY_USER) ? "PlaybackAborted" : "PlaybackCompleted";
                     BASSControl.BASSCloseStream(Languages.Parse(Msg), Languages.Parse(Msg), 0);
 
                     BasicFunctions.PlayConversionStop();

@@ -28,6 +28,13 @@ namespace KeppyMIDIConverter
         public static MainWindow Delegate;
         public static Random FPSSimulator = new Random();
 
+        public static class KMCConstants
+        {
+            public const int IDLE = 0;
+            public const int CANCELLED_BY_USER = 1;
+            public const int CONVERSION_ENDED = 2;
+        }
+
         public static class KMCDialogs
         {
             public static AdvancedVoices AdvVoices = new AdvancedVoices();
@@ -374,7 +381,7 @@ namespace KeppyMIDIConverter
 
         private void AbortConversion_Click(object sender, EventArgs e)
         {
-            KMCGlobals.CancellationPendingValue = 1;
+            KMCGlobals.CancellationPendingValue = KMCConstants.CANCELLED_BY_USER;
             KMCGlobals.AutoShutDownEnabled = false;
         }
 
