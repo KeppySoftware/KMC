@@ -45,7 +45,7 @@ namespace KeppyMIDIConverter
                 }
                 catch { size = "-"; }
 
-                Bass.BASS_Init(0, 22050, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
+                Bass.BASS_Init(0, 4000, BASSInit.BASS_DEVICE_NOSPEAKER, IntPtr.Zero);
                 Int32 time = BassMidi.BASS_MIDI_StreamCreateFile(str, 0L, 0L, BASSFlag.BASS_STREAM_DECODE, 0);
 
                 if (time == 0) return null;
@@ -57,11 +57,18 @@ namespace KeppyMIDIConverter
                 // Get length of MIDI
                 string Length = span.Minutes.ToString() + ":" + span.Seconds.ToString().PadLeft(2, '0') + "." + span.Milliseconds.ToString().PadLeft(3, '0');
 
-                UInt64 count = (UInt64)BassMidi.BASS_MIDI_StreamGetEvents(time, -1, BASSMIDIEvent.MIDI_EVENT_NOTES, null);
+                UInt64 count = 0;
                 Int32 Tracks = BassMidi.BASS_MIDI_StreamGetTrackCount(time);
+                for (int i = 0; i < Tracks; i++)
+                    count += (UInt32)BassMidi.BASS_MIDI_StreamGetEvents(time, i, BASSMIDIEvent.MIDI_EVENT_NOTES, null);
 
                 Bass.BASS_Free();
-                return new string[] { Length, Tracks.ToString("N0"), count.ToString("N0"), size, };
+                return new string[] {
+                    Length,
+                    String.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:N0}", Tracks),
+                    String.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:N0}", count),
+                    size
+                };
             }
             catch
             {

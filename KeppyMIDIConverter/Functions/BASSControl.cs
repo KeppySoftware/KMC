@@ -327,12 +327,12 @@ namespace KeppyMIDIConverter
         }
 
         public static Boolean[] TracksList;
-        public static Boolean MidiFilterProc(int handle, int track, BASS_MIDI_EVENT midievent, bool seeking, IntPtr user)
+        public static Boolean MidiFilterProc(int handle, int track, IntPtr midievent, bool seeking, IntPtr user)
         {
             try
             {
                 Int32 Track = track;
-                BASS_MIDI_EVENT temp = midievent;
+                BASS_MIDI_EVENT temp = BASS_MIDI_EVENT.FromIntPtr(midievent);
 
                 if (temp.eventtype == BASSMIDIEvent.MIDI_EVENT_NOTE && (Properties.Settings.Default.IgnoreNotes1 || Properties.Settings.Default.AskForIgnoreTracks))
                 {
