@@ -977,7 +977,7 @@ Click OK to continue.</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="Limit88" xml:space="preserve">
-    <value>Liimt key range to 88 keys (Excluding drums channel)</value>
+    <value>Limit key range to 88 keys (Excluding drums channel)</value>
     <comment>Self-explanatory.</comment>
   </data>
   <data name="LowestVel" xml:space="preserve">
