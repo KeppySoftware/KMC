@@ -1,6 +1,6 @@
 # Keppy's MIDI Converter (Abandoned)
 <p align="center">
-  <a href="https://github.com/SonoSooS">SonoSooS</a> is currently rewriting it from scratch.
+  <u><b><a href="https://github.com/SonoSooS">SonoSooS</a> is currently rewriting it from scratch.</b></u>
   <br /><br />
   <a href="http://www.softpedia.com/get/Multimedia/Audio/Audio-Convertors/Keppy-s-MIDI-Converter.shtml#status"><img src="http://s1.softpedia-static.com/_img/sp100free.png?1" /></a>
   <br />
