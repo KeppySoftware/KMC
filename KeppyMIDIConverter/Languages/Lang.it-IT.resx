@@ -1018,4 +1018,16 @@ Per la riproduzione/conversione di Black MIDI, è caldamente suggerito lasciare 
 Attendere prego...</value>
     <comment>It's preparing the AddingMIDIs window for the process.</comment>
   </data>
+  <data name="LinAttMod" xml:space="preserve">
+    <value>Usa fase di attacco lineare negli inviluppi di modulazione SF</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="LinDecVol" xml:space="preserve">
+    <value>Usa fasi di decadimento e rilascio lineari negli inviluppi delle note</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NoteRampIn" xml:space="preserve">
+    <value>Non usare un ingresso sonoro ad effetto rampa all'inizio di una nota</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

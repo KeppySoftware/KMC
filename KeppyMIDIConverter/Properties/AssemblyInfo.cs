@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Riccardo Loi")]
 [assembly: AssemblyProduct("KeppyMIDIConverter")]
-[assembly: AssemblyCopyright("Copyright © Riccardo Loi 2013")]
+[assembly: AssemblyCopyright("Copyright © Riccardo Loi 2021")]
 [assembly: AssemblyTrademark("KMC")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build
 // usando l'asterisco '*' come illustrato di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("18.2.8")]
-[assembly: AssemblyFileVersion("18.2.8")]
+[assembly: AssemblyVersion("19.0.0")]
+[assembly: AssemblyFileVersion("19.0.0")]

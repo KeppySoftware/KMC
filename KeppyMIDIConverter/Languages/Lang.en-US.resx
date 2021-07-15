@@ -1014,4 +1014,16 @@ For Black MIDI playback/conversion, it is highly suggested to leave this option 
 Please wait...</value>
     <comment>It's preparing the AddingMIDIs window for the process.</comment>
   </data>
+  <data name="LinAttMod" xml:space="preserve">
+    <value>Use linear attack phase in SoundFont modulation envelopes.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="LinDecVol" xml:space="preserve">
+    <value>Use linear decay and release phases in volume envelopes.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NoteRampIn" xml:space="preserve">
+    <value>Never ramp-in the start of a sample in the soundfont.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
 </root>

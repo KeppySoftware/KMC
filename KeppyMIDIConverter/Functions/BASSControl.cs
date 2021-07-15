@@ -367,7 +367,18 @@ namespace KeppyMIDIConverter
         {
             if (File.Exists(path))
             {
-                MainWindow.KMCGlobals.SoundFonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(path, BASSFlag.BASS_MIDI_FONT_XGDRUMS);
+                BASSFlag Flags = BASSFlag.BASS_MIDI_FONT_XGDRUMS;
+
+                if (Properties.Settings.Default.LinAttMod)
+                    Flags |= (BASSFlag)0x100000;
+
+                if (Properties.Settings.Default.LinDecVol)
+                    Flags |= (BASSFlag)0x200000;
+
+                if (Properties.Settings.Default.NoRampIn)
+                    Flags |= (BASSFlag)0x400000;
+
+                MainWindow.KMCGlobals.SoundFonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(path, Flags);
                 MainWindow.KMCGlobals.SoundFonts[sfnum].dpreset = -1;
                 MainWindow.KMCGlobals.SoundFonts[sfnum].dbank = 0;
                 MainWindow.KMCGlobals.SoundFonts[sfnum].spreset = -1;
@@ -432,18 +443,29 @@ namespace KeppyMIDIConverter
         public static void BASSLoadSoundFonts2(ref int sfnum)
         {
             // Prepare SoundFonts list
+            BASSFlag Flags = BASSFlag.BASS_MIDI_FONT_XGDRUMS;
             MainWindow.KMCGlobals.SoundFonts = new BASS_MIDI_FONTEX[MainWindow.SoundFontChain.SoundFonts.Length + 1];
             String[] SoundFontsReverse = MainWindow.SoundFontChain.SoundFonts.Reverse().ToArray();
 
             try
             {
+                if (Properties.Settings.Default.LinAttMod)
+                    Flags |= (BASSFlag)0x100000;
+
+                if (Properties.Settings.Default.LinDecVol)
+                    Flags |= (BASSFlag)0x200000;
+
+                if (Properties.Settings.Default.NoRampIn)
+                    Flags |= (BASSFlag)0x400000;
+
                 // Then load all the other SFs
                 foreach (string s in SoundFontsReverse)
                 {
                     if (s.ToLower().IndexOf('=') != -1)
                     {
+ 
                         var matches = System.Text.RegularExpressions.Regex.Matches(s, "[0-9]+");
-                        MainWindow.KMCGlobals.SoundFonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s.Substring(s.LastIndexOf('|') + 1), BASSFlag.BASS_MIDI_FONT_XGDRUMS);
+                        MainWindow.KMCGlobals.SoundFonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s.Substring(s.LastIndexOf('|') + 1), Flags);
                         MainWindow.KMCGlobals.SoundFonts[sfnum].dbank = Convert.ToInt32(matches[0].ToString());
                         MainWindow.KMCGlobals.SoundFonts[sfnum].dpreset = Convert.ToInt32(matches[1].ToString());
                         MainWindow.KMCGlobals.SoundFonts[sfnum].sbank = Convert.ToInt32(matches[2].ToString());
@@ -453,7 +475,7 @@ namespace KeppyMIDIConverter
                     }
                     else
                     {
-                        MainWindow.KMCGlobals.SoundFonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s);
+                        MainWindow.KMCGlobals.SoundFonts[sfnum].font = BassMidi.BASS_MIDI_FontInit(s, Flags);
                         MainWindow.KMCGlobals.SoundFonts[sfnum].dpreset = -1;
                         MainWindow.KMCGlobals.SoundFonts[sfnum].dbank = 0;
                         MainWindow.KMCGlobals.SoundFonts[sfnum].spreset = -1;

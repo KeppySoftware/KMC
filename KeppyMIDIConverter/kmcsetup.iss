@@ -5,7 +5,7 @@
 #define vc
 
 #define MyAppSetupName "Keppy's MIDI Converter"
-#define MyAppVersion '18.2.8'
+#define MyAppVersion '19.0.0'
 
 [Setup]
 AllowCancelDuringInstall=False
@@ -20,7 +20,6 @@ AppCopyright=Copyright(C) KaleidonKep99 2017
 AppId={{D4BCF8FB-EF29-4A72-9681-879BC2C3EAB8}
 AppPublisher=KaleidonKep99
 AppPublisherURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter
-AppSupportPhone=+393511888475
 AppSupportURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/issues
 AppUpdatesURL=https://github.com/KaleidonKep99/Keppys-MIDI-Converter/releases
 ArchitecturesAllowed=x86 x64
@@ -66,36 +65,10 @@ Source: "license.rtf"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 Source: "bin\GMGeneric.sf2"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 
 ;64-bit files
-Source: "bin\x64\KeppyMIDIConverter.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\KeppyMIDIConverter.exe.config"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bass.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\basswasapi.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bass_mpc.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bass_vst.dll"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bassenc.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bassflac.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bassmidi.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\bassopus.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\basswv.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\LoudMax.dll"; DestDir: "{app}\x64";  Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\kmcogg.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
-Source: "bin\x64\kmcmp3.exe"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
+Source: "bin\x64\*"; DestDir: "{app}\x64"; Flags: ignoreversion replacesameversion; Check: Is64BitInstallMode
 
 ;32-bit files
-Source: "bin\x86\KeppyMIDIConverter.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\KeppyMIDIConverter.exe.config"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\bass.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\basswasapi.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\bass_mpc.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
-Source: "bin\x86\bass_vst.dll"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\bassenc.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
-Source: "bin\x86\bassflac.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
-Source: "bin\x86\bassmidi.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
-Source: "bin\x86\bassopus.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
-Source: "bin\x86\basswv.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
-Source: "bin\x86\LoudMax.dll"; DestDir: "{app}\x86";  Flags: ignoreversion replacesameversion
-Source: "bin\x86\kmcogg.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
-Source: "bin\x86\kmcmp3.exe"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
+Source: "bin\x86\*"; DestDir: "{app}\x86"; Flags: ignoreversion replacesameversion
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
@@ -147,7 +120,8 @@ Filename: "{app}\x86\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasori
 Filename: "{app}\x86\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser unchecked; Description: "Run the x86 version of the converter"; Check: Is64BitInstallMode
 Filename: "{app}\x64\KeppyMIDIConverter.exe"; Flags: nowait postinstall runasoriginaluser; Description: "Run the x64 version of the converter"; Check: Is64BitInstallMode
 Filename: "{app}\license.rtf"; Flags: nowait shellexec postinstall unchecked; Description: "Read the license"
-Filename: "https://github.com/KaleidonKep99/Keppys-MIDI-Converter"; Flags: nowait postinstall shellexec unchecked; Description: "Look at the source code on GitHub"
+Filename: "https://github.com/KaleidonKep99/Keppys-MIDI-Converter"; Flags: nowait postinstall shellexec unchecked; Description: "Look at the source code on GitHub"
+
 [CustomMessages]
 win_sp_title=Windows %1 Service Pack %2
 

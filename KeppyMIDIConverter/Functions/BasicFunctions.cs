@@ -134,7 +134,7 @@ namespace KeppyMIDIConverter
 
         public static void Donate()
         {
-            Process.Start("https://paypal.me/KaleidonKep99");
+            Process.Start("https://paypal.me/Keppy99");
         }
 
         public static void GCWork(object sender, DoWorkEventArgs e)

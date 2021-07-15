@@ -39,6 +39,10 @@ namespace KeppyMIDIConverter
             Delegate.OverrideTempoNow.Text = Languages.Parse("OverrideTempo");
             Delegate.ConstantBitrate.Text = String.Format("{0}:", Languages.Parse("ConstantBitrate"));
             Delegate.OKBtn.Text = Languages.Parse("OKBtn");
+
+            Delegate.NoRampIn.Text = Languages.Parse("NoteRampIn");
+            Delegate.LinAttMod.Text = Languages.Parse("LinAttMod");
+            Delegate.LinDecVol.Text = Languages.Parse("LinDecVol");
         }
 
         public AdvancedSettings()
@@ -77,6 +81,11 @@ namespace KeppyMIDIConverter
                 FXDisable.Checked = Properties.Settings.Default.DisableEffects;
                 ConstantBitrate.Checked = Properties.Settings.Default.OverrideBitrate;
                 TempoValue.Enabled = OverrideTempoNow.Checked = Properties.Settings.Default.OverrideTempo;
+
+                // NEW
+                NoRampIn.Checked = Properties.Settings.Default.NoRampIn;
+                LinAttMod.Checked = Properties.Settings.Default.LinAttMod;
+                LinDecVol.Checked = Properties.Settings.Default.LinDecVol;
                 //
             }
             catch (Exception ex)
@@ -187,6 +196,46 @@ namespace KeppyMIDIConverter
             BitrateBox.Enabled = ConstantBitrate.Checked;
         }
 
+        private void ChannelsSettings_Click(object sender, EventArgs e)
+        {
+            new ChannelsSettings().ShowDialog();
+        }
+
+        private void LoVel_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IgnoreNotesLow = (int)LoVel.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void HiVel_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IgnoreNotesHigh = (int)HiVel.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void AdvancedSettings_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NoRampIn_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.NoRampIn = NoRampIn.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void LinAttMod_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.LinAttMod = LinAttMod.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void LinDecVol_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.LinDecVol = LinDecVol.Checked;
+            Properties.Settings.Default.Save();
+        }
+
         // Snap feature
 
         private const int SnapDist = 25;
@@ -205,21 +254,6 @@ namespace KeppyMIDIConverter
             if (DoSnap(this.Top, scn.WorkingArea.Top)) this.Top = scn.WorkingArea.Top;
             if (DoSnap(scn.WorkingArea.Right, this.Right)) this.Left = scn.WorkingArea.Right - this.Width;
             if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
-        }
-
-        private void ChannelsSettings_Click(object sender, EventArgs e)
-        {
-            new ChannelsSettings().ShowDialog();
-        }
-
-        private void LoVel_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.IgnoreNotesLow = (int)LoVel.Value;
-        }
-
-        private void HiVel_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.IgnoreNotesHigh = (int)HiVel.Value;
         }
     }
 }

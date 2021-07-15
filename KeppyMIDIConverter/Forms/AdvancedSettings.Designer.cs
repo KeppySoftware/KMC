@@ -44,12 +44,15 @@
             this.MaxVoices = new System.Windows.Forms.NumericUpDown();
             this.ChannelsSettings = new System.Windows.Forms.Button();
             this.MIDIEventsSettings = new System.Windows.Forms.GroupBox();
-            this.Limit88 = new System.Windows.Forms.CheckBox();
-            this.IgnoreNotes1 = new System.Windows.Forms.CheckBox();
             this.LoVel = new System.Windows.Forms.NumericUpDown();
             this.HiVel = new System.Windows.Forms.NumericUpDown();
             this.HighestVel = new System.Windows.Forms.Label();
             this.LowestVel = new System.Windows.Forms.Label();
+            this.Limit88 = new System.Windows.Forms.CheckBox();
+            this.IgnoreNotes1 = new System.Windows.Forms.CheckBox();
+            this.NoRampIn = new System.Windows.Forms.CheckBox();
+            this.LinAttMod = new System.Windows.Forms.CheckBox();
+            this.LinDecVol = new System.Windows.Forms.CheckBox();
             this.StreamSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempoValue)).BeginInit();
@@ -64,7 +67,7 @@
             // 
             this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKBtn.Location = new System.Drawing.Point(315, 415);
+            this.OKBtn.Location = new System.Drawing.Point(315, 480);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(79, 23);
             this.OKBtn.TabIndex = 8;
@@ -86,7 +89,7 @@
             this.StreamSettings.Controls.Add(this.BitrateLabel);
             this.StreamSettings.Controls.Add(this.OverrideTempoNow);
             this.StreamSettings.Controls.Add(this.FXDisable);
-            this.StreamSettings.Location = new System.Drawing.Point(12, 264);
+            this.StreamSettings.Location = new System.Drawing.Point(12, 325);
             this.StreamSettings.Name = "StreamSettings";
             this.StreamSettings.Size = new System.Drawing.Size(382, 145);
             this.StreamSettings.TabIndex = 0;
@@ -235,7 +238,6 @@
             // 
             // Noteoff1
             // 
-            this.Noteoff1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Noteoff1.Location = new System.Drawing.Point(9, 84);
             this.Noteoff1.Name = "Noteoff1";
@@ -365,7 +367,7 @@
             // ChannelsSettings
             // 
             this.ChannelsSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ChannelsSettings.Location = new System.Drawing.Point(12, 415);
+            this.ChannelsSettings.Location = new System.Drawing.Point(12, 480);
             this.ChannelsSettings.Name = "ChannelsSettings";
             this.ChannelsSettings.Size = new System.Drawing.Size(140, 23);
             this.ChannelsSettings.TabIndex = 10;
@@ -375,6 +377,9 @@
             // 
             // MIDIEventsSettings
             // 
+            this.MIDIEventsSettings.Controls.Add(this.LinDecVol);
+            this.MIDIEventsSettings.Controls.Add(this.LinAttMod);
+            this.MIDIEventsSettings.Controls.Add(this.NoRampIn);
             this.MIDIEventsSettings.Controls.Add(this.LoVel);
             this.MIDIEventsSettings.Controls.Add(this.HiVel);
             this.MIDIEventsSettings.Controls.Add(this.HighestVel);
@@ -384,34 +389,10 @@
             this.MIDIEventsSettings.Controls.Add(this.Noteoff1);
             this.MIDIEventsSettings.Location = new System.Drawing.Point(12, 129);
             this.MIDIEventsSettings.Name = "MIDIEventsSettings";
-            this.MIDIEventsSettings.Size = new System.Drawing.Size(382, 129);
+            this.MIDIEventsSettings.Size = new System.Drawing.Size(382, 190);
             this.MIDIEventsSettings.TabIndex = 11;
             this.MIDIEventsSettings.TabStop = false;
             this.MIDIEventsSettings.Text = "MIDIEventsSettings";
-            // 
-            // Limit88
-            // 
-            this.Limit88.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Limit88.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Limit88.Location = new System.Drawing.Point(9, 58);
-            this.Limit88.Name = "Limit88";
-            this.Limit88.Size = new System.Drawing.Size(364, 20);
-            this.Limit88.TabIndex = 4;
-            this.Limit88.Text = "Limit88";
-            this.Limit88.UseVisualStyleBackColor = true;
-            this.Limit88.CheckedChanged += new System.EventHandler(this.Limit88_CheckedChanged);
-            // 
-            // IgnoreNotes1
-            // 
-            this.IgnoreNotes1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.IgnoreNotes1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.IgnoreNotes1.Location = new System.Drawing.Point(9, 19);
-            this.IgnoreNotes1.Name = "IgnoreNotes1";
-            this.IgnoreNotes1.Size = new System.Drawing.Size(231, 27);
-            this.IgnoreNotes1.TabIndex = 3;
-            this.IgnoreNotes1.Text = "IgnoreNotes1";
-            this.IgnoreNotes1.UseVisualStyleBackColor = true;
-            this.IgnoreNotes1.CheckedChanged += new System.EventHandler(this.IgnoreNotes1_CheckedChanged);
             // 
             // LoVel
             // 
@@ -476,12 +457,67 @@
             this.LowestVel.Text = "LowestVel";
             this.LowestVel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // Limit88
+            // 
+            this.Limit88.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Limit88.Location = new System.Drawing.Point(9, 58);
+            this.Limit88.Name = "Limit88";
+            this.Limit88.Size = new System.Drawing.Size(364, 20);
+            this.Limit88.TabIndex = 4;
+            this.Limit88.Text = "Limit88";
+            this.Limit88.UseVisualStyleBackColor = true;
+            this.Limit88.CheckedChanged += new System.EventHandler(this.Limit88_CheckedChanged);
+            // 
+            // IgnoreNotes1
+            // 
+            this.IgnoreNotes1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.IgnoreNotes1.Location = new System.Drawing.Point(9, 19);
+            this.IgnoreNotes1.Name = "IgnoreNotes1";
+            this.IgnoreNotes1.Size = new System.Drawing.Size(231, 27);
+            this.IgnoreNotes1.TabIndex = 3;
+            this.IgnoreNotes1.Text = "IgnoreNotes1";
+            this.IgnoreNotes1.UseVisualStyleBackColor = true;
+            this.IgnoreNotes1.CheckedChanged += new System.EventHandler(this.IgnoreNotes1_CheckedChanged);
+            // 
+            // NoRampIn
+            // 
+            this.NoRampIn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.NoRampIn.Location = new System.Drawing.Point(9, 116);
+            this.NoRampIn.Name = "NoRampIn";
+            this.NoRampIn.Size = new System.Drawing.Size(364, 20);
+            this.NoRampIn.TabIndex = 13;
+            this.NoRampIn.Text = "NoRampIn";
+            this.NoRampIn.UseVisualStyleBackColor = true;
+            this.NoRampIn.CheckedChanged += new System.EventHandler(this.NoRampIn_CheckedChanged);
+            // 
+            // LinAttMod
+            // 
+            this.LinAttMod.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.LinAttMod.Location = new System.Drawing.Point(9, 140);
+            this.LinAttMod.Name = "LinAttMod";
+            this.LinAttMod.Size = new System.Drawing.Size(364, 20);
+            this.LinAttMod.TabIndex = 14;
+            this.LinAttMod.Text = "LinAttMod";
+            this.LinAttMod.UseVisualStyleBackColor = true;
+            this.LinAttMod.CheckedChanged += new System.EventHandler(this.LinAttMod_CheckedChanged);
+            // 
+            // LinDecVol
+            // 
+            this.LinDecVol.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.LinDecVol.Location = new System.Drawing.Point(9, 164);
+            this.LinDecVol.Name = "LinDecVol";
+            this.LinDecVol.Size = new System.Drawing.Size(364, 20);
+            this.LinDecVol.TabIndex = 15;
+            this.LinDecVol.Text = "LinDecVol";
+            this.LinDecVol.UseVisualStyleBackColor = true;
+            this.LinDecVol.CheckedChanged += new System.EventHandler(this.LinDecVol_CheckedChanged);
+            // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(406, 450);
+            this.ClientSize = new System.Drawing.Size(406, 515);
             this.ControlBox = false;
             this.Controls.Add(this.MIDIEventsSettings);
             this.Controls.Add(this.ChannelsSettings);
@@ -496,6 +532,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdvancedSettings";
+            this.Load += new System.EventHandler(this.AdvancedSettings_Load);
             this.StreamSettings.ResumeLayout(false);
             this.StreamSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).EndInit();
@@ -541,5 +578,8 @@
         private System.Windows.Forms.NumericUpDown HiVel;
         private System.Windows.Forms.Label HighestVel;
         private System.Windows.Forms.Label LowestVel;
+        internal System.Windows.Forms.CheckBox NoRampIn;
+        internal System.Windows.Forms.CheckBox LinDecVol;
+        internal System.Windows.Forms.CheckBox LinAttMod;
     }
 }
