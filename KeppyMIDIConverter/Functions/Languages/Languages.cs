@@ -111,7 +111,7 @@ namespace KeppyMIDIConverter
             }
         }
 
-        const int LangNum = 3;
+        const int LangNum = 4;
 
         public static String[] LanguagesAvailable = new String[LangNum] {
             // "বাঙালি (Bengali)",
@@ -122,7 +122,7 @@ namespace KeppyMIDIConverter
             "日本語 (Japanese)",
             // "한국어 (Korean)",
             // "Pу́сский (Russian)",
-            // "简化字 (Simplified Chinese, PRC)",
+            "简体中文 (Simplified Chinese, PRC)",
             // "Español (Spanish)",
             // "ภาษาไทย (Thai)",
             // "廣東話 (Traditional Chinese, Hong Kong)",
@@ -138,7 +138,7 @@ namespace KeppyMIDIConverter
             Properties.Resources.Japan,
             // Properties.Resources.South_Korea,
             // Properties.Resources.Russian_Federation,
-            // Properties.Resources.China,
+            Properties.Resources.China,
             // Properties.Resources.Spain,
             // Properties.Resources.Thailand,
             // Properties.Resources.China,
@@ -154,7 +154,7 @@ namespace KeppyMIDIConverter
             "ja-JP",
             // "ko-KR",
             // "ru-RU",
-            // "zh-CN",
+            "zh-CN",
             // "es-ES",
             // "th-TH",
             // "zh-HK",
