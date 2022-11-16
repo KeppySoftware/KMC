@@ -1,0 +1,1026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbortConversion" xml:space="preserve">
+    <value>停止預覽或轉換</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ACFUWSTC" xml:space="preserve">
+    <value>每次啓動軟體嘅時候自動檢查更新</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ActionsStrip" xml:space="preserve">
+    <value>開始</value>
+    <comment>The "Actions" menu.</comment>
+  </data>
+  <data name="ASAR" xml:space="preserve">
+    <value>轉換完成后關閉電腦</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>語言Language</value>
+    <comment>Change the UI language.</comment>
+  </data>
+  <data name="ClearList" xml:space="preserve">
+    <value>清空MIDI列表</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CMLAR" xml:space="preserve">
+    <value>轉換結束之後就自動清空MIDI列表</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CSFFS" xml:space="preserve">
+    <value>轉換狀態下嘅音效</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>退出</value>
+    <comment>Well, close KMC?</comment>
+  </data>
+  <data name="HelpStrip" xml:space="preserve">
+    <value>幫助</value>
+    <comment>The "Help" menu.</comment>
+  </data>
+  <data name="IATP" xml:space="preserve">
+    <value>關於Keppy's MIDI Converter</value>
+    <comment>Shows the information about KMC.</comment>
+  </data>
+  <data name="ImportMIDIs" xml:space="preserve">
+    <value>MIDI</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="JKSUS" xml:space="preserve">
+    <value>加入Keppy嘅軟體更新服務器</value>
+    <comment>It lets you join KSUS on Discord.</comment>
+  </data>
+  <data name="KK99GP" xml:space="preserve">
+    <value>前往KaleidonKep99的GitHub頁面</value>
+    <comment>Shows the user my official GitHub page!</comment>
+  </data>
+  <data name="KK99YTC" xml:space="preserve">
+    <value>前往KaleidonKep99的YouTube頻道</value>
+    <comment>Shows the user my official YouTube page!</comment>
+  </data>
+  <data name="OpenSettings" xml:space="preserve">
+    <value>打开設定介面</value>
+    <comment>Open the preview/conversion settings.</comment>
+  </data>
+  <data name="OpenSFVSTManager" xml:space="preserve">
+    <value>打開音色庫/VST管理器</value>
+    <comment>Open the SoundFonts and VST effects manager.</comment>
+  </data>
+  <data name="OptionsStrip" xml:space="preserve">
+    <value>設定</value>
+    <comment>The "Options" menu.</comment>
+  </data>
+  <data name="PreviewFiles" xml:space="preserve">
+    <value>預覽MIDI效果</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RemoveMIDIs" xml:space="preserve">
+    <value>移除MIDI</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RenderMode" xml:space="preserve">
+    <value>渲染模式</value>
+    <comment>The "Render mode" menu.</comment>
+  </data>
+  <data name="RenderTo" xml:space="preserve">
+    <value>渲染為</value>
+    <comment>Render to what? WAV? OGG? Your choice..</comment>
+  </data>
+  <data name="SCPIOTL" xml:space="preserve">
+    <value>顯示剩餘時間→顯示預覽位置</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="STDWD" xml:space="preserve">
+    <value>赞助我們偉大嘅開發者</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>音量</value>
+    <comment>The volume label on the main window.</comment>
+  </data>
+  <data name="ActiveVoices" xml:space="preserve">
+    <value>目前的複音數</value>
+    <comment>The amount of voices that are current active in the stream.</comment>
+  </data>
+  <data name="AverageLevel" xml:space="preserve">
+    <value>平均</value>
+    <comment>The average level of the current stream.</comment>
+  </data>
+  <data name="ConnectionErrorDesc" xml:space="preserve">
+    <value>唔好意思！呢邊連唔上GitHub服務器。
+
+請檢查您嘅網絡連接。或者試下開個VPN睇下有冇解決問題。
+
+點解好的來繼續使用KMC。</value>
+    <comment>GitHub did a goof.</comment>
+  </data>
+  <data name="ConnectionErrorTitle" xml:space="preserve">
+    <value>網絡鏈接失敗！</value>
+    <comment>Error 404.</comment>
+  </data>
+  <data name="DonateText" xml:space="preserve">
+    <value>呢個項目唔能夠僅通過下載來維護自身。
+
+我無辦法永遠更新呢個程序，所以您們嘅一筆小捐款可以協助我改進佢嘅功能，與我使用嘅設備。
+
+捐款係可選嘅，如果您唔想再見到呢一個對話框，只需點擊“不再顯示”。您仍然可以打開“幫助&gt;贊助”進行捐款。
+
+提前多謝您啦。</value>
+    <comment>Donation text.</comment>
+  </data>
+  <data name="DontShowAnymore" xml:space="preserve">
+    <value>以後不再顯示</value>
+    <comment>You're not interested. You're a bad person.</comment>
+  </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>關鍵性錯誤</value>
+    <comment>Heart attack.</comment>
+  </data>
+  <data name="FatalErrorHandler" xml:space="preserve">
+    <value>軟體運行過程中發生關鍵性錯誤。
+我們被迫將要關閉呢個軟件。
+附加信息:</value>
+    <comment>The text of the error handler, after a fatal error.</comment>
+  </data>
+  <data name="IdleMessage" xml:space="preserve">
+    <value>Keppy's MIDI Converter處於空閒狀態。
+選擇一個MIDI，加載一些音色庫，然後就可以轉換/預覽啦。</value>
+    <comment>Idle message.</comment>
+  </data>
+  <data name="KeepAliveProject" xml:space="preserve">
+    <value>贊助一下，拯救呢個項目啦。</value>
+    <comment>Please do... :(</comment>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>向下移動一格</value>
+    <comment>Move one item down at the time.</comment>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>向上移動一格</value>
+    <comment>Move one item up at the time.</comment>
+  </data>
+  <data name="NonFatalErrorHandler" xml:space="preserve">
+    <value>軟體運行過程中發生錯誤。
+
+附加信息:</value>
+    <comment>The text of the error handler, after a non fatal error.</comment>
+  </data>
+  <data name="NoUpdatesFound" xml:space="preserve">
+    <value>{0} {1}已經係最新嘅版本啦。
+
+唔出意外嘅話，Keppy可能再都唔會更新啦...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NoUpdatesFoundTitle" xml:space="preserve">
+    <value>冇發現{0} {1}嘅更新版本。</value>
+    <comment>Title for NoUpdatesFound.</comment>
+  </data>
+  <data name="OKBtn" xml:space="preserve">
+    <value>OK</value>
+    <comment>k.</comment>
+  </data>
+  <data name="PeakLevel" xml:space="preserve">
+    <value>峰值</value>
+    <comment>The peak level of the current stream.</comment>
+  </data>
+  <data name="RightClickCopyNotice" xml:space="preserve">
+    <value>窗口內任意位置單擊右鍵可複製信息。</value>
+    <comment>UNDERSTAND?</comment>
+  </data>
+  <data name="RMS" xml:space="preserve">
+    <value>均方根</value>
+    <comment>The root mean square of the current stream.</comment>
+  </data>
+  <data name="ShowMeNext" xml:space="preserve">
+    <value>下個月再提醒我</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SortName" xml:space="preserve">
+    <value>按名稱排序</value>
+    <comment>Sort all the MIDIs by name.</comment>
+  </data>
+  <data name="UpdateFound" xml:space="preserve">
+    <value>發現咗{0} {1}嘅新版本！
+
+當前版本：{2}
+最新版本：{3}
+
+您係咪想宜家就更新？
+如果選擇“確定”，軟體就會自動關閉。
+
+（如果唔想自動更新、可以關閉"設定 &gt; 啟動時自動檢查更新"。）</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="UpdateFoundTitle" xml:space="preserve">
+    <value>發現咗{0} {1}嘅新版本</value>
+    <comment>Title for the UpdateFound translation.</comment>
+  </data>
+  <data name="NoAffectPreview" xml:space="preserve">
+    <value>放心,預覽唔受影響</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RealTimeSim" xml:space="preserve">
+    <value>實時模擬（暫不支持渲染）</value>
+    <comment>Simulates a real-time playback, when rendering.</comment>
+  </data>
+  <data name="RenderStandard" xml:space="preserve">
+    <value>標準</value>
+    <comment>Uses the standard rendering method.</comment>
+  </data>
+  <data name="CFU" xml:space="preserve">
+    <value>檢查更新</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CompilerDate" xml:space="preserve">
+    <value>編寫日期：</value>
+    <comment>It shows when this release got compiled.</comment>
+  </data>
+  <data name="ConverterInfo" xml:space="preserve">
+    <value>開發相關信息</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CTC" xml:space="preserve">
+    <value>複製到剪貼簿</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="HowManyTimesAdd" xml:space="preserve">
+    <value>您想添加多少次呢個MIDI？
+
+{0}</value>
+    <comment>How many times you want to add {0}, where {0} is the MIDI.</comment>
+  </data>
+  <data name="IgnoreSize" xml:space="preserve">
+    <value>轉換器將忽略MIDI嘅大小，並獲取其完整嘅信息。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>信息</value>
+    <comment>Information?</comment>
+  </data>
+  <data name="InvalidMIDIFile" xml:space="preserve">
+    <value>{0}呢個唔係有效嘅MIDI格式！
+
+請更換一個有效嘅MIDI。</value>
+    <comment>The MIDI is invalid.</comment>
+  </data>
+  <data name="MIDIFile" xml:space="preserve">
+    <value>文件</value>
+    <comment>The full path of the MIDI.</comment>
+  </data>
+  <data name="MIDILength" xml:space="preserve">
+    <value>長度</value>
+    <comment>The length（Time） of the MIDI.</comment>
+  </data>
+  <data name="MIDINotes" xml:space="preserve">
+    <value>音符數</value>
+    <comment>How many notes are present in the MIDI.</comment>
+  </data>
+  <data name="MIDISize" xml:space="preserve">
+    <value>大小</value>
+    <comment>Size of the MIDI.</comment>
+  </data>
+  <data name="RevisionLabel" xml:space="preserve">
+    <value>{0}（修訂{1}）</value>
+    <comment>{0} is the version of the library, {1} is the revision number.</comment>
+  </data>
+  <data name="SourceCodeText" xml:space="preserve">
+    <value>點擊呢度打開官方GitHub存儲庫</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="TaCI" xml:space="preserve">
+    <value>Keppy's MIDI Converter {0}
+版權所有Ⓒ Riccardo Loi 2013-{1}
+
+粵化：{2}</value>
+    <comment>Information text in the "Information about the converter" window.</comment>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>{0}版本：</value>
+    <comment>Version number of {0}, where {0} stands for the item.（E.g. "BASSMIDI version"）</comment>
+  </data>
+  <data name="VersionConverter" xml:space="preserve">
+    <value>KMC</value>
+    <comment>To be used with "Version".</comment>
+  </data>
+  <data name="W10VerRev" xml:space="preserve">
+    <value>版本{0}（修訂{1}）</value>
+    <comment>Windows 10's version and revision format</comment>
+  </data>
+  <data name="WindowsBuild" xml:space="preserve">
+    <value>發佈版本：</value>
+    <comment>Shows the user the build number of his Windows installation.</comment>
+  </data>
+  <data name="WindowsInstallInfo" xml:space="preserve">
+    <value>Windows系統信息</value>
+    <comment>Title of the groupbox.</comment>
+  </data>
+  <data name="WindowsName" xml:space="preserve">
+    <value>發佈名稱：</value>
+    <comment>Shows the user the release name of his Windows installation.</comment>
+  </data>
+  <data name="NoEnoughMemoryMIDIInfo" xml:space="preserve">
+    <value>內存不足，無法獲取此MIDI嘅信息：
+{0}</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutSFZFormatText" xml:space="preserve">
+    <value>該程序符合“SFZ 1.0格式”，部分符合“SFZ 2.0格式”。
+
+想要去“非官方SFZ格式信息”網站睇下嗎？</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutSFZFormatTitle" xml:space="preserve">
+    <value>關於SFZ格式</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutVSTSupportText" xml:space="preserve">
+    <value>呢個軟件支持 VST DSP。
+
+Virtual Studio技術（VST） 係斯坦伯格媒體技術公司開發嘅一種軟件介面同技術。
+版權所有 ©2006 Steinberg Media Technologies.
+保留所有權利。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AboutVSTSupportTitle" xml:space="preserve">
+    <value>關於Virtual Studio技術介面</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AdvSettingsTitle" xml:space="preserve">
+    <value>進階設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AudioFreq" xml:space="preserve">
+    <value>音頻采樣率：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Bitrate" xml:space="preserve">
+    <value>比特率：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ClearSoundfontList" xml:space="preserve">
+    <value>清空音色庫列表</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConstantBitrate" xml:space="preserve">
+    <value>強制恆定比特率</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConverterIsBusyAlready" xml:space="preserve">
+    <value>請等候上一個轉換結束！</value>
+    <comment>The thread is already busy previewing/converting another MIDI.</comment>
+  </data>
+  <data name="ConvStatusFasterNew" xml:space="preserve">
+    <value>已轉換{0}MB的RAW數據。（{1}）
+剩餘時間：{2} - 經過時間：{3}
+轉換速度：{4}%（{5}x快速）</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusFasterOld" xml:space="preserve">
+    <value>已轉換{0}MB的RAW數據。（{1}）
+現在位置：{2} - {3}
+轉換速度：{4}%（{5}x快速）</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusNormalNew" xml:space="preserve">
+    <value>已轉換{0}MB的RAW數據。（{1}）
+剩餘時間：{2} - 經過時間：{3}
+轉換速度：{4}%</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusNormalOld" xml:space="preserve">
+    <value>已轉換{0}MB的RAW數據。（{1}）
+現在位置：{2} - {3}
+轉換速度：{4}%</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusSlowerNew" xml:space="preserve">
+    <value>已轉換{0}MB的RAW數據。（{1}）
+剩餘時間：{2} - 經過時間：{3}
+轉換速度：{4}%（{5}x慢於播放速度）</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConvStatusSlowerOld" xml:space="preserve">
+    <value>已轉換{0}MB的RAW數據。（{1}）
+現在位置：{2} - {3}
+轉換速度：{4}%（{5}x慢於播放速度）</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DisableEffects" xml:space="preserve">
+    <value>禁用聲音效果</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DSPSettings" xml:space="preserve">
+    <value>DSP設定：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ExportMIDIWindow" xml:space="preserve">
+    <value>選擇轉換輸出的文件夾</value>
+    <comment>Where do you want to export the files?</comment>
+  </data>
+  <data name="ImportMIDIWindow" xml:space="preserve">
+    <value>選擇需要載入的MIDI...</value>
+    <comment>Which files do you want to import?</comment>
+  </data>
+  <data name="ImportSoundfontBtn" xml:space="preserve">
+    <value>載入音色庫</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MIDIFiles" xml:space="preserve">
+    <value>MIDI文件</value>
+    <comment>Used for the "MIDIImport" OpenFileDialog function.</comment>
+  </data>
+  <data name="MoveDownSF" xml:space="preserve">
+    <value>向下移動 ▼</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MoveUpSF" xml:space="preserve">
+    <value>向上移動 ▲</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NoteOff1" xml:space="preserve">
+    <value>只釋放“結束音符”事件中最早的音符實例</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="OverrideTempo" xml:space="preserve">
+    <value>覆蓋MIDI原來的速度</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackStatusNormal" xml:space="preserve">
+    <value>MIDI已經預覽咗{0}。
+預覽位置：{1} - {2}
+音符數：{3} - {4}
+預覽速度：默認</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackText" xml:space="preserve">
+    <value>{0} | 正在預覽 {1}</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RealTimeFramerate" xml:space="preserve">
+    <value>實時幀速率：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="RemoveSoundfontBtn" xml:space="preserve">
+    <value>移除音色庫</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="StreamSettings" xml:space="preserve">
+    <value>流設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SkipVSTSettings" xml:space="preserve">
+    <value>軟件將跳過VST設定。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SoundfontDialogMessage" xml:space="preserve">
+    <value>一次最多使用1000種音色庫來轉換MIDI。
+最後一個音色庫將覆蓋佢上面嘅音色庫，加載順序係從上到下。
+喺將音色庫添加到列表之前，請檢查其是否已損壞，來避免音頻損壞/故障。
+
+支持以下格式：SF2、SF2PACK、SF3、SFZ</value>
+    <comment>The description in the SoundFont list editor.</comment>
+  </data>
+  <data name="SoundfontImportError" xml:space="preserve">
+    <value>呢個唔係一個有效嘅音色庫！
+
+請換一個有效嘅音色庫啦。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SoundfontManagerTitle" xml:space="preserve">
+    <value>音色庫/VST管理器</value>
+    <comment>Title of the SoundFont list editor.</comment>
+  </data>
+  <data name="VSTHowDoTheyWork" xml:space="preserve">
+    <value>工作原理係點樣嘅呢？
+    
+效果1將其效果應用於音頻，然後將修改後嘅音頻傳遞畀效果2，
+然後傳遞畀效果3，以此類推。
+
+呢個係一個鏈式系統。</value>
+    <comment>The description in the VST effects picker.</comment>
+  </data>
+  <data name="VSTInvalidCallError" xml:space="preserve">
+    <value>加載{0}是發生咗錯誤。
+呢個VST無法被加載。
+
+錯誤：
+{1} 
+
+VST可能與本機Windows窗體系統不兼容。
+錯誤內容已複製到剪貼簿。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTInvalidCallTitle" xml:space="preserve">
+    <value>VST調用無效</value>
+    <comment>Title for "VSTInvalidCallError"</comment>
+  </data>
+  <data name="VSTManager" xml:space="preserve">
+    <value>VST管理器</value>
+    <comment>Title of the VST effects picker.</comment>
+  </data>
+  <data name="VSTManagerButtonText" xml:space="preserve">
+    <value>打開VST DSP管理器</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTUseText" xml:space="preserve">
+    <value>啟用VST效果</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="BNPSel" xml:space="preserve">
+    <value>為音色庫選擇一個庫和一個預設</value>
+    <comment>Title for "BankNPresetSel".</comment>
+  </data>
+  <data name="BNPSelDesc" xml:space="preserve">
+    <value>請選擇庫和預設值，從0到127。
+    
+對標準嘅“原聲大鋼琴”使用“Bank 0”和“Preset 0”，
+或者如果您唔知道該用邊一個。</value>
+    <comment>Description for "BankNPresetSel".</comment>
+  </data>
+  <data name="BNPSelHelp" xml:space="preserve">
+    <value>“導入位置…”顯示添加嘅MIDI嘅默認Bank/Preset標識。
+
+如果喺“導入位置…”中單讀指定咗Bank/Preset嘅ID，則默認嘅Bank/Preset嘅ID將重新指定為此處指定嘅ID。
+
+如果選定嘅音色庫為SFZ，則Bank/Preset嘅ID將自動設定為0。</value>
+    <comment>Help text for "BankNPresetSel".</comment>
+  </data>
+  <data name="BNPSelWiki" xml:space="preserve">
+    <value>庫/預設列表</value>
+    <comment>List of banks and presets from text file.</comment>
+  </data>
+  <data name="CancelBtn" xml:space="preserve">
+    <value>取消</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConfirmBtn" xml:space="preserve">
+    <value>確定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DesBank" xml:space="preserve">
+    <value>導入庫的目標ID：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="DesPreset" xml:space="preserve">
+    <value>導入預設的目標ID：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SrcBank" xml:space="preserve">
+    <value>導入庫的源ID：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SrcPreset" xml:space="preserve">
+    <value>導入預設的源ID：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="0Translators0" xml:space="preserve">
+    <value>Whoncxis（基於【節能降耗】的漢化範本粵化）</value>
+    <comment>You translated it! I think... If it says "KaleidonKep99", then you didn't. And, you don't need to know who is Whoncxis.</comment>
+  </data>
+  <data name="AdvancedVoicesChannel" xml:space="preserve">
+    <value>通道 {0}：</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AdvancedVoicesTitle" xml:space="preserve">
+    <value>活動復音數 - 詳細（CPU使用率：{0}%）</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AppBusy" xml:space="preserve">
+    <value>軟件仲未有轉換/預覽完MIDI！
+真係要關閉嗎？</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AudioSettings" xml:space="preserve">
+    <value>音頻設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AutoResizeColumns" xml:space="preserve">
+    <value>自動調整列大小</value>
+    <comment>Let the converter automatically resize the columns.</comment>
+  </data>
+  <data name="BecomeAPatronTitle" xml:space="preserve">
+    <value>成為贊助者拯救呢個項目</value>
+    <comment>Title for "BecomeAPatron"</comment>
+  </data>
+  <data name="ChannelsSettings" xml:space="preserve">
+    <value>通道設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ChannelsSettingsAll" xml:space="preserve">
+    <value>總通道</value>
+    <comment>The "All" name for the Channels Settings.</comment>
+  </data>
+  <data name="ChannelsSettingsChan" xml:space="preserve">
+    <value>通道{0}</value>
+    <comment>The "Channel" name for the Channels Settings.</comment>
+  </data>
+  <data name="ConversionAborted" xml:space="preserve">
+    <value>轉換已停止。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ConversionCompleted" xml:space="preserve">
+    <value>轉換已暫停。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CopiedToClipboardNotice" xml:space="preserve">
+    <value>錯誤信息已複製至剪貼簿。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CopyErrorMessage" xml:space="preserve">
+    <value>將錯誤信息複製至剪貼簿</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="EmptySlot" xml:space="preserve">
+    <value>空插槽</value>
+    <comment>No VST currently loaded here.</comment>
+  </data>
+  <data name="HeyYou" xml:space="preserve">
+    <value>等一陣啦！</value>
+    <comment>Oh!</comment>
+  </data>
+  <data name="InvalidVSTLoaded" xml:space="preserve">
+    <value>{0}唔係有效嘅VST效果器！
+請確定您加載嘅係VST效果器，而唔係VSTi（VST樂器）。
+
+如果要使用{1}VST，就需要{1}版本嘅Keppy's MIDI Converter。
+另外，{2}版本嘅Keppy's MIDI Converter同樣唔可以使用{1}VST。</value>
+    <comment>The VST is invalid.</comment>
+  </data>
+  <data name="LegalWarningVSTi" xml:space="preserve">
+    <value>單擊“是”，即表示您同意不濫用“VST工具”功能來創建、傳播或訪問任何利用咗【包含於VST（“Virtual Studio技術”插件）中受保護或版權保護嘅範本或文件】嘅內容。
+		
+會引發此類結果嘅文件包括（但不限於）：
+SoundFonts、VST或任何其它侵犯版權嘅可用工具。
+		
+簡單來講，除非獲得開發者嘅許可，否則您不得使用此工具係受版權保護/商標保護/免費或護費嘅VST上實施盜版。
+您可以隨意從VST創建音頻，但不要用此導出功能從VST提取/破解範本。
+		
+作者對使用此工具不承擔任何法律責任。</value>
+    <comment>This is to prevent people from blaming me for violating the copyright, by allowing people to sample VSTs.
+I'm not responsible of what people do with the converter.</comment>
+  </data>
+  <data name="LoadVST" xml:space="preserve">
+    <value>加載</value>
+    <comment>Loads the VST.</comment>
+  </data>
+  <data name="MaxVoices" xml:space="preserve">
+    <value>最大複音數：（最高可設定為100,000）</value>
+    <comment>The amount of voices allowed to be played at once.</comment>
+  </data>
+  <data name="MemoryAllocationConversion" xml:space="preserve">
+    <value>應用正在正在為轉換過程分配內存。
+請稍候...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationConversionVST" xml:space="preserve">
+    <value>軟體程序正在為轉換過程分配內存。
+記得去調VST DSP設定並關閉窗體喔。
+請稍候...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationPlayback" xml:space="preserve">
+    <value>軟體程序正在為預覽分配內存。
+請稍候...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MemoryAllocationPlaybackVST" xml:space="preserve">
+    <value>軟體程序正在為預覽分配內存。
+記得去調VST DSP設定並關閉窗體喔。
+請稍候...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MIDITracks" xml:space="preserve">
+    <value>軌道數</value>
+    <comment>How many tracks are present in the MIDI.</comment>
+  </data>
+  <data name="NotVerified" xml:space="preserve">
+    <value>未認證</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="OverrideLanguage" xml:space="preserve">
+    <value>覆蓋默認語言</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonBecomeOne" xml:space="preserve">
+    <value>成為贊助者</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonDesc" xml:space="preserve">
+    <value>呢個項目唔能夠僅通過下載來維護自身。
+
+我無辦法永遠更新呢個程序，所以您們嘅一筆小捐款可以協助我改進佢嘅功能，與我使用嘅設備。
+
+捐款係可選嘅，如果您唔想再見到呢一個對話框，只需點擊“不再顯示”。您仍然可以打開“幫助&gt;贊助”進行捐款。
+
+提前多謝您啦。 </value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PatreonMaybeLater" xml:space="preserve">
+    <value>下次先算</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackAborted" xml:space="preserve">
+    <value>預覽已停止。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackCompleted" xml:space="preserve">
+    <value>預覽已完成。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PlaybackStatusSlower" xml:space="preserve">
+    <value>MIDI已經預覽咗{0}。
+預覽位置：{1} - {2}
+音符數：{3} - {4}
+預覽速度：({5}x慢於播放速度~）</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="UnloadAllVSTs" xml:space="preserve">
+    <value>移除所有</value>
+    <comment>Unloads all the VSTs.</comment>
+  </data>
+  <data name="UnloadVST" xml:space="preserve">
+    <value>移除</value>
+    <comment>Unloads the VST.</comment>
+  </data>
+  <data name="VSTiModeOn" xml:space="preserve">
+    <value>已開啟VSTi模式。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTiModeOnLegal" xml:space="preserve">
+    <value>已開啟VSTi模式。
+法律警告將不再顯示。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="VSTNameAndVersion" xml:space="preserve">
+    <value>{0} 作者 {1}（版本號：{2}）</value>
+    <comment>Shows you the name of the VST, the creator, and its version number.</comment>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>注意</value>
+    <comment>Warning!</comment>
+  </data>
+  <data name="ConversionText" xml:space="preserve">
+    <value>{0} | 正在轉換 {1}</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Donate" xml:space="preserve">
+    <value>贊助</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>複製</value>
+    <comment>Used when creating a copy of an existing file.</comment>
+  </data>
+  <data name="ParsingMIDIInfo" xml:space="preserve">
+    <value>正在解析MIDI信息...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ParsingMIDIInfoStatus" xml:space="preserve">
+    <value>{1}個文件中已解析{0}個文件。
+請稍候...</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SVDS" xml:space="preserve">
+    <value>跳過VST DSP設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>不可用</value>
+  </data>
+  <data name="VSTiSettings" xml:space="preserve">
+    <value>VSTi設定</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CorruptedSetupDesc" xml:space="preserve">
+    <value>更新安裝包已損壞。
+無法安裝更新！
+
+點擊確定來繼續。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="CorruptedSetupTitle" xml:space="preserve">
+    <value>安裝包一唔覺意損壞咗...</value>
+  </data>
+  <data name="MissingTranslations" xml:space="preserve">
+    <value>部分語言總未擁有，敬请期待。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="MTT" xml:space="preserve">
+    <value>最小化到託盤</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SBIOMB" xml:space="preserve">
+    <value>顯示氣球/牆角框通知，而唔是消息框。</value>
+  </data>
+  <data name="MinimizedToTray" xml:space="preserve">
+    <value>轉換器已最小化至託盤。
+單擊系統託盤上嘅圖標將其還原。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SincInter" xml:space="preserve">
+    <value>使用32點sinc函數插值代替線性函數插值</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ArgumentError" xml:space="preserve">
+    <value>無效參數</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="InvalidArg" xml:space="preserve">
+    <value>{0}唔是有效嘅命令行參數！
+點擊確定來繼續.</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="SelectedSF" xml:space="preserve">
+    <value>選擇的音色庫：
+{0}</value>
+    <comment>Selected SoundFont, in the BankNPresetSel window.</comment>
+  </data>
+  <data name="PreloadDefaultSF" xml:space="preserve">
+    <value>如果有嘅話，總係預加載軟件默認嘅音色庫。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="AFIT" xml:space="preserve">
+    <value>導出前展示“忽略軌道”對話框。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="HighestVel" xml:space="preserve">
+    <value>最高：</value>
+    <comment>Range of IgnoreNotes1.</comment>
+  </data>
+  <data name="IgnoreNotes1" xml:space="preserve">
+    <value>忽略兩個力度值之間的音符</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="Limit88" xml:space="preserve">
+    <value>將音符限定在88鍵（鼓通道除外）</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="LowestVel" xml:space="preserve">
+    <value>最低：</value>
+    <comment>Range of IgnoreNotes1.</comment>
+  </data>
+  <data name="MIDIEventsSettings" xml:space="preserve">
+    <value>MIDI事件設定</value>
+    <comment>Title of the groupbox.</comment>
+  </data>
+  <data name="TracksToIgnoreTitle" xml:space="preserve">
+    <value>您要忽略邊一條軌道？</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PreloadSamplesNotSF" xml:space="preserve">
+    <value>只預加載需要嘅採樣，而非整個音色庫。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="PreloadSamplesNotSFWarn" xml:space="preserve">
+    <value>預加載范本將強制使轉換器掃描整個MIDI，已檢查邊啲範本需預加載。
+根據MIDI和音色庫嘅大小，呢種行為可能會使轉換器喺檢查中暫停幾分鐘甚至幾個鐘。
+對於【黑樂譜】嘅預覽/轉換，強烈建議不要選中此選項。</value>
+  </data>
+  <data name="PreloadSFOfMIDI" xml:space="preserve">
+    <value>預加載與MIDI具有相同名稱和路徑的音色庫。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ParsingMIDIInfoInvalidOutcome" xml:space="preserve">
+    <value>在{0}個文件當中,{1}個有效，{2}個無效。</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="ParsingMIDIInfoPrepare" xml:space="preserve">
+    <value>準備中。
+請稍候...</value>
+    <comment>It's preparing the AddingMIDIs window for the process.</comment>
+  </data>
+  <data name="LinAttMod" xml:space="preserve">
+    <value>將音色庫調製包絡中嘅啟動階段變為線性</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="LinDecVol" xml:space="preserve">
+    <value>將音量包絡嘅衰減和釋放階段變為線性</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+  <data name="NoteRampIn" xml:space="preserve">
+    <value>禁止啟動線性處理音色庫中嘅採樣</value>
+    <comment>Self-explanatory.</comment>
+  </data>
+</root>
