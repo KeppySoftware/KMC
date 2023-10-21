@@ -146,9 +146,7 @@ namespace KeppyMIDIConverter
 
         public static void TriggerDate()
         {
-            Random Chance = new Random();
             DateTime BirthDate = DateTime.Now;
-            int currentyear = Convert.ToInt32(BirthDate.ToString("yyyy"));
 
             if (BirthDate.ToString("dd") == "01")
             {
@@ -161,15 +159,6 @@ namespace KeppyMIDIConverter
                     };
                     frm.ShowDialog();
                 }
-            }
-
-            if (BirthDate.ToString("dd/MM") == "17/09")
-            {
-                MessageBox.Show("Today, KMC turned " + (currentyear - 2015).ToString() + " year(s) old!\n\nHappy birthday, awesome converter!", "Happy birthday to me, Keppy's MIDI Converter", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (BirthDate.ToString("dd/MM") == "05/12")
-            {
-                MessageBox.Show("Today is Keppy's birthday! He turned " + (currentyear - 1999).ToString() + " years old!\n\nHappy birthday, you potato!", "Happy birthday to Kepperino", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

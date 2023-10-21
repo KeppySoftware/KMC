@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>KeppyMIDIConverter</RootNamespace>
     <AssemblyName>KeppyMIDIConverter</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
@@ -252,6 +252,9 @@
     <EmbeddedResource Include="Languages\Lang.en-US.resx" />
     <EmbeddedResource Include="Functions\Languages\OverrideLanguage.resx">
       <DependentUpon>OverrideLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.es-ES.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.it-IT.resx" />
     <EmbeddedResource Include="Languages\Lang.ja-JP.resx" />

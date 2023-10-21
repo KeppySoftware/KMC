@@ -172,19 +172,16 @@ namespace KeppyMIDIConverter
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (OverrideTempoNow.Checked == true)
-            {
-                Properties.Settings.Default.OverrideTempo = true;
-                TempoValue.Enabled = true;
-            }
-            else
-            {
-                Properties.Settings.Default.OverrideTempo = false;
-                TempoValue.Enabled = false;
+            Properties.Settings.Default.OverrideTempo = OverrideTempoNow.Checked;
+            TempoValue.Enabled = OverrideTempoNow.Checked;
+            TempoCurrent.Enabled = OverrideTempoNow.Checked;
+
+            if (!Properties.Settings.Default.OverrideTempo)
                 TempoValue.Value = 40;
-                MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
-                BASSControl.SetTempo(false, false);
-            }
+
+            MainWindow.KMCGlobals.TempoScale = 1 / ((120 - TempoValue.Value) / 80.0f);
+            BASSControl.SetTempo(false, false);
+
             Properties.Settings.Default.Save();
         }
 

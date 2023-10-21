@@ -44,15 +44,15 @@
             this.MaxVoices = new System.Windows.Forms.NumericUpDown();
             this.ChannelsSettings = new System.Windows.Forms.Button();
             this.MIDIEventsSettings = new System.Windows.Forms.GroupBox();
+            this.LinDecVol = new System.Windows.Forms.CheckBox();
+            this.LinAttMod = new System.Windows.Forms.CheckBox();
+            this.NoRampIn = new System.Windows.Forms.CheckBox();
             this.LoVel = new System.Windows.Forms.NumericUpDown();
             this.HiVel = new System.Windows.Forms.NumericUpDown();
             this.HighestVel = new System.Windows.Forms.Label();
             this.LowestVel = new System.Windows.Forms.Label();
             this.Limit88 = new System.Windows.Forms.CheckBox();
             this.IgnoreNotes1 = new System.Windows.Forms.CheckBox();
-            this.NoRampIn = new System.Windows.Forms.CheckBox();
-            this.LinAttMod = new System.Windows.Forms.CheckBox();
-            this.LinDecVol = new System.Windows.Forms.CheckBox();
             this.StreamSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RTFPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempoValue)).BeginInit();
@@ -67,7 +67,7 @@
             // 
             this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKBtn.Location = new System.Drawing.Point(315, 480);
+            this.OKBtn.Location = new System.Drawing.Point(344, 480);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(79, 23);
             this.OKBtn.TabIndex = 8;
@@ -91,7 +91,7 @@
             this.StreamSettings.Controls.Add(this.FXDisable);
             this.StreamSettings.Location = new System.Drawing.Point(12, 325);
             this.StreamSettings.Name = "StreamSettings";
-            this.StreamSettings.Size = new System.Drawing.Size(382, 145);
+            this.StreamSettings.Size = new System.Drawing.Size(411, 145);
             this.StreamSettings.TabIndex = 0;
             this.StreamSettings.TabStop = false;
             this.StreamSettings.Text = "StreamSettings";
@@ -100,7 +100,7 @@
             // 
             this.RTFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RTFPS.DecimalPlaces = 1;
-            this.RTFPS.Location = new System.Drawing.Point(300, 19);
+            this.RTFPS.Location = new System.Drawing.Point(329, 19);
             this.RTFPS.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -124,9 +124,9 @@
             // 
             // TempoCurrent
             // 
-            this.TempoCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TempoCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TempoCurrent.Enabled = false;
-            this.TempoCurrent.Location = new System.Drawing.Point(160, 83);
+            this.TempoCurrent.Location = new System.Drawing.Point(189, 83);
             this.TempoCurrent.Name = "TempoCurrent";
             this.TempoCurrent.Size = new System.Drawing.Size(58, 15);
             this.TempoCurrent.TabIndex = 32;
@@ -135,8 +135,8 @@
             // 
             // TempoValue
             // 
-            this.TempoValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TempoValue.Location = new System.Drawing.Point(213, 69);
+            this.TempoValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TempoValue.Location = new System.Drawing.Point(242, 69);
             this.TempoValue.Maximum = 80;
             this.TempoValue.Name = "TempoValue";
             this.TempoValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -159,10 +159,10 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.Location = new System.Drawing.Point(346, 119);
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Location = new System.Drawing.Point(375, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 12);
+            this.label4.Size = new System.Drawing.Size(30, 17);
             this.label4.TabIndex = 17;
             this.label4.Text = "kbps";
             // 
@@ -180,7 +180,7 @@
             // 
             // BitrateBox
             // 
-            this.BitrateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BitrateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BitrateBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BitrateBox.Enabled = false;
             this.BitrateBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -195,7 +195,7 @@
             "128",
             "96",
             "64"});
-            this.BitrateBox.Location = new System.Drawing.Point(291, 115);
+            this.BitrateBox.Location = new System.Drawing.Point(320, 115);
             this.BitrateBox.Name = "BitrateBox";
             this.BitrateBox.Size = new System.Drawing.Size(55, 21);
             this.BitrateBox.TabIndex = 7;
@@ -205,7 +205,7 @@
             // 
             this.BitrateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BitrateLabel.Enabled = false;
-            this.BitrateLabel.Location = new System.Drawing.Point(213, 96);
+            this.BitrateLabel.Location = new System.Drawing.Point(234, 119);
             this.BitrateLabel.Name = "BitrateLabel";
             this.BitrateLabel.Size = new System.Drawing.Size(86, 13);
             this.BitrateLabel.TabIndex = 14;
@@ -238,10 +238,12 @@
             // 
             // Noteoff1
             // 
+            this.Noteoff1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Noteoff1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Noteoff1.Location = new System.Drawing.Point(9, 84);
             this.Noteoff1.Name = "Noteoff1";
-            this.Noteoff1.Size = new System.Drawing.Size(364, 37);
+            this.Noteoff1.Size = new System.Drawing.Size(393, 37);
             this.Noteoff1.TabIndex = 2;
             this.Noteoff1.Text = "NoteOff1";
             this.Noteoff1.UseVisualStyleBackColor = true;
@@ -249,8 +251,9 @@
             // 
             // Label6
             // 
+            this.Label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(356, 51);
+            this.Label6.Location = new System.Drawing.Point(385, 51);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(20, 13);
             this.Label6.TabIndex = 10;
@@ -258,6 +261,7 @@
             // 
             // FrequencyBox
             // 
+            this.FrequencyBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FrequencyBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FrequencyBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.FrequencyBox.FormattingEnabled = true;
@@ -282,7 +286,7 @@
             "11025",
             "8000",
             "4000"});
-            this.FrequencyBox.Location = new System.Drawing.Point(291, 47);
+            this.FrequencyBox.Location = new System.Drawing.Point(320, 47);
             this.FrequencyBox.Name = "FrequencyBox";
             this.FrequencyBox.Size = new System.Drawing.Size(66, 21);
             this.FrequencyBox.TabIndex = 0;
@@ -314,18 +318,19 @@
             this.AudioSettings.Controls.Add(this.Label6);
             this.AudioSettings.Location = new System.Drawing.Point(12, 12);
             this.AudioSettings.Name = "AudioSettings";
-            this.AudioSettings.Size = new System.Drawing.Size(382, 111);
+            this.AudioSettings.Size = new System.Drawing.Size(411, 111);
             this.AudioSettings.TabIndex = 9;
             this.AudioSettings.TabStop = false;
             this.AudioSettings.Text = "AudioSettings";
             // 
             // SincInter
             // 
-            this.SincInter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SincInter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SincInter.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.SincInter.Location = new System.Drawing.Point(9, 80);
             this.SincInter.Name = "SincInter";
-            this.SincInter.Size = new System.Drawing.Size(361, 18);
+            this.SincInter.Size = new System.Drawing.Size(390, 18);
             this.SincInter.TabIndex = 35;
             this.SincInter.Text = "SincInter";
             this.SincInter.UseVisualStyleBackColor = true;
@@ -342,7 +347,8 @@
             // 
             // MaxVoices
             // 
-            this.MaxVoices.Location = new System.Drawing.Point(291, 19);
+            this.MaxVoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaxVoices.Location = new System.Drawing.Point(320, 19);
             this.MaxVoices.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -377,6 +383,8 @@
             // 
             // MIDIEventsSettings
             // 
+            this.MIDIEventsSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MIDIEventsSettings.Controls.Add(this.LinDecVol);
             this.MIDIEventsSettings.Controls.Add(this.LinAttMod);
             this.MIDIEventsSettings.Controls.Add(this.NoRampIn);
@@ -389,15 +397,53 @@
             this.MIDIEventsSettings.Controls.Add(this.Noteoff1);
             this.MIDIEventsSettings.Location = new System.Drawing.Point(12, 129);
             this.MIDIEventsSettings.Name = "MIDIEventsSettings";
-            this.MIDIEventsSettings.Size = new System.Drawing.Size(382, 190);
+            this.MIDIEventsSettings.Size = new System.Drawing.Size(411, 190);
             this.MIDIEventsSettings.TabIndex = 11;
             this.MIDIEventsSettings.TabStop = false;
             this.MIDIEventsSettings.Text = "MIDIEventsSettings";
             // 
+            // LinDecVol
+            // 
+            this.LinDecVol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LinDecVol.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.LinDecVol.Location = new System.Drawing.Point(9, 164);
+            this.LinDecVol.Name = "LinDecVol";
+            this.LinDecVol.Size = new System.Drawing.Size(393, 20);
+            this.LinDecVol.TabIndex = 15;
+            this.LinDecVol.Text = "LinDecVol";
+            this.LinDecVol.UseVisualStyleBackColor = true;
+            this.LinDecVol.CheckedChanged += new System.EventHandler(this.LinDecVol_CheckedChanged);
+            // 
+            // LinAttMod
+            // 
+            this.LinAttMod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LinAttMod.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.LinAttMod.Location = new System.Drawing.Point(9, 140);
+            this.LinAttMod.Name = "LinAttMod";
+            this.LinAttMod.Size = new System.Drawing.Size(393, 20);
+            this.LinAttMod.TabIndex = 14;
+            this.LinAttMod.Text = "LinAttMod";
+            this.LinAttMod.UseVisualStyleBackColor = true;
+            this.LinAttMod.CheckedChanged += new System.EventHandler(this.LinAttMod_CheckedChanged);
+            // 
+            // NoRampIn
+            // 
+            this.NoRampIn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.NoRampIn.Location = new System.Drawing.Point(9, 116);
+            this.NoRampIn.Name = "NoRampIn";
+            this.NoRampIn.Size = new System.Drawing.Size(364, 20);
+            this.NoRampIn.TabIndex = 13;
+            this.NoRampIn.Text = "NoRampIn";
+            this.NoRampIn.UseVisualStyleBackColor = true;
+            this.NoRampIn.CheckedChanged += new System.EventHandler(this.NoRampIn_CheckedChanged);
+            // 
             // LoVel
             // 
+            this.LoVel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LoVel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.LoVel.Location = new System.Drawing.Point(332, 15);
+            this.LoVel.Location = new System.Drawing.Point(361, 15);
             this.LoVel.Maximum = new decimal(new int[] {
             127,
             0,
@@ -421,8 +467,9 @@
             // 
             // HiVel
             // 
+            this.HiVel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.HiVel.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.HiVel.Location = new System.Drawing.Point(332, 35);
+            this.HiVel.Location = new System.Drawing.Point(361, 35);
             this.HiVel.Maximum = new decimal(new int[] {
             127,
             0,
@@ -441,7 +488,8 @@
             // 
             // HighestVel
             // 
-            this.HighestVel.Location = new System.Drawing.Point(267, 37);
+            this.HighestVel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.HighestVel.Location = new System.Drawing.Point(296, 37);
             this.HighestVel.Name = "HighestVel";
             this.HighestVel.Size = new System.Drawing.Size(65, 13);
             this.HighestVel.TabIndex = 10;
@@ -450,7 +498,8 @@
             // 
             // LowestVel
             // 
-            this.LowestVel.Location = new System.Drawing.Point(269, 17);
+            this.LowestVel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LowestVel.Location = new System.Drawing.Point(298, 17);
             this.LowestVel.Name = "LowestVel";
             this.LowestVel.Size = new System.Drawing.Size(63, 13);
             this.LowestVel.TabIndex = 9;
@@ -459,10 +508,12 @@
             // 
             // Limit88
             // 
+            this.Limit88.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Limit88.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Limit88.Location = new System.Drawing.Point(9, 58);
             this.Limit88.Name = "Limit88";
-            this.Limit88.Size = new System.Drawing.Size(364, 20);
+            this.Limit88.Size = new System.Drawing.Size(393, 20);
             this.Limit88.TabIndex = 4;
             this.Limit88.Text = "Limit88";
             this.Limit88.UseVisualStyleBackColor = true;
@@ -470,54 +521,23 @@
             // 
             // IgnoreNotes1
             // 
+            this.IgnoreNotes1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.IgnoreNotes1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.IgnoreNotes1.Location = new System.Drawing.Point(9, 19);
             this.IgnoreNotes1.Name = "IgnoreNotes1";
-            this.IgnoreNotes1.Size = new System.Drawing.Size(231, 27);
+            this.IgnoreNotes1.Size = new System.Drawing.Size(260, 27);
             this.IgnoreNotes1.TabIndex = 3;
             this.IgnoreNotes1.Text = "IgnoreNotes1";
             this.IgnoreNotes1.UseVisualStyleBackColor = true;
             this.IgnoreNotes1.CheckedChanged += new System.EventHandler(this.IgnoreNotes1_CheckedChanged);
-            // 
-            // NoRampIn
-            // 
-            this.NoRampIn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.NoRampIn.Location = new System.Drawing.Point(9, 116);
-            this.NoRampIn.Name = "NoRampIn";
-            this.NoRampIn.Size = new System.Drawing.Size(364, 20);
-            this.NoRampIn.TabIndex = 13;
-            this.NoRampIn.Text = "NoRampIn";
-            this.NoRampIn.UseVisualStyleBackColor = true;
-            this.NoRampIn.CheckedChanged += new System.EventHandler(this.NoRampIn_CheckedChanged);
-            // 
-            // LinAttMod
-            // 
-            this.LinAttMod.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LinAttMod.Location = new System.Drawing.Point(9, 140);
-            this.LinAttMod.Name = "LinAttMod";
-            this.LinAttMod.Size = new System.Drawing.Size(364, 20);
-            this.LinAttMod.TabIndex = 14;
-            this.LinAttMod.Text = "LinAttMod";
-            this.LinAttMod.UseVisualStyleBackColor = true;
-            this.LinAttMod.CheckedChanged += new System.EventHandler(this.LinAttMod_CheckedChanged);
-            // 
-            // LinDecVol
-            // 
-            this.LinDecVol.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LinDecVol.Location = new System.Drawing.Point(9, 164);
-            this.LinDecVol.Name = "LinDecVol";
-            this.LinDecVol.Size = new System.Drawing.Size(364, 20);
-            this.LinDecVol.TabIndex = 15;
-            this.LinDecVol.Text = "LinDecVol";
-            this.LinDecVol.UseVisualStyleBackColor = true;
-            this.LinDecVol.CheckedChanged += new System.EventHandler(this.LinDecVol_CheckedChanged);
             // 
             // AdvancedSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(406, 515);
+            this.ClientSize = new System.Drawing.Size(435, 515);
             this.ControlBox = false;
             this.Controls.Add(this.MIDIEventsSettings);
             this.Controls.Add(this.ChannelsSettings);

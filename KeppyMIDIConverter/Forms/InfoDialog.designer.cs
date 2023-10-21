@@ -228,9 +228,9 @@
             // OKClose
             // 
             this.OKClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKClose.Location = new System.Drawing.Point(287, 266);
+            this.OKClose.Location = new System.Drawing.Point(322, 266);
             this.OKClose.Name = "OKClose";
-            this.OKClose.Size = new System.Drawing.Size(87, 23);
+            this.OKClose.Size = new System.Drawing.Size(52, 23);
             this.OKClose.TabIndex = 7;
             this.OKClose.Text = "OK";
             this.OKClose.UseVisualStyleBackColor = true;
@@ -241,7 +241,7 @@
             this.CTC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CTC.Location = new System.Drawing.Point(9, 266);
             this.CTC.Name = "CTC";
-            this.CTC.Size = new System.Drawing.Size(118, 23);
+            this.CTC.Size = new System.Drawing.Size(138, 23);
             this.CTC.TabIndex = 8;
             this.CTC.Text = "Copy to clipboard";
             this.CTC.UseVisualStyleBackColor = true;
@@ -250,7 +250,7 @@
             // CFU
             // 
             this.CFU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CFU.Location = new System.Drawing.Point(133, 266);
+            this.CFU.Location = new System.Drawing.Point(153, 266);
             this.CFU.Name = "CFU";
             this.CFU.Size = new System.Drawing.Size(138, 23);
             this.CFU.TabIndex = 9;
